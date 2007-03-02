@@ -1,0 +1,5 @@
+<!ENTITY firegpg.label "Your localized menuitem">
+<!ENTITY firegpgContext.label "Your Menuitem">
+<!ENTITY firegpgContext.accesskey "Y">
+<!ENTITY firegpgToolbar.label "Your Toolbar Button">
+<!ENTITY firegpgToolbar.tooltip "This is your toolbar button!">

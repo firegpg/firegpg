@@ -1,0 +1,5 @@
+content	firegpg	content/
+locale	firegpg	en-US	locale/en-US/
+skin	firegpg	classic/1.0	skin/
+overlay	chrome://browser/content/browser.xul	chrome://firegpg/content/firefoxOverlay.xul
+style	chrome://global/content/customizeToolbar.xul	chrome://firegpg/skin/overlay.css

@@ -1,0 +1,22 @@
+/* This is just an example.  You shouldn't do this. */
+#firegpg-hello
+{
+  color: red ! important;
+}
+#firegpg-toolbar-button
+{
+  list-style-image: url("chrome://firegpg/skin/toolbar-button.png");
+  -moz-image-region: rect(0px 24px 24px 0px);
+}
+#firegpg-toolbar-button:hover
+{
+  -moz-image-region: rect(24px 24px 48px  0px);
+}
+[iconsize="small"] #firegpg-toolbar-button
+{
+  -moz-image-region: rect( 0px 40px 16px 24px);
+}
+[iconsize="small"] #firegpg-toolbar-button:hover
+{
+  -moz-image-region: rect(24px 40px 40px 24px);
+}
