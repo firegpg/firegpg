@@ -3,9 +3,10 @@
 {
   color: red ! important;
 }
-#firegpg-toolbar-button
+#toolbar-firegpg
 {
   list-style-image: url("chrome://firegpg/skin/toolbar-button.png");
+  
   -moz-image-region: rect(0px 24px 24px 0px);
 }
 #firegpg-toolbar-button:hover
@@ -20,3 +21,4 @@
 {
   -moz-image-region: rect(24px 40px 40px 24px);
 }
+
