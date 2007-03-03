@@ -1,5 +1,6 @@
 2007-03-03  Achraf cherti
 	* little modification in linux.sh (comment)
+	* GMail CheckBox in "options" dialog
 
 2007-03-03  Maximilien Cuony
 	* Basic classes and functions for using GPG added (sample don't work for the moment)
