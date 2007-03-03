@@ -164,7 +164,7 @@ var firegpgGPG = {
 	},
 
 	//Retoune la liste des clés disponibles
-	listkeys: function()
+	listkeys2: function()
 	{
 		//TODO
 		var table = new Array();
@@ -264,6 +264,36 @@ var firegpgGPG = {
 		alert(this.i18n.getString("verifSuccess")+ " " + infos[0] + " " + infos[2] + " " + infos[3]);
 	}
 	
+  },
+
+
+  listkey: function(onlyPrivate) {
+	
+	var retour = new Array();
+	var infos;
+	//We get informations from GPG
+	var result = this.GPGAccess.listkey(onlyPrivate);
+
+	//Parsing
+	var reg=new RegExp("[\n]+", "g");
+	var list = result.split(reg);
+
+	//var reg2=new RegExp("[:]+", "g");
+
+
+	for (var i = 0; i < list.length; i++)
+	{
+		infos = new Array();
+		infos = list[i].split(":");
+		
+		if (infos[0] == "pub" || infos[0] == "sec")
+		{
+			retour[infos[4]] = infos[9] ;
+			
+		}
+		
+	}
+
   }
 }
 ;
@@ -281,5 +311,4 @@ else
 }
 
 firegpgGPG.GPGAccess.parent = firegpgGPG;
-
 

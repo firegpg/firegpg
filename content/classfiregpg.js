@@ -36,7 +36,7 @@
 
 //Tempory !!!!
 var savedPassword = "testtest";
-var selfKey = "B0520C5BB6B2F3E3";
+var selfKey = "B6B2F3E3";
 
 //Tempory !!!!
 function fireGPG_GetPassword()

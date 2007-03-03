@@ -1,18 +1,14 @@
 2007-03-03  Maximilien Cuony
+	* Implementation of firegpgGPG.listkey(private)
 	* Moved some function to firegpgGPG
-
-2007-03-03  Maximilien Cuony
+	* FireGPG context menu added
 	* Basic functions for GPGLin.Sign and GPGLin.Verif
+	* Basic classes and functions for using GPG added (sample don't work for the moment)
+	
 
 2007-03-03  Achraf cherti
 	* little modification in linux.sh (comment)
 	* GMail CheckBox in "options" dialog
-
-2007-03-03  Maximilien Cuony
-	* Basic classes and functions for using GPG added (sample don't work for the moment)
-
-2007-03-02  Maximilien Cuony
-	* FireGPG context menu added
 
 2007-03-02  Achraf cherti
 	* template generated with the wizard

@@ -126,6 +126,39 @@ var firegpgGPGlin = {
 	//We return result
 	return result;
 	
+  },
+  // List differents keys
+  listkey: function(onlyPrivate) {
+	
+	var tmpStdOut = this.parent.getTmpFile(); //Output from gpg
+
+	
+	//Get plugin's localisation
+	var ext = Components.classes[nsIExtensionManager_CONRACTID]
+	                    .getService(Components.interfaces.nsIExtensionManager)
+	                    .getInstallLocation(idAppli)
+	                    .getItemLocation(idAppli); 
+
+	var mode = "--list-keys";
+
+	if (onlyPrivate == true)
+		mode = "--list-secret-keys";
+
+	//we lauch GPG
+	this.parent.exeCommand(
+		ext.path + "/content/linux.sh",
+		"gpg " + tmpStdOut +
+		" --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons " + mode);
+
+	//We get the result
+	var result = this.parent.getContentFile(tmpStdOut);
+	
+	//We delete tempory files
+	this.parent.cleanTmpFile(tmpStdOut);
+
+	//We return result
+	return result;
+	
   }
   
 };
