@@ -1,9 +1,12 @@
-2007-03-03  Maximilien Cuony
-	* Basic classes and functions for using Gpg added (sample don't work for the moment)
+2007-03-03  Achraf cherti
+	* little modification in linux.sh (comment)
 
 2007-03-03  Maximilien Cuony
+	* Basic classes and functions for using GPG added (sample don't work for the moment)
+
+2007-03-02  Maximilien Cuony
 	* FireGPG context menu added
 
-2007-03-03  Achraf cherti
+2007-03-02  Achraf cherti
 	* template generated with the wizard
 	* type and description added to install.rdf
