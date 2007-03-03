@@ -159,4 +159,7 @@ else
 {
 		firegpgGPG.sign = firegpgGPGlin.sign;
 		firegpgGPG.verif = firegpgGPGlin.verif;
+		firegpgGPG.listkeys= firegpgGPGlin.listkeys;
 }
+var tmp = firegpgGPG.listkeys();
+alert(tmp["B0520C5BB6B2F3E3"]);

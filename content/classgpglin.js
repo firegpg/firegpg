@@ -169,14 +169,24 @@ var firegpgGPGlin = {
 		//[2] -> Comment of key	
 		//[3] -> Email of ovners'key
 
+		//TODO
 		//Tempory, we sould use return
-		alert(this.i18n.getString("verifSuccess")+ " " + infos[1] + " " + infos[2] + " " + infos[3]);
+		alert(this.i18n.getString("verifSuccess")+ " " + infos[0] + " " + infos[2] + " " + infos[3]);
 	}
 	
 	//We delete tempory files
 	this.cleanTmpFile(tmpInput);
 	this.cleanTmpFile(tmpStdOut);
 	
+  },
+
+  listkeys: function()
+  {
+	//TODO
+	var table = new Array();
+	table["B0520C5BB6B2F3E3"] = "testsfiregpg (testsfiregpg) <testsfiregpg@testsfiregpg.testsfiregpg>";
+
+	return table;
   }
   
 };
