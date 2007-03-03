@@ -34,19 +34,18 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-//Tempory !!!!
-var savedPassword = "testtest";
-var selfKey = "B6B2F3E3";
+var savedPassword = "testtest"; /* password */
+var selfKey = "B6B2F3E3";       /* the default private key ID */
 
-//Tempory !!!!
-function fireGPG_GetPassword()
+function FGPG_GetPassword()
 {
+	// TODO
 	return savedPassword;
 }
 
-//Tempory !!!!
-function fireGPG_GetSelfKey()
+function FGPG_GetSelfKey()
 {
-
+	// TODO
 	return selfKey;
 }
+

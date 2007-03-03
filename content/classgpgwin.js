@@ -34,15 +34,13 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-
 /*
 * Class to access to GPG on windows
 */
-
 var firegpgGPGwin = {
-  crypt: function() {
-	alert('Crypt ! - Win');
-  }
-
-  
+	crypt: function() {
+		alert('Crypt ! - Win');
+	}
 };
+
+// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

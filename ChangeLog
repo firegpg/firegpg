@@ -7,8 +7,9 @@
 	  (sample don't work for the moment)
 
 2007-03-03  Achraf cherti
-	* little modification in linux.sh (comment)
+	* little modification in linux.sh (comments)
 	* GMail CheckBox in "options" dialog
+	* somes improvements in the style of the code of *.js
 
 2007-03-02  Achraf cherti
 	* template generated with the wizard

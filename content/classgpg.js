@@ -33,6 +33,7 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  * 
  * ***** END LICENSE BLOCK ***** */
+
 const NS_IPCSERVICE_CONTRACTID  = "@mozilla.org/process/ipc-service;1";
 const NS_APPINFO_CONTRACTID = "@mozilla.org/xre/app-info;1";
 const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
@@ -50,265 +51,219 @@ const WINDOWS = "WINNT";
 
 const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;;
 
-//Return class
+// Return class : TODO what's this ?
 var firegpgGPGReturn = {
-	
 }
 
-//Main class for access to GPG
+// Main class for access to GPG
 var firegpgGPG = {
-
-
-	//Get the path for tmps files
-	getTmpPath: function()
-	{
-		var file = Components.classes[NS_DIRECTORYSERVICE_CONTRACTID]
-	                     .getService(Components.interfaces.nsIProperties)
-	                     .get(TMP_DIRECTORY, Components.interfaces.nsIFile)
+	// Get the path for tmp files
+	getTmpPath: function() {
+		var file = Components.classes[NS_DIRECTORYSERVICE_CONTRACTID].
+		                      getService(Components.interfaces.nsIProperties).
+		                      get(TMP_DIRECTORY, Components.interfaces.nsIFile);
 		return file;
 	},
 
-	//Get a unique tempory file name
-	getTmpFile: function()
-	{
-
+	// Get a unique tempory file name
+	getTmpFile: function() {
 		var file = this.getTmpPath();
 		file.append(TMP_FILES);
 		file.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0664);
-		
 		return file.path;
 	},
 
-	//Put data into a file
-	putIntoFile: function(file2save,data)
-	{
-		var file = Components.classes[NS_LOCALEFILE_CONTRACTID]
-		                     .createInstance(Components.interfaces.nsILocalFile);
+	// Put data into a file
+	putIntoFile: function(file2save,data) {
+		var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
+		                      createInstance(Components.interfaces.nsILocalFile);
+
 		file.initWithPath(file2save);
 
-		var foStream = Components.classes[NS_NETWORKOUTPUT_CONTRACTID]
-		                         .createInstance(Components.interfaces.nsIFileOutputStream);
+		var foStream = Components.classes[NS_NETWORKOUTPUT_CONTRACTID].
+		                          createInstance(Components.interfaces.nsIFileOutputStream);
 
 		foStream.init(file, WRITE_MODE, WRITE_PERMISSIONS, 0);
 		foStream.write(data, data.length);
 		foStream.close();
 	},
 
-	//Get the content of a file
-	getContentFile: function(file2open)
-	{
-
+	// Get the content of a file
+	getContentFile: function(file2open) {
 		try {
+			var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
+			                      createInstance(Components.interfaces.nsILocalFile);
 
-
-			var file = Components.classes[NS_LOCALEFILE_CONTRACTID]
-				                     .createInstance(Components.interfaces.nsILocalFile);
 			file.initWithPath(file2open);
-
 			
 			var data = "";
-			var fstream = Components.classes[NS_NETWORKINPUT_CONTRACTID]
-			                        .createInstance(Components.interfaces.nsIFileInputStream);
-			var sstream = Components.classes[NS_NETWORKINPUTS_CONTRACTID]
-			                        .createInstance(Components.interfaces.nsIScriptableInputStream);
+			var fstream = Components.classes[NS_NETWORKINPUT_CONTRACTID].
+			                         createInstance(Components.interfaces.nsIFileInputStream);
+			var sstream = Components.classes[NS_NETWORKINPUTS_CONTRACTID].
+			                         createInstance(Components.interfaces.nsIScriptableInputStream);
+
 			fstream.init(file, -1, 0, 0);
 			sstream.init(fstream); 
 
 			var str = sstream.read(4096);
 			while (str.length > 0) {
-			  data += str;
-			  str = sstream.read(4096);
+				data += str;
+				str = sstream.read(4096);
 			}
 
 			sstream.close();
 			fstream.close();
 
 			return data;
-
 		}
 		catch (e) {
-			   return "";
+			return "";
 		}
 	},
 
-	//Remove a file
-	cleanTmpFile: function(file1)
-	{
-
-		var file = Components.classes[NS_LOCALEFILE_CONTRACTID]
-		                     .createInstance(Components.interfaces.nsILocalFile);
+	// Remove a file
+	cleanTmpFile: function(file1) {
+		var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
+		                      createInstance(Components.interfaces.nsILocalFile);
 		file.initWithPath(file1);
-		try {		
+
+		try {
 			file.remove(file1);
 		}
-		catch (e)
-		{
+		catch (e) {
 		}
-
 	},
 
-	//Run a command
-	exeCommand: function(command,arg)
-	{
-		var file = Components.classes[NS_LOCALEFILE_CONTRACTID]
-		                     .createInstance(Components.interfaces.nsILocalFile);
+	// Run a command
+	exeCommand: function(command,arg) {
+		var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
+		                      createInstance(Components.interfaces.nsILocalFile);
 		file.initWithPath(command);
 
-		var process = Components.classes[NS_PROCESSUTIL_CONTRACTID]
-		                        .createInstance(Components.interfaces.nsIProcess);
-		process.init(file);
+		var process = Components.classes[NS_PROCESSUTIL_CONTRACTID].
+		                         createInstance(Components.interfaces.nsIProcess);
 
-	        var args = arg.split(' ');
-		
+		process.init(file);
+		var args = arg.split(' ');
 		process.run(true, args, args.length);
 	},
 
-	//Retoune la liste des clés disponibles
-	listkeys2: function()
-	{
-		//TODO
+	// Retoune la liste des clés disponibles
+	listkeys2: function() {
+		// TODO
 		var table = new Array();
 		table["B0520C5BB6B2F3E3"] = "testsfiregpg (testsfiregpg) <testsfiregpg@testsfiregpg.testsfiregpg>";
-
 		return table;
 	},
 
 	/*
 	* Function for sign a text
 	*/
-  sign: function() {
+	sign: function() {
+		var texte = "MEUHHHHHHHHHHHHHHHHHHHHHHHHHH"; // TODO : remove
 
-	
-	var texte = "MEUHHHHHHHHHHHHHHHHHHHHHHHHHH"; //Temp
+		// Needed for a sign
+		var password = fireGPG_GetPassword();
+		var keyID = fireGPG_GetSelfKey();
 
+		// We get the result
+		var result = this.GPGAccess.sign(texte,password,keyID);
+		var crypttexte = result.output;
+		result = result.sdOut;
 
-	//Needed for a sign
-	var password = fireGPG_GetPassword();
-	var keyID = fireGPG_GetSelfKey();
+		// For i18n
+		this.i18n = document.getElementById("firegpg-strings");
 
-	//We get the result
-	var result = this.GPGAccess.sign(texte,password,keyID);
-	var crypttexte = result.output;
-	result = result.sdOut;
-
-	//For i18n
-	this.i18n = document.getElementById("firegpg-strings");
-
-	//If the sign failled
-	if (result.indexOf("SIG_CREATED") == "-1")
-	{
-		//We alert the user
-		if (result.indexOf("BAD_PASSPHRASE") != "-1")
-			alert(this.i18n.getString("signFailledPassword"));
-		else
-			alert(this.i18n.getString("signFailled"));
-	}
-	else
-	{
-		//If he works too,
-		alert(this.i18n.getString("signSuccess"));
-		//The signed text
-		alert(crypttexte);
-		
-	}
-	
-
-	
-  },
-
- // Verify a sign
-  verif: function() {
-	
-
-	var texte = "-----BEGIN PGP SIGNED MESSAGE-----\n"+
-				  "Hash: SHA1\n"+
-				  "\n"+
-				  "MEUHHHHHHHHHHHHHHHHHHHHHHHHHH\n"+
-				  "-----BEGIN PGP SIGNATURE-----\n" +
-				  "Version: GnuPG v1.4.3 (GNU/Linux)\n" + 
-			          "\n" + 
-				  "iD8DBQFF6aWKsFIMW7ay8+MRAiR8AJ42QChS492VhS4k27SMNA5MJC+ZPwCgh3+E\n" +
-	  			  "o6t1LP7+7N4VcExXFUQlIVA=\n" +
-				  "=qu5x\n" +
-				  "-----END PGP SIGNATURE-----\n";
-	
-	//We get the result
-	var result = this.GPGAccess.verif(texte);
-	
-	//For I18N
-	this.i18n = document.getElementById("firegpg-strings");
-
-	//If check failled
-	if (result.indexOf("GOODSIG") == "-1")
-	{	//Tempory, we sould use return
-		alert(this.i18n.getString("verifFailled"));
-	}
-	else
-	{
-		//If he work, we get informations of the Key
-		var infos = result;
-
-		infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
-		infos = result.replace(infos, "");
-		infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
-		infos = infos.split(" ");
-
-		//Array contain :
-		//[0] -> Id of the key
-		//[1] -> Name of ovners'key		
-		//[2] -> Comment of key	
-		//[3] -> Email of ovners'key
-
-		//TODO
-		//Tempory, we sould use return
-		alert(this.i18n.getString("verifSuccess")+ " " + infos[0] + " " + infos[2] + " " + infos[3]);
-	}
-	
-  },
-
-
-  listkey: function(onlyPrivate) {
-	
-	var retour = new Array();
-	var infos;
-	//We get informations from GPG
-	var result = this.GPGAccess.listkey(onlyPrivate);
-
-	//Parsing
-	var reg=new RegExp("[\n]+", "g");
-	var list = result.split(reg);
-
-	//var reg2=new RegExp("[:]+", "g");
-
-
-	for (var i = 0; i < list.length; i++)
-	{
-		infos = new Array();
-		infos = list[i].split(":");
-		
-		if (infos[0] == "pub" || infos[0] == "sec")
-		{
-			retour[infos[4]] = infos[9] ;
-			
+		// If the sign failled
+		if(result.indexOf("SIG_CREATED") == "-1") {
+			// We alert the user
+			if(result.indexOf("BAD_PASSPHRASE") != "-1")
+				alert(this.i18n.getString("signFailledPassword"));
+			else
+				alert(this.i18n.getString("signFailled"));
+		} 
+		else {
+			//If he works too,
+			alert(this.i18n.getString("signSuccess"));
+			//The signed text
+			alert(crypttexte);
 		}
-		
-	}
+	},
+	// Verify a signature
+	verif: function() {
+		var texte = "-----BEGIN PGP SIGNED MESSAGE-----\n" +
+		            "Hash: SHA1\n" +
+		            "\n" +
+		            "MEUHHHHHHHHHHHHHHHHHHHHHHHHHH\n" +
+		            "-----BEGIN PGP SIGNATURE-----\n" +
+		            "Version: GnuPG v1.4.3 (GNU/Linux)\n" + 
+		            "\n" + 
+		            "iD8DBQFF6aWKsFIMW7ay8+MRAiR8AJ42QChS492VhS4k27SMNA5MJC+ZPwCgh3+E\n" +
+		            "o6t1LP7+7N4VcExXFUQlIVA=\n" +
+		            "=qu5x\n" +
+		            "-----END PGP SIGNATURE-----\n";
 
-  }
-}
-;
+		// We get the result
+		var result = this.GPGAccess.verif(texte);
+
+		// For I18N
+		this.i18n = document.getElementById("firegpg-strings");
+
+		// If check failled
+		if(result.indexOf("GOODSIG") == "-1") {	
+			// Tempory, we sould use return
+			alert(this.i18n.getString("verifFailled"));
+		}
+		else {
+			// If he work, we get informations of the Key
+			var infos = result;
+
+			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
+			infos = result.replace(infos, "");
+			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
+			infos = infos.split(" ");
+
+			//Array contain :
+			//[0] -> Id of the key
+			//[1] -> Name of ovners'key		
+			//[2] -> Comment of key	
+			//[3] -> Email of ovners'key
+
+			//TODO
+			//Tempory, we sould use return
+			alert(this.i18n.getString("verifSuccess")+ " " + infos[0] + " " + infos[2] + " " + infos[3]);
+		}
+	},
+
+	listkey: function(onlyPrivate) {
+		var retour = new Array();
+		var infos;
+
+		//We get informations from GPG
+		var result = this.GPGAccess.listkey(onlyPrivate);
+
+		//Parsing
+		var reg=new RegExp("[\n]+", "g");
+		var list = result.split(reg);
+
+		//var reg2=new RegExp("[:]+", "g");
+
+		for (var i = 0; i < list.length; i++) {
+			infos = new Array();
+			infos = list[i].split(":");
+
+			if(infos[0] == "pub" || infos[0] == "sec")
+				retour[infos[4]] = infos[9] ;
+		}
+	}
+};
 
 //We load the good class for the OS
-if (FireGPG_OS == WINDOWS)
-{
-		firegpgGPG.GPGAccess = firegpgGPGwin;
-		
-}
+if(FireGPG_OS == WINDOWS)
+	firegpgGPG.GPGAccess = firegpgGPGwin;
 else
-{
-		firegpgGPG.GPGAccess = firegpgGPGlin;
-
-}
+	firegpgGPG.GPGAccess = firegpgGPGlin;
 
 firegpgGPG.GPGAccess.parent = firegpgGPG;
 
+// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

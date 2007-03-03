@@ -34,39 +34,42 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-
+/* TODO we need add some comments to describe the code ! */
 
 var firegpg = {
-  onLoad: function() {
-    // initialization code
-    this.initialized = true;
-    this.strings = document.getElementById("firegpg-strings");
-    document.getElementById("contentAreaContextMenu")
-            .addEventListener("popupshowing", function(e) { this.showContextMenu(e); }, false);
-  },
+	onLoad: function() {
+		// initialization code
+		this.initialized = true;
+		this.strings = document.getElementById("firegpg-strings");
+		document.getElementById("contentAreaContextMenu").
+		         addEventListener("popupshowing", 
+		                          function(e) { this.showContextMenu(e); }, 
+		                          false);
+	},
 
-  showContextMenu: function(event) {
-    // show or hide the menuitem based on what the context menu is on
-    // see http://kb.mozillazine.org/Adding_items_to_menus
-    document.getElementById("context-firegpg").hidden = gContextMenu.onImage;
-  },
-  onMenuItemCommand: function(e,action) {
-    var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
-                                  .getService(Components.interfaces.nsIPromptService);
-    
-	if (action == "SIGN")
-		firegpgGPG.sign();
-	
-	if (action == "VERIF")
-		firegpgGPG.verif();
-	
+	showContextMenu: function(event) {
+		// show or hide the menuitem based on what the context menu is on
+		// see http://kb.mozillazine.org/Adding_items_to_menus
+		document.getElementById("context-firegpg").hidden = gContextMenu.onImage;
+	},
 
-  },
-  onToolbarButtonCommand: function(e) {
-    // just reuse the function above.  you can change this, obviously!
-    firegpg.onMenuItemCommand(e);
-  }
+	onMenuItemCommand: function(e,action) {
+		var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].
+		                               getService(Components.interfaces.nsIPromptService);
 
+		if (action == "SIGN")
+		   firegpgGPG.sign();
+
+		if (action == "VERIF")
+		   firegpgGPG.verif();
+	},
+
+	onToolbarButtonCommand: function(e) {
+		// just reuse the function above.  you can change this, obviously!
+		firegpg.onMenuItemCommand(e);
+	}
 };
+
 window.addEventListener("load", function(e) { firegpg.onLoad(e); }, false);
 
+// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

@@ -34,8 +34,10 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-//Marche pas : comment faire ?
+// TODO : it's not work. How to ?
 function onLoad(win) {
-  // Utiliser les arguments transmis par le script appelant
-  win.getElementById("meuh").innerHTML = "Meuh";
+	// Utiliser les arguments transmis par le script appelant
+	win.getElementById("meuh").innerHTML = "Meuh";
 }
+
+// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

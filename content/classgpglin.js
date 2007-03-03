@@ -34,131 +34,119 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-
-/*
-* Class to access to GPG on linux
-*/
-
 const nsIExtensionManager_CONRACTID = "@mozilla.org/extensions/manager;1";
 const idAppli = "firegpg@firegpg.team";
 
-
+/*
+ * Class to access to GPG on linux
+ */
 var firegpgGPGlin = {
- var: parent,
+	var: parent,
+
 	/*
-	* Function for sign a text
-	*/
-  sign: function(texte,password,keyID) {
+	 * Function to sign a text.
+	 */
+	sign: function(texte,password,keyID) {
+		var tmpInput = this.parent.getTmpFile();  // Data unsigned
+		var tmpOutput = this.parent.getTmpFile(); // Data signed
+		var tmpStdOut = this.parent.getTmpFile(); // Output from gpg
 
-	
-	var tmpInput = this.parent.getTmpFile(); //Data unsigned
-	var tmpOutput = this.parent.getTmpFile(); //Data signed
-	var tmpStdOut = this.parent.getTmpFile(); //Output from gpg
+		this.parent.putIntoFile(tmpInput,texte); // Temp
 
-	this.parent.putIntoFile(tmpInput,texte); //Temp
+		// Get plugin's localisation
+		var ext = Components.classes[nsIExtensionManager_CONRACTID].
+		                     getService(Components.interfaces.nsIExtensionManager).
+		                     getInstallLocation(idAppli).
+		                     getItemLocation(idAppli); 
 
-	//Get plugin's localisation
-	var ext = Components.classes[nsIExtensionManager_CONRACTID]
-	                    .getService(Components.interfaces.nsIExtensionManager)
-	                    .getInstallLocation(idAppli)
-	                    .getItemLocation(idAppli); 
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		this.parent.cleanTmpFile(tmpOutput);
 
-	//The file already exist, but GPG don't work if he exist, so we del it.
-	this.parent.cleanTmpFile(tmpOutput);
+		// We lanch gpg
+		this.parent.exeCommand(ext.path + "/content/linux.sh",
+		                       "gpg " + tmpStdOut +
+		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch " + 
+		                       " --default-key " + keyID + 
+		                       " --output " + tmpOutput + 
+		                       " --passphrase " + password +
+		                       " --clearsign " + tmpInput);
 
-	//We lanch gpg
-	this.parent.exeCommand(
-		ext.path + "/content/linux.sh",
-		"gpg " + tmpStdOut +
-		" --quiet --no-tty --no-verbose --status-fd 1 --armor --batch " + 
-		" --default-key " + keyID + 
-		" --output " + tmpOutput + 
-		" --passphrase " + password +
-		" --clearsign " + tmpInput);
+		// We get the result
+		var result = this.parent.getContentFile(tmpStdOut);
 
-	//We get the result
-	var result = this.parent.getContentFile(tmpStdOut);
-	
-	//The signed text
-	var crypttexte = this.parent.getContentFile(tmpOutput);
+		// The signed text
+		var crypttexte = this.parent.getContentFile(tmpOutput);
+		var result2 = firegpgGPGReturn;
+		result2.output = crypttexte;	
+		result2.sdOut = result;	
 
-	var result2 = firegpgGPGReturn;
+		// We delete tempory files
+		this.parent.cleanTmpFile(tmpInput);
+		this.parent.cleanTmpFile(tmpStdOut);
+		this.parent.cleanTmpFile(tmpOutput);
 
-	result2.output = crypttexte;	
-	result2.sdOut = result;	
-	
-	//We delete tempory files
-	this.parent.cleanTmpFile(tmpInput);
-	this.parent.cleanTmpFile(tmpStdOut);
-	this.parent.cleanTmpFile(tmpOutput);
+		return result2;
+	},
 
-	return result2;
-	
-  },
-  // Verify a sign
-  verif: function(text) {
-	var tmpInput = this.parent.getTmpFile(); //Signed data
-	var tmpStdOut = this.parent.getTmpFile(); //Output from gpg
+	// Verify a sign
+	verif: function(text) {
+		var tmpInput = this.parent.getTmpFile();  // Signed data
+		var tmpStdOut = this.parent.getTmpFile(); // Output from gpg
 
-	this.parent.putIntoFile(tmpInput,text); //TMP
+		this.parent.putIntoFile(tmpInput,text); // TMP
 
-	
-	//Get plugin's localisation
-	var ext = Components.classes[nsIExtensionManager_CONRACTID]
-	                    .getService(Components.interfaces.nsIExtensionManager)
-	                    .getInstallLocation(idAppli)
-	                    .getItemLocation(idAppli); 
+		// Get plugin's localisation
+		var ext = Components.classes[nsIExtensionManager_CONRACTID].
+		                     getService(Components.interfaces.nsIExtensionManager).
+		                     getInstallLocation(idAppli).
+		                     getItemLocation(idAppli); 
 
-	//we lauch GPG
-	this.parent.exeCommand(
-		ext.path + "/content/linux.sh",
-		"gpg " + tmpStdOut +
-		" --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
-		" --verify " + tmpInput);
+		// We lauch GPG
+		this.parent.exeCommand(ext.path + "/content/linux.sh",
+		                       "gpg " + tmpStdOut +
+		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+		                       " --verify " + tmpInput);
 
-	//We get the result
-	var result = this.parent.getContentFile(tmpStdOut);
-	
-	//We delete tempory files
-	this.parent.cleanTmpFile(tmpInput);
-	this.parent.cleanTmpFile(tmpStdOut);
+		// We get the result
+		var result = this.parent.getContentFile(tmpStdOut);
 
-	//We return result
-	return result;
-	
-  },
-  // List differents keys
-  listkey: function(onlyPrivate) {
-	
-	var tmpStdOut = this.parent.getTmpFile(); //Output from gpg
+		// We delete tempory files
+		this.parent.cleanTmpFile(tmpInput);
+		this.parent.cleanTmpFile(tmpStdOut);
 
-	
-	//Get plugin's localisation
-	var ext = Components.classes[nsIExtensionManager_CONRACTID]
-	                    .getService(Components.interfaces.nsIExtensionManager)
-	                    .getInstallLocation(idAppli)
-	                    .getItemLocation(idAppli); 
+		// We return result
+		return result;
+	},
 
-	var mode = "--list-keys";
+	// List differents keys
+	listkey: function(onlyPrivate) {
+		var tmpStdOut = this.parent.getTmpFile(); // Output from gpg
 
-	if (onlyPrivate == true)
-		mode = "--list-secret-keys";
+		// Get plugin's localisation
+		var ext = Components.classes[nsIExtensionManager_CONRACTID].
+		                     getService(Components.interfaces.nsIExtensionManager).
+		                     getInstallLocation(idAppli).
+		                     getItemLocation(idAppli); 
 
-	//we lauch GPG
-	this.parent.exeCommand(
-		ext.path + "/content/linux.sh",
-		"gpg " + tmpStdOut +
-		" --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons " + mode);
+		var mode = "--list-keys";
 
-	//We get the result
-	var result = this.parent.getContentFile(tmpStdOut);
-	
-	//We delete tempory files
-	this.parent.cleanTmpFile(tmpStdOut);
+		if (onlyPrivate == true)
+			mode = "--list-secret-keys";
 
-	//We return result
-	return result;
-	
-  }
-  
+		// we lauch GPG
+		this.parent.exeCommand(ext.path + "/content/linux.sh",
+		                       "gpg " + tmpStdOut +
+		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons " + mode);
+
+		// We get the result
+		var result = this.parent.getContentFile(tmpStdOut);
+
+		// We delete tempory files
+		this.parent.cleanTmpFile(tmpStdOut);
+
+		// We return result
+		return result;
+	}
 };
+
+// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8
