@@ -9,6 +9,4 @@ prog="$1"; shift
 out="$1"; shift
 arg="$@"
 
-echo "$prog $arg > $out"
-
 $prog $arg > $out
