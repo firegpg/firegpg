@@ -44,58 +44,123 @@ else
 	firegpgGPG = firegpgGPGlin;
 
 
-function getTmpPath()
+function FGPG_getTmpPath()
 {
 
 var file = Components.classes["@mozilla.org/file/directory_service;1"]
                      .getService(Components.interfaces.nsIProperties)
-                     .get("TmpD", Components.interfaces.nsIFile
+                     .get("TmpD", Components.interfaces.nsIFile)
 
 return file;
 }
 
-function getTmpInputFile()
+function FGPG_getTmpInputFile()
 {
 
-
-return "";
+	var file = FGPG_getTmpPath();
+	file.append("TMPGPGINPUT");
+	file.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0664);
+	
+	return file.path;
 }
 
-function getTmpInputOutput()
+function FGPG_getTmpInputOutput()
+{
+	var file = FGPG_getTmpPath();
+	file.append("TMPGPGOUTPUT");
+	file.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0664);
+	
+	return file.path;
+}
+
+function FGPG_putIntoFile(file2save,data)
+{
+	var file = Components.classes["@mozilla.org/file/local;1"]
+	                     .createInstance(Components.interfaces.nsILocalFile);
+	file.initWithPath(file2save);
+
+	// file est un nsIFile, data est une chaîne de caractères
+	var foStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
+	                         .createInstance(Components.interfaces.nsIFileOutputStream);
+
+	// utiliser 0x02 | 0x10 pour ouvrir le fichier en ajout.
+	foStream.init(file, 0x02 | 0x08 | 0x20, 0664, 0); // écrire, créer, tronquer
+	foStream.write(data, data.length);
+	foStream.close();
+}
+
+function FGPG_getContentFile(file2open)
 {
 
+	var file = Components.classes["@mozilla.org/file/local;1"]
+	                     .createInstance(Components.interfaces.nsILocalFile);
+	file.initWithPath(file2open);
 
-return "";
+	
+	var data = "";
+	var fstream = Components.classes["@mozilla.org/network/file-input-stream;1"]
+	                        .createInstance(Components.interfaces.nsIFileInputStream);
+	var sstream = Components.classes["@mozilla.org/scriptableinputstream;1"]
+	                        .createInstance(Components.interfaces.nsIScriptableInputStream);
+	fstream.init(file, -1, 0, 0);
+	sstream.init(fstream); 
+
+	var str = sstream.read(4096);
+	while (str.length > 0) {
+	  data += str;
+	  str = sstream.read(4096);
+	}
+
+	sstream.close();
+	fstream.close();
+	return data;
 }
 
-function putInputFile()
+function FGPG_cleanTmpFile(file1,file2)
 {
 
+	var file = Components.classes["@mozilla.org/file/local;1"]
+	                     .createInstance(Components.interfaces.nsILocalFile);
+	file.initWithPath(file1);
+	file.remove(file1);
 
-return "";
+	var file = Components.classes["@mozilla.org/file/local;1"]
+	                     .createInstance(Components.interfaces.nsILocalFile);
+	file.initWithPath(file2);
+	file.remove(file2);
+
 }
 
-function getContOutputFile()
+function FGPG_exeCommand(command,arg)
 {
+	// Créer un nsILocalFile pour l'exécutable
+	var file = Components.classes["@mozilla.org/file/local;1"]
+	                     .createInstance(Components.interfaces.nsILocalFile);
+	file.initWithPath(command);
 
+	// Créer un nsIProcess
+	var process = Components.classes["@mozilla.org/process/util;1"]
+	                        .createInstance(Components.interfaces.nsIProcess);
+	process.init(file);
 
-return "";
+	// Lancer le processus.
+	// Si le premier paramètre est true, l'appel du processus sera bloqué
+	// jusqu'à ce qu'il soit terminé.
+	// Les deuxième et troisième paramètres servent à passer des arguments
+	// en ligne de commande au processus.
+	 var args = arg.split(' ');
+	
+	process.run(false, args, args.length);
+
 }
 
-function cleanTmpFile()
-{
+var tmpInput = FGPG_getTmpInputFile();
+var tmpOutput = FGPG_getTmpInputFile();
 
+FGPG_putIntoFile(tmpInput,"MEUHHHHHHHHHHHHHHHHHHHHHHHHHH");
 
-return "";
-}
+FGPG_exeCommand("/usr/bin/gpg"," > " +tmpOutput);
 
-function exeCommand()
-{
-
-
-return "";
-}
-
-
-
-  
+alert(FGPG_getContentFile(tmpInput));
+alert(FGPG_getContentFile(tmpOutput));
+FGPG_cleanTmpFile(tmpInput,tmpOutput);
