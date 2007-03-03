@@ -3,8 +3,8 @@
 	* Moved some function to firegpgGPG
 	* FireGPG context menu added
 	* Basic functions for GPGLin.Sign and GPGLin.Verif
-	* Basic classes and functions for using GPG added (sample don't work for the moment)
-	
+	* Basic classes and functions for using GPG added 
+	  (sample don't work for the moment)
 
 2007-03-03  Achraf cherti
 	* little modification in linux.sh (comment)
