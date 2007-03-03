@@ -7,7 +7,7 @@
     <em:version>0.1</em:version>
     <em:creator>FireGPG Team</em:creator>
     <em:homepageURL>http://firegpg.tuxfamily.org</em:homepageURL>
-    <em:updateURL>http://firegpg.tuxfamily.org/firegpg.xpi</em:updateURL>
+	<em:updateURL>http://firegpg.tuxfamily.org/stable/firegpg.xpi</em:updateURL>
     <em:aboutURL>chrome://firegpg/content/about.xul</em:aboutURL>
     <em:optionsURL>chrome://firegpg/content/options.xul</em:optionsURL>
     <em:iconURL>chrome://firegpg/content/firegpg.png</em:iconURL>
