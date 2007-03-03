@@ -40,6 +40,10 @@
 <overlay id="firegpg-overlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script src="overlay.js"/>
+  <script src="classgpgwin.js"/>
+  <script src="classgpglin.js"/>
+  <script src="classgpg.js"/>
+
   <stringbundleset id="stringbundleset">
     <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
   </stringbundleset>
@@ -69,6 +73,8 @@
 	<menuitem label="&firegpgContext.labelDecry;" oncommand="firegpg.onMenuItemCommand(event)"/>
         <menuseparator/>
 	<menuitem label="&firegpgContext.labelOptions;" oncommand="firegpg.onMenuItemCommand(event)"/>
+<menuitem label="TEST" oncommand="firegpgGPG.crypt()"/>
+
       </menupopup>
     </menu>
   </popup>

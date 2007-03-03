@@ -34,6 +34,8 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
+
+
 var firegpg = {
   onLoad: function() {
     // initialization code
@@ -61,3 +63,4 @@ var firegpg = {
 
 };
 window.addEventListener("load", function(e) { firegpg.onLoad(e); }, false);
+
