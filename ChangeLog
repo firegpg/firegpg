@@ -1,4 +1,7 @@
 2007-03-03  Maximilien Cuony
+	* Moved some function to firegpgGPG
+
+2007-03-03  Maximilien Cuony
 	* Basic functions for GPGLin.Sign and GPGLin.Verif
 
 2007-03-03  Achraf cherti

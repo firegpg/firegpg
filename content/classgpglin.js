@@ -44,18 +44,18 @@ const idAppli = "firegpg@firegpg.team";
 
 
 var firegpgGPGlin = {
-
+ var: parent,
 	/*
 	* Function for sign a text
 	*/
-  sign: function() {
+  sign: function(texte,password,keyID) {
 
 	
-	var tmpInput = this.getTmpFile(); //Data unsigned
-	var tmpOutput = this.getTmpFile(); //Data signed
-	var tmpStdOut = this.getTmpFile(); //Output from gpg
+	var tmpInput = this.parent.getTmpFile(); //Data unsigned
+	var tmpOutput = this.parent.getTmpFile(); //Data signed
+	var tmpStdOut = this.parent.getTmpFile(); //Output from gpg
 
-	this.putIntoFile(tmpInput,"MEUHHHHHHHHHHHHHHHHHHHHHHHHHH"); //Temp
+	this.parent.putIntoFile(tmpInput,texte); //Temp
 
 	//Get plugin's localisation
 	var ext = Components.classes[nsIExtensionManager_CONRACTID]
@@ -63,15 +63,11 @@ var firegpgGPGlin = {
 	                    .getInstallLocation(idAppli)
 	                    .getItemLocation(idAppli); 
 
-	//Needed for a sign
-	var password = fireGPG_GetPassword();
-	var keyID = fireGPG_GetSelfKey();
-
 	//The file already exist, but GPG don't work if he exist, so we del it.
-	this.cleanTmpFile(tmpOutput);
+	this.parent.cleanTmpFile(tmpOutput);
 
 	//We lanch gpg
-	this.exeCommand(
+	this.parent.exeCommand(
 		ext.path + "/content/linux.sh",
 		"gpg " + tmpStdOut +
 		" --quiet --no-tty --no-verbose --status-fd 1 --armor --batch " + 
@@ -81,52 +77,30 @@ var firegpgGPGlin = {
 		" --clearsign " + tmpInput);
 
 	//We get the result
-	var result = this.getContentFile(tmpStdOut);
+	var result = this.parent.getContentFile(tmpStdOut);
 	
-	//For i18n
-	this.i18n = document.getElementById("firegpg-strings");
+	//The signed text
+	var crypttexte = this.parent.getContentFile(tmpOutput);
 
-	//If the sign failled
-	if (result.indexOf("SIG_CREATED") == "-1")
-	{
-		//We alert the user
-		if (result.indexOf("BAD_PASSPHRASE") != "-1")
-			alert(this.i18n.getString("signFailledPassword"));
-		else
-			alert(this.i18n.getString("signFailled"));
-	}
-	else
-	{
-		//If he works too,
-		alert(this.i18n.getString("signSuccess"));
-		//The signed text
-		var crypttexte = this.getContentFile(tmpOutput);
-		alert(crypttexte);
-		//We del the signed text
-		this.cleanTmpFile(tmpOutput);
-	}
+	var result2 = firegpgGPGReturn;
+
+	result2.output = crypttexte;	
+	result2.sdOut = result;	
 	
 	//We delete tempory files
-	this.cleanTmpFile(tmpInput);
-	this.cleanTmpFile(tmpStdOut);
+	this.parent.cleanTmpFile(tmpInput);
+	this.parent.cleanTmpFile(tmpStdOut);
+	this.parent.cleanTmpFile(tmpOutput);
+
+	return result2;
 	
   },
-  // For verify a sign
-  verif: function() {
-	var tmpInput = this.getTmpFile(); //Signed data
-	var tmpStdOut = this.getTmpFile(); //Output from gpg
+  // Verify a sign
+  verif: function(text) {
+	var tmpInput = this.parent.getTmpFile(); //Signed data
+	var tmpStdOut = this.parent.getTmpFile(); //Output from gpg
 
-	this.putIntoFile(tmpInput,"-----BEGIN PGP SIGNED MESSAGE-----\n"+
-				  "Hash: SHA1\n"+
-				  "\n"+
-				  "MEUHHHHHHHHHHHHHHHHHHHHHHHHHH\n"+
-				  "-----BEGIN PGP SIGNATURE-----\n" +
-				  "Version: GnuPG v1.4.3 (GNU/Linux)\n" + 
-			          "\n" + 
-				  "iD8DBQFF6aWKsFIMW7ay8+MRAiR8AJ42QChS492VhS4k27SMNA5MJC+ZPwCgh3+E\n" +
-	  			  "o6t1LP7+7N4VcExXFUQlIVA=\n" +
-				  "=qu5x\n" +
-				  "-----END PGP SIGNATURE-----\n"); //TMP
+	this.parent.putIntoFile(tmpInput,text); //TMP
 
 	
 	//Get plugin's localisation
@@ -136,57 +110,22 @@ var firegpgGPGlin = {
 	                    .getItemLocation(idAppli); 
 
 	//we lauch GPG
-	this.exeCommand(
+	this.parent.exeCommand(
 		ext.path + "/content/linux.sh",
 		"gpg " + tmpStdOut +
 		" --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
 		" --verify " + tmpInput);
 
 	//We get the result
-	var result = this.getContentFile(tmpStdOut);
-	
-	//For I18N
-	this.i18n = document.getElementById("firegpg-strings");
-
-	//If check failled
-	if (result.indexOf("GOODSIG") == "-1")
-	{	//Tempory, we sould use return
-		alert(this.i18n.getString("verifFailled"));
-	}
-	else
-	{
-		//If he work, we get informations of the Key
-		var infos = result;
-
-		infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
-		infos = result.replace(infos, "");
-		infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
-		infos = infos.split(" ");
-
-		//Array contain :
-		//[0] -> Id of the key
-		//[1] -> Name of ovners'key		
-		//[2] -> Comment of key	
-		//[3] -> Email of ovners'key
-
-		//TODO
-		//Tempory, we sould use return
-		alert(this.i18n.getString("verifSuccess")+ " " + infos[0] + " " + infos[2] + " " + infos[3]);
-	}
+	var result = this.parent.getContentFile(tmpStdOut);
 	
 	//We delete tempory files
-	this.cleanTmpFile(tmpInput);
-	this.cleanTmpFile(tmpStdOut);
+	this.parent.cleanTmpFile(tmpInput);
+	this.parent.cleanTmpFile(tmpStdOut);
+
+	//We return result
+	return result;
 	
-  },
-
-  listkeys: function()
-  {
-	//TODO
-	var table = new Array();
-	table["B0520C5BB6B2F3E3"] = "testsfiregpg (testsfiregpg) <testsfiregpg@testsfiregpg.testsfiregpg>";
-
-	return table;
   }
   
 };

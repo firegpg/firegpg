@@ -50,6 +50,11 @@ const WINDOWS = "WINNT";
 
 const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;;
 
+//Return class
+var firegpgGPGReturn = {
+	
+}
+
 //Main class for access to GPG
 var firegpgGPG = {
 
@@ -93,29 +98,37 @@ var firegpgGPG = {
 	getContentFile: function(file2open)
 	{
 
-		var file = Components.classes[NS_LOCALEFILE_CONTRACTID]
-		                     .createInstance(Components.interfaces.nsILocalFile);
-		file.initWithPath(file2open);
+		try {
 
-		
-		var data = "";
-		var fstream = Components.classes[NS_NETWORKINPUT_CONTRACTID]
-		                        .createInstance(Components.interfaces.nsIFileInputStream);
-		var sstream = Components.classes[NS_NETWORKINPUTS_CONTRACTID]
-		                        .createInstance(Components.interfaces.nsIScriptableInputStream);
-		fstream.init(file, -1, 0, 0);
-		sstream.init(fstream); 
 
-		var str = sstream.read(4096);
-		while (str.length > 0) {
-		  data += str;
-		  str = sstream.read(4096);
+			var file = Components.classes[NS_LOCALEFILE_CONTRACTID]
+				                     .createInstance(Components.interfaces.nsILocalFile);
+			file.initWithPath(file2open);
+
+			
+			var data = "";
+			var fstream = Components.classes[NS_NETWORKINPUT_CONTRACTID]
+			                        .createInstance(Components.interfaces.nsIFileInputStream);
+			var sstream = Components.classes[NS_NETWORKINPUTS_CONTRACTID]
+			                        .createInstance(Components.interfaces.nsIScriptableInputStream);
+			fstream.init(file, -1, 0, 0);
+			sstream.init(fstream); 
+
+			var str = sstream.read(4096);
+			while (str.length > 0) {
+			  data += str;
+			  str = sstream.read(4096);
+			}
+
+			sstream.close();
+			fstream.close();
+
+			return data;
+
 		}
-
-		sstream.close();
-		fstream.close();
-
-		return data;
+		catch (e) {
+			   return "";
+		}
 	},
 
 	//Remove a file
@@ -125,7 +138,12 @@ var firegpgGPG = {
 		var file = Components.classes[NS_LOCALEFILE_CONTRACTID]
 		                     .createInstance(Components.interfaces.nsILocalFile);
 		file.initWithPath(file1);
-		file.remove(file1);
+		try {		
+			file.remove(file1);
+		}
+		catch (e)
+		{
+		}
 
 	},
 
@@ -143,23 +161,125 @@ var firegpgGPG = {
 	        var args = arg.split(' ');
 		
 		process.run(true, args, args.length);
-	}
+	},
 
+	//Retoune la liste des clés disponibles
+	listkeys: function()
+	{
+		//TODO
+		var table = new Array();
+		table["B0520C5BB6B2F3E3"] = "testsfiregpg (testsfiregpg) <testsfiregpg@testsfiregpg.testsfiregpg>";
+
+		return table;
+	},
+
+	/*
+	* Function for sign a text
+	*/
+  sign: function() {
 
 	
+	var texte = "MEUHHHHHHHHHHHHHHHHHHHHHHHHHH"; //Temp
+
+
+	//Needed for a sign
+	var password = fireGPG_GetPassword();
+	var keyID = fireGPG_GetSelfKey();
+
+	//We get the result
+	var result = this.GPGAccess.sign(texte,password,keyID);
+	var crypttexte = result.output;
+	result = result.sdOut;
+
+	//For i18n
+	this.i18n = document.getElementById("firegpg-strings");
+
+	//If the sign failled
+	if (result.indexOf("SIG_CREATED") == "-1")
+	{
+		//We alert the user
+		if (result.indexOf("BAD_PASSPHRASE") != "-1")
+			alert(this.i18n.getString("signFailledPassword"));
+		else
+			alert(this.i18n.getString("signFailled"));
+	}
+	else
+	{
+		//If he works too,
+		alert(this.i18n.getString("signSuccess"));
+		//The signed text
+		alert(crypttexte);
+		
+	}
+	
+
+	
+  },
+
+ // Verify a sign
+  verif: function() {
+	
+
+	var texte = "-----BEGIN PGP SIGNED MESSAGE-----\n"+
+				  "Hash: SHA1\n"+
+				  "\n"+
+				  "MEUHHHHHHHHHHHHHHHHHHHHHHHHHH\n"+
+				  "-----BEGIN PGP SIGNATURE-----\n" +
+				  "Version: GnuPG v1.4.3 (GNU/Linux)\n" + 
+			          "\n" + 
+				  "iD8DBQFF6aWKsFIMW7ay8+MRAiR8AJ42QChS492VhS4k27SMNA5MJC+ZPwCgh3+E\n" +
+	  			  "o6t1LP7+7N4VcExXFUQlIVA=\n" +
+				  "=qu5x\n" +
+				  "-----END PGP SIGNATURE-----\n";
+	
+	//We get the result
+	var result = this.GPGAccess.verif(texte);
+	
+	//For I18N
+	this.i18n = document.getElementById("firegpg-strings");
+
+	//If check failled
+	if (result.indexOf("GOODSIG") == "-1")
+	{	//Tempory, we sould use return
+		alert(this.i18n.getString("verifFailled"));
+	}
+	else
+	{
+		//If he work, we get informations of the Key
+		var infos = result;
+
+		infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
+		infos = result.replace(infos, "");
+		infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
+		infos = infos.split(" ");
+
+		//Array contain :
+		//[0] -> Id of the key
+		//[1] -> Name of ovners'key		
+		//[2] -> Comment of key	
+		//[3] -> Email of ovners'key
+
+		//TODO
+		//Tempory, we sould use return
+		alert(this.i18n.getString("verifSuccess")+ " " + infos[0] + " " + infos[2] + " " + infos[3]);
+	}
+	
+  }
 }
 ;
 
 //We load the good class for the OS
 if (FireGPG_OS == WINDOWS)
 {
-		firegpgGPG = firegpgGPGwin;
+		firegpgGPG.GPGAccess = firegpgGPGwin;
+		
 }
 else
 {
-		firegpgGPG.sign = firegpgGPGlin.sign;
-		firegpgGPG.verif = firegpgGPGlin.verif;
-		firegpgGPG.listkeys= firegpgGPGlin.listkeys;
+		firegpgGPG.GPGAccess = firegpgGPGlin;
+
 }
-var tmp = firegpgGPG.listkeys();
-alert(tmp["B0520C5BB6B2F3E3"]);
+
+firegpgGPG.GPGAccess.parent = firegpgGPG;
+
+
