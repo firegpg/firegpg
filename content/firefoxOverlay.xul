@@ -40,6 +40,7 @@
 <overlay id="firegpg-overlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script src="overlay.js"/>
+  <script src="classfiregpg.js"/>
   <script src="classgpgwin.js"/>
   <script src="classgpglin.js"/>
   <script src="classgpg.js"/>
@@ -66,14 +67,14 @@
     <menuseparator/>
     <menu id="context-firegpg" label="&firegpgContext.label;">
       <menupopup id="firegpg-contex-popup">
-        <menuitem label="&firegpgContext.labelSign;" oncommand="firegpg.onMenuItemCommand(event)"/>
-	<menuitem label="&firegpgContext.labelVerif;" oncommand="firegpg.onMenuItemCommand(event)"/>
+        <menuitem label="&firegpgContext.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
+	<menuitem label="&firegpgContext.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
 	<menuseparator/>
-        <menuitem label="&firegpgContext.labelCrypt;" oncommand="firegpg.onMenuItemCommand(event)"/>	
-	<menuitem label="&firegpgContext.labelDecry;" oncommand="firegpg.onMenuItemCommand(event)"/>
+        <menuitem label="&firegpgContext.labelCrypt;" oncommand="firegpg.onMenuItemCommand(event,'CRYPT')"/>	
+	<menuitem label="&firegpgContext.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DCRYPT')"/>
         <menuseparator/>
-	<menuitem label="&firegpgContext.labelOptions;" oncommand="firegpg.onMenuItemCommand(event)"/>
-<menuitem label="TEST" oncommand="firegpgGPG.crypt()"/>
+	<menuitem label="&firegpgContext.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
+<menuitem label="TEST" oncommand=""/>
 
       </menupopup>
     </menu>

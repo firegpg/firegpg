@@ -40,8 +40,39 @@
 */
 
 var firegpgGPGlin = {
-  crypt: function() {
-	alert('Crypt ! - Lin');
+  sign: function() {
+	var tmpInput = FGPG_getTmpFile();
+	var tmpOutput = FGPG_getTmpFile();
+	var tmpStdOut = FGPG_getTmpFile();	
+
+	FGPG_putIntoFile(tmpInput,"MEUHHHHHHHHHHHHHHHHHHHHHHHHHH");
+
+	const id = "firegpg@firegpg.team";
+	var ext = Components.classes["@mozilla.org/extensions/manager;1"]
+	                    .getService(Components.interfaces.nsIExtensionManager)
+	                    .getInstallLocation(id)
+	                    .getItemLocation(id); 
+
+	var password = fireGPG_GetPassword();
+	var keyID = fireGPG_GetSelfKey();
+
+	//Un petit bug de GPP qui ne veut pas que le fichier soit déjà présent.
+	FGPG_cleanTmpFile(tmpOutput);
+
+	FGPG_exeCommand(
+		ext.path + "/content/linux.sh",
+		"gpg " + tmpStdOut +
+		" --quiet --no-verbose --status-fd 2 --armor --batch " + 
+		" --default-key " + keyID + 
+		" --output " + tmpOutput + 
+		" --passphrase " + password +
+		" --clearsign " + tmpInput);
+
+	alert(FGPG_getContentFile(tmpOutput));
+
+	FGPG_cleanTmpFile(tmpInput);
+	FGPG_cleanTmpFile(tmpOutput);
+	FGPG_cleanTmpFile(tmpStdOut);
   }
 
   

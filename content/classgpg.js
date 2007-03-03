@@ -33,8 +33,10 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  * 
  * ***** END LICENSE BLOCK ***** */
+const NS_IPCSERVICE_CONTRACTID  = "@mozilla.org/process/ipc-service;1";
 
-var FireGPG_OS = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULRuntime).OS;;
+
+const FireGPG_OS = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULRuntime).OS;;
 
 var firegpgGPG;
 
@@ -54,24 +56,16 @@ var file = Components.classes["@mozilla.org/file/directory_service;1"]
 return file;
 }
 
-function FGPG_getTmpInputFile()
+function FGPG_getTmpFile()
 {
 
 	var file = FGPG_getTmpPath();
-	file.append("TMPGPGINPUT");
+	file.append("TMPGPG");
 	file.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0664);
 	
 	return file.path;
 }
 
-function FGPG_getTmpInputOutput()
-{
-	var file = FGPG_getTmpPath();
-	file.append("TMPGPGOUTPUT");
-	file.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0664);
-	
-	return file.path;
-}
 
 function FGPG_putIntoFile(file2save,data)
 {
@@ -116,7 +110,7 @@ function FGPG_getContentFile(file2open)
 	return data;
 }
 
-function FGPG_cleanTmpFile(file1,file2)
+function FGPG_cleanTmpFile(file1)
 {
 
 	var file = Components.classes["@mozilla.org/file/local;1"]
@@ -124,16 +118,14 @@ function FGPG_cleanTmpFile(file1,file2)
 	file.initWithPath(file1);
 	file.remove(file1);
 
-	var file = Components.classes["@mozilla.org/file/local;1"]
-	                     .createInstance(Components.interfaces.nsILocalFile);
-	file.initWithPath(file2);
-	file.remove(file2);
 
 }
 
 function FGPG_exeCommand(command,arg)
 {
-	// Créer un nsILocalFile pour l'exécutable
+	
+
+// Créer un nsILocalFile pour l'exécutable
 	var file = Components.classes["@mozilla.org/file/local;1"]
 	                     .createInstance(Components.interfaces.nsILocalFile);
 	file.initWithPath(command);
@@ -150,17 +142,8 @@ function FGPG_exeCommand(command,arg)
 	// en ligne de commande au processus.
 	 var args = arg.split(' ');
 	
-	process.run(false, args, args.length);
+	process.run(true, args, args.length);
 
 }
 
-var tmpInput = FGPG_getTmpInputFile();
-var tmpOutput = FGPG_getTmpInputFile();
 
-FGPG_putIntoFile(tmpInput,"MEUHHHHHHHHHHHHHHHHHHHHHHHHHH");
-
-FGPG_exeCommand("/usr/bin/gpg"," > " +tmpOutput);
-
-alert(FGPG_getContentFile(tmpInput));
-alert(FGPG_getContentFile(tmpOutput));
-FGPG_cleanTmpFile(tmpInput,tmpOutput);

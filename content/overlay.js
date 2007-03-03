@@ -50,11 +50,14 @@ var firegpg = {
     // see http://kb.mozillazine.org/Adding_items_to_menus
     document.getElementById("context-firegpg").hidden = gContextMenu.onImage;
   },
-  onMenuItemCommand: function(e) {
+  onMenuItemCommand: function(e,action) {
     var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
                                   .getService(Components.interfaces.nsIPromptService);
-    promptService.alert(window, this.strings.getString("helloMessageTitle"),
-                                this.strings.getString("helloMessage"));
+    
+	if (action == "SIGN")
+		firegpgGPG.sign();
+	
+
   },
   onToolbarButtonCommand: function(e) {
     // just reuse the function above.  you can change this, obviously!
