@@ -3,10 +3,12 @@
  xmlns:em="http://www.mozilla.org/2004/em-rdf#">
   <Description about="urn:mozilla:install-manifest">
     <em:id>firegpg@firegpg.team</em:id>
-    <em:name>FireGPG</em:name>
     <em:version>0.1</em:version>
+	<em:type>2</em:type>
+    <em:name>FireGPG</em:name>
+	<em:description>An extension that acts as an assistant for using GPG.</em:description>
     <em:creator>FireGPG Team</em:creator>
-    <em:homepageURL>http://firegpg.tuxfamily.org</em:homepageURL>
+	<em:homepageURL>http://firegpg.tuxfamily.org/</em:homepageURL>
 	<em:updateURL>http://firegpg.tuxfamily.org/stable/firegpg.xpi</em:updateURL>
     <em:aboutURL>chrome://firegpg/content/about.xul</em:aboutURL>
     <em:optionsURL>chrome://firegpg/content/options.xul</em:optionsURL>
