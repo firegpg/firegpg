@@ -74,8 +74,6 @@
 	<menuitem label="&firegpgContext.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DCRYPT')"/>
         <menuseparator/>
 	<menuitem label="&firegpgContext.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
-<menuitem label="TEST" oncommand=""/>
-
       </menupopup>
     </menu>
   </popup>

@@ -34,116 +34,129 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 const NS_IPCSERVICE_CONTRACTID  = "@mozilla.org/process/ipc-service;1";
+const NS_APPINFO_CONTRACTID = "@mozilla.org/xre/app-info;1";
+const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
+const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
+const NS_PROCESSUTIL_CONTRACTID = "@mozilla.org/process/util;1";
+const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
+const NS_NETWORKINPUT_CONTRACTID = "@mozilla.org/network/file-input-stream;1";
+const NS_NETWORKINPUTS_CONTRACTID = "@mozilla.org/scriptableinputstream;1";
+const WRITE_MODE = 0x02 | 0x08 | 0x20;
+const WRITE_PERMISSIONS = 0664;
+
+const TMP_DIRECTORY = "TmpD";
+const TMP_FILES = "TMPGPG";
+const WINDOWS = "WINNT";
+
+const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;;
+
+//Main class for access to GPG
+var firegpgGPG = {
 
 
-const FireGPG_OS = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULRuntime).OS;;
+	//Get the path for tmps files
+	getTmpPath: function()
+	{
+		var file = Components.classes[NS_DIRECTORYSERVICE_CONTRACTID]
+	                     .getService(Components.interfaces.nsIProperties)
+	                     .get(TMP_DIRECTORY, Components.interfaces.nsIFile)
+		return file;
+	},
 
-var firegpgGPG;
+	//Get a unique tempory file name
+	getTmpFile: function()
+	{
 
-if (FireGPG_OS == "WINNT")
-	firegpgGPG = firegpgGPGwin;
-else
-	firegpgGPG = firegpgGPGlin;
+		var file = this.getTmpPath();
+		file.append(TMP_FILES);
+		file.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0664);
+		
+		return file.path;
+	},
 
+	//Put data into a file
+	putIntoFile: function(file2save,data)
+	{
+		var file = Components.classes[NS_LOCALEFILE_CONTRACTID]
+		                     .createInstance(Components.interfaces.nsILocalFile);
+		file.initWithPath(file2save);
 
-function FGPG_getTmpPath()
-{
+		var foStream = Components.classes[NS_NETWORKOUTPUT_CONTRACTID]
+		                         .createInstance(Components.interfaces.nsIFileOutputStream);
 
-var file = Components.classes["@mozilla.org/file/directory_service;1"]
-                     .getService(Components.interfaces.nsIProperties)
-                     .get("TmpD", Components.interfaces.nsIFile)
+		foStream.init(file, WRITE_MODE, WRITE_PERMISSIONS, 0);
+		foStream.write(data, data.length);
+		foStream.close();
+	},
 
-return file;
-}
+	//Get the content of a file
+	getContentFile: function(file2open)
+	{
 
-function FGPG_getTmpFile()
-{
+		var file = Components.classes[NS_LOCALEFILE_CONTRACTID]
+		                     .createInstance(Components.interfaces.nsILocalFile);
+		file.initWithPath(file2open);
 
-	var file = FGPG_getTmpPath();
-	file.append("TMPGPG");
-	file.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0664);
-	
-	return file.path;
-}
+		
+		var data = "";
+		var fstream = Components.classes[NS_NETWORKINPUT_CONTRACTID]
+		                        .createInstance(Components.interfaces.nsIFileInputStream);
+		var sstream = Components.classes[NS_NETWORKINPUTS_CONTRACTID]
+		                        .createInstance(Components.interfaces.nsIScriptableInputStream);
+		fstream.init(file, -1, 0, 0);
+		sstream.init(fstream); 
 
+		var str = sstream.read(4096);
+		while (str.length > 0) {
+		  data += str;
+		  str = sstream.read(4096);
+		}
 
-function FGPG_putIntoFile(file2save,data)
-{
-	var file = Components.classes["@mozilla.org/file/local;1"]
-	                     .createInstance(Components.interfaces.nsILocalFile);
-	file.initWithPath(file2save);
+		sstream.close();
+		fstream.close();
 
-	// file est un nsIFile, data est une chaîne de caractères
-	var foStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
-	                         .createInstance(Components.interfaces.nsIFileOutputStream);
+		return data;
+	},
 
-	// utiliser 0x02 | 0x10 pour ouvrir le fichier en ajout.
-	foStream.init(file, 0x02 | 0x08 | 0x20, 0664, 0); // écrire, créer, tronquer
-	foStream.write(data, data.length);
-	foStream.close();
-}
+	//Remove a file
+	cleanTmpFile: function(file1)
+	{
 
-function FGPG_getContentFile(file2open)
-{
+		var file = Components.classes[NS_LOCALEFILE_CONTRACTID]
+		                     .createInstance(Components.interfaces.nsILocalFile);
+		file.initWithPath(file1);
+		file.remove(file1);
 
-	var file = Components.classes["@mozilla.org/file/local;1"]
-	                     .createInstance(Components.interfaces.nsILocalFile);
-	file.initWithPath(file2open);
+	},
 
-	
-	var data = "";
-	var fstream = Components.classes["@mozilla.org/network/file-input-stream;1"]
-	                        .createInstance(Components.interfaces.nsIFileInputStream);
-	var sstream = Components.classes["@mozilla.org/scriptableinputstream;1"]
-	                        .createInstance(Components.interfaces.nsIScriptableInputStream);
-	fstream.init(file, -1, 0, 0);
-	sstream.init(fstream); 
+	//Run a command
+	exeCommand: function(command,arg)
+	{
+		var file = Components.classes[NS_LOCALEFILE_CONTRACTID]
+		                     .createInstance(Components.interfaces.nsILocalFile);
+		file.initWithPath(command);
 
-	var str = sstream.read(4096);
-	while (str.length > 0) {
-	  data += str;
-	  str = sstream.read(4096);
+		var process = Components.classes[NS_PROCESSUTIL_CONTRACTID]
+		                        .createInstance(Components.interfaces.nsIProcess);
+		process.init(file);
+
+	        var args = arg.split(' ');
+		
+		process.run(true, args, args.length);
 	}
 
-	sstream.close();
-	fstream.close();
-	return data;
-}
 
-function FGPG_cleanTmpFile(file1)
-{
-
-	var file = Components.classes["@mozilla.org/file/local;1"]
-	                     .createInstance(Components.interfaces.nsILocalFile);
-	file.initWithPath(file1);
-	file.remove(file1);
-
-
-}
-
-function FGPG_exeCommand(command,arg)
-{
 	
-
-// Créer un nsILocalFile pour l'exécutable
-	var file = Components.classes["@mozilla.org/file/local;1"]
-	                     .createInstance(Components.interfaces.nsILocalFile);
-	file.initWithPath(command);
-
-	// Créer un nsIProcess
-	var process = Components.classes["@mozilla.org/process/util;1"]
-	                        .createInstance(Components.interfaces.nsIProcess);
-	process.init(file);
-
-	// Lancer le processus.
-	// Si le premier paramètre est true, l'appel du processus sera bloqué
-	// jusqu'à ce qu'il soit terminé.
-	// Les deuxième et troisième paramètres servent à passer des arguments
-	// en ligne de commande au processus.
-	 var args = arg.split(' ');
-	
-	process.run(true, args, args.length);
-
 }
+;
 
-
+//We load the good class for the OS
+if (FireGPG_OS == WINDOWS)
+{
+		firegpgGPG = firegpgGPGwin;
+}
+else
+{
+		firegpgGPG.sign = firegpgGPGlin.sign;
+		firegpgGPG.verif = firegpgGPGlin.verif;
+}

@@ -57,6 +57,9 @@ var firegpg = {
 	if (action == "SIGN")
 		firegpgGPG.sign();
 	
+	if (action == "VERIF")
+		firegpgGPG.verif();
+	
 
   },
   onToolbarButtonCommand: function(e) {

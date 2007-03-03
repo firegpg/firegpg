@@ -34,16 +34,17 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-
+//Tempory !!!!
 var savedPassword = "testtest";
 var selfKey = "testsfiregpg";
 
-
+//Tempory !!!!
 function fireGPG_GetPassword()
 {
 	return savedPassword;
 }
 
+//Tempory !!!!
 function fireGPG_GetSelfKey()
 {
 
