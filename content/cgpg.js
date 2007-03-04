@@ -182,8 +182,12 @@ var FireGPG_GPG = {
 		var texte = firegpgSelect.getSelection();
 
 		// Needed for a decrypt
+<<<<<<< .mine
+		var password = getPassword();		
+=======
 		var password = getPassword();
 		
+>>>>>>> .r65
 
 		// We get the result
 		var result = this.GPGAccess.dcrypt(texte,password);
