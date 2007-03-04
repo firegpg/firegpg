@@ -41,19 +41,31 @@ var firegpgSelect = {
 	//Return actual selection
 	getSelection: function() {
 	
+		//Select text from Docuement
 		var myBrowser = getBrowser();
-		var focused = myBrowser.contentWindow.commandDispatcher.focusedElement;
+		
 		var selObj = myBrowser.contentWindow.getSelection();
+		
+		value = selObj.toString();
 
-		// on récupère le node de la sélection
+		if (value == "") //If not text is selected, we try to get text from inputs and textareas
+		{
 
- ;
+			try {
+				var focused = document.commandDispatcher.focusedElement;
 
-alert(focused.toString());
+				var value = focused.value;
 
+				value = value.substring(focused.selectionStart,focused.selectionEnd);
+			}
+			catch (e)
+			{
 
+			}
 
-		return selObj.toString();
+		}	
+		
+		return value;
 
 	},
 
