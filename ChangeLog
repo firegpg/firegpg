@@ -21,6 +21,7 @@
 	* Class cselect : can now get the selection of texts (not textarea or input)
 	* Fix an error in the popup system
 	* Class select : getSelection work !
+	* Class select : isSelectionEdit implemented
 
 2007-03-03  Maximilien Cuony
 	* Implementation of firegpgGPG.listkey(private)

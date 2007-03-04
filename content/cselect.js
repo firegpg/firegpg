@@ -71,7 +71,26 @@ var firegpgSelect = {
 
 	//Return true if selection can be edit
 	isSelectionEdit: function() {
-		return false;
+	
+		//We try to get a text from a textaera or input :		
+		try {
+			var focused = document.commandDispatcher.focusedElement;
+
+			var value = focused.value;
+
+			value = value.substring(focused.selectionStart,focused.selectionEnd);
+		}
+		catch (e)
+		{
+			//If we got an error, there are not textaera or input focused
+			return false;
+		}
+
+		
+		if (value == "") //If texte is empty, this is strange, so we consider that there are not textaera or input focused
+			return false;
+
+		return true; //If it's ok !
 	},
 
 	//Modifit selection
