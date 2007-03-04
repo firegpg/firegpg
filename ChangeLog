@@ -13,6 +13,8 @@
 	* unification of the prototypes and classes name
 	* private key listbox added to options dialog
 	* tmp files permission is now 0600
+	* class* renamed to c*
+	* classfirefoxgpg.js renamed to misc.js
 
 2007-03-02  Achraf cherti
 	* template generated with the wizard

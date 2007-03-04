@@ -40,10 +40,10 @@
 <overlay id="firegpg-overlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script src="overlay.js"/>
-  <script src="classfiregpg.js"/>
-  <script src="classgpgwin.js"/>
-  <script src="classgpglin.js"/>
-  <script src="classgpg.js"/>
+  <script src="misc.js"/>
+  <script src="cgpgwin.js"/>
+  <script src="cgpglin.js"/>
+  <script src="cgpg.js"/>
 
   <stringbundleset id="stringbundleset">
     <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
