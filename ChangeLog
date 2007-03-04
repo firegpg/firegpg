@@ -1,12 +1,17 @@
 2007-03-04  Achraf cherti
 	* the default private key is saved and selected by default when
 	  the options dialog is loaded.
-	* TODO file added
+	* TODO file added.
 	* somes improvements in the style of the code and the indentation 
-	  of *.xul
+	  of *.xul.
 	* FileGPG_GPG.cleanTmpPath(), FileGPG_GPG.getTmpPath() and 
-	  FileGPG_GPG.getTmpFile() moved to misc.js. The names are
+	  FileGPG_GPG.getTmpFile() moved to misc.js. There names are
 	  now removeFile(), getTmpDir() and getTmpFile().
+	* FireGPG_GPG.putIntoFile() and FireGPG_GPG.getFromFile()
+	  are moved to misc.js. There names are now putIntoFile()
+	  and getFromFile().
+	* FireGPG_GPG.runCommand() is moved to misc.js. The new name
+	  is runCommand().
 
 2007-03-04  Maximilien Cuony
 	* Some modification for errors of improvements of code's style

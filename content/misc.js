@@ -36,21 +36,24 @@
 
 const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
 const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
+const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
+const NS_NETWORKINPUT_CONTRACTID = "@mozilla.org/network/file-input-stream;1";
+const NS_NETWORKINPUTS_CONTRACTID = "@mozilla.org/scriptableinputstream;1";
 
 const TMP_DIRECTORY = "TmpD";
 const TMP_FILES = "fgpg_tmpFile";
+const WRITE_MODE = 0x02 | 0x08 | 0x20;
+const WRITE_PERMISSION = 0600;
 
 var savedPassword = "testtest"; /* password */
 var selfKey = "B6B2F3E3";       /* the default private key ID */
 
-function FireGPG_GetPassword()
-{
+function FireGPG_GetPassword() {
 	// TODO
 	return savedPassword;
 }
 
-function FireGPG_GetSelfKey()
-{
+function FireGPG_GetSelfKey() {
 	// TODO
 	return selfKey;
 }
@@ -72,7 +75,7 @@ function getTmpDir() {
 function getTmpFile() {
 	var fileobj = getTmpDir();
 	fileobj.append(TMP_FILES);
-	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0600 /* TODO use const in permission ? */);
+	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0600 /* TODO use const for permissions ? */);
 	return fileobj.path;
 }
 
@@ -88,7 +91,73 @@ function removeFile(path) {
 		fileobj.remove(path);
 	}
 	catch (e) {
-		/* TODO try is useful ? */
+		/* TODO void "catch" is useful ? */
 	}
 }
 
+/*
+ * Put data into a file.
+ */
+function putIntoFile(filename, data)
+{
+	var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
+	                         createInstance(Components.interfaces.nsILocalFile);
+
+	fileobj.initWithPath(filename);
+
+	var foStream = Components.classes[NS_NETWORKOUTPUT_CONTRACTID].
+	                          createInstance(Components.interfaces.nsIFileOutputStream);
+
+	foStream.init(fileobj, WRITE_MODE, WRITE_PERMISSION, 0);
+	foStream.write(data, data.length);
+	foStream.close();
+}
+
+// Get the content of a file
+function getFromFile(filename) {
+	try {
+		var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
+		                         createInstance(Components.interfaces.nsILocalFile);
+		
+		fileobj.initWithPath(filename);
+		
+		var data = "";
+		var fstream = Components.classes[NS_NETWORKINPUT_CONTRACTID].
+		                         createInstance(Components.interfaces.nsIFileInputStream);
+		var sstream = Components.classes[NS_NETWORKINPUTS_CONTRACTID].
+		                         createInstance(Components.interfaces.nsIScriptableInputStream);
+		
+		fstream.init(fileobj, -1, 0, 0);
+		sstream.init(fstream); 
+		
+		var str = sstream.read(4096);
+		while (str.length > 0) {
+			data += str;
+			str = sstream.read(4096);
+		}
+		
+		sstream.close();
+		fstream.close();
+		
+		return data;
+	}
+	catch (e) {
+		return '';
+	}
+}
+
+// Run a command
+function runCommand(command, arg) {
+	var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
+	                      createInstance(Components.interfaces.nsILocalFile);
+	file.initWithPath(command);
+
+	var process = Components.classes[NS_PROCESSUTIL_CONTRACTID].
+	                         createInstance(Components.interfaces.nsIProcess);
+
+	process.init(file);
+	var args = arg.split(' ');
+	process.run(true, args, args.length);
+}
+
+// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

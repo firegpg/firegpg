@@ -51,7 +51,7 @@ var FireGPG_GPGLin = {
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg
 
-		this.parent.putIntoFile(tmpInput,texte); // Temp
+		putIntoFile(tmpInput,texte); // Temp
 
 		// Get plugin's localisation
 		var ext = Components.classes[nsIExtensionManager_CONRACTID].
@@ -63,19 +63,19 @@ var FireGPG_GPGLin = {
 		removeFile(tmpOutput);
 
 		// We lanch gpg
-		this.parent.runCommand(ext.path + "/content/run.sh",
-		                       "gpg " + tmpStdOut +
-		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
-		                       " --default-key " + keyID + 
-		                       " --output " + tmpOutput + 
-		                       " --passphrase " + password +
-		                       " --clearsign " + tmpInput);
+		runCommand(ext.path + "/content/run.sh",
+		           "gpg " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+		           " --default-key " + keyID + 
+		           " --output " + tmpOutput + 
+		           " --passphrase " + password +
+		           " --clearsign " + tmpInput);
 	
 		// We get the result
-		var result = this.parent.getFromFile(tmpStdOut);
+		var result = getFromFile(tmpStdOut);
 
 		// The signed text
-		var crypttexte = this.parent.getFromFile(tmpOutput);
+		var crypttexte = getFromFile(tmpOutput);
 		var result2 = FireGPG_GPGReturn;
 		result2.output = crypttexte;	
 		result2.sdOut = result;	
@@ -93,7 +93,7 @@ var FireGPG_GPGLin = {
 		var tmpInput = getTmpFile();  // Signed data
 		var tmpStdOut = getTmpFile(); // Output from gpg
 
-		this.parent.putIntoFile(tmpInput,text); // TMP
+		putIntoFile(tmpInput,text); // TMP
 
 		// Get plugin's localisation
 		var ext = Components.classes[nsIExtensionManager_CONRACTID].
@@ -102,13 +102,13 @@ var FireGPG_GPGLin = {
 		                     getItemLocation(idAppli); 
 
 		// We lauch GPG
-		this.parent.runCommand(ext.path + "/content/run.sh",
-		                       "gpg " + tmpStdOut +
-		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
-		                       " --verify " + tmpInput);
+		runCommand(ext.path + "/content/run.sh",
+		           "gpg " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+		           " --verify " + tmpInput);
 
 		// We get the result
-		var result = this.parent.getFromFile(tmpStdOut);
+		var result = getFromFile(tmpStdOut);
 
 		// We delete tempory files
 		removeFile(tmpInput);
@@ -134,12 +134,12 @@ var FireGPG_GPGLin = {
 			mode = "--list-secret-keys";
 
 		// we lauch GPG
-		this.parent.runCommand(ext.path + "/content/run.sh",
-		                       "gpg " + tmpStdOut +
-		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons " + mode);
+		runCommand(ext.path + "/content/run.sh",
+		           "gpg " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons " + mode);
 
 		// We get the result
-		var result = this.parent.getFromFile(tmpStdOut);
+		var result = getFromFile(tmpStdOut);
 
 		// We delete tempory files
 		removeFile(tmpStdOut);

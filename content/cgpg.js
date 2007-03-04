@@ -37,12 +37,6 @@
 const NS_IPCSERVICE_CONTRACTID  = "@mozilla.org/process/ipc-service;1";
 const NS_APPINFO_CONTRACTID = "@mozilla.org/xre/app-info;1";
 const NS_PROCESSUTIL_CONTRACTID = "@mozilla.org/process/util;1";
-const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
-const NS_NETWORKINPUT_CONTRACTID = "@mozilla.org/network/file-input-stream;1";
-const NS_NETWORKINPUTS_CONTRACTID = "@mozilla.org/scriptableinputstream;1";
-
-const WRITE_MODE = 0x02 | 0x08 | 0x20;
-const WRITE_PERMISSION = 0600;
 
 const WINDOWS = "WINNT";
 const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;;
@@ -53,68 +47,6 @@ var FireGPG_GPGReturn = {
 
 // Main class for access to GPG
 var FireGPG_GPG = {
-	// Put data into a file
-	putIntoFile: function(file2save, data) {
-		var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
-		                      createInstance(Components.interfaces.nsILocalFile);
-
-		file.initWithPath(file2save);
-
-		var foStream = Components.classes[NS_NETWORKOUTPUT_CONTRACTID].
-		                          createInstance(Components.interfaces.nsIFileOutputStream);
-
-		foStream.init(file, WRITE_MODE, WRITE_PERMISSION, 0);
-		foStream.write(data, data.length);
-		foStream.close();
-	},
-
-	// Get the content of a file
-	getFromFile: function(file2open) {
-		try {
-			var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
-			                      createInstance(Components.interfaces.nsILocalFile);
-
-			file.initWithPath(file2open);
-			
-			var data = "";
-			var fstream = Components.classes[NS_NETWORKINPUT_CONTRACTID].
-			                         createInstance(Components.interfaces.nsIFileInputStream);
-			var sstream = Components.classes[NS_NETWORKINPUTS_CONTRACTID].
-			                         createInstance(Components.interfaces.nsIScriptableInputStream);
-
-			fstream.init(file, -1, 0, 0);
-			sstream.init(fstream); 
-
-			var str = sstream.read(4096);
-			while (str.length > 0) {
-				data += str;
-				str = sstream.read(4096);
-			}
-
-			sstream.close();
-			fstream.close();
-
-			return data;
-		}
-		catch (e) {
-			return "";
-		}
-	},
-
-	// Run a command
-	runCommand: function(command,arg) {
-		var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
-		                      createInstance(Components.interfaces.nsILocalFile);
-		file.initWithPath(command);
-
-		var process = Components.classes[NS_PROCESSUTIL_CONTRACTID].
-		                         createInstance(Components.interfaces.nsIProcess);
-
-		process.init(file);
-		var args = arg.split(' ');
-		process.run(true, args, args.length);
-	},
-
 	/*
 	* Function for sign a text
 	*/
@@ -231,4 +163,4 @@ var FireGPG_GPG = {
 FireGPG_GPG.GPGAccess = (FireGPG_OS == WINDOWS) ? FireGPG_GPGWin : FireGPG_GPGLin;
 FireGPG_GPG.GPGAccess.parent = FireGPG_GPG;
 
-// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8
+// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:
