@@ -47,9 +47,10 @@ function privateKeySelected(listbox)
 /* 
  * onLoad is called when options dialog is loaded.
  */
-function onLoad(win) {
-	var listbox = document.getElementById('list_private_keys');
+function onLoad(win) 
+{
 	var gpg_keys = FireGPG_GPG.listKeys(true); /* private keys are returned */
+	var listbox = document.getElementById('list_private_keys');
 
 	/* read the default private key */
 	var default_private_key = document.getElementById('pref_default_private_key').value;
@@ -57,20 +58,16 @@ function onLoad(win) {
 	var default_item = null; /* this variable will contain the index of
 	                          the default private key item */
 
-	/* add all keys in the list box */
-	var index = 0;
+	/* add all keys in the list box and find
+	 * the default item in listbox */
 	for(var key in gpg_keys) {
-		/* item = key ID */
 		var item = listbox.appendItem(gpg_keys[key], key);
 
-		/* find the default index */
 		if(default_private_key == key)
 			default_item = item;
-
-		index++;
 	}
 
-	/* select the default index */
+	/* select the default item */
 	if(default_item != null)
 		listbox.selectItem(default_item);
 }
