@@ -65,12 +65,12 @@ var FireGPG_GPGLin = {
 		// We lanch gpg
 		this.parent.runCommand(ext.path + "/content/run.sh",
 		                       "gpg " + tmpStdOut +
-		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch " + 
+		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
 		                       " --default-key " + keyID + 
 		                       " --output " + tmpOutput + 
 		                       " --passphrase " + password +
 		                       " --clearsign " + tmpInput);
-
+	
 		// We get the result
 		var result = this.parent.getFromFile(tmpStdOut);
 
