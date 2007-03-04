@@ -29,6 +29,7 @@
 	* Add fr locate
 	* Add base menu's icone
 	* Add comment 'http://firegpg.tuxfamily.org' for signs and crypts
+	* Update URL link
 
 2007-03-03  Maximilien Cuony
 	* Implementation of firegpgGPG.listkey(private)
