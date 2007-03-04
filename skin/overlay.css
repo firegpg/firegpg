@@ -1,24 +1,21 @@
-/* This is just an example.  You shouldn't do this. */
-#firegpg-hello
-{
+#firegpg-hello {
   color: red ! important;
 }
-#toolbar-firegpg
-{
+
+#toolbar-firegpg {
   list-style-image: url("chrome://firegpg/skin/toolbar-button.png");
-  
   -moz-image-region: rect(0px 24px 24px 0px);
 }
-#firegpg-toolbar-button:hover
-{
+
+#firegpg-toolbar-button:hover {
   -moz-image-region: rect(24px 24px 48px  0px);
 }
-[iconsize="small"] #firegpg-toolbar-button
-{
+
+[iconsize="small"] #firegpg-toolbar-button {
   -moz-image-region: rect( 0px 40px 16px 24px);
 }
-[iconsize="small"] #firegpg-toolbar-button:hover
-{
+
+[iconsize="small"] #firegpg-toolbar-button:hover {
   -moz-image-region: rect(24px 40px 40px 24px);
 }
 
