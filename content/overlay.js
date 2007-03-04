@@ -43,7 +43,7 @@ var firegpg = {
 		this.strings = document.getElementById("firegpg-strings");
 		document.getElementById("contentAreaContextMenu").
 		         addEventListener("popupshowing", 
-		                          function(e) { this.showContextMenu(e); }, 
+		                          function(e) { firegpg.showContextMenu(e); }, 
 		                          false);
 	},
 
