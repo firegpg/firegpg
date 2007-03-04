@@ -37,23 +37,26 @@
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!DOCTYPE dialog SYSTEM "chrome://firegpg/locale/about.dtd">
-<dialog title="&about; FireGPG" orient="vertical" autostretch="always" onload="sizeToContent()" buttons="accept" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-<!-- Original template by Jed Brown -->
-<groupbox align="center" orient="horizontal">
-<vbox>
-  <text value="FireGPG" style="font-weight: bold; font-size: x-large;"/>
-  <text value="&version; 0.1"/>
-  <separator class="thin"/>
-  <text value="&createdBy;" style="font-weight: bold;"/>
-  <text value="FireGPG Team"/>
-  <separator class="thin"/>
+<dialog title="&about; FireGPG" orient="vertical" autostretch="always" 
+        onload="sizeToContent()" buttons="accept" 
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <groupbox align="center" orient="horizontal">
+    <vbox>
+      <text value="FireGPG" style="font-weight: bold; font-size: x-large;"/>
+      <text value="&version; 0.1"/>
+      <separator class="thin"/>
+
+      <text value="&createdBy;" style="font-weight: bold;"/>
+      <text value="FireGPG Team"/>
+      <separator class="thin"/>
+
       <text value="&homepage;" style="font-weight: bold;"/>
-    <text value="http://firegpg.tuxfamily.org"
-          class="url"
-        onclick="window.open('http://firegpg.tuxfamily.org'); window.close();"/>
-  <separator class="thin"/>
-</vbox>
-</groupbox>
+      <text value="http://firegpg.tuxfamily.org/"
+            class="url"
+            onclick="window.open('http://firegpg.tuxfamily.org'); window.close();"/>
+      <separator class="thin"/>
+    </vbox>
+  </groupbox>
 </dialog>
 
 <!-- vim:ai:et:sw=2:ts=2:sts=2:tw=0:fenc=utf-8

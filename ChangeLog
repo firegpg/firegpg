@@ -2,6 +2,8 @@
 	* the default private key is saved and selected by default when
 	  the options dialog is loaded.
 	* TODO file added
+	* somes improvements in the style of the code and the indentation 
+	  of *.xul
 
 2007-03-04  Maximilien Cuony
 	* Some modification for errors of improvements of code's style
