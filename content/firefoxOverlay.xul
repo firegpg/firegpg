@@ -53,28 +53,28 @@
     <menuseparator/>
     <menu id="menu-firegpg" label="&firegpgMenu.label;">
       <menupopup id="firegpg-menu-popup">
-        <menuitem label="&firegpgMenu.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
-        <menuitem label="&firegpgMenu.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
+        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgMenu.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
+        <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgMenu.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
         <menuseparator/>
-        <menuitem label="&firegpgMenu.labelCrypt;" oncommand="firegpg.onMenuItemCommand(event,'CRYPT')"/>	
-        <menuitem label="&firegpgMenu.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DCRYPT')"/>
+        <menuitem class="firegpg-menu-crypt menuitem-iconic" label="&firegpgMenu.labelCrypt;" oncommand="firegpg.onMenuItemCommand(event,'CRYPT')"/>	
+        <menuitem class="firegpg-menu-dcrypt menuitem-iconic" label="&firegpgMenu.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DCRYPT')"/>
         <menuseparator/>
-        <menuitem label="&firegpgMenu.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
+        <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgMenu.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
       </menupopup>
     </menu>
   </menupopup>
 
-  <popup id="contentAreaContextMenu">
+  <popup id="contentAreaContextMenu" >
     <menuseparator/>
-    <menu id="context-firegpg" label="&firegpgContext.label;">
-      <menupopup id="firegpg-contex-popup">
-        <menuitem label="&firegpgContext.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
-        <menuitem label="&firegpgContext.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
+    <menu id="context-firegpg"  label="&firegpgContext.label;">
+      <menupopup  id="firegpg-contex-popup">
+        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgContext.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
+        <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgContext.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
         <menuseparator/>
-        <menuitem label="&firegpgContext.labelCrypt;" oncommand="firegpg.onMenuItemCommand(event,'CRYPT')"/>	
-        <menuitem label="&firegpgContext.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DCRYPT')"/>
+        <menuitem class="firegpg-menu-crypt menuitem-iconic" label="&firegpgContext.labelCrypt;" oncommand="firegpg.onMenuItemCommand(event,'CRYPT')"/>	
+        <menuitem class="firegpg-menu-dcrypt menuitem-iconic" label="&firegpgContext.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DCRYPT')"/>
         <menuseparator/>
-        <menuitem label="&firegpgContext.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
+        <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgContext.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
       </menupopup>
     </menu>
   </popup>
@@ -82,13 +82,13 @@
   <toolbarpalette id="BrowserToolbarPalette">
     <menu id="toolbar-firegpg" label="&firegpgToolbar.label;">
       <menupopup id="firegpg-toolbar-popup">
-        <menuitem label="&firegpgToolbar.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
-        <menuitem label="&firegpgToolbar.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
+        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgToolbar.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
+        <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgToolbar.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
         <menuseparator/>
-          <menuitem label="&firegpgToolbar.labelCrypt;" oncommand="firegpg.onMenuItemCommand(event,'CRYPT')"/>	
-          <menuitem label="&firegpgToolbar.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DCRYPT')"/>
+          <menuitem class="firegpg-menu-crypt menuitem-iconic" label="&firegpgToolbar.labelCrypt;" oncommand="firegpg.onMenuItemCommand(event,'CRYPT')"/>	
+          <menuitem class="firegpg-menu-dcrypt menuitem-iconic" label="&firegpgToolbar.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DCRYPT')"/>
         <menuseparator/>
-        <menuitem label="&firegpgToolbar.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
+        <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgToolbar.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
       </menupopup>
     </menu>
   </toolbarpalette>

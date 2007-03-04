@@ -24,6 +24,7 @@
 	* Class select : isSelectionEdit implemented
 	* Class select : setSelection implemented
 	* Class select is finished !
+	* Add menu incons (all with GPL's liscence)
 
 2007-03-03  Maximilien Cuony
 	* Implementation of firegpgGPG.listkey(private)
