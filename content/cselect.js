@@ -64,7 +64,7 @@ var firegpgSelect = {
 			}
 
 		}	
-		this.setSelection("MEUH");
+		
 		return value;
 
 	},
