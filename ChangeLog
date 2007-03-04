@@ -12,6 +12,7 @@
 	* Some modification for errors of improvements of code's style
 	* Re-Implementation of firegpgGPG.listkey(private)
 	* List key in option dialog show only private keys now
+	* Add implementation for show the option dialog with the menu
 
 2007-03-03  Maximilien Cuony
 	* Implementation of firegpgGPG.listkey(private)

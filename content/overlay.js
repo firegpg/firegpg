@@ -62,6 +62,11 @@ var firegpg = {
 
 		if (action == "VERIF")
 		   FireGPG_GPG.verify();
+
+		if (action == "OPTS")
+			var win = window.open("chrome://firegpg/content/options.xul", 
+                      "optionsFiregpg", "chrome,centerscreen"); 
+
 	},
 
 	onToolbarButtonCommand: function(e) {
