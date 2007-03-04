@@ -49,9 +49,18 @@ var savedPassword = "testtest"; /* password */
 var selfKey = "B6B2F3E3";       /* the default private key ID */
 
 /*
+ * Show 'text' in a dialog.
+ */
+function showText(text)
+{
+	window.openDialog('chrome://firegpg/content/showtext.xul',
+	                  '', 'chrome, dialog, modal, resizable=yes', 
+					  text).focus();
+}
+
+/*
  * Get the GPG private key password.
  * The password is returned, null if the cancel button is pressed.
- *
  */
 function getPassword() {
 	var params = {password: '', save_password: true, result: false}
@@ -68,11 +77,17 @@ function getPassword() {
 	return null;
 }
 
+/*
+ * TODO: description
+ */
 function getSelfKey() {
 	// TODO describe!
 	return selfKey;
 }
 
+/*
+ * TODO: description
+ */
 function getAKey() {
 	// TODO describe?
 	return "B6B2F3E3";
@@ -133,7 +148,9 @@ function putIntoFile(filename, data)
 	foStream.close();
 }
 
-// Get the content of a file
+/*
+ * Get the content of a file
+ */
 function getFromFile(filename) {
 	try {
 		var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
@@ -166,7 +183,9 @@ function getFromFile(filename) {
 	}
 }
 
-// Run a command
+/*
+ * Run a command
+ */
 function runCommand(command, arg) {
 	var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
 	                      createInstance(Components.interfaces.nsILocalFile);

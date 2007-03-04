@@ -146,6 +146,7 @@ var FireGPG_GPG = {
 		
 		return retour;
 	},
+
 	/*
 	* Function for crypt a text
 	*/
@@ -153,7 +154,7 @@ var FireGPG_GPG = {
 		var texte = firegpgSelect.getSelection();
 
 		// Needed for a crypt
-		var keyID = FireGPG_GetAKey();
+		var keyID = getAKey();
 
 		// We get the result
 		var result = this.GPGAccess.crypt(texte,keyID);
@@ -175,6 +176,7 @@ var FireGPG_GPG = {
 			alert(crypttexte);
 		}
 	},
+
 	/*
 	* Function for decrypt a text
 	*/
@@ -209,7 +211,6 @@ var FireGPG_GPG = {
 			alert(crypttexte);
 		}
 	}
-
 };
 
 // We load the good class for the OS

@@ -34,89 +34,78 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-
-
 //Classe for selection
 var firegpgSelect = {
-	//Return actual selection
+	/* 
+	 * Return actual selection.
+	 */
 	getSelection: function() {
-	
-		//Select text from Docuement
+		// Select text from Docuement
 		var myBrowser = getBrowser();
-		
 		var selObj = myBrowser.contentWindow.getSelection();
 		
 		value = selObj.toString();
-
-		if (value == "") //If not text is selected, we try to get text from inputs and textareas
-		{
-
+		
+		// If not text is selected, we try to get text 
+		// from inputs and textareas
+		if (value == "") {
 			try {
 				var focused = document.commandDispatcher.focusedElement;
-
 				var value = focused.value;
-
 				value = value.substring(focused.selectionStart,focused.selectionEnd);
 			}
-			catch (e)
-			{
-
+			catch (e) {
 			}
-
 		}	
 		
 		return value;
-
 	},
-
-	//Return true if selection can be edit
-	isSelectionEdit: function() {
 	
-		//We try to get a text from a textaera or input :		
+	/* 
+	 * Return true if selection can be edit
+	 */
+	isSelectionEdit: function() {
+		// We try to get a text from a textaera or input :		
 		try {
 			var focused = document.commandDispatcher.focusedElement;
-
 			var value = focused.value;
-
 			value = value.substring(focused.selectionStart,focused.selectionEnd);
 		}
-		catch (e)
-		{
-			//If we got an error, there are not textaera or input focused
+		catch (e) {
+			// If we got an error, there are not 
+			// textaera or input focused
 			return false;
 		}
-
 		
-		if (value == "") //If texte is empty, this is strange, so we consider that there are not textaera or input focused
+		// If texte is empty, this is strange, so we consider that 
+		// there are not textaera or input focused
+		if (value == "") 
 			return false;
-
+		
 		return true; //If it's ok !
 	},
 
-	//Edit selection
+	/*
+	 * Edit selection
+	 */
 	setSelection: function(texte) {
-		//We verify that the selection can be edited 
-		if (this.isSelectionEdit())
-		{
-			//Get the focused element
+		// We verify that the selection can be edited 
+		if (this.isSelectionEdit()) {
+			// Get the focused element
 			var focused = document.commandDispatcher.focusedElement;
-
-
 			var value = focused.value;
-
 			var startPos = focused.selectionStart;
-	            	var endPos = focused.selectionEnd;
-	            	var chaine = focused.value;
-
-			//We create the new string and replace it into focused element
-	            	focused.value = chaine.substring(0, startPos) + texte + chaine.substring(endPos, chaine.length);
-
-			//We select the new text.
-	            	focused.selectionStart = startPos;
-	            	focused.selectionEnd = startPos + texte.length ;
-
+	        var endPos = focused.selectionEnd;
+	        var chaine = focused.value;
+			
+			// We create the new string and replace it into focused element
+	        focused.value = chaine.substring(0, startPos) + texte + chaine.substring(endPos, chaine.length);
+			
+			// We select the new text.
+	        focused.selectionStart = startPos;
+	        focused.selectionEnd = startPos + texte.length ;
 		}
 	}
 }
 
-
+// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

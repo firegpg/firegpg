@@ -14,6 +14,8 @@
 	  is runCommand().
 	* new dialog to enter the private key password.
 	* new function getPassword() to get the private key password.
+	* new dialog to show texts (showtext.xul)
+	* new functions to show a text in showtext.js and misc.js (showText)
 
 2007-03-04  Maximilien Cuony
 	* Some modification for errors of improvements of code's style
@@ -26,13 +28,14 @@
 	* Class select : isSelectionEdit implemented
 	* Class select : setSelection implemented
 	* Class select is finished !
-	* Add menu incons (all with GPL's liscence)
+	* Add menu incons (all with GPL's license)
 	* cgpg : crypt and dcrypt added
 	* Add fr locate
 	* Add base menu's icone
 	* Add comment 'http://firegpg.tuxfamily.org' for signs and crypts
 	* Update URL link
-	* UUID change to 89c87b67-c98f-4caf-ac0f-f80076b895ea (not useful, but changed when I test update's system)
+	* UUID changed to 89c87b67-c98f-4caf-ac0f-f80076b895ea (not useful, but changed 
+	  when I test update's system)
 
 2007-03-03  Maximilien Cuony
 	* Implementation of firegpgGPG.listkey(private)

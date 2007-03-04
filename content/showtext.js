@@ -34,53 +34,12 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-/* TODO we need add some comments to describe the code ! */
-
-var firegpg = {
-	onLoad: function() {
-		// initialization code
-		this.initialized = true;
-		this.strings = document.getElementById("firegpg-strings");
-		document.getElementById("contentAreaContextMenu").
-		         addEventListener("popupshowing", 
-		                          function(e) { firegpg.showContextMenu(e); }, 
-		                          false);
-	},
-
-	showContextMenu: function(event) {
-		// show or hide the menuitem based on what the context menu is on
-		// see http://kb.mozillazine.org/Adding_items_to_menus
-		document.getElementById("context-firegpg").hidden = gContextMenu.onImage;
-	},
-
-	onMenuItemCommand: function(e,action) {
-		var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].
-		                               getService(Components.interfaces.nsIPromptService);
-
-		if (action == "SIGN")
-		   FireGPG_GPG.sign();
-
-		if (action == "VERIF")
-		   FireGPG_GPG.verify();
-
-		if (action == "CRYPT")
-		   FireGPG_GPG.crypt();
-
-		if (action == "DCRYPT")
-		   FireGPG_GPG.dcrypt();
-
-		if (action == "OPTS")
-			var win = window.open("chrome://firegpg/content/options.xul", 
-                      "optionsFiregpg", "chrome,centerscreen"); 
-
-	},
-
-	onToolbarButtonCommand: function(e) {
-		// just reuse the function above.  you can change this, obviously!
-		firegpg.onMenuItemCommand(e);
-	}
-};
-
-window.addEventListener("load", function(e) { firegpg.onLoad(e); }, false);
+/* 
+ * Called when dialog is shown.
+ */
+function onLoad(win)
+{
+	document.getElementById('text').value = window.arguments[0];
+}
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8
