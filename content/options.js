@@ -35,6 +35,14 @@
  * ***** END LICENSE BLOCK ***** */
 
 /*
+ * Return the default key.
+ */
+function getSelectedKey()
+{
+	return document.getElementById('pref_default_private_key').value;
+}
+
+/*
  * This function is called when a private key is selected.
  */
 function privateKeySelected(listbox)

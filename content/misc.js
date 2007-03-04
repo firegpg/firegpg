@@ -34,6 +34,12 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
+const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
+const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
+
+const TMP_DIRECTORY = "TmpD";
+const TMP_FILES = "fgpg_tmpFile";
+
 var savedPassword = "testtest"; /* password */
 var selfKey = "B6B2F3E3";       /* the default private key ID */
 
@@ -47,5 +53,42 @@ function FireGPG_GetSelfKey()
 {
 	// TODO
 	return selfKey;
+}
+
+/*
+ * Get the path of a tmp file.
+ * The path is returned.
+ */
+function getTmpDir() {
+	return Components.classes[NS_DIRECTORYSERVICE_CONTRACTID].
+	                  getService(Components.interfaces.nsIProperties).
+	                  get(TMP_DIRECTORY, Components.interfaces.nsIFile);
+}
+
+/*
+ * Get an unique temporary file name.
+ * The path + filename is returned.
+ */
+function getTmpFile() {
+	var fileobj = getTmpDir();
+	fileobj.append(TMP_FILES);
+	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0600 /* TODO use const in permission ? */);
+	return fileobj.path;
+}
+
+/*
+ * Remove a file.
+ */
+function removeFile(path) {
+	var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
+	                         createInstance(Components.interfaces.nsILocalFile);
+	fileobj.initWithPath(path);
+
+	try {
+		fileobj.remove(path);
+	}
+	catch (e) {
+		/* TODO try is useful ? */
+	}
 }
 

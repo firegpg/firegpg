@@ -36,8 +36,6 @@
 
 const NS_IPCSERVICE_CONTRACTID  = "@mozilla.org/process/ipc-service;1";
 const NS_APPINFO_CONTRACTID = "@mozilla.org/xre/app-info;1";
-const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
-const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
 const NS_PROCESSUTIL_CONTRACTID = "@mozilla.org/process/util;1";
 const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
 const NS_NETWORKINPUT_CONTRACTID = "@mozilla.org/network/file-input-stream;1";
@@ -45,8 +43,6 @@ const NS_NETWORKINPUTS_CONTRACTID = "@mozilla.org/scriptableinputstream;1";
 
 const WRITE_MODE = 0x02 | 0x08 | 0x20;
 const WRITE_PERMISSION = 0600;
-const TMP_DIRECTORY = "TmpD";
-const TMP_FILES = "fgpg_tmpFile";
 
 const WINDOWS = "WINNT";
 const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;;
@@ -57,35 +53,6 @@ var FireGPG_GPGReturn = {
 
 // Main class for access to GPG
 var FireGPG_GPG = {
-	// Get the path of a tmp file
-	getTmpPath: function() {
-		var file = Components.classes[NS_DIRECTORYSERVICE_CONTRACTID].
-		                      getService(Components.interfaces.nsIProperties).
-		                      get(TMP_DIRECTORY, Components.interfaces.nsIFile);
-		return file;
-	},
-
-	// Get an unique tempory file name
-	getTmpFile: function() {
-		var file = this.getTmpPath();
-		file.append(TMP_FILES);
-		file.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0600);
-		return file.path;
-	},
-
-	// Remove a file
-	cleanTmpFile: function(file1) {
-		var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
-		                      createInstance(Components.interfaces.nsILocalFile);
-		file.initWithPath(file1);
-
-		try {
-			file.remove(file1);
-		}
-		catch (e) {
-		}
-	},
-
 	// Put data into a file
 	putIntoFile: function(file2save, data) {
 		var file = Components.classes[NS_LOCALEFILE_CONTRACTID].

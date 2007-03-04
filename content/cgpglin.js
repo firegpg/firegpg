@@ -47,9 +47,9 @@ var FireGPG_GPGLin = {
 	 * Function to sign a text.
 	 */
 	sign: function(texte,password,keyID) {
-		var tmpInput = this.parent.getTmpFile();  // Data unsigned
-		var tmpOutput = this.parent.getTmpFile(); // Data signed
-		var tmpStdOut = this.parent.getTmpFile(); // Output from gpg
+		var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+		var tmpStdOut = getTmpFile(); // Output from gpg
 
 		this.parent.putIntoFile(tmpInput,texte); // Temp
 
@@ -60,7 +60,7 @@ var FireGPG_GPGLin = {
 		                     getItemLocation(idAppli); 
 
 		// The file already exist, but GPG don't work if he exist, so we del it.
-		this.parent.cleanTmpFile(tmpOutput);
+		removeFile(tmpOutput);
 
 		// We lanch gpg
 		this.parent.runCommand(ext.path + "/content/run.sh",
@@ -81,17 +81,17 @@ var FireGPG_GPGLin = {
 		result2.sdOut = result;	
 
 		// We delete tempory files
-		this.parent.cleanTmpFile(tmpInput);
-		this.parent.cleanTmpFile(tmpStdOut);
-		this.parent.cleanTmpFile(tmpOutput);
+		removeFile(tmpInput);
+		removeFile(tmpStdOut);
+		removeFile(tmpOutput);
 
 		return result2;
 	},
 
 	// Verify a sign
 	verify: function(text) {
-		var tmpInput = this.parent.getTmpFile();  // Signed data
-		var tmpStdOut = this.parent.getTmpFile(); // Output from gpg
+		var tmpInput = getTmpFile();  // Signed data
+		var tmpStdOut = getTmpFile(); // Output from gpg
 
 		this.parent.putIntoFile(tmpInput,text); // TMP
 
@@ -111,8 +111,8 @@ var FireGPG_GPGLin = {
 		var result = this.parent.getFromFile(tmpStdOut);
 
 		// We delete tempory files
-		this.parent.cleanTmpFile(tmpInput);
-		this.parent.cleanTmpFile(tmpStdOut);
+		removeFile(tmpInput);
+		removeFile(tmpStdOut);
 
 		// We return result
 		return result;
@@ -120,7 +120,7 @@ var FireGPG_GPGLin = {
 
 	// List differents keys
 	listkey: function(onlyPrivate) {
-		var tmpStdOut = this.parent.getTmpFile(); // Output from gpg
+		var tmpStdOut = getTmpFile(); // Output from gpg
 
 		// Get plugin's localisation
 		var ext = Components.classes[nsIExtensionManager_CONRACTID].
@@ -142,7 +142,7 @@ var FireGPG_GPGLin = {
 		var result = this.parent.getFromFile(tmpStdOut);
 
 		// We delete tempory files
-		this.parent.cleanTmpFile(tmpStdOut);
+		removeFile(tmpStdOut);
 
 		// We return result
 		return result;
