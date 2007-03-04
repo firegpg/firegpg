@@ -37,7 +37,7 @@
 // onLoad is called when a window is loaded
 function onLoad(win) {
 	var listbox = document.getElementById('list_private_keys');
-	var gpg_keys = FireGPG_GPG.listKeys();
+	var gpg_keys = FireGPG_GPG.listKeys(1);
 
 	/* add all keys in the list box */
 	for(var key in gpg_keys)

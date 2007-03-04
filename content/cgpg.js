@@ -45,13 +45,13 @@ const NS_NETWORKINPUTS_CONTRACTID = "@mozilla.org/scriptableinputstream;1";
 
 const WRITE_MODE = 0x02 | 0x08 | 0x20;
 const WRITE_PERMISSION = 0600;
-const TMP_DIRECTORY = "fgpg_tmpdir";
-const TMP_FILES = "fgpg_tmpfiles";
+const TMP_DIRECTORY = "TmpD";
+const TMP_FILES = "fgpg_tmpFile";
 
 const WINDOWS = "WINNT";
 const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;;
 
-// Return class : TODO what's this ?
+// Return class, for return 2 or 3 informations in an object.
 var FireGPG_GPGReturn = {
 }
 
@@ -164,19 +164,19 @@ var FireGPG_GPG = {
 		result = result.sdOut;
 
 		// For i18n
-		this.i18n = document.getElementById("FireGPG-strings");
+		i18n = document.getElementById("firegpg-strings");
 
 		// If the sign failled
 		if(result.indexOf("SIG_CREATED") == "-1") {
 			// We alert the user
 			if(result.indexOf("BAD_PASSPHRASE") != "-1")
-				alert(this.i18n.getString("signFailledPassword"));
+				alert(i18n.getString("signFailledPassword"));
 			else
-				alert(this.i18n.getString("signFailled"));
+				alert(i18n.getString("signFailled"));
 		} 
 		else {
 			// If he works too,
-			alert(this.i18n.getString("signSuccess"));
+			alert(i18n.getString("signSuccess"));
 			// The signed text
 			alert(crypttexte);
 		}
@@ -201,12 +201,12 @@ var FireGPG_GPG = {
 		var result = this.GPGAccess.verify(texte);
 
 		// For I18N
-		this.i18n = document.getElementById("FireGPG-strings");
+		i18n = document.getElementById("firegpg-strings");
 
 		// If check failled
 		if(result.indexOf("GOODSIG") == "-1") {	
 			// Tempory, we sould use return
-			alert(this.i18n.getString("verifFailled"));
+			alert(i18n.getString("verifFailled"));
 		}
 		else {
 			// If he work, we get informations of the Key
@@ -225,7 +225,7 @@ var FireGPG_GPG = {
 
 			// TODO
 			// Tempory, we sould use return
-			alert(this.i18n.getString("verifSuccess")+ " " + infos[0] + " " + infos[2] + " " + infos[3]);
+			alert(i18n.getString("verifSuccess")+ " " + infos[0] + " " + infos[2] + " " + infos[3]);
 		}
 	},
 
@@ -236,12 +236,7 @@ var FireGPG_GPG = {
 	 *  {id: "ID", email: "email@host", name: "Name (name)", all: "name (name) <email>"} TODO?
 	 */
 	listKeys: function(onlyPrivate) {
-		/* TODO remove this block */
-		var table = new Array();
-		table["B0520C5BB6B2F3E3"] = "testsFireGPG (testsFireGPG) <testsFireGPG@testsFireGPG.testsFireGPG>";
-		return table;
-		/* TODO remove this block */
-		
+	
 		var retour = new Array();
 		var infos;
 		

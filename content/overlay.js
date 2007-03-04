@@ -61,7 +61,7 @@ var firegpg = {
 		   FireGPG_GPG.sign();
 
 		if (action == "VERIF")
-		   FireGPG_GPG.verif();
+		   FireGPG_GPG.verify();
 	},
 
 	onToolbarButtonCommand: function(e) {
