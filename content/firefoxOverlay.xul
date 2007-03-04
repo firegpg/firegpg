@@ -51,7 +51,7 @@
 
   <menupopup id="menu_ToolsPopup">
     <menuseparator/>
-    <menu id="menu-firegpg" label="&firegpgMenu.label;">
+    <menu id="menu-firegpg" label="&firegpgMenu.label;" class="menu-iconic firegpg-menu">
       <menupopup id="firegpg-menu-popup">
         <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgMenu.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
         <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgMenu.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
@@ -66,7 +66,7 @@
 
   <popup id="contentAreaContextMenu" >
     <menuseparator/>
-    <menu id="context-firegpg"  label="&firegpgContext.label;">
+    <menu id="context-firegpg" class="menu-iconic firegpg-menu" label="&firegpgContext.label;" src="chrome://firegpg/skin/firegpg.png">
       <menupopup  id="firegpg-contex-popup">
         <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgContext.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
         <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgContext.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
@@ -80,7 +80,7 @@
   </popup>
 
   <toolbarpalette id="BrowserToolbarPalette">
-    <menu id="toolbar-firegpg" label="&firegpgToolbar.label;">
+    <menu id="toolbar-firegpg" class="menu-iconic firegpg-menu" label="&firegpgToolbar.label;" src="chrome://firegpg/skin/firegpg.png">
       <menupopup id="firegpg-toolbar-popup">
         <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgToolbar.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
         <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgToolbar.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>

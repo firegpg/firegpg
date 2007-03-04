@@ -9,32 +9,29 @@
 
 .firegpg-menu-sign {
   list-style-image: url("chrome://firegpg/skin/sign.png");
-  /*-moz-image-region: rect(0px 16px 16px 0px);*/
+  
 	
 }
 
 .firegpg-menu-verif {
   list-style-image: url("chrome://firegpg/skin/verif.png");
-  /*-moz-image-region: rect(0px 16px 16px 0px);*/
+  
 	
 }
 
 .firegpg-menu-crypt {
   list-style-image: url("chrome://firegpg/skin/crypt.png");
-  /*-moz-image-region: rect(0px 16px 16px 0px);*/
-	
+  
 }
 
 .firegpg-menu-dcrypt {
   list-style-image: url("chrome://firegpg/skin/dcrypt.png");
-  /*-moz-image-region: rect(0px 16px 16px 0px);*/
-	
+ 
 }
 
 .firegpg-menu-options {
   list-style-image: url("chrome://firegpg/skin/options.png");
-  /*-moz-image-region: rect(0px 16px 16px 0px);*/
-	
+ 
 }
 
 .firegpg-menu {

@@ -27,6 +27,7 @@
 	* Add menu incons (all with GPL's liscence)
 	* cgpg : crypt and dcrypt added
 	* Add fr locate
+	* Add base menu's icone
 
 2007-03-03  Maximilien Cuony
 	* Implementation of firegpgGPG.listkey(private)
