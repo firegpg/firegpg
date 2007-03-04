@@ -40,7 +40,7 @@
 <dialog id="showtext_dialog" title="&title;" orient="vertical" autostretch="always" 
         onload="sizeToContent(); onLoad(this);" 
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        buttons="extra1" buttonlabelextra1="&close;">
+        buttons="cancel">
   <script src="showtext.js"/>
   <description control="text" id="description" value="&description;"/>
   <textbox id="text" multiline="true" rows="25" cols="80" readonly="true" />
