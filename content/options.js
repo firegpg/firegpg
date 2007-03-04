@@ -34,10 +34,15 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-// TODO : it's not work. How to ?
+// onLoad is called when a window is loaded
 function onLoad(win) {
-	// Utiliser les arguments transmis par le script appelant
-	win.getElementById("meuh").innerHTML = "Meuh";
+	var listbox = document.getElementById('list_private_keys');
+	var gpg_keys = FireGPG_GPG.listKeys();
+
+	/* add all keys in the list box */
+	for(var key in gpg_keys)
+		/* item = key ID */
+		listbox.appendItem(gpg_keys[key], key);
 }
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

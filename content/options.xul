@@ -37,17 +37,24 @@
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!DOCTYPE prefwindow SYSTEM "chrome://firegpg/locale/prefwindow.dtd">
-<prefwindow id="firegpgPreferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+<prefwindow id="firegpg_preferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
             title="&prefwindow.title;" onload="onLoad(this);">
-  <script src="options.js"/>
+  <script src="classgpglin.js"/>
+  <script src="classgpgwin.js"/>
   <script src="classgpg.js"/>
+  <script src="options.js"/>
 
   <prefpane id="pane1" label="&pane1.title;">
     <preferences>
       <preference id="gmail_enabled" name="extensions.firegpg.gmail_enabled" type="bool"/>
     </preferences>
 
-    <checkbox id="check_gmail_enabled" preference="gmail_enabled" label="&check_gmail_enabled.label;" accesskey="&check_gmail_enabled.accesskey;"/>
+    <checkbox id="check_gmail_enabled" preference="gmail_enabled" label="&check_gmail_enabled.label;" 
+              accesskey="&check_gmail_enabled.accesskey;"/>
+    <spacer flex="1"/>
+    <label id="label_private_keys" value="&label_private_keys.text;"/>
+    <listbox id="list_private_keys" rows="4">
+    </listbox>
   </prefpane>
 </prefwindow>
 

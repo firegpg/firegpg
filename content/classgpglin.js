@@ -38,9 +38,9 @@ const nsIExtensionManager_CONRACTID = "@mozilla.org/extensions/manager;1";
 const idAppli = "firegpg@firegpg.team";
 
 /*
- * Class to access to GPG on linux
+ * Class to access to GPG on GNU/Linux.
  */
-var firegpgGPGlin = {
+var FireGPG_GPGLin = {
 	var: parent,
 
 	/*
@@ -63,7 +63,7 @@ var firegpgGPGlin = {
 		this.parent.cleanTmpFile(tmpOutput);
 
 		// We lanch gpg
-		this.parent.exeCommand(ext.path + "/content/linux.sh",
+		this.parent.runCommand(ext.path + "/content/linux.sh",
 		                       "gpg " + tmpStdOut +
 		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch " + 
 		                       " --default-key " + keyID + 
@@ -72,11 +72,11 @@ var firegpgGPGlin = {
 		                       " --clearsign " + tmpInput);
 
 		// We get the result
-		var result = this.parent.getContentFile(tmpStdOut);
+		var result = this.parent.getFromFile(tmpStdOut);
 
 		// The signed text
-		var crypttexte = this.parent.getContentFile(tmpOutput);
-		var result2 = firegpgGPGReturn;
+		var crypttexte = this.parent.getFromFile(tmpOutput);
+		var result2 = FireGPG_GPGReturn;
 		result2.output = crypttexte;	
 		result2.sdOut = result;	
 
@@ -89,7 +89,7 @@ var firegpgGPGlin = {
 	},
 
 	// Verify a sign
-	verif: function(text) {
+	verify: function(text) {
 		var tmpInput = this.parent.getTmpFile();  // Signed data
 		var tmpStdOut = this.parent.getTmpFile(); // Output from gpg
 
@@ -102,13 +102,13 @@ var firegpgGPGlin = {
 		                     getItemLocation(idAppli); 
 
 		// We lauch GPG
-		this.parent.exeCommand(ext.path + "/content/linux.sh",
+		this.parent.runCommand(ext.path + "/content/linux.sh",
 		                       "gpg " + tmpStdOut +
 		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
 		                       " --verify " + tmpInput);
 
 		// We get the result
-		var result = this.parent.getContentFile(tmpStdOut);
+		var result = this.parent.getFromFile(tmpStdOut);
 
 		// We delete tempory files
 		this.parent.cleanTmpFile(tmpInput);
@@ -134,12 +134,12 @@ var firegpgGPGlin = {
 			mode = "--list-secret-keys";
 
 		// we lauch GPG
-		this.parent.exeCommand(ext.path + "/content/linux.sh",
+		this.parent.runCommand(ext.path + "/content/linux.sh",
 		                       "gpg " + tmpStdOut +
 		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons " + mode);
 
 		// We get the result
-		var result = this.parent.getContentFile(tmpStdOut);
+		var result = this.parent.getFromFile(tmpStdOut);
 
 		// We delete tempory files
 		this.parent.cleanTmpFile(tmpStdOut);

@@ -2,3 +2,4 @@
 <!ENTITY pane1.title "FireGPG preferences">
 <!ENTITY check_gmail_enabled.label "GMail support">
 <!ENTITY check_gmail_enabled.accesskey "G">
+<!ENTITY label_private_keys.text "Default private key :">

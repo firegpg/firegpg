@@ -37,13 +37,13 @@
 var savedPassword = "testtest"; /* password */
 var selfKey = "B6B2F3E3";       /* the default private key ID */
 
-function FGPG_GetPassword()
+function FireGPG_GetPassword()
 {
 	// TODO
 	return savedPassword;
 }
 
-function FGPG_GetSelfKey()
+function FireGPG_GetSelfKey()
 {
 	// TODO
 	return selfKey;

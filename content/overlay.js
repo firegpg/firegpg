@@ -58,10 +58,10 @@ var firegpg = {
 		                               getService(Components.interfaces.nsIPromptService);
 
 		if (action == "SIGN")
-		   firegpgGPG.sign();
+		   FireGPG_GPG.sign();
 
 		if (action == "VERIF")
-		   firegpgGPG.verif();
+		   FireGPG_GPG.verif();
 	},
 
 	onToolbarButtonCommand: function(e) {

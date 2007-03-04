@@ -10,6 +10,9 @@
 	* little modification in linux.sh (comments)
 	* GMail CheckBox in "options" dialog
 	* somes improvements in the style of the code of *.js
+	* unification of the prototypes and classes name
+	* private key listbox added to options dialog
+	* tmp files permission is now 0600
 
 2007-03-02  Achraf cherti
 	* template generated with the wizard
