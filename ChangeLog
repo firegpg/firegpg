@@ -1,4 +1,4 @@
-2007-03-03  Maximilien Cuony
+2007-03-04  Maximilien Cuony
 	* Some modification for errors of improvements of code's style
 	* Re-Implementation of firegpgGPG.listkey(private)
 	* List key in option dialog show only private keys now
