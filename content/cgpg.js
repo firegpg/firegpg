@@ -119,7 +119,7 @@ var FireGPG_GPG = {
 	* Function for sign a text
 	*/
 	sign: function() {
-		var texte = "MEUHHHHHHHHHHHHHHHHHHHHHHHHHH"; // TODO : remove
+		var texte = firegpgSelect.getSelection();
 
 		// Needed for a sign
 		var password = FireGPG_GetPassword();
@@ -131,7 +131,7 @@ var FireGPG_GPG = {
 		result = result.sdOut;
 
 		// For i18n
-		i18n = document.getElementById("firegpg-strings");
+		var i18n = document.getElementById("firegpg-strings");
 
 		// If the sign failled
 		if(result.indexOf("SIG_CREATED") == "-1") {
@@ -168,7 +168,7 @@ var FireGPG_GPG = {
 		var result = this.GPGAccess.verify(texte);
 
 		// For I18N
-		i18n = document.getElementById("firegpg-strings");
+		var i18n = document.getElementById("firegpg-strings");
 
 		// If check failled
 		if(result.indexOf("GOODSIG") == "-1") {	
