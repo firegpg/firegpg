@@ -7,7 +7,8 @@
 	  (sample don't work for the moment)
 
 2007-03-03  Achraf cherti
-	* little modification in linux.sh (comments)
+	* little modification in linux.sh (comments), linux.sh 
+	  renamed to run.sh
 	* GMail CheckBox in "options" dialog
 	* somes improvements in the style of the code of *.js
 	* unification of the prototypes and classes name

@@ -63,7 +63,7 @@ var FireGPG_GPGLin = {
 		this.parent.cleanTmpFile(tmpOutput);
 
 		// We lanch gpg
-		this.parent.runCommand(ext.path + "/content/linux.sh",
+		this.parent.runCommand(ext.path + "/content/run.sh",
 		                       "gpg " + tmpStdOut +
 		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch " + 
 		                       " --default-key " + keyID + 
@@ -102,7 +102,7 @@ var FireGPG_GPGLin = {
 		                     getItemLocation(idAppli); 
 
 		// We lauch GPG
-		this.parent.runCommand(ext.path + "/content/linux.sh",
+		this.parent.runCommand(ext.path + "/content/run.sh",
 		                       "gpg " + tmpStdOut +
 		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
 		                       " --verify " + tmpInput);
@@ -134,7 +134,7 @@ var FireGPG_GPGLin = {
 			mode = "--list-secret-keys";
 
 		// we lauch GPG
-		this.parent.runCommand(ext.path + "/content/linux.sh",
+		this.parent.runCommand(ext.path + "/content/run.sh",
 		                       "gpg " + tmpStdOut +
 		                       " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons " + mode);
 
