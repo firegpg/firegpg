@@ -198,7 +198,7 @@ var FireGPG_GPG = {
 		            "-----END PGP SIGNATURE-----\n";
 
 		// We get the result
-		var result = this.GPGAccess.verif(texte);
+		var result = this.GPGAccess.verify(texte);
 
 		// For I18N
 		this.i18n = document.getElementById("FireGPG-strings");
