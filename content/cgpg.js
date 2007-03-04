@@ -83,18 +83,7 @@ var FireGPG_GPG = {
 
 	// Verify a signature
 	verify: function() {
-		/* TODO */
-		var texte = "-----BEGIN PGP SIGNED MESSAGE-----\n" +
-		            "Hash: SHA1\n" +
-		            "\n" +
-		            "MEUHHHHHHHHHHHHHHHHHHHHHHHHHH\n" +
-		            "-----BEGIN PGP SIGNATURE-----\n" +
-		            "Version: GnuPG v1.4.3 (GNU/Linux)\n" + 
-		            "\n" + 
-		            "iD8DBQFF6aWKsFIMW7ay8+MRAiR8AJ42QChS492VhS4k27SMNA5MJC+ZPwCgh3+E\n" +
-		            "o6t1LP7+7N4VcExXFUQlIVA=\n" +
-		            "=qu5x\n" +
-		            "-----END PGP SIGNATURE-----\n";
+		var texte = firegpgSelect.getSelection();
 
 		// We get the result
 		var result = this.GPGAccess.verify(texte);
@@ -156,7 +145,71 @@ var FireGPG_GPG = {
 		}
 		
 		return retour;
+	},
+	/*
+	* Function for crypt a text
+	*/
+	crypt: function() {
+		var texte = firegpgSelect.getSelection();
+
+		// Needed for a crypt
+		var keyID = FireGPG_GetAKey();
+
+		// We get the result
+		var result = this.GPGAccess.crypt(texte,keyID);
+		var crypttexte = result.output;
+		result = result.sdOut;
+
+		// For i18n
+		var i18n = document.getElementById("firegpg-strings");
+
+		// If the crypt failled
+		if(result.indexOf("END_ENCRYPTION") == "-1") {
+			// We alert the user
+				alert(i18n.getString("cryptFailled"));
+		} 
+		else {
+			// If he works too,
+			alert(i18n.getString("cryptSuccess"));
+			// The crypted text
+			alert(crypttexte);
+		}
+	},
+	/*
+	* Function for decrypt a text
+	*/
+	dcrypt: function() {
+		var texte = firegpgSelect.getSelection();
+
+		// Needed for a decrypt
+		var password = FireGPG_GetPassword();
+		
+
+		// We get the result
+		var result = this.GPGAccess.dcrypt(texte,password);
+		var crypttexte = result.output;
+		result = result.sdOut;
+
+		// For i18n
+		var i18n = document.getElementById("firegpg-strings");
+		
+		// If the crypt failled
+		if(result.indexOf("DECRYPTION_OKAY") == "-1") {
+			// We alert the user
+			// We alert the user
+			if(result.indexOf("BAD_PASSPHRASE") != "-1")
+				alert(i18n.getString("dcryptFailledPassword"));
+			else
+				alert(i18n.getString("dcryptFailled"));
+		} 
+		else {
+			// If he works too,
+			alert(i18n.getString("dcryptSuccess"));
+			// The crypted text
+			alert(crypttexte);
+		}
 	}
+
 };
 
 // We load the good class for the OS

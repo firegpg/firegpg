@@ -25,6 +25,7 @@
 	* Class select : setSelection implemented
 	* Class select is finished !
 	* Add menu incons (all with GPL's liscence)
+	* cgpg : crypt and dcrypt added
 
 2007-03-03  Maximilien Cuony
 	* Implementation of firegpgGPG.listkey(private)

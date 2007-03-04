@@ -63,6 +63,12 @@ var firegpg = {
 		if (action == "VERIF")
 		   FireGPG_GPG.verify();
 
+		if (action == "CRYPT")
+		   FireGPG_GPG.crypt();
+
+		if (action == "DCRYPT")
+		   FireGPG_GPG.dcrypt();
+
 		if (action == "OPTS")
 			var win = window.open("chrome://firegpg/content/options.xul", 
                       "optionsFiregpg", "chrome,centerscreen"); 

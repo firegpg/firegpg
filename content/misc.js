@@ -58,6 +58,11 @@ function FireGPG_GetSelfKey() {
 	return selfKey;
 }
 
+function FireGPG_GetAKey() {
+	// TODO
+	return "B6B2F3E3";
+}
+
 /*
  * Get the path of a tmp file.
  * The path is returned.
@@ -91,7 +96,7 @@ function removeFile(path) {
 		fileobj.remove(path);
 	}
 	catch (e) {
-		/* TODO void "catch" is useful ? */
+		/* If file dosen't exist */
 	}
 }
 

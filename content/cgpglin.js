@@ -146,7 +146,96 @@ var FireGPG_GPGLin = {
 
 		// We return result
 		return result;
+	},
+
+	/*
+	 * Function to crypt a text.
+	 */
+	crypt: function(texte,keyID) {
+		var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+		var tmpStdOut = getTmpFile(); // Output from gpg
+
+		putIntoFile(tmpInput,texte); // Temp
+
+		// Get plugin's localisation
+		var ext = Components.classes[nsIExtensionManager_CONRACTID].
+		                     getService(Components.interfaces.nsIExtensionManager).
+		                     getInstallLocation(idAppli).
+		                     getItemLocation(idAppli); 
+
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		removeFile(tmpOutput);
+
+		// We lanch gpg
+		runCommand(ext.path + "/content/run.sh",
+		           "gpg " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+		           " -r " + keyID + 
+		           " --output " + tmpOutput + 
+		           " --encrypt " + tmpInput);
+	
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// The crypted text
+		var crypttexte = getFromFile(tmpOutput);
+		var result2 = FireGPG_GPGReturn;
+		result2.output = crypttexte;	
+		result2.sdOut = result;	
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpStdOut);
+		removeFile(tmpOutput);
+
+		return result2;
+	},
+
+	/*
+	 * Function to decrypt a text.
+	 */
+	dcrypt: function(texte,password) {
+		var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+		var tmpStdOut = getTmpFile(); // Output from gpg
+
+		putIntoFile(tmpInput,texte); // Temp
+
+		// Get plugin's localisation
+		var ext = Components.classes[nsIExtensionManager_CONRACTID].
+		                     getService(Components.interfaces.nsIExtensionManager).
+		                     getInstallLocation(idAppli).
+		                     getItemLocation(idAppli); 
+
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		removeFile(tmpOutput);
+
+		// We lanch gpg
+		runCommand(ext.path + "/content/run.sh",
+		           "gpg " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+		           " --passphrase " + password +
+		           " --output " + tmpOutput + 
+		           " --decrypt " + tmpInput);
+	
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// The decrypted text
+		var crypttexte = getFromFile(tmpOutput);
+		var result2 = FireGPG_GPGReturn;
+		result2.output = crypttexte;	
+		result2.sdOut = result;	
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpStdOut);
+		removeFile(tmpOutput);
+
+		return result2;
 	}
+
 };
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8
