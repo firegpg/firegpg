@@ -48,18 +48,33 @@ const WRITE_PERMISSION = 0600;
 var savedPassword = "testtest"; /* password */
 var selfKey = "B6B2F3E3";       /* the default private key ID */
 
-function FireGPG_GetPassword() {
-	// TODO
-	return savedPassword;
+/*
+ * Get the GPG private key password.
+ * The password is returned, null if the cancel button is pressed.
+ *
+ */
+function getPassword() {
+	var params = {password: '', save_password: true, result: false}
+	var dlg = window.openDialog('chrome://firegpg/content/password.xul', 
+	                            '', 'chrome, dialog, modal, resizable=yes', params);
+	dlg.focus();
+
+	if(params.result) {
+		if(params.save_password) 
+			savedPassword = params.password;
+		return params.password;
+	}
+
+	return null;
 }
 
-function FireGPG_GetSelfKey() {
-	// TODO
+function getSelfKey() {
+	// TODO describe!
 	return selfKey;
 }
 
-function FireGPG_GetAKey() {
-	// TODO
+function getAKey() {
+	// TODO describe?
 	return "B6B2F3E3";
 }
 

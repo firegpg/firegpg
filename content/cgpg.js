@@ -55,7 +55,7 @@ var FireGPG_GPG = {
 
 		// Needed for a sign
 		var password = FireGPG_GetPassword();
-		var keyID = FireGPG_GetSelfKey();
+		var keyID = getSelfKey();
 
 		// We get the result
 		var result = this.GPGAccess.sign(texte,password,keyID);
@@ -131,7 +131,7 @@ var FireGPG_GPG = {
 		var result = this.GPGAccess.listkey(onlyPrivate);
 		
 		// Parsing
-		var reg=new RegExp("[\n]+", "g");
+		var reg = new RegExp("[\n]+", "g");
 		var list = result.split(reg);
 		
 		// var reg2=new RegExp("[:]+", "g");

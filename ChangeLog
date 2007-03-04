@@ -12,6 +12,8 @@
 	  and getFromFile().
 	* FireGPG_GPG.runCommand() is moved to misc.js. The new name
 	  is runCommand().
+	* new dialog to enter the private key password.
+	* new function getPassword() to get the private key password.
 
 2007-03-04  Maximilien Cuony
 	* Some modification for errors of improvements of code's style
