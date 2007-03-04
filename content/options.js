@@ -34,15 +34,45 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-// onLoad is called when a window is loaded
+/*
+ * This function is called when a private key is selected.
+ */
+function privateKeySelected(listbox)
+{
+	/* select the default key */
+	var key_id = listbox.selectedItem.value;
+	document.getElementById('pref_default_private_key').value = key_id;
+}
+
+/* 
+ * onLoad is called when options dialog is loaded.
+ */
 function onLoad(win) {
 	var listbox = document.getElementById('list_private_keys');
-	var gpg_keys = FireGPG_GPG.listKeys(1);
+	var gpg_keys = FireGPG_GPG.listKeys(true); /* private keys are returned */
+
+	/* read the default private key */
+	var default_private_key = document.getElementById('pref_default_private_key').value;
+
+	var default_item = null; /* this variable will contain the index of
+	                          the default private key item */
 
 	/* add all keys in the list box */
-	for(var key in gpg_keys)
+	var index = 0;
+	for(var key in gpg_keys) {
 		/* item = key ID */
-		listbox.appendItem(gpg_keys[key], key);
+		var item = listbox.appendItem(gpg_keys[key], key);
+
+		/* find the default index */
+		if(default_private_key == key)
+			default_item = item;
+
+		index++;
+	}
+
+	/* select the default index */
+	if(default_item != null)
+		listbox.selectItem(default_item);
 }
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

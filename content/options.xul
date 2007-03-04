@@ -46,14 +46,15 @@
 
   <prefpane id="pane1" label="&pane1.title;">
     <preferences>
-      <preference id="gmail_enabled" name="extensions.firegpg.gmail_enabled" type="bool"/>
+      <preference id="pref_gmail_enabled" name="extensions.firegpg.gmail_enabled" type="bool"/>
+      <preference id="pref_default_private_key" name="extensions.firegpg.default_private_key" type="string"/>
     </preferences>
 
-    <checkbox id="check_gmail_enabled" preference="gmail_enabled" label="&check_gmail_enabled.label;" 
+    <checkbox id="check_gmail_enabled" preference="pref_gmail_enabled" label="&check_gmail_enabled.label;" 
               accesskey="&check_gmail_enabled.accesskey;"/>
     <spacer flex="1"/>
     <label id="label_private_keys" value="&label_private_keys.text;"/>
-    <listbox id="list_private_keys" rows="4">
+    <listbox id="list_private_keys" rows="4" onselect="privateKeySelected(this)">
     </listbox>
   </prefpane>
 </prefwindow>

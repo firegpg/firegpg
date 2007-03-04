@@ -1,3 +1,7 @@
+2007-03-04  Achraf cherti
+	* the default private key is saved and selected by default when
+	  the options dialog is loaded.
+
 2007-03-04  Maximilien Cuony
 	* Some modification for errors of improvements of code's style
 	* Re-Implementation of firegpgGPG.listkey(private)
