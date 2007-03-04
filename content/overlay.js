@@ -38,7 +38,7 @@
 
 var firegpg = {
 	onLoad: function() {
-		FireGPG_GetPassword();
+		getPassword();
 
 		// initialization code
 		this.initialized = true;

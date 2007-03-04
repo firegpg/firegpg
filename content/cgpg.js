@@ -54,7 +54,7 @@ var FireGPG_GPG = {
 		var texte = firegpgSelect.getSelection();
 
 		// Needed for a sign
-		var password = FireGPG_GetPassword();
+		var password = getPassword();
 		var keyID = getSelfKey();
 
 		// We get the result
@@ -182,7 +182,7 @@ var FireGPG_GPG = {
 		var texte = firegpgSelect.getSelection();
 
 		// Needed for a decrypt
-		var password = FireGPG_GetPassword();
+		var password = getPassword();
 		
 
 		// We get the result
