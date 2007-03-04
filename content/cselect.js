@@ -64,7 +64,7 @@ var firegpgSelect = {
 			}
 
 		}	
-		
+		this.setSelection("MEUH");
 		return value;
 
 	},
@@ -93,9 +93,29 @@ var firegpgSelect = {
 		return true; //If it's ok !
 	},
 
-	//Modifit selection
-	setSelection: function() {
-		return false;
+	//Edit selection
+	setSelection: function(texte) {
+		//We verify that the selection can be edited 
+		if (this.isSelectionEdit())
+		{
+			//Get the focused element
+			var focused = document.commandDispatcher.focusedElement;
+
+
+			var value = focused.value;
+
+			var startPos = focused.selectionStart;
+	            	var endPos = focused.selectionEnd;
+	            	var chaine = focused.value;
+
+			//We create the new string and replace it into focused element
+	            	focused.value = chaine.substring(0, startPos) + texte + chaine.substring(endPos, chaine.length);
+
+			//We select the new text.
+	            	focused.selectionStart = startPos;
+	            	focused.selectionEnd = startPos + texte.length ;
+
+		}
 	}
 }
 
