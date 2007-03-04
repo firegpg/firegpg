@@ -28,6 +28,7 @@
 	* cgpg : crypt and dcrypt added
 	* Add fr locate
 	* Add base menu's icone
+	* Add comment 'http://firegpg.tuxfamily.org' for signs and crypts
 
 2007-03-03  Maximilien Cuony
 	* Implementation of firegpgGPG.listkey(private)

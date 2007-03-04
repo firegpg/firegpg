@@ -36,7 +36,7 @@
 
 const nsIExtensionManager_CONRACTID = "@mozilla.org/extensions/manager;1";
 const idAppli = "firegpg@firegpg.team";
-
+const comment = "http://firegpg.tuxfamily.org";
 /*
  * Class to access to GPG on GNU/Linux.
  */
@@ -69,6 +69,7 @@ var FireGPG_GPGLin = {
 		           " --default-key " + keyID + 
 		           " --output " + tmpOutput + 
 		           " --passphrase " + password +
+				   " --comment " +  comment +
 		           " --clearsign " + tmpInput);
 	
 		// We get the result
@@ -172,6 +173,7 @@ var FireGPG_GPGLin = {
 		           "gpg " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
 		           " -r " + keyID + 
+				   " --comment " +  comment +
 		           " --output " + tmpOutput + 
 		           " --encrypt " + tmpInput);
 	
