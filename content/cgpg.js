@@ -236,7 +236,6 @@ var FireGPG_GPG = {
 	 *  {id: "ID", email: "email@host", name: "Name (name)", all: "name (name) <email>"} TODO?
 	 */
 	listKeys: function(onlyPrivate) {
-	
 		var retour = new Array();
 		var infos;
 		
