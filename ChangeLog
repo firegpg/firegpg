@@ -32,7 +32,7 @@
 	* Add base menu's icone
 	* Add comment 'http://firegpg.tuxfamily.org' for signs and crypts
 	* Update URL link
-	* UUID change to 89c87b67-c98f-4caf-ac0f-f80076b895ea (old seem not be unique)
+	* UUID change to 89c87b67-c98f-4caf-ac0f-f80076b895ea (not useful, but changed when I test update's system)
 
 2007-03-03  Maximilien Cuony
 	* Implementation of firegpgGPG.listkey(private)
