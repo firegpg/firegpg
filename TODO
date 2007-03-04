@@ -13,5 +13,4 @@ Tâches de Maximilien :
 
 Tâches d'Achraf :
 	- Boite de dialogue pour sélectionner la clé publique
-	- Boite de dialogue pour demander le mot de passe (de la clé privée)
-	  avec un bouton "mémoriser le mot de passe pour la session".
+	- option pour activer/désactiver la pub du site de FireGPG
