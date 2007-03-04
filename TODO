@@ -1,19 +1,17 @@
 Tâches libres :
 	- Fonctions pour ajouter le support GPG dans le webmail de GMail
-	- Dessiner ou trouver les quatre icônes à ajouter dans GMail pour le
-	  (dé-)chiffrement / signature / vérification.
 	- boite de dialogue qui sera utilisée pour afficher le texte 
 	  chiffré/déchiffré si le texteare ou l'input text 
 	  actuellement sélectionné n'est pas actuellement 
 	  accessible en écriture. [->Achraf ?]
 
 Tâches de Maximilien :
-        - fonction pour lire le contenu du TextArea ou de l'InputText
-          actuellement sélectionné, ou du texte sélectionné !
         - fonction pour chiffrer un texte.
         - fonction pour déchiffrer un texte.
         - fonction pour signer un texte.
         - fonction pour tester la signature d'un texte.
+	- Dessiner ou trouver les quatre icônes à ajouter dans GMail pour le
+	  (dé-)chiffrement / signature / vérification.
 
 
 Tâches d'Achraf :
