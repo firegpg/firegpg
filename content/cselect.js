@@ -58,7 +58,25 @@ var firegpgSelect = {
 			}
 		}
 		else
-			value = selObj.getRangeAt(0).toString(); //Fix a problem
+		{
+			value = selObj.getRangeAt(0); 
+			documentFragment = value.cloneContents();
+     		var s = new XMLSerializer();
+			var d = documentFragment;
+			var str = s.serializeToString(d);
+			
+			var reg=new RegExp("<br />", "gi");
+			str = str.replace(reg,"\n");
+			 reg=new RegExp("<br/>", "gi");
+			str = str.replace(reg,"\n");
+			var reg=new RegExp("<br>", "gi");
+			str = str.replace(reg,"\n");
+			reg=new RegExp("<[^>]+>", "g");
+			str = str.replace(reg, "");
+
+			value = str;
+		}
+
 		
 		return value;
 	},
