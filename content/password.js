@@ -41,6 +41,7 @@ function onLoad(win)
 {
 	document.getElementById('password').value = window.arguments[0].password;
 	document.getElementById('save_password').checked = (window.arguments[0].save_password) ? 'on' : 'off';
+	document.getElementById('description').value = window.arguments[0].question;
 }
 
 /* 
@@ -64,7 +65,7 @@ function onAccept()
 		window.arguments[0].save_password = true;
 	else
 		window.arguments[0].save_password = false;
-
+	
 	return true;
 }
 

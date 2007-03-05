@@ -59,11 +59,15 @@ function showText(text)
 }
 
 /*
- * Get the GPG private key password.
- * The password is returned, null if the cancel button is pressed.
+ * Generic dialog to get a password.
+ *
+ * An object is returned :
+ *  {password: "password", save_password: true/false}
  */
-function getPassword() {
-	var params = {password: '', save_password: true, result: false}
+function getPassword(question, save_password) {
+	var params = {password: '', save_password: ((save_password == undefined) ? true : save_password), 
+	              result: false, question: question};
+
 	var dlg = window.openDialog('chrome://firegpg/content/password.xul', 
 	                            '', 'chrome, dialog, modal, resizable=yes', params);
 	dlg.focus();
@@ -75,6 +79,19 @@ function getPassword() {
 	}
 
 	return null;
+}
+
+/*
+ * This function uses getPassword() to return this object:
+ *   {password: "the password", save_password: "save password ?"}
+ */
+function getPrivateKeyPassword() {
+	var question = document.getElementById('firegpg-strings').
+	                        getString('passwordDialogEnterPrivateKey');
+
+	var result = getPassword(question, true);
+	/* TODO save or not the password, and returned before showing dialog */
+	return result.password;
 }
 
 /*

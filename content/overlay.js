@@ -38,7 +38,6 @@
 
 var firegpg = {
 	onLoad: function() {
-		showText('salut\nle monde'); /* TODO supprimer */
 		// initialization code
 		this.initialized = true;
 		this.strings = document.getElementById("firegpg-strings");
