@@ -12,6 +12,8 @@
 2007-03-05  Achraf cherti
 	* new function getPrivateKeyPassword() (with i18n support), to replace
 	  the generic function getPassword(question, save_password)
+	* new in options dialog : specify the path of GPG, show the FireGPG official
+	  website.
 
 2007-03-04  Achraf cherti
 	* the default private key is saved and selected by default when

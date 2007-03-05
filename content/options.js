@@ -39,7 +39,7 @@
  */
 function getSelectedKey()
 {
-	return document.getElementById('pref_default_private_key').value;
+	return document.getElementById('default-private-key-pref').value;
 }
 /*
  * This function is called when a private key is selected.
@@ -48,7 +48,7 @@ function privateKeySelected(listbox)
 {
 	/* select the default key */
 	var key_id = listbox.selectedItem.value;
-	document.getElementById('pref_default_private_key').value = key_id;
+	document.getElementById('default-private-key-pref').value = key_id;
 }
 
 /* 
@@ -57,10 +57,10 @@ function privateKeySelected(listbox)
 function onLoad(win) 
 {
 	var gpg_keys = FireGPG_GPG.listKeys(true); /* private keys are returned */
-	var listbox = document.getElementById('list_private_keys');
+	var listbox = document.getElementById('private-keys-listbox');
 
 	/* read the default private key */
-	var default_private_key = document.getElementById('pref_default_private_key').value;
+	var default_private_key = document.getElementById('default-private-key-pref').value;
 
 	var default_item = null; /* this variable will contain the index of
 	                          the default private key item */

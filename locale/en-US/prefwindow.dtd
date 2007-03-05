@@ -1,5 +1,8 @@
 <!ENTITY prefwindow.title "FireGPG preferences">
 <!ENTITY pane1.title "FireGPG preferences">
-<!ENTITY check_gmail_enabled.label "GMail support">
-<!ENTITY check_gmail_enabled.accesskey "G">
-<!ENTITY label_private_keys.text "Default private key :">
+<!ENTITY gmail-enabled-checkbox.label "GMail support">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Default private key :">
+<!ENTITY show-website-checkbox "Show FireGPG website in signed or crypted text">
+<!ENTITY change-gpg-path-button "Change the path">
+<!ENTITY change-gpg-path-checkbox "Specify manually the path of GPG:">

@@ -47,17 +47,27 @@
 
   <prefpane id="pane1" label="&pane1.title;">
     <preferences>
-      <preference id="pref_gmail_enabled" name="extensions.firegpg.gmail_enabled" type="bool"/>
-      <preference id="pref_default_private_key" name="extensions.firegpg.default_private_key" type="string"/>
+      <preference id="gmail-enabled-pref" name="extensions.firegpg.gmail_enabled" type="bool"/>
+      <preference id="default-private-key-pref" name="extensions.firegpg.default_private_key" type="string"/>
+      <preference id="gpg-path-pref" name="extensions.firegpg.gpg_path" type="string"/>
+      <preference id="specify-gpg-path-pref" name="extensions.firegpg.specify_gpg_path" type="bool"/>
     </preferences>
 
-    <checkbox id="check_gmail_enabled" preference="pref_gmail_enabled" 
-              label="&check_gmail_enabled.label;" 
-              accesskey="&check_gmail_enabled.accesskey;"/>
+    <checkbox id="gmail-enabled-checkbox" preference="gmail-enabled-pref" 
+              label="&gmail-enabled-checkbox.label;" 
+              accesskey="&gmail-enabled-checkbox.accesskey;"/>
+    <checkbox id="show-website-checkbox" checked="true" label="&show-website-checkbox;" />
 
-    <spacer flex="1"/>
-    <label id="label_private_keys" value="&label_private_keys.text;"/>
-    <listbox id="list_private_keys" rows="4" onselect="privateKeySelected(this)"></listbox>
+    <checkbox id="change-gpg-path-checkbox" checked="true" preference="specify-gpg-path-pref"
+              label="&change-gpg-path-checkbox;" control="gpg-path-textbox"/>
+    <hbox>
+      <textbox id="gpg-path-textbox" flex="1" preference="gpg-path-pref"/>
+      <button id="change-gpg-path-button" label="&change-gpg-path-button;" 
+              control="gpg-path-textbox"/>
+    </hbox>
+
+    <label id="private-keys-label" value="&private-keys-label.text;"/>
+    <listbox id="private-keys-listbox" rows="4" onselect="privateKeySelected(this)"></listbox>
   </prefpane>
 </prefwindow>
 
