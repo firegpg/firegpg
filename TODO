@@ -10,7 +10,6 @@ Tâches de Maximilien :
 Tâches d'Achraf :
 	- Boite de dialogue pour sélectionner la clé publique
 	- option pour activer/désactiver la pub du site de FireGPG
-	- i18n dans l'alert de password.js
 	- dans showtext, au lieu de "The result of the operation" afficher un
 	  texte dynamique selon l'opération. Par exemple "The result of the 
 	  verification".
