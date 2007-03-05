@@ -56,7 +56,7 @@ var FireGPG_GPG = {
 		// Needed for a sign
 		var password = getPrivateKeyPassword();
 		var keyID = getSelfKey();
-		alert(password);
+		
 		// We get the result
 		var result = this.GPGAccess.sign(texte,password,keyID);
 		var crypttexte = result.output;
