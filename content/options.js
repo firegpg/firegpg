@@ -56,7 +56,7 @@ function privateKeySelected(listbox)
  */
 function onLoad(win) 
 {
-	var gpg_keys = FireGPG_GPG.listKeys(true); /* private keys are returned */
+	var gpg_keys = GPG.listKeys(true); /* private keys are returned */
 	var listbox = document.getElementById('private-keys-listbox');
 
 	/* read the default private key */

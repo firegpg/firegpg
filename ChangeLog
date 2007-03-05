@@ -4,7 +4,7 @@
 	* Implementation of getSelfKey(), for get the default key !
 	* Full implementation for saving the password, with a menu for erase it.
 	* Come back to default UUID
-	* Fixed problems with complied packtage !
+	* Fixed problems with complied package !
 	* Version 0.1 Packed, and uploaded to the server !
 	* Fixed a bug in select system who didn't look at \n in some texts
 	* Add support for select text with HTML and <br> balises
@@ -14,6 +14,12 @@
 	  the generic function getPassword(question, save_password)
 	* new in options dialog : specify the path of GPG, show the FireGPG official
 	  website.
+	* Shorter version of names : firegpgSelect -> Selection, 
+	  Selection.isSelectionEditable -> isEditable, getSelection -> get,
+	  setSelection -> set.
+	* some little modifications in the source code
+	* new optional argument in getPrivateKeyPassword : useSaverPassword.
+	* FireGPG_GPG* -> GPG (because it's shorter and we have the already the namespace)
 
 2007-03-04  Achraf cherti
 	* the default private key is saved and selected by default when

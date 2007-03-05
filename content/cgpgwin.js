@@ -37,7 +37,7 @@
 /*
 * Class to access to GPG on windows
 */
-var FireGPG_GPGWin = {
+var GPGWin = {
 	crypt: function() {
 		alert('Crypt ! - Win');
 	}

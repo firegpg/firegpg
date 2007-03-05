@@ -40,7 +40,7 @@ const comment = "http://firegpg.tuxfamily.org";
 /*
  * Class to access to GPG on GNU/Linux.
  */
-var FireGPG_GPGLin = {
+var GPGLin = {
 	var: parent,
 
 	/*
@@ -58,7 +58,7 @@ var FireGPG_GPGLin = {
 		removeFile(tmpOutput);
 
 		// We lanch gpg
-		var running = getContents("chrome://firegpg/content/run.sh")
+		var running = getContent("chrome://firegpg/content/run.sh")
 
 		putIntoFile(tmpRun,running);
 
@@ -77,7 +77,7 @@ var FireGPG_GPGLin = {
 
 		// The signed text
 		var crypttexte = getFromFile(tmpOutput);
-		var result2 = FireGPG_GPGReturn;
+		var result2 = GPGReturn;
 		result2.output = crypttexte;	
 		result2.sdOut = result;	
 
@@ -99,7 +99,7 @@ var FireGPG_GPGLin = {
 		putIntoFile(tmpInput,text); // TMP
 
 		// We lanch gpg
-		var running = getContents("chrome://firegpg/content/run.sh")
+		var running = getContent("chrome://firegpg/content/run.sh")
 
 		putIntoFile(tmpRun,running);
 
@@ -133,7 +133,7 @@ var FireGPG_GPGLin = {
 			mode = "--list-secret-keys";
 
 		// We lanch gpg
-		var running = getContents("chrome://firegpg/content/run.sh")
+		var running = getContent("chrome://firegpg/content/run.sh")
 
 		putIntoFile(tmpRun,running);
 
@@ -168,7 +168,7 @@ var FireGPG_GPGLin = {
 		removeFile(tmpOutput);
 
 		// We lanch gpg
-		var running = getContents("chrome://firegpg/content/run.sh")
+		var running = getContent("chrome://firegpg/content/run.sh")
 
 		putIntoFile(tmpRun,running);
 
@@ -185,7 +185,7 @@ var FireGPG_GPGLin = {
 
 		// The crypted text
 		var crypttexte = getFromFile(tmpOutput);
-		var result2 = FireGPG_GPGReturn;
+		var result2 = GPGReturn;
 		result2.output = crypttexte;	
 		result2.sdOut = result;	
 
@@ -214,7 +214,7 @@ var FireGPG_GPGLin = {
 		removeFile(tmpOutput);
 
 		// We lanch gpg
-		var running = getContents("chrome://firegpg/content/run.sh")
+		var running = getContent("chrome://firegpg/content/run.sh");
 
 		putIntoFile(tmpRun,running);
 
@@ -230,7 +230,7 @@ var FireGPG_GPGLin = {
 
 		// The decrypted text
 		var crypttexte = getFromFile(tmpOutput);
-		var result2 = FireGPG_GPGReturn;
+		var result2 = GPGReturn;
 		result2.output = crypttexte;	
 		result2.sdOut = result;	
 

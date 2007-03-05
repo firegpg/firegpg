@@ -34,21 +34,21 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-//Classe for selection
-var firegpgSelect = {
+// Class to handle selection
+var Selection = {
 	/* 
 	 * Return actual selection.
 	 */
-	getSelection: function() {
-		// Select text from Docuement
-		var myBrowser = getBrowser();
-		var selObj = myBrowser.contentWindow.getSelection();
+	get: function() {
+		// Select a text from the actual document
+		var selObj = getBrowser().contentWindow.get();
+
+		// value is returned
+		var value = selObj.toString();
 		
-		value = selObj.toString();
-		
-		// If not text is selected, we try to get text 
+		// If the text is not selected, we try to get it
 		// from inputs and textareas
-		if (value == "") {
+		if(value == "") {
 			try {
 				var focused = document.commandDispatcher.focusedElement;
 				var value = focused.value;
@@ -57,34 +57,35 @@ var firegpgSelect = {
 			catch (e) {
 			}
 		}
-		else
-		{
+		// the text is selected !
+		else {
 			value = selObj.getRangeAt(0); 
 			documentFragment = value.cloneContents();
+
      		var s = new XMLSerializer();
 			var d = documentFragment;
 			var str = s.serializeToString(d);
 			
 			var reg=new RegExp("<br />", "gi");
 			str = str.replace(reg,"\n");
-			 reg=new RegExp("<br/>", "gi");
+			reg = new RegExp("<br/>", "gi");
 			str = str.replace(reg,"\n");
-			var reg=new RegExp("<br>", "gi");
+
+			var reg = new RegExp("<br>", "gi");
 			str = str.replace(reg,"\n");
 			reg=new RegExp("<[^>]+>", "g");
 			str = str.replace(reg, "");
 
 			value = str;
 		}
-
 		
 		return value;
 	},
 	
 	/* 
-	 * Return true if selection can be edit
+	 * Return true if the selection is editable.
 	 */
-	isSelectionEdit: function() {
+	isEditable: function() {
 		// We try to get a text from a textaera or input :		
 		try {
 			var focused = document.commandDispatcher.focusedElement;
@@ -97,20 +98,20 @@ var firegpgSelect = {
 			return false;
 		}
 		
-		// If texte is empty, this is strange, so we consider that 
+		// If text is empty, this is strange, so we consider that 
 		// there are not textaera or input focused
-		if (value == "") 
+		if(value == "") 
 			return false;
 		
 		return true; //If it's ok !
 	},
 
 	/*
-	 * Edit selection
+	 * Modify the selection.
 	 */
-	setSelection: function(texte) {
+	set: function(text) {
 		// We verify that the selection can be edited 
-		if (this.isSelectionEdit()) {
+		if(this.isEditable()) {
 			// Get the focused element
 			var focused = document.commandDispatcher.focusedElement;
 			var value = focused.value;
@@ -119,11 +120,11 @@ var firegpgSelect = {
 	        var chaine = focused.value;
 			
 			// We create the new string and replace it into focused element
-	        focused.value = chaine.substring(0, startPos) + texte + chaine.substring(endPos, chaine.length);
+	        focused.value = chaine.substring(0, startPos) + text + chaine.substring(endPos, chaine.length);
 			
 			// We select the new text.
 	        focused.selectionStart = startPos;
-	        focused.selectionEnd = startPos + texte.length ;
+	        focused.selectionEnd = startPos + text.length ;
 		}
 	}
 }

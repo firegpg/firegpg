@@ -42,24 +42,24 @@ const WINDOWS = "WINNT";
 const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;;
 
 // Return class, for return 2 or 3 informations in an object.
-var FireGPG_GPGReturn = {
+var GPGReturn = {
 }
 
 // Main class for access to GPG
-var FireGPG_GPG = {
+var GPG = {
 	/*
-	* Function for sign a text
+	* Function to sign a text.
 	*/
 	sign: function() {
-		var texte = firegpgSelect.getSelection();
+		var text = Selection.get();
 
 		// Needed for a sign
 		var password = getPrivateKeyPassword();
 		var keyID = getSelfKey();
 		
 		// We get the result
-		var result = this.GPGAccess.sign(texte,password,keyID);
-		var crypttexte = result.output;
+		var result = this.GPGAccess.sign(text, password, keyID);
+		var crypttext = result.output;
 		result = result.sdOut;
 
 		// For i18n
@@ -68,8 +68,7 @@ var FireGPG_GPG = {
 		// If the sign failled
 		if(result.indexOf("SIG_CREATED") == "-1") {
 			// We alert the user
-			if(result.indexOf("BAD_PASSPHRASE") != "-1")
-			{
+			if(result.indexOf("BAD_PASSPHRASE") != "-1") {
 				alert(i18n.getString("signFailledPassword"));
 				eraseSavedPassword();
 			}
@@ -77,24 +76,22 @@ var FireGPG_GPG = {
 				alert(i18n.getString("signFailled"));
 		} 
 		else {
-			//We test is the selection in editable :
-			if (firegpgSelect.isSelectionEdit())
-			{	//If yes, we edit this selection with the new text
-				firegpgSelect.setSelection(crypttexte);
+			// We test if the selection is editable :
+			if(Selection.isEditable()) {	
+				// If yes, we edit this selection with the new text
+				Selection.set(crypttext);
 			}
-			else
-			{	//Else, we show a windows with the result
-				showText(crypttexte);
-			}
+			else //Else, we show a windows with the result
+				showText(crypttext);
 		}
 	},
 
 	// Verify a signature
 	verify: function() {
-		var texte = firegpgSelect.getSelection();
+		var text = Selection.get();
 
 		// We get the result
-		var result = this.GPGAccess.verify(texte);
+		var result = this.GPGAccess.verify(text);
 
 		// For I18N
 		var i18n = document.getElementById("firegpg-strings");
@@ -154,17 +151,17 @@ var FireGPG_GPG = {
 	},
 
 	/*
-	* Function for crypt a text
+	* Function to crypt a text.
 	*/
 	crypt: function() {
-		var texte = firegpgSelect.getSelection();
+		var text = Selection.get();
 
 		// Needed for a crypt
 		var keyID = getAKey();
 
 		// We get the result
-		var result = this.GPGAccess.crypt(texte,keyID);
-		var crypttexte = result.output;
+		var result = this.GPGAccess.crypt(text, keyID);
+		var crypttext = result.output;
 		result = result.sdOut;
 
 		// For i18n
@@ -177,13 +174,13 @@ var FireGPG_GPG = {
 		} 
 		else {
 			//We test is the selection in editable :
-			if (firegpgSelect.isSelectionEdit())
+			if(Selection.isEditable())
 			{	//If yes, we edit this selection with the new text
-				firegpgSelect.setSelection(crypttexte);
+				Selection.set(crypttext);
 			}
 			else
 			{	//Else, we show a windows with the result
-				showText(crypttexte);
+				showText(crypttext);
 			}
 		}
 	},
@@ -192,15 +189,15 @@ var FireGPG_GPG = {
 	* Function for decrypt a text
 	*/
 	dcrypt: function() {
-		var texte = firegpgSelect.getSelection();
+		var text = Selection.get();
 
 		// Needed for a decrypt
 		var password = getPrivateKeyPassword();		
 
 
 		// We get the result
-		var result = this.GPGAccess.dcrypt(texte,password);
-		var crypttexte = result.output;
+		var result = this.GPGAccess.dcrypt(text,password);
+		var crypttext = result.output;
 		result = result.sdOut;
 
 		// For i18n
@@ -208,7 +205,6 @@ var FireGPG_GPG = {
 		
 		// If the crypt failled
 		if(result.indexOf("DECRYPTION_OKAY") == "-1") {
-			// We alert the user
 			// We alert the user
 			if(result.indexOf("BAD_PASSPHRASE") != "-1")
 			{
@@ -220,20 +216,20 @@ var FireGPG_GPG = {
 		} 
 		else {
 			//We test is the selection in editable :
-			if (firegpgSelect.isSelectionEdit())
+			if(Selection.isEditable())
 			{	//If yes, we edit this selection with the new text
-				firegpgSelect.setSelection(crypttexte);
+				Selection.set(crypttext);
 			}
 			else
 			{	//Else, we show a windows with the result
-				showText(crypttexte);
+				showText(crypttext);
 			}
 		}
 	}
 };
 
 // We load the good class for the OS
-FireGPG_GPG.GPGAccess = (FireGPG_OS == WINDOWS) ? FireGPG_GPGWin : FireGPG_GPGLin;
-FireGPG_GPG.GPGAccess.parent = FireGPG_GPG;
+GPG.GPGAccess = (FireGPG_OS == WINDOWS) ? GPGWin : GPGLin;
+GPG.GPGAccess.parent = GPG;
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

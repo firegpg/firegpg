@@ -46,7 +46,7 @@ const WRITE_MODE = 0x02 | 0x08 | 0x20;
 const WRITE_PERMISSION = 0600;
 const WRITE_PERMISSION_R = 0777;
 
-var savedPassword = ""; /* password */
+var savedPassword = ""; /* the private key password */
 
 /*
  * Show 'text' in a dialog.
@@ -64,17 +64,16 @@ function showText(text) {
  *  {password: "password", save_password: true/false}
  */
 function getPassword(question, save_password) {
-	var params = {password: '', save_password: ((save_password == undefined) ? true : save_password), 
+	var params = {password: '', 
+	              save_password: ((save_password == undefined) ? true : save_password), 
 	              result: false, question: question};
 
 	var dlg = window.openDialog('chrome://firegpg/content/password.xul', 
 	                            '', 'chrome, dialog, modal, resizable=yes', params);
 	dlg.focus();
 
-	if(params.result) {
-		
+	if(params.result)
 		return params;
-	}
 
 	return null;
 }
@@ -82,11 +81,20 @@ function getPassword(question, save_password) {
 /*
  * This function uses getPassword() to return this object:
  *   {password: "the password", save_password: "save password ?"}
+ *
+ * If useSavedPassword = false, the password is asked each time,
+ * even if it's already saved in the global variable savedPassword.
  */
-function getPrivateKeyPassword() {
-	if (savedPassword != "")
+function getPrivateKeyPassword(useSavedPassword /* default = true */) {
+	/* the default value of the optional variable */
+	if(useSavedPassword == undefined)
+		useSavedPassword = true;
+
+	/* return password if it's saved in savePassword */
+	if(useSavedPassword && savedPassword != "")
 		return savedPassword;
 
+	/* show the dialog ! */
 	var question = document.getElementById('firegpg-strings').
 	                        getString('passwordDialogEnterPrivateKey');
 
@@ -94,12 +102,13 @@ function getPrivateKeyPassword() {
 
 	if(result.save_password) {
 		savedPassword = result.password;
+
 		document.getElementById('firegpg-menu-memo-pop').style.display = '';
 		document.getElementById('firegpg-menu-memo-menu').style.display = '';
 		try {
 			document.getElementById('firegpg-menu-memo-tool').style.display = '';
 		}
-		catch (e) {}
+		catch(e) {}
 	}
 	
 	return result.password;
@@ -109,32 +118,30 @@ function getPrivateKeyPassword() {
 function eraseSavedPassword()
 {
 	savedPassword = "";
+
 	document.getElementById('firegpg-menu-memo-pop').style.display = 'none';
 	document.getElementById('firegpg-menu-memo-menu').style.display = 'none';
 	try {
-	document.getElementById('firegpg-menu-memo-tool').style.display = 'none';
-			}
-		catch (e) { }
+		document.getElementById('firegpg-menu-memo-tool').style.display = 'none';
+	}
+	catch (e) {}
 }
 
 /*
- * Funtion who return the default private key
+ * Funtion who return the default private key.
  */
 function getSelfKey() {
-	
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
-                    getService(Components.interfaces.nsIPrefService);
+                           getService(Components.interfaces.nsIPrefService);
 	prefs = prefs.getBranch("extensions.firegpg.");
-	var value = prefs.getCharPref("default_private_key"); // get a pref
-
-	return value;
+	return prefs.getCharPref("default_private_key");
 }
 
 /*
- * Function who return a key (for crypts)
+ * Function who return a key (for crypts).
+ * TODO what's the difference with getSelfKey ??! It's useless ?
  */
 function getAKey() {
-	
 	return "B6B2F3E3";
 }
 
@@ -235,26 +242,26 @@ function getFromFile(filename) {
 		
 		return data;
 	}
-	catch (e) {
-		return '';
-	}
+	catch (e) {}
+	
+	return '';
 }
 
-//For get an content from any where (like chrome://)
-function getContents(aURL){
-  var ioService=Components.classes["@mozilla.org/network/io-service;1"]
-    .getService(Components.interfaces.nsIIOService);
-  var scriptableStream=Components
-    .classes["@mozilla.org/scriptableinputstream;1"]
-    .getService(Components.interfaces.nsIScriptableInputStream);
-
-  var channel=ioService.newChannel(aURL,null,null);
-  var input=channel.open();
-  scriptableStream.init(input);
-  var str=scriptableStream.read(input.available());
-  scriptableStream.close();
-  input.close();
-  return str;
+/*
+ * To get a content from any where (like chrome://)
+ */
+function getContent(aURL){
+	var ioService = Components.classes["@mozilla.org/network/io-service;1"].
+	                           getService(Components.interfaces.nsIIOService);
+	var scriptableStream = Components.classes["@mozilla.org/scriptableinputstream;1"].
+	                                  getService(Components.interfaces.nsIScriptableInputStream);
+	var channel=ioService.newChannel(aURL,null,null);
+	var input=channel.open();
+	scriptableStream.init(input);
+	var str=scriptableStream.read(input.available());
+	scriptableStream.close();
+	input.close();
+	return str;
 } 
 
 /*

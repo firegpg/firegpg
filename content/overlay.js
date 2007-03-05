@@ -58,16 +58,16 @@ var firegpg = {
 		                               getService(Components.interfaces.nsIPromptService);
 
 		if (action == "SIGN")
-		   FireGPG_GPG.sign();
+		   GPG.sign();
 
 		if (action == "VERIF")
-		   FireGPG_GPG.verify();
+		   GPG.verify();
 
 		if (action == "CRYPT")
-		   FireGPG_GPG.crypt();
+		   GPG.crypt();
 
 		if (action == "DCRYPT")
-		   FireGPG_GPG.dcrypt();
+		   GPG.dcrypt();
 
 		if (action == "OPTS")
 			var win = window.open("chrome://firegpg/content/options.xul", 

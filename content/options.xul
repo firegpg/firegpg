@@ -46,18 +46,24 @@
   <script src="options.js"/>
 
   <prefpane id="pane1" label="&pane1.title;">
+    <!-- preferences -->
     <preferences>
       <preference id="gmail-enabled-pref" name="extensions.firegpg.gmail_enabled" type="bool"/>
       <preference id="default-private-key-pref" name="extensions.firegpg.default_private_key" type="string"/>
       <preference id="gpg-path-pref" name="extensions.firegpg.gpg_path" type="string"/>
       <preference id="specify-gpg-path-pref" name="extensions.firegpg.specify_gpg_path" type="bool"/>
+      <preference id="show-web-site" name="extensions.firegpg.show_website" type="bool"/>
     </preferences>
 
+    <!-- gmail enabled ? -->
     <checkbox id="gmail-enabled-checkbox" preference="gmail-enabled-pref" 
               label="&gmail-enabled-checkbox.label;" 
               accesskey="&gmail-enabled-checkbox.accesskey;"/>
-    <checkbox id="show-website-checkbox" checked="true" label="&show-website-checkbox;" />
 
+    <!-- show web site -->
+    <checkbox id="show-website-checkbox" preference="show-web-site-pref" checked="true" label="&show-website-checkbox;" />
+
+    <!-- specify the gpg path -->
     <checkbox id="change-gpg-path-checkbox" checked="true" preference="specify-gpg-path-pref"
               label="&change-gpg-path-checkbox;" control="gpg-path-textbox"/>
     <hbox>
@@ -66,6 +72,7 @@
               control="gpg-path-textbox"/>
     </hbox>
 
+    <!-- list of private keys -->
     <label id="private-keys-label" value="&private-keys-label.text;"/>
     <listbox id="private-keys-listbox" rows="4" onselect="privateKeySelected(this)"></listbox>
   </prefpane>
