@@ -1,6 +1,7 @@
 2007-03-04  Maximilien Cuony
 	* Fix an error in getPrivateKeyPassword()
 	* Cgpg class in now finish !
+	* Implementation of getSelfKey(), for get the default key !
 
 2007-03-05  Achraf cherti
 	* new function getPrivateKeyPassword() (with i18n support), to replace

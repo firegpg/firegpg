@@ -95,18 +95,23 @@ function getPrivateKeyPassword() {
 }
 
 /*
- * TODO: description
+ * Funtion who return the default private key
  */
 function getSelfKey() {
-	// TODO describe!
-	return selfKey;
+	
+	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                    getService(Components.interfaces.nsIPrefService);
+	prefs = prefs.getBranch("extensions.firegpg.");
+	var value = prefs.getCharPref("default_private_key"); // get a pref
+
+	return value;
 }
 
 /*
- * TODO: description
+ * Function who return a key (for crypts)
  */
 function getAKey() {
-	// TODO describe?
+	
 	return "B6B2F3E3";
 }
 
