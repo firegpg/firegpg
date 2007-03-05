@@ -69,7 +69,10 @@ var FireGPG_GPG = {
 		if(result.indexOf("SIG_CREATED") == "-1") {
 			// We alert the user
 			if(result.indexOf("BAD_PASSPHRASE") != "-1")
+			{
 				alert(i18n.getString("signFailledPassword"));
+				eraseSavedPassword();
+			}
 			else
 				alert(i18n.getString("signFailled"));
 		} 
@@ -208,7 +211,10 @@ var FireGPG_GPG = {
 			// We alert the user
 			// We alert the user
 			if(result.indexOf("BAD_PASSPHRASE") != "-1")
+			{
 				alert(i18n.getString("dcryptFailledPassword"));
+				eraseSavedPassword();
+			}
 			else
 				alert(i18n.getString("dcryptFailled"));
 		} 

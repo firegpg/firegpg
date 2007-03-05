@@ -45,8 +45,8 @@ const TMP_FILES = "fgpg_tmpFile";
 const WRITE_MODE = 0x02 | 0x08 | 0x20;
 const WRITE_PERMISSION = 0600;
 
-var savedPassword = "testtest"; /* password */
-var selfKey = "B6B2F3E3";       /* the default private key ID */
+var savedPassword = ""; /* password */
+
 
 /*
  * Show 'text' in a dialog.
@@ -65,6 +65,10 @@ function showText(text)
  *  {password: "password", save_password: true/false}
  */
 function getPassword(question, save_password) {
+	
+	
+	
+
 	var params = {password: '', save_password: ((save_password == undefined) ? true : save_password), 
 	              result: false, question: question};
 
@@ -73,8 +77,7 @@ function getPassword(question, save_password) {
 	dlg.focus();
 
 	if(params.result) {
-		if(params.save_password) 
-			savedPassword = params.password;
+		
 		return params;
 	}
 
@@ -86,12 +89,39 @@ function getPassword(question, save_password) {
  *   {password: "the password", save_password: "save password ?"}
  */
 function getPrivateKeyPassword() {
+	
+	if (savedPassword != "")
+		return savedPassword;
+
 	var question = document.getElementById('firegpg-strings').
 	                        getString('passwordDialogEnterPrivateKey');
 
 	var result = getPassword(question, true);
-	/* TODO save or not the password, and returned before showing dialog */
+
+	if(result.save_password) 
+	{
+		savedPassword = result.password;
+		document.getElementById('firegpg-menu-memo-pop').style.display = '';
+		document.getElementById('firegpg-menu-memo-menu').style.display = '';
+		try {
+		document.getElementById('firegpg-menu-memo-tool').style.display = '';
+		}
+		catch (e) { }
+	}
+	
 	return result.password;
+}
+
+/* This function erase the memorised password (if for exemple a sign failled) */
+function eraseSavedPassword()
+{
+	savedPassword = "";
+	document.getElementById('firegpg-menu-memo-pop').style.display = 'none';
+	document.getElementById('firegpg-menu-memo-menu').style.display = 'none';
+	try {
+	document.getElementById('firegpg-menu-memo-tool').style.display = 'none';
+			}
+		catch (e) { }
 }
 
 /*

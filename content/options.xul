@@ -57,6 +57,9 @@
     <spacer flex="1"/>
     <label id="label_private_keys" value="&label_private_keys.text;"/>
     <listbox id="list_private_keys" rows="4" onselect="privateKeySelected(this)"></listbox>
+
+  
+
   </prefpane>
 </prefwindow>
 

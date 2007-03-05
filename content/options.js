@@ -41,7 +41,6 @@ function getSelectedKey()
 {
 	return document.getElementById('pref_default_private_key').value;
 }
-
 /*
  * This function is called when a private key is selected.
  */

@@ -60,6 +60,7 @@
         <menuitem class="firegpg-menu-dcrypt menuitem-iconic" label="&firegpgMenu.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DCRYPT')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgMenu.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
+<menuitem style="display: none;" id="firegpg-menu-memo-menu" class="firegpg-menu-rease menuitem-iconic" label="&firegpgMenu.labelErase;" oncommand="firegpg.onMenuItemCommand(event,'ERASE')"/>
       </menupopup>
     </menu>
   </menupopup>
@@ -75,6 +76,7 @@
         <menuitem class="firegpg-menu-dcrypt menuitem-iconic" label="&firegpgContext.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DCRYPT')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgContext.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
+        <menuitem style="display: none;" id="firegpg-menu-memo-pop" class="firegpg-menu-rease menuitem-iconic" label="&firegpgContext.labelErase;" oncommand="firegpg.onMenuItemCommand(event,'ERASE')"/>
       </menupopup>
     </menu>
   </popup>
@@ -89,6 +91,8 @@
           <menuitem class="firegpg-menu-dcrypt menuitem-iconic" label="&firegpgToolbar.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DCRYPT')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgToolbar.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
+
+<menuitem style="display: none;" id="firegpg-menu-memo-tool" class="firegpg-menu-rease menuitem-iconic" label="&firegpgToolbar.labelErase;" oncommand="firegpg.onMenuItemCommand(event,'ERASE')"/>
       </menupopup>
     </menu>
   </toolbarpalette>

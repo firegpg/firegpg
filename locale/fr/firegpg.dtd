@@ -19,3 +19,6 @@
 <!ENTITY firegpgToolbar.labelVerif "Verifier">
 <!ENTITY firegpgToolbar.labelDecry "Décrypter">
 <!ENTITY firegpgToolbar.labelOptions "Options">
+<!ENTITY firegpgMenu.labelErase "Effacer le mot de passe mémorisé">
+<!ENTITY firegpgContext.labelErase "Effacer le mot de passe mémorisé">
+<!ENTITY firegpgToolbar.labelErase "Effacer le mot de passe mémorisé">

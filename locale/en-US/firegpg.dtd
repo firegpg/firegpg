@@ -19,3 +19,6 @@
 <!ENTITY firegpgToolbar.labelVerif "Verify">
 <!ENTITY firegpgToolbar.labelDecry "Decrypt">
 <!ENTITY firegpgToolbar.labelOptions "Options">
+<!ENTITY firegpgMenu.labelErase "Clear saved password">
+<!ENTITY firegpgContext.labelErase "Clear saved password">
+<!ENTITY firegpgToolbar.labelErase "Clear saved password">

@@ -73,6 +73,9 @@ var firegpg = {
 			var win = window.open("chrome://firegpg/content/options.xul", 
                       "optionsFiregpg", "chrome,centerscreen"); 
 
+		if (action == "ERASE")
+		   eraseSavedPassword();
+
 	},
 
 	onToolbarButtonCommand: function(e) {
