@@ -51,15 +51,14 @@
       <preference id="pref_default_private_key" name="extensions.firegpg.default_private_key" type="string"/>
     </preferences>
 
-    <checkbox id="check_gmail_enabled" preference="pref_gmail_enabled" label="&check_gmail_enabled.label;" 
-      accesskey="&check_gmail_enabled.accesskey;"/>
+    <checkbox id="check_gmail_enabled" preference="pref_gmail_enabled" 
+              label="&check_gmail_enabled.label;" 
+              accesskey="&check_gmail_enabled.accesskey;"/>
+    <checkbox id="check_show_firegpg_website" label="&"/>
 
     <spacer flex="1"/>
     <label id="label_private_keys" value="&label_private_keys.text;"/>
     <listbox id="list_private_keys" rows="4" onselect="privateKeySelected(this)"></listbox>
-
-  
-
   </prefpane>
 </prefwindow>
 

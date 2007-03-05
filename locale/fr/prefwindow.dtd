@@ -1,5 +1,5 @@
 <!ENTITY prefwindow.title "Options de FireGPG">
-<!ENTITY pane1.title "FireGPG Options de">
-<!ENTITY check_gmail_enabled.label "Support de GMail">
+<!ENTITY pane1.title "Options de FireGPG">
+<!ENTITY check_gmail_enabled.label "Support GMail">
 <!ENTITY check_gmail_enabled.accesskey "G">
-<!ENTITY label_private_keys.text "Clé privée par default :">
+<!ENTITY label_private_keys.text "Clé privée par défaut :">
