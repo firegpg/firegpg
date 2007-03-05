@@ -46,7 +46,7 @@ const WRITE_MODE = 0x02 | 0x08 | 0x20;
 const WRITE_PERMISSION = 0600;
 const WRITE_PERMISSION_R = 0777;
 
-var savedPassword = "testtest"; /* password */
+var savedPassword = ""; /* password */
 
 /*
  * Show 'text' in a dialog.
