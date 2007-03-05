@@ -44,6 +44,7 @@ const TMP_DIRECTORY = "TmpD";
 const TMP_FILES = "fgpg_tmpFile";
 const WRITE_MODE = 0x02 | 0x08 | 0x20;
 const WRITE_PERMISSION = 0600;
+const WRITE_PERMISSION_R = 0777;
 
 var savedPassword = ""; /* password */
 
@@ -154,9 +155,21 @@ function getTmpDir() {
 function getTmpFile() {
 	var fileobj = getTmpDir();
 	fileobj.append(TMP_FILES);
-	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0600 /* TODO use const for permissions ? */);
+	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, WRITE_PERMISSION );
 	return fileobj.path;
 }
+
+/*
+ * Get an unique temporary file name, who can be executed
+ * The path + filename is returned.
+ */
+function getTmpFileRunning() {
+	var fileobj = getTmpDir();
+	fileobj.append(TMP_FILES);
+	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, WRITE_PERMISSION_R);
+	return fileobj.path;
+}
+
 
 /*
  * Remove a file.
@@ -226,6 +239,23 @@ function getFromFile(filename) {
 		return '';
 	}
 }
+
+//For get an content from any where (like chrome://)
+function getContents(aURL){
+  var ioService=Components.classes["@mozilla.org/network/io-service;1"]
+    .getService(Components.interfaces.nsIIOService);
+  var scriptableStream=Components
+    .classes["@mozilla.org/scriptableinputstream;1"]
+    .getService(Components.interfaces.nsIScriptableInputStream);
+
+  var channel=ioService.newChannel(aURL,null,null);
+  var input=channel.open();
+  scriptableStream.init(input);
+  var str=scriptableStream.read(input.available());
+  scriptableStream.close();
+  input.close();
+  return str;
+} 
 
 /*
  * Run a command

@@ -50,20 +50,19 @@ var FireGPG_GPGLin = {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg
-
+		var tmpRun = getTmpFileRunning();
+	
 		putIntoFile(tmpInput,texte); // Temp
-
-		// Get plugin's localisation
-		var ext = Components.classes[nsIExtensionManager_CONRACTID].
-		                     getService(Components.interfaces.nsIExtensionManager).
-		                     getInstallLocation(idAppli).
-		                     getItemLocation(idAppli); 
 
 		// The file already exist, but GPG don't work if he exist, so we del it.
 		removeFile(tmpOutput);
 
 		// We lanch gpg
-		runCommand(ext.path + "/content/run.sh",
+		var running = getContents("chrome://firegpg/content/run.sh")
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
 		           "gpg " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
 		           " --default-key " + keyID + 
@@ -71,6 +70,7 @@ var FireGPG_GPGLin = {
 		           " --passphrase " + password +
 				   " --comment " +  comment +
 		           " --clearsign " + tmpInput);
+
 	
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -85,6 +85,7 @@ var FireGPG_GPGLin = {
 		removeFile(tmpInput);
 		removeFile(tmpStdOut);
 		removeFile(tmpOutput);
+		removeFile(tmpRun);
 
 		return result2;
 	},
@@ -93,17 +94,16 @@ var FireGPG_GPGLin = {
 	verify: function(text) {
 		var tmpInput = getTmpFile();  // Signed data
 		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
 
 		putIntoFile(tmpInput,text); // TMP
 
-		// Get plugin's localisation
-		var ext = Components.classes[nsIExtensionManager_CONRACTID].
-		                     getService(Components.interfaces.nsIExtensionManager).
-		                     getInstallLocation(idAppli).
-		                     getItemLocation(idAppli); 
+		// We lanch gpg
+		var running = getContents("chrome://firegpg/content/run.sh")
 
-		// We lauch GPG
-		runCommand(ext.path + "/content/run.sh",
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
 		           "gpg " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
 		           " --verify " + tmpInput);
@@ -114,6 +114,7 @@ var FireGPG_GPGLin = {
 		// We delete tempory files
 		removeFile(tmpInput);
 		removeFile(tmpStdOut);
+		removeFile(tmpRun);
 
 		// We return result
 		return result;
@@ -122,20 +123,21 @@ var FireGPG_GPGLin = {
 	// List differents keys
 	listkey: function(onlyPrivate) {
 		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
 
-		// Get plugin's localisation
-		var ext = Components.classes[nsIExtensionManager_CONRACTID].
-		                     getService(Components.interfaces.nsIExtensionManager).
-		                     getInstallLocation(idAppli).
-		                     getItemLocation(idAppli); 
+		
 
 		var mode = "--list-keys";
 
 		if (onlyPrivate == true)
 			mode = "--list-secret-keys";
 
-		// we lauch GPG
-		runCommand(ext.path + "/content/run.sh",
+		// We lanch gpg
+		var running = getContents("chrome://firegpg/content/run.sh")
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
 		           "gpg " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons " + mode);
 
@@ -144,6 +146,7 @@ var FireGPG_GPGLin = {
 
 		// We delete tempory files
 		removeFile(tmpStdOut);
+		removeFile(tmpRun);
 
 		// We return result
 		return result;
@@ -156,20 +159,20 @@ var FireGPG_GPGLin = {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
 
 		putIntoFile(tmpInput,texte); // Temp
 
-		// Get plugin's localisation
-		var ext = Components.classes[nsIExtensionManager_CONRACTID].
-		                     getService(Components.interfaces.nsIExtensionManager).
-		                     getInstallLocation(idAppli).
-		                     getItemLocation(idAppli); 
-
+		
 		// The file already exist, but GPG don't work if he exist, so we del it.
 		removeFile(tmpOutput);
 
 		// We lanch gpg
-		runCommand(ext.path + "/content/run.sh",
+		var running = getContents("chrome://firegpg/content/run.sh")
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
 		           "gpg " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
 		           " -r " + keyID + 
@@ -190,7 +193,8 @@ var FireGPG_GPGLin = {
 		removeFile(tmpInput);
 		removeFile(tmpStdOut);
 		removeFile(tmpOutput);
-
+		removeFile(tmpRun);		
+		
 		return result2;
 	},
 
@@ -201,20 +205,20 @@ var FireGPG_GPGLin = {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
 
 		putIntoFile(tmpInput,texte); // Temp
 
-		// Get plugin's localisation
-		var ext = Components.classes[nsIExtensionManager_CONRACTID].
-		                     getService(Components.interfaces.nsIExtensionManager).
-		                     getInstallLocation(idAppli).
-		                     getItemLocation(idAppli); 
-
+		
 		// The file already exist, but GPG don't work if he exist, so we del it.
 		removeFile(tmpOutput);
 
 		// We lanch gpg
-		runCommand(ext.path + "/content/run.sh",
+		var running = getContents("chrome://firegpg/content/run.sh")
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
 		           "gpg " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
 		           " --passphrase " + password +
@@ -234,6 +238,7 @@ var FireGPG_GPGLin = {
 		removeFile(tmpInput);
 		removeFile(tmpStdOut);
 		removeFile(tmpOutput);
+		removeFile(tmpRun);
 
 		return result2;
 	}

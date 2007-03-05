@@ -4,6 +4,9 @@
 	* Implementation of getSelfKey(), for get the default key !
 	* Full implementation for saving the password, with a menu for erase it.
 	* Come back to default UUID
+	* Fixed problems with complied packtage !
+	* Version 0.1 Packed, and uploaded to the server !
+	* Fixed a bug in select system who didn't look at \n in some texts
 
 2007-03-05  Achraf cherti
 	* new function getPrivateKeyPassword() (with i18n support), to replace

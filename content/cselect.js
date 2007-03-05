@@ -56,7 +56,9 @@ var firegpgSelect = {
 			}
 			catch (e) {
 			}
-		}	
+		}
+		else
+			value = selObj.getRangeAt(0).toString(); //Fix a problem
 		
 		return value;
 	},
