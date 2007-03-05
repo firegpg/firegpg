@@ -39,8 +39,8 @@
  */
 function onLoad(win)
 {
-	document.getElementById('password').value = window.arguments[0].password;
-	document.getElementById('save_password').checked = (window.arguments[0].save_password) ? 'on' : 'off';
+	document.getElementById('password-textbox').value = window.arguments[0].password;
+	document.getElementById('save-password-checkbox').checked = (window.arguments[0].save-password-checkbox) ? 'on' : 'off';
 	document.getElementById('description').value = window.arguments[0].question;
 }
 
@@ -49,7 +49,7 @@ function onLoad(win)
  */
 function onAccept()
 {
-	var password = document.getElementById('password').value;
+	var password = document.getElementById('password-textbox').value;
 
 	if(password == '') {
 		/* TODO how to translate this ? */
@@ -61,10 +61,10 @@ function onAccept()
 
 	window.arguments[0].result = true;
 	
-	if(document.getElementById('save_password').checked)
-		window.arguments[0].save_password = true;
+	if(document.getElementById('save-password-checkbox').checked)
+		window.arguments[0].save-password-checkbox = true;
 	else
-		window.arguments[0].save_password = false;
+		window.arguments[0].save-password-checkbox = false;
 	
 	return true;
 }

@@ -47,12 +47,10 @@ const WRITE_PERMISSION = 0600;
 
 var savedPassword = ""; /* password */
 
-
 /*
  * Show 'text' in a dialog.
  */
-function showText(text)
-{
+function showText(text) {
 	window.openDialog('chrome://firegpg/content/showtext.xul',
 	                  '', 'chrome, dialog, modal, resizable=yes', 
 					  text).focus();
@@ -65,10 +63,6 @@ function showText(text)
  *  {password: "password", save_password: true/false}
  */
 function getPassword(question, save_password) {
-	
-	
-	
-
 	var params = {password: '', save_password: ((save_password == undefined) ? true : save_password), 
 	              result: false, question: question};
 
@@ -89,7 +83,6 @@ function getPassword(question, save_password) {
  *   {password: "the password", save_password: "save password ?"}
  */
 function getPrivateKeyPassword() {
-	
 	if (savedPassword != "")
 		return savedPassword;
 
@@ -98,15 +91,14 @@ function getPrivateKeyPassword() {
 
 	var result = getPassword(question, true);
 
-	if(result.save_password) 
-	{
+	if(result.save_password) {
 		savedPassword = result.password;
 		document.getElementById('firegpg-menu-memo-pop').style.display = '';
 		document.getElementById('firegpg-menu-memo-menu').style.display = '';
 		try {
-		document.getElementById('firegpg-menu-memo-tool').style.display = '';
+			document.getElementById('firegpg-menu-memo-tool').style.display = '';
 		}
-		catch (e) { }
+		catch (e) {}
 	}
 	
 	return result.password;
