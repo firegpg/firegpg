@@ -119,7 +119,7 @@ var FireGPG_GPG = {
 			// [2] -> Comment of key	
 			// [3] -> Email of ovners'key
 
-			alert(i18n.getString("verifSuccess") + " " + infos[1] + " " + infos[2] + " " + infos[3]);
+			alert(i18n.getString("verifSuccess") + " " + infos[1] + " " + infos[2] + " " +  infos[3]);
 		}
 	},
 
