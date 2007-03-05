@@ -75,7 +75,7 @@ function getPassword(question, save_password) {
 	if(params.result) {
 		if(params.save_password) 
 			savedPassword = params.password;
-		return params.password;
+		return params;
 	}
 
 	return null;

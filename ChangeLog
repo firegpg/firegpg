@@ -1,3 +1,6 @@
+2007-03-04  Maximilien Cuony
+	* Fix an error in getPrivateKeyPassword()
+
 2007-03-05  Achraf cherti
 	* new function getPrivateKeyPassword() (with i18n support), to replace
 	  the generic function getPassword(question, save_password)
