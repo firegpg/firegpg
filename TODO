@@ -14,3 +14,4 @@ Tâches d'Achraf :
 	- dans showtext, au lieu de "The result of the operation" afficher un
 	  texte dynamique selon l'opération. Par exemple "The result of the 
 	  verification".
+	- option pour choisir le chemin de gpg
