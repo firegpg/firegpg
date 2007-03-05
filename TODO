@@ -1,11 +1,8 @@
 Tâches libres :
-	- Fonctions pour ajouter le support GPG dans le webmail de GMail
+	
 
 Tâches de Maximilien :
-	- fonction pour chiffrer un texte. (finir)
-	- fonction pour déchiffrer un texte. (finir)
-	- fonction pour signer un texte. (finir)
-	- fonction pour tester la signature d'un texte. (finir)
+	- Fonctions pour ajouter le support GPG dans le webmail de GMail
 
 Tâches d'Achraf :
 	- Boite de dialogue pour sélectionner la clé publique

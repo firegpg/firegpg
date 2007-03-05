@@ -1,5 +1,6 @@
 2007-03-04  Maximilien Cuony
 	* Fix an error in getPrivateKeyPassword()
+	* Cgpg class in now finish !
 
 2007-03-05  Achraf cherti
 	* new function getPrivateKeyPassword() (with i18n support), to replace

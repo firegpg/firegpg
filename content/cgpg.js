@@ -74,10 +74,15 @@ var FireGPG_GPG = {
 				alert(i18n.getString("signFailled"));
 		} 
 		else {
-			// If he works too,
-			alert(i18n.getString("signSuccess"));
-			// The signed text
-			alert(crypttexte);
+			//We test is the selection in editable :
+			if (firegpgSelect.isSelectionEdit())
+			{	//If yes, we edit this selection with the new text
+				firegpgSelect.setSelection(crypttexte);
+			}
+			else
+			{	//Else, we show a windows with the result
+				showText(crypttexte);
+			}
 		}
 	},
 
@@ -111,9 +116,7 @@ var FireGPG_GPG = {
 			// [2] -> Comment of key	
 			// [3] -> Email of ovners'key
 
-			// TODO
-			// Tempory, we sould use return
-			alert(i18n.getString("verifSuccess")+ " " + infos[0] + " " + infos[2] + " " + infos[3]);
+			alert(i18n.getString("verifSuccess") + " " + infos[1] + " " + infos[2] + " " + infos[3]);
 		}
 	},
 
@@ -170,10 +173,15 @@ var FireGPG_GPG = {
 				alert(i18n.getString("cryptFailled"));
 		} 
 		else {
-			// If he works too,
-			alert(i18n.getString("cryptSuccess"));
-			// The crypted text
-			alert(crypttexte);
+			//We test is the selection in editable :
+			if (firegpgSelect.isSelectionEdit())
+			{	//If yes, we edit this selection with the new text
+				firegpgSelect.setSelection(crypttexte);
+			}
+			else
+			{	//Else, we show a windows with the result
+				showText(crypttexte);
+			}
 		}
 	},
 
@@ -205,10 +213,15 @@ var FireGPG_GPG = {
 				alert(i18n.getString("dcryptFailled"));
 		} 
 		else {
-			// If he works too,
-			alert(i18n.getString("dcryptSuccess"));
-			// The crypted text
-			alert(crypttexte);
+			//We test is the selection in editable :
+			if (firegpgSelect.isSelectionEdit())
+			{	//If yes, we edit this selection with the new text
+				firegpgSelect.setSelection(crypttexte);
+			}
+			else
+			{	//Else, we show a windows with the result
+				showText(crypttexte);
+			}
 		}
 	}
 };
