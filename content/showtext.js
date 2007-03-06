@@ -42,7 +42,9 @@ function onLoad(win)
 	if(window.arguments == undefined)
 		return;
 
-	document.getElementById('text').value = window.arguments[0];
+	document.getElementById('text').value = window.arguments[0].text;
+	document.getElementById('description').value = window.arguments[0].description;
+	win.title = window.arguments[0].title;
 }
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

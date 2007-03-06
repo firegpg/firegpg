@@ -1,6 +1,8 @@
 2007-03-06  Achraf cherti
 	* list dialog (list.xul, list.js, list*dtd) implemented.
 	* selectPublicKey() implemented (it show a dialog with all keys).
+	* two optional arguments are added to showText() : description
+	  and title.
 
 2007-03-05  Maximilien Cuony
 	* Fix an error in getPrivateKeyPassword()

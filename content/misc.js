@@ -73,10 +73,21 @@ function choosePublicKey()
 /*
  * Show 'text' in a dialog.
  */
-function showText(text) {
+function showText(text, description /* optional */, title /* optional */) {
+	/* default description and title values */
+	var i18n = document.getElementById("firegpg-strings");
+
+	/* setting params */
+	var params = {text: text, title: title, description: description};
+	if(title == undefined)
+		params.title = i18n.getString('showTextDefaultTitle');
+	if(description == undefined) 
+		params.description = i18n.getString('showTextDefaultDescription');
+
+	/* open the dialog */
 	window.openDialog('chrome://firegpg/content/showtext.xul',
 	                  '', 'chrome, dialog, modal, resizable=yes', 
-	                  text).focus();
+	                  params).focus();
 }
 
 /*

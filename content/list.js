@@ -58,8 +58,7 @@ function onLoad(win)
 	document.getElementById('description').value = description;
 
 	// title
-	var title = window.arguments[0].title;
-	document.getElementById('list-dialog').title = title;
+	win.title = window.arguments[0].title; 
 }
 
 /* 

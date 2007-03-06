@@ -36,12 +36,12 @@
   - ***** END LICENSE BLOCK ***** -->
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<!DOCTYPE dialog SYSTEM "chrome://firegpg/locale/showtext.dtd">
-<dialog title="&title;" orient="vertical" autostretch="always" 
-        onload="sizeToContent(); onLoad(this);" buttons="accept"
+<dialog id="showtext-dialog" title="default title" orient="vertical" 
+        autostretch="always" onload="sizeToContent(); onLoad(this);" 
+        buttons="accept"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script src="showtext.js"/>
-  <description control="text" id="description" value="&description;"/>
+  <description control="text" id="description" value="default description"/>
   <textbox id="text" multiline="true" rows="25" cols="80" readonly="true"/>
 </dialog>
 

@@ -38,7 +38,6 @@
 
 var firegpg = {
 	onLoad: function() {
-		alert(choosePublicKey()); /* TODO remove this */
 		// initialization code
 		this.initialized = true;
 		this.strings = document.getElementById("firegpg-strings");
