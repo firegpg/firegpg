@@ -41,6 +41,7 @@
 	* new function getPassword() to get the private key password.
 	* new dialog to show texts (showtext.xul)
 	* new functions to show a text in showtext.js and misc.js (showText)
+	* i18n support for password dialog
 
 2007-03-04  Maximilien Cuony
 	* Some modification for errors of improvements of code's style

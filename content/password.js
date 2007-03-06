@@ -58,8 +58,8 @@ function onAccept()
 	var password = document.getElementById('password-textbox').value;
 
 	if(password == '') {
-		/* TODO I must translate this ! */
-		alert('You must enter the password !');
+		var i18n = document.getElementById("firegpg-strings");
+		alert(i18n.getString('youMustEnterPassword'));
 		return false;
 	}
 	else
