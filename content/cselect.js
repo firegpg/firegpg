@@ -36,48 +36,111 @@
 
 // Class to handle selection
 var Selection = {
+
+	/* Recherche une selection dans une frame */
+	getFrame: function(frames) {
+		var i;
+		var selObj;	
+		var value = "";
+		
+		for(i=0; i < frames.length; ++i)
+			{
+				
+				try {				
+					var tmpVal = frames[i].getSelection().toString();
+					
+													
+					if (tmpVal == "") // != don't work...
+					{
+					}
+					else
+					{
+						value = tmpVal;
+						selObj = frames[i].getSelection();
+					}
+				}
+				catch (e) { }
+			}
+
+		if (value == "")	
+		{
+			
+			for(i=0; i < frames.length; ++i)
+				{
+					try {				
+						tmpSelselObj = this.getFrame(frames[i].frames);
+
+						if (tmpSelselObj.toString() == "")
+						{ } 
+						else 
+						{
+							selObj = tmpSelselObj;
+						}
+					}
+					catch (e) { }
+				}
+
+		}
+
+		return selObj;
+
+	},
+
 	/* 
 	 * Return actual selection.
 	 */
 	get: function() {
+		var i;
+		
 		// Select a text from the actual document
 		var selObj = getBrowser().contentWindow.getSelection();
-
+		
 		// value is returned
 		var value = selObj.toString();
+
+		//If no text is selected, we try to get it from frames
+		if(value == "") {
+			try { 
+				selObj = this.getFrame(getBrowser().contentWindow.frames);
+				value = selObj.toString();
+			}
+			catch (e) {
+			}
+		}
+		
 		
 		// If the text is not selected, we try to get it
 		// from inputs and textareas
 		if(value == "") {
 			try {
 				var focused = document.commandDispatcher.focusedElement;
+				
 				var value = focused.value;
 				value = value.substring(focused.selectionStart,focused.selectionEnd);
 			}
 			catch (e) {
 			}
+
+			
+
 		}
 		// the text is selected !
 		else {
+		
+			
 			value = selObj.getRangeAt(0); 
-			documentFragment = value.cloneContents();
+			var documentFragment = value.cloneContents();
 
      		var s = new XMLSerializer();
 			var d = documentFragment;
 			var str = s.serializeToString(d);
 			
-			var reg=new RegExp("<br />", "gi");
+			var reg=new RegExp("<br[^>]*>", "gi");
 			str = str.replace(reg,"\n");
-			reg = new RegExp("<br/>", "gi");
-			str = str.replace(reg,"\n");
-
-			var reg = new RegExp("<br>", "gi");
-			str = str.replace(reg,"\n");
-			reg=new RegExp("<[^>]+>", "g");
-			str = str.replace(reg, "");
-
+			
 			value = str;
 		}
+		
 		
 		return value;
 	},

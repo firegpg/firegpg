@@ -200,7 +200,7 @@ var GPG = {
 			alert(i18n.getString("noData"));
 			return;
 		}
-
+		
 		// Needed for a crypt
 		var keyID = choosePublicKey();
 
