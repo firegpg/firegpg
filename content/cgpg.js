@@ -157,7 +157,7 @@ var GPG = {
 		var text = Selection.get();
 
 		// Needed for a crypt
-		var keyID = getAKey();
+		var keyID = choosePublicKey();
 
 		// We get the result
 		var result = this.GPGAccess.crypt(text, keyID);
@@ -225,6 +225,16 @@ var GPG = {
 				showText(crypttext);
 			}
 		}
+	},
+
+	selfTest: function() {
+
+		// For i18n
+		var i18n = document.getElementById("firegpg-strings");
+
+		if (this.GPGAccess.selfTest() == false)
+			alert(i18n.getString("selfTestFailled"));
+			
 	}
 };
 

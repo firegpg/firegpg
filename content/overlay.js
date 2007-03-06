@@ -38,6 +38,9 @@
 
 var firegpg = {
 	onLoad: function() {
+
+		GPG.selfTest();
+
 		// initialization code
 		this.initialized = true;
 		this.strings = document.getElementById("firegpg-strings");

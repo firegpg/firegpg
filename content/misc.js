@@ -173,14 +173,6 @@ function getSelfKey() {
 }
 
 /*
- * Function who return a key (for crypts).
- */
-function getAKey() {
-	/* TODO it's useless ? */
-	return "B6B2F3E3";
-}
-
-/*
  * Get the path of a tmp file.
  * The path is returned.
  */

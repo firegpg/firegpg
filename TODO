@@ -4,7 +4,7 @@ Tâches libres :
 	  ne plus lui dire que son mot de passe est incorrect.
 	- Il faudrait vérifier ou Windows Privacity Tool (dernière version) 
 	  installe Gpg, et si celui-ci est utilisable !
-	- Si oui, implémenter cgpglin
+	- Si oui, implémenter cgpgwin
 	
 Tâches de Maximilien :
 	- Fonctions pour ajouter le support GPG dans le webmail de GMail

@@ -1,3 +1,7 @@
+2007-03-06 Maximilien Cuony
+	* Implement a test for detect presence of GPG
+	* selectPublicKey implemented in cgpg
+
 2007-03-06  Achraf cherti
 	* list dialog (list.xul, list.js, list*dtd) implemented.
 	* selectPublicKey() implemented (it show a dialog with all keys).

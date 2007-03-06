@@ -241,6 +241,36 @@ var GPGLin = {
 		removeFile(tmpRun);
 
 		return result2;
+	},
+
+	/* This if we can work with GPG */
+	selfTest: function() {
+
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.sh")
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
+		           "gpg " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+		           " --version");
+
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// We delete tempory files
+		removeFile(tmpStdOut);
+		removeFile(tmpRun);
+
+		// If the work Foundation is present, we can think that gpg is present ("... Copyright (C) 2006 Free Software Foundation, Inc. ...")
+		if (result.indexOf("Foundation") == -1)
+			return false;
+	
+		return true;
 	}
 };
 
