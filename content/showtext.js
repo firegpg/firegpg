@@ -39,6 +39,9 @@
  */
 function onLoad(win)
 {
+	if(window.arguments == undefined)
+		return;
+
 	document.getElementById('text').value = window.arguments[0];
 }
 

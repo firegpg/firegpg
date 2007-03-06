@@ -17,10 +17,10 @@
 	* Shorter version of names : firegpgSelect -> Selection, 
 	  Selection.isSelectionEditable -> isEditable, getSelection -> get,
 	  setSelection -> set.
-	* some little modifications in the source code
-	* new optional argument in getPrivateKeyPassword : useSaverPassword.
+	* new optional argument in getPrivateKeyPassword : savePassword.
 	* FireGPG_GPG* -> GPG (because it's shorter and we have the already the namespace)
 	* some orthography errors fixed in the french/english locales
+	* all warnings/errors found are fixed (password.xul, password.js...)
 
 2007-03-04  Achraf cherti
 	* the default private key is saved and selected by default when

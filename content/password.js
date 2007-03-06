@@ -39,8 +39,11 @@
  */
 function onLoad(win)
 {
+	if(window.arguments == undefined)
+		return;
+
 	document.getElementById('password-textbox').value = window.arguments[0].password;
-	document.getElementById('save-password-checkbox').checked = (window.arguments[0].save-password-checkbox) ? 'on' : 'off';
+	document.getElementById('save-password-checkbox').checked = (window.arguments[0].save_password) ? 'on' : 'off';
 	document.getElementById('description').value = window.arguments[0].question;
 }
 
@@ -49,10 +52,13 @@ function onLoad(win)
  */
 function onAccept()
 {
+	if(window.arguments == undefined)
+		return true;
+	
 	var password = document.getElementById('password-textbox').value;
 
 	if(password == '') {
-		/* TODO how to translate this ? */
+		/* TODO I must translate this ! */
 		alert('You must enter the password !');
 		return false;
 	}
@@ -62,9 +68,9 @@ function onAccept()
 	window.arguments[0].result = true;
 	
 	if(document.getElementById('save-password-checkbox').checked)
-		window.arguments[0].save-password-checkbox = true;
+		window.arguments[0].save_password = true;
 	else
-		window.arguments[0].save-password-checkbox = false;
+		window.arguments[0].save_password = false;
 	
 	return true;
 }

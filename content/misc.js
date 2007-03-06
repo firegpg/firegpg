@@ -99,6 +99,8 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */) {
 	                        getString('passwordDialogEnterPrivateKey');
 
 	var result = getPassword(question, true);
+	if(result == null)
+		return '';
 
 	if(result.save_password) {
 		savedPassword = result.password;
