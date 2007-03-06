@@ -235,6 +235,27 @@ var GPG = {
 		if (this.GPGAccess.selfTest() == false)
 			alert(i18n.getString("selfTestFailled"));
 			
+	},
+
+	/*
+	* Function to import a public key.
+	*/
+	import: function() {
+		var text = Selection.get();
+
+		// We get the result
+		var result = this.GPGAccess.import(text);
+
+		// For i18n
+		var i18n = document.getElementById("firegpg-strings");
+		
+		// If the crypt failled
+		if(result.indexOf("IMPORT_OK") == "-1") {
+				alert(i18n.getString("importFailed"));
+		} 
+		else {
+				alert(i18n.getString("importOk"));
+		}
 	}
 };
 

@@ -271,6 +271,36 @@ var GPGLin = {
 			return false;
 	
 		return true;
+	},
+
+	// Import a key
+	import: function(text) {
+		var tmpInput = getTmpFile();  // Key
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
+
+		putIntoFile(tmpInput,text); // TMP
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.sh")
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
+		           "gpg " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+		           " --import " + tmpInput);
+
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpStdOut);
+		removeFile(tmpRun);
+
+		// We return result
+		return result;
 	}
 };
 

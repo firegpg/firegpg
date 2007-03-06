@@ -22,3 +22,6 @@
 <!ENTITY firegpgMenu.labelErase "Clear saved password">
 <!ENTITY firegpgContext.labelErase "Clear saved password">
 <!ENTITY firegpgToolbar.labelErase "Clear saved password">
+<!ENTITY firegpgMenu.labelImport "Import">
+<!ENTITY firegpgContext.labelImport "Import">
+<!ENTITY firegpgToolbar.labelImport "Import">

@@ -22,3 +22,6 @@
 <!ENTITY firegpgMenu.labelErase "Effacer le mot de passe mémorisé">
 <!ENTITY firegpgContext.labelErase "Effacer le mot de passe mémorisé">
 <!ENTITY firegpgToolbar.labelErase "Effacer le mot de passe mémorisé">
+<!ENTITY firegpgMenu.labelImport "Importer">
+<!ENTITY firegpgContext.labelImport "Importer">
+<!ENTITY firegpgToolbar.labelImport "Importer">
