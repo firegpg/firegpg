@@ -134,9 +134,29 @@ var Selection = {
      		var s = new XMLSerializer();
 			var d = documentFragment;
 			var str = s.serializeToString(d);
-			
+					
+			var reg=new RegExp("<br[^>]*>\n", "gi"); //Pour pas faire des doubles retours (surviens sur certains sites)
+			str = str.replace(reg,"\n");
+
+			var reg=new RegExp("<br>\n", "gi");
+			str = str.replace(reg,"\n");
+
+			var reg=new RegExp("\n<br[^>]*>", "gi"); //Pour pas faire des doubles retours (surviens sur certains sites)
+			str = str.replace(reg,"\n");
+
+			var reg=new RegExp("\n<br>", "gi");
+			str = str.replace(reg,"\n");
+
 			var reg=new RegExp("<br[^>]*>", "gi");
 			str = str.replace(reg,"\n");
+			var reg=new RegExp("<br>", "gi");
+			str = str.replace(reg,"\n");
+
+			var reg=new RegExp("<script[^>]*>[^<]*</script[^>]*>", "gi"); //Élimination des scripts
+			str = str.replace(reg,"\n");
+   					
+			reg=new RegExp("<[^>]+>", "g");  	  // Élimination des balises HTML
+            str = str.replace(reg, "");
 			
 			value = str;
 		}

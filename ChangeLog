@@ -6,6 +6,7 @@
 	* Add a system for detection of valid PGP'blocks
 	* Compatibility with Iframes !!!
 	* Compatibility with gmail !!!
+	* Support for scripts and stranges <br>[\n] in source code of selections !
 
 2007-03-06  Achraf cherti
 	* list dialog (list.xul, list.js, list*dtd) implemented.
