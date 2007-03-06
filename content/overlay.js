@@ -66,8 +66,8 @@ var firegpg = {
 		if (action == "CRYPT")
 		   GPG.crypt();
 
-		if (action == "DCRYPT")
-		   GPG.dcrypt();
+		if (action == "DECRYPT")
+		   GPG.decrypt();
 
 		if (action == "OPTS")
 			var win = window.open("chrome://firegpg/content/options.xul", 

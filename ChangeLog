@@ -17,6 +17,7 @@
 	* Shorter version of names : firegpgSelect -> Selection, 
 	  Selection.isSelectionEditable -> isEditable, getSelection -> get,
 	  setSelection -> set.
+	* dcrypt -> decrypt / DCRYPT -> DECRYPT
 	* new optional argument in getPrivateKeyPassword : savePassword.
 	* FireGPG_GPG* -> GPG (because it's shorter and we have the already the namespace)
 	* some orthography errors fixed in the french/english locales

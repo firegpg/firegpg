@@ -201,7 +201,7 @@ var GPGLin = {
 	/*
 	 * Function to decrypt a text.
 	 */
-	dcrypt: function(texte,password) {
+	decrypt: function(texte,password) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg

@@ -19,8 +19,8 @@
   list-style-image: url("chrome://firegpg/skin/crypt.png");
 }
 
-.firegpg-menu-dcrypt {
-  list-style-image: url("chrome://firegpg/skin/dcrypt.png");
+.firegpg-menu-decrypt {
+  list-style-image: url("chrome://firegpg/skin/decrypt.png");
 }
 
 .firegpg-menu-options {

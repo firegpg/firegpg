@@ -141,9 +141,9 @@ function getSelfKey() {
 
 /*
  * Function who return a key (for crypts).
- * TODO what's the difference with getSelfKey ??! It's useless ?
  */
 function getAKey() {
+	/* TODO it's useless ? */
 	return "B6B2F3E3";
 }
 

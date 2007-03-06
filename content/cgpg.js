@@ -186,9 +186,9 @@ var GPG = {
 	},
 
 	/*
-	* Function for decrypt a text
+	* Function to decrypt a text.
 	*/
-	dcrypt: function() {
+	decrypt: function() {
 		var text = Selection.get();
 
 		// Needed for a decrypt
@@ -196,7 +196,7 @@ var GPG = {
 
 
 		// We get the result
-		var result = this.GPGAccess.dcrypt(text,password);
+		var result = this.GPGAccess.decrypt(text,password);
 		var crypttext = result.output;
 		result = result.sdOut;
 
@@ -208,11 +208,11 @@ var GPG = {
 			// We alert the user
 			if(result.indexOf("BAD_PASSPHRASE") != "-1")
 			{
-				alert(i18n.getString("dcryptFailedPassword"));
+				alert(i18n.getString("decryptFailedPassword"));
 				eraseSavedPassword();
 			}
 			else
-				alert(i18n.getString("dcryptFailed"));
+				alert(i18n.getString("decryptFailed"));
 		} 
 		else {
 			//We test is the selection in editable :
