@@ -3,6 +3,7 @@
 	* selectPublicKey implemented in cgpg
 	* Import system implemented
 	* Add a detection of blanks selections
+	* Add a system for detection of valid PGP'blocks
 
 2007-03-06  Achraf cherti
 	* list dialog (list.xul, list.js, list*dtd) implemented.

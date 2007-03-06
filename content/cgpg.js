@@ -113,6 +113,17 @@ var GPG = {
 			return;
 		}
 
+		//Verify GPG'data presence
+		var firstPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
+		var lastPosition = text.indexOf("-----END PGP SIGNATURE-----");
+
+		if (firstPosition == -1 || lastPosition == -1)
+		{
+			alert(i18n.getString("noGPGData"));
+			return;
+		}
+
+		text = text.substring(firstPosition,lastPosition + ("-----END PGP SIGNATURE-----").length);
 
 		// We get the result
 		var result = this.GPGAccess.verify(text);
@@ -240,6 +251,19 @@ var GPG = {
 			return;
 		}
 	
+		//Verify GPG'data presence
+		var firstPosition = text.indexOf("-----BEGIN PGP MESSAGE-----");
+		var lastPosition = text.indexOf("-----END PGP MESSAGE-----");
+
+		if (firstPosition == -1 || lastPosition == -1)
+		{
+			alert(i18n.getString("noGPGData"));
+			return;
+		}
+
+		text = text.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
+
+
 		// Needed for a decrypt
 		var password = getPrivateKeyPassword();		
 
@@ -306,8 +330,17 @@ var GPG = {
 			return;
 		}
 	
-		
+		//Verify GPG'data presence
+		var firstPosition = text.indexOf("-----BEGIN PGP PUBLIC KEY BLOCK-----");
+		var lastPosition = text.indexOf("-----END PGP PUBLIC KEY BLOCK-----");
 
+		if (firstPosition == -1 || lastPosition == -1)
+		{
+			alert(i18n.getString("noGPGData"));
+			return;
+		}
+
+		text = text.substring(firstPosition,lastPosition + ("-----END PGP PUBLIC KEY BLOCK-----").length);
 
 		// We get the result
 		var result = this.GPGAccess.import(text);
