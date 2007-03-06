@@ -1,4 +1,6 @@
 Tâches libres :
+	- quand l'utilisateur clique sur "annuler" quand un mot de passe lui est demande,
+	  ne plus lui dire que son mot de passe est incorrect.
 	
 Tâches de Maximilien :
 	- Fonctions pour ajouter le support GPG dans le webmail de GMail
