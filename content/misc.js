@@ -49,12 +49,34 @@ const WRITE_PERMISSION_R = 0777;
 var savedPassword = ""; /* the private key password */
 
 /*
+ * Show a dialog (list.xul) to choose the public key.
+ *
+ * null is returned if the public key the public key 
+ * is choosed.
+ */
+function choosePublicKey()
+{
+	var params = {title: '', description: '', list: {}, selected_item: null};
+	var i18n = document.getElementById("firegpg-strings");
+
+	params.title = i18n.getString('choosePublicKeyTitle');
+	params.description = i18n.getString('choosePublicKeyDescription');
+	params.list = GPG.listKeys();
+
+	var dlg = window.openDialog('chrome://firegpg/content/list.xul',
+	                            '', 'chrome, dialog, modal, resizable=yes', 
+	                            params);
+	dlg.focus();
+	return params.selected_item;
+}
+
+/*
  * Show 'text' in a dialog.
  */
 function showText(text) {
 	window.openDialog('chrome://firegpg/content/showtext.xul',
 	                  '', 'chrome, dialog, modal, resizable=yes', 
-					  text).focus();
+	                  text).focus();
 }
 
 /*

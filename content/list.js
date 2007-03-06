@@ -34,50 +34,49 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-/* TODO we need add some comments to describe the code ! */
+/* 
+ * When the list dialog is showed.
+ *
+ * window.arguments[0] will contain this object :
+ *   {description: '', title: '', list: {'ID': 'Label'}, 
+ *    selected_item:'' *the default selected ID* }
+ */
+function onLoad(win)
+{
+	if(window.arguments == undefined)
+		return;
 
-var firegpg = {
-	onLoad: function() {
-		alert(choosePublicKey()); /* TODO remove this */
-		// initialization code
-		this.initialized = true;
-		this.strings = document.getElementById("firegpg-strings");
-		document.getElementById("contentAreaContextMenu").
-		         addEventListener("popupshowing", 
-		                          function(e) { firegpg.showContextMenu(e); }, 
-		                          false);
-	},
+	// the list
+	var list = window.arguments[0].list;
+	var listInDialog = document.getElementById('list');
+	for(var id in list) 
+		listInDialog.appendItem(list[id], id);
+		/* TODO test selected_item and select the item with this id by default ? */
+	
+	// description
+	var description = window.arguments[0].description;
+	document.getElementById('description').value = description;
 
-	showContextMenu: function(event) {
-		// show or hide the menuitem based on what the context menu is on
-		// see http://kb.mozillazine.org/Adding_items_to_menus
-		document.getElementById("context-firegpg").hidden = gContextMenu.onImage;
-	},
+	// title
+	var title = window.arguments[0].title;
+	document.getElementById('list-dialog').title = title;
+}
 
-	onMenuItemCommand: function(e,action) {
-		var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].
-		                               getService(Components.interfaces.nsIPromptService);
-		if (action == "SIGN")
-		   GPG.sign();
-		else if(action == "VERIF")
-		   GPG.verify();
-		else if(action == "CRYPT")
-		   GPG.crypt();
-		else if(action == "DECRYPT")
-		   GPG.decrypt();
-		else if(action == "OPTS")
-			var win = window.open("chrome://firegpg/content/options.xul", 
-			                      "optionsFiregpg", "chrome,centerscreen"); 
-		else if (action == "ERASE")
-			eraseSavedPassword();
-	},
+/* 
+ * If Ok button is pressed.
+ */
+function onAccept()
+{
+	if(window.arguments == undefined)
+		return true;
 
-	onToolbarButtonCommand: function(e) {
-		// just reuse the function above.  you can change this, obviously!
-		firegpg.onMenuItemCommand(e);
-	}
-};
+	var listInDialog = document.getElementById('list');
+	window.arguments[0].selected_item = listInDialog.selectedItem.value;
 
-window.addEventListener("load", function(e) { firegpg.onLoad(e); }, false);
+	/* TODO if no item selected, don't hide window and say it's important 
+	  to select an item ! */
+
+	return true;
+}
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

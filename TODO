@@ -10,7 +10,6 @@ Tâches de Maximilien :
 	- Il faudrait faire le menu pour l'import d'une clé !
 	- Il faudrait faire une vérification au démarage que GPG est utilisable (avec un --version)
 Tâches d'Achraf :
-	- Boite de dialogue pour sélectionner la clé publique (urgent ;))
 	- dans showtext, au lieu de "The result of the operation" afficher un
 	  texte dynamique selon l'opération. Par exemple "The result of the 
 	  verification".
