@@ -1,15 +1,20 @@
 Tâches libres :
 	- quand l'utilisateur clique sur "annuler" quand un mot de passe lui est demande,
 	  ne plus lui dire que son mot de passe est incorrect.
+	- Il faudrait vérifier ou Windows Privacity Tool (dernière version) installe Gpg, et si celui-ci est utilisable !
+	- Si oui, implémenter cgpglin
 	
 Tâches de Maximilien :
 	- Fonctions pour ajouter le support GPG dans le webmail de GMail
-
+	- Il faut absolument être compatible avec Gmail avec le système de la touche droite
+	- Il faudrait faire le menu pour l'import d'une clé !
+	- Il faudrait faire une vérification au démarage que GPG est utilisable (avec un --version)
 Tâches d'Achraf :
-	- Boite de dialogue pour sélectionner la clé publique
+	- Boite de dialogue pour sélectionner la clé publique (urgent ;))
 	- dans showtext, au lieu de "The result of the operation" afficher un
 	  texte dynamique selon l'opération. Par exemple "The result of the 
 	  verification".
 	- option pour choisir le chemin de gpg
 	- Finir tous mes TODO dans le code :)
 	- write the default options in defaults/preferences
+	
