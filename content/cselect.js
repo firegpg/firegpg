@@ -41,7 +41,7 @@ var Selection = {
 	 */
 	get: function() {
 		// Select a text from the actual document
-		var selObj = getBrowser().contentWindow.get();
+		var selObj = getBrowser().contentWindow.getSelection();
 
 		// value is returned
 		var value = selObj.toString();
