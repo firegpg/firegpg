@@ -51,19 +51,32 @@ var GPG = {
 	* Function to sign a text.
 	*/
 	sign: function() {
+
+		// For i18n
+		var i18n = document.getElementById("firegpg-strings");
+
 		var text = Selection.get();
+
+		if (text == "")
+		{
+			alert(i18n.getString("noData"));
+			return;
+		}
 
 		// Needed for a sign
 		var password = getPrivateKeyPassword();
 		var keyID = getSelfKey();
-		
+
+		if (password == "")
+		{
+			alert(i18n.getString("noPass"));
+			return;
+		}
+
 		// We get the result
 		var result = this.GPGAccess.sign(text, password, keyID);
 		var crypttext = result.output;
 		result = result.sdOut;
-
-		// For i18n
-		var i18n = document.getElementById("firegpg-strings");
 
 		// If the sign failled
 		if(result.indexOf("SIG_CREATED") == "-1") {
@@ -88,7 +101,18 @@ var GPG = {
 
 	// Verify a signature
 	verify: function() {
+
+		// For I18N
+		var i18n = document.getElementById("firegpg-strings");
+
 		var text = Selection.get();
+
+		if (text == "")
+		{
+			alert(i18n.getString("noData"));
+			return;
+		}
+
 
 		// We get the result
 		var result = this.GPGAccess.verify(text);
@@ -154,18 +178,33 @@ var GPG = {
 	* Function to crypt a text.
 	*/
 	crypt: function() {
+		
+		// For i18n
+		var i18n = document.getElementById("firegpg-strings");
+		
 		var text = Selection.get();
+
+		if (text == "")
+		{
+			alert(i18n.getString("noData"));
+			return;
+		}
 
 		// Needed for a crypt
 		var keyID = choosePublicKey();
+
+		if (keyID == "")
+		{
+			alert(i18n.getString("noKey"));
+			return;
+		}
 
 		// We get the result
 		var result = this.GPGAccess.crypt(text, keyID);
 		var crypttext = result.output;
 		result = result.sdOut;
 
-		// For i18n
-		var i18n = document.getElementById("firegpg-strings");
+		
 
 		// If the crypt failled
 		if(result.indexOf("END_ENCRYPTION") == "-1") {
@@ -189,19 +228,33 @@ var GPG = {
 	* Function to decrypt a text.
 	*/
 	decrypt: function() {
+
+		// For i18n
+		var i18n = document.getElementById("firegpg-strings");
+
 		var text = Selection.get();
 
+		if (text == "")
+		{
+			alert(i18n.getString("noData"));
+			return;
+		}
+	
 		// Needed for a decrypt
 		var password = getPrivateKeyPassword();		
 
+		if (password == "")
+		{
+			alert(i18n.getString("noPass"));
+			return;
+		}
 
 		// We get the result
 		var result = this.GPGAccess.decrypt(text,password);
 		var crypttext = result.output;
 		result = result.sdOut;
 
-		// For i18n
-		var i18n = document.getElementById("firegpg-strings");
+
 		
 		// If the crypt failled
 		if(result.indexOf("DECRYPTION_OKAY") == "-1") {
@@ -241,13 +294,25 @@ var GPG = {
 	* Function to import a public key.
 	*/
 	import: function() {
+		
+		// For i18n
+		var i18n = document.getElementById("firegpg-strings");
+
 		var text = Selection.get();
+
+		if (text == "")
+		{
+			alert(i18n.getString("noData"));
+			return;
+		}
+	
+		
+
 
 		// We get the result
 		var result = this.GPGAccess.import(text);
 
-		// For i18n
-		var i18n = document.getElementById("firegpg-strings");
+
 		
 		// If the crypt failled
 		if(result.indexOf("IMPORT_OK") == "-1") {
