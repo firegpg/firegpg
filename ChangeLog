@@ -10,6 +10,8 @@
 	* selectPublicKey() implemented (it show a dialog with all keys).
 	* two optional arguments are added to showText() : description
 	  and title.
+	* the default values of gpg_path, specify_gpg_path and show_website are
+	  added in defaults/preferences/firegpg.js.
 
 2007-03-05  Maximilien Cuony
 	* Fix an error in getPrivateKeyPassword()

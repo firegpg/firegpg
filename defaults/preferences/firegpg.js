@@ -1,2 +1,5 @@
 pref("extensions.firegpg.gmail_enabled", true);
 pref("extensions.firegpg.default_private_key", "");
+pref("extensions.firegpg.gpg_path", "")
+pref("extensions.firegpg.specify_gpg_path", "")
+pref("extensions.firegpg.show_website", true)

@@ -60,17 +60,13 @@ function onAccept()
 	if(password == '') {
 		var i18n = document.getElementById("firegpg-strings");
 		alert(i18n.getString('youMustEnterPassword'));
-		return false;
+		return false; /* don't hide the dialog */
 	}
 	else
 		window.arguments[0].password = password;
 
 	window.arguments[0].result = true;
-	
-	if(document.getElementById('save-password-checkbox').checked)
-		window.arguments[0].save_password = true;
-	else
-		window.arguments[0].save_password = false;
+	window.arguments[0].save_password = document.getElementById('save-password-checkbox').checked ? true : false;
 	
 	return true;
 }
