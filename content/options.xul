@@ -52,7 +52,7 @@
       <preference id="default-private-key-pref" name="extensions.firegpg.default_private_key" type="string"/>
       <preference id="gpg-path-pref" name="extensions.firegpg.gpg_path" type="string"/>
       <preference id="specify-gpg-path-pref" name="extensions.firegpg.specify_gpg_path" type="bool"/>
-      <preference id="show-web-site" name="extensions.firegpg.show_website" type="bool"/>
+      <preference id="show-web-site-pref" name="extensions.firegpg.show_website" type="bool"/>
     </preferences>
 
     <!-- gmail enabled ? -->

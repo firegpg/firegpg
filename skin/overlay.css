@@ -1,7 +1,3 @@
-#firegpg-hello {
-  color: red ! important;
-}
-
 #toolbar-firegpg {
   list-style-image: url("chrome://firegpg/skin/toolbar-button.png");
   -moz-image-region: rect(0px 24px 24px 0px);
@@ -9,35 +5,26 @@
 
 .firegpg-menu-sign {
   list-style-image: url("chrome://firegpg/skin/sign.png");
-  
-	
 }
 
 .firegpg-menu-rease {
   list-style-image: url("chrome://firegpg/skin/rase.png");
-  
-	
 }
 
 .firegpg-menu-verif {
   list-style-image: url("chrome://firegpg/skin/verif.png");
-  
-	
 }
 
 .firegpg-menu-crypt {
   list-style-image: url("chrome://firegpg/skin/crypt.png");
-  
 }
 
 .firegpg-menu-dcrypt {
   list-style-image: url("chrome://firegpg/skin/dcrypt.png");
- 
 }
 
 .firegpg-menu-options {
   list-style-image: url("chrome://firegpg/skin/options.png");
- 
 }
 
 .firegpg-menu {

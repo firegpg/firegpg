@@ -4,19 +4,19 @@
 <!ENTITY firegpgContext.label "FireGPG">
 <!ENTITY firegpgContext.labelSign "Signer">
 <!ENTITY firegpgContext.labelCrypt "Crypter">
-<!ENTITY firegpgContext.labelVerif "Verifier">
+<!ENTITY firegpgContext.labelVerif "Vérifier">
 <!ENTITY firegpgContext.labelDecry "Décrypter">
 <!ENTITY firegpgContext.labelOptions "Options">
 <!ENTITY firegpgMenu.label "FireGPG">
 <!ENTITY firegpgMenu.labelSign "Signer">
 <!ENTITY firegpgMenu.labelCrypt "Crypter">
-<!ENTITY firegpgMenu.labelVerif "Verifier">
+<!ENTITY firegpgMenu.labelVerif "Vérifier">
 <!ENTITY firegpgMenu.labelDecry "Décrypter">
 <!ENTITY firegpgMenu.labelOptions "Options">
 <!ENTITY firegpgToolbar.label "FireGPG">
 <!ENTITY firegpgToolbar.labelSign "Signer">
 <!ENTITY firegpgToolbar.labelCrypt "Crypter">
-<!ENTITY firegpgToolbar.labelVerif "Verifier">
+<!ENTITY firegpgToolbar.labelVerif "Vérifier">
 <!ENTITY firegpgToolbar.labelDecry "Décrypter">
 <!ENTITY firegpgToolbar.labelOptions "Options">
 <!ENTITY firegpgMenu.labelErase "Effacer le mot de passe mémorisé">

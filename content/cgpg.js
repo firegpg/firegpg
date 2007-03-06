@@ -69,11 +69,11 @@ var GPG = {
 		if(result.indexOf("SIG_CREATED") == "-1") {
 			// We alert the user
 			if(result.indexOf("BAD_PASSPHRASE") != "-1") {
-				alert(i18n.getString("signFailledPassword"));
+				alert(i18n.getString("signFailedPassword"));
 				eraseSavedPassword();
 			}
 			else
-				alert(i18n.getString("signFailled"));
+				alert(i18n.getString("signFailed"));
 		} 
 		else {
 			// We test if the selection is editable :
@@ -99,7 +99,7 @@ var GPG = {
 		// If check failled
 		if(result.indexOf("GOODSIG") == "-1") {	
 			// Tempory, we sould use return
-			alert(i18n.getString("verifFailled"));
+			alert(i18n.getString("verifFailed"));
 		}
 		else {
 			// If he work, we get informations of the Key
@@ -170,7 +170,7 @@ var GPG = {
 		// If the crypt failled
 		if(result.indexOf("END_ENCRYPTION") == "-1") {
 			// We alert the user
-				alert(i18n.getString("cryptFailled"));
+				alert(i18n.getString("cryptFailed"));
 		} 
 		else {
 			//We test is the selection in editable :
@@ -208,11 +208,11 @@ var GPG = {
 			// We alert the user
 			if(result.indexOf("BAD_PASSPHRASE") != "-1")
 			{
-				alert(i18n.getString("dcryptFailledPassword"));
+				alert(i18n.getString("dcryptFailedPassword"));
 				eraseSavedPassword();
 			}
 			else
-				alert(i18n.getString("dcryptFailled"));
+				alert(i18n.getString("dcryptFailed"));
 		} 
 		else {
 			//We test is the selection in editable :
