@@ -33,7 +33,7 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  * 
  * ***** END LICENSE BLOCK ***** */
-alert(getTmpPassFile());
+
 /*
  * Class to access to GPG on GNU/Linux.
  */
