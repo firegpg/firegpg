@@ -35,6 +35,29 @@
  * ***** END LICENSE BLOCK ***** */
 
 /*
+ * Called when change-gpg-path-checkbox is checked/unchecked to 
+ * enable/disable some elements in the options interface.
+ *
+ * The arguments are optional.
+ */
+function onChangeGPGPathCheckbox(checkbox, focus_textbox)
+{
+	if(checkbox == undefined)
+		checkbox = document.getElementById('change-gpg-path-checkbox');
+
+	var disabled = (checkbox.checked) ? false : true;
+
+	/* button */
+	document.getElementById('change-gpg-path-button').disabled = disabled;
+
+	/* textbox */
+	var textbox = document.getElementById('gpg-path-textbox');
+	textbox.disabled = disabled;
+	if(focus_textbox != undefined && focus_textbox == true)
+		textbox.focus();
+}
+
+/*
  * Return the default key.
  */
 function getSelectedKey()
@@ -77,6 +100,36 @@ function onLoad(win)
 	/* select the default item */
 	if(default_item != null)
 		listbox.selectItem(default_item);
+	
+	/* call some important events */
+	onChangeGPGPathCheckbox();
+}
+
+/*
+ * Open the file selected and return the choosen file.
+ * If no file is selected, null is returned.
+ */
+function fileSelector()
+{
+	var nsIFilePicker = Components.interfaces.nsIFilePicker;
+	var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
+	fp.init(window, "Select a File", nsIFilePicker.modeOpen); /* TODO i18n */
+	fp.appendFilters(nsIFilePicker.filterAll);
+
+	if(fp.show() == nsIFilePicker.returnOK)
+		return fp.file.path;
+	else
+		return null;
+}
+
+/*
+ * It choose the GPG path.
+ */
+function chooseGPGPath()
+{
+	var gpg_path = fileSelector();
+	if(gpg_path != null)
+		document.getElementById('gpg-path-textbox').value = gpg_path;
 }
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

@@ -6,3 +6,4 @@
 <!ENTITY show-website-checkbox "Afficher le site officiel de FireGPG dans le texte signé ou chiffré.">
 <!ENTITY change-gpg-path-button "Changer le chemin">
 <!ENTITY change-gpg-path-checkbox "Spécifier le chemin de GPG manuellement :">
+<!ENTITY result-always-in-new-window "Toujours afficher le résultat du chiffrement ou de la signature dans une nouvelle fenêtre.">

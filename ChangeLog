@@ -1,3 +1,8 @@
+2007-03-07  Achraf cherti
+	* it's possible in options.xul to select the gpg path (with the file picker).
+	* gpg-path textbox and button is enabled/disabled when the checkbox is checked/unchecked.
+	* check box "always sign or verify in a new window" is added.
+
 2007-03-07 Maximilien Cuony
 	* Compatibility with FF 1.5
 	* Full support of Windows (with 3 hors of work !)

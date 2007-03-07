@@ -6,3 +6,4 @@
 <!ENTITY show-website-checkbox "Show FireGPG website in signed or crypted text">
 <!ENTITY change-gpg-path-button "Change the path">
 <!ENTITY change-gpg-path-checkbox "Specify manually the path of GPG:">
+<!ENTITY result-always-in-new-window "Always show the result of an encoding or a signature in a new window.">
