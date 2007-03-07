@@ -2,9 +2,6 @@ Tâches libres :
 	- quand l'utilisateur clique sur "annuler" quand un mot de passe lui 
 	  est demande,
 	  ne plus lui dire que son mot de passe est incorrect.
-	- Il faudrait vérifier ou Windows Privacity Tool (dernière version) 
-	  installe Gpg, et si celui-ci est utilisable !
-	- Si oui, implémenter cgpgwin
 	- De temps en temps, un menu s'ouvre alors qu'il ne devrais pas !
 	
 Tâches de Maximilien :
