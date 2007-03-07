@@ -33,7 +33,7 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  * 
  * ***** END LICENSE BLOCK ***** */
-
+alert(getTmpPassFile());
 /*
  * Class to access to GPG on GNU/Linux.
  */
@@ -46,7 +46,7 @@ var GPGWin = {
 	sign: function(texte,password,keyID) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
-		var tmpPASS = getTmpFile(); // TEMPORY PASSWORD
+		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
 	
@@ -221,7 +221,7 @@ var GPGWin = {
 	decrypt: function(texte,password) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
-		var tmpPASS = getTmpFile(); // tmpPASSWORD
+		var tmpPASS = getTmpPassFile(); // tmpPASSWORD
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
 

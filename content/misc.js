@@ -207,6 +207,19 @@ function getTmpFileRunning() {
 	return fileobj.path;
 }
 
+/*
+ * Get an unique temporary file name for password (so he is random)
+ * The path + filename is returned.
+ */
+function getTmpPassFile() {
+	var fileobj = getTmpDir();
+	var filename = Math.floor(Math.random()*9) + "sdSasd" + Math.floor(Math.random()*9) + "" + Math.floor(Math.random()*999);
+	fileobj.append(Math.floor(Math.random()*9));
+	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, WRITE_PERMISSION);
+	return fileobj.path;
+}
+
+
 
 /*
  * Remove a file.
