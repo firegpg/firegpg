@@ -1,6 +1,6 @@
 2007-03-07 Maximilien Cuony
 	* Compatibility with FF 1.5
-
+	* Full support of Windows (with 3 hors of work !)
 
 2007-03-06 Maximilien Cuony
 	* Implement a test for detect presence of GPG

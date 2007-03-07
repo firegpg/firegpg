@@ -46,6 +46,7 @@ var GPGWin = {
 	sign: function(texte,password,keyID) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
+		var tmpPASS = getTmpFile(); // TEMPORY PASSWORD
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
 	
@@ -61,16 +62,27 @@ var GPGWin = {
 
 		putIntoFile(tmpRun,running);
 
-		runCommand(tmpRun,
-		           this.getGPGCommand() + " " + tmpStdOut +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
-		           " --default-key " + keyID + 
-		           " --output " + tmpOutput + 
-		           " --passphrase " + password +
-				   " --comment " +  comment +
-		           " --clearsign " + tmpInput);
+		///////////////////////////////////////////////////
+		//DON'T MOVE OR ADD ANY LINES NEXT THIS MESSAGE !//
+		///////////////////////////////////////////////////
 
-	
+		putIntoFile(tmpPASS,password);   // DON'T MOVE THIS LINE !
+		try {  // DON'T MOVE THIS LINE !
+			runCommand(tmpRun,  // DON'T MOVE THIS LINE !
+			          '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
+			           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+			           " --default-key " + keyID + 
+			           " --output " + tmpOutput + 
+			           " --passphrase " + tmpPASS +
+					   " --comment " +  comment +
+			           " --clearsign " + tmpInput + 
+					   " < " + tmpPASS);
+		}
+		catch (e) { } //If execution fail, script is stopped and don't erase the password, so we add a catch
+		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
+		
+		//You can move next lines
+
 		// We get the result
 		var result = getFromFile(tmpStdOut);
 
@@ -105,7 +117,7 @@ var GPGWin = {
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,
-		          '"' + this.getGPGCommand() + '"' +  " " + tmpStdOut +
+		          '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
 		           " --verify " + tmpInput);
 
@@ -141,7 +153,7 @@ var GPGWin = {
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,
-		           '"' + this.getGPGCommand() + '"' +  " " + tmpStdOut +
+		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons " + mode);
 
 		// We get the result
@@ -178,7 +190,7 @@ var GPGWin = {
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,
-		           '"' + this.getGPGCommand() + '"' +  " " + tmpStdOut +
+		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
 		           " -r " + keyID + 
 				   " --comment " +  comment +
@@ -209,6 +221,7 @@ var GPGWin = {
 	decrypt: function(texte,password) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
+		var tmpPASS = getTmpFile(); // tmpPASSWORD
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
 
@@ -225,13 +238,25 @@ var GPGWin = {
 
 		putIntoFile(tmpRun,running);
 
-		runCommand(tmpRun,
-		           '"' + this.getGPGCommand() + '"' +  " " + tmpStdOut +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
-		           " --passphrase " + password +
-		           " --output " + tmpOutput + 
-		           " --decrypt " + tmpInput);
-	
+		///////////////////////////////////////////////////
+		//DON'T MOVE OR ADD ANY LINES NEXT THIS MESSAGE !//
+		///////////////////////////////////////////////////
+
+		putIntoFile(tmpPASS,password);   // DON'T MOVE THIS LINE !
+		try {  // DON'T MOVE THIS LINE !
+			runCommand(tmpRun,
+			           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
+			           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+			           " --passphrase " + tmpPASS +
+			           " --output " + tmpOutput + 
+			           " --decrypt " + tmpInput +
+					   " < " + tmpPASS);
+			}
+		catch (e) { } //If execution fail, script is stopped and don't erase the password, so we add a catch
+		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !	
+
+		//You can move next lines
+
 		// We get the result
 		var result = getFromFile(tmpStdOut);
 
@@ -263,8 +288,9 @@ var GPGWin = {
 
 		putIntoFile(tmpRun,running);
 
+
 		runCommand(tmpRun,
-		           '"' + this.getGPGCommand() + '"' + " " + tmpStdOut +
+		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
 		           " --version");
 
@@ -299,7 +325,7 @@ var GPGWin = {
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,
-		           '"' + this.getGPGCommand() + '"' + " " + tmpStdOut +
+		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
 		           " --import " + tmpInput);
 
