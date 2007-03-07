@@ -44,6 +44,7 @@
   <script src="cgpgwin.js"/>
   <script src="cgpglin.js"/>
   <script src="cgpg.js"/>
+  <script src="cgmail.js"/>
   <script src="cselect.js"/>
   <stringbundleset id="stringbundleset">
     <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
