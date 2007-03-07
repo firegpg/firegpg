@@ -317,7 +317,7 @@ var GPG = {
 	/*
 	* Function to import a public key.
 	*/
-	import: function() {
+	kimport: function() {
 		
 		// For i18n
 		var i18n = document.getElementById("firegpg-strings");
@@ -343,7 +343,7 @@ var GPG = {
 		text = text.substring(firstPosition,lastPosition + ("-----END PGP PUBLIC KEY BLOCK-----").length);
 
 		// We get the result
-		var result = this.GPGAccess.import(text);
+		var result = this.GPGAccess.kimport(text);
 
 
 		

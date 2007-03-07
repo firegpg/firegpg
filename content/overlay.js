@@ -68,7 +68,7 @@ var firegpg = {
 		else if(action == "DECRYPT")
 		   GPG.decrypt();
 		else if(action == "IMPORT")
-		   GPG.import();
+		   GPG.kimport();
 		else if(action == "OPTS")
 			var win = window.open("chrome://firegpg/content/options.xul", 
 			                      "optionsFiregpg", "chrome,centerscreen"); 

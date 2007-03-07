@@ -35,12 +35,310 @@
  * ***** END LICENSE BLOCK ***** */
 
 /*
-* Class to access to GPG on windows
-*/
+ * Class to access to GPG on GNU/Linux.
+ */
 var GPGWin = {
-	crypt: function() {
-		alert('Crypt ! - Win');
+	//var: parent,
+
+	/*
+	 * Function to sign a text.
+	 */
+	sign: function(texte,password,keyID) {
+		var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
+	
+		putIntoFile(tmpInput,texte); // Temp
+
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		removeFile(tmpOutput);
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.bat")
+		var reg=new RegExp("\n", "gi");
+		running = running.replace(reg,"\r\n");
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
+		           this.getGPGCommand() + " " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+		           " --default-key " + keyID + 
+		           " --output " + tmpOutput + 
+		           " --passphrase " + password +
+				   " --comment " +  comment +
+		           " --clearsign " + tmpInput);
+
+	
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// The signed text
+		var crypttexte = getFromFile(tmpOutput);
+		var result2 = GPGReturn;
+		result2.output = crypttexte;	
+		result2.sdOut = result;	
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpStdOut);
+		removeFile(tmpOutput);
+		removeFile(tmpRun);
+
+		return result2;
+	},
+
+	// Verify a sign
+	verify: function(text) {
+		var tmpInput = getTmpFile();  // Signed data
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
+
+		putIntoFile(tmpInput,text); // TMP
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.bat")
+		var reg=new RegExp("\n", "gi");
+		running = running.replace(reg,"\r\n");
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
+		          '"' + this.getGPGCommand() + '"' +  " " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+		           " --verify " + tmpInput);
+
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpStdOut);
+		removeFile(tmpRun);
+
+		// We return result
+		return result;
+	},
+
+	// List differents keys
+	listkey: function(onlyPrivate) {
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
+
+		
+
+		var mode = "--list-keys";
+
+		if (onlyPrivate == true)
+			mode = "--list-secret-keys";
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.bat")
+		var reg=new RegExp("\n", "gi");
+		running = running.replace(reg,"\r\n");
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
+		           '"' + this.getGPGCommand() + '"' +  " " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons " + mode);
+
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// We delete tempory files
+		removeFile(tmpStdOut);
+		removeFile(tmpRun);
+
+		// We return result
+		return result;
+	},
+
+	/*
+	 * Function to crypt a text.
+	 */
+	crypt: function(texte,keyID) {
+		var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
+
+		putIntoFile(tmpInput,texte); // Temp
+
+		
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		removeFile(tmpOutput);
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.bat")
+		var reg=new RegExp("\n", "gi");
+		running = running.replace(reg,"\r\n");
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
+		           '"' + this.getGPGCommand() + '"' +  " " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+		           " -r " + keyID + 
+				   " --comment " +  comment +
+		           " --output " + tmpOutput + 
+		           " --encrypt " + tmpInput);
+	
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// The crypted text
+		var crypttexte = getFromFile(tmpOutput);
+		var result2 = GPGReturn;
+		result2.output = crypttexte;	
+		result2.sdOut = result;	
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpStdOut);
+		removeFile(tmpOutput);
+		removeFile(tmpRun);		
+		
+		return result2;
+	},
+
+	/*
+	 * Function to decrypt a text.
+	 */
+	decrypt: function(texte,password) {
+		var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
+
+		putIntoFile(tmpInput,texte); // Temp
+
+		
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		removeFile(tmpOutput);
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.bat");
+		var reg=new RegExp("\n", "gi");
+		running = running.replace(reg,"\r\n");
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
+		           '"' + this.getGPGCommand() + '"' +  " " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+		           " --passphrase " + password +
+		           " --output " + tmpOutput + 
+		           " --decrypt " + tmpInput);
+	
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// The decrypted text
+		var crypttexte = getFromFile(tmpOutput);
+		var result2 = GPGReturn;
+		result2.output = crypttexte;	
+		result2.sdOut = result;	
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpStdOut);
+		removeFile(tmpOutput);
+		removeFile(tmpRun);
+
+		return result2;
+	},
+
+	/* This if we can work with GPG */
+	selfTest: function() {
+
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.bat")
+		var reg=new RegExp("\n", "gi");
+		running = running.replace(reg,"\r\n");
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
+		           '"' + this.getGPGCommand() + '"' + " " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+		           " --version");
+
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// We delete tempory files
+		removeFile(tmpStdOut);
+		removeFile(tmpRun);
+
+		// If the work Foundation is present, we can think that gpg is present ("... Copyright (C) 2006 Free Software Foundation, Inc. ...")
+		if (result.indexOf("Foundation") == -1)
+			return false;
+	
+		return true;
+	},
+
+	// Import a key
+	kimport: function(text) {
+		var tmpInput = getTmpFile();  // Key
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
+
+		putIntoFile(tmpInput,text); // TMP
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.bat")
+
+		var reg=new RegExp("\n", "gi");
+		running = running.replace(reg,"\r\n");
+
+		putIntoFile(tmpRun,running);
+
+		runCommand(tmpRun,
+		           '"' + this.getGPGCommand() + '"' + " " + tmpStdOut +
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+		           " --import " + tmpInput);
+
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpStdOut);
+		removeFile(tmpRun);
+
+		// We return result
+		return result;
+	},
+
+	//Return the GPG's command to use
+	getGPGCommand: function () {
+		
+		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                           getService(Components.interfaces.nsIPrefService);
+		prefs = prefs.getBranch("extensions.firegpg.");
+	
+		try {
+			var force = prefs.getBoolPref("specify_gpg_path");
+		}
+		catch (e) { 
+			var force = false;
+		}
+
+		if (force == true)
+			return prefs.getCharPref("gpg_path");
+		else
+		{
+			prefs.setCharPref("gpg_path","C:\\Program Files\\Windows Privacy Tools\\GnuPG\\gpg.exe");
+			return "C:\\Program Files\\Windows Privacy Tools\\GnuPG\\gpg.exe";
+		}
+	
+		
 	}
 };
 
-// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8
+// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

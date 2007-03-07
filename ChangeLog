@@ -1,3 +1,7 @@
+2007-03-07 Maximilien Cuony
+	* Compatibility with FF 1.5
+
+
 2007-03-06 Maximilien Cuony
 	* Implement a test for detect presence of GPG
 	* selectPublicKey implemented in cgpg

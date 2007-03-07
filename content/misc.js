@@ -42,6 +42,7 @@ const NS_NETWORKINPUTS_CONTRACTID = "@mozilla.org/scriptableinputstream;1";
 
 const TMP_DIRECTORY = "TmpD";
 const TMP_FILES = "fgpg_tmpFile";
+const TMP_RFILES = "fgpg_tmpFile.bat"; //.bat for windows, but don't affect linux
 const WRITE_MODE = 0x02 | 0x08 | 0x20;
 const WRITE_PERMISSION = 0600;
 const WRITE_PERMISSION_R = 0777;
@@ -172,6 +173,8 @@ function getSelfKey() {
 	return prefs.getCharPref("default_private_key");
 }
 
+
+
 /*
  * Get the path of a tmp file.
  * The path is returned.
@@ -199,7 +202,7 @@ function getTmpFile() {
  */
 function getTmpFileRunning() {
 	var fileobj = getTmpDir();
-	fileobj.append(TMP_FILES);
+	fileobj.append(TMP_RFILES);
 	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, WRITE_PERMISSION_R);
 	return fileobj.path;
 }

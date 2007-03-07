@@ -41,7 +41,7 @@ const comment = "http://firegpg.tuxfamily.org";
  * Class to access to GPG on GNU/Linux.
  */
 var GPGLin = {
-	var: parent,
+	//var: parent,
 
 	/*
 	 * Function to sign a text.
@@ -63,7 +63,7 @@ var GPGLin = {
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,
-		           "gpg " + tmpStdOut +
+		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
 		           " --default-key " + keyID + 
 		           " --output " + tmpOutput + 
@@ -104,7 +104,7 @@ var GPGLin = {
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,
-		           "gpg " + tmpStdOut +
+		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
 		           " --verify " + tmpInput);
 
@@ -138,7 +138,7 @@ var GPGLin = {
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,
-		           "gpg " + tmpStdOut +
+		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons " + mode);
 
 		// We get the result
@@ -173,7 +173,7 @@ var GPGLin = {
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,
-		           "gpg " + tmpStdOut +
+		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
 		           " -r " + keyID + 
 				   " --comment " +  comment +
@@ -219,7 +219,7 @@ var GPGLin = {
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,
-		           "gpg " + tmpStdOut +
+		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
 		           " --passphrase " + password +
 		           " --output " + tmpOutput + 
@@ -255,7 +255,7 @@ var GPGLin = {
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,
-		           "gpg " + tmpStdOut +
+		           "" + this.getGPGCommand() + "" +  " " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
 		           " --version");
 
@@ -274,7 +274,7 @@ var GPGLin = {
 	},
 
 	// Import a key
-	import: function(text) {
+	kimport: function(text) {
 		var tmpInput = getTmpFile();  // Key
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
@@ -287,7 +287,7 @@ var GPGLin = {
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,
-		           "gpg " + tmpStdOut +
+		           '"' + this.getGPGCommand() + '"' +  " " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
 		           " --import " + tmpInput);
 
@@ -301,6 +301,31 @@ var GPGLin = {
 
 		// We return result
 		return result;
+	},
+
+	//Return the GPG's command to use
+	getGPGCommand: function () {
+		
+		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                           getService(Components.interfaces.nsIPrefService);
+		prefs = prefs.getBranch("extensions.firegpg.");
+	
+		try {
+			var force = prefs.getBoolPref("specify_gpg_path");
+		}
+		catch (e) { 
+			var force = false;
+		}
+
+		if (force == true)
+			return prefs.getCharPref("gpg_path");
+		else
+		{
+			prefs.setCharPref("gpg_path","gpg");
+			return "gpg";
+		}
+	
+		
 	}
 };
 
