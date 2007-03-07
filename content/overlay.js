@@ -36,6 +36,8 @@
 
 /* TODO we need add some comments to describe the code ! */
 
+ cGmailInit(); //TMP FOR MAXIMILIEN
+
 var firegpg = {
 	onLoad: function() {
 
@@ -60,7 +62,7 @@ var firegpg = {
 		var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].
 		                               getService(Components.interfaces.nsIPromptService);
 		if (action == "SIGN")
-		   GPG.sign();
+		{   GPG.sign(); cGmailTest(); //TMP FOR MAXIMILIEN
 		else if(action == "VERIF")
 		   GPG.verify();
 		else if(action == "CRYPT")
