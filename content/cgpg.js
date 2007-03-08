@@ -113,37 +113,25 @@ var GPG = {
 			return;
 		}
 
-		//Verify GPG'data presence
-		var firstPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
-		var lastPosition = text.indexOf("-----END PGP SIGNATURE-----");
-
-		if (firstPosition == -1 || lastPosition == -1)
-		{
-			alert(i18n.getString("noGPGData"));
-			return;
-		}
-
-		text = text.substring(firstPosition,lastPosition + ("-----END PGP SIGNATURE-----").length);
-
-		// We get the result
-		var result = this.GPGAccess.verify(text);
+		
+		result = this.baseVerify(text);
 
 		// For I18N
 		var i18n = document.getElementById("firegpg-strings");
 
-		// If check failled
-		if(result.indexOf("GOODSIG") == "-1") {	
-			// Tempory, we sould use return
+		if (result == "noGpg")
+		{
+			alert(i18n.getString("noGPGData"));
+			return;
+		}
+		else if (result == "erreur")
+		{
 			alert(i18n.getString("verifFailed"));
 		}
-		else {
-			// If he work, we get informations of the Key
-			var infos = result;
-
-			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
-			infos = result.replace(infos, "");
-			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
-			infos = infos.split(" ");
+		else
+		{
+	
+			infos = result.split(" ");
 
 			// Array contain :
 			// [0] -> Id of the key
@@ -152,6 +140,38 @@ var GPG = {
 			// [3] -> Email of ovners'key
 
 			alert(i18n.getString("verifSuccess") + " " + infos[1] + " " + infos[2] + " " +  infos[3]);
+		}
+	},
+
+	baseVerify: function(text) {
+
+		//Verify GPG'data presence
+		var firstPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
+		var lastPosition = text.indexOf("-----END PGP SIGNATURE-----");
+
+		if (firstPosition == -1 || lastPosition == -1)
+		{
+			return "noGpg";
+		}
+
+		text = text.substring(firstPosition,lastPosition + ("-----END PGP SIGNATURE-----").length);
+
+		// We get the result
+		var result = this.GPGAccess.verify(text);
+
+		// If check failled
+		if(result.indexOf("GOODSIG") == "-1") {	
+			return "erreur";
+		}
+		else {
+			// If he work, we get informations of the Key
+			var infos = result;
+
+			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
+			infos = result.replace(infos, "");
+			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
+			
+			return infos;
 		}
 	},
 
@@ -329,15 +349,35 @@ var GPG = {
 			alert(i18n.getString("noData"));
 			return;
 		}
+
+		var retour = this.baseKimport(text);
+
+		if (retour == "noGPG")
+		{
+			alert(i18n.getString("noGPGData"));
+			return;
+		}
+		else if (retour == "error")
+		{
+			alert(i18n.getString("importFailed"));
+		}
+		else if (retour == "ok")
+		{
+			alert(i18n.getString("importOk"));
+		}
 	
+		
+	},
+
+	baseKimport: function(text) {
+
 		//Verify GPG'data presence
 		var firstPosition = text.indexOf("-----BEGIN PGP PUBLIC KEY BLOCK-----");
 		var lastPosition = text.indexOf("-----END PGP PUBLIC KEY BLOCK-----");
 
 		if (firstPosition == -1 || lastPosition == -1)
 		{
-			alert(i18n.getString("noGPGData"));
-			return;
+			return "noGPG";
 		}
 
 		text = text.substring(firstPosition,lastPosition + ("-----END PGP PUBLIC KEY BLOCK-----").length);
@@ -345,15 +385,15 @@ var GPG = {
 		// We get the result
 		var result = this.GPGAccess.kimport(text);
 
-
 		
 		// If the crypt failled
 		if(result.indexOf("IMPORT_OK") == "-1") {
-				alert(i18n.getString("importFailed"));
+				return "error";
 		} 
 		else {
-				alert(i18n.getString("importOk"));
+				return "ok";
 		}
+
 	}
 };
 

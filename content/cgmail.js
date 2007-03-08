@@ -99,27 +99,50 @@ var cGmail =
 			if (this.lastDomToverify.document.getElementById('rc_' + i).hasAttribute("gpg") == false)
 			{
 				
-				var contenuMail = this.lastDomToverify.document.getElementById('mb_' + i).innerHTML;
+				var contenuMail = this.lastDomToverify.document.getElementById('mb_' + i);
 
+				var range = this.lastDomToverify.document.createRange();
+				range.selectNode(contenuMail);
+				var documentFragment = range.cloneContents();
+
+			
+     				var s = new XMLSerializer();
+				var d = documentFragment;
+				var str = s.serializeToString(d);
+
+				contenuMail = Selection.wash(str);
+
+	
 				var td = this.lastDomToverify.document.createElement("td");
 				
 				td.setAttribute("class","");
 				td.setAttribute("id","sm_verify");
 				
+				var resultTest = GPG.baseVerify(contenuMail);
+			
 				//For I18N
 				var i18n = document.getElementById("firegpg-strings");
 
-				td.setAttribute("style","color: green;");
-				td.innerHTML = i18n.getString("GMailSOK"); //"La première signature de ce mail est de testtest (testtest) testtset@testtest.testtset";
+				if (resultTest == "noGpg")
+				{
+					td.setAttribute("style","color: orange;");
+					td.innerHTML = i18n.getString("GMailNoS"); //"Aucun signature n'a été trouvé dans ce mail."; testtset@testtest.testtset";
+				}
+				else if (resultTest == "erreur")
+				{
+					td.setAttribute("style","color: red;");
+					td.innerHTML = i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
+					
+				}
+				else 
+				{
+					infos = resultTest.split(" ");					
+					td.setAttribute("style","color: green;");
+					td.innerHTML = i18n.getString("GMailSOK") + " " + infos[1] + " " + infos[2] + " " +  infos[3]; //"La première signature de ce mail est de testtest (testtest)
+				}
 
-				td.setAttribute("style","color: orange;");
-				td.innerHTML = i18n.getString("GMailNoS"); //"Aucun signature n'a été trouvé dans ce mail.";
-
-				td.setAttribute("style","color: red;");
-				td.innerHTML = i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
-
-				td.setAttribute("style","color: orange;");
-				td.innerHTML = i18n.getString("GMailD"); //"Aucun signature n'a été trouvé dans ce mail.";
+				/*td.setAttribute("style","color: orange;");
+				td.innerHTML = i18n.getString("GMailD"); //"Ce mail à été décrypté";*/
 
 
 				replyBox.appendChild(td);	
@@ -133,7 +156,7 @@ var cGmail =
 			if (this.lastDomToverify.document.getElementById('nc_' + i).hasAttribute("gpg") == false)
 			{
 				var boutonBox = this.lastDomToverify.document.getElementById('nc_' + i).parentNode;	
-				this.addComposeBoutons(boutonBox,this.lastDomToverify.document);
+				this.addComposeBoutons(boutonBox,this.lastDomToverify.document,i);
 				this.lastDomToverify.document.getElementById('nc_' + i).setAttribute("gpg","ok");
 			}
 		}
@@ -143,7 +166,7 @@ var cGmail =
 			if (this.lastDomToverify.document.getElementById('sb_' + i).hasAttribute("gpg") == false)
 			{
 				var boutonBox = this.lastDomToverify.document.getElementById('sb_' + i).firstChild.firstChild.firstChild.firstChild.firstChild;	
-				this.addComposeBoutons(boutonBox,this.lastDomToverify.document);
+				this.addComposeBoutons(boutonBox,this.lastDomToverify.document,i);
 				this.lastDomToverify.document.getElementById('sb_' + i).setAttribute("gpg","ok");
 			}
 		}
@@ -169,12 +192,12 @@ var cGmail =
 	{
 
 		var boutonBox = Ddocument.getElementById('sb_compose').firstChild;	
-		this.addComposeBoutons(boutonBox,Ddocument);
+		this.addComposeBoutons(boutonBox,Ddocument,'COMPOSE');
 	}
 	if (Ddocument.getElementById('nc_compose') != null)
 	{
 		var boutonBox = Ddocument.getElementById('nc_compose').parentNode;	
-		this.addComposeBoutons(boutonBox,Ddocument);
+		this.addComposeBoutons(boutonBox,Ddocument,'COMPOSE');
 	}
 
   },
@@ -199,13 +222,15 @@ var cGmail =
 	}
   },
 
-  addBouton: function(label,id,box,Ddocument)
+  addBouton: function(label,id,box,Ddocument,info1)
   {
 
-	var bouton = Ddocument.createElement("button");
+	var bouton = new Object;
+	bouton = null;
+	bouton = Ddocument.createElement("button");
 	
 	bouton.setAttribute("type","button");
-	bouton.setAttribute("tabindex","8");
+	//bouton.setAttribute("tabindex","8");
 	bouton.setAttribute ("style","padding: 0pt 1em;");
 	bouton.setAttribute("id",id);
 				
@@ -219,20 +244,24 @@ var cGmail =
 
 	} catch (e) { }
 
-	
 
-//	bouton.addEventListener('command',cgmail.bla,false);
+	var tmpListener = new Object;
+	tmpListener = null;
+	tmpListener = new cGmail.callBack(id,info1)
+	bouton.addEventListener('click',tmpListener,true);
   },
 
- addComposeBoutons: function(box,Ddocument)
+ addComposeBoutons: function(box,Ddocument,info1)
  {
 	//For I18N
 	var i18n = document.getElementById("firegpg-strings");
 
-	this.addBouton(i18n.getString("GMailS"),"sign",box,Ddocument);	
-	this.addBouton(i18n.getString("GMailSS"),"sndsign",box,Ddocument);
-	this.addBouton(i18n.getString("GMailC"),"cypt",box,Ddocument);	
-	this.addBouton(i18n.getString("GMailCS"),"sndcyrpt",box,Ddocument);	
+	this.addBouton(i18n.getString("GMailS"),"sign",box,Ddocument,info1);	
+	this.addBouton(i18n.getString("GMailSS"),"sndsign",box,Ddocument,info1);
+	this.addBouton(i18n.getString("GMailC"),"cypt",box,Ddocument,info1);	
+	this.addBouton(i18n.getString("GMailCS"),"sndcyrpt",box,Ddocument,info1);	
+	
+	
  },
 
   listenerLoad: function(e) {
@@ -253,5 +282,21 @@ var cGmail =
 
 	gBrowser.removeProgressListener(cGmailListener);
 
+  },
+  
+  callBack: function(id,info1)  {
+	
+
+	this._id=id; //Save infos
+	this._info1=info1;
+
+
+ 	this.handleEvent =  function(event) { //Function in the function for handle... events.
+		alert(event.target.id + " m'a cliqué, son bonus est " + this._info1);
+	};
+
   }
-}
+  
+};
+
+ 

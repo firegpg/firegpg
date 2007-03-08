@@ -2,6 +2,8 @@
 	* Interface for Gmail !
 	* Option use Gmail is used
 	* Add a 'Need restart' for string of Gmail use's option
+	* Cgmail try now to check autenticity of mails.
+	* New function in Cselct : wash, for get usable strings form HTML sources
 
 2007-03-07  Achraf cherti
 	* it's possible in options.xul to select the gpg path (with the file picker).

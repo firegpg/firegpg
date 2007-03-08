@@ -287,7 +287,7 @@ var GPGLin = {
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,
-		           '"' + this.getGPGCommand() + '"' +  " " + tmpStdOut +
+		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
 		           " --import " + tmpInput);
 

@@ -134,9 +134,21 @@ var Selection = {
      		var s = new XMLSerializer();
 			var d = documentFragment;
 			var str = s.serializeToString(d);
-					
+							
+			value = this.wash(str);
+		}
+		
+		
+		return value;
+	},
+
+
+	/* Transform HTML in usable text for crypts */
+	wash: function(text)
+	{
+
 			var reg=new RegExp("<br[^>]*>\n", "gi"); //Pour pas faire des doubles retours (surviens sur certains sites)
-			str = str.replace(reg,"\n");
+			str = text.replace(reg,"\n");
 
 			var reg=new RegExp("<br>\n", "gi");
 			str = str.replace(reg,"\n");
@@ -157,12 +169,9 @@ var Selection = {
    					
 			reg=new RegExp("<[^>]+>", "g");  	  // Élimination des balises HTML
             str = str.replace(reg, "");
-			
-			value = str;
-		}
 		
-		
-		return value;
+			return str;
+
 	},
 	
 	/* 
