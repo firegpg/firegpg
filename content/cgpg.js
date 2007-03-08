@@ -73,20 +73,20 @@ var GPG = {
 			return;
 		}
 
-		// We get the result
-		var result = this.GPGAccess.sign(text, password, keyID);
+		var result = this.baseSign(text,password,keyID);
 		var crypttext = result.output;
 		result = result.sdOut;
+		
 
 		// If the sign failled
-		if(result.indexOf("SIG_CREATED") == "-1") {
+		if(result == "erreur") {
 			// We alert the user
-			if(result.indexOf("BAD_PASSPHRASE") != "-1") {
+			alert(i18n.getString("signFailed"));
+		} 
+		else if(result == "erreurPass")
+		{
 				alert(i18n.getString("signFailedPassword"));
 				eraseSavedPassword();
-			}
-			else
-				alert(i18n.getString("signFailed"));
 		} 
 		else {
 			// We test if the selection is editable :
@@ -98,6 +98,29 @@ var GPG = {
 				showText(crypttext);
 		}
 	},
+
+	baseSign: function(text,password,keyID)
+	{
+
+		// We get the result
+		var result = this.GPGAccess.sign(text, password, keyID);
+		var tresult = result.sdOut;
+
+		result.sdOut = "ok";
+
+		if(tresult.indexOf("SIG_CREATED") == "-1") {
+				result.sdOut = "erreur";
+		}
+		
+
+		if(tresult.indexOf("BAD_PASSPHRASE") != "-1") {
+				result.sdOut = "erreurPass";
+		}
+
+		return result;
+		
+
+	}, 
 
 	// Verify a signature
 	verify: function() {
@@ -231,14 +254,13 @@ var GPG = {
 		}
 
 		// We get the result
-		var result = this.GPGAccess.crypt(text, keyID);
+		var result = this.baseCrypt(text, keyID);
 		var crypttext = result.output;
 		result = result.sdOut;
-
 		
 
 		// If the crypt failled
-		if(result.indexOf("END_ENCRYPTION") == "-1") {
+		if(result == "erreur") {
 			// We alert the user
 				alert(i18n.getString("cryptFailed"));
 		} 
@@ -253,6 +275,20 @@ var GPG = {
 				showText(crypttext);
 			}
 		}
+	},
+
+	baseCrypt: function(text, keyID) {
+		var result = this.GPGAccess.crypt(text, keyID);
+		tresult = result.sdOut;
+
+		result.sdOut = "ok";
+
+		if(tresult.indexOf("END_ENCRYPTION") == "-1") {
+			
+			result.sdOut = "erreur";
+		} 
+
+		return result;
 	},
 
 	/*
@@ -294,21 +330,19 @@ var GPG = {
 		}
 
 		// We get the result
-		var result = this.GPGAccess.decrypt(text,password);
+		var result = this.baseDecrypt(text,password);
 		var crypttext = result.output;
 		result = result.sdOut;
 
 
 		
 		// If the crypt failled
-		if(result.indexOf("DECRYPTION_OKAY") == "-1") {
-			// We alert the user
-			if(result.indexOf("BAD_PASSPHRASE") != "-1")
-			{
+		if (result == "erreurPass") {
+
 				alert(i18n.getString("decryptFailedPassword"));
 				eraseSavedPassword();
-			}
-			else
+		}
+		else if (result == "erreur") {
 				alert(i18n.getString("decryptFailed"));
 		} 
 		else {
@@ -322,6 +356,26 @@ var GPG = {
 				showText(crypttext);
 			}
 		}
+	},
+
+	baseDecrypt: function(text,password) {
+
+		var result = this.GPGAccess.decrypt(text,password);
+		var tresult = result.sdOut;
+
+		result.sdOut = "ok";
+
+		if(tresult.indexOf("DECRYPTION_OKAY") == "-1") {
+				result.sdOut = "erreur";
+		}
+		
+
+		if(tresult.indexOf("BAD_PASSPHRASE") != "-1") {
+				result.sdOut = "erreurPass";
+		}
+
+		return result;
+
 	},
 
 	selfTest: function() {

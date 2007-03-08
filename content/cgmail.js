@@ -147,6 +147,29 @@ var cGmail =
 
 				replyBox.appendChild(td);	
 		
+				var firstPosition = contenuMail.indexOf("-----BEGIN PGP MESSAGE-----");
+				var lastPosition = contenuMail.indexOf("-----END PGP MESSAGE-----");
+
+				if (firstPosition != -1 && lastPosition != -1)
+				{
+					td = this.lastDomToverify.document.createElement("td");
+					
+					td.setAttribute("class","");
+					td.setAttribute("id","sm_decrypt");
+
+					td.innerHTML = i18n.getString("GMailD");
+
+					replyBox.appendChild(td);
+			
+					var tmpListener = new Object;
+
+					tmpListener = null;
+					tmpListener = new cGmail.callBack("sm_decrypt",i)
+					td.addEventListener('click',tmpListener,true);
+	
+				}
+				
+
 				this.lastDomToverify.document.getElementById('rc_' + i).setAttribute("gpg","ok");
 			}
 		}
@@ -183,7 +206,7 @@ var cGmail =
 		for (var i = 0; i < 200; i++) {
 			if (Ddocument.getElementById('msg_' + i) == null)
 			{ 
-				this.LastNombreMail = i;
+				this.LastNombreMail = i + 2; //If the user send 1 or 2 mails
 				break;
 			}
 		}
@@ -292,7 +315,47 @@ var cGmail =
 
 
  	this.handleEvent =  function(event) { //Function in the function for handle... events.
-		alert(event.target.id + " m'a cliqué, son bonus est " + this._info1);
+		
+		var i18n = document.getElementById("firegpg-strings");
+		
+		if (event.target.id == "sm_decrypt")
+		{
+			
+			var contenuMail = cGmail.lastDomToverify.document.getElementById('mb_' + info1);
+
+			var range = cGmail.lastDomToverify.document.createRange();
+			range.selectNode(contenuMail);
+			var documentFragment = range.cloneContents();
+			
+			var s = new XMLSerializer();
+			var d = documentFragment;
+			var str = s.serializeToString(d);
+
+			contenuMail = Selection.wash(str);
+
+			var password = getPrivateKeyPassword();						
+
+			var result = GPG.baseDecrypt(contenuMail,password);
+
+			var crypttext = result.output;
+			result = result.sdOut;
+
+			// If the crypt failled
+			if (result == "erreurPass") {
+
+					alert(i18n.getString("decryptFailedPassword"));
+					eraseSavedPassword();
+			}
+			else if (result == "erreur") {
+					alert(i18n.getString("decryptFailed"));
+			} 
+			else {
+				showText(crypttext);
+			}
+		}
+		else {
+			alert(event.target.id + " m'a cliqué, son bonus est " + this._info1);
+		}
 	};
 
   }
