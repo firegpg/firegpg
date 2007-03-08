@@ -1,6 +1,6 @@
 <!ENTITY prefwindow.title "Options de FireGPG">
 <!ENTITY pane1.title "Options de FireGPG">
-<!ENTITY gmail-enabled-checkbox.label "Support GMail">
+<!ENTITY gmail-enabled-checkbox.label "Support GMail (nécessite un redémarage)">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Clé privée par défaut :">
 <!ENTITY show-website-checkbox "Afficher le site officiel de FireGPG dans le texte signé ou chiffré.">

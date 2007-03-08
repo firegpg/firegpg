@@ -118,6 +118,10 @@ var cGmail =
 				td.setAttribute("style","color: red;");
 				td.innerHTML = i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
 
+				td.setAttribute("style","color: orange;");
+				td.innerHTML = i18n.getString("GMailD"); //"Aucun signature n'a été trouvé dans ce mail.";
+
+
 				replyBox.appendChild(td);	
 		
 				this.lastDomToverify.document.getElementById('rc_' + i).setAttribute("gpg","ok");
@@ -176,8 +180,23 @@ var cGmail =
   },
 
    initSystem: function() {
-	document.getElementById("appcontent").addEventListener("DOMContentLoaded", cGmail.listenerLoad, false);
-	window.addEventListener("unload", function() {cGmail.listenerUnload()}, false);
+	
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                           getService(Components.interfaces.nsIPrefService);
+		prefs = prefs.getBranch("extensions.firegpg.");
+	
+		try {
+			var usegmail = prefs.getBoolPref("gmail_enabled");
+		}
+		catch (e) { 
+			var usegmail = false;
+		}
+
+	if (usegmail == true)
+	{
+		document.getElementById("appcontent").addEventListener("DOMContentLoaded", cGmail.listenerLoad, false);
+		window.addEventListener("unload", function() {cGmail.listenerUnload()}, false);
+	}
   },
 
   addBouton: function(label,id,box,Ddocument)

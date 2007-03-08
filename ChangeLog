@@ -1,5 +1,7 @@
 2007-03-08 Maximilien Cuony
 	* Interface for Gmail !
+	* Option use Gmail is used
+	* Add a 'Need restart' for string of Gmail use's option
 
 2007-03-07  Achraf cherti
 	* it's possible in options.xul to select the gpg path (with the file picker).

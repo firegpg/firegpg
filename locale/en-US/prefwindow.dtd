@@ -1,6 +1,6 @@
 <!ENTITY prefwindow.title "FireGPG preferences">
 <!ENTITY pane1.title "FireGPG preferences">
-<!ENTITY gmail-enabled-checkbox.label "GMail support">
+<!ENTITY gmail-enabled-checkbox.label "GMail support (need a broswer restart)">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Default private key :">
 <!ENTITY show-website-checkbox "Show FireGPG website in signed or crypted text">
