@@ -1,3 +1,6 @@
+2007-03-08 Maximilien Cuony
+	* Interface for Gmail !
+
 2007-03-07  Achraf cherti
 	* it's possible in options.xul to select the gpg path (with the file picker).
 	* gpg-path textbox and button is enabled/disabled when the checkbox is checked/unchecked.

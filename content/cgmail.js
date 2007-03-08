@@ -80,7 +80,7 @@ function cGmailTest(e)
 		}
 
 
-		for (var i2 = 0; i2 < LastNombreMail; i2++) {
+		/*for (var i2 = 0; i2 < LastNombreMail; i2++) {
 				
 
 				if (Ddocument.getElementById('rc_' + i2) != null)
@@ -103,31 +103,116 @@ function cGmailTest(e)
 				}
 			}
 		
-
+*/
 		if (Ddocument.getElementById('sb_compose') != null)
 		{
 
-			alert('ADDING');
 			var boutonBox = Ddocument.getElementById('sb_compose').firstChild;	
+			AddComposeBoutons(boutonBox,Ddocument);
 
-			
-			var bouton = Ddocument.createElement("button");
-			
-			bouton.setAttribute("type","button");
-			bouton.setAttribute("tabindex","8");
-			bouton.setAttribute ("style","padding: 0pt 1em;");
-			bouton.setAttribute("id","sndcrypt");
-			//bouton.setAttribute("onclick","cGmailNeedAction()");
-			
-			bouton.setAttribute("label","sndcrypt");
-			
-			bouton.innerHTML = "Me touche pas !";
+		}
 
-			boutonBox.innerHTML = boutonBox.innerHTML + " &nbsp;";
+	
+		if (Ddocument.getElementById('nc_compose') != null)
+		{
+			var boutonBox = Ddocument.getElementById('nc_compose').parentNode;	
 
-			boutonBox.appendChild(bouton);	
+			AddComposeBoutons(boutonBox,Ddocument);
 
-			bouton.addEventListener('click',cGmailNeedAction,false);
+		}
+	}
+}
+function AddComposeBoutons(box,Ddocument)
+{
+
+	AddBouton("Signer","sign",box,Ddocument);	
+	AddBouton("Signer & Envoyer","sndsign",box,Ddocument);
+
+	AddBouton("Crypter","cypt",box,Ddocument);	
+	AddBouton("Crypter & Envoyer","sndcyrpt",box,Ddocument);	
+
+}
+function AddBouton(label,id,box,Ddocument)
+{
+
+	var bouton = Ddocument.createElement("button");
+	
+	bouton.setAttribute("type","button");
+	bouton.setAttribute("tabindex","8");
+	bouton.setAttribute ("style","padding: 0pt 1em;");
+	bouton.setAttribute("id",id);
+				
+	bouton.innerHTML = label;
+
+	box.innerHTML = box.innerHTML + " &nbsp;";
+
+	box.appendChild(bouton);	
+
+	bouton.addEventListener('command',cGmailNeedAction,false);
+}
+
+var lastDomToverify;
+
+function verifiyDom()
+{
+
+	for (var i = 0; i < LastNombreMail; i++) {
+		if (lastDomToverify.document.getElementById('rc_' + i) != null)
+		{
+			//13 Childs !!					
+			var replyBox = lastDomToverify.document.getElementById('rc_' + i).firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild;	
+			if (lastDomToverify.document.getElementById('rc_' + i).hasAttribute("gpg") == false)
+			{
+				
+				var contenuMail = lastDomToverify.document.getElementById('mb_' + i).innerHTML;
+
+
+				var td = lastDomToverify.document.createElement("td");
+				
+				td.setAttribute("class","");
+				td.setAttribute("id","sm_verify");
+				
+				td.setAttribute("style","color: green;");
+				td.innerHTML = "La première signature de ce mail est testtest (testtest) testtset@testtest.testtset";
+
+				td.setAttribute("style","color: orange;");
+				td.innerHTML = "Aucun signature n'a été trouvé dans ce mail.";
+
+				td.setAttribute("style","color: red;");
+				td.innerHTML = "La première signature de ce mail est incorrect !";
+
+				replyBox.appendChild(td);	
+
+		
+				lastDomToverify.document.getElementById('rc_' + i).setAttribute("gpg","ok");
+			}
+		}
+
+		if (lastDomToverify.document.getElementById('nc_' + i) != null)
+		{
+			if (lastDomToverify.document.getElementById('nc_' + i).hasAttribute("gpg") == false)
+			{
+				var boutonBox = lastDomToverify.document.getElementById('nc_' + i).parentNode;	
+
+				AddComposeBoutons(boutonBox,lastDomToverify.document);
+
+				lastDomToverify.document.getElementById('nc_' + i).setAttribute("gpg","ok");
+
+			}
+
+		}
+
+		if (lastDomToverify.document.getElementById('sb_' + i) != null)
+		{
+			if (lastDomToverify.document.getElementById('sb_' + i).hasAttribute("gpg") == false)
+			{
+				var boutonBox = lastDomToverify.document.getElementById('sb_' + i).firstChild.firstChild.firstChild.firstChild.firstChild;	
+
+				AddComposeBoutons(boutonBox,lastDomToverify.document);
+
+				lastDomToverify.document.getElementById('sb_' + i).setAttribute("gpg","ok");
+
+			}
 
 		}
 
@@ -135,10 +220,60 @@ function cGmailTest(e)
 
 }
 
+const STATE_START = Components.interfaces.nsIWebProgressListener.STATE_START;
+const STATE_STOP = Components.interfaces.nsIWebProgressListener.STATE_STOP;
+var myListener =
+{
+  QueryInterface: function(aIID)
+  {
+   if (aIID.equals(Components.interfaces.nsIWebProgressListener) ||
+       aIID.equals(Components.interfaces.nsISupportsWeakReference) ||
+       aIID.equals(Components.interfaces.nsISupports))
+     return this;
+   throw Components.results.NS_NOINTERFACE;
+  },
+
+  onStateChange: function(aProgress, aRequest, aFlag, aStatus)
+  {
+   
+    if(aFlag & STATE_STOP)
+	   {
+	    		// This fires when the load finishes
+			if (aProgress.DOMWindow.document.getElementById('msg_0') != null)
+			{
+				
+				lastDomToverify = aProgress.DOMWindow;
+				setTimeout("verifiyDom()",2000);
+				
+			}
+	   }
+   return 0;
+  },
+
+  onLocationChange: function(aProgress, aRequest, aURI)
+  {
+  
+   return 0;
+  },
+
+  // For definitions of the remaining functions see XulPlanet.com
+  onProgressChange: function() {return 0;},
+  onStatusChange: function() {return 0;},
+  onSecurityChange: function() {return 0;},
+  onLinkIconAvailable: function() {return 0;}
+}
+
+function cGmailAddListener(e)
+{
+	gBrowser.addProgressListener(myListener,
+		  Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
+	cGmailTest(e);
+}
+
 function cGmailInit()
 {
 
-	document.getElementById("appcontent").addEventListener("DOMContentLoaded", cGmailTest, false);
-
+	//document.getElementById("appcontent").addEventListener("DOMContentLoaded", cGmailTest, false);
+	document.getElementById("appcontent").addEventListener("DOMContentLoaded", cGmailAddListener, false);
 
 }
