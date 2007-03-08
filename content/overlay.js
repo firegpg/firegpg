@@ -40,7 +40,7 @@
 
 var firegpg = {
 	onLoad: function() {
-		 cGmailInit(); //TMP FOR MAXIMILIEN
+		cGmail.initSystem();
 		GPG.selfTest();
 
 		// initialization code
@@ -62,7 +62,7 @@ var firegpg = {
 		var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].
 		                               getService(Components.interfaces.nsIPromptService);
 		if (action == "SIGN")
-		{   GPG.sign(); cGmailTest(); } //TMP FOR MAXIMILIEN
+		   GPG.sign();
 		else if(action == "VERIF")
 		   GPG.verify();
 		else if(action == "CRYPT")
