@@ -175,11 +175,13 @@ var cGmail = {
 		if(Ddocument.getElementById('sb_compose') != null) {
 			var boutonBox = Ddocument.getElementById('sb_compose').firstChild;	
 			this.addComposeBoutons(boutonBox,Ddocument,'compose');
+			this.lastDomToverify = e.target.defaultView.wrappedJSObject;
 		}
 		
 		if (Ddocument.getElementById('nc_compose') != null) {
 			var boutonBox = Ddocument.getElementById('nc_compose').parentNode;	
 			this.addComposeBoutons(boutonBox,Ddocument,'compose');
+			this.lastDomToverify = e.target.defaultView.wrappedJSObject;
 		}
 	},
 
