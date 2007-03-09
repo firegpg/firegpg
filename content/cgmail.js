@@ -216,11 +216,7 @@ var cGmail = {
 		try {
 			box.innerHTML = box.innerHTML + " &nbsp;";
 			box.appendChild(bouton);
-				
-			var tmpListener = new Object;
-			tmpListener = null;
-			tmpListener = new cGmail.callBack(id,info1)
-			box.addEventListener('click',tmpListener,true);
+			
 
 		} catch (e) {}
 	},
@@ -230,8 +226,17 @@ var cGmail = {
 		var i18n = document.getElementById("firegpg-strings");
 		this.addBouton(i18n.getString("GMailS"),"sign",box,Ddocument,info1);
 		this.addBouton(i18n.getString("GMailSS"),"sndsign",box,Ddocument,info1);
-		this.addBouton(i18n.getString("GMailC"),"cypt",box,Ddocument,info1);
-		this.addBouton(i18n.getString("GMailCS"),"sndcyrpt",box,Ddocument,info1);
+		this.addBouton(i18n.getString("GMailC"),"crypt",box,Ddocument,info1);
+		this.addBouton(i18n.getString("GMailCS"),"sndcrypt",box,Ddocument,info1);
+
+		try {
+
+		var tmpListener = new Object;
+			tmpListener = null;
+			tmpListener = new cGmail.callBack("tralala",info1)
+			box.addEventListener('click',tmpListener,true);
+
+		} catch (e) {}
 	},
 	
 	listenerLoad: function(e) {
@@ -269,6 +274,24 @@ var cGmail = {
 				
 				contenuMail = Selection.wash(str);
 				
+				reg=new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
+				contenuMail = contenuMail.replace(reg, "FIREGPGTRALALABEGINHIHAN");
+
+				reg=new RegExp("\\- \\-\\-\\-\\-\\-END PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
+				contenuMail = contenuMail.replace(reg, "FIREGPGTRALALAENDHIHAN");
+
+				var firstPosition = contenuMail.indexOf("-----BEGIN PGP MESSAGE-----");
+				var lastPosition = contenuMail.indexOf("-----END PGP MESSAGE-----");
+
+				reg=new RegExp("FIREGPGTRALALABEGINHIHAN", "gi"); // We don't have to detect disabled balises
+				contenuMail = contenuMail.replace(reg, "-----BEGIN PGP MESSAGE-----");
+
+				reg=new RegExp("FIREGPGTRALALAENDHIHAN", "gi"); // We don't have to detect disabled balises
+				contenuMail = contenuMail.replace(reg, "-----END PGP MESSAGE-----");
+				
+				contenuMail = contenuMail.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
+
+
 				var password = getPrivateKeyPassword();						
 				var result = GPG.baseDecrypt(contenuMail,password);
 				var crypttext = result.output;
@@ -285,23 +308,189 @@ var cGmail = {
 				else 
 					showText(crypttext);
 			}
-			else
-			{ //ta pour des textbox
-			
-
-				var range = cGmail.lastDomToverify.document.getElementById('hc_' + info1).contentDocument.createRange();
-				range.selectNode(cGmail.lastDomToverify.document.getElementById('hc_' + info1).contentDocument.firstChild);
-				var documentFragment = range.cloneContents();
+			else if (event.target.id == "sndsign" || event.target.id == "sign")
+			{		
 				
+				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);
+
+				var boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
+
+				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);				
+
+				if (mailContent == "")
+					return "";
+
+				var password = getPrivateKeyPassword();
+				var keyID = getSelfKey();
+
+				var result = GPG.baseSign(mailContent,password,keyID);
+
+						// If the sign failled
+				if(result.sdOut == "erreur") {
+					// We alert the user
+					alert(i18n.getString("signFailed"));
+				} 
+				else if(result.sdOut == "erreurPass") {
+						alert(i18n.getString("signFailedPassword"));
+						eraseSavedPassword();
+				} 
+				else {
+
+					cGmail.setMailContent(cGmail.lastDomToverify.document,info1,result.output);
+		
+					if (event.target.id == "sndsign")
+						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
+				}
+
+			}
+			else if (event.target.id == "sndcrypt" || event.target.id == "crypt")
+			{ 	
+
+				//This code has to mix with the previous else/if block
+				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);
+
+				var boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
+
+				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);				
+
+				if (mailContent == "")
+					return "";
+
+				
+				var keyID = choosePublicKey();
+
+				var result = GPG.baseCrypt(mailContent,keyID);
+
+						// If the sign failled
+				if(result.sdOut == "erreur") {
+					// We alert the user
+					alert(i18n.getString("cryptFailed"));
+				} 
+				else {
+
+					cGmail.setMailContent(cGmail.lastDomToverify.document,info1,result.output);
+
+					if (event.target.id == "sndcrypt")
+						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
+				}
+			}
+		};
+	},
+	getMailContent: function(dDocument,idMail)
+	{
+
+			//Mode RichEditing
+
+			//First, we look for a selection
+			var select = dDocument.getElementById('hc_' + idMail).contentWindow.getSelection();
+	
+			if (select.toString() == "")
+			{
+				var i18n = document.getElementById("firegpg-strings");
+				alert(i18n.getString("gmailSelectError"));				
+				return "";
+			}
+			else
+			{
+				value = select.getRangeAt(0); 
+				
+				
+				var documentFragment = value.cloneContents();
+
 				var s = new XMLSerializer();
 				var d = documentFragment;
 				var str = s.serializeToString(d);
 				
 				contenuMail = Selection.wash(str);
 
-				alert(contenuMail);
 			}
-		};
+
+			return contenuMail;
+	},
+
+	setMailContent: function(dDocument,idMail,newText)
+	{
+
+			//Mode RichEditing
+			var reg=new RegExp("\n", "gi");
+			newText = newText.replace(reg,"<br>");
+
+			//First, we look for a selection
+			var select = dDocument.getElementById('hc_' + idMail).contentWindow.getSelection();
+	
+			if (select.toString() != "")
+			{
+
+				tmpHTML = dDocument.getElementById('hc_' + idMail).contentDocument.body.innerHTML;
+
+				var stringG = select.toString();
+
+				var reg=new RegExp("\\\\", "gi");
+				stringG = stringG.replace(reg,"\\\\");
+
+				var reg=new RegExp("\\.", "gi");
+				stringG = stringG.replace(reg,"\\.");
+
+				var reg=new RegExp("\\^", "gi");
+				stringG = stringG.replace(reg,"\\^");
+
+				var reg=new RegExp("\\}", "gi");
+				stringG = stringG.replace(reg,"\\}");
+
+				var reg=new RegExp("\\{", "gi");
+				stringG = stringG.replace(reg,"\\{");
+
+				var reg=new RegExp("\\)", "gi");
+				stringG = stringG.replace(reg,"\\)");
+
+				var reg=new RegExp("\\(", "gi");
+				stringG = stringG.replace(reg,"\\(");
+
+				var reg=new RegExp("\\]", "gi");
+				stringG = stringG.replace(reg,"\\]");
+
+				var reg=new RegExp("\\[", "gi");
+				stringG = stringG.replace(reg,"\\[");
+
+				var reg=new RegExp("\\$", "gi");
+				stringG = stringG.replace(reg,"\\$");
+
+				var reg=new RegExp("\\?", "gi");
+				stringG = stringG.replace(reg,"\\?");
+
+				var reg=new RegExp("\\*", "gi");
+				stringG = stringG.replace(reg,"\\*");
+
+				var reg=new RegExp("\\+", "gi");
+				stringG = stringG.replace(reg,"\\+");
+
+				var reg=new RegExp("\\-", "gi");
+				stringG = stringG.replace(reg,"\\-");
+
+				var reg=new RegExp(select.toString(), "");
+				tmpHTML = tmpHTML.replace(reg,newText);
+
+				dDocument.getElementById('hc_' + idMail).contentDocument.body.innerHTML = tmpHTML;
+			}
+
+	},
+
+	/* Say to gmail that is time for send a mail ! */
+	sendEmail: function(nodeForScan, dDocument)
+	{
+
+		var children = nodeForScan.childNodes;
+
+			for (var i = 0; i < children.length; i++) 
+			 { 
+			try {   					
+			if (children[i].attributes.getNamedItem("id").textContent == "snd")
+			{
+				var evt = dDocument.createEvent("MouseEvents");
+					evt.initEvent("click", true, true);
+					children[i].dispatchEvent(evt);
+			} } catch (e) { }
+			}
 	}
 };
 
