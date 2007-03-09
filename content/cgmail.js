@@ -240,13 +240,16 @@ var cGmail = {
 	},
 	
 	listenerLoad: function(e) {
-		var urlPage = e.target.defaultView.wrappedJSObject.location.host;
-		
-		if (urlPage.indexOf('mail.google.com') != -1) {
-			cGmail.simpleLoad(e);
-			gBrowser.addProgressListener(cGmailListener,
-			         Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
-		}
+		try {
+
+			var urlPage = e.target.defaultView.wrappedJSObject.location.host;
+			
+			if (urlPage.indexOf('mail.google.com') != -1) {
+				cGmail.simpleLoad(e);
+				gBrowser.addProgressListener(cGmailListener,
+				         Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
+			}
+		} catch (e) { }
 	},
 	
 	
