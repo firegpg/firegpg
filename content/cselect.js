@@ -36,54 +36,42 @@
 
 // Class to handle selection
 var Selection = {
-
-	/* Recherche une selection dans une frame */
+	/* find a select in a frame */
 	getFrame: function(frames) {
 		var i;
-		var selObj;	
+		var selObj;
 		var value = "";
 		
-		for(i=0; i < frames.length; ++i)
-			{
+		for(i = 0; i < frames.length; ++i) {
+			try {
+				var tmpVal = frames[i].getSelection().toString();
 				
-				try {				
-					var tmpVal = frames[i].getSelection().toString();
-					
-													
-					if (tmpVal == "") // != don't work...
-					{
-					}
-					else
-					{
-						value = tmpVal;
-						selObj = frames[i].getSelection();
-					}
+				if (tmpVal == "") { // != don't work...
 				}
-				catch (e) { }
+				else {
+					value = tmpVal;
+					selObj = frames[i].getSelection();
+				}
 			}
-
-		if (value == "")	
-		{
-			
-			for(i=0; i < frames.length; ++i)
-				{
-					try {				
-						tmpSelselObj = this.getFrame(frames[i].frames);
-
-						if (tmpSelselObj.toString() == "")
-						{ } 
-						else 
-						{
-							selObj = tmpSelselObj;
-						}
-					}
-					catch (e) { }
-				}
-
+			catch (e) {}
 		}
 
+		if (value == "") {
+			for(i = 0; i < frames.length; ++i) {
+				try {
+					var tmpSelselObj = this.getFrame(frames[i].frames);
+					
+					if (tmpSelselObj.toString() == "") {
+					} 
+					else {
+						selObj = tmpSelselObj;
+					}
+				}
+				catch (e) {}
+			}
+		}
+		
 		return selObj;
-
 	},
 
 	/* 
@@ -98,7 +86,7 @@ var Selection = {
 		// value is returned
 		var value = selObj.toString();
 
-		//If no text is selected, we try to get it from frames
+		// If no text is selected, we try to get it from frames
 		if(value == "") {
 			try { 
 				selObj = this.getFrame(getBrowser().contentWindow.frames);
@@ -108,70 +96,56 @@ var Selection = {
 			}
 		}
 		
-		
 		// If the text is not selected, we try to get it
 		// from inputs and textareas
 		if(value == "") {
 			try {
 				var focused = document.commandDispatcher.focusedElement;
-				
 				var value = focused.value;
 				value = value.substring(focused.selectionStart,focused.selectionEnd);
 			}
 			catch (e) {
 			}
-
-			
-
-		}
+		} 
 		// the text is selected !
-		else {
-		
-			
+		else { 
 			value = selObj.getRangeAt(0); 
 			var documentFragment = value.cloneContents();
-
-     		var s = new XMLSerializer();
+			var s = new XMLSerializer();
 			var d = documentFragment;
 			var str = s.serializeToString(d);
-							
 			value = this.wash(str);
 		}
-		
 		
 		return value;
 	},
 
-
-	/* Transform HTML in usable text for crypts */
-	wash: function(text)
-	{
-
-			var reg=new RegExp("<br[^>]*>\n", "gi"); //Pour pas faire des doubles retours (surviens sur certains sites)
-			str = text.replace(reg,"\n");
-
-			var reg=new RegExp("<br>\n", "gi");
-			str = str.replace(reg,"\n");
-
-			var reg=new RegExp("\n<br[^>]*>", "gi"); //Pour pas faire des doubles retours (surviens sur certains sites)
-			str = str.replace(reg,"\n");
-
-			var reg=new RegExp("\n<br>", "gi");
-			str = str.replace(reg,"\n");
-
-			var reg=new RegExp("<br[^>]*>", "gi");
-			str = str.replace(reg,"\n");
-			var reg=new RegExp("<br>", "gi");
-			str = str.replace(reg,"\n");
-
-			var reg=new RegExp("<script[^>]*>[^<]*</script[^>]*>", "gi"); //Élimination des scripts
-			str = str.replace(reg,"\n");
-   					
-			reg=new RegExp("<[^>]+>", "g");  	  // Élimination des balises HTML
-            str = str.replace(reg, "");
+	/* Transform HTML to usable text to encrypt */
+	wash: function(text) {
+		var reg = new RegExp("<br[^>]*>\n", "gi"); // Pour pas faire des doubles retours (surviens sur certains sites)
+		str = text.replace(reg,"\n");
 		
-			return str;
-
+		var reg=new RegExp("<br>\n", "gi");
+		str = str.replace(reg,"\n");
+		
+		var reg=new RegExp("\n<br[^>]*>", "gi"); //Pour pas faire des doubles retours (surviens sur certains sites)
+		str = str.replace(reg,"\n");
+		
+		var reg=new RegExp("\n<br>", "gi");
+		str = str.replace(reg,"\n");
+		
+		var reg=new RegExp("<br[^>]*>", "gi");
+		str = str.replace(reg,"\n");
+		var reg=new RegExp("<br>", "gi");
+		str = str.replace(reg,"\n");
+		
+		var reg=new RegExp("<script[^>]*>[^<]*</script[^>]*>", "gi"); //Élimination des scripts
+		str = str.replace(reg,"\n");
+		
+		reg=new RegExp("<[^>]+>", "g"); // Élimination des balises HTML
+		str = str.replace(reg, "");
+		
+		return str;
 	},
 	
 	/* 
@@ -202,21 +176,21 @@ var Selection = {
 	 * Modify the selection.
 	 */
 	set: function(text) {
-		// We verify that the selection can be edited 
+		// We verify if selection is editable
 		if(this.isEditable()) {
 			// Get the focused element
 			var focused = document.commandDispatcher.focusedElement;
 			var value = focused.value;
 			var startPos = focused.selectionStart;
-	        var endPos = focused.selectionEnd;
-	        var chaine = focused.value;
+			var endPos = focused.selectionEnd;
+			var chaine = focused.value;
 			
-			// We create the new string and replace it into focused element
-	        focused.value = chaine.substring(0, startPos) + text + chaine.substring(endPos, chaine.length);
+			// We create the new string and replace it into the focused element
+			focused.value = chaine.substring(0, startPos) + text + chaine.substring(endPos, chaine.length);
 			
 			// We select the new text.
-	        focused.selectionStart = startPos;
-	        focused.selectionEnd = startPos + text.length ;
+			focused.selectionStart = startPos;
+			focused.selectionEnd = startPos + text.length ;
 		}
 	}
 }

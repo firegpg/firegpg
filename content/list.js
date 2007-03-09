@@ -35,7 +35,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 /* 
- * When the list dialog is showed.
+ * Called when the list dialog is shown.
  *
  * window.arguments[0] will contain this object :
  *   {description: '', title: '', list: {'ID': 'Label'}, 

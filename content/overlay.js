@@ -34,14 +34,9 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
-/* TODO we need add some comments to describe the code ! */
-
-
-
 var firegpg = {
 	onLoad: function() {
 		cGmail.initSystem();
-		GPG.selfTest();
 
 		// initialization code
 		this.initialized = true;
@@ -62,15 +57,15 @@ var firegpg = {
 		var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].
 		                               getService(Components.interfaces.nsIPromptService);
 		if (action == "SIGN")
-		   GPG.sign();
+			GPG.sign();
 		else if(action == "VERIF")
-		   GPG.verify();
+			GPG.verify();
 		else if(action == "CRYPT")
-		   GPG.crypt();
+			GPG.crypt();
 		else if(action == "DECRYPT")
-		   GPG.decrypt();
+			GPG.decrypt();
 		else if(action == "IMPORT")
-		   GPG.kimport();
+			GPG.kimport();
 		else if(action == "OPTS")
 			var win = window.open("chrome://firegpg/content/options.xul", 
 			                      "optionsFiregpg", "chrome,centerscreen"); 

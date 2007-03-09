@@ -150,7 +150,9 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */) {
 	return result.password;
 }
 
-/* This function erase the memorised password (if for exemple a sign failled) */
+/* 
+ * This function erase the saved password (if for exemple a sign failled) 
+ */
 function eraseSavedPassword()
 {
 	savedPassword = "";
@@ -173,8 +175,6 @@ function getSelfKey() {
 	return prefs.getCharPref("default_private_key");
 }
 
-
-
 /*
  * Get the path of a tmp file.
  * The path is returned.
@@ -189,10 +189,13 @@ function getTmpDir() {
  * Get an unique temporary file name.
  * The path + filename is returned.
  */
-function getTmpFile() {
+function getTmpFile(permission /* optional */) {
+	if(permission == undefined)
+		permission = WRITE_PERMISSION;
+
 	var fileobj = getTmpDir();
 	fileobj.append(TMP_FILES);
-	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, WRITE_PERMISSION );
+	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, permission);
 	return fileobj.path;
 }
 
@@ -200,62 +203,54 @@ function getTmpFile() {
  * Get an unique temporary file name, who can be executed
  * The path + filename is returned.
  */
-function getTmpFileRunning() {
-	var fileobj = getTmpDir();
-	fileobj.append(TMP_RFILES);
-	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, WRITE_PERMISSION_R);
-	return fileobj.path;
+function getTmpFileRunning() { /* TODO *Running -> *CanBeLaunched ? */
+	return getTmpFile(WRITE_PERMISSION_R);
 }
 
 /*
- * Get an unique temporary file name for password (so he is random)
+ * Get an unique, temporary file name, for password (so it's random).
  * The path + filename is returned.
  */
 function getTmpPassFile() {
 	var fileobj = getTmpDir();
+	var fileName = Math.floor(Math.random() * 9999);
+	var aleatoire = Math.floor(Math.random() * 9);
 
-	var fileName = Math.floor(Math.random()*9999);
-
-	var aleatoire=Math.floor(Math.random()*9)
-	switch(aleatoire){
-		case 0:fileName = fileName + "sd2345asd1234";break;
-		case 1:fileName = fileName + "asdfsad";break;	
-		case 2:fileName = fileName + "rtdfgjdgth45dfhdfgas";break;	
-		case 3:fileName = fileName + "ssdfsdfwe5jfgjkgh";break;	
-		case 4:fileName = fileName + "gfhjghjghjghjghjjd1234";break;	
-		case 5:fileName = fileName + "sertghjghjghjghj";break;	
-		case 6:fileName = fileName + "sdfgh456dgsdfg";break;	
-		case 7:fileName = fileName + "kbysgfjkdfghdfgh";break;	
-		case 8:fileName = fileName + "ertasmlsdfjhgf";break;	
-		case 9:fileName = fileName + "fhfghsdfhhdfgh4";break;	
-
-	
-}
-
-	fileName = fileName +  Math.floor(Math.random()*9999); 
-
-	aleatoire=Math.floor(Math.random()*9)
-		switch(aleatoire){
-		case 0:fileName = fileName + "5hrfgh";break;
-		case 1:fileName = fileName + "sfgd";break;	
-		case 2:fileName = fileName + "sdfsdf";break;	
-		case 3:fileName = fileName + "tzugbn";break;	
-		case 4:fileName = fileName + "sdfsdf";break;	
-		case 5:fileName = fileName + "nvbnvbn";break;	
-		case 6:fileName = fileName + "zuigdfg";break;	
-		case 7:fileName = fileName + "dfjfgfh";break;	
-		case 8:fileName = fileName + "ertertef";break;	
-		case 9:fileName = fileName + "fdfgdfgdfgdfgdfgrxdcbvndfg";break;	
+	switch(aleatoire) {
+		case 0: fileName = fileName + "sd2345asd1234"; break;
+		case 1: fileName = fileName + "asdfsad"; break;
+		case 2: fileName = fileName + "rtdfgjdgth45dfhdfgas"; break;
+		case 3: fileName = fileName + "ssdfsdfwe5jfgjkgh"; break;
+		case 4: fileName = fileName + "gfhjghjghjghjghjjd1234"; break;
+		case 5: fileName = fileName + "sertghjghjghjghj"; break;
+		case 6: fileName = fileName + "sdfgh456dgsdfg"; break;
+		case 7: fileName = fileName + "kbysgfjkdfghdfgh"; break;
+		case 8: fileName = fileName + "ertasmlsdfjhgf"; break;
+		case 9: fileName = fileName + "fhfghsdfhhdfgh4"; break;
 	}
 
-	fileName = fileName +  Math.floor(Math.random()*9999); 
+	fileName = fileName + Math.floor(Math.random() * 9999); 
 
+	aleatoire = Math.floor(Math.random() * 9)
+	switch(aleatoire) {
+		case 0: fileName = fileName + "5hrfgh"; break;
+		case 1: fileName = fileName + "sfgd"; break;
+		case 2: fileName = fileName + "sdfsdf"; break;
+		case 3: fileName = fileName + "tzugbn"; break;
+		case 4: fileName = fileName + "sdfsdf"; break;
+		case 5: fileName = fileName + "nvbnvbn"; break;
+		case 6: fileName = fileName + "zuigdfg"; break;
+		case 7: fileName = fileName + "dfjfgfh"; break;
+		case 8: fileName = fileName + "ertertef"; break;
+		case 9: fileName = fileName + "fdfgdfgdfgdfgdfgrxdcbvndfg"; break;
+	}
+
+	fileName = fileName + Math.floor(Math.random() * 9999); 
 	fileobj.append(fileName);
 	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, WRITE_PERMISSION);
+
 	return fileobj.path;
 }
-
-
 
 /*
  * Remove a file.
@@ -334,12 +329,15 @@ function getContent(aURL){
 	                           getService(Components.interfaces.nsIIOService);
 	var scriptableStream = Components.classes["@mozilla.org/scriptableinputstream;1"].
 	                                  getService(Components.interfaces.nsIScriptableInputStream);
-	var channel=ioService.newChannel(aURL,null,null);
-	var input=channel.open();
+	var channel = ioService.newChannel(aURL, null, null);
+
+	var input = channel.open();
 	scriptableStream.init(input);
-	var str=scriptableStream.read(input.available());
+
+	var str = scriptableStream.read(input.available());
 	scriptableStream.close();
 	input.close();
+
 	return str;
 } 
 
@@ -353,7 +351,6 @@ function runCommand(command, arg) {
 
 	var process = Components.classes[NS_PROCESSUTIL_CONTRACTID].
 	                         createInstance(Components.interfaces.nsIProcess);
-
 	process.init(file);
 	var args = arg.split(' ');
 	process.run(true, args, args.length);

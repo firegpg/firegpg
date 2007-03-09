@@ -1,16 +1,13 @@
 Tâches libres :
-	- au lieu de déranger l'utilisateur en disant "gpg n'a pas été trouvé" 
-	  au démarrage de Firefox, ne faire cela que quand ce dernier fait un
-	  chiffrement/déchiffrement/vérification/signature.
 	- quand l'utilisateur clique sur "annuler" quand un mot de passe lui 
-	  est demande,
-	  ne plus lui dire que son mot de passe est incorrect.
-	- De temps en temps, un menu s'ouvre alors qu'il ne devrais pas !
+	  est demandé. Ne plus lui dire que son mot de passe est incorrect.
+	- Corriger ceci : de temps en temps, un menu s'ouvre alors qu'il 
+	  ne devrait pas !
 	
 Tâches de Maximilien :
 	- Fonctions pour ajouter le support GPG dans le webmail de GMail
 	- < => &lg; 
 
 Tâches d'Achraf :
-	- case à cocher "toujours chiffrer ou signer la sélection dans une nouvelle fenêtre".
+	- appliquer la case à cocher "toujours chiffrer ou signer la sélection dans une nouvelle fenêtre".
 	- empêcher l'utilisateur de fermer la fenêtre des options tant que le chemin de gpg choisi n'existe pas (bien sur, le laisser fermer la fenêtre si la case "spécifier manuellement le chemin de gpg" est décochée !).

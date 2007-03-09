@@ -42,14 +42,14 @@
  */
 function onChangeGPGPathCheckbox(checkbox, focus_textbox)
 {
+	/* checked ? */
 	if(checkbox == undefined)
 		checkbox = document.getElementById('change-gpg-path-checkbox');
-
 	var disabled = (checkbox.checked) ? false : true;
-
+	
 	/* button */
 	document.getElementById('change-gpg-path-button').disabled = disabled;
-
+	
 	/* textbox */
 	var textbox = document.getElementById('gpg-path-textbox');
 	textbox.disabled = disabled;
@@ -64,6 +64,7 @@ function getSelectedKey()
 {
 	return document.getElementById('default-private-key-pref').value;
 }
+
 /*
  * This function is called when a private key is selected.
  */
@@ -81,15 +82,15 @@ function onLoad(win)
 {
 	var gpg_keys = GPG.listKeys(true); /* private keys are returned */
 	var listbox = document.getElementById('private-keys-listbox');
-
+	
 	/* read the default private key */
 	var default_private_key = document.getElementById('default-private-key-pref').value;
-
+	
 	var default_item = null; /* this variable will contain the index of
 	                          the default private key item */
-
+	
 	/* add all keys in the list box and find
-	 * the default item in listbox */
+	 * the default item */
 	for(var key in gpg_keys) {
 		var item = listbox.appendItem(gpg_keys[key], key);
 
@@ -113,13 +114,10 @@ function fileSelector()
 {
 	var nsIFilePicker = Components.interfaces.nsIFilePicker;
 	var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
-	fp.init(window, "Select a File", nsIFilePicker.modeOpen); /* TODO i18n */
+	var i18n = document.getElementById("firegpg-strings");
+	fp.init(window, i18n.getString('fileSelectorSelectFile'), nsIFilePicker.modeOpen);
 	fp.appendFilters(nsIFilePicker.filterAll);
-
-	if(fp.show() == nsIFilePicker.returnOK)
-		return fp.file.path;
-	else
-		return null;
+	return (fp.show() == nsIFilePicker.returnOK) ? fp.file.path : null;
 }
 
 /*
