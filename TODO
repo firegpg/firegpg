@@ -6,9 +6,7 @@ Tâches libres :
 	
 Tâches de Maximilien :
 	- Implémenter les boutons de gmail
-	- Trouver le problème qui rend certaines signatures invalides
-	- < => &lg; 
-
+	
 Tâches d'Achraf :
 	- appliquer la case à cocher "toujours chiffrer ou signer la sélection dans une nouvelle fenêtre".
 	- empêcher l'utilisateur de fermer la fenêtre des options tant que le chemin de gpg choisi n'existe pas (bien sur, le laisser fermer la fenêtre si la case "spécifier manuellement le chemin de gpg" est décochée !).

@@ -166,6 +166,12 @@ var Selection = {
 		
 		reg=new RegExp("<[^>]+>", "g"); // Élimination des balises HTML
 		str = str.replace(reg, "");
+
+		reg=new RegExp("&lt;", "g"); // Petites problèmes de < de temps en temps
+		str = str.replace(reg, "<");
+
+		reg=new RegExp("&gt;", "g"); // Petites problèmes de > de temps en temps
+		str = str.replace(reg, ">");
 		
 		return str;
 	},

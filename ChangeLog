@@ -1,6 +1,7 @@
 2007-03-08 Maximilien Cuony
 	* Solved the <br>\n<br> bug in cselect
 	* Begging of gmail's butons implementation (DON'T USE IT)
+	* Resolve &lt; problem
 
 2007-03-08  Achraf cherti
 	* GPG.selfTest() is now not called from overlay, but from cgpg.js
