@@ -122,8 +122,15 @@ var Selection = {
 
 	/* Transform HTML to usable text to encrypt */
 	wash: function(text) {
+
+		var reg=new RegExp("<br[^>]*>\n<br[^>]*>", "gi"); //Pour ne pas enlever un bouble <br>\n<br> logique (bug des boubles <br>)
+		str = text.replace(reg,"\n\n");
+		
+		var reg=new RegExp("<br>\n<br>", "gi");
+		str = str.replace(reg,"\n\n");
+
 		var reg = new RegExp("<br[^>]*>\n", "gi"); // Pour pas faire des doubles retours (surviens sur certains sites)
-		str = text.replace(reg,"\n");
+		str = str.replace(reg,"\n");
 		
 		var reg=new RegExp("<br>\n", "gi");
 		str = str.replace(reg,"\n");
@@ -140,6 +147,21 @@ var Selection = {
 		str = str.replace(reg,"\n");
 		
 		var reg=new RegExp("<script[^>]*>[^<]*</script[^>]*>", "gi"); //Élimination des scripts
+		str = str.replace(reg,"\n");
+
+		var reg=new RegExp("<script[^>]*>[^<]*</script>", "gi"); //Élimination des scripts
+		str = str.replace(reg,"\n");
+
+		var reg=new RegExp("<script>[^<]*</script>", "gi"); //Élimination des scripts
+		str = str.replace(reg,"\n");
+
+		var reg=new RegExp("<style[^>]*>[^<]*</style[^>]*>", "gi"); //Élimination des styles
+		str = str.replace(reg,"\n");
+
+		var reg=new RegExp("<style[^>]*>[^<]*</style>", "gi"); //Élimination des styles
+		str = str.replace(reg,"\n");
+
+		var reg=new RegExp("<style>[^<]*</style>", "gi"); //Élimination des styles
 		str = str.replace(reg,"\n");
 		
 		reg=new RegExp("<[^>]+>", "g"); // Élimination des balises HTML

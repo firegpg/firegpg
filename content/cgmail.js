@@ -174,12 +174,12 @@ var cGmail = {
 		
 		if(Ddocument.getElementById('sb_compose') != null) {
 			var boutonBox = Ddocument.getElementById('sb_compose').firstChild;	
-			this.addComposeBoutons(boutonBox,Ddocument,'COMPOSE');
+			this.addComposeBoutons(boutonBox,Ddocument,'compose');
 		}
 		
 		if (Ddocument.getElementById('nc_compose') != null) {
 			var boutonBox = Ddocument.getElementById('nc_compose').parentNode;	
-			this.addComposeBoutons(boutonBox,Ddocument,'COMPOSE');
+			this.addComposeBoutons(boutonBox,Ddocument,'compose');
 		}
 	},
 
@@ -216,12 +216,13 @@ var cGmail = {
 		try {
 			box.innerHTML = box.innerHTML + " &nbsp;";
 			box.appendChild(bouton);
+				
+			var tmpListener = new Object;
+			tmpListener = null;
+			tmpListener = new cGmail.callBack(id,info1)
+			box.addEventListener('click',tmpListener,true);
+
 		} catch (e) {}
-		
-		var tmpListener = new Object;
-		tmpListener = null;
-		tmpListener = new cGmail.callBack(id,info1)
-		bouton.addEventListener('click',tmpListener,true);
 	},
 	
 	addComposeBoutons: function(box,Ddocument,info1) {
@@ -285,7 +286,21 @@ var cGmail = {
 					showText(crypttext);
 			}
 			else
-				alert(event.target.id + " m'a cliqué, son bonus est " + this._info1);
+			{ //ta pour des textbox
+			
+
+				var range = cGmail.lastDomToverify.document.getElementById('hc_' + info1).contentDocument.createRange();
+				range.selectNode(cGmail.lastDomToverify.document.getElementById('hc_' + info1).contentDocument.firstChild);
+				var documentFragment = range.cloneContents();
+				
+				var s = new XMLSerializer();
+				var d = documentFragment;
+				var str = s.serializeToString(d);
+				
+				contenuMail = Selection.wash(str);
+
+				alert(contenuMail);
+			}
 		};
 	}
 };
