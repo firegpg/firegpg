@@ -1,8 +1,10 @@
 2007-03-08  Achraf cherti
-	* GPG.selfTest() is now not called from overlay, but from cgpg.js 
-	  in the functions (decrypt, crypt, verify, sign).
-	* the website (in comment) only shown if it's activated in options.xul
-	* indentation fixed in gmail.js and gpg*js
+	* GPG.selfTest() is now not called from overlay, but from cgpg.js
+	  in the member functions (decrypt, crypt, verify, sign).
+	* the website (in comment) is only showed if it's activated in 
+	  options.xul.
+	* the indentation is fixed in gmail.js and gpg*js.
+	* Some things in french/english locale are fixed.
 
 2007-03-08 Maximilien Cuony
 	* Interface for Gmail !
