@@ -1,3 +1,6 @@
+2007-03-09  Achraf cherti
+	* "always show in a new window" checkbox implemented
+
 2007-03-08 Maximilien Cuony
 	* Solved the <br>\n<br> bug in cselect
 	* Begging of gmail's butons implementation (DON'T USE IT)

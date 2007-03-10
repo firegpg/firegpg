@@ -3,10 +3,28 @@ Tâches libres :
 	  est demandé. Ne plus lui dire que son mot de passe est incorrect.
 	- Corriger ceci : de temps en temps, un menu s'ouvre alors qu'il 
 	  ne devrait pas !
+
+Tests libres :
+	- Le chiffrement fonctionne bien, mais il n'est pas reconnu par
+	  Enigmail que si on chiffre tout le message. Il faudrait tester
+	  le plugin avec Thunderbird, Sylpheed...
+	- Si rien n'a été sélectionné, il y a deux fois le même message 
+	  qui s'affiche lorsqu'on clique sur chiffrer.
+	- La signature ne marche pas. FireGPG me demande ma clé (l'intitulé du 
+	  message n'est pas clair : est-ce une clé GPG ou la phrase de passe qui 
+	  est demandée ?), et refuse de signer sous prétexte que je n'ai pas 
+	  défini de clé dans les options - ce qui est faux.
+	  Lors de la réception dans gmail d'un message signé par Enigmail (la 
+	  signature est dans la pièce jointe signature.asc), FireGPG affiche en 
+	  bas du message le texte « Aucune signature a été trouvée dans ce message ». 
+	- Lors de la réception dans gmail d'un message chiffré par Enigmail, le 
+	  lien « Déchiffrer le courriel » est bien là, cependant, quand je clique 
+	  dessus, j'ai une erreur inconnue. Je me demande si ça ne vient pas du 
+	  fait que gmail transforme le texte « http://enigmail.mozdev.org » (situé 
+	  dans la ligne Comment) en lien avec plein de javascript dedans.
 	
 Tâches de Maximilien :
 	- CGmail : savoir utiliser le mode PlainText
 	
 Tâches d'Achraf :
-	- appliquer la case à cocher "toujours chiffrer ou signer la sélection dans une nouvelle fenêtre".
 	- empêcher l'utilisateur de fermer la fenêtre des options tant que le chemin de gpg choisi n'existe pas (bien sur, le laisser fermer la fenêtre si la case "spécifier manuellement le chemin de gpg" est décochée !).

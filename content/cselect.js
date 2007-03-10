@@ -122,7 +122,6 @@ var Selection = {
 
 	/* Transform HTML to usable text to encrypt */
 	wash: function(text) {
-
 		var reg=new RegExp("<br[^>]*>\n<br[^>]*>", "gi"); //Pour ne pas enlever un bouble <br>\n<br> logique (bug des boubles <br>)
 		str = text.replace(reg,"\n\n");
 		
@@ -204,6 +203,18 @@ var Selection = {
 	 * Modify the selection.
 	 */
 	set: function(text) {
+		/* if the option "always show in a new window" is checked */
+		var key = "extensions.firegpg.result_always_in_new_window";
+		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+							   getService(Components.interfaces.nsIPrefBranch);
+		if(prefs.getPrefType(key) == prefs.PREF_BOOL) {
+			if(prefs.getBoolPref(key)) {
+				/* text the text */
+				showText(text);
+				return;
+			}
+		}
+
 		// We verify if selection is editable
 		if(this.isEditable()) {
 			// Get the focused element
