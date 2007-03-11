@@ -66,6 +66,7 @@ var GPGLin = {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
 		var tmpRun = getTmpFileRunning();
 		
 		putIntoFile(tmpInput, texte); // Temp
@@ -78,15 +79,18 @@ var GPGLin = {
 		
 		putIntoFile(tmpRun,running);
 
-		runCommand(tmpRun,
+
+		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
+		try { runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
 		           " --default-key " + keyID + 
 		           " --output " + tmpOutput + 
-		           " --passphrase " + password +
+		           " --passphrase-file " + tmpPASS + "" +
 				   getGPGCommentArgument() +
-		           " --clearsign " + tmpInput);
-		
+		           " --clearsign " + tmpInput); } catch (e) { }
+		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
+
 		// We get the result
 		var result = getFromFile(tmpStdOut);
 		
@@ -217,7 +221,8 @@ var GPGLin = {
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
-		
+		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
+
 		putIntoFile(tmpInput,texte); // Temp
 		
 		// The file already exist, but GPG don't work if he exist, so we del it.
@@ -228,12 +233,15 @@ var GPGLin = {
 		
 		putIntoFile(tmpRun,running);
 		
-		runCommand(tmpRun,
+
+		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !		
+		try { runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
 		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
-		           " --passphrase " + password +
+		           " --passphrase-file " + tmpPASS +
 		           " --output " + tmpOutput + 
-		           " --decrypt " + tmpInput);
+		           " --decrypt " + tmpInput); } catch (e) { }
+		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 		
 		// We get the result
 		var result = getFromFile(tmpStdOut);
