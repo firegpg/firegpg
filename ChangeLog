@@ -1,4 +1,4 @@
-2007-03-11 Maximilien Cuony
+2007-03-11  Maximilien Cuony
 	* Cslected more intelligent
 	* Fix the problem with two messages 'Selectionnez une partie de votre mail'
 	* Improve some performaces of cgmail
@@ -8,13 +8,12 @@
 	* Fix stanges passwords bug
 	* Version 0.2.1 Packed, and uploaded to the server !
 
-	
 2007-03-10  Achraf cherti
 	* "always show in a new window" checkbox implemented
 	* First online release of the website and the extension
 	* Crypter/Décrypter -> Chiffrer/Déchiffrer
 
-2007-03-08 Maximilien Cuony
+2007-03-08  Maximilien Cuony
 	* Solved the <br>\n<br> bug in cselect
 	* Begging of gmail's butons implementation (DON'T USE IT)
 	* Resolve &lt; problem
@@ -28,7 +27,7 @@
 	* the indentation is fixed in gmail.js and gpg*js.
 	* Some things in french/english locale are fixed.
 
-2007-03-08 Maximilien Cuony
+2007-03-08  Maximilien Cuony
 	* Interface for Gmail !
 	* Option use Gmail is used
 	* Add a 'Need restart' for string of Gmail use's option
@@ -41,11 +40,11 @@
 	* gpg-path textbox and button is enabled/disabled when the checkbox is checked/unchecked.
 	* check box "always sign or verify in a new window" is added.
 
-2007-03-07 Maximilien Cuony
+2007-03-07  Maximilien Cuony
 	* Compatibility with FF 1.5
 	* Full support of Windows (with 3 hors of work !)
 
-2007-03-06 Maximilien Cuony
+2007-03-06  Maximilien Cuony
 	* Implement a test for detect presence of GPG
 	* selectPublicKey implemented in cgpg
 	* Import system implemented
