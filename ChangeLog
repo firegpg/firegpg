@@ -1,6 +1,15 @@
+2007-03-11 Maximilien Cuony
+	* Cslected more intelligent
+	* Fix the problem with two messages 'Selectionnez une partie de votre mail'
+	* Improve some performaces of cgmail
+	* Changed text for the password's input
+	* Support fire Gmail's plain text editing
+	
+
 2007-03-10  Achraf cherti
 	* "always show in a new window" checkbox implemented
 	* First online release of the website and the extension
+	* Crypter/Décrypter -> Chiffrer/Déchiffrer
 
 2007-03-08 Maximilien Cuony
 	* Solved the <br>\n<br> bug in cselect

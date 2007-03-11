@@ -144,13 +144,11 @@ var GPG = {
 		else {
 			infos = result.split(" ");
 			
-			// Array contain :
-			// [0] -> Id of the key
-			// [1] -> Name of ovners'key		
-			// [2] -> Comment of key	
-			// [3] -> Email of ovners'key
+			var infos2 = ""; 
+			for (var ii = 1; ii < infos.length; ++ii)
+			{  infos2 = infos2 + infos[ii] + " ";}
 			
-			alert(i18n.getString("verifSuccess") + " " + infos[1] + " " + infos[2] + " " +  infos[3]);
+			alert(i18n.getString("verifSuccess") + " " + infos2);
 		}
 	},
 

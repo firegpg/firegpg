@@ -81,9 +81,13 @@ var cGmail = {
 	onDelayLoad: function() {
 		for (var i = 0; i < this.LastNombreMail; i++) {
 			if (this.lastDomToverify.document.getElementById('rc_' + i) != null) {
-				// 13 Childs !!
-				var replyBox = this.lastDomToverify.document.getElementById('rc_' + i).firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild;
+
 				if (this.lastDomToverify.document.getElementById('rc_' + i).hasAttribute("gpg") == false) {
+					this.lastDomToverify.document.getElementById('rc_' + i).setAttribute("gpg","ok");
+
+					// 13 Childs !!
+					var replyBox = this.lastDomToverify.document.getElementById('rc_' + i).firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild;
+
 					var contenuMail = this.lastDomToverify.document.getElementById('mb_' + i);
 					var range = this.lastDomToverify.document.createRange();
 					range.selectNode(contenuMail);
@@ -114,8 +118,12 @@ var cGmail = {
 					}
 					else {
 						infos = resultTest.split(" ");
+						var infos2 = ""; 
+						for (var ii = 1; ii < infos.length; ++ii)
+						{  infos2 = infos2 + infos[ii] + " ";}
+	
 						td.setAttribute("style","color: green;");
-						td.innerHTML = i18n.getString("GMailSOK") + " " + infos[1] + " " + infos[2] + " " +  infos[3]; //"La première signature de ce mail est de testtest (testtest)
+						td.innerHTML = i18n.getString("GMailSOK") + " " + infos2; //"La première signature de ce mail est de testtest (testtest)
 					}
 					
 					/*td.setAttribute("style","color: orange;");
@@ -138,23 +146,25 @@ var cGmail = {
 						td.addEventListener('click',tmpListener,true);
 					}
 					
-					this.lastDomToverify.document.getElementById('rc_' + i).setAttribute("gpg","ok");
+					
 				}
 			}
 			
 			if (this.lastDomToverify.document.getElementById('nc_' + i) != null) {
 				if (this.lastDomToverify.document.getElementById('nc_' + i).hasAttribute("gpg") == false) {
+					this.lastDomToverify.document.getElementById('nc_' + i).setAttribute("gpg","ok");
 					var boutonBox = this.lastDomToverify.document.getElementById('nc_' + i).parentNode;
 					this.addComposeBoutons(boutonBox,this.lastDomToverify.document,i);
-					this.lastDomToverify.document.getElementById('nc_' + i).setAttribute("gpg","ok");
+					
 				}
 			}
 			
 			if (this.lastDomToverify.document.getElementById('sb_' + i) != null) {
 				if (this.lastDomToverify.document.getElementById('sb_' + i).hasAttribute("gpg") == false) {
+					this.lastDomToverify.document.getElementById('sb_' + i).setAttribute("gpg","ok");
 					var boutonBox = this.lastDomToverify.document.getElementById('sb_' + i).firstChild.firstChild.firstChild.firstChild.firstChild;	
 					this.addComposeBoutons(boutonBox,this.lastDomToverify.document,i);
-					this.lastDomToverify.document.getElementById('sb_' + i).setAttribute("gpg","ok");
+					
 				}
 			}
 		}
@@ -265,7 +275,7 @@ var cGmail = {
 
 		this.handleEvent = function(event) { // Function in the function for handle... events.
 			var i18n = document.getElementById("firegpg-strings");
-			
+
 			if (event.target.id == "sm_decrypt") {
 				var contenuMail = cGmail.lastDomToverify.document.getElementById('mb_' + info1);
 				
@@ -319,9 +329,8 @@ var cGmail = {
 				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);
 
 				var boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
-
-				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);				
-
+	
+				
 				if (mailContent == "")
 					return "";
 
@@ -355,8 +364,7 @@ var cGmail = {
 				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);
 
 				var boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
-
-				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);				
+		
 
 				if (mailContent == "")
 					return "";
@@ -387,13 +395,32 @@ var cGmail = {
 			//Mode RichEditing
 
 			//First, we look for a selection
-			var select = dDocument.getElementById('hc_' + idMail).contentWindow.getSelection();
+			try { var select = dDocument.getElementById('hc_' + idMail).contentWindow.getSelection(); }
+			catch (e) { var select = ""; }
 	
 			if (select.toString() == "")
-			{
-				var i18n = document.getElementById("firegpg-strings");
-				alert(i18n.getString("gmailSelectError"));				
-				return "";
+			{	
+				var select2 = "";
+				//Mode plain text
+				try {
+					var textarera =	dDocument.getElementById('ta_' + idMail);
+					select2 = textarera.value;
+					select2 = select2.substring(textarera.selectionStart,textarera.selectionEnd);
+	
+					
+				} catch (e) { }
+
+				if (select2 == "")
+				{
+					var i18n = document.getElementById("firegpg-strings");
+					alert(i18n.getString("gmailSelectError"));				
+					return "";
+				}
+				else
+				{
+					
+					contenuMail = Selection.wash(select2);
+				}
 			}
 			else
 			{
@@ -417,66 +444,50 @@ var cGmail = {
 	{
 
 			//Mode RichEditing
-			var reg=new RegExp("\n", "gi");
-			newText = newText.replace(reg,"<br>");
+			
 
-			//First, we look for a selection
+			try { //First, we look for a selection
 			var select = dDocument.getElementById('hc_' + idMail).contentWindow.getSelection();
-	
-			if (select.toString() != "")
+			} catch (e) { var select = ""; }
+			
+			if (select.toString() == "")
 			{
+				
+								
+				//Mode plain text
+				try {
+					var textarera =	dDocument.getElementById('ta_' + idMail);
+					var value = textarera.value;
+					var startPos = textarera.selectionStart;
+					var endPos = textarera.selectionEnd;
+					var chaine = textarera.value;
+					
+					// We create the new string and replace it into the focused element
+					textarera.value = chaine.substring(0, startPos) + newText + chaine.substring(endPos, chaine.length);
+					
+					// We select the new text.
+					textarera.selectionStart = startPos;
+					textarera.selectionEnd = startPos + text.length ;
+	
 
-				tmpHTML = dDocument.getElementById('hc_' + idMail).contentDocument.body.innerHTML;
+				} catch (e) { }
 
-				var stringG = select.toString();
+			} else {
+	
+				var reg=new RegExp("\n", "gi");
+				newText = newText.replace(reg,"<br>");
 
-				var reg=new RegExp("\\\\", "gi");
-				stringG = stringG.replace(reg,"\\\\");
+				var range = select.getRangeAt(0);
+				var el = dDocument.createElement("div");
+			//	var txt = dDocument.createTextNode(newText);
+				el.innerHTML = newText;
+			//	el.appendChild(txt)
 
-				var reg=new RegExp("\\.", "gi");
-				stringG = stringG.replace(reg,"\\.");
+				range.deleteContents();
+				range.insertNode(el);
 
-				var reg=new RegExp("\\^", "gi");
-				stringG = stringG.replace(reg,"\\^");
-
-				var reg=new RegExp("\\}", "gi");
-				stringG = stringG.replace(reg,"\\}");
-
-				var reg=new RegExp("\\{", "gi");
-				stringG = stringG.replace(reg,"\\{");
-
-				var reg=new RegExp("\\)", "gi");
-				stringG = stringG.replace(reg,"\\)");
-
-				var reg=new RegExp("\\(", "gi");
-				stringG = stringG.replace(reg,"\\(");
-
-				var reg=new RegExp("\\]", "gi");
-				stringG = stringG.replace(reg,"\\]");
-
-				var reg=new RegExp("\\[", "gi");
-				stringG = stringG.replace(reg,"\\[");
-
-				var reg=new RegExp("\\$", "gi");
-				stringG = stringG.replace(reg,"\\$");
-
-				var reg=new RegExp("\\?", "gi");
-				stringG = stringG.replace(reg,"\\?");
-
-				var reg=new RegExp("\\*", "gi");
-				stringG = stringG.replace(reg,"\\*");
-
-				var reg=new RegExp("\\+", "gi");
-				stringG = stringG.replace(reg,"\\+");
-
-				var reg=new RegExp("\\-", "gi");
-				stringG = stringG.replace(reg,"\\-");
-
-				var reg=new RegExp(select.toString(), "");
-				tmpHTML = tmpHTML.replace(reg,newText);
-
-				dDocument.getElementById('hc_' + idMail).contentDocument.body.innerHTML = tmpHTML;
 			}
+
 
 	},
 

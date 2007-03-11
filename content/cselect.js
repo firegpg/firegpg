@@ -122,7 +122,16 @@ var Selection = {
 
 	/* Transform HTML to usable text to encrypt */
 	wash: function(text) {
-		var reg=new RegExp("<br[^>]*>\n<br[^>]*>", "gi"); //Pour ne pas enlever un bouble <br>\n<br> logique (bug des boubles <br>)
+		
+		//Si il semblerais que l'on soit dans un texte html, on va éliminer les \n qui n'on rien à faire la !		
+		if (text.indexOf("<br>") != -1 || text.indexOf("<BR>") != -1 || text.indexOf("<BR/>") != -1  || text.indexOf("<br/>") != -1  || text.indexOf("<BR />") != -1  || text.indexOf("<br />") != -1)
+		{
+			var reg=new RegExp("\n", "gi");
+			text = text.replace(reg,"");
+		}
+
+		str = text;
+		/*var reg=new RegExp("<br[^>]*>\n<br[^>]*>", "gi"); //Pour ne pas enlever un bouble <br>\n<br> logique (bug des boubles <br>)
 		str = text.replace(reg,"\n\n");
 		
 		var reg=new RegExp("<br>\n<br>", "gi");
@@ -138,7 +147,7 @@ var Selection = {
 		str = str.replace(reg,"\n");
 		
 		var reg=new RegExp("\n<br>", "gi");
-		str = str.replace(reg,"\n");
+		str = str.replace(reg,"\n");*/
 		
 		var reg=new RegExp("<br[^>]*>", "gi");
 		str = str.replace(reg,"\n");

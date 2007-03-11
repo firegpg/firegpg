@@ -25,6 +25,7 @@ Tests libres :
 	
 Tâches de Maximilien :
 	- CGmail : savoir utiliser le mode PlainText
+	- - Gmail : Implémenter le système lors de la composition de mail dans une nouvelle fenêtre
 	
 Tâches d'Achraf :
 	- empêcher l'utilisateur de fermer la fenêtre des options tant que le chemin de gpg choisi n'existe pas (bien sur, le laisser fermer la fenêtre si la case "spécifier manuellement le chemin de gpg" est décochée !).
