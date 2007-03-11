@@ -122,10 +122,8 @@ var Selection = {
 
 	/* Transform HTML to usable text to encrypt */
 	wash: function(text) {
-		
 		//Si il semblerais que l'on soit dans un texte html, on va éliminer les \n qui n'on rien à faire la !		
-		if (text.indexOf("<br>") != -1 || text.indexOf("<BR>") != -1 || text.indexOf("<BR/>") != -1  || text.indexOf("<br/>") != -1  || text.indexOf("<BR />") != -1  || text.indexOf("<br />") != -1)
-		{
+		if (text.indexOf("<br>") != -1 || text.indexOf("<BR>") != -1 || text.indexOf("<BR/>") != -1  || text.indexOf("<br/>") != -1  || text.indexOf("<BR />") != -1  || text.indexOf("<br />") != -1) {
 			var reg=new RegExp("\n", "gi");
 			text = text.replace(reg,"");
 		}
