@@ -8,8 +8,6 @@ Tests libres :
 	- Le chiffrement fonctionne bien, mais il n'est pas reconnu par
 	  Enigmail que si on chiffre tout le message. Il faudrait tester
 	  le plugin avec Thunderbird, Sylpheed...
-	- Si rien n'a été sélectionné, il y a deux fois le même message 
-	  qui s'affiche lorsqu'on clique sur chiffrer.
 	- La signature ne marche pas. FireGPG me demande ma clé (l'intitulé du 
 	  message n'est pas clair : est-ce une clé GPG ou la phrase de passe qui 
 	  est demandée ?), et refuse de signer sous prétexte que je n'ai pas 
@@ -24,7 +22,6 @@ Tests libres :
 	  dans la ligne Comment) en lien avec plein de javascript dedans.
 	
 Tâches de Maximilien :
-	- CGmail : savoir utiliser le mode PlainText
 	- - Gmail : Implémenter le système lors de la composition de mail dans une nouvelle fenêtre
 	
 Tâches d'Achraf :
