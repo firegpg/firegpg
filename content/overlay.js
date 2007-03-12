@@ -41,21 +41,16 @@ var firegpg = {
 		// initialization code
 		this.initialized = true;
 		this.strings = document.getElementById("firegpg-strings");
-		//document.getElementById("contentAreaContextMenu").
-		 //        addEventListener("popupshowing", 
-		 //                         function(e) { firegpg.showContextMenu(e); }, 
-		 //                         false);
+		
 	},
-
-	showContextMenu: function(event) {
-		// show or hide the menuitem based on what the context menu is on
-		// see http://kb.mozillazine.org/Adding_items_to_menus
-		document.getElementById("context-firegpg").hidden = gContextMenu.onImage;
-	},
-
 	onMenuItemCommand: function(e,action) {
-		var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].
-		                               getService(Components.interfaces.nsIPromptService);
+
+		setTimeout("firegpg.onDelayMenuAction('"+action+"')", 100);
+
+	},
+	onDelayMenuAction: function(action)
+	{
+
 		if (action == "SIGN")
 			GPG.sign();
 		else if(action == "VERIF")
@@ -71,6 +66,7 @@ var firegpg = {
 			                      "optionsFiregpg", "chrome,centerscreen"); 
 		else if (action == "ERASE")
 			eraseSavedPassword();
+
 	},
 
 	onToolbarButtonCommand: function(e) {
