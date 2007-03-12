@@ -24,3 +24,4 @@ Tâches de Maximilien :
 	
 Tâches d'Achraf :
 	- empêcher l'utilisateur de fermer la fenêtre des options tant que le chemin de gpg choisi n'existe pas (bien sur, le laisser fermer la fenêtre si la case "spécifier manuellement le chemin de gpg" est décochée !).
+	- corriger le fait que les accents s'affient mal dans la liste (probablement ISO-8859-X vs. UTF-8).
