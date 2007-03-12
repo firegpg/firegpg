@@ -192,6 +192,10 @@ var cGmail = {
 			var boutonBox = Ddocument.getElementById('nc_compose').parentNode;	
 			this.addComposeBoutons(boutonBox,Ddocument,'compose');
 			this.lastDomToverify = e.target.defaultView.wrappedJSObject;
+		} else 	if (Ddocument.getElementById('st_compose') != null) {
+			var boutonBox = Ddocument.getElementById('st_compose').firstChild;	
+			this.addComposeBoutons(boutonBox,Ddocument,'compose');
+			this.lastDomToverify = e.target.defaultView.wrappedJSObject;
 		}
 	},
 
@@ -328,7 +332,7 @@ var cGmail = {
 				
 				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);
 
-				var boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
+				var boutonBox = cGmail.lastDomToverify.document.getElementById('sb_' + info1).firstChild;
 	
 				
 				if (mailContent == "")
@@ -353,7 +357,11 @@ var cGmail = {
 					cGmail.setMailContent(cGmail.lastDomToverify.document,info1,result.output);
 		
 					if (event.target.id == "sndsign")
+					{
 						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
+						boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
+						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
+					}
 				}
 
 			}
@@ -363,7 +371,7 @@ var cGmail = {
 				//This code has to mix with the previous else/if block
 				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);
 
-				var boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
+				var boutonBox = cGmail.lastDomToverify.document.getElementById('sb_' + info1).firstChild;
 		
 
 				if (mailContent == "")
@@ -384,7 +392,12 @@ var cGmail = {
 					cGmail.setMailContent(cGmail.lastDomToverify.document,info1,result.output);
 
 					if (event.target.id == "sndcrypt")
+					{
 						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
+						boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
+						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
+					}
+						
 				}
 			}
 		};
