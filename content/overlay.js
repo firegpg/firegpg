@@ -41,10 +41,10 @@ var firegpg = {
 		// initialization code
 		this.initialized = true;
 		this.strings = document.getElementById("firegpg-strings");
-		document.getElementById("contentAreaContextMenu").
-		         addEventListener("popupshowing", 
-		                          function(e) { firegpg.showContextMenu(e); }, 
-		                          false);
+		//document.getElementById("contentAreaContextMenu").
+		 //        addEventListener("popupshowing", 
+		 //                         function(e) { firegpg.showContextMenu(e); }, 
+		 //                         false);
 	},
 
 	showContextMenu: function(event) {

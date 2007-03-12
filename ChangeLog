@@ -1,3 +1,6 @@
+2007-03-12  Maximilien Cuony
+	* Fixed Windows compatibility !
+
 2007-03-11  Maximilien Cuony
 	* Cslected more intelligent
 	* Fix the problem with two messages 'Selectionnez une partie de votre mail'

@@ -217,6 +217,11 @@ var GPG = {
 		var result = this.GPGAccess.listkey(onlyPrivate);
 		
 		// Parsing
+		var reg = new RegExp("\r", "g");
+		var result = result.replace(reg,"\n");
+		var reg = new RegExp("\n\n", "g");
+		var result = result.replace(reg,"\n");
+
 		var reg = new RegExp("[\n]+", "g");
 		var list = result.split(reg);
 		
@@ -224,10 +229,11 @@ var GPG = {
 		
 		for (var i = 0; i < list.length; i++) {
 			infos = new Array();
-			infos = list[i].split(":");
+			try { infos = list[i].split(":");
 		
 			if(infos[0] == "pub" || infos[0] == "sec")
 				retour[infos[4]] = infos[9] ;
+			} catch (e) { }
 		}
 		
 		return retour;

@@ -194,7 +194,13 @@ function getTmpFile(permission /* optional */) {
 		permission = WRITE_PERMISSION;
 
 	var fileobj = getTmpDir();
-	fileobj.append(TMP_FILES);
+
+	if (permission == WRITE_PERMISSION_R)
+		var fileName = TMP_RFILES;
+	else
+		var fileName = TMP_FILES;
+
+	fileobj.append(fileName);
 	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, permission);
 	return fileobj.path;
 }

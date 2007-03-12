@@ -285,8 +285,9 @@ var GPGLin = {
 		
 		// If the work Foundation is present, we can think that gpg is present ("... Copyright (C) 2006 Free Software Foundation, Inc. ...")
 		if (result.indexOf("Foundation") == -1)
-			return false;
-		
+			return false;   
+
+	
 		return true;
 	},
 	
