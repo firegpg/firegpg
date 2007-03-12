@@ -1,6 +1,15 @@
 Tâches libres :
 	- quand l'utilisateur clique sur "annuler" quand un mot de passe lui 
 	  est demandé. Ne plus lui dire que son mot de passe est incorrect.
+	- Quand on reçoit une réponse, parfois, le texte original est copié 
+	  après la réponse, avec un ">" devant chaque ligne.
+	  A cause de ça, une erreur peut-être affichée:"la première signature 
+	  est incorrecte" Est-il possible de faire en sorte, soit que les 
+	  signatures dans les réponses ne soient pas analysées, soient 
+	  qu'elles le soient en ne prenant pas les ">" en compte ?
+	  Mais c'est sûr que si quelqu'un répond avec un autre préfixe 
+	  devant le message original, c'est inutile...
+	  mail par deubeuliou@gmail.com (réponse pas encore envoyée).
 
 Tests libres :
 	- Le chiffrement fonctionne bien, mais il n'est pas reconnu par
