@@ -39,6 +39,9 @@
 <!DOCTYPE prefwindow SYSTEM "chrome://firegpg/locale/prefwindow.dtd">
 <prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
             title="&prefwindow.title;" onload="sizeToContent(); onLoad(this);" >
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
+  </stringbundleset>
   <script src="misc.js"/>
   <script src="cgpglin.js"/>
   <script src="cgpgwin.js"/>
