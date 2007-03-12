@@ -1,3 +1,7 @@
+2007-03-12  Achraf cherti
+	* file selector locale error fixed (firegpg-strings inserted 
+	  into options.xul)
+
 2007-03-12  Maximilien Cuony
 	* Fixed Windows compatibility !
 	* Gmail's new windows support !
