@@ -1,6 +1,4 @@
 Tâches libres :
-	- quand l'utilisateur clique sur "annuler" quand un mot de passe lui 
-	  est demandé. Ne plus lui dire que son mot de passe est incorrect.
 	- Quand on reçoit une réponse, parfois, le texte original est copié 
 	  après la réponse, avec un ">" devant chaque ligne.
 	  A cause de ça, une erreur peut-être affichée:"la première signature 
@@ -10,6 +8,19 @@ Tâches libres :
 	  Mais c'est sûr que si quelqu'un répond avec un autre préfixe 
 	  devant le message original, c'est inutile...
 	  mail par deubeuliou@gmail.com (réponse pas encore envoyée).
+	  Réponse envoyée : inutile, mais bon, à voir
+
+À ranger :
+	- Exportation d'une clé dans le menu [Prioritaire ?]
+	- Création du 'gestionnaire de trousseau' avec  [Prioritaire ?]
+		- Nouvelle clé
+		- Édition confiance clé
+		- Édition mot de passe clé
+		- Export/Import dans fichiers
+		[- Rajout identité ?]
+	- Support Yahooooo[..]o
+	- Trouver quelqu'un pour supporter les Macs
+	
 
 Tests libres :
 	- Le chiffrement fonctionne bien, mais il n'est pas reconnu par
@@ -29,7 +40,8 @@ Tests libres :
 	  dans la ligne Comment) en lien avec plein de javascript dedans.
 	
 Tâches de Maximilien :
-	
+	- quand l'utilisateur clique sur "annuler" quand un mot de passe lui 
+	  est demandé. Ne plus lui dire que son mot de passe est incorrect.
 	
 Tâches d'Achraf :
 	- empêcher l'utilisateur de fermer la fenêtre des options tant que le chemin de gpg choisi n'existe pas (bien sur, le laisser fermer la fenêtre si la case "spécifier manuellement le chemin de gpg" est décochée !).
