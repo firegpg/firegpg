@@ -10,6 +10,8 @@ Tâches libres :
 	  mail par deubeuliou@gmail.com (réponse pas encore envoyée).
 	  Réponse envoyée : inutile, mais bon, à voir
 	- Vérifier les problèmes de style : "Cependant je voudrais rappeler amicalement que GPG est l'éxécutable, GnuPG l'application et OpenPGP la norme (proposée)... ceci dans le but de ne pas confondre les trois termes dans la documentations et/ou textes du site."
+	- Cacher la console lors d'executions GPG sous windows
+	- Rajouter la posibilité de faire des traitement sur les fichiers téléchargés ? [Possible]
 
 À ranger :
 	- Exportation d'une clé dans le menu [Prioritaire ?]
