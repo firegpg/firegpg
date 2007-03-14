@@ -106,6 +106,25 @@
       </menupopup>
     </menu>
   </toolbarpalette>
+
+
+    <!-- <window id="main-window">
+
+  		<box id="firegpg-infos">
+  		   <vbox >
+  				<label id="firegpg-bonjour" value="&firegpgPopInfo.labelBonjour;" />
+  				<label id="firegpg-access-ok" value="&firegpgPopInfo.labelAccessOk;"/>
+          <label id="firegpg-access-err" value="&firegpgPopInfo.labelAccessErr;" />
+          <label id="firegpg-key-ok" value="&firegpgPopInfo.labelKeyOk;"/>
+          <label id="firegpg-key-err" value="&firegpgPopInfo.labelKeyErr;"/>
+          <label class="link" onclick="firegpg.options();" value="&firegpgPopInfo.options;" />&nbsp;
+  				<label class="link" onclick="firegpg.closepopup();" value="&firegpgPopInfo.close;" />
+  	</vbox>
+  		</box>
+		
+
+    </window> -->
+
 </overlay>
 
 <!-- vim:ai:et:sw=2:ts=2:sts=2:tw=0:fenc=utf-8

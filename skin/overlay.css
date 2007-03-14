@@ -51,3 +51,28 @@
   -moz-image-region: rect(24px 40px 40px 24px);
 }
 
+
+#firegpg-infos {
+	width: 700px;
+	position:fixed;
+	bottom:30px;
+	right:10px;
+	background-color: #ffd7b4;
+	background-position: 4px 4px;
+	padding:15px 8px 7px 8px;
+	border: 1px solid #ff8921;
+	opacity: 0.80;
+	z-index: 999;
+}
+
+#firegpg-infos hbox {
+	width: 100%;
+}
+
+label.link {
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	text-decoration: underline;
+}
+
