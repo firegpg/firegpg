@@ -22,6 +22,7 @@ Tâches libres :
 		[- Rajout identité ?]
 	- Support Yahooooo[..]o
 	- Trouver quelqu'un pour supporter les Macs
+	- Créer un message de bienvenue, et signaler si FireGPG trouve pas GPG, ou n'a pas de clé par défault !
 	
 
 Tests libres :
@@ -35,8 +36,6 @@ Tests libres :
 	  dans la ligne Comment) en lien avec plein de javascript dedans.
 	
 Tâches de Maximilien :
-	- quand l'utilisateur clique sur "annuler" quand un mot de passe lui 
-	  est demandé. Ne plus lui dire que son mot de passe est incorrect.
 	- Absolument supporter les signatures en pièces jointes !!!
 	
 Tâches d'Achraf :

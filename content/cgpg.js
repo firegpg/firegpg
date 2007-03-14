@@ -68,8 +68,7 @@ var GPG = {
 		var password = getPrivateKeyPassword();
 		var keyID = getSelfKey();
 		
-		if (password == "") {
-			alert(i18n.getString("noPass"));
+		if (password == null || password == "") {
 			return;
 		}
 		
@@ -259,8 +258,7 @@ var GPG = {
 		// Needed for a crypt
 		var keyID = choosePublicKey();
 		
-		if(keyID == "") {
-			alert(i18n.getString("noKey"));
+		if(keyID == null) {
 			return;
 		}
 		
@@ -343,8 +341,7 @@ var GPG = {
 		// Needed for a decrypt
 		var password = getPrivateKeyPassword();
 		
-		if(password == "") {
-			alert(i18n.getString("noPass"));
+		if(password == null) {
 			return;
 		}
 		
@@ -473,8 +470,7 @@ var GPG = {
 		// Needed for a crypt
 		var keyID = choosePublicKey();
 		
-		if(keyID == "") {
-			alert(i18n.getString("noKey"));
+		if(keyID == null) {
 			return;
 		}
 

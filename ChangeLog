@@ -1,5 +1,6 @@
 2007-03-14  Maximilien Cuony
 	* Export system
+	* If user cancel an action (like ask for password or select a key), the action is now stopped, and no error message appear !
 
 2007-03-12  Achraf cherti
 	* file selector locale error fixed (firegpg-strings inserted 
