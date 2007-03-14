@@ -11,8 +11,8 @@ Tâches libres :
 	  Réponse envoyée : inutile, mais bon, à voir
 	- Vérifier les problèmes de style : "Cependant je voudrais rappeler amicalement que GPG est l'éxécutable, GnuPG l'application et OpenPGP la norme (proposée)... ceci dans le but de ne pas confondre les trois termes dans la documentations et/ou textes du site."
 	- Cacher la console lors d'executions GPG sous windows
-	- Rajouter la posibilité de faire des traitement sur les fichiers téléchargés ? [Possible]
-
+	- Rajouter la posibilité de faire des traitement sur les fichiers téléchargés ? [Possible ?]
+	- Vérifier le support des caractères NON-ascci partout [Prioritaire ?]
 À ranger :
 	- Exportation d'une clé dans le menu [Prioritaire ?]
 	- Création du 'gestionnaire de trousseau' avec  [Prioritaire ?]
@@ -29,13 +29,6 @@ Tests libres :
 	- Le chiffrement fonctionne bien, mais il n'est pas reconnu par
 	  Enigmail que si on chiffre tout le message. Il faudrait tester
 	  le plugin avec Thunderbird, Sylpheed...
-	- La signature ne marche pas. FireGPG me demande ma clé (l'intitulé du 
-	  message n'est pas clair : est-ce une clé GPG ou la phrase de passe qui 
-	  est demandée ?), et refuse de signer sous prétexte que je n'ai pas 
-	  défini de clé dans les options - ce qui est faux.
-	  Lors de la réception dans gmail d'un message signé par Enigmail (la 
-	  signature est dans la pièce jointe signature.asc), FireGPG affiche en 
-	  bas du message le texte « Aucune signature a été trouvée dans ce message ». 
 	- Lors de la réception dans gmail d'un message chiffré par Enigmail, le 
 	  lien « Déchiffrer le courriel » est bien là, cependant, quand je clique 
 	  dessus, j'ai une erreur inconnue. Je me demande si ça ne vient pas du 
@@ -45,6 +38,7 @@ Tests libres :
 Tâches de Maximilien :
 	- quand l'utilisateur clique sur "annuler" quand un mot de passe lui 
 	  est demandé. Ne plus lui dire que son mot de passe est incorrect.
+	- Absolument supporter les signatures en pièces jointes !!!
 	
 Tâches d'Achraf :
 	- empêcher l'utilisateur de fermer la fenêtre des options tant que le chemin de gpg choisi n'existe pas (bien sur, le laisser fermer la fenêtre si la case "spécifier manuellement le chemin de gpg" est décochée !).
