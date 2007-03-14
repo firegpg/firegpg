@@ -61,7 +61,7 @@
         <menuitem class="firegpg-menu-decrypt menuitem-iconic" label="&firegpgMenu.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DECRYPT')"/>
 <menuseparator/>
 <menuitem class="firegpg-menu-import menuitem-iconic" label="&firegpgMenu.labelImport;" oncommand="firegpg.onMenuItemCommand(event,'IMPORT')"/>
-
+<menuitem class="firegpg-menu-export menuitem-iconic" label="&firegpgMenu.labelExport;" oncommand="firegpg.onMenuItemCommand(event,'EXPORT')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgMenu.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
 <menuitem style="display: none;" id="firegpg-menu-memo-menu" class="firegpg-menu-rease menuitem-iconic" label="&firegpgMenu.labelErase;" oncommand="firegpg.onMenuItemCommand(event,'ERASE')"/>
@@ -80,7 +80,7 @@
         <menuitem class="firegpg-menu-decrypt menuitem-iconic" label="&firegpgContext.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DECRYPT')"/>
 <menuseparator/>
 <menuitem class="firegpg-menu-import menuitem-iconic" label="&firegpgContext.labelImport;" oncommand="firegpg.onMenuItemCommand(event,'IMPORT')"/>
-
+<menuitem class="firegpg-menu-export menuitem-iconic" label="&firegpgContext.labelExport;" oncommand="firegpg.onMenuItemCommand(event,'EXPORT')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgContext.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
         <menuitem style="display: none;" id="firegpg-menu-memo-pop" class="firegpg-menu-rease menuitem-iconic" label="&firegpgContext.labelErase;" oncommand="firegpg.onMenuItemCommand(event,'ERASE')"/>
@@ -98,7 +98,7 @@
           <menuitem class="firegpg-menu-decrypt menuitem-iconic" label="&firegpgToolbar.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DECRYPT')"/>
 <menuseparator/>
     <menuitem class="firegpg-menu-import menuitem-iconic" label="&firegpgToolbar.labelImport;" oncommand="firegpg.onMenuItemCommand(event,'IMPORT')"/>
-
+<menuitem class="firegpg-menu-export menuitem-iconic" label="&firegpgToolbar.labelExport;" oncommand="firegpg.onMenuItemCommand(event,'EXPORT')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgToolbar.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
 

@@ -456,7 +456,51 @@ var GPG = {
 			return "error";
 		else
 			return "ok";
+	},
+
+	/*
+	* Function to import a public key.
+	*/
+	export: function() {
+		// GPG verification
+		if(!GPG.selfTest())
+			return;
+		
+		// For i18n
+		var i18n = document.getElementById("firegpg-strings");
+		
+	
+		// Needed for a crypt
+		var keyID = choosePublicKey();
+		
+		if(keyID == "") {
+			alert(i18n.getString("noKey"));
+			return;
+		}
+
+
+		var retour = this.baseExport(keyID);
+
+		if (retour == "error") {
+			alert(i18n.getString("exportFailed"));
+		}
+		else  {
+				showText(retour);
+		}
+	},
+
+	baseExport: function(key) {
+
+		// We get the result
+		var result = this.GPGAccess.export(key);
+		
+		// If the crypt failled
+		if(result == "")
+			return "error";
+		else
+			return result;
 	}
+
 };
 
 // We load the good class for the OS

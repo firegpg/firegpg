@@ -15,6 +15,10 @@
   list-style-image: url("chrome://firegpg/skin/import.png");
 }
 
+.firegpg-menu-export {
+  list-style-image: url("chrome://firegpg/skin/export.png");
+}
+
 .firegpg-menu-verif {
   list-style-image: url("chrome://firegpg/skin/verif.png");
 }

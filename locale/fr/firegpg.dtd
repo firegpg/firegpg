@@ -25,3 +25,6 @@
 <!ENTITY firegpgMenu.labelImport "Importer">
 <!ENTITY firegpgContext.labelImport "Importer">
 <!ENTITY firegpgToolbar.labelImport "Importer">
+<!ENTITY firegpgMenu.labelExport "Exporter">
+<!ENTITY firegpgContext.labelExport "Exporter">
+<!ENTITY firegpgToolbar.labelExport "Exporter">

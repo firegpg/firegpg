@@ -1,3 +1,6 @@
+2007-03-14  Maximilien Cuony
+	* Export system
+
 2007-03-12  Achraf cherti
 	* file selector locale error fixed (firegpg-strings inserted 
 	  into options.xul)

@@ -335,6 +335,34 @@ var GPGWin = {
 		// We return result
 		return result;
 	},
+	// Export a key
+	export: function(key) {
+		
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.bat")
+		
+		var reg=new RegExp("\n", "gi");
+		running = running.replace(reg,"\r\n");
+		
+		putIntoFile(tmpRun,running);
+		
+		runCommand(tmpRun,
+		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+		           " --export " + key);
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+		
+		// We delete tempory files
+		removeFile(tmpStdOut);
+		removeFile(tmpRun);
+		
+		// We return result
+		return result;
+	},
 	
 	//Return the GPG's command to use
 	getGPGCommand: function () {
