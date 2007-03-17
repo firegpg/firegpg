@@ -7,4 +7,3 @@
 prog="$1"; shift
 out="$1"; shift
 exec "$prog" "$@" > "$out"
-

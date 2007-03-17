@@ -13,6 +13,14 @@ Tâches libres :
 	- Cacher la console lors d'executions GPG sous windows
 	- Rajouter la posibilité de faire des traitement sur les fichiers téléchargés ? [Possible ?]
 	- Vérifier le support des caractères NON-ascci partout [Prioritaire ?]
+	- par mail :
+		> Il semble y avoir un problème de charset/accent avec mon  installation 
+		> de firegpg. Quand j'envoie un message signé sans accent, la 
+		> vérification fonctionne, mais elle ne fonctionne pas quand il y a des accents.. 
+		> 
+		> Une autre chose, quand gmail change la couleur des phrases se 
+		> trouvant aussi dans les couriels précédent, la vérification ne 
+		> fonctionne pas.g
 À ranger :
 	- Création du 'gestionnaire de trousseau' avec  [Prioritaire ?]
 		- Nouvelle clé
