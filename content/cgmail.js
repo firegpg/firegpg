@@ -123,8 +123,8 @@ var cGmail = {
 								xhr_object.open("GET", "https://mail.google.com/mail/" + listNodes[i].getAttribute("href"), false);	
 								xhr_object.send(null);
 						
-						while(xhr_object.readyState != 4)
-							{ }
+								while(xhr_object.readyState != 4)
+									{ }
 							
 								var dataToTry = xhr_object.responseText;
 								
@@ -137,7 +137,6 @@ var cGmail = {
 									monTexteMieux = dataToTry;
 								}
 	
-									
 
 							}
 		
