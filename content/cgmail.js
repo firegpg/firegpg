@@ -116,7 +116,7 @@ var cGmail = {
 
 							if ((papatexte / 1) < 3) //Jusqu'a 2k, ça PEUT être une signature.
 							{
-
+								
 								var xhr_object = new XMLHttpRequest(); 
 								
 								
