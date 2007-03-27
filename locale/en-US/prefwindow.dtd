@@ -1,9 +1,9 @@
 <!ENTITY prefwindow.title "FireGPG preferences">
 <!ENTITY pane1.title "FireGPG preferences">
-<!ENTITY gmail-enabled-checkbox.label "GMail support (need a broswer restart)">
+<!ENTITY gmail-enabled-checkbox.label "GMail support (need browser to restart)">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
-<!ENTITY private-keys-label.text "Default private key :">
+<!ENTITY private-keys-label.text "Default private key:">
 <!ENTITY show-website-checkbox "Show FireGPG website in signed or crypted text">
-<!ENTITY change-gpg-path-button "Change the path">
-<!ENTITY change-gpg-path-checkbox "Specify manually the path of GPG:">
-<!ENTITY result-always-in-new-window "Always show the result of an encoding or a signature in a new window.">
+<!ENTITY change-gpg-path-button "Setting GPG's path">
+<!ENTITY change-gpg-path-checkbox "Manually specify the path of GPG:">
+<!ENTITY result-always-in-new-window "Always display the result of an encoding or a signature in new window.">
