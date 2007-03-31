@@ -3,6 +3,7 @@
 	* Revert attachement signs verify
 	* Fix option's bug if use the select path
 	* Add gmail's draf support
+        * Add option to turn off gpg's agent
 
 2007-03-20  Maximilien Cuony
 	* Beginning of attachements's signs verify

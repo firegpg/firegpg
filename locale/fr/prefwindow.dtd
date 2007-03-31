@@ -7,3 +7,4 @@
 <!ENTITY change-gpg-path-button "Changer le chemin">
 <!ENTITY change-gpg-path-checkbox "Spécifier le chemin de GPG manuellement :">
 <!ENTITY result-always-in-new-window "Toujours afficher le résultat du chiffrement ou de la signature dans une nouvelle fenêtre.">
+<!ENTITY no-gpg-agent-checkbox "Forcer la désactivation de l'agent gpg (peut résoudre certains problèmes)">

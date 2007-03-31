@@ -70,7 +70,7 @@ var GPGWin = {
 		try { // DON'T MOVE THIS LINE !
 			runCommand(tmpRun, // DON'T MOVE THIS LINE !
 			          '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
-			           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+			           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
 			           " --default-key " + keyID + 
 			           " --output " + tmpOutput + 
 			           " --passphrase " + tmpPASS +
@@ -118,7 +118,7 @@ var GPGWin = {
 		
 		runCommand(tmpRun,
 		          '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
 		           " --verify " + tmpInput);
 		
 		// We get the result
@@ -152,7 +152,7 @@ var GPGWin = {
 		
 		runCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons " + mode);
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons" + getGPGAgentArgument() + " " + mode);
 		
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -188,7 +188,7 @@ var GPGWin = {
 		
 		runCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
 		           " -r " + keyID + 
 				   getGPGCommentArgument() +
 		           " --output " + tmpOutput + 
@@ -242,7 +242,7 @@ var GPGWin = {
 		try {  // DON'T MOVE THIS LINE !
 			runCommand(tmpRun,
 			           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
-			           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+			           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
 			           " --passphrase " + tmpPASS +
 			           " --output " + tmpOutput + 
 			           " --decrypt " + tmpInput +
@@ -286,7 +286,7 @@ var GPGWin = {
 		
 		runCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
 		           " --version");
 		
 		// We get the result
@@ -321,7 +321,7 @@ var GPGWin = {
 		
 		runCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
 		           " --import " + tmpInput);
 		
 		// We get the result
@@ -351,7 +351,7 @@ var GPGWin = {
 		
 		runCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
 		           " --export " + key);
 		// We get the result
 		var result = getFromFile(tmpStdOut);
