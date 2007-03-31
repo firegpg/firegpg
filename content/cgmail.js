@@ -90,7 +90,7 @@ var cGmail = {
 
 					var contenuMail = this.lastDomToverify.document.getElementById('mb_' + i);
 					
-
+/*TMPREMOVE
 					var listNodes = contenuMail.getElementsByTagName("a");
 				
 				
@@ -143,7 +143,7 @@ var cGmail = {
 						} } catch(e) { alert(e); }
 	   				}
 
-					
+					*/
 					
 					var range = this.lastDomToverify.document.createRange();
 					range.selectNode(contenuMail);
@@ -152,13 +152,13 @@ var cGmail = {
 					var d = documentFragment;
 					var str = s.serializeToString(d);
 					
-					if (monTexteMieux == "")
+					/*TMPREMOVEif (monTexteMieux == "") */
 						contenuMail = Selection.wash(str);
-					else
-						contenuMail = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\n" + Selection.wash(str) + monTexteMieux;
+					/*TMPREMOVEelse
+						contenuMail = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\n" + Selection.wash(str) + monTexteMieux;*/
 					
 					var td = this.lastDomToverify.document.createElement("td");
-					alert(contenuMail);
+		/*TMPREMOVE			alert(contenuMail); */
 					td.setAttribute("class","");
 					td.setAttribute("id","sm_verify");
 					

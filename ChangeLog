@@ -1,5 +1,9 @@
+2007-03-31  Maximilien Cuony
+	* Apply mac's patch
+	* Revert attachement signs verify
+
 2007-03-20  Maximilien Cuony
-	* Beginning of attachements's sings verify
+	* Beginning of attachements's signs verify
 
 2007-03-14  Maximilien Cuony
 	* Export system
