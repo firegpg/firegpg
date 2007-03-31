@@ -4,6 +4,7 @@
 	* Fix option's bug if use the select path
 	* Add gmail's draf support
         * Add option to turn off gpg's agent
+        * Version 0.3 Packed, and uploaded to the server !
 
 2007-03-20  Maximilien Cuony
 	* Beginning of attachements's signs verify
