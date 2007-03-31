@@ -1,24 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
- xmlns:em="http://www.mozilla.org/2004/em-rdf#">
-  <Description about="urn:mozilla:install-manifest">
-    <em:id>firegpg@firegpg.team</em:id>
-    <em:version>0.2.2</em:version>
-    <em:type>2</em:type>
-    <em:name>FireGPG</em:name>
-    <em:description>An extension that acts as an assistant for using GPG.</em:description>
-    <em:creator>FireGPG Team</em:creator>
-    <em:homepageURL>http://firegpg.tuxfamily.org/</em:homepageURL>
-    <em:updateURL>http://firegpg.tuxfamily.org/stable/update.rdf</em:updateURL>
-    <em:aboutURL>chrome://firegpg/content/about.xul</em:aboutURL>
-    <em:optionsURL>chrome://firegpg/content/options.xul</em:optionsURL>
-    <em:iconURL>chrome://firegpg/content/firegpg.png</em:iconURL>
-    <em:targetApplication>
-      <Description>
-        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> <!-- firefox -->
-        <em:minVersion>1.5</em:minVersion>
-        <em:maxVersion>2.0.0.*</em:maxVersion>
-      </Description>
-    </em:targetApplication>
-  </Description>
-</RDF>
+<?xml version="1.0"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="rdf:#$g5s0x"
+                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   em:minVersion="1.5"
+                   em:maxVersion="2.0.0.*" />
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:id="firegpg@firegpg.team"
+                   em:version="0.2.2"
+                   em:type="2"
+                   em:name="FireGPG"
+                   em:description="An extension that acts as an assistant for using GPG."
+                   em:creator="FireGPG Team"
+                   em:homepageURL="http://firegpg.tuxfamily.org/"
+                   em:updateURL="http://firegpg.tuxfamily.org/stable/update.rdf"
+                   em:aboutURL="chrome://firegpg/content/about.xul"
+                   em:optionsURL="chrome://firegpg/content/options.xul"
+                   em:iconURL="chrome://firegpg/content/firegpg.png">
+    <em:targetApplication RDF:resource="rdf:#$g5s0x"/>
+  </RDF:Description>
+</RDF:RDF>

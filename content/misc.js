@@ -202,6 +202,7 @@ function getTmpFile(permission /* optional */) {
 
 	fileobj.append(fileName);
 	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, permission);
+	fileobj.permissions = permission;
 	return fileobj.path;
 }
 
