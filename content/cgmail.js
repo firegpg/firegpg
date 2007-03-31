@@ -60,7 +60,7 @@ var cGmailListener = {
 		// If a document's loading is finished
 		if(aFlag & STATE_STOP) { 
 			// If it's the page with a GMail message
-			if(aProgress.DOMWindow.document.getElementById('msg_0') != null) {
+			if(aProgress.DOMWindow.document.getElementById('msg_0') != null || aProgress.DOMWindow.document.getElementById('msgs') != null) {
 				cGmail.lastDomToverify = aProgress.DOMWindow;
 				setTimeout("cGmail.onDelayLoad()", 1000);
 			}
@@ -78,137 +78,138 @@ var cGmailListener = {
 
 var cGmail = {
 	/* TODO it's not too big ? Can we separe this function to some little simple functions ? */
-	onDelayLoad: function() {
-		for (var i = 0; i < this.LastNombreMail; i++) {
-			if (this.lastDomToverify.document.getElementById('rc_' + i) != null) {
+	onDelayLoad: function() { 
+		for (var i = 0; i < this.LastNombreMail; i++) { 
+			if (this.lastDomToverify.document.getElementById('rc_' + i) != null) { 
 
 				if (this.lastDomToverify.document.getElementById('rc_' + i).hasAttribute("gpg") == false) {
-					this.lastDomToverify.document.getElementById('rc_' + i).setAttribute("gpg","ok");
+					try { 
+						this.lastDomToverify.document.getElementById('rc_' + i).setAttribute("gpg","ok");
 
-					// 13 Childs !!
-					var replyBox = this.lastDomToverify.document.getElementById('rc_' + i).firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild;
+						// 13 Childs !!
+						var replyBox = this.lastDomToverify.document.getElementById('rc_' + i).firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild;
 
-					var contenuMail = this.lastDomToverify.document.getElementById('mb_' + i);
-					
-/*TMPREMOVE
-					var listNodes = contenuMail.getElementsByTagName("a");
-				
-				
-					var monTexteMieux = "";
-
-					for (var i = 0; i < listNodes.length; i++) { 
-    					try {	 if (listNodes[i].getAttribute("href").indexOf("attid=") != -1)
-						{
-							var papa = listNodes[i].parentNode;
-							var papatexte = papa.innerHTML;
-
-							var reg=new RegExp("<b>[^<]*</b>", "gi"); //Élimination des scripts
-							papatexte = papatexte.replace(reg,"");
-
-							var reg=new RegExp("<a[^>]*>[^<]*</a>", "gi"); //Élimination des scripts
-							papatexte = papatexte.replace(reg,"");
+						var contenuMail = this.lastDomToverify.document.getElementById('mb_' + i);
 						
-							var reg=new RegExp("K", "gi"); //Élimination des scripts
-							papatexte = papatexte.replace(reg,"");
+	/*TMPREMOVE
+						var listNodes = contenuMail.getElementsByTagName("a");
+					
+					
+						var monTexteMieux = "";
 
-							var reg=new RegExp("<br>", "gi"); //Élimination des scripts
-							papatexte = papatexte.replace(reg,"");
-
-							if ((papatexte / 1) < 3) //Jusqu'a 2k, ça PEUT être une signature.
+						for (var i = 0; i < listNodes.length; i++) { 
+	    					try {	 if (listNodes[i].getAttribute("href").indexOf("attid=") != -1)
 							{
-								
-								var xhr_object = new XMLHttpRequest(); 
-								
-								
-								xhr_object.open("GET", "https://mail.google.com/mail/" + listNodes[i].getAttribute("href"), false);	
-								xhr_object.send(null);
-						
-								while(xhr_object.readyState != 4)
-									{ }
+								var papa = listNodes[i].parentNode;
+								var papatexte = papa.innerHTML;
+
+								var reg=new RegExp("<b>[^<]*</b>", "gi"); //Élimination des scripts
+								papatexte = papatexte.replace(reg,"");
+
+								var reg=new RegExp("<a[^>]*>[^<]*</a>", "gi"); //Élimination des scripts
+								papatexte = papatexte.replace(reg,"");
 							
-								var dataToTry = xhr_object.responseText;
-								
-								//Verify GPG'data presence
-								var firstPosition = dataToTry.indexOf("-----BEGIN PGP SIGNATURE-----");
-								var lastPosition = dataToTry.indexOf("-----END PGP SIGNATURE-----");	
+								var reg=new RegExp("K", "gi"); //Élimination des scripts
+								papatexte = papatexte.replace(reg,"");
 
-								if (firstPosition != -1 && lastPosition != -1)
+								var reg=new RegExp("<br>", "gi"); //Élimination des scripts
+								papatexte = papatexte.replace(reg,"");
+
+								if ((papatexte / 1) < 3) //Jusqu'a 2k, ça PEUT être une signature.
 								{
-									monTexteMieux = dataToTry;
-								}
-	
+									
+									var xhr_object = new XMLHttpRequest(); 
+									
+									
+									xhr_object.open("GET", "https://mail.google.com/mail/" + listNodes[i].getAttribute("href"), false);	
+									xhr_object.send(null);
+							
+									while(xhr_object.readyState != 4)
+										{ }
+								
+									var dataToTry = xhr_object.responseText;
+									
+									//Verify GPG'data presence
+									var firstPosition = dataToTry.indexOf("-----BEGIN PGP SIGNATURE-----");
+									var lastPosition = dataToTry.indexOf("-----END PGP SIGNATURE-----");	
 
-							}
+									if (firstPosition != -1 && lastPosition != -1)
+									{
+										monTexteMieux = dataToTry;
+									}
 		
-						} } catch(e) { alert(e); }
-	   				}
 
-					*/
-					
-					var range = this.lastDomToverify.document.createRange();
-					range.selectNode(contenuMail);
-					var documentFragment = range.cloneContents();
-					var s = new XMLSerializer();
-					var d = documentFragment;
-					var str = s.serializeToString(d);
-					
-					/*TMPREMOVEif (monTexteMieux == "") */
-						contenuMail = Selection.wash(str);
-					/*TMPREMOVEelse
-						contenuMail = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\n" + Selection.wash(str) + monTexteMieux;*/
-					
-					var td = this.lastDomToverify.document.createElement("td");
-		/*TMPREMOVE			alert(contenuMail); */
-					td.setAttribute("class","");
-					td.setAttribute("id","sm_verify");
-					
-					var resultTest = GPG.baseVerify(contenuMail);
-					
-					// For I18N
-					var i18n = document.getElementById("firegpg-strings");
-					
-					if (resultTest == "noGpg") {
-						td.setAttribute("style","color: orange;");
-						td.innerHTML = i18n.getString("GMailNoS"); //"Aucun signature n'a été trouvé dans ce mail."; testtset@testtest.testtset";
-					}
-					else if (resultTest == "erreur") {
-						td.setAttribute("style","color: red;");
-						td.innerHTML = i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
-					}
-					else {
-						infos = resultTest.split(" ");
-						var infos2 = ""; 
-						for (var ii = 1; ii < infos.length; ++ii)
-						{  infos2 = infos2 + infos[ii] + " ";}
-	
-						td.setAttribute("style","color: green;");
-						td.innerHTML = i18n.getString("GMailSOK") + " " + infos2; //"La première signature de ce mail est de testtest (testtest)
-					}
-					
-					/*td.setAttribute("style","color: orange;");
-					td.innerHTML = i18n.getString("GMailD"); //"Ce mail à été décrypté";*/
-					
-					replyBox.appendChild(td);
-					
-					var firstPosition = contenuMail.indexOf("-----BEGIN PGP MESSAGE-----");
-					var lastPosition = contenuMail.indexOf("-----END PGP MESSAGE-----");
-					
-					if (firstPosition != -1 && lastPosition != -1) {
-						td = this.lastDomToverify.document.createElement("td");
+								}
+			
+							} } catch(e) { alert(e); }
+		   				}
+
+						*/
+						
+						var range = this.lastDomToverify.document.createRange();
+						range.selectNode(contenuMail);
+						var documentFragment = range.cloneContents();
+						var s = new XMLSerializer();
+						var d = documentFragment;
+						var str = s.serializeToString(d);
+						
+						/*TMPREMOVEif (monTexteMieux == "") */
+							contenuMail = Selection.wash(str);
+						/*TMPREMOVEelse
+							contenuMail = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\n" + Selection.wash(str) + monTexteMieux;*/
+						
+						var td = this.lastDomToverify.document.createElement("td");
+			/*TMPREMOVE			alert(contenuMail); */
 						td.setAttribute("class","");
-						td.setAttribute("id","sm_decrypt");
-						td.innerHTML = i18n.getString("GMailD");
-						replyBox.appendChild(td);
-						var tmpListener = new Object;
-						tmpListener = null;
-						tmpListener = new cGmail.callBack("sm_decrypt",i)
-						td.addEventListener('click',tmpListener,true);
-					}
+						td.setAttribute("id","sm_verify");
+						
+						var resultTest = GPG.baseVerify(contenuMail);
+						
+						// For I18N
+						var i18n = document.getElementById("firegpg-strings");
+						
+						if (resultTest == "noGpg") {
+							td.setAttribute("style","color: orange;");
+							td.innerHTML = i18n.getString("GMailNoS"); //"Aucun signature n'a été trouvé dans ce mail."; testtset@testtest.testtset";
+						}
+						else if (resultTest == "erreur") {
+							td.setAttribute("style","color: red;");
+							td.innerHTML = i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
+						}
+						else {
+							infos = resultTest.split(" ");
+							var infos2 = ""; 
+							for (var ii = 1; ii < infos.length; ++ii)
+							{  infos2 = infos2 + infos[ii] + " ";}
+		
+							td.setAttribute("style","color: green;");
+							td.innerHTML = i18n.getString("GMailSOK") + " " + infos2; //"La première signature de ce mail est de testtest (testtest)
+						}
+						
+						/*td.setAttribute("style","color: orange;");
+						td.innerHTML = i18n.getString("GMailD"); //"Ce mail à été décrypté";*/
+						
+						replyBox.appendChild(td); 
+						
+						var firstPosition = contenuMail.indexOf("-----BEGIN PGP MESSAGE-----");
+						var lastPosition = contenuMail.indexOf("-----END PGP MESSAGE-----");
+						
+						if (firstPosition != -1 && lastPosition != -1) {
+							td = this.lastDomToverify.document.createElement("td");
+							td.setAttribute("class","");
+							td.setAttribute("id","sm_decrypt");
+							td.innerHTML = i18n.getString("GMailD");
+							replyBox.appendChild(td);
+							var tmpListener = new Object;
+							tmpListener = null;
+							tmpListener = new cGmail.callBack("sm_decrypt",i)
+							td.addEventListener('click',tmpListener,true);
+						}
 					
-					
+					} catch (e) { }
 				}
 			}
-			
+	
 			if (this.lastDomToverify.document.getElementById('nc_' + i) != null) {
 				if (this.lastDomToverify.document.getElementById('nc_' + i).hasAttribute("gpg") == false) {
 					this.lastDomToverify.document.getElementById('nc_' + i).setAttribute("gpg","ok");
@@ -221,7 +222,19 @@ var cGmail = {
 			if (this.lastDomToverify.document.getElementById('sb_' + i) != null) {
 				if (this.lastDomToverify.document.getElementById('sb_' + i).hasAttribute("gpg") == false) {
 					this.lastDomToverify.document.getElementById('sb_' + i).setAttribute("gpg","ok");
-					var boutonBox = this.lastDomToverify.document.getElementById('sb_' + i).firstChild.firstChild.firstChild.firstChild.firstChild;	
+					
+					var boutonBox = null;
+					boutonBox = this.lastDomToverify.document.getElementById('sb_' + i).firstChild.firstChild.firstChild.firstChild.firstChild;
+
+					if (boutonBox == null) //For the drafs
+					{
+						boutonBox = this.lastDomToverify.document.getElementById('sb_' + i).firstChild;	
+						
+						if (boutonBox.tagName != "DIV")
+							boutonBox = null;
+						
+					}
+					
 					this.addComposeBoutons(boutonBox,this.lastDomToverify.document,i);
 					
 				}
@@ -232,6 +245,11 @@ var cGmail = {
 	simpleLoad: function(e) {
 		var Ddocument = e.target.defaultView.wrappedJSObject.document;
 		
+		if (Ddocument.getElementById('compose_form') != null)
+		{
+			this.LastNombreMail = 2;
+		}
+
 		if(Ddocument.getElementById('msg_0') != null) {
 			for (var i = 0; i < 200; i++) {
 				if (Ddocument.getElementById('msg_' + i) == null) { 
@@ -254,6 +272,10 @@ var cGmail = {
 		} else 	if (Ddocument.getElementById('st_compose') != null) {
 			var boutonBox = Ddocument.getElementById('st_compose').firstChild;	
 			this.addComposeBoutons(boutonBox,Ddocument,'compose');
+			this.lastDomToverify = e.target.defaultView.wrappedJSObject;
+		}
+		
+		if(Ddocument.getElementById('compose_form') != null) {
 			this.lastDomToverify = e.target.defaultView.wrappedJSObject;
 		}
 	},

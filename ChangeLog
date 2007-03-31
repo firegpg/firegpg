@@ -2,6 +2,7 @@
 	* Apply mac's patch
 	* Revert attachement signs verify
 	* Fix option's bug if use the select path
+	* Add gmail's draf support
 
 2007-03-20  Maximilien Cuony
 	* Beginning of attachements's signs verify
