@@ -1,6 +1,7 @@
 2007-03-31  Maximilien Cuony
 	* Apply mac's patch
 	* Revert attachement signs verify
+	* Fix option's bug if use the select path
 
 2007-03-20  Maximilien Cuony
 	* Beginning of attachements's signs verify

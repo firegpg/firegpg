@@ -34,7 +34,7 @@ Tâches libres :
 	- Support Yahooooo[..]o
 	- Trouver quelqu'un pour supporter les Macs
 	- Créer un message de bienvenue, et signaler si FireGPG trouve pas GPG, ou n'a pas de clé par défault !
-	
+	- Rajouter des boutons dans la fenêtre de résultats
 
 Tests libres :
 	- Le chiffrement fonctionne bien, mais il n'est pas reconnu par

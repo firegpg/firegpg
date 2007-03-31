@@ -126,8 +126,12 @@ function fileSelector()
 function chooseGPGPath()
 {
 	var gpg_path = fileSelector();
+
 	if(gpg_path != null)
+	{
 		document.getElementById('gpg-path-textbox').value = gpg_path;
+		document.getElementById('gpg-path-pref').value = gpg_path;
+	}
 }
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8
