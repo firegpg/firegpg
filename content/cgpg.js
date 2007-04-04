@@ -74,12 +74,13 @@ var GPG = {
 		
 		var result = this.baseSign(text,password,keyID);
 		var crypttext = result.output;
+		var sdOut2 = result.sdOut2;
 		result = result.sdOut;
 		
 		// If the sign failled
 		if(result == "erreur") {
 			// We alert the user
-			alert(i18n.getString("signFailed"));
+			alert(i18n.getString("signFailed") + sdOut2);
 		} 
 		else if(result == "erreurPass") {
 				alert(i18n.getString("signFailedPassword"));
@@ -104,7 +105,10 @@ var GPG = {
 		result.sdOut = "ok";
 		
 		if(tresult.indexOf("SIG_CREATED") == "-1")
+		{
 			result.sdOut = "erreur";
+			result.sdOut2 = tresult;
+		}
 		
 		if(tresult.indexOf("BAD_PASSPHRASE") != "-1") {
 			result.sdOut = "erreurPass";
@@ -265,12 +269,13 @@ var GPG = {
 		// We get the result
 		var result = this.baseCrypt(text, keyID);
 		var crypttext = result.output;
+		var sdOut2 = result.sdOut2;
 		result = result.sdOut;
 		
 		// If the crypt failled
 		if(result == "erreur") {
 			// We alert the user
-			alert(i18n.getString("cryptFailed"));
+			alert(i18n.getString("cryptFailed") + sdOut2);
 		} 
 		else {
 			//We test is the selection in editable :
@@ -292,7 +297,10 @@ var GPG = {
 		result.sdOut = "ok";
 		
 		if(tresult.indexOf("END_ENCRYPTION") == "-1")
+		{
 			result.sdOut = "erreur";
+			result.sdOut2 = tresult;
+		}
 		
 		return result;
 	},
@@ -348,6 +356,7 @@ var GPG = {
 		// We get the result
 		var result = this.baseDecrypt(text,password);
 		var crypttext = result.output;
+		var sdOut2 = result.sdOut2;
 		result = result.sdOut;
 		
 		// If the crypt failled
@@ -356,7 +365,7 @@ var GPG = {
 			eraseSavedPassword();
 		}
 		else if (result == "erreur") {
-			alert(i18n.getString("decryptFailed"));
+			alert(i18n.getString("decryptFailed") + sdOut2);
 		} 
 		else {
 			//We test is the selection in editable :
@@ -378,7 +387,10 @@ var GPG = {
 		result.sdOut = "ok";
 		
 		if(tresult.indexOf("DECRYPTION_OKAY") == "-1")
+		{
 			result.sdOut = "erreur";
+			result.sdOut2 = tresult;
+		}
 		
 		if(tresult.indexOf("BAD_PASSPHRASE") != "-1")
 			result.sdOut = "erreurPass";
