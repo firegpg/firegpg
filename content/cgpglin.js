@@ -139,7 +139,7 @@ var GPGLin = {
 		
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" +  getGPGAgentArgument() +
+		           " --quiet --trust-model always --no-tty --no-verbose --status-fd 1 --armor" +  getGPGAgentArgument() +
 		           " --verify " + tmpInput);
 		
 		// We get the result
@@ -204,7 +204,7 @@ var GPGLin = {
 		
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+		           " --quiet --trust-model always --no-tty --no-verbose --status-fd 1 --armor --batch" + 
 		           " -r " + keyID + 
 				   getGPGCommentArgument() + getGPGAgentArgument() +
 		           " --output " + tmpOutput + 

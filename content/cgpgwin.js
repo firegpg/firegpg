@@ -118,7 +118,7 @@ var GPGWin = {
 		
 		runCommand(tmpRun,
 		          '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+		           " --quiet --no-tty --trust-model always --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
 		           " --verify " + tmpInput);
 		
 		// We get the result
@@ -188,7 +188,7 @@ var GPGWin = {
 		
 		runCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
+		           " --quiet --trust-model always --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
 		           " -r " + keyID + 
 				   getGPGCommentArgument() +
 		           " --output " + tmpOutput + 
