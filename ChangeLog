@@ -1,5 +1,6 @@
 2007-04-04  Achraf cherti
 	* the password can be clean in onAccept() (password.js)
+	* the .svn dirs is not included in the .xpi file (generated with build.sh)
 
 2007-04-04  Maximilien Cuony
 	* export to kexport, for FF 1.5
