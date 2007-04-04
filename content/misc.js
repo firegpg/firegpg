@@ -96,6 +96,8 @@ function showText(text, description /* optional */, title /* optional */) {
  *
  * An object is returned :
  *  {password: "password", save_password: true/false}
+ *
+ * null is returned if cancel button is clicked.
  */
 function getPassword(question, save_password) {
 	var params = {password: '', 
