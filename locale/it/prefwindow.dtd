@@ -1,0 +1,10 @@
+<!ENTITY prefwindow.title "FireGPG - Preferenza">
+<!ENTITY pane1.title "FireGPG - Preferenza">
+<!ENTITY gmail-enabled-checkbox.label "Integrazione in GMail  (necessita riavvio browser)">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Chiave privata di default">
+<!ENTITY show-website-checkbox "Indica il sito FireGPG nel testo criptato o nella firma">
+<!ENTITY change-gpg-path-button "Seleziona cartella">
+<!ENTITY change-gpg-path-checkbox "Specifica un path per GPG alternativo:">
+<!ENTITY result-always-in-new-window "Visualizza sempre il testo criptato / firmato in una nuova finestra.">
+<!ENTITY no-gpg-agent-checkbox "Forza disattivazione di gpg's agent (può risolvere alcuni errori)">

@@ -1,5 +1,8 @@
 2007-04-05  Achraf cherti
 	* some warnings fixed in cgpg.js and cgmail.js.
+	* size of dialogs fixed (password, options, etc.)
+	* italian translation by Alessandro Pascali
+	  (alessandro.pascali /at/ gmail |dot| com).
 
 2007-04-04  Maximilien Cuony
 	* export to kexport, for FF 1.5
