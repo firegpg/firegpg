@@ -57,15 +57,15 @@ function getGPGCommentArgument() {
 function getGPGAgentArgument() {
 
 	var comment_argument = "";
-	var key = "extensions.firegpg.no_gpg_agent";
+	/*var key = "extensions.firegpg.no_gpg_agent";
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 	                       getService(Components.interfaces.nsIPrefBranch);
 
 	if(prefs.getPrefType(key) == prefs.PREF_BOOL)
 		if(prefs.getBoolPref(key))
-			comment_argument = ' --no-use-agent';
+			comment_argument = ;*/
 
-	return comment_argument;
+	return ' --no-use-agent';
 }
 
 /*

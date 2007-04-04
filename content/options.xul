@@ -70,10 +70,10 @@
               label="&result-always-in-new-window;"/>
 
     <!-- show web site -->
-    <checkbox id="no-gpg-agent-checkbox" preference="no-gpg-agent-pref" checked="true" label="&no-gpg-agent-checkbox;"/>
+   <!--  <checkbox id="no-gpg-agent-checkbox" preference="no-gpg-agent-pref" checked="true" label="&no-gpg-agent-checkbox;"/>  -->
     
     <!-- don't use gpg agent -->
-    <checkbox id="show-website-checkbox" preference="show-web-site-pref" checked="true" label="&show-website-checkbox;"/>
+   <checkbox id="show-website-checkbox" preference="show-web-site-pref" checked="true" label="&show-website-checkbox;"/>
 
     <!-- list of private keys -->
     <label id="private-keys-label" value="&private-keys-label.text;"/>
