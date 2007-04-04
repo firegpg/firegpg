@@ -136,7 +136,7 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */) {
 
 	var result = getPassword(question, true);
 	if(result == null)
-		return '';
+		return null;
 
 	if(result.save_password) {
 		savedPassword = result.password;
