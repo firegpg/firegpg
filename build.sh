@@ -71,7 +71,7 @@ for CHROME_SUBDIR in $CHROME_PROVIDERS; do
   find $CHROME_SUBDIR -path '*CVS*' -prune -o -type f -print | grep -v \~ >> files
 done
 
-zip -0 -r $JAR_FILE `cat files`
+zip -0 -r $JAR_FILE `cat files` -x '*.svn*'
 # The following statement should be used instead if you don't wish to use the JAR file
 #cp --verbose --parents `cat files` $TMP_DIR/chrome
 
@@ -109,7 +109,7 @@ fi
 
 # generate the XPI file
 echo "Generating $APP_NAME.xpi..."
-zip -r ../$APP_NAME.xpi *
+zip -r ../$APP_NAME.xpi * -x '*.svn*'
 
 cd "$ROOT_DIR"
 
