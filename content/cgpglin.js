@@ -337,7 +337,7 @@ var GPGLin = {
 	},
 
 	// Export a key
-	export: function(key) {
+	kexport: function(key) {
 		
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();

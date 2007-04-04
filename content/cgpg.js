@@ -500,7 +500,7 @@ var GPG = {
 	baseExport: function(key) {
 
 		// We get the result
-		var result = this.GPGAccess.export(key);
+		var result = this.GPGAccess.kexport(key);
 		
 		// If the crypt failled
 		if(result == "")
