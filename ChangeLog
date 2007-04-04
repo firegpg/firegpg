@@ -6,6 +6,8 @@
 	* export to kexport, for FF 1.5
 	* remove and fore --no-agent
 	* add some error messages
+	* test options for old gpg relases
+	* 0.3.1 Packed, and uploaded to the server !
 
 2007-03-31  Maximilien Cuony
 	* Apply mac's patch
