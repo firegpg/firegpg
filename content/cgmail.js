@@ -420,7 +420,7 @@ var cGmail = {
 	
 				
 				if (mailContent == "")
-					return "";
+					return;
 
 				var password = getPrivateKeyPassword();
 				var keyID = getSelfKey();
@@ -462,7 +462,7 @@ var cGmail = {
 		
 
 				if (mailContent == "")
-					return "";
+					return;
 
 				
 				var keyID = choosePublicKey();

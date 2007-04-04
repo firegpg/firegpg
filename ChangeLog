@@ -1,6 +1,5 @@
-2007-04-04  Achraf cherti
-	* the password can be clean in onAccept() (password.js)
-	* the .svn dirs is not included in the .xpi file (generated with build.sh)
+2007-04-05  Achraf cherti
+	* some warnings fixed in cgpg.js and cgmail.js.
 
 2007-04-04  Maximilien Cuony
 	* export to kexport, for FF 1.5
@@ -8,6 +7,10 @@
 	* add some error messages
 	* test options for old gpg relases
 	* 0.3.1 Packed, and uploaded to the server !
+
+2007-04-04  Achraf cherti
+	* the password can be clean in onAccept() (password.js)
+	* the .svn dirs is not included in the .xpi file (generated with build.sh)
 
 2007-03-31  Maximilien Cuony
 	* Apply mac's patch

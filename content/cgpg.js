@@ -133,7 +133,7 @@ var GPG = {
 			return;
 		}
 		
-		result = this.baseVerify(text);
+		var result = this.baseVerify(text);
 		
 		// For I18N
 		var i18n = document.getElementById("firegpg-strings");
@@ -156,29 +156,25 @@ var GPG = {
 	},
 
 	baseVerify: function(text) {
-
-		//Verify GPG'data presence
-		reg=new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP SIGNED MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
+		// Verify GPG'data presence
+		var reg = new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP SIGNED MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
 		text = text.replace(reg, "FIREGPGTRALALABEGINHIHAN");
 
-		reg=new RegExp("\\- \\-\\-\\-\\-\\-END PGP SIGNATURE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
+		reg = new RegExp("\\- \\-\\-\\-\\-\\-END PGP SIGNATURE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
 		text = text.replace(reg, "FIREGPGTRALALAENDHIHAN");
 
-
-		//Verify GPG'data presence
+		// Verify GPG'data presence
 		var firstPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
 		var lastPosition = text.indexOf("-----END PGP SIGNATURE-----");
-		
 
-		reg=new RegExp("FIREGPGTRALALABEGINHIHAN", "gi"); // We don't have to detect disabled balises
+		reg = new RegExp("FIREGPGTRALALABEGINHIHAN", "gi"); // We don't have to detect disabled balises
 		text = text.replace(reg, "-----BEGIN PGP SIGNED MESSAGE-----");
 
-		reg=new RegExp("FIREGPGTRALALAENDHIHAN", "gi"); // We don't have to detect disabled balises
+		reg = new RegExp("FIREGPGTRALALAENDHIHAN", "gi"); // We don't have to detect disabled balises
 		text = text.replace(reg, "-----END PGP SIGNATURE-----");
 
-		if (firstPosition == -1 || lastPosition == -1) {
+		if(firstPosition == -1 || lastPosition == -1)
 			return "noGpg";
-		}
 		
 		text = text.substring(firstPosition,lastPosition + ("-----END PGP SIGNATURE-----").length);
 		
