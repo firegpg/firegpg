@@ -397,7 +397,7 @@ var cGmail = {
 				var crypttext = result.output;
 				result = result.sdOut;
 
-				if (password == null || password == "")
+				if (password == null)
 					return;
 				
 				// If the crypt failled
@@ -425,7 +425,7 @@ var cGmail = {
 				var password = getPrivateKeyPassword();
 				var keyID = getSelfKey();
 
-				if (password == null || password == "")
+				if (password == null)
 					return;
 
 				var result = GPG.baseSign(mailContent,password,keyID);

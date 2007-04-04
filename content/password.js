@@ -55,15 +55,9 @@ function onAccept()
 	if(window.arguments == undefined)
 		return true;
 	
+	/* the password */
 	var password = document.getElementById('password-textbox').value;
-
-	if(password == '') {
-		var i18n = document.getElementById("firegpg-strings");
-		alert(i18n.getString('youMustEnterPassword'));
-		return false; /* don't hide the dialog */
-	}
-	else
-		window.arguments[0].password = password;
+	window.arguments[0].password = password; /* TODO supprimer youMustEnterPassword de la traduction ? */
 
 	window.arguments[0].result = true;
 	window.arguments[0].save_password = document.getElementById('save-password-checkbox').checked ? true : false;

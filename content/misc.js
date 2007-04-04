@@ -118,6 +118,8 @@ function getPassword(question, save_password) {
  *
  * If useSavedPassword = false, the password is asked each time,
  * even if it's already saved in the global variable savedPassword.
+ *
+ * null is returned on error.
  */
 function getPrivateKeyPassword(useSavedPassword /* default = true */) {
 	/* the default value of the optional variable */

@@ -68,7 +68,7 @@ var GPG = {
 		var password = getPrivateKeyPassword();
 		var keyID = getSelfKey();
 		
-		if (password == null || password == "") {
+		if (password == null) {
 			return;
 		}
 		
