@@ -1,15 +1,18 @@
+2007-04-04  Achraf cherti
+	* the password can be clean in onAccept() (password.js)
+
 2007-04-04  Maximilien Cuony
-        * export to kexport, for FF 1.5
-        * remove and fore --no-agent
-        * add some error messages
+	* export to kexport, for FF 1.5
+	* remove and fore --no-agent
+	* add some error messages
 
 2007-03-31  Maximilien Cuony
 	* Apply mac's patch
 	* Revert attachement signs verify
 	* Fix option's bug if use the select path
 	* Add gmail's draf support
-        * Add option to turn off gpg's agent
-        * Version 0.3 Packed, and uploaded to the server !
+	* Add option to turn off gpg's agent
+	* Version 0.3 Packed, and uploaded to the server !
 
 2007-03-20  Maximilien Cuony
 	* Beginning of attachements's signs verify

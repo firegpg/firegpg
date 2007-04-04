@@ -47,7 +47,7 @@ const WRITE_MODE = 0x02 | 0x08 | 0x20;
 const WRITE_PERMISSION = 0600;
 const WRITE_PERMISSION_R = 0777;
 
-var savedPassword = ""; /* the private key password */
+var savedPassword = null; /* the private key password */
 
 /*
  * Show a dialog (list.xul) to choose the public key.
@@ -129,7 +129,7 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */) {
 		useSavedPassword = true;
 
 	/* return password if it's saved in savePassword */
-	if(useSavedPassword && savedPassword != "")
+	if(useSavedPassword && savedPassword != null)
 		return savedPassword;
 
 	/* show the dialog ! */
@@ -159,7 +159,7 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */) {
  */
 function eraseSavedPassword()
 {
-	savedPassword = "";
+	savedPassword = null;
 
 	document.getElementById('firegpg-menu-memo-pop').style.display = 'none';
 	document.getElementById('firegpg-menu-memo-menu').style.display = 'none';
