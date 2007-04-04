@@ -1,50 +1,18 @@
 Tâches libres :
-	- Quand on reçoit une réponse, parfois, le texte original est copié 
-	  après la réponse, avec un ">" devant chaque ligne.
-	  A cause de ça, une erreur peut-être affichée:"la première signature 
-	  est incorrecte" Est-il possible de faire en sorte, soit que les 
-	  signatures dans les réponses ne soient pas analysées, soient 
-	  qu'elles le soient en ne prenant pas les ">" en compte ?
-	  Mais c'est sûr que si quelqu'un répond avec un autre préfixe 
-	  devant le message original, c'est inutile...
-	  mail par deubeuliou@gmail.com (réponse pas encore envoyée).
-	  Réponse envoyée : inutile, mais bon, à voir
-	- Vérifier les problèmes de style : "Cependant je voudrais rappeler amicalement que GPG est l'éxécutable, GnuPG l'application et OpenPGP la norme (proposée)... ceci dans le but de ne pas confondre les trois termes dans la documentations et/ou textes du site."
 	- Cacher la console lors d'executions GPG sous windows
 	- Rajouter la posibilité de faire des traitement sur les fichiers téléchargés ? [Possible ?]
+	- la vérification d'un texte avec accents signé ne marche pas
 	- Vérifier le support des caractères NON-ascci partout [Prioritaire ?]
-	- par mail :
-		> Il semble y avoir un problème de charset/accent avec mon  installation 
-		> de firegpg. Quand j'envoie un message signé sans accent, la 
-		> vérification fonctionne, mais elle ne fonctionne pas quand il y a des accents.. 
-		> 
-		> Une autre chose, quand gmail change la couleur des phrases se 
-		> trouvant aussi dans les couriels précédent, la vérification ne 
-		> fonctionne pas.g
-À ranger :
 	- Création du 'gestionnaire de trousseau' avec  [Prioritaire ?]
-		- Nouvelle clé
-		- Édition confiance clé
-		- Édition mot de passe clé
-		- Export/Import dans fichiers
-		[- Rajout identité ?]
+		- Nouvelle clé - Édition confiance clé - Édition mot de passe clé
+		- Export/Import dans fichiers [- Rajout identité ?]
 	- par urbain92@gmail.com :
 		> Problème avec l'affichage du menu option voir image sous imageshack :
 		> http://img443.imageshack.us/img443/1150/screenshot005jx9.png
-	- Support Yahooooo[..]o
-	- Trouver quelqu'un pour supporter les Macs
-	- Créer un message de bienvenue, et signaler si FireGPG trouve pas GPG, ou n'a pas de clé par défault !
-	- Rajouter des boutons dans la fenêtre de résultats
-
-Tests libres :
-	- Le chiffrement fonctionne bien, mais il n'est pas reconnu par
-	  Enigmail que si on chiffre tout le message. Il faudrait tester
-	  le plugin avec Thunderbird, Sylpheed...
-	- Lors de la réception dans gmail d'un message chiffré par Enigmail, le 
-	  lien « Déchiffrer le courriel » est bien là, cependant, quand je clique 
-	  dessus, j'ai une erreur inconnue. Je me demande si ça ne vient pas du 
-	  fait que gmail transforme le texte « http://enigmail.mozdev.org » (situé 
-	  dans la ligne Comment) en lien avec plein de javascript dedans.
+	- Support Yahoo, Hotmail, Squirelmail...
+	- Rajouter des boutons dans la fenêtre de résultats [ quels boutons TODO ??? ]
+	- Chiffrement n'est pas reconnu par Enigmail seulement si on chiffre tout le message (test Enigmail, Sylpheed...)
+	- Déchiffrer avec Enigmail ne marche pas quand c'est chiffré avec FireGPG
 	
 Tâches de Maximilien :
 	- Absolument supporter les signatures en pièces jointes !!!
@@ -52,3 +20,5 @@ Tâches de Maximilien :
 Tâches d'Achraf :
 	- empêcher l'utilisateur de fermer la fenêtre des options tant que le chemin de gpg choisi n'existe pas (bien sur, le laisser fermer la fenêtre si la case "spécifier manuellement le chemin de gpg" est décochée !).
 	- corriger le fait que les accents s'affient mal dans la liste (probablement ISO-8859-X vs. UTF-8).
+	- Créer un message de bienvenue, et signaler si FireGPG trouve pas GPG, ou n'a pas de clé par défault !
+	- rss dans le site officiel
