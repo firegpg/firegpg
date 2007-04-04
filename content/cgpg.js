@@ -515,4 +515,7 @@ var GPG = {
 GPG.GPGAccess = (FireGPG_OS == WINDOWS) ? GPGWin : GPGLin;
 GPG.GPGAccess.parent = GPG;
 
+useGPGAgent = GPG.GPGAccess.runATest('--no-use-agent');
+useGPGTrust = GPG.GPGAccess.runATest('--trust-model always');
+
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

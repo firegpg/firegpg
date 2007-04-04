@@ -38,6 +38,9 @@ const nsIExtensionManager_CONRACTID = "@mozilla.org/extensions/manager;1";
 const idAppli = "firegpg@firegpg.team";
 const comment = "http://firegpg.tuxfamily.org";
 
+var useGPGAgent = true;
+var useGPGTrust = true;
+
 // The comment argument is returned if it's activated in the options.
 // else, "" is returned.
 function getGPGCommentArgument() {
@@ -56,17 +59,27 @@ function getGPGCommentArgument() {
 // Add --no-use-agent if user requet for this
 function getGPGAgentArgument() {
 
-	var comment_argument = "";
-	/*var key = "extensions.firegpg.no_gpg_agent";
+	/*var comment_argument = "";
+	var key = "extensions.firegpg.no_gpg_agent";
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 	                       getService(Components.interfaces.nsIPrefBranch);
 
 	if(prefs.getPrefType(key) == prefs.PREF_BOOL)
 		if(prefs.getBoolPref(key))
 			comment_argument = ;*/
-
-	return ' --no-use-agent';
+	if (useGPGAgent)
+		return ' --no-use-agent';
+	else
+		return '';
 }
+
+function getGPGTrustArgument() {
+	if (useGPGTrust)
+		return ' --trust-model always';
+	else
+		return '';
+}
+
 
 /*
  * Class to access to GPG on GNU/Linux.
@@ -139,7 +152,7 @@ var GPGLin = {
 		
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet --trust-model always --no-tty --no-verbose --status-fd 1 --armor" +  getGPGAgentArgument() +
+		           " --quiet" +  getGPGTrustArgument() + " --no-tty --no-verbose --status-fd 1 --armor" +  getGPGAgentArgument() +
 		           " --verify " + tmpInput);
 		
 		// We get the result
@@ -204,7 +217,7 @@ var GPGLin = {
 		
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet --trust-model always --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+		           " --quiet" +  getGPGTrustArgument() + " --no-tty --no-verbose --status-fd 1 --armor --batch" + 
 		           " -r " + keyID + 
 				   getGPGCommentArgument() + getGPGAgentArgument() +
 		           " --output " + tmpOutput + 
@@ -361,6 +374,35 @@ var GPGLin = {
 		
 		// We return result
 		return result;
+	},
+	
+	//Do a test of a commande
+	runATest: function(option) {
+	
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.sh")
+		
+		putIntoFile(tmpRun,running);
+		
+		runCommand(tmpRun,
+		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
+		           " --status-fd 1 " + option +
+		           " --version" );
+		
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+		
+		// We delete tempory files
+		removeFile(tmpStdOut);
+		removeFile(tmpRun);
+		
+		if(result.indexOf("Foundation") == "-1")
+			return false;
+		
+		return true;
 	},
 	
 	//Return the GPG's command to use
