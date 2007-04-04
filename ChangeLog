@@ -1,3 +1,8 @@
+2007-04-04  Maximilien Cuony
+        * export to kexport, for FF 1.5
+        * remove and fore --no-agent
+        * add some error messages
+
 2007-03-31  Maximilien Cuony
 	* Apply mac's patch
 	* Revert attachement signs verify

@@ -470,7 +470,7 @@ var GPG = {
 	/*
 	* Function to import a public key.
 	*/
-	export: function() {
+	kexport: function() {
 		// GPG verification
 		if(!GPG.selfTest())
 			return;
