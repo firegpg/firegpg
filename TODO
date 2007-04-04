@@ -1,4 +1,5 @@
 Tâches libres :
+	- ajouter la possibilité de chiffrer et signer en même temps
 	- Cacher la console lors d'executions GPG sous windows
 	- Rajouter la posibilité de faire des traitement sur les fichiers téléchargés ? [Possible ?]
 	- la vérification d'un texte avec accents signé ne marche pas
