@@ -1,5 +1,8 @@
+2007-04-06  Achraf Cherti
+	* all translations are declared in chrome.manifest.
+
 2007-04-05  Maximilien Cuony
-        * 0.3.2 Packed, and uploaded to the server !
+	* 0.3.2 Packed, and uploaded to the server !
 	* German translation by stephan.klein at gmx dot at
 	* Extend the width of lists window
 	* Fix problems with options' windows and some themes (like Noia)
