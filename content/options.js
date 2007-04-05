@@ -81,8 +81,6 @@ function onLoad(win)
 	
 	var default_item = null; /* this variable will contain the index of
 	                          the default private key item */
-	
-	
 
 	/* add all keys in the list box and find
 	 * the default item */
