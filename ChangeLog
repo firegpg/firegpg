@@ -1,5 +1,7 @@
 2007-04-05  Maximilien Cuony
         * German translation by stephan.klein@gmx.at
+        * Extend the width of lists window
+        * Fix problems with options' windows and some themes (like Noia)
 
 2007-04-05  Achraf cherti
 	* some warnings fixed in cgpg.js and cgmail.js.
