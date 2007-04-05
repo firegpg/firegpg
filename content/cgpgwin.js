@@ -73,7 +73,7 @@ var GPGWin = {
 			           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
 			           " --default-key " + keyID + 
 			           " --output " + tmpOutput + 
-			           " --passphrase " + tmpPASS +
+			           " --passphrase-fd 0 " +
 			           getGPGCommentArgument() +
 			           " --clearsign " + tmpInput + 
 			           " < " + tmpPASS);
@@ -243,7 +243,7 @@ var GPGWin = {
 			runCommand(tmpRun,
 			           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + 
 			           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
-			           " --passphrase " + tmpPASS +
+			           " --passphrase-fd 0 " +
 			           " --output " + tmpOutput + 
 			           " --decrypt " + tmpInput +
 			           " < " + tmpPASS);

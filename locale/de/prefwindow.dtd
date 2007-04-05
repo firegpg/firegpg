@@ -1,10 +1,10 @@
-﻿<!ENTITY prefwindow.title "FireGPG - Einstellungen">
+<!ENTITY prefwindow.title "FireGPG - Einstellungen">
 <!ENTITY pane1.title "FireGPG - Einstellungen">
-<!ENTITY gmail-enabled-checkbox.label "GMail-Unterstützung (Browserneustart erforderlich)">
+<!ENTITY gmail-enabled-checkbox.label "GMail-UnterstÃŒtzung (Browserneustart erforderlich)">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
-<!ENTITY private-keys-label.text "Privater Schl�ssel:">
-<!ENTITY show-website-checkbox "Zeige die Webseite von FireGPG in signiertem oder verschlüsseltem Text">
+<!ENTITY private-keys-label.text "Privater Schlüssel:">
+<!ENTITY show-website-checkbox "Zeige die Webseite von FireGPG in signiertem oder verschlÃŒsseltem Text">
 <!ENTITY change-gpg-path-button "Durchsuchen">
 <!ENTITY change-gpg-path-checkbox "Benutzerdefinierter Pfad zu GnuPG:">
-<!ENTITY result-always-in-new-window "Zeige die Ergebnisse von Verschlüsseln/Signieren immer in einem neuen Fenster.">
+<!ENTITY result-always-in-new-window "Zeige die Ergebnisse von VerschlÃŒsseln/Signieren immer in einem neuen Fenster.">
 <!ENTITY no-gpg-agent-checkbox "Deaktivere den gpg-agent (kann einige Fehler beheben)">

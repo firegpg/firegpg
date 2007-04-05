@@ -6,6 +6,8 @@ Translations :
 	French and English translation by FireGPG Team.
 	Italian translation by Alessandro Pascali.
 	Greman translation by stephan.klein@gmx.at.
+	Polish translation by Kacper86 <melki@interecho.com>
 	
 Patchs :
-        Ilya Chernikov for a but with MacOS
+        Ilya Chernikov for a bug with MacOS
+        hometoast for a bug with Win
