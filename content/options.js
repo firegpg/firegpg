@@ -93,7 +93,7 @@ function onLoad(win)
 			default_item = item;
 	}
 	listbox.appendItem('Ask for private key', ''); /* TODO i18n */
-
+	listbox.flex = 1;
 	/* select the default item */
 	if(default_item != null)
 		listbox.selectItem(default_item);
