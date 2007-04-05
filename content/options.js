@@ -40,8 +40,7 @@
  *
  * The arguments are optional.
  */
-function onChangeGPGPathCheckbox(checkbox, focus_textbox)
-{
+function onChangeGPGPathCheckbox(checkbox, focus_textbox) {
 	/* checked ? */
 	if(checkbox == undefined)
 		checkbox = document.getElementById('change-gpg-path-checkbox');
@@ -55,14 +54,6 @@ function onChangeGPGPathCheckbox(checkbox, focus_textbox)
 	textbox.disabled = disabled;
 	if(focus_textbox != undefined && focus_textbox == true)
 		textbox.focus();
-}
-
-/*
- * Return the default key.
- */
-function getSelectedKey()
-{
-	return document.getElementById('default-private-key-pref').value;
 }
 
 /*
@@ -89,6 +80,8 @@ function onLoad(win)
 	var default_item = null; /* this variable will contain the index of
 	                          the default private key item */
 	
+	listbox.appendItem('Ask for private key', ''); /* TODO i18n */
+
 	/* add all keys in the list box and find
 	 * the default item */
 	for(var key in gpg_keys) {
@@ -101,6 +94,11 @@ function onLoad(win)
 	/* select the default item */
 	if(default_item != null)
 		listbox.selectItem(default_item);
+	else {
+		listbox.selectedIndex = 0;
+	}
+
+	listbox.focus();
 	
 	/* call some important events */
 	onChangeGPGPathCheckbox();
@@ -127,8 +125,7 @@ function chooseGPGPath()
 {
 	var gpg_path = fileSelector();
 
-	if(gpg_path != null)
-	{
+	if(gpg_path != null) {
 		document.getElementById('gpg-path-textbox').value = gpg_path;
 		document.getElementById('gpg-path-pref').value = gpg_path;
 	}

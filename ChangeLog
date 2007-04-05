@@ -9,9 +9,12 @@
 
 2007-04-05  Achraf cherti
 	* some warnings fixed in cgpg.js and cgmail.js.
-	* size of dialogs fixed (password, options, etc.)
+	* size of dialogs fixed (password, options, etc.).
 	* italian translation by Alessandro Pascali
 	  (alessandro.pascali /at/ gmail |dot| com).
+	* the size of listbox is modified.
+	* new option, to ask for private key (in the options dialog).
+	* license added in COPYING.
 
 2007-04-04  Maximilien Cuony
 	* export to kexport, for FF 1.5

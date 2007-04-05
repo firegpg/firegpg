@@ -41,16 +41,12 @@ var firegpg = {
 		// initialization code
 		this.initialized = true;
 		this.strings = document.getElementById("firegpg-strings");
-		
 	},
 	onMenuItemCommand: function(e,action) {
-
 		setTimeout("firegpg.onDelayMenuAction('"+action+"')", 100);
-
 	},
 	onDelayMenuAction: function(action)
 	{
-
 		if (action == "SIGN")
 			GPG.sign();
 		else if(action == "VERIF")
@@ -68,7 +64,6 @@ var firegpg = {
 			                      "optionsFiregpg", "chrome,centerscreen"); 
 		else if (action == "ERASE")
 			eraseSavedPassword();
-
 	},
 
 	onToolbarButtonCommand: function(e) {

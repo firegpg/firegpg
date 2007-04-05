@@ -52,8 +52,7 @@ var savedPassword = null; /* the private key password */
 /*
  * Show a dialog (list.xul) to choose the public key.
  *
- * null is returned if the public key the public key 
- * is choosed.
+ * null is returned if the public key is not choosed.
  */
 function choosePublicKey()
 {
@@ -71,6 +70,25 @@ function choosePublicKey()
 	return params.selected_item;
 }
 
+/*
+ * Show a dialog (list.xul) to choose the private key.
+ *
+ * null is returned if the private key is not choosed.
+ */
+function choosePrivateKey()
+{
+	var params = {title: '', description: '', list: {}, selected_item: null};
+
+	params.title = 'FireGPG - private key' /* TODO i18n */
+	params.description = 'Choose the private key:' /* TODO i18n */
+	params.list = GPG.listKeys(true);
+
+	var dlg = window.openDialog('chrome://firegpg/content/list.xul',
+	                            '', 'chrome, dialog, modal, resizable=yes', 
+	                            params);
+	dlg.focus();
+	return params.selected_item;
+}
 /*
  * Show 'text' in a dialog.
  */
@@ -171,12 +189,26 @@ function eraseSavedPassword()
 
 /*
  * Funtion who return the default private key.
+ *
+ * null is returned if no key is selected.
  */
+var oldKeyID = '';
 function getSelfKey() {
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
                            getService(Components.interfaces.nsIPrefService);
 	prefs = prefs.getBranch("extensions.firegpg.");
-	return prefs.getCharPref("default_private_key");
+	keyID = prefs.getCharPref("default_private_key");
+
+	/* we must ask for private key ? */
+	if(keyID == '')
+		keyID = choosePrivateKey()
+	
+	/* request password if key id is changed */
+	if(keyID != oldKeyID) 
+		eraseSavedPassword()
+	oldKeyID = keyID;
+
+	return keyID;
 }
 
 /*

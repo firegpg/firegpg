@@ -65,12 +65,13 @@ var GPG = {
 		}
 		
 		// Needed for a sign
-		var password = getPrivateKeyPassword();
 		var keyID = getSelfKey();
-		
-		if (password == null) {
+		if(keyID == null)
 			return;
-		}
+
+		var password = getPrivateKeyPassword();
+		if(password == null)
+			return;
 		
 		var result = this.baseSign(text,password,keyID);
 		var crypttext = result.output;

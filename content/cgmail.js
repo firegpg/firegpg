@@ -425,7 +425,7 @@ var cGmail = {
 				var password = getPrivateKeyPassword();
 				var keyID = getSelfKey();
 
-				if (password == null)
+				if (password == null || keyID == null)
 					return;
 
 				var result = GPG.baseSign(mailContent,password,keyID);
