@@ -1,0 +1,39 @@
+﻿<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "Podpisz">
+<!ENTITY firegpgContext.labelCrypt "Zaszyfruj">
+<!ENTITY firegpgContext.labelVerif "Zweryfikuj">
+<!ENTITY firegpgContext.labelDecry "Odszyfruj">
+<!ENTITY firegpgContext.labelOptions "Opcje">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "Podpisz">
+<!ENTITY firegpgMenu.labelCrypt "Zaszyfruj">
+<!ENTITY firegpgMenu.labelVerif "Zweryfikuj">
+<!ENTITY firegpgMenu.labelDecry "Odszyfruj">
+<!ENTITY firegpgMenu.labelOptions "Opcje">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.labelSign "Podpisz">
+<!ENTITY firegpgToolbar.labelCrypt "Zaszyfruj">
+<!ENTITY firegpgToolbar.labelVerif "Zweryfikuj">
+<!ENTITY firegpgToolbar.labelDecry "Odszyfruj">
+<!ENTITY firegpgToolbar.labelOptions "Opcje">
+<!ENTITY firegpgMenu.labelErase "Wyczyść zapamiętane hasła">
+<!ENTITY firegpgContext.labelErase "Wyczyść zapamiętane hasła">
+<!ENTITY firegpgToolbar.labelErase "Wyczyść zapamiętane hasła">
+<!ENTITY firegpgMenu.labelImport "Importuj">
+<!ENTITY firegpgContext.labelImport "Importuj">
+<!ENTITY firegpgToolbar.labelImport "Importuj">
+<!ENTITY firegpgMenu.labelExport "Eksportuj">
+<!ENTITY firegpgContext.labelExport "Eksportuj">
+<!ENTITY firegpgToolbar.labelExport "Eksportuj">
+<!ENTITY firegpgPopInfo.labelBonjour "!!!PL!!!Bienvenue !<br />FireGPG à été installé correctement !">
+<!ENTITY firegpgPopInfo.labelAccessOk "!!!PL!!!FireGPG parviens à accéder à GnuPG !">
+<!ENTITY firegpgPopInfo.labelAccessErr "!!PL!!FireGPG ne parviens pas à accéder à GnuPG: L'avez vous installé?Son chemin est-il correctement défini?">
+<!ENTITY firegpgPopInfo.labelKeyOk "!!!PL!!!Une clé privée à corrctement été définie !">
+<!ENTITY firegpgPopInfo.labelKeyErr "!!!PL!!!Attention: veuillez définir une clé privée dans les options !">
+<!ENTITY firegpgPopInfo.close "!!!PL!!!Fermer">
+<!ENTITY firegpgPopInfo.options "Opcje">
+
+
