@@ -56,6 +56,8 @@ function onChangeGPGPathCheckbox(checkbox, focus_textbox) {
 		textbox.focus();
 }
 
+
+
 /*
  * This function is called when a private key is selected.
  */
@@ -80,7 +82,7 @@ function onLoad(win)
 	var default_item = null; /* this variable will contain the index of
 	                          the default private key item */
 	
-	listbox.appendItem('Ask for private key', ''); /* TODO i18n */
+	
 
 	/* add all keys in the list box and find
 	 * the default item */
@@ -90,6 +92,7 @@ function onLoad(win)
 		if(default_private_key == key)
 			default_item = item;
 	}
+	listbox.appendItem('Ask for private key', ''); /* TODO i18n */
 
 	/* select the default item */
 	if(default_item != null)

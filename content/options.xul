@@ -77,14 +77,14 @@
 
     <!-- list of private keys -->
     <label  id="private-keys-label" value="&private-keys-label.text;"/>
-    <listbox id="private-keys-listbox" rows="4" flex="1" onselect="privateKeySelected(this)"></listbox>
+    <listbox id="private-keys-listbox" rows="4" onselect="privateKeySelected(this)"></listbox>
 
     <!-- specify the gpg path -->
     <checkbox id="change-gpg-path-checkbox" checked="true" preference="specify-gpg-path-pref"
               label="&change-gpg-path-checkbox;" control="gpg-path-textbox"
               oncommand="onChangeGPGPathCheckbox(this, true);"/>
     <hbox>
-      <textbox id="gpg-path-textbox" flex="1" preference="gpg-path-pref"/>
+      <textbox id="gpg-path-textbox"  preference="gpg-path-pref"/>
       <button id="change-gpg-path-button" label="&change-gpg-path-button;" 
               control="gpg-path-textbox" oncommand="chooseGPGPath();"/>
     </hbox>
