@@ -1,12 +1,12 @@
 2007-04-05  Maximilien Cuony
-	* German translation by stephan.klein@gmx.at
+	* German translation by stephan.klein at gmx dot at
 	* Extend the width of lists window
 	* Fix problems with options' windows and some themes (like Noia)
 	* Apply hometoast's patch for windows
-	* Polish translation by Kacper86 <melki@interecho.com>
-	* Portuguese translation by Antonio Manuel Dias <ammdias@gmail.com>
+	* Polish translation by Kacper86 melki at interecho dot com
+	* Portuguese translation by Antonio Manuel Dias ammdias at gmail dot com
 	* English corrections (by Chad)
-        * po -> pl
+	* po -> pl
 
 2007-04-05  Achraf cherti
 	* some warnings fixed in cgpg.js and cgmail.js.
@@ -18,7 +18,7 @@
 	* license added in COPYING.
 
 2007-04-04  Maximilien Cuony
-        * 0.3.1 Packed, and uploaded to the server !
+	* 0.3.1 Packed, and uploaded to the server !
 	* export to kexport, for FF 1.5
 	* remove and fore --no-agent
 	* add some error messages
@@ -29,7 +29,7 @@
 	* the .svn dirs is not included in the .xpi file (generated with build.sh)
 
 2007-03-31  Maximilien Cuony
-        * Version 0.3 Packed, and uploaded to the server !
+	* Version 0.3 Packed, and uploaded to the server !
 	* Apply mac's patch
 	* Revert attachement signs verify
 	* Fix option's bug if use the select path
@@ -45,7 +45,7 @@
 	* If user cancel an action (like ask for password or select a key), the action is now stopped, and no error message appear !
 
 2007-03-12  Maximilien Cuony
-        * Version 0.2.2 Packed, and uploaded to the server !
+	* Version 0.2.2 Packed, and uploaded to the server !
 	* Fixed Windows compatibility !
 	* Gmail's new windows support !
 	* Fixed popup menu's problem
@@ -55,9 +55,9 @@
 	  into options.xul)
 
 2007-03-11  Maximilien Cuony
-        * Version 0.2.1 Packed, and uploaded to the server !
-        * Fix stanges passwords bug
-        * Version 0.2 Packed, and uploaded to the server !
+	* Version 0.2.1 Packed, and uploaded to the server !
+	* Fix stanges passwords bug
+	* Version 0.2 Packed, and uploaded to the server !
 	* Cslected more intelligent
 	* Fix the problem with two messages 'Selectionnez une partie de votre mail'
 	* Improve some performaces of cgmail
@@ -121,7 +121,7 @@
 2007-03-05  Maximilien Cuony
 	* Fixed a bug in select system who didn't look at \n in some texts
 	* Add support for select text with HTML and <br> balises
-        * Version 0.1 Packed, and uploaded to the server !
+	* Version 0.1 Packed, and uploaded to the server !
 	* Fix an error in getPrivateKeyPassword()
 	* Cgpg class in now finish !
 	* Implementation of getSelfKey(), for get the default key !
