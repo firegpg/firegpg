@@ -17,23 +17,24 @@
 	* license added in COPYING.
 
 2007-04-04  Maximilien Cuony
+        * 0.3.1 Packed, and uploaded to the server !
 	* export to kexport, for FF 1.5
 	* remove and fore --no-agent
 	* add some error messages
 	* test options for old gpg relases
-	* 0.3.1 Packed, and uploaded to the server !
-
+	
 2007-04-04  Achraf cherti
 	* the password can be clean in onAccept() (password.js)
 	* the .svn dirs is not included in the .xpi file (generated with build.sh)
 
 2007-03-31  Maximilien Cuony
+        * Version 0.3 Packed, and uploaded to the server !
 	* Apply mac's patch
 	* Revert attachement signs verify
 	* Fix option's bug if use the select path
 	* Add gmail's draf support
 	* Add option to turn off gpg's agent
-	* Version 0.3 Packed, and uploaded to the server !
+	
 
 2007-03-20  Maximilien Cuony
 	* Beginning of attachements's signs verify
@@ -42,25 +43,25 @@
 	* Export system
 	* If user cancel an action (like ask for password or select a key), the action is now stopped, and no error message appear !
 
+2007-03-12  Maximilien Cuony
+        * Version 0.2.2 Packed, and uploaded to the server !
+	* Fixed Windows compatibility !
+	* Gmail's new windows support !
+	* Fixed popup menu's problem
+
 2007-03-12  Achraf cherti
 	* file selector locale error fixed (firegpg-strings inserted 
 	  into options.xul)
 
-2007-03-12  Maximilien Cuony
-	* Fixed Windows compatibility !
-	* Gmail's new windows support !
-	* Fixed popup menu's problem
-	* Version 0.2.2 Packed, and uploaded to the server !
-
 2007-03-11  Maximilien Cuony
+        * Version 0.2.1 Packed, and uploaded to the server !
+        * Fix stanges passwords bug
+        * Version 0.2 Packed, and uploaded to the server !
 	* Cslected more intelligent
 	* Fix the problem with two messages 'Selectionnez une partie de votre mail'
 	* Improve some performaces of cgmail
 	* Changed text for the password's input
 	* Support fire Gmail's plain text editing
-	* Version 0.2 Packed, and uploaded to the server !
-	* Fix stanges passwords bug
-	* Version 0.2.1 Packed, and uploaded to the server !
 
 2007-03-10  Achraf cherti
 	* "always show in a new window" checkbox implemented
@@ -117,16 +118,16 @@
 	  added in defaults/preferences/firegpg.js.
 
 2007-03-05  Maximilien Cuony
+	* Fixed a bug in select system who didn't look at \n in some texts
+	* Add support for select text with HTML and <br> balises
+        * Version 0.1 Packed, and uploaded to the server !
 	* Fix an error in getPrivateKeyPassword()
 	* Cgpg class in now finish !
 	* Implementation of getSelfKey(), for get the default key !
 	* Full implementation for saving the password, with a menu for erase it.
 	* Come back to default UUID
 	* Fixed problems with complied package !
-	* Version 0.1 Packed, and uploaded to the server !
-	* Fixed a bug in select system who didn't look at \n in some texts
-	* Add support for select text with HTML and <br> balises
-
+	
 2007-03-05  Achraf cherti
 	* new function getPrivateKeyPassword() (with i18n support), to replace
 	  the generic function getPassword(question, save_password)
