@@ -4,6 +4,7 @@
         * Fix problems with options' windows and some themes (like Noia)
         * Apply hometoast's patch for windows
         * Polish translation by Kacper86 <melki@interecho.com>
+        * Portuguese translation by Antonio Manuel Dias <ammdias@gmail.com>
 
 2007-04-05  Achraf cherti
 	* some warnings fixed in cgpg.js and cgmail.js.

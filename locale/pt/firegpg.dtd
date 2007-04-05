@@ -1,0 +1,39 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "Assinar">
+<!ENTITY firegpgContext.labelCrypt "Cifrar">
+<!ENTITY firegpgContext.labelVerif "Verificar">
+<!ENTITY firegpgContext.labelDecry "Decifrar">
+<!ENTITY firegpgContext.labelOptions "Opções">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "Assinar">
+<!ENTITY firegpgMenu.labelCrypt "Cifrar">
+<!ENTITY firegpgMenu.labelVerif "Verificar">
+<!ENTITY firegpgMenu.labelDecry "Decifrar">
+<!ENTITY firegpgMenu.labelOptions "Opções">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.labelSign "Assinar">
+<!ENTITY firegpgToolbar.labelCrypt "Cifrar">
+<!ENTITY firegpgToolbar.labelVerif "Verificar">
+<!ENTITY firegpgToolbar.labelDecry "Decifrar">
+<!ENTITY firegpgToolbar.labelOptions "Opções">
+<!ENTITY firegpgMenu.labelErase "Limpar senha guardada">
+<!ENTITY firegpgContext.labelErase "Limpar senha guardada">
+<!ENTITY firegpgToolbar.labelErase "Limpar senha guardada">
+<!ENTITY firegpgMenu.labelImport "Importar">
+<!ENTITY firegpgContext.labelImport "Importar">
+<!ENTITY firegpgToolbar.labelImport "Importar">
+<!ENTITY firegpgMenu.labelExport "Exportar">
+<!ENTITY firegpgContext.labelExport "Exportar">
+<!ENTITY firegpgToolbar.labelExport "Exportar">
+<!ENTITY firegpgPopInfo.labelBonjour "Bem vindo !<br />O FireGPG foi correctamente instalado !">
+<!ENTITY firegpgPopInfo.labelAccessOk "O FireGPG consegue aceder ao GnuPG !">
+<!ENTITY firegpgPopInfo.labelAccessErr "O FireGPG não consegue aceder ao GnuPG: Tem a certeza que estáinstalado? A sua localização está correctamente definida?">
+<!ENTITY firegpgPopInfo.labelKeyOk "Definiu correctamente uma chave privada!">
+<!ENTITY firegpgPopInfo.labelKeyErr "Atenção: deve definir uma chave privada nas opções!">
+<!ENTITY firegpgPopInfo.close "Fechar">
+<!ENTITY firegpgPopInfo.options "Opções">
+
+
