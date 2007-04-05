@@ -5,10 +5,10 @@ FireGPG Team <firegpg@gmail.com> including :
 Translations :
 	French and English translation by FireGPG Team.
 	Italian translation by Alessandro Pascali.
-	Greman translation by stephan.klein@gmx.at.
-	Polish translation by Kacper86 <melki@interecho.com>
-	Portuguese translation by Antonio Manuel Dias <ammdias@gmail.com>
-	
-Patchs :
-        Ilya Chernikov for a bug with MacOS
-        hometoast for a bug with Win
+	Greman translation by Stephan Klein.
+	Polish translation by Kacper86.
+	Portuguese translation by Antonio Manuel Dias.
+
+Patchs by :
+        Ilya Chernikov (MacOS Bug)
+        hometoast (Windows Bug)
