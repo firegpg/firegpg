@@ -1,11 +1,11 @@
 content	firegpg	content/
 locale	firegpg	en-US	locale/en-US/
 locale	firegpg	fr	locale/fr/
-locale	firegpg de	locale/de
-locale	firegpg it	locale/it
-locale	firegpg pl	locale/pl
-locale	firegpg po	locale/po
-locale	firegpg pt	locale/pt
+locale	firegpg de	locale/de/
+locale	firegpg it	locale/it/
+locale	firegpg pl	locale/pl/
+locale	firegpg po	locale/po/
+locale	firegpg pt	locale/pt/
 skin	firegpg	classic/1.0	skin/
 overlay	chrome://browser/content/browser.xul	chrome://firegpg/content/firefoxOverlay.xul
 style	chrome://global/content/customizeToolbar.xul	chrome://firegpg/skin/overlay.css
