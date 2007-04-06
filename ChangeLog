@@ -1,10 +1,12 @@
 2007-04-06  Maximilien Cuony
-        * Türkish translation by Alparslan Ozturk
-        * Charset in Polish translation
+	* Türkish translation by Alparslan Ozturk
+	* Charset in Polish translation
 	* 0.3.2.1 Packed, and uploaded to the server !
 
 2007-04-06  Achraf Cherti
 	* all translations are declared in chrome.manifest.
+	* 0.3.2.1 released.
+	* toolbar button changed to firegpg.png.
 
 2007-04-05  Maximilien Cuony
 	* 0.3.2 Packed, and uploaded to the server !
