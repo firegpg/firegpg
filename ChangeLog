@@ -27,7 +27,7 @@
 	* remove and fore --no-agent
 	* add some error messages
 	* test options for old gpg relases
-	
+
 2007-04-04  Achraf cherti
 	* the password can be clean in onAccept() (password.js)
 	* the .svn dirs is not included in the .xpi file (generated with build.sh)
@@ -39,7 +39,6 @@
 	* Fix option's bug if use the select path
 	* Add gmail's draf support
 	* Add option to turn off gpg's agent
-	
 
 2007-03-20  Maximilien Cuony
 	* Beginning of attachements's signs verify
@@ -132,7 +131,7 @@
 	* Full implementation for saving the password, with a menu for erase it.
 	* Come back to default UUID
 	* Fixed problems with complied package !
-	
+
 2007-03-05  Achraf cherti
 	* new function getPrivateKeyPassword() (with i18n support), to replace
 	  the generic function getPassword(question, save_password)
