@@ -118,8 +118,25 @@ function showText(text, description /* optional */, title /* optional */) {
  * null is returned if cancel button is clicked.
  */
 function getPassword(question, save_password) {
+
+
+	if (save_password == undefined)
+	{
+	
+		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+	                           getService(Components.interfaces.nsIPrefService);
+		prefs = prefs.getBranch("extensions.firegpg.");
+		try {
+			save_password = prefs.getBoolPref("default_memory");
+			
+		} catch (e) {
+			save_password = true;
+		}
+	}
+
+
 	var params = {password: '', 
-	              save_password: ((save_password == undefined) ? true : save_password), 
+	              save_password: save_password, 
 	              result: false, question: question};
 
 	var dlg = window.openDialog('chrome://firegpg/content/password.xul', 
@@ -154,7 +171,7 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */) {
 	var question = document.getElementById('firegpg-strings').
 	                        getString('passwordDialogEnterPrivateKey');
 
-	var result = getPassword(question, true);
+	var result = getPassword(question);
 	if(result == null)
 		return null;
 

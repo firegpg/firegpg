@@ -8,3 +8,4 @@
 <!ENTITY change-gpg-path-checkbox "GPG yolunu elle belirle:">
 <!ENTITY result-always-in-new-window "Her bir şifreleme veya imzalma sonuçunu herzaman yeni bir pencerede göster.">
 <!ENTITY no-gpg-agent-checkbox "GPG gereçini kapanmaya zorla (bazı hatalar düzelebilir)">
+<!ENTITY ask-for-save-pass "By default, ask for save password.">

@@ -8,3 +8,4 @@
 <!ENTITY change-gpg-path-checkbox "Spécifier le chemin de GPG manuellement :">
 <!ENTITY result-always-in-new-window "Toujours afficher le résultat du chiffrement ou de la signature dans une nouvelle fenêtre.">
 <!ENTITY no-gpg-agent-checkbox "Forcer la désactivation de l'agent gpg (peut résoudre certains problèmes)">
+<!ENTITY ask-for-save-pass "Par defaut, demander la mémoriation du mot de passe.">

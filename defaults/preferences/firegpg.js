@@ -5,3 +5,4 @@ pref("extensions.firegpg.specify_gpg_path", false);
 pref("extensions.firegpg.show_website", true);
 pref("extensions.firegpg.result_always_in_new_window", false);
 pref("extensions.firegpg.no_gpg_agent", false);
+pref("extensions.firegpg.default_memory", true);

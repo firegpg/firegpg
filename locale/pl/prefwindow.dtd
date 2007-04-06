@@ -8,3 +8,4 @@
 <!ENTITY change-gpg-path-checkbox "Ustaw ścieżkę GPG ręcznie">
 <!ENTITY result-always-in-new-window "Zawsze wyśietlaj rezultat szyfrowania lub podpisywania w osobnym oknie.">
 <!ENTITY no-gpg-agent-checkbox "Wymuś wyłączenie agenta GPG's (może rozwiązać niektóre problemy)">
+<!ENTITY ask-for-save-pass "By default, ask for save password.">

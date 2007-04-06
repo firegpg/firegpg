@@ -8,3 +8,4 @@
 <!ENTITY change-gpg-path-checkbox "Especificar manualmente a localização do GnuPG:">
 <!ENTITY result-always-in-new-window "Mostrar sempre o resultado de uma assinatura ou cifra numa nova janela.">
 <!ENTITY no-gpg-agent-checkbox "Forçar o desligar do gpg agent (pode corrigir alguns erros)">
+<!ENTITY ask-for-save-pass "By default, ask for save password.">

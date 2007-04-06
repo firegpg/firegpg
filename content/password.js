@@ -41,9 +41,9 @@ function onLoad(win)
 {
 	if(window.arguments == undefined)
 		return;
-
+	
 	document.getElementById('password-textbox').value = window.arguments[0].password;
-	document.getElementById('save-password-checkbox').checked = (window.arguments[0].save_password) ? 'on' : 'off';
+	document.getElementById('save-password-checkbox').checked = window.arguments[0].save_password;
 	document.getElementById('description').value = window.arguments[0].question;
 }
 

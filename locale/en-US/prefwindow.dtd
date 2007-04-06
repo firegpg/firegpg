@@ -8,3 +8,4 @@
 <!ENTITY change-gpg-path-checkbox "Manually specify the path of GPG:">
 <!ENTITY result-always-in-new-window "Always display the result of an encoding or a signature in new window.">
 <!ENTITY no-gpg-agent-checkbox "Force to turn off gpg's agent (can fix some errors)">
+<!ENTITY ask-for-save-pass "By default, ask for save password.">

@@ -8,3 +8,4 @@
 <!ENTITY change-gpg-path-checkbox "Specifica un path per GPG alternativo:">
 <!ENTITY result-always-in-new-window "Visualizza sempre il testo criptato / firmato in una nuova finestra.">
 <!ENTITY no-gpg-agent-checkbox "Forza disattivazione di gpg's agent (può risolvere alcuni errori)">
+<!ENTITY ask-for-save-pass "By default, ask for save password.">
