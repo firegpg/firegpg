@@ -60,8 +60,8 @@ var firegpg = {
 		else if(action == "EXPORT")
 			GPG.kexport();
 		else if(action == "OPTS")
-			var win = window.open("chrome://firegpg/content/options.xul", 
-			                      "optionsFiregpg", "chrome,centerscreen"); 
+			 window.open("chrome://firegpg/content/options.xul", 
+			                      "optionsFiregpg", "chrome, centerscreen").focus(); 
 		else if (action == "ERASE")
 			eraseSavedPassword();
 	},
