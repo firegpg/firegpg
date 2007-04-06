@@ -58,6 +58,7 @@
       <preference id="no-gpg-agent-pref" name="extensions.firegpg.no_gpg_agent" type="bool"/>
       <preference id="show-web-site-pref" name="extensions.firegpg.show_website" type="bool"/>
       <preference id="result-always-in-new-window-pref" name="extensions.firegpg.result_always_in_new_window" type="bool"/>
+      <preference id="ask-for-save-pass-pref" name="extensions.firegpg.default_memory" type="bool"/>
     </preferences>
 
     <!-- gmail enabled ? -->
@@ -69,10 +70,15 @@
     <checkbox  id="result-always-in-new-window" preference="result-always-in-new-window-pref"
               label="&result-always-in-new-window;"/>
 
-    <!-- show web site -->
+  <!-- Ask for pass ? -->
+   <checkbox  id="ask-for-save-pass" preference="ask-for-save-pass-pref"
+              label="&ask-for-save-pass;"/>
+
+
+    <!-- don't use gpg agent -->
    <!--  <checkbox id="no-gpg-agent-checkbox" preference="no-gpg-agent-pref" checked="true" label="&no-gpg-agent-checkbox;"/>  -->
     
-    <!-- don't use gpg agent -->
+    <!-- show web site -->
    <checkbox  id="show-website-checkbox" preference="show-web-site-pref" checked="true" label="&show-website-checkbox;"/>
 
     <!-- list of private keys -->
