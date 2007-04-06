@@ -1,4 +1,4 @@
-﻿<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpg.label "FireGPG">
 <!ENTITY firegpgToolbar.label "FireGPG">
 <!ENTITY firegpgToolbar.tooltip "FireGPG">
 <!ENTITY firegpgContext.label "FireGPG">
@@ -28,11 +28,11 @@
 <!ENTITY firegpgMenu.labelExport "Eksportuj">
 <!ENTITY firegpgContext.labelExport "Eksportuj">
 <!ENTITY firegpgToolbar.labelExport "Eksportuj">
-<!ENTITY firegpgPopInfo.labelBonjour "!!!PL!!!Bienvenue !<br />FireGPG à été installé correctement !">
-<!ENTITY firegpgPopInfo.labelAccessOk "!!!PL!!!FireGPG parviens à accéder à GnuPG !">
-<!ENTITY firegpgPopInfo.labelAccessErr "!!PL!!FireGPG ne parviens pas à accéder à GnuPG: L'avez vous installé?Son chemin est-il correctement défini?">
-<!ENTITY firegpgPopInfo.labelKeyOk "!!!PL!!!Une clé privée à corrctement été définie !">
-<!ENTITY firegpgPopInfo.labelKeyErr "!!!PL!!!Attention: veuillez définir une clé privée dans les options !">
+<!ENTITY firegpgPopInfo.labelBonjour "!!!PL!!!Bienvenue !<br />FireGPG Ă  Ă©tĂ© installĂ© correctement !">
+<!ENTITY firegpgPopInfo.labelAccessOk "!!!PL!!!FireGPG parviens Ă  accĂ©der Ă  GnuPG !">
+<!ENTITY firegpgPopInfo.labelAccessErr "!!PL!!FireGPG ne parviens pas Ă  accĂ©der Ă  GnuPG: L'avez vous installĂ©?Son chemin est-il correctement dĂ©fini?">
+<!ENTITY firegpgPopInfo.labelKeyOk "!!!PL!!!Une clĂ© privĂ©e Ă  corrctement Ă©tĂ© dĂ©finie !">
+<!ENTITY firegpgPopInfo.labelKeyErr "!!!PL!!!Attention: veuillez dĂ©finir une clĂ© privĂ©e dans les options !">
 <!ENTITY firegpgPopInfo.close "!!!PL!!!Fermer">
 <!ENTITY firegpgPopInfo.options "Opcje">
 

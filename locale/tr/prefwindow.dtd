@@ -1,0 +1,10 @@
+<!ENTITY prefwindow.title "FireGPG tercihler">
+<!ENTITY pane1.title "FireGPG tercihler">
+<!ENTITY gmail-enabled-checkbox.label "GMail destegi (tarayızı tekrar açılması gerekir)">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Varsayılan özel anahtar:">
+<!ENTITY show-website-checkbox "FireGPG websitesini imza ve şifre metni içinde göster">
+<!ENTITY change-gpg-path-button "GPG ayarlarının yolu">
+<!ENTITY change-gpg-path-checkbox "GPG yolunu elle belirle:">
+<!ENTITY result-always-in-new-window "Her bir şifreleme veya imzalma sonuçunu herzaman yeni bir pencerede göster.">
+<!ENTITY no-gpg-agent-checkbox "GPG gereçini kapanmaya zorla (bazı hatalar düzelebilir)">
