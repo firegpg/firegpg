@@ -1,3 +1,7 @@
+2007-05-31  Maximilien Cuony
+        * Added Simplified Chinese and Traditional Chinese locate.
+        * Added Dutch locate.
+
 2007-04-06  Maximilien Cuony
         * 0.3.3 Packed, and uploaded to the server !
         * Try to solve the Mac's options' window problem.
@@ -11,7 +15,7 @@
         * toolbar button changed to firegpg.png.
 	* 0.3.2.1 released.
 	* all translations are declared in chrome.manifest.
-	
+
 
 2007-04-05  Maximilien Cuony
 	* 0.3.2 Packed, and uploaded to the server !
@@ -66,7 +70,7 @@
 	* Fixed popup menu's problem
 
 2007-03-12  Achraf cherti
-	* file selector locale error fixed (firegpg-strings inserted 
+	* file selector locale error fixed (firegpg-strings inserted
 	  into options.xul)
 
 2007-03-11  Maximilien Cuony
@@ -93,7 +97,7 @@
 2007-03-08  Achraf cherti
 	* GPG.selfTest() is now not called from overlay, but from cgpg.js
 	  in the member functions (decrypt, crypt, verify, sign).
-	* the website (in comment) is only showed if it's activated in 
+	* the website (in comment) is only showed if it's activated in
 	  options.xul.
 	* the indentation is fixed in gmail.js and gpg*js.
 	* Some things in french/english locale are fixed.
@@ -149,7 +153,7 @@
 	  the generic function getPassword(question, save_password)
 	* new in options dialog : specify the path of GPG, show the FireGPG official
 	  website.
-	* Shorter version of names : firegpgSelect -> Selection, 
+	* Shorter version of names : firegpgSelect -> Selection,
 	  Selection.isSelectionEditable -> isEditable, getSelection -> get,
 	  setSelection -> set.
 	* dcrypt -> decrypt / DCRYPT -> DECRYPT
@@ -162,9 +166,9 @@
 	* the default private key is saved and selected by default when
 	  the options dialog is loaded.
 	* TODO file added.
-	* somes improvements in the style of the code and the indentation 
+	* somes improvements in the style of the code and the indentation
 	  of *.xul.
-	* FileGPG_GPG.cleanTmpPath(), FileGPG_GPG.getTmpPath() and 
+	* FileGPG_GPG.cleanTmpPath(), FileGPG_GPG.getTmpPath() and
 	  FileGPG_GPG.getTmpFile() moved to misc.js. There names are
 	  now removeFile(), getTmpDir() and getTmpFile().
 	* FireGPG_GPG.putIntoFile() and FireGPG_GPG.getFromFile()
@@ -195,7 +199,7 @@
 	* Add base menu's icone
 	* Add comment 'http://firegpg.tuxfamily.org' for signs and crypts
 	* Update URL link
-	* UUID changed to 89c87b67-c98f-4caf-ac0f-f80076b895ea (not useful, but changed 
+	* UUID changed to 89c87b67-c98f-4caf-ac0f-f80076b895ea (not useful, but changed
 	  when I test update's system)
 
 2007-03-03  Maximilien Cuony
@@ -203,11 +207,11 @@
 	* Moved some function to firegpgGPG
 	* FireGPG context menu added
 	* Basic functions for GPGLin.Sign and GPGLin.Verif
-	* Basic classes and functions for using GPG added 
+	* Basic classes and functions for using GPG added
 	  (sample don't work for the moment)
 
 2007-03-03  Achraf cherti
-	* little modification in linux.sh (comments), linux.sh 
+	* little modification in linux.sh (comments), linux.sh
 	  renamed to run.sh
 	* GMail CheckBox in "options" dialog
 	* somes improvements in the style of the code of *.js

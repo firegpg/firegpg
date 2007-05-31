@@ -1,0 +1,12 @@
+<!ENTITY prefwindow.title "FireGPG 選項">
+<!ENTITY pane1.title "FireGPG 選項">
+<!ENTITY gmail-enabled-checkbox.label "支持GMail（需重啓瀏覽器）">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "默認私鑰：">
+<!ENTITY show-website-checkbox "在簽署或加密的文本中顯示FireGPG網站">
+<!ENTITY change-gpg-path-button "設定GPG路徑">
+<!ENTITY change-gpg-path-checkbox "手動指定GPG路徑">
+<!ENTITY result-always-in-new-window "總是在新窗口顯示簽署或加密後的效果">
+<!ENTITY no-gpg-agent-checkbox "強制關閉GPG代理（可解決一些錯誤）">
+<!ENTITY ask-for-save-pass "默認詢問是否保存密碼。">
+<!-- translated from English by Weakish Jiang (weakish@gmail.com) -->

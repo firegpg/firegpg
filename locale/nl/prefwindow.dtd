@@ -1,0 +1,11 @@
+<!ENTITY prefwindow.title "FireGPG instellingen">
+<!ENTITY pane1.title "FireGPG instellingen">
+<!ENTITY gmail-enabled-checkbox.label "GMail ondersteuning (firefox moet herstarten)">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Standaard private sleutel:">
+<!ENTITY show-website-checkbox "Toon FireGPG website in ondertekende of versleutelde tekst">
+<!ENTITY change-gpg-path-button "GPG's pad instellen">
+<!ENTITY change-gpg-path-checkbox "Manueel GPG's pad instellen:">
+<!ENTITY result-always-in-new-window "Altijd resultaten van versleuteling of ondertekening in een apart venster weergeven.">
+<!ENTITY no-gpg-agent-checkbox "Altijd GPG's agent afzetten (dit kan sommige fouten verhelpen)">
+<!ENTITY ask-for-save-pass "Standaard vragen om wachtwoord op te slaan">

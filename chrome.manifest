@@ -8,6 +8,9 @@ locale	firegpg po	locale/po/
 locale	firegpg pt	locale/pt/
 locale	firegpg tr	locale/tr/
 locale	firegpg es	locale/es/
+locale	firegpg zh-CN	locale/zh-CN/
+locale	firegpg zh-TW	locale/zh-TW/
+locale	firegpg nl	locale/nl/
 skin	firegpg	classic/1.0	skin/
 overlay	chrome://browser/content/browser.xul	chrome://firegpg/content/firefoxOverlay.xul
 style	chrome://global/content/customizeToolbar.xul	chrome://firegpg/skin/overlay.css
