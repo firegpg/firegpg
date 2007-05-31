@@ -1,5 +1,7 @@
 2007-05-31  Maximilien Cuony
         * Gmail: Ask keys BEFORE passparse for sign.
+        * Site: Correct a mistake with 'turc'
+        * Site: Added the plugin's md5.
         * Added Simplified Chinese and Traditional Chinese locate.
         * Added Dutch locate.
 
