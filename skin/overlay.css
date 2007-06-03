@@ -35,6 +35,10 @@
   list-style-image: url("chrome://firegpg/skin/options.png");
 }
 
+.firegpg-menu-editeur {
+  list-style-image: url("chrome://firegpg/skin/editeur.png");
+}
+
 .firegpg-menu {
 	list-style-image: url("chrome://firegpg/skin/firegpg.png");
 }
@@ -75,4 +79,3 @@ label.link {
 	text-align: center;
 	text-decoration: underline;
 }
-

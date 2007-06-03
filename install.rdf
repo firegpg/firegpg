@@ -2,10 +2,6 @@
 <RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
          xmlns:NC="http://home.netscape.com/NC-rdf#"
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <RDF:Description RDF:about="rdf:#$g5s0x"
-                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   em:minVersion="1.5"
-                   em:maxVersion="2.0.0.*" />
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="firegpg@firegpg.team"
                    em:version="0.3.3"
@@ -20,4 +16,8 @@
                    em:iconURL="chrome://firegpg/content/firegpg.png">
     <em:targetApplication RDF:resource="rdf:#$g5s0x"/>
   </RDF:Description>
+  <RDF:Description RDF:about="rdf:#$g5s0x"
+                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   em:minVersion="1.5"
+                   em:maxVersion="2.0.0.*" />
 </RDF:RDF>

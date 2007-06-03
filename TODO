@@ -1,3 +1,17 @@
+Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
+    - firegpg.dtd :
+        - *.labelEditeur
+    - firegpg.properties
+        - editorDescription
+        - editorTitle
+    - showtext.dtd
+        - crypt-button
+        - dcrypt-button
+        - sign-button
+        - verify-button
+        - open-button
+        - save-button
+
 Tâches libres :
 	- ajouter la possibilité de chiffrer et signer en même temps
 	- Cacher la console lors d'executions GPG sous windows
@@ -11,13 +25,16 @@ Tâches libres :
 		> Problème avec l'affichage du menu option voir image sous imageshack :
 		> http://img443.imageshack.us/img443/1150/screenshot005jx9.png
 	- Support Yahoo, Hotmail, Squirelmail...
-	- Rajouter des boutons dans la fenêtre de résultats [ quels boutons TODO ??? ]
+
 	- Chiffrement n'est pas reconnu par Enigmail seulement si on chiffre tout le message (test Enigmail, Sylpheed...)
 	- Déchiffrer avec Enigmail ne marche pas quand c'est chiffré avec FireGPG
-	
+
 Tâches de Maximilien :
 	- Absolument supporter les signatures en pièces jointes !!!
-	
+        - Implmenter dcrpt, sign et verify sur showtext
+        - Si QQCH slectionner, le prendre en compte sur showtext
+        - Implémenter la sauvegarde des caractères dans le bon encodage
+
 Tâches d'Achraf :
 	- empêcher l'utilisateur de fermer la fenêtre des options tant que le chemin de gpg choisi n'existe pas (bien sur, le laisser fermer la fenêtre si la case "spécifier manuellement le chemin de gpg" est décochée !).
 	- corriger le fait que les accents s'affient mal dans la liste (probablement ISO-8859-X vs. UTF-8).

@@ -7,11 +7,13 @@
 <!ENTITY firegpgContext.labelVerif "Vérifier">
 <!ENTITY firegpgContext.labelDecry "Déchiffrer">
 <!ENTITY firegpgContext.labelOptions "Options">
+<!ENTITY firegpgContext.labelEditeur "Ouvrir l'éditeur">
 <!ENTITY firegpgMenu.label "FireGPG">
 <!ENTITY firegpgMenu.labelSign "Signer">
 <!ENTITY firegpgMenu.labelCrypt "Chiffrer">
 <!ENTITY firegpgMenu.labelVerif "Vérifier">
 <!ENTITY firegpgMenu.labelDecry "Déchiffrer">
+<!ENTITY firegpgMenu.labelEditeur "Ouvrir l'éditeur">
 <!ENTITY firegpgMenu.labelOptions "Options">
 <!ENTITY firegpgToolbar.label "FireGPG">
 <!ENTITY firegpgToolbar.labelSign "Signer">
@@ -19,6 +21,7 @@
 <!ENTITY firegpgToolbar.labelVerif "Vérifier">
 <!ENTITY firegpgToolbar.labelDecry "Déchiffrer">
 <!ENTITY firegpgToolbar.labelOptions "Options">
+<!ENTITY firegpgToolbar.labelEditeur "Ouvrir l'éditeur">
 <!ENTITY firegpgMenu.labelErase "Effacer le mot de passe mémorisé">
 <!ENTITY firegpgContext.labelErase "Effacer le mot de passe mémorisé">
 <!ENTITY firegpgToolbar.labelErase "Effacer le mot de passe mémorisé">
@@ -35,4 +38,3 @@
 <!ENTITY firegpgPopInfo.labelKeyErr "Attention: veuillez définir une clé privée dans les options !">
 <!ENTITY firegpgPopInfo.close "Fermer">
 <!ENTITY firegpgPopInfo.options "Options">
-

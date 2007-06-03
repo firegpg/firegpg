@@ -1,3 +1,7 @@
+2007-06-03  Maximilien Cuony
+        * Begining of transform showtext into a text editor (already done: Open, Save, Crypt)
+        * Added menu entrie for Editor
+
 2007-05-31  Maximilien Cuony
         * Gmail: Ask keys BEFORE passparse for sign.
         * Site: Correct a mistake with 'turc'

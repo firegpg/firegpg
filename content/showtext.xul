@@ -6,7 +6,7 @@
   - 1.1 (the "License"); you may not use this file except in compliance with
   - the License. You may obtain a copy of the License at
   - http://www.mozilla.org/MPL/
-  - 
+  -
   - Software distributed under the License is distributed on an "AS IS" basis,
   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
   - for the specific language governing rights and limitations under the
@@ -32,17 +32,33 @@
   - and other provisions required by the GPL or the LGPL. If you do not delete
   - the provisions above, a recipient may use your version of this file under
   - the terms of any one of the MPL, the GPL or the LGPL.
-  - 
+  -
   - ***** END LICENSE BLOCK ***** -->
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<dialog id="showtext-dialog" title="default title" orient="vertical" 
-        autostretch="always" onload="onLoad(this); sizeToContent();" 
+<!DOCTYPE showtext-dialog SYSTEM "chrome://firegpg/locale/showtext.dtd">
+<dialog id="showtext-dialog" title="default title" orient="vertical"
+        autostretch="always" onload="onLoad(this); sizeToContent();"
         buttons="accept"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
+  </stringbundleset>
   <script src="showtext.js"/>
+  <script src="misc.js"/>
+  <script src="cgpglin.js"/>
+  <script src="cgpgwin.js"/>
+  <script src="cgpg.js"/>
   <description control="text" id="description" value="default description"/>
-  <textbox id="text" multiline="true" rows="25" cols="80" readonly="true"/>
+  <textbox id="text" multiline="true" rows="25" cols="80"/>
+  <hbox>
+    <button id="open-button" label="&open-button;" oncommand="openf();"/>
+    <button id="save-button" label="&save-button;" oncommand="savef();"/>
+    <button id="crypt-button" label="&crypt-button;" oncommand="crypt();"/>
+    <button id="dcrypt-button" label="&dcrypt-button;" oncommand="dcrypt();"/>
+    <button id="sign-button" label="&sign-button;" oncommand="sign();"/>
+    <button id="verify-button" label="&verify-button;" oncommand="verify();"/>
+  </hbox>
 </dialog>
 
 <!-- vim:ai:et:sw=2:ts=2:sts=2:tw=0:fenc=utf-8

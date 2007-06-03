@@ -5,7 +5,7 @@
  * 1.1 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
  * http://www.mozilla.org/MPL/
- * 
+ *
  * Software distributed under the License is distributed on an "AS IS" basis,
  * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
  * for the specific language governing rights and limitations under the
@@ -31,7 +31,7 @@
  * and other provisions required by the GPL or the LGPL. If you do not delete
  * the provisions above, a recipient may use your version of this file under
  * the terms of any one of the MPL, the GPL or the LGPL.
- * 
+ *
  * ***** END LICENSE BLOCK ***** */
 
 const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
@@ -64,7 +64,7 @@ function choosePublicKey()
 	params.list = GPG.listKeys();
 
 	var dlg = window.openDialog('chrome://firegpg/content/list.xul',
-	                            '', 'chrome, dialog, modal, resizable=yes', 
+	                            '', 'chrome, dialog, modal, resizable=yes',
 	                            params);
 	dlg.focus();
 	return params.selected_item;
@@ -84,7 +84,7 @@ function choosePrivateKey()
 	params.list = GPG.listKeys(true);
 
 	var dlg = window.openDialog('chrome://firegpg/content/list.xul',
-	                            '', 'chrome, dialog, modal, resizable=yes', 
+	                            '', 'chrome, dialog, modal, resizable=yes',
 	                            params);
 	dlg.focus();
 	return params.selected_item;
@@ -100,13 +100,24 @@ function showText(text, description /* optional */, title /* optional */) {
 	var params = {text: text, title: title, description: description};
 	if(title == undefined)
 		params.title = i18n.getString('showTextDefaultTitle');
-	if(description == undefined) 
+	if(description == undefined)
 		params.description = i18n.getString('showTextDefaultDescription');
 
 	/* open the dialog */
 	window.openDialog('chrome://firegpg/content/showtext.xul',
-	                  '', 'chrome, dialog, modal, resizable=yes', 
+	                  '', 'chrome, dialog, resizable=yes',
 	                  params).focus();
+}
+
+/*
+* Open the editor (the showtext dialog)
+*/
+
+function showEditor() {
+	var i18n = document.getElementById("firegpg-strings");
+	title = i18n.getString('editorTitle');
+	description = i18n.getString('editorDescription');
+	showText('',description,title);
 }
 
 /*
@@ -122,24 +133,24 @@ function getPassword(question, save_password) {
 
 	if (save_password == undefined)
 	{
-	
+
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 	                           getService(Components.interfaces.nsIPrefService);
 		prefs = prefs.getBranch("extensions.firegpg.");
 		try {
 			save_password = prefs.getBoolPref("default_memory");
-			
+
 		} catch (e) {
 			save_password = true;
 		}
 	}
 
 
-	var params = {password: '', 
-	              save_password: save_password, 
+	var params = {password: '',
+	              save_password: save_password,
 	              result: false, question: question};
 
-	var dlg = window.openDialog('chrome://firegpg/content/password.xul', 
+	var dlg = window.openDialog('chrome://firegpg/content/password.xul',
 	                            '', 'chrome, dialog, modal, resizable=yes', params);
 	dlg.focus();
 
@@ -185,12 +196,12 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */) {
 		}
 		catch(e) {}
 	}
-	
+
 	return result.password;
 }
 
-/* 
- * This function erase the saved password (if for exemple a sign failled) 
+/*
+ * This function erase the saved password (if for exemple a sign failled)
  */
 function eraseSavedPassword()
 {
@@ -219,9 +230,9 @@ function getSelfKey() {
 	/* we must ask for private key ? */
 	if(keyID == '')
 		keyID = choosePrivateKey()
-	
+
 	/* request password if key id is changed */
-	if(keyID != oldKeyID) 
+	if(keyID != oldKeyID)
 		eraseSavedPassword()
 	oldKeyID = keyID;
 
@@ -289,7 +300,7 @@ function getTmpPassFile() {
 		case 9: fileName = fileName + "fhfghsdfhhdfgh4"; break;
 	}
 
-	fileName = fileName + Math.floor(Math.random() * 9999); 
+	fileName = fileName + Math.floor(Math.random() * 9999);
 
 	aleatoire = Math.floor(Math.random() * 9)
 	switch(aleatoire) {
@@ -305,7 +316,7 @@ function getTmpPassFile() {
 		case 9: fileName = fileName + "fdfgdfgdfgdfgdfgrxdcbvndfg"; break;
 	}
 
-	fileName = fileName + Math.floor(Math.random() * 9999); 
+	fileName = fileName + Math.floor(Math.random() * 9999);
 	fileobj.append(fileName);
 	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, WRITE_PERMISSION);
 
@@ -330,6 +341,8 @@ function removeFile(path) {
 
 /*
  * Put data into a file.
+ *
+ * //TODO: UNICODE !!!! http://developer.mozilla.org/en/docs/Reading_textual_data
  */
 function putIntoFile(filename, data)
 {
@@ -348,36 +361,38 @@ function putIntoFile(filename, data)
 
 /*
  * Get the content of a file
+ *
+ * //TODO: UNICODE !!!! http://developer.mozilla.org/en/docs/Reading_textual_data
  */
 function getFromFile(filename) {
 	try {
 		var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
 		                         createInstance(Components.interfaces.nsILocalFile);
-		
+
 		fileobj.initWithPath(filename);
-		
+
 		var data = "";
 		var fstream = Components.classes[NS_NETWORKINPUT_CONTRACTID].
 		                         createInstance(Components.interfaces.nsIFileInputStream);
 		var sstream = Components.classes[NS_NETWORKINPUTS_CONTRACTID].
 		                         createInstance(Components.interfaces.nsIScriptableInputStream);
-		
+
 		fstream.init(fileobj, -1, 0, 0);
-		sstream.init(fstream); 
-		
+		sstream.init(fstream);
+
 		var str = sstream.read(4096);
 		while (str.length > 0) {
 			data += str;
 			str = sstream.read(4096);
 		}
-		
+
 		sstream.close();
 		fstream.close();
-		
+
 		return data;
 	}
 	catch (e) {}
-	
+
 	return '';
 }
 
@@ -399,7 +414,7 @@ function getContent(aURL){
 	input.close();
 
 	return str;
-} 
+}
 
 /*
  * Run a command
