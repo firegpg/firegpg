@@ -18,8 +18,6 @@ Tâches libres :
 	- ajouter la possibilité de chiffrer et signer en même temps
 	- Cacher la console lors d'executions GPG sous windows
 	- Rajouter la posibilité de faire des traitement sur les fichiers téléchargés ? [Possible ?]
-	- la vérification d'un texte avec accents signé ne marche pas
-	- Vérifier le support des caractères NON-ascci partout [Prioritaire ?]
 	- Création du 'gestionnaire de trousseau' avec  [Prioritaire ?]
 		- Nouvelle clé - Édition confiance clé - Édition mot de passe clé
 		- Export/Import dans fichiers [- Rajout identité ?]
@@ -27,16 +25,13 @@ Tâches libres :
 		> Problème avec l'affichage du menu option voir image sous imageshack :
 		> http://img443.imageshack.us/img443/1150/screenshot005jx9.png
 	- Support Yahoo, Hotmail, Squirelmail...
-
 	- Chiffrement n'est pas reconnu par Enigmail seulement si on chiffre tout le message (test Enigmail, Sylpheed...)
 	- Déchiffrer avec Enigmail ne marche pas quand c'est chiffré avec FireGPG
 
 Tâches de Maximilien :
 	- Absolument supporter les signatures en pièces jointes !!!
         - Implémenter la sauvegarde des caractères dans le bon encodage
-        	- corriger le fait que les accents s'affient mal dans la liste (probablement ISO-8859-X vs. UTF-8).
 
 Tâches d'Achraf :
 	- empêcher l'utilisateur de fermer la fenêtre des options tant que le chemin de gpg choisi n'existe pas (bien sur, le laisser fermer la fenêtre si la case "spécifier manuellement le chemin de gpg" est décochée !).
 	- Créer un message de bienvenue, et signaler si FireGPG trouve pas GPG, ou n'a pas de clé par défault !
-	- rss dans le site officiel

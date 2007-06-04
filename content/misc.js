@@ -347,7 +347,6 @@ function removeFile(path) {
 /*
  * Put data into a file.
  *
- * //TODO: UNICODE !!!! http://developer.mozilla.org/en/docs/Reading_textual_data
  */
 function putIntoFile(filename, data)
 {
@@ -360,14 +359,27 @@ function putIntoFile(filename, data)
 	                          createInstance(Components.interfaces.nsIFileOutputStream);
 
 	foStream.init(fileobj, WRITE_MODE, WRITE_PERMISSION, 0);
-	foStream.write(data, data.length);
+	//foStream.write(data, data.length);
+
+	var charset = "UTF-8"; // Can be any character encoding name that Mozilla supports
+
+	var os = Components.classes["@mozilla.org/intl/converter-output-stream;1"]
+                   .createInstance(Components.interfaces.nsIConverterOutputStream);
+
+	// This assumes that fos is the nsIOutputStream you want to write to
+	os.init(foStream, charset, 0, 0x0000);
+
+	os.writeString(data);
+
+	os.close();
+
+
 	foStream.close();
 }
 
 /*
  * Get the content of a file
  *
- * //TODO: UNICODE !!!! http://developer.mozilla.org/en/docs/Reading_textual_data
  */
 function getFromFile(filename) {
 	try {
@@ -377,18 +389,24 @@ function getFromFile(filename) {
 		fileobj.initWithPath(filename);
 
 		var data = "";
-		var fstream = Components.classes[NS_NETWORKINPUT_CONTRACTID].
-		                         createInstance(Components.interfaces.nsIFileInputStream);
-		var sstream = Components.classes[NS_NETWORKINPUTS_CONTRACTID].
-		                         createInstance(Components.interfaces.nsIScriptableInputStream);
+		var fstream = Components.classes[NS_NETWORKINPUT_CONTRACTID].createInstance(Components.interfaces.nsIFileInputStream);
+		//var sstream2 = Components.classes[NS_NETWORKINPUTS_CONTRACTID].
+		//                         createInstance(Components.interfaces.nsIScriptableInputStream);
+		const replacementChar = Components.interfaces.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER;
+		var charset = /* Need to find out what the character encoding is. Using UTF-8 for this example: */ "UTF-8";
+		var sstream = Components.classes["@mozilla.org/intl/converter-input-stream;1"].createInstance(Components.interfaces.nsIConverterInputStream);
+
 
 		fstream.init(fileobj, -1, 0, 0);
-		sstream.init(fstream);
+		//sstream2.init(fstream);
 
-		var str = sstream.read(4096);
-		while (str.length > 0) {
-			data += str;
-			str = sstream.read(4096);
+		// This assumes that fis is the nsIInputStream you want to read from
+		sstream.init(fstream, charset, 1024, 0xFFFD);
+		var str = {};
+		var lengtth = sstream.readString(4096, str);
+		while (lengtth > 0) {
+			data += str.value;
+			lengtth = sstream.readString(4096, str);
 		}
 
 		sstream.close();
