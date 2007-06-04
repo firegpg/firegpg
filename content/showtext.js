@@ -45,6 +45,11 @@ function onLoad(win)
 	document.getElementById('text').value = window.arguments[0].text;
 	document.getElementById('description').value = window.arguments[0].description;
 	document.title = window.arguments[0].title;
+
+        if (window.arguments[0].doShowButtons == true)
+        {
+                document.getElementById('buttons-box').style.display = 'none';
+        }
 }
 
 /*
@@ -96,10 +101,9 @@ function crypt() {
 	// For i18n
 	var i18n = document.getElementById("firegpg-strings");
 
-	//TODO: tester la sélection.
-	var text = document.getElementById('text').value;
+	var text = getSelectedText();
 
-	if (text == "") {
+       	if (text == "") {
 		alert(i18n.getString("noData"));
 		return;
 	}
@@ -112,7 +116,7 @@ function crypt() {
 	}
 
 	// We get the result
-	var result =GPG.baseCrypt(text, keyID);
+	var result = GPG.baseCrypt(text, keyID);
 	var crypttext = result.output;
 	var sdOut2 = result.sdOut2;
 	result = result.sdOut;
@@ -123,8 +127,181 @@ function crypt() {
 		alert(i18n.getString("cryptFailed") + sdOut2);
 	}
 	else {
-		document.getElementById('text').value = crypttext;
+		setSeletedText(crypttext);
 	}
+}
+
+//Decrypt the text
+function dcrypt() {
+        // GPG verification
+        if(!GPG.selfTest())
+                return;
+
+        // For i18n
+        var i18n = document.getElementById("firegpg-strings");
+
+        var text = getSelectedText();
+
+        if (text == "") {
+                alert(i18n.getString("noData"));
+                return;
+        }
+
+        //Verify GPG'data presence
+        reg=new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
+        text = text.replace(reg, "FIREGPGTRALALABEGINHIHAN");
+
+        reg=new RegExp("\\- \\-\\-\\-\\-\\-END PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
+        text = text.replace(reg, "FIREGPGTRALALAENDHIHAN");
+
+        var firstPosition = text.indexOf("-----BEGIN PGP MESSAGE-----");
+        var lastPosition = text.indexOf("-----END PGP MESSAGE-----");
+
+        reg=new RegExp("FIREGPGTRALALABEGINHIHAN", "gi"); // We don't have to detect disabled balises
+        text = text.replace(reg, "-----BEGIN PGP MESSAGE-----");
+
+        reg=new RegExp("FIREGPGTRALALAENDHIHAN", "gi"); // We don't have to detect disabled balises
+        text = text.replace(reg, "-----END PGP MESSAGE-----");
+
+        if (firstPosition == -1 || lastPosition == -1) {
+                alert(i18n.getString("noGPGData"));
+                return;
+        }
+
+        text = text.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
+
+        // Needed for a decrypt
+        var password = getPrivateKeyPassword();
+
+        if(password == null) {
+                return;
+        }
+
+        // We get the result
+        var result = GPG.baseDecrypt(text,password);
+        var crypttext = result.output;
+        var sdOut2 = result.sdOut2;
+        result = result.sdOut;
+
+        // If the crypt failled
+        if (result == "erreurPass") {
+                alert(i18n.getString("decryptFailedPassword"));
+                eraseSavedPassword();
+        }
+        else if (result == "erreur") {
+                alert(i18n.getString("decryptFailed") + sdOut2);
+        }
+        else {
+                setSeletedText(crypttext);
+        }
+}
+
+//Sign the text
+function sign() {
+        // GPG verification
+        if(!GPG.selfTest())
+                return;
+
+        // For i18n
+        var i18n = document.getElementById("firegpg-strings");
+        var text = getSelectedText();
+
+        if (text == "") {
+                alert(i18n.getString("noData"));
+                return;
+        }
+
+        // Needed for a sign
+        var keyID = getSelfKey();
+        if(keyID == null)
+                return;
+
+        var password = getPrivateKeyPassword();
+        if(password == null)
+                return;
+
+        var result = GPG.baseSign(text,password,keyID);
+        var crypttext = result.output;
+        var sdOut2 = result.sdOut2;
+        result = result.sdOut;
+
+        // If the sign failled
+        if(result == "erreur") {
+                // We alert the user
+                alert(i18n.getString("signFailed") + sdOut2);
+        }
+        else if(result == "erreurPass") {
+                        alert(i18n.getString("signFailedPassword"));
+                        eraseSavedPassword();
+        }
+        else {
+                setSeletedText(crypttext);
+        }
+}
+
+//verfify the sin of a text
+function verify() {
+        // GPG verification
+        if(!GPG.selfTest())
+                return;
+
+        // For I18N
+        var i18n = document.getElementById("firegpg-strings");
+
+        var text = getSelectedText();
+
+        if (text == "") {
+                alert(i18n.getString("noData"));
+                return;
+        }
+
+        var result = GPG.baseVerify(text);
+
+        // For I18N
+        var i18n = document.getElementById("firegpg-strings");
+
+        if (result == "noGpg") {
+                alert(i18n.getString("noGPGData"));
+                return;
+        }
+        else if (result == "erreur")
+                alert(i18n.getString("verifFailed"));
+        else {
+                infos = result.split(" ");
+
+                var infos2 = "";
+                for (var ii = 1; ii < infos.length; ++ii)
+                {  infos2 = infos2 + infos[ii] + " ";}
+
+                alert(i18n.getString("verifSuccess") + " " + infos2);
+        }
+}
+
+// Retrun the selected text (if nothing is selected, return all)
+function getSelectedText()
+{
+        var value = document.getElementById('text').value;
+	value = value.substring(document.getElementById('text').selectionStart,document.getElementById('text').selectionEnd)
+        if (value == "")
+                value = document.getElementById('text').value
+        return value;
+}
+
+//Set a new text for the textbox, but only the selection if something is selected.
+function setSeletedText(text)
+{
+        var txtbox = document.getElementById('text');
+        var value = txtbox.value;
+        var startPos = txtbox.selectionStart;
+        var endPos = txtbox.selectionEnd;
+        var chaine = txtbox.value;
+        if (startPos != endPos)
+        {
+                // We create the new string and replace it into the focused element
+                txtbox.value = chaine.substring(0, startPos) + text + chaine.substring(endPos, chaine.length);
+        }
+        else //Nothing is seleted, we remplace all
+                txtbox.value = text;
 }
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

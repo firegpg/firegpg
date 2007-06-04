@@ -51,7 +51,7 @@
   <script src="cgpg.js"/>
   <description control="text" id="description" value="default description"/>
   <textbox id="text" multiline="true" rows="25" cols="80"/>
-  <hbox>
+  <hbox id="buttons-box">
     <button id="open-button" label="&open-button;" oncommand="openf();"/>
     <button id="save-button" label="&save-button;" oncommand="savef();"/>
     <button id="crypt-button" label="&crypt-button;" oncommand="crypt();"/>

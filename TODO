@@ -4,6 +4,8 @@ Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
     - firegpg.properties
         - editorDescription
         - editorTitle
+        - whatIsNewTitle
+        - whatIsNewDescription
     - showtext.dtd
         - crypt-button
         - dcrypt-button
@@ -31,12 +33,10 @@ Tâches libres :
 
 Tâches de Maximilien :
 	- Absolument supporter les signatures en pièces jointes !!!
-        - Implmenter dcrpt, sign et verify sur showtext
-        - Si QQCH slectionner, le prendre en compte sur showtext
         - Implémenter la sauvegarde des caractères dans le bon encodage
+        	- corriger le fait que les accents s'affient mal dans la liste (probablement ISO-8859-X vs. UTF-8).
 
 Tâches d'Achraf :
 	- empêcher l'utilisateur de fermer la fenêtre des options tant que le chemin de gpg choisi n'existe pas (bien sur, le laisser fermer la fenêtre si la case "spécifier manuellement le chemin de gpg" est décochée !).
-	- corriger le fait que les accents s'affient mal dans la liste (probablement ISO-8859-X vs. UTF-8).
 	- Créer un message de bienvenue, et signaler si FireGPG trouve pas GPG, ou n'a pas de clé par défault !
 	- rss dans le site officiel

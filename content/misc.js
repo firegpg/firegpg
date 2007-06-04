@@ -34,6 +34,8 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+
+const FIREGPG_VERSION = '0.3.3';
 const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
 const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
 const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
@@ -92,17 +94,18 @@ function choosePrivateKey()
 /*
  * Show 'text' in a dialog.
  */
-function showText(text, description /* optional */, title /* optional */) {
+function showText(text, description /* optional */, title /* optional */, doShowButtons /* optional */) {
 	/* default description and title values */
 	var i18n = document.getElementById("firegpg-strings");
 
 	/* setting params */
-	var params = {text: text, title: title, description: description};
+	var params = {text: text, title: title, description: description, doShowButtons: doShowButtons};
 	if(title == undefined)
 		params.title = i18n.getString('showTextDefaultTitle');
 	if(description == undefined)
 		params.description = i18n.getString('showTextDefaultDescription');
-
+	if(doShowButtons == undefined)
+		params.doShowButtons = false;
 	/* open the dialog */
 	window.openDialog('chrome://firegpg/content/showtext.xul',
 	                  '', 'chrome, dialog, resizable=yes',
@@ -189,9 +192,10 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */) {
 	if(result.save_password) {
 		savedPassword = result.password;
 
-		document.getElementById('firegpg-menu-memo-pop').style.display = '';
-		document.getElementById('firegpg-menu-memo-menu').style.display = '';
 		try {
+			document.getElementById('firegpg-menu-memo-pop').style.display = '';
+			document.getElementById('firegpg-menu-memo-menu').style.display = '';
+
 			document.getElementById('firegpg-menu-memo-tool').style.display = '';
 		}
 		catch(e) {}
@@ -207,9 +211,10 @@ function eraseSavedPassword()
 {
 	savedPassword = null;
 
-	document.getElementById('firegpg-menu-memo-pop').style.display = 'none';
-	document.getElementById('firegpg-menu-memo-menu').style.display = 'none';
 	try {
+		document.getElementById('firegpg-menu-memo-pop').style.display = 'none';
+		document.getElementById('firegpg-menu-memo-menu').style.display = 'none';
+
 		document.getElementById('firegpg-menu-memo-tool').style.display = 'none';
 	}
 	catch (e) {}
@@ -429,6 +434,28 @@ function runCommand(command, arg) {
 	process.init(file);
 	var args = arg.split(' ');
 	process.run(true, args, args.length);
+}
+
+/*
+* Test if we had to show the 'What is new' box
+*/
+function testIfSomethingsIsNew() {
+	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+		                       getService(Components.interfaces.nsIPrefService);
+		prefs = prefs.getBranch("extensions.firegpg.");
+	var version  = "";
+	try {
+		version = prefs.getCharPref("gpg_version");
+	} catch (e) { }
+
+	if (version != FIREGPG_VERSION)
+	{
+		prefs.setCharPref("gpg_version",FIREGPG_VERSION)
+		var i18n = document.getElementById("firegpg-strings");
+		title = i18n.getString('whatIsNewTitle');
+		description = i18n.getString('whatIsNewDescription');
+		showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);
+	}
 }
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

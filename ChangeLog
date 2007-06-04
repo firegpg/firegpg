@@ -1,3 +1,6 @@
+2007-06-04  Maximilien Cuony
+        * What is new windows.
+        * Editor works perfectly !
 2007-06-03  Maximilien Cuony
         * Begining of transform showtext into a text editor (already done: Open, Save, Crypt)
         * Added menu entrie for Editor
