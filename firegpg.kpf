@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Komodo Project File - DO NOT EDIT -->
-<project kpf_version="3" id="fa443666-376d-4a69-bc43-bc9272cdc3bc" name="firegpg.kpf">
-<preference-set idref="fa443666-376d-4a69-bc43-bc9272cdc3bc">
-  <boolean id="import_live">1</boolean>
-</preference-set>
-</project>
