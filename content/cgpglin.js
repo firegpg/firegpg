@@ -199,7 +199,7 @@ var GPGLin = {
 	/*
 	 * Function to crypt a text.
 	 */
-	crypt: function(texte,keyID) {
+	crypt: function(texte, keyIdList) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg
@@ -212,13 +212,18 @@ var GPGLin = {
 		
 		// We lanch gpg
 		var running = getContent("chrome://firegpg/content/run.sh")
-		
+
+		/* key id list in the arguments */
+		var keyIdListArgument = '';
+		for(var i = 0; i < keyIdList.length; i++)
+			keyIdListArgument += ((i > 0) ? ' ' : '') + '-r ' + keyIdList[i];
+
 		putIntoFile(tmpRun,running);
-		
+
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
 		           " --quiet" +  getGPGTrustArgument() + " --no-tty --no-verbose --status-fd 1 --armor --batch" + 
-		           " -r " + keyID + 
+		           " " + keyIdListArgument + " " +
 				   getGPGCommentArgument() + getGPGAgentArgument() +
 		           " --output " + tmpOutput + 
 		           " --encrypt " + tmpInput);

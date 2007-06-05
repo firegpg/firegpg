@@ -52,13 +52,14 @@ const WRITE_PERMISSION_R = 0777;
 var savedPassword = null; /* the private key password */
 
 /*
- * Show a dialog (list.xul) to choose the public key.
+ * Show a dialog (list.xul) to choose a list of 
+ * public keys (array).
  *
  * null is returned if the public key is not choosed.
  */
-function choosePublicKey()
+function choosePublicKey() /* TODO : remove */
 {
-	var params = {title: '', description: '', list: {}, selected_item: null};
+	var params = {title: '', description: '', list: {}, selected_items: {}};
 	var i18n = document.getElementById("firegpg-strings");
 
 	params.title = i18n.getString('choosePublicKeyTitle');
@@ -69,7 +70,11 @@ function choosePublicKey()
 	                            '', 'chrome, dialog, modal, resizable=yes',
 	                            params);
 	dlg.focus();
-	return params.selected_item;
+
+	if(params.selected_items.length == 0)
+		params.selected_items = null;
+
+	return params.selected_items;
 }
 
 /*
@@ -227,6 +232,7 @@ function eraseSavedPassword()
  */
 var oldKeyID = '';
 function getSelfKey() {
+	var keyID;
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
                            getService(Components.interfaces.nsIPrefService);
 	prefs = prefs.getBranch("extensions.firegpg.");

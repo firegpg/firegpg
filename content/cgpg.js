@@ -228,7 +228,7 @@ var GPG = {
 		// var reg2=new RegExp("[:]+", "g");
 
 		for (var i = 0; i < list.length; i++) {
-			infos = new Array();
+			var infos = new Array();
 			try { infos = list[i].split(":");
 
 			if(infos[0] == "pub" || infos[0] == "sec")
@@ -257,14 +257,13 @@ var GPG = {
 		}
 
 		// Needed for a crypt
-		var keyID = choosePublicKey();
+		var keyIdList = choosePublicKey();
 
-		if(keyID == null) {
+		if(keyIdList == null)
 			return;
-		}
 
 		// We get the result
-		var result = this.baseCrypt(text, keyID);
+		var result = this.baseCrypt(text, keyIdList);
 		var crypttext = result.output;
 		var sdOut2 = result.sdOut2;
 		result = result.sdOut;
@@ -287,14 +286,17 @@ var GPG = {
 		}
 	},
 
-	baseCrypt: function(text, keyID) {
-		var result = this.GPGAccess.crypt(text, keyID);
+	/*
+     * keyIdList is an array contain a liste of ID :
+	 *   ['id1', 'id2', etc.]
+	 */
+	baseCrypt: function(text, keyIdList) {
+		var result = this.GPGAccess.crypt(text, keyIdList);
 		var tresult = result.sdOut;
 
 		result.sdOut = "ok";
 
-		if(tresult.indexOf("END_ENCRYPTION") == "-1")
-		{
+		if(tresult.indexOf("END_ENCRYPTION") == "-1") {
 			result.sdOut = "erreur";
 			result.sdOut2 = tresult;
 		}
@@ -505,7 +507,6 @@ var GPG = {
 		else
 			return result;
 	}
-
 };
 
 // We load the good class for the OS

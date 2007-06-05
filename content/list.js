@@ -39,7 +39,7 @@
  *
  * window.arguments[0] will contain this object :
  *   {description: '', title: '', list: {'ID': 'Label'}, 
- *    selected_item:'' *the default selected ID* }
+ *    selected_items:'' *the default selected ID* }
  */
 function onLoad(win)
 {
@@ -51,7 +51,7 @@ function onLoad(win)
 	var listInDialog = document.getElementById('list');
 	for(var id in list) 
 		listInDialog.appendItem(list[id], id);
-		/* TODO test selected_item and select the item with this id by default ? */
+		/* TODO test selected_items and select the item with this id by default ? */
 	
 	// description
 	var description = window.arguments[0].description;
@@ -70,7 +70,15 @@ function onAccept()
 		return true;
 
 	var listInDialog = document.getElementById('list');
-	window.arguments[0].selected_item = listInDialog.selectedItem.value;
+
+	/* dictionary contain result['id'] = 'label' */
+	var result = [];
+	for(var i = 0; i < listInDialog.selectedItems.length; i++) {
+		var item = listInDialog.selectedItems[i];
+		result.push(item.value);
+	}
+	
+	window.arguments[0].selected_items = result;
 
 	/* TODO if no item selected, don't hide window and say it's important 
 	  to select an item ! */

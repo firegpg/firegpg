@@ -42,7 +42,7 @@
         ondialogaccept="return onAccept()">
   <script src="list.js"/>
   <description control="list" id="description" value="default description"/>
-  <listbox id="list" flex="1" rows="20" style="width:35em"></listbox>
+  <listbox id="list" seltype="multiple" flex="1" rows="20" style="width:35em"></listbox>
 </dialog>
 
 <!-- vim:ai:et:sw=2:ts=2:sts=2:tw=0:fenc=utf-8
