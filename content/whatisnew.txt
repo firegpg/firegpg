@@ -1,3 +1,20 @@
 === Version 0.4 ===
 
-Nothing, MWAHAHHA !
+Bugs :
+- The problem with encoding is solved ! (You can sign Japanese for sample now !)
+- Gmail: Ask the passphrase after as the key.
+
+Functionalities :
+- The 'What is new' windows
+- Added an editor (see menu) for works on text. It's the result windows too, so you can perform operation into !
+
+Locates :
+- We're waiting for translator to translates the new strings in this version, so you will see some english if you use an another translation.
+- Added Dutch, Simplified Chinese and Traditional Chinese.
+
+Misc :
+- We have just opened a Wiki to make a doc on FireGPG, if you wants to help, go here : http://firegpg.tuxfamily.org/doc .
+- Don't forget to report bugs in our forum (http://firegpg.tuxfamily.org/forum) or by email at firegpg@gmail.com !
+
+Thanks you for using FireGPG !
+    FireGPG's team.

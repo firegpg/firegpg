@@ -35,7 +35,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-const FIREGPG_VERSION = '0.3.3';
+const FIREGPG_VERSION = '0.4';
 const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
 const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
 const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
@@ -470,8 +470,13 @@ function testIfSomethingsIsNew() {
 	{
 		prefs.setCharPref("gpg_version",FIREGPG_VERSION)
 		var i18n = document.getElementById("firegpg-strings");
-		title = i18n.getString('whatIsNewTitle');
-		description = i18n.getString('whatIsNewDescription');
+		title = "FireGPG - What is new ?";
+		description = "What is new in FireGPG ?";
+		try {
+
+			title = i18n.getString('whatIsNewTitle');
+			description = i18n.getString('whatIsNewDescription');
+		} catch (e) { }
 		showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);
 	}
 }
