@@ -35,5 +35,6 @@
 <!ENTITY firegpgPopInfo.labelKeyErr "!!!PL!!!Attention: veuillez dĂ©finir une clĂ© privĂ©e dans les options !">
 <!ENTITY firegpgPopInfo.close "!!!PL!!!Fermer">
 <!ENTITY firegpgPopInfo.options "Opcje">
-
-
+<!ENTITY firegpgContext.labelEditeur "Open editor">
+<!ENTITY firegpgMenu.labelEditeur "Open editor">
+<!ENTITY firegpgToolbar.labelEditeur "Open editor">
