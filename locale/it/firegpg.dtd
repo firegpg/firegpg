@@ -35,5 +35,6 @@
 <!ENTITY firegpgPopInfo.labelKeyErr "Attenzione: selezionare una chiave privata tramite le opzioni ! ">
 <!ENTITY firegpgPopInfo.close "Esci">
 <!ENTITY firegpgPopInfo.options "Opzioni">
-
-
+<!ENTITY firegpgContext.labelEditeur "Open editor">
+<!ENTITY firegpgMenu.labelEditeur "Open editor">
+<!ENTITY firegpgToolbar.labelEditeur "Open editor">

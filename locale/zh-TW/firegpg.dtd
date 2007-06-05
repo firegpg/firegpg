@@ -35,7 +35,7 @@
 <!ENTITY firegpgPopInfo.labelKeyErr "註意：veuillez définir une clé privée dans les options !">
 <!ENTITY firegpgPopInfo.close "Fermer">
 <!ENTITY firegpgPopInfo.options "選項">
+<!ENTITY firegpgContext.labelEditeur "Open editor">
+<!ENTITY firegpgMenu.labelEditeur "Open editor">
+<!ENTITY firegpgToolbar.labelEditeur "Open editor">
 <!-- translated from English by Weakish Jiang (weakish@gmail.com) -->
-
-
-

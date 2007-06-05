@@ -1,8 +1,9 @@
 2007-06-04  Maximilien Cuony
+        * Added new strings to locates
         * Solved encoding problem !!!!! :).
         * What is new windows.
         * Editor works perfectly !
-        
+
 2007-06-03  Maximilien Cuony
         * Begining of transform showtext into a text editor (already done: Open, Save, Crypt)
         * Added menu entrie for Editor

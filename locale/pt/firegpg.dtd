@@ -35,5 +35,6 @@
 <!ENTITY firegpgPopInfo.labelKeyErr "Atenção: deve definir uma chave privada nas opções!">
 <!ENTITY firegpgPopInfo.close "Fechar">
 <!ENTITY firegpgPopInfo.options "Opções">
-
-
+<!ENTITY firegpgContext.labelEditeur "Open editor">
+<!ENTITY firegpgMenu.labelEditeur "Open editor">
+<!ENTITY firegpgToolbar.labelEditeur "Open editor">

@@ -34,3 +34,6 @@
 <!ENTITY firegpgToolbar.labelSign "Firmar">
 <!ENTITY firegpgToolbar.labelVerif "Verificar">
 <!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.labelEditeur "Open editor">
+<!ENTITY firegpgMenu.labelEditeur "Open editor">
+<!ENTITY firegpgToolbar.labelEditeur "Open editor">

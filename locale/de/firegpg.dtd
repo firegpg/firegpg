@@ -35,5 +35,6 @@
 <!ENTITY firegpgPopInfo.labelKeyErr "Achtung: In den Optionen ist kein privater Schlüssel eingestellt!">
 <!ENTITY firegpgPopInfo.close "Schließen">
 <!ENTITY firegpgPopInfo.options "Optionen">
-
-
+<!ENTITY firegpgContext.labelEditeur "Open editor">
+<!ENTITY firegpgMenu.labelEditeur "Open editor">
+<!ENTITY firegpgToolbar.labelEditeur "Open editor">
