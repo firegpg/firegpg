@@ -6,7 +6,7 @@
   - 1.1 (the "License"); you may not use this file except in compliance with
   - the License. You may obtain a copy of the License at
   - http://www.mozilla.org/MPL/
-  - 
+  -
   - Software distributed under the License is distributed on an "AS IS" basis,
   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
   - for the specific language governing rights and limitations under the
@@ -32,70 +32,109 @@
   - and other provisions required by the GPL or the LGPL. If you do not delete
   - the provisions above, a recipient may use your version of this file under
   - the terms of any one of the MPL, the GPL or the LGPL.
-  - 
+  -
   - ***** END LICENSE BLOCK ***** -->
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!DOCTYPE prefwindow SYSTEM "chrome://firegpg/locale/prefwindow.dtd">
-<prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
-            title="&prefwindow.title;" onload="onLoad(this); sizeToContent();" >
-  <stringbundleset id="stringbundleset">
-    <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
-  </stringbundleset>
-  <script src="misc.js"/>
-  <script src="cgpglin.js"/>
-  <script src="cgpgwin.js"/>
-  <script src="cgpg.js"/>
-  <script src="options.js"/>
+<prefwindow id="optionsforefiregpg" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;" onload="onLoad(this); sizeToContent();">
+    <stringbundleset id="stringbundleset">
+        <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
+    </stringbundleset>
 
-  <prefpane id="pane1" label="&pane1.title;" flex="1">
-    <!-- preferences -->
-    <preferences>
-      <preference id="gmail-enabled-pref" name="extensions.firegpg.gmail_enabled" type="bool"/>
-      <preference id="default-private-key-pref" name="extensions.firegpg.default_private_key" type="string"/>
-      <preference id="gpg-path-pref" name="extensions.firegpg.gpg_path" type="string"/>
-      <preference id="specify-gpg-path-pref" name="extensions.firegpg.specify_gpg_path" type="bool"/>
-      <preference id="no-gpg-agent-pref" name="extensions.firegpg.no_gpg_agent" type="bool"/>
-      <preference id="show-web-site-pref" name="extensions.firegpg.show_website" type="bool"/>
-      <preference id="result-always-in-new-window-pref" name="extensions.firegpg.result_always_in_new_window" type="bool"/>
-      <preference id="ask-for-save-pass-pref" name="extensions.firegpg.default_memory" type="bool"/>
-    </preferences>
+    <script src="misc.js"/>
+    <script src="cgpglin.js"/>
+    <script src="cgpgwin.js"/>
+    <script src="cgpg.js"/>
+    <script src="options.js"/>
 
-    <!-- gmail enabled ? -->
-    <checkbox id="gmail-enabled-checkbox" preference="gmail-enabled-pref" 
-              label="&gmail-enabled-checkbox.label;" 
+    <prefpane id="pane1" label="&pane1.title;" flex="1" type="child" image="chrome://firegpg/skin/opt-misc.png">
+        <!-- preferences -->
+        <preferences>
+            <preference id="default-private-key-pref" name="extensions.firegpg.default_private_key" type="string"/>
+            <preference id="gpg-path-pref" name="extensions.firegpg.gpg_path" type="string"/>
+            <preference id="specify-gpg-path-pref" name="extensions.firegpg.specify_gpg_path" type="bool"/>
+            <preference id="no-gpg-agent-pref" name="extensions.firegpg.no_gpg_agent" type="bool"/>
+            <preference id="show-web-site-pref" name="extensions.firegpg.show_website" type="bool"/>
+            <preference id="result-always-in-new-window-pref" name="extensions.firegpg.result_always_in_new_window" type="bool"/>
+            <preference id="ask-for-save-pass-pref" name="extensions.firegpg.default_memory" type="bool"/>
+        </preferences>
+
+        <!-- Always sign or verify in a new window -->
+        <checkbox  id="result-always-in-new-window" preference="result-always-in-new-window-pref"  label="&result-always-in-new-window;"/>
+
+        <!-- Ask for pass ? -->
+        <checkbox  id="ask-for-save-pass" preference="ask-for-save-pass-pref" label="&ask-for-save-pass;"/>
+
+        <!-- show web site -->
+        <checkbox  id="show-website-checkbox" preference="show-web-site-pref" checked="true" label="&show-website-checkbox;"/>
+
+        <!-- list of private keys -->
+        <label  id="private-keys-label" value="&private-keys-label.text;"/>
+        <listbox id="private-keys-listbox" rows="4" onselect="privateKeySelected(this)" />
+
+        <!-- specify the gpg path -->
+        <checkbox id="change-gpg-path-checkbox" checked="true" preference="specify-gpg-path-pref"
+                  label="&change-gpg-path-checkbox;" control="gpg-path-textbox"
+                  oncommand="onChangeGPGPathCheckbox(this, true);"/>
+        <hbox>
+            <textbox id="gpg-path-textbox"  preference="gpg-path-pref"/>
+            <button id="change-gpg-path-button" label="&change-gpg-path-button;"
+                  control="gpg-path-textbox" oncommand="chooseGPGPath();"/>
+        </hbox>
+
+    </prefpane>
+
+    <prefpane id="pane2" label="&pane2.title;" flex="1" type="child" image="chrome://firegpg/skin/opt-gmail.png">
+        <preferences>
+            <preference id="gmail-enabled-pref" name="extensions.firegpg.gmail_enabled" type="bool"/>
+            <preference id="gmail-no-no-sign" name="extensions.firegpg.gmail_no_sign_off" type="bool"/>
+
+            <preference id="gmail-buton-sign" name="extensions.firegpg.gmail_butons_sign" type="bool"/>
+            <preference id="gmail-buton-signsend" name="extensions.firegpg.gmail_butons_sign_send" type="bool"/>
+            <preference id="gmail-buton-crypt" name="extensions.firegpg.gmail_butons_crypt" type="bool"/>
+            <preference id="gmail-buton-cryptsend" name="extensions.firegpg.gmail_butons_crypt_send" type="bool"/>
+        </preferences>
+
+        <label  id="gmail-need-a-restart-label" value="&gmail-need-a-restart;"/>
+
+
+         <!-- gmail enabled ? -->
+        <checkbox id="gmail-enabled-checkbox" preference="gmail-enabled-pref"
+              label="&gmail-enabled-checkbox.label;"
               accesskey="&gmail-enabled-checkbox.accesskey;"/>
 
-    <!-- Always sign or verify in a new window -->
-    <checkbox  id="result-always-in-new-window" preference="result-always-in-new-window-pref"
-              label="&result-always-in-new-window;"/>
+        <checkbox id="gmail-no-no-sign-checkbox" preference="gmail-no-no-sign"
+              label="&gmail-no-no-sign-checkbox;"/>
 
-  <!-- Ask for pass ? -->
-   <checkbox  id="ask-for-save-pass" preference="ask-for-save-pass-pref"
-              label="&ask-for-save-pass;"/>
+        <label  id="gmail-buttons-label" value="&gmail-buttons-label;"/>
 
 
-    <!-- don't use gpg agent -->
-   <!--  <checkbox id="no-gpg-agent-checkbox" preference="no-gpg-agent-pref" checked="true" label="&no-gpg-agent-checkbox;"/>  -->
-    
-    <!-- show web site -->
-   <checkbox  id="show-website-checkbox" preference="show-web-site-pref" checked="true" label="&show-website-checkbox;"/>
+        <grid flex="1">
+       <columns>
+         <column flex="1"/>
+         <column flex="1"/>
+       </columns>
 
-    <!-- list of private keys -->
-    <label  id="private-keys-label" value="&private-keys-label.text;"/>
-    <listbox id="private-keys-listbox" rows="4" onselect="privateKeySelected(this)"></listbox>
+       <rows>
+         <row>
+           <checkbox id="gmail-buton-sign-checkbox" preference="gmail-buton-sign"
+              label="&gmail-buton-sign-checkbox;"/>
+           <checkbox id="gmail-no-no-signsend-checkbox" preference="gmail-buton-signsend"
+              label="&gmail-buton-signsend-checkbox;"/>
+         </row>
+         <row>
+           <checkbox id="gmail-buton-crypt-checkbox" preference="gmail-buton-crypt"
+              label="&gmail-buton-crypt-checkbox;"/>
+           <checkbox id="gmail-no-no-cryptsend-checkbox" preference="gmail-buton-cryptsend"
+              label="&gmail-buton-cryptsend-checkbox;"/>
+         </row>
+       </rows>
+    </grid>
 
-    <!-- specify the gpg path -->
-    <checkbox id="change-gpg-path-checkbox" checked="true" preference="specify-gpg-path-pref"
-              label="&change-gpg-path-checkbox;" control="gpg-path-textbox"
-              oncommand="onChangeGPGPathCheckbox(this, true);"/>
-    <hbox>
-      <textbox id="gpg-path-textbox"  preference="gpg-path-pref"/>
-      <button id="change-gpg-path-button" label="&change-gpg-path-button;" 
-              control="gpg-path-textbox" oncommand="chooseGPGPath();"/>
-    </hbox>
+    </prefpane>
 
-  </prefpane>
+
 </prefwindow>
 
 <!-- vim:ai:et:sw=2:ts=2:sts=2:tw=0:fenc=utf-8

@@ -1,3 +1,7 @@
+pref("extensions.firegpg.gmail_butons_sign", true);
+pref("extensions.firegpg.gmail_butons_sign_send", true);
+pref("extensions.firegpg.gmail_butons_crypt", true);
+pref("extensions.firegpg.gmail_butons_crypt_send", true);
 pref("extensions.firegpg.gmail_enabled", true);
 pref("extensions.firegpg.default_private_key", "");
 pref("extensions.firegpg.gpg_path", "");
@@ -6,3 +10,5 @@ pref("extensions.firegpg.show_website", true);
 pref("extensions.firegpg.result_always_in_new_window", false);
 pref("extensions.firegpg.no_gpg_agent", false);
 pref("extensions.firegpg.default_memory", true);
+pref("browser.preferences.animateFadeIn", false);
+pref("browser.preferences.instantApply", false);

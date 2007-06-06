@@ -169,8 +169,11 @@ var cGmail = {
 						var i18n = document.getElementById("firegpg-strings");
 
 						if (resultTest == "noGpg") {
-							td.setAttribute("style","color: orange;");
-							td.innerHTML = i18n.getString("GMailNoS"); //"Aucun signature n'a été trouvé dans ce mail."; testtset@testtest.testtset";
+							if (cGmail.nonosign != true)
+							{
+								td.setAttribute("style","color: orange;");
+								td.innerHTML = i18n.getString("GMailNoS"); //"Aucun signature n'a été trouvé dans ce mail."; testtset@testtest.testtset";
+							}
 						}
 						else if (resultTest == "erreur") {
 							td.setAttribute("style","color: red;");
@@ -295,6 +298,24 @@ var cGmail = {
 		if (usegmail == true) {
 			document.getElementById("appcontent").addEventListener("DOMContentLoaded", cGmail.listenerLoad, false);
 			window.addEventListener("unload", function() {cGmail.listenerUnload()}, false);
+
+
+			try {	var nonosign = prefs.getBoolPref("gmail_no_sign_off");	}
+			catch (e) { var nonosign = false; }
+			try {	var b_sign = prefs.getBoolPref("gmail_butons_sign");	}
+			catch (e) { var b_sign = true; }
+			try {	var b_sign_s = prefs.getBoolPref("gmail_butons_sign_send");	}
+			catch (e) { var b_sign_s = true; }
+			try {	var b_crypt = prefs.getBoolPref("gmail_butons_crypt");	}
+			catch (e) { var b_crypt = true; }
+			try {	var b_crypt_s = prefs.getBoolPref("gmail_butons_crypt_send");	}
+			catch (e) { var b_crypt_s = true; }
+
+			cGmail.nonosign = nonosign;
+			cGmail.b_sign = b_sign;
+			cGmail.b_sign_s = b_sign_s;
+			cGmail.b_crypt = b_crypt;
+			cGmail.b_crypt_s = b_crypt_s;
 		}
 	},
 
@@ -321,10 +342,15 @@ var cGmail = {
 	addComposeBoutons: function(box,Ddocument,info1) {
 		// For i18N
 		var i18n = document.getElementById("firegpg-strings");
-		this.addBouton(i18n.getString("GMailS"),"sign",box,Ddocument,info1);
-		this.addBouton(i18n.getString("GMailSS"),"sndsign",box,Ddocument,info1);
-		this.addBouton(i18n.getString("GMailC"),"crypt",box,Ddocument,info1);
-		this.addBouton(i18n.getString("GMailCS"),"sndcrypt",box,Ddocument,info1);
+
+		if (cGmail.b_sign == true)
+			this.addBouton(i18n.getString("GMailS"),"sign",box,Ddocument,info1);
+		if (cGmail.b_sign_s == true)
+			this.addBouton(i18n.getString("GMailSS"),"sndsign",box,Ddocument,info1);
+		if (cGmail.b_crypt == true)
+			this.addBouton(i18n.getString("GMailC"),"crypt",box,Ddocument,info1);
+		if (cGmail.b_crypt_s == true)
+			this.addBouton(i18n.getString("GMailCS"),"sndcrypt",box,Ddocument,info1);
 
 		try {
 

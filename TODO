@@ -1,18 +1,16 @@
 Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
-    - firegpg.dtd :
-        - *.labelEditeur
-    - firegpg.properties
-        - editorDescription
-        - editorTitle
-        - whatIsNewTitle
-        - whatIsNewDescription
-    - showtext.dtd
-        - crypt-button
-        - dcrypt-button
-        - sign-button
-        - verify-button
-        - open-button
-        - save-button
+    - prefwindow.dtd
+        - pane1.title (CHANGE)
+        - pane2.title
+        - gmail-no-no-sign-checkbox
+        - gmail-enabled-checkbox.label (CHANCE)
+        - gmail-need-a-restart
+        - gmail-buttons-label
+        - gmail-buton-sign-checkbox
+        - gmail-buton-signsend-checkbox
+        - gmail-buton-crypt-checkbox
+        - gmail-buton-cryptsend-checkbox
+
 
 Tâches libres :
 	- ajouter la possibilité de chiffrer et signer en même temps

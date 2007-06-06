@@ -52,7 +52,7 @@ const WRITE_PERMISSION_R = 0777;
 var savedPassword = null; /* the private key password */
 
 /*
- * Show a dialog (list.xul) to choose a list of 
+ * Show a dialog (list.xul) to choose a list of
  * public keys (array).
  *
  * null is returned if the public key is not choosed.
@@ -472,9 +472,15 @@ function testIfSomethingsIsNew() {
 		version = prefs.getCharPref("gpg_version");
 	} catch (e) { }
 
-	if (version != FIREGPG_VERSION)
+	var em = Components.classes["@mozilla.org/extensions/manager;1"]
+                   .getService(Components.interfaces.nsIExtensionManager);
+
+	var addon = em.getItemForID("firegpg@firegpg.team");
+	var versionAct = addon.version;
+	
+	if (version != versionAct)
 	{
-		prefs.setCharPref("gpg_version",FIREGPG_VERSION)
+		prefs.setCharPref("gpg_version",versionAct)
 		var i18n = document.getElementById("firegpg-strings");
 		title = "FireGPG - What is new ?";
 		description = "What is new in FireGPG ?";

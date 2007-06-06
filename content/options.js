@@ -5,7 +5,7 @@
  * 1.1 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
  * http://www.mozilla.org/MPL/
- * 
+ *
  * Software distributed under the License is distributed on an "AS IS" basis,
  * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
  * for the specific language governing rights and limitations under the
@@ -31,11 +31,11 @@
  * and other provisions required by the GPL or the LGPL. If you do not delete
  * the provisions above, a recipient may use your version of this file under
  * the terms of any one of the MPL, the GPL or the LGPL.
- * 
+ *
  * ***** END LICENSE BLOCK ***** */
 
 /*
- * Called when change-gpg-path-checkbox is checked/unchecked to 
+ * Called when change-gpg-path-checkbox is checked/unchecked to
  * enable/disable some elements in the options interface.
  *
  * The arguments are optional.
@@ -45,10 +45,10 @@ function onChangeGPGPathCheckbox(checkbox, focus_textbox) {
 	if(checkbox == undefined)
 		checkbox = document.getElementById('change-gpg-path-checkbox');
 	var disabled = (checkbox.checked) ? false : true;
-	
+
 	/* button */
 	document.getElementById('change-gpg-path-button').disabled = disabled;
-	
+
 	/* textbox */
 	var textbox = document.getElementById('gpg-path-textbox');
 	textbox.disabled = disabled;
@@ -68,17 +68,18 @@ function privateKeySelected(listbox)
 	document.getElementById('default-private-key-pref').value = key_id;
 }
 
-/* 
+/*
  * onLoad is called when options dialog is loaded.
  */
-function onLoad(win) 
+function onLoad(win)
 {
+
 	var gpg_keys = GPG.listKeys(true); /* private keys are returned */
 	var listbox = document.getElementById('private-keys-listbox');
-	
+
 	/* read the default private key */
 	var default_private_key = document.getElementById('default-private-key-pref').value;
-	
+
 	var default_item = null; /* this variable will contain the index of
 	                          the default private key item */
 
@@ -100,9 +101,11 @@ function onLoad(win)
 	}
 
 	listbox.focus();
-	
+
 	/* call some important events */
 	onChangeGPGPathCheckbox();
+
+
 }
 
 /*

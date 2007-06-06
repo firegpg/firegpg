@@ -1,6 +1,7 @@
 <!ENTITY prefwindow.title "Options de FireGPG">
-<!ENTITY pane1.title "Options de FireGPG">
-<!ENTITY gmail-enabled-checkbox.label "Support GMail (nécessite un redémarage)">
+<!ENTITY pane1.title "Général">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY gmail-enabled-checkbox.label "Support GMail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Clé privée par défaut :">
 <!ENTITY show-website-checkbox "Afficher le site officiel de FireGPG dans le texte signé ou chiffré.">
@@ -9,3 +10,10 @@
 <!ENTITY result-always-in-new-window "Toujours afficher le résultat du chiffrement ou de la signature dans une nouvelle fenêtre.">
 <!ENTITY no-gpg-agent-checkbox "Forcer la désactivation de l'agent gpg (peut résoudre certains problèmes)">
 <!ENTITY ask-for-save-pass "Par defaut, demander la mémoriation du mot de passe.">
+<!ENTITY gmail-no-no-sign-checkbox "Ne pas afficher 'Aucune signature trouvée [...]'">
+<!ENTITY gmail-need-a-restart "Ces options nécessites le redémmarage de Firefox">
+<!ENTITY gmail-buttons-label "Boutons à afficher :">
+<!ENTITY gmail-buton-sign-checkbox "Signer">
+<!ENTITY gmail-buton-signsend-checkbox "Signer et Envoyer">
+<!ENTITY gmail-buton-crypt-checkbox "Chiffrer">
+<!ENTITY gmail-buton-cryptsend-checkbox "Chiffrer et Envoyer">

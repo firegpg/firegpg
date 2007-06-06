@@ -1,6 +1,13 @@
-2007-06-04  Maximilien Cuony
+2007-06-06  Maximilien Cuony
+        * Options for select gmail's butons.
+        * Option to trun of 'No sign found [...]'
+        * New option windows (but with problems)
+        * Autodetect version for the 'whatisnew'
+2007-06-05  Maximilien Cuony
         * 0.4 packed, and uploaded to the server !
         * Added new strings to locates
+
+2007-06-04  Maximilien Cuony
         * Solved encoding problem !!!!! :).
         * What is new windows.
         * Editor works perfectly !

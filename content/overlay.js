@@ -62,8 +62,12 @@ var firegpg = {
 		else if(action == "EDITEUR")
 			showEditor('');
 		else if(action == "OPTS")
-			 window.open("chrome://firegpg/content/options.xul",
-			                      "optionsFiregpg", "chrome, centerscreen").focus();
+		{
+			//pref("browser.preferences.animateFadeIn", false);
+			//pref("browser.preferences.instantApply", true); //, "optionsFiregpg", "chrome, centerscreen, toolbar"
+			window.openDialog("chrome://firegpg/content/options.xul").focus();
+			// window.open("chrome://firegpg/content/options.xul",
+		}			//                      "optionsFiregpg", "chrome, centerscreen").focus();
 		else if (action == "ERASE")
 			eraseSavedPassword();
 	},
