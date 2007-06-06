@@ -1,4 +1,5 @@
 2007-06-06  Maximilien Cuony
+        * Sending a anonymous ping to FireGPG for stat on updates and Install.
         * Options for select gmail's butons.
         * Option to trun of 'No sign found [...]'
         * New option windows (but with problems)

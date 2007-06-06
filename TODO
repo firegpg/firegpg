@@ -3,13 +3,15 @@ Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
         - pane1.title (CHANGE)
         - pane2.title
         - gmail-no-no-sign-checkbox
-        - gmail-enabled-checkbox.label (CHANCE)
+        - gmail-enabled-checkbox.label (CHANGE)
         - gmail-need-a-restart
         - gmail-buttons-label
         - gmail-buton-sign-checkbox
         - gmail-buton-signsend-checkbox
         - gmail-buton-crypt-checkbox
         - gmail-buton-cryptsend-checkbox
+    firegpg.properites
+        - whatIsNewDescription (CHANGE)
 
 
 Tâches libres :

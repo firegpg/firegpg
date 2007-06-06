@@ -461,7 +461,7 @@ function runCommand(command, arg) {
 }
 
 /*
-* Test if we had to show the 'What is new' box
+* Test if we had to show the 'What is new' box, and send a ping.
 */
 function testIfSomethingsIsNew() {
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
@@ -477,19 +477,27 @@ function testIfSomethingsIsNew() {
 
 	var addon = em.getItemForID("firegpg@firegpg.team");
 	var versionAct = addon.version;
-	
+
 	if (version != versionAct)
 	{
 		prefs.setCharPref("gpg_version",versionAct)
 		var i18n = document.getElementById("firegpg-strings");
 		title = "FireGPG - What is new ?";
-		description = "What is new in FireGPG ?";
+		description = "What is new in FireGPG ? (An anonymous ping has been send to FireGPG's team for stats.)";
 		try {
 
 			title = i18n.getString('whatIsNewTitle');
 			description = i18n.getString('whatIsNewDescription');
 		} catch (e) { }
 		showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);
+		//Send the ping
+
+		if (version == "")
+			var mode = "[New]";
+		else
+			var mode = "[From" + version + "]";
+		
+		var misc = getContent("http://firegpg.tuxfamily.org/phpmv2/phpmyvisites.php?url=&id=2&pagename=FILE:"+ versionAct + "/" + mode);
 	}
 }
 
