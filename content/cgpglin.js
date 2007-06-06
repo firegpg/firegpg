@@ -223,19 +223,14 @@ var GPGLin = {
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
 		           " --quiet" +  getGPGTrustArgument() + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
-		           " " + keyIdListArgument + "" +
+		           " " + keyIdListArgument +
 				   getGPGCommentArgument() + getGPGAgentArgument() +
 		           " --output " + tmpOutput +
 		           " --encrypt " + tmpInput);
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
-		alert('' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet" +  getGPGTrustArgument() + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
-		           " " + keyIdListArgument + "" +
-				   getGPGCommentArgument() + getGPGAgentArgument() +
-		           " --output " + tmpOutput +
-		           " --encrypt " + tmpInput);
+
 		// The crypted text
 		var crypttexte = getFromFile(tmpOutput);
 		var result2 = GPGReturn;

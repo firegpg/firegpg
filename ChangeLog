@@ -1,40 +1,45 @@
+2007-06-06  Achraf cherti
+	* declaration of some undeclared variables.
+	* encryption with several recipients.
+
 2007-06-06  Maximilien Cuony
-        * Sending a anonymous ping to FireGPG for stat on updates and Install.
-        * Options for select gmail's butons.
-        * Option to trun of 'No sign found [...]'
-        * New option windows (but with problems)
-        * Autodetect version for the 'whatisnew'
+	* Sending a anonymous ping to FireGPG for stat on updates and Install.
+	* Options for select gmail's butons.
+	* Option to trun of 'No sign found [...]'
+	* New option windows (but with problems)
+	* Autodetect version for the 'whatisnew'
+
 2007-06-05  Maximilien Cuony
-        * 0.4 packed, and uploaded to the server !
-        * Added new strings to locates
+	* 0.4 packed, and uploaded to the server !
+	* Added new strings to locates
 
 2007-06-04  Maximilien Cuony
-        * Solved encoding problem !!!!! :).
-        * What is new windows.
-        * Editor works perfectly !
+	* Solved encoding problem !!!!! :).
+	* What is new windows.
+	* Editor works perfectly !
 
 2007-06-03  Maximilien Cuony
-        * Begining of transform showtext into a text editor (already done: Open, Save, Crypt)
-        * Added menu entrie for Editor
+	* Begining of transform showtext into a text editor (already done: Open, Save, Crypt)
+	* Added menu entrie for Editor
 
 2007-05-31  Maximilien Cuony
-        * Gmail: Ask keys BEFORE passparse for sign.
-        * Site: Correct a mistake with 'turc'
-        * Site: Added the plugin's md5.
-        * Added Simplified Chinese and Traditional Chinese locate.
-        * Added Dutch locate.
+	* Gmail: Ask keys BEFORE passparse for sign.
+	* Site: Correct a mistake with 'turc'
+	* Site: Added the plugin's md5.
+	* Added Simplified Chinese and Traditional Chinese locate.
+	* Added Dutch locate.
 
 2007-04-06  Maximilien Cuony
-        * 0.3.3 Packed, and uploaded to the server !
-        * Try to solve the Mac's options' window problem.
-        * Option to set the default for memory the pass
-        * Spanish translation by Nukeador
+	* 0.3.3 Packed, and uploaded to the server !
+	* Try to solve the Mac's options' window problem.
+	* Option to set the default for memory the pass
+	* Spanish translation by Nukeador
 	* Türkish translation by Alparslan Ozturk
 	* Charset in Polish translation
 	* 0.3.2.1 Packed, and uploaded to the server !
 
 2007-04-06  Achraf Cherti
-        * toolbar button changed to firegpg.png.
+	* toolbar button changed to firegpg.png.
 	* 0.3.2.1 released.
 	* all translations are declared in chrome.manifest.
 
