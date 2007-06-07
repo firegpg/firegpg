@@ -38,17 +38,8 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!DOCTYPE prefwindow SYSTEM "chrome://firegpg/locale/prefwindow.dtd">
 <prefwindow id="optionsforefiregpg" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;" onload="onLoad(this); sizeToContent();">
-    <stringbundleset id="stringbundleset">
-        <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
-    </stringbundleset>
 
-    <script src="misc.js"/>
-    <script src="cgpglin.js"/>
-    <script src="cgpgwin.js"/>
-    <script src="cgpg.js"/>
-    <script src="options.js"/>
-
-    <prefpane id="pane1" label="&pane1.title;" flex="1" type="child" image="chrome://firegpg/skin/opt-misc.png">
+    <prefpane id="paneMisc" label="&pane1.title;" flex="1" image="chrome://firegpg/skin/opt-misc.png">
         <!-- preferences -->
         <preferences>
             <preference id="default-private-key-pref" name="extensions.firegpg.default_private_key" type="string"/>
@@ -84,12 +75,10 @@
         </hbox>
 
     </prefpane>
-
-    <prefpane id="pane2" label="&pane2.title;" flex="1" type="child" image="chrome://firegpg/skin/opt-gmail.png">
+    <prefpane id="paneGmail" label="&pane2.title;" flex="1" image="chrome://firegpg/skin/opt-gmail.png">
         <preferences>
             <preference id="gmail-enabled-pref" name="extensions.firegpg.gmail_enabled" type="bool"/>
             <preference id="gmail-no-no-sign" name="extensions.firegpg.gmail_no_sign_off" type="bool"/>
-
             <preference id="gmail-buton-sign" name="extensions.firegpg.gmail_butons_sign" type="bool"/>
             <preference id="gmail-buton-signsend" name="extensions.firegpg.gmail_butons_sign_send" type="bool"/>
             <preference id="gmail-buton-crypt" name="extensions.firegpg.gmail_butons_crypt" type="bool"/>
@@ -97,7 +86,6 @@
         </preferences>
 
         <label  id="gmail-need-a-restart-label" value="&gmail-need-a-restart;"/>
-
 
          <!-- gmail enabled ? -->
         <checkbox id="gmail-enabled-checkbox" preference="gmail-enabled-pref"
@@ -111,29 +99,37 @@
 
 
         <grid flex="1">
-       <columns>
-         <column flex="1"/>
-         <column flex="1"/>
-       </columns>
+            <columns>
+                <column flex="1"/>
+                <column flex="1"/>
+            </columns>
 
-       <rows>
-         <row>
-           <checkbox id="gmail-buton-sign-checkbox" preference="gmail-buton-sign"
-              label="&gmail-buton-sign-checkbox;"/>
-           <checkbox id="gmail-no-no-signsend-checkbox" preference="gmail-buton-signsend"
-              label="&gmail-buton-signsend-checkbox;"/>
-         </row>
-         <row>
-           <checkbox id="gmail-buton-crypt-checkbox" preference="gmail-buton-crypt"
-              label="&gmail-buton-crypt-checkbox;"/>
-           <checkbox id="gmail-no-no-cryptsend-checkbox" preference="gmail-buton-cryptsend"
-              label="&gmail-buton-cryptsend-checkbox;"/>
-         </row>
-       </rows>
-    </grid>
-
+            <rows>
+                <row>
+                    <checkbox id="gmail-buton-sign-checkbox" preference="gmail-buton-sign"
+                        label="&gmail-buton-sign-checkbox;"/>
+                    <checkbox id="gmail-no-no-signsend-checkbox" preference="gmail-buton-signsend"
+                        label="&gmail-buton-signsend-checkbox;"/>
+                </row>
+                <row>
+                    <checkbox id="gmail-buton-crypt-checkbox" preference="gmail-buton-crypt"
+                        label="&gmail-buton-crypt-checkbox;"/>
+                    <checkbox id="gmail-no-no-cryptsend-checkbox" preference="gmail-buton-cryptsend"
+                        label="&gmail-buton-cryptsend-checkbox;"/>
+                </row>
+            </rows>
+        </grid>
     </prefpane>
+    <stringbundleset id="stringbundleset">
+        <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
+    </stringbundleset>
 
+
+    <script src="misc.js"/>
+    <script src="cgpglin.js"/>
+    <script src="cgpgwin.js"/>
+    <script src="cgpg.js"/>
+    <script src="options.js"/>
 
 </prefwindow>
 

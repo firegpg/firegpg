@@ -64,8 +64,8 @@ var firegpg = {
 		else if(action == "OPTS")
 		{
 			//pref("browser.preferences.animateFadeIn", false);
-			//pref("browser.preferences.instantApply", true); //, "optionsFiregpg", "chrome, centerscreen, toolbar"
-			window.openDialog("chrome://firegpg/content/options.xul").focus();
+			//pref("browser.preferences.instantApply", true); //
+			window.openDialog("chrome://firegpg/content/options.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
 			// window.open("chrome://firegpg/content/options.xul",
 		}			//                      "optionsFiregpg", "chrome, centerscreen").focus();
 		else if (action == "ERASE")

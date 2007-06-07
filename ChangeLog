@@ -1,4 +1,5 @@
 2007-06-07  Maximilien Cuony
+        * Fixed proble with Options' tabs.
         * BYEBYE WINDOWS CONSOLE ! Use a program from Alexander Avdonin.
         * Try to detect gpg on windows.
         * Added pt_BR translation
