@@ -412,6 +412,12 @@ var GPGLin = {
 
 	//Return the GPG's command to use
 	getGPGCommand: function () {
+		return this.GpgCommand;
+	},
+	//Do some tests for find the right command...
+	tryToFoundTheRightCommand: function () {
+		//Year, on linux no test, because it's a good Os.
+		//We only look if the user wants to force the path.
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 		                       getService(Components.interfaces.nsIPrefService);
 		prefs = prefs.getBranch("extensions.firegpg.");
@@ -424,10 +430,10 @@ var GPGLin = {
 		}
 
 		if (force == true)
-			return prefs.getCharPref("gpg_path");
+			this.GpgCommand = prefs.getCharPref("gpg_path");
 		else {
 			prefs.setCharPref("gpg_path","gpg");
-			return "gpg";
+			this.GpgCommand = "gpg";
 		}
 	}
 };

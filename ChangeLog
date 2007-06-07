@@ -1,4 +1,5 @@
 2007-06-07  Maximilien Cuony
+        * BYEBYE WINDOWS CONSOLE ! Use a program from Alexander Avdonin.
         * Added pt_BR translation
         * Some english corrections from Scott Morrison <scott@math.berkeley.edu>
         * Update locate for ES.

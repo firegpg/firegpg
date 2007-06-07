@@ -513,6 +513,9 @@ var GPG = {
 GPG.GPGAccess = (FireGPG_OS == WINDOWS) ? GPGWin : GPGLin;
 GPG.GPGAccess.parent = GPG;
 
+//Find the right command for Gpg
+GPG.GPGAccess.tryToFoundTheRightCommand();
+
 useGPGAgent = GPG.GPGAccess.runATest('--no-use-agent');
 useGPGTrust = GPG.GPGAccess.runATest('--trust-model always');
 

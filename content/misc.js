@@ -45,6 +45,7 @@ const NS_NETWORKINPUTS_CONTRACTID = "@mozilla.org/scriptableinputstream;1";
 const TMP_DIRECTORY = "TmpD";
 const TMP_FILES = "fgpg_tmpFile";
 const TMP_RFILES = "fgpg_tmpFile.bat"; //.bat for windows, but don't affect linux
+const TMP_EFILES = "fgpg_tmpFile.exe"; //.exe for windows
 const WRITE_MODE = 0x02 | 0x08 | 0x20;
 const WRITE_PERMISSION = 0600;
 const WRITE_PERMISSION_R = 0777;
@@ -289,6 +290,26 @@ function getTmpFileRunning() { /* TODO *Running -> *CanBeLaunched ? */
 	return getTmpFile(WRITE_PERMISSION_R);
 }
 
+
+/*
+ * Get an unique temporary file nam for exes
+ * The path + filename is returned.
+ */
+function getTmpFileExeRunning() {
+
+	var fileobj = getTmpDir();
+
+	permission = WRITE_PERMISSION_R;
+
+	var fileName = TMP_EFILES;
+
+	fileobj.append(fileName);
+	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, permission);
+	fileobj.permissions = permission;
+	return fileobj.path;
+}
+
+
 /*
  * Get an unique, temporary file name, for password (so it's random).
  * The path + filename is returned.
@@ -425,6 +446,50 @@ function getFromFile(filename) {
 	return '';
 }
 
+/* Set the content of a binary file */
+function putIntoBinFile(filename, data) {
+	// pngBinary already exists
+	var aFile = Components.classes["@mozilla.org/file/local;1"]
+			      .createInstance(Components.interfaces.nsILocalFile);
+
+	aFile.initWithPath(filename);
+
+	var stream = Components.classes["@mozilla.org/network/safe-file-output-stream;1"]
+			       .createInstance(Components.interfaces.nsIFileOutputStream);
+	stream.init(aFile, WRITE_MODE, WRITE_PERMISSION, 0); // write, create, truncate
+
+	stream.write(data, data.length);
+	if (stream instanceof Components.interfaces.nsISafeOutputStream) {
+	    stream.finish();
+	} else {
+	    stream.close();
+	}
+}
+
+/* Get the content of a binary file */
+function getBinContent(aURL) {
+	var ioService = Components.classes["@mozilla.org/network/io-service;1"].
+	                           getService(Components.interfaces.nsIIOService);
+
+
+	var istream = Components.classes["@mozilla.org/network/file-input-stream;1"]
+			.createInstance(Components.interfaces.nsIFileInputStream);
+
+	var channel = ioService.newChannel(aURL, null, null);
+
+	var input = channel.open();
+
+	//istream.init(input, -1, -1, false);
+
+	var bstream = Components.classes["@mozilla.org/binaryinputstream;1"]
+			.createInstance(Components.interfaces.nsIBinaryInputStream);
+	bstream.setInputStream(input);
+
+	var bytes = bstream.readBytes(bstream.available());
+
+	return bytes;
+}
+
 /*
  * To get a content from any where (like chrome://)
  */
@@ -458,6 +523,38 @@ function runCommand(command, arg) {
 	process.init(file);
 	var args = arg.split(' ');
 	process.run(true, args, args.length);
+}
+
+/*
+* Run a command on windows (with a hidden dos box)
+*/
+function runWinCommand(command, arg) {
+
+	var commandWindows = getTmpFileExeRunning();
+
+	var runner = getBinContent("chrome://firegpg/content/hstart.exe");
+	putIntoBinFile(commandWindows,runner);
+
+	var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
+	                      createInstance(Components.interfaces.nsILocalFile);
+	file.initWithPath(commandWindows);
+
+	var process = Components.classes[NS_PROCESSUTIL_CONTRACTID].
+	                         createInstance(Components.interfaces.nsIProcess);
+	process.init(file);
+
+
+	arg = command + ' ' +  arg;
+
+	var reg = new RegExp("\"", "gi");
+	var args = arg.replace(reg, "\\\"");
+
+	args = ["/WAIT","/NOWINDOW",'cmd /c "' + args + '"'];
+
+	process.run(true, args, args.length);
+
+	//removeFile(commandWindows);
+
 }
 
 /*
@@ -496,7 +593,7 @@ function testIfSomethingsIsNew() {
 			var mode = "[New]";
 		else
 			var mode = "[From" + version + "]";
-		
+
 		var misc = getContent("http://firegpg.tuxfamily.org/phpmv2/phpmyvisites.php?url=&id=2&pagename=FILE:"+ versionAct + "/" + mode);
 	}
 }
