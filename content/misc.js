@@ -138,23 +138,18 @@ function showEditor() {
  * null is returned if cancel button is clicked.
  */
 function getPassword(question, save_password) {
-
-
-	if (save_password == undefined)
-	{
-
+	if(save_password == undefined) {
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 	                           getService(Components.interfaces.nsIPrefService);
+
 		prefs = prefs.getBranch("extensions.firegpg.");
 		try {
 			save_password = prefs.getBoolPref("default_memory");
-
 		} catch (e) {
 			save_password = true;
 		}
 	}
-
-
+	
 	var params = {password: '',
 	              save_password: save_password,
 	              result: false, question: question};
@@ -167,6 +162,16 @@ function getPassword(question, save_password) {
 		return params;
 
 	return null;
+}
+
+/*
+ * Sauvegarder le mot de passe dans le Password Manager
+ * de Firefox.
+ */
+function savePassword(password) {
+}
+
+function getSavedPassword(password) {
 }
 
 /*
@@ -213,14 +218,12 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */) {
 /*
  * This function erase the saved password (if for exemple a sign failled)
  */
-function eraseSavedPassword()
-{
+function eraseSavedPassword() {
 	savedPassword = null;
 
 	try {
 		document.getElementById('firegpg-menu-memo-pop').style.display = 'none';
 		document.getElementById('firegpg-menu-memo-menu').style.display = 'none';
-
 		document.getElementById('firegpg-menu-memo-tool').style.display = 'none';
 	}
 	catch (e) {}
