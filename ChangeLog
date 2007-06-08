@@ -1,3 +1,9 @@
+2007-06-08  Maximilien Cuony
+        * Add 'encrypt to myself' option
+        * Fix a bug with decrypting message with several recipients.
+        * Fix a bug with private select key.
+        * Improve performances : init Gpg only when use it !
+
 2007-06-07  Maximilien Cuony
         * Fixed proble with Options' tabs.
         * BYEBYE WINDOWS CONSOLE ! Use a program from Alexander Avdonin.

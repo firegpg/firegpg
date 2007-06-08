@@ -49,6 +49,8 @@
             <preference id="show-web-site-pref" name="extensions.firegpg.show_website" type="bool"/>
             <preference id="result-always-in-new-window-pref" name="extensions.firegpg.result_always_in_new_window" type="bool"/>
             <preference id="ask-for-save-pass-pref" name="extensions.firegpg.default_memory" type="bool"/>
+            <preference id="allvays-to-myself-pref" name="extensions.firegpg.allvays_to_myself" type="bool"/>
+
         </preferences>
 
         <!-- Always sign or verify in a new window -->
@@ -59,6 +61,10 @@
 
         <!-- show web site -->
         <checkbox  id="show-website-checkbox" preference="show-web-site-pref" checked="true" label="&show-website-checkbox;"/>
+
+        <checkbox  id="allvays-to-myself-checkbox" preference="allvays-to-myself-pref" label="&allvays-to-myself-checkbox;"/>
+
+
 
         <!-- list of private keys -->
         <label  id="private-keys-label" value="&private-keys-label.text;"/>

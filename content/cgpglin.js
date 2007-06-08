@@ -217,7 +217,6 @@ var GPGLin = {
 		var keyIdListArgument = '';
 		for(var i = 0; i < keyIdList.length; i++)
 			keyIdListArgument += ((i > 0) ? ' ' : '') + '-r ' + keyIdList[i];
-
 		putIntoFile(tmpRun,running);
 
 		runCommand(tmpRun,

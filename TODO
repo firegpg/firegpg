@@ -10,6 +10,7 @@ Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
         - gmail-buton-signsend-checkbox
         - gmail-buton-crypt-checkbox
         - gmail-buton-cryptsend-checkbox
+        - allvays-to-myself-checkbox
     firegpg.properites
         - whatIsNewDescription (CHANGE)
 

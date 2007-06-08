@@ -51,6 +51,8 @@ var GPG = {
 	* Function to sign a text.
 	*/
 	sign: function() {
+		this.initGPGACCESS();
+
 		// GPG verification
 		if(!GPG.selfTest())
 			return;
@@ -99,6 +101,8 @@ var GPG = {
 	},
 
 	baseSign: function(text,password,keyID) {
+		this.initGPGACCESS();
+
 		// We get the result
 		var result = this.GPGAccess.sign(text, password, keyID);
 		var tresult = result.sdOut;
@@ -120,6 +124,8 @@ var GPG = {
 
 	// Verify a signature
 	verify: function() {
+		this.initGPGACCESS();
+
 		// GPG verification
 		if(!GPG.selfTest())
 			return;
@@ -157,6 +163,8 @@ var GPG = {
 	},
 
 	baseVerify: function(text) {
+		this.initGPGACCESS();
+
 		// Verify GPG'data presence
 		var reg = new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP SIGNED MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
 		text = text.replace(reg, "FIREGPGTRALALABEGINHIHAN");
@@ -205,6 +213,8 @@ var GPG = {
 	 *     object["key_id"] = "Name (name) <email>"
 	 */
 	listKeys: function(onlyPrivate) {
+		this.initGPGACCESS();
+
 		var retour = new Array();
 
 		// GPG verification
@@ -243,6 +253,8 @@ var GPG = {
 	* Function to crypt a text.
 	*/
 	crypt: function() {
+		this.initGPGACCESS();
+
 		// GPG verification
 		if(!GPG.selfTest())
 			return;
@@ -291,6 +303,8 @@ var GPG = {
 	 *   ['id1', 'id2', etc.]
 	 */
 	baseCrypt: function(text, keyIdList) {
+		this.initGPGACCESS();
+
 		var result = this.GPGAccess.crypt(text, keyIdList);
 		var tresult = result.sdOut;
 
@@ -308,6 +322,8 @@ var GPG = {
 	* Function to decrypt a text.
 	*/
 	decrypt: function() {
+		this.initGPGACCESS();
+
 		// GPG verification
 		if(!GPG.selfTest())
 			return;
@@ -380,6 +396,8 @@ var GPG = {
 	},
 
 	baseDecrypt: function(text,password) {
+		this.initGPGACCESS();
+
 		var result = this.GPGAccess.decrypt(text,password);
 		var tresult = result.sdOut;
 
@@ -389,10 +407,10 @@ var GPG = {
 		{
 			result.sdOut = "erreur";
 			result.sdOut2 = tresult;
-		}
 
-		if(tresult.indexOf("BAD_PASSPHRASE") != "-1")
-			result.sdOut = "erreurPass";
+			if(tresult.indexOf("BAD_PASSPHRASE") != "-1")
+				result.sdOut = "erreurPass";
+		}
 
 		return result;
 	},
@@ -402,6 +420,7 @@ var GPG = {
 	 * Return false on error.
 	 */
 	selfTest: function() {
+		this.initGPGACCESS();
 		// For i18n
 		var i18n = document.getElementById("firegpg-strings");
 
@@ -417,6 +436,7 @@ var GPG = {
 	* Function to import a public key.
 	*/
 	kimport: function() {
+		this.initGPGACCESS();
 		// GPG verification
 		if(!GPG.selfTest())
 			return;
@@ -446,6 +466,7 @@ var GPG = {
 	},
 
 	baseKimport: function(text) {
+		this.initGPGACCESS();
 		//Verify GPG'data presence
 		var firstPosition = text.indexOf("-----BEGIN PGP PUBLIC KEY BLOCK-----");
 		var lastPosition = text.indexOf("-----END PGP PUBLIC KEY BLOCK-----");
@@ -470,6 +491,7 @@ var GPG = {
 	* Function to import a public key.
 	*/
 	kexport: function() {
+		this.initGPGACCESS();
 		// GPG verification
 		if(!GPG.selfTest())
 			return;
@@ -497,6 +519,7 @@ var GPG = {
 	},
 
 	baseExport: function(key) {
+		this.initGPGACCESS();
 
 		// We get the result
 		var result = this.GPGAccess.kexport(key);
@@ -506,18 +529,26 @@ var GPG = {
 			return "error";
 		else
 			return result;
+	} ,
+	//Init subclass.
+	initGPGACCESS: function() {
+		if (this.allreadyinit == true)
+			return;
+
+				//Find the right command for Gpg
+		this.GPGAccess.tryToFoundTheRightCommand();
+
+		useGPGAgent = this.GPGAccess.runATest('--no-use-agent');
+		useGPGTrust = this.GPGAccess.runATest('--trust-model always');
+
+		this.allreadyinit = true;
 	}
+
 };
 
 // We load the good class for the OS
 GPG.GPGAccess = (FireGPG_OS == WINDOWS) ? GPGWin : GPGLin;
 GPG.GPGAccess.parent = GPG;
-
-//Find the right command for Gpg
-GPG.GPGAccess.tryToFoundTheRightCommand();
-
-useGPGAgent = GPG.GPGAccess.runATest('--no-use-agent');
-useGPGTrust = GPG.GPGAccess.runATest('--trust-model always');
 
 //Test if we have to show the 'what is new ?'
 testIfSomethingsIsNew();

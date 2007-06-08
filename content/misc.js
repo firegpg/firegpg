@@ -73,7 +73,31 @@ function choosePublicKey() /* TODO : remove */
 	dlg.focus();
 
 	if(params.selected_items.length == 0)
+	{
 		params.selected_items = null;
+	} //If we have to, add the private key too.
+	else {
+
+		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+		   getService(Components.interfaces.nsIPrefService);
+
+		prefs = prefs.getBranch("extensions.firegpg.");
+		try {
+			to_my_self = prefs.getBoolPref("allvays_to_myself",false);
+		} catch (e) {
+			to_my_self = false;
+		}
+
+		if (to_my_self == true)
+		{
+			var selfKeyId = getSelfKey();
+
+			if (selfKeyId != null)
+			{
+				params.selected_items.push(selfKeyId);
+			}
+		}
+	}
 
 	return params.selected_items;
 }
@@ -95,7 +119,11 @@ function choosePrivateKey()
 	                            '', 'chrome, dialog, modal, resizable=yes',
 	                            params);
 	dlg.focus();
-	return params.selected_item;
+	if(params.selected_items.length == 0)
+	{
+		params.selected_items = null;
+	}
+	return params.selected_items;
 }
 /*
  * Show 'text' in a dialog.
@@ -149,7 +177,7 @@ function getPassword(question, save_password) {
 			save_password = true;
 		}
 	}
-	
+
 	var params = {password: '',
 	              save_password: save_password,
 	              result: false, question: question};
@@ -244,11 +272,11 @@ function getSelfKey() {
 
 	/* we must ask for private key ? */
 	if(keyID == '')
-		keyID = choosePrivateKey()
+		keyID = choosePrivateKey();
 
 	/* request password if key id is changed */
 	if(keyID != oldKeyID)
-		eraseSavedPassword()
+		eraseSavedPassword();
 	oldKeyID = keyID;
 
 	return keyID;
