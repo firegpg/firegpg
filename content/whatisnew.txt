@@ -19,7 +19,7 @@ Locates :
 - Scott Morrison send us some corrections in English. (And Re-Thanks for his donation !).
 
 Misc :
-- We send now an anonymous ping to ourself, for count the number of FireGPG's user.
+- We send now an anonymous ping to ourself, for count the number of FireGPG's users.
 - Don't forget to report bugs in our forum (http://firegpg.tuxfamily.org/forum) or by email at firegpg@gmail.com !
 
 Thanks you for using FireGPG !
