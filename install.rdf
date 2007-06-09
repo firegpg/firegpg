@@ -4,7 +4,7 @@
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="firegpg@firegpg.team"
-                   em:version="0.4"
+                   em:version="0.4.1"
                    em:type="2"
                    em:name="FireGPG"
                    em:description="An extension that acts as an assistant for using GPG."

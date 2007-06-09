@@ -1,19 +1,25 @@
-=== Version 0.4 ===
+=== Version 0.4.1 ===
 
 Bugs :
-- The problem with encoding is solved ! (You can sign Japanese for sample now !)
-- Gmail: Ask the passphrase after as the key.
+- Good new for Windows users : Now the console is hidden when we call Gpg !
+  (Use a program from Alexander Avdonin, thanks for his authorization)
 
 Functionalities :
-- The 'What is new' windows
-- Added an editor (see menu) for works on text. It's the result windows too, so you can perform operation into !
+- You can now encrypt for severals recipients ! (And decrypt this king of messages too).
+- You can choose if you want to always encrypt to yourself.
+- Now GPG is only init. when you use it, it's should improve performances when you open new windows.
+- On windows, we try to find gpg.exe in some emplacements.
+- Option to select the buttons to show in gmail.
+- Option to turn of 'No sign found [...]'
+- A new option's windows.
 
 Locates :
-- We're waiting for translator to translates the new strings in this version, so you will see some english if you use an another translation.
-- Added Dutch, Simplified Chinese and Traditional Chinese.
+- de, pl, es, nl, pt have been updated.
+- pt_BR have been added.
+- Scott Morrison send us some corrections in English. (And Re-Thanks for his donation !).
 
 Misc :
-- We have just opened a Wiki to make a doc on FireGPG, if you wants to help, go here : http://firegpg.tuxfamily.org/doc .
+- We send now an anonymous ping to ourself, for count the number of FireGPG's user.
 - Don't forget to report bugs in our forum (http://firegpg.tuxfamily.org/forum) or by email at firegpg@gmail.com !
 
 Thanks you for using FireGPG !
