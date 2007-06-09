@@ -14,11 +14,8 @@ Tâches libres :
 	- Support Yahoo, Hotmail, Squirelmail...
 	- Chiffrement n'est pas reconnu par Enigmail seulement si on chiffre tout le message (test Enigmail, Sylpheed...)
 	- Déchiffrer avec Enigmail ne marche pas quand c'est chiffré avec FireGPG
-
-Tâches de Maximilien :
-	- Absolument supporter les signatures en pièces jointes !!!
-        - Implémenter la sauvegarde des caractères dans le bon encodage
-
-Tâches d'Achraf :
 	- empêcher l'utilisateur de fermer la fenêtre des options tant que le chemin de gpg choisi n'existe pas (bien sur, le laisser fermer la fenêtre si la case "spécifier manuellement le chemin de gpg" est décochée !).
 	- Créer un message de bienvenue, et signaler si FireGPG trouve pas GPG, ou n'a pas de clé par défault !
+	- Absolument supporter les signatures en pièces jointes !!!
+
+Suite dans http://firegpg.tuxfamily.org/mantis/ !
