@@ -1,6 +1,6 @@
-<!ENTITY crypt-button "Crypt">
-<!ENTITY dcrypt-button "Decrypt">
-<!ENTITY sign-button "Sign">
-<!ENTITY verify-button "Verify">
-<!ENTITY open-button "Open">
-<!ENTITY save-button "Save">
+<!ENTITY crypt-button "Cifrar">
+<!ENTITY dcrypt-button "Decifrar">
+<!ENTITY sign-button "Assinar">
+<!ENTITY verify-button "Verificar">
+<!ENTITY open-button "Abrir">
+<!ENTITY save-button "Guardar">

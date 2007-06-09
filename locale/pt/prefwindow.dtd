@@ -1,6 +1,7 @@
 <!ENTITY prefwindow.title "Preferências do FireGPG">
-<!ENTITY pane1.title "Preferências do FireGPG">
-<!ENTITY gmail-enabled-checkbox.label "Suporte ao GMail (é necessário reiniciar o navegador)">
+<!ENTITY pane1.title "Geral">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY gmail-enabled-checkbox.label "Suporte ao GMail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Chave privada pré-definida:">
 <!ENTITY show-website-checkbox "Mostar o sítio web do FireGPG no texto cifrado ou assinado">
@@ -9,3 +10,11 @@
 <!ENTITY result-always-in-new-window "Mostrar sempre o resultado de uma assinatura ou cifra numa nova janela.">
 <!ENTITY no-gpg-agent-checkbox "Forçar o desligar do gpg agent (pode corrigir alguns erros)">
 <!ENTITY ask-for-save-pass "By default, ask for save password.">
+<!ENTITY gmail-no-no-sign-checkbox "Não mostrar 'Assinatura não encontrada [...]">
+<!ENTITY gmail-need-a-restart "Estas opções necessitam que reinicie o navegador.">
+<!ENTITY gmail-buttons-label "Botões a mostrar:">
+<!ENTITY gmail-buton-sign-checkbox "Assinar">
+<!ENTITY gmail-buton-signsend-checkbox "Assinar e Enviar">
+<!ENTITY gmail-buton-crypt-checkbox "Cifrar">
+<!ENTITY gmail-buton-cryptsend-checkbox "Cifrar e Enviar">
+<!ENTITY allvays-to-myself-checkbox "Cifrar sempre para mim mesmo.">

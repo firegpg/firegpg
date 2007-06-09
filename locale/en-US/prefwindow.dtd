@@ -11,10 +11,10 @@
 <!ENTITY no-gpg-agent-checkbox "Force to turn off gpg's agent (can fix some errors)">
 <!ENTITY ask-for-save-pass "By default, ask for save password.">
 <!ENTITY gmail-no-no-sign-checkbox "Don't show 'No signature found [...]'">
-<!ENTITY gmail-need-a-restart "This options need a broswer restart.">
-<!ENTITY gmail-buttons-label "Butons to show :">
+<!ENTITY gmail-need-a-restart "These options need a broswer restart.">
+<!ENTITY gmail-buttons-label "Buttons to show :">
 <!ENTITY gmail-buton-sign-checkbox "Sign">
 <!ENTITY gmail-buton-signsend-checkbox "Sign and Send">
 <!ENTITY gmail-buton-crypt-checkbox "Crypt">
 <!ENTITY gmail-buton-cryptsend-checkbox "Crypt and Send">
-<!ENTITY allvays-to-myself-checkbox "Allvays encrypt to myself.">
+<!ENTITY allvays-to-myself-checkbox "Allways encrypt to myself.">

@@ -1,20 +1,6 @@
 Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
-    - prefwindow.dtd
-        - pane1.title (CHANGE)
-        - pane2.title
-        - gmail-no-no-sign-checkbox
-        - gmail-enabled-checkbox.label (CHANGE)
-        - gmail-need-a-restart
-        - gmail-buttons-label
-        - gmail-buton-sign-checkbox
-        - gmail-buton-signsend-checkbox
-        - gmail-buton-crypt-checkbox
-        - gmail-buton-cryptsend-checkbox
-        - allvays-to-myself-checkbox
-    firegpg.properites
-        - whatIsNewDescription (CHANGE)
-
-
+        - predwindow.dtd
+            - ask-for-save-pass ?
 Tâches libres :
 	- ajouter la possibilité de chiffrer et signer en même temps
 	- Cacher la console lors d'executions GPG sous windows

@@ -1,11 +1,20 @@
 <!ENTITY change-gpg-path-button "Configuración de la ruta de GPG">
 <!ENTITY change-gpg-path-checkbox "Especificar manualmente la ruta de GPG:">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
-<!ENTITY gmail-enabled-checkbox.label "Servicio de Gmail (se requiere reiniciar el navegador)">
 <!ENTITY no-gpg-agent-checkbox "Apagar a la fuerza el agente gpg (puede solucionar errores)">
-<!ENTITY pane1.title "Preferencias de FireGPG">
+<!ENTITY pane1.title "General">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY gmail-enabled-checkbox.label "Integración con Gmail">
 <!ENTITY prefwindow.title "Preferencias de FireGPG">
 <!ENTITY private-keys-label.text "Clave personal por defecto">
 <!ENTITY result-always-in-new-window "Mostrar siempre el resultado de una codificación o de una firma en una nueva ventana.">
 <!ENTITY show-website-checkbox "Mostrar la página web de FireGPG en el texto firmado o cifrado.">
 <!ENTITY ask-for-save-pass "Por defecto, preguntar si se guarda la contraseña.">
+<!ENTITY gmail-no-no-sign-checkbox "No mostrar 'No se encontró ninguna firma [...]'">
+<!ENTITY gmail-need-a-restart "Estas opciones necesitan que se reinicie el navegador.">
+<!ENTITY gmail-buttons-label "Botones a mostrar:">
+<!ENTITY gmail-buton-sign-checkbox "Firmar">
+<!ENTITY gmail-buton-signsend-checkbox "Firmar y enviar">
+<!ENTITY gmail-buton-crypt-checkbox "Cifrar">
+<!ENTITY gmail-buton-cryptsend-checkbox "Cifrar y enviar">
+<!ENTITY allvays-to-myself-checkbox "Cifrar siempre que me envíe a mi mismo">

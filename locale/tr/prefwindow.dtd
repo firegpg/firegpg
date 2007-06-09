@@ -1,6 +1,7 @@
 <!ENTITY prefwindow.title "FireGPG tercihler">
-<!ENTITY pane1.title "FireGPG tercihler">
-<!ENTITY gmail-enabled-checkbox.label "GMail destegi (tarayızı tekrar açılması gerekir)">
+<!ENTITY pane1.title "General">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY gmail-enabled-checkbox.label "GMail support">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Varsayılan özel anahtar:">
 <!ENTITY show-website-checkbox "FireGPG websitesini imza ve şifre metni içinde göster">
@@ -9,3 +10,11 @@
 <!ENTITY result-always-in-new-window "Her bir şifreleme veya imzalma sonuçunu herzaman yeni bir pencerede göster.">
 <!ENTITY no-gpg-agent-checkbox "GPG gereçini kapanmaya zorla (bazı hatalar düzelebilir)">
 <!ENTITY ask-for-save-pass "By default, ask for save password.">
+<!ENTITY gmail-no-no-sign-checkbox "Don't show 'No signature found [...]'">
+<!ENTITY gmail-need-a-restart "This options need a broswer restart.">
+<!ENTITY gmail-buttons-label "Butons to show :">
+<!ENTITY gmail-buton-sign-checkbox "Sign">
+<!ENTITY gmail-buton-signsend-checkbox "Sign and Send">
+<!ENTITY gmail-buton-crypt-checkbox "Crypt">
+<!ENTITY gmail-buton-cryptsend-checkbox "Crypt and Send">
+<!ENTITY allvays-to-myself-checkbox "Allvays encrypt to myself.">

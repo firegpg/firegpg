@@ -1,6 +1,7 @@
 <!ENTITY prefwindow.title "FireGPG instellingen">
-<!ENTITY pane1.title "FireGPG instellingen">
-<!ENTITY gmail-enabled-checkbox.label "GMail ondersteuning (firefox moet herstarten)">
+<!ENTITY pane1.title "Algemeen">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY gmail-enabled-checkbox.label "GMail ondersteuning">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Standaard private sleutel:">
 <!ENTITY show-website-checkbox "Toon FireGPG website in ondertekende of versleutelde tekst">
@@ -9,3 +10,11 @@
 <!ENTITY result-always-in-new-window "Altijd resultaten van versleuteling of ondertekening in een apart venster weergeven.">
 <!ENTITY no-gpg-agent-checkbox "Altijd GPG's agent afzetten (dit kan sommige fouten verhelpen)">
 <!ENTITY ask-for-save-pass "Standaard vragen om wachtwoord op te slaan">
+<!ENTITY gmail-no-no-sign-checkbox "Verberg 'Geen handtekening gevonden [...]">
+<!ENTITY gmail-need-a-restart "Deze instelling vereist dat de browser opnieuw wordt opgestart.">
+<!ENTITY gmail-buttons-label "Volgende knoppen laten zien :">
+<!ENTITY gmail-buton-sign-checkbox "Onderteken">
+<!ENTITY gmail-buton-signsend-checkbox "Onderteken en Verstuur">
+<!ENTITY gmail-buton-crypt-checkbox "Versleutel">
+<!ENTITY gmail-buton-cryptsend-checkbox "Versleutel en Verstuur">
+<!ENTITY allvays-to-myself-checkbox "Altijd versleutelen naar mezelf.">

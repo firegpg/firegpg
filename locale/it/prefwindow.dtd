@@ -1,6 +1,7 @@
 <!ENTITY prefwindow.title "FireGPG - Preferenza">
-<!ENTITY pane1.title "FireGPG - Preferenza">
-<!ENTITY gmail-enabled-checkbox.label "Integrazione in GMail  (necessita riavvio browser)">
+<!ENTITY pane1.title "Generale">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY gmail-enabled-checkbox.label "GMail support">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Chiave privata di default">
 <!ENTITY show-website-checkbox "Indica il sito FireGPG nel testo criptato o nella firma">
@@ -9,3 +10,11 @@
 <!ENTITY result-always-in-new-window "Visualizza sempre il testo criptato / firmato in una nuova finestra.">
 <!ENTITY no-gpg-agent-checkbox "Forza disattivazione di gpg's agent (può risolvere alcuni errori)">
 <!ENTITY ask-for-save-pass "By default, ask for save password.">
+<!ENTITY gmail-no-no-sign-checkbox "Nascondi 'Nessuna firma trovata [...]' ">
+<!ENTITY gmail-need-a-restart "Questa opzione necessita di un riavvio del browser">
+<!ENTITY gmail-buttons-label "Mostra pulsanti">
+<!ENTITY gmail-buton-sign-checkbox "Firma">
+<!ENTITY gmail-buton-signsend-checkbox "Firma e Invia">
+<!ENTITY gmail-buton-crypt-checkbox "Cripta">
+<!ENTITY gmail-buton-cryptsend-checkbox "Cripta e invia">
+<!ENTITY allvays-to-myself-checkbox "Allvays encrypt to myself.">

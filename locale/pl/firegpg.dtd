@@ -28,13 +28,7 @@
 <!ENTITY firegpgMenu.labelExport "Eksportuj">
 <!ENTITY firegpgContext.labelExport "Eksportuj">
 <!ENTITY firegpgToolbar.labelExport "Eksportuj">
-<!ENTITY firegpgPopInfo.labelBonjour "!!!PL!!!Bienvenue !<br />FireGPG Ă  Ă©tĂ© installĂ© correctement !">
-<!ENTITY firegpgPopInfo.labelAccessOk "!!!PL!!!FireGPG parviens Ă  accĂ©der Ă  GnuPG !">
-<!ENTITY firegpgPopInfo.labelAccessErr "!!PL!!FireGPG ne parviens pas Ă  accĂ©der Ă  GnuPG: L'avez vous installĂ©?Son chemin est-il correctement dĂ©fini?">
-<!ENTITY firegpgPopInfo.labelKeyOk "!!!PL!!!Une clĂ© privĂ©e Ă  corrctement Ă©tĂ© dĂ©finie !">
-<!ENTITY firegpgPopInfo.labelKeyErr "!!!PL!!!Attention: veuillez dĂ©finir une clĂ© privĂ©e dans les options !">
-<!ENTITY firegpgPopInfo.close "!!!PL!!!Fermer">
 <!ENTITY firegpgPopInfo.options "Opcje">
-<!ENTITY firegpgContext.labelEditeur "Open editor">
-<!ENTITY firegpgMenu.labelEditeur "Open editor">
-<!ENTITY firegpgToolbar.labelEditeur "Open editor">
+<!ENTITY firegpgContext.labelEditeur ""Otwórz edytor"">
+<!ENTITY firegpgMenu.labelEditeur ""Otwórz edytor"">
+<!ENTITY firegpgToolbar.labelEditeur ""Otwórz edytor"">

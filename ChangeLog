@@ -1,3 +1,7 @@
+2007-06-09  Maximilien Cuony
+        * de, pl, es, nl, pt, it updated too.
+        * Updated locates
+
 2007-06-08  Maximilien Cuony
         * Add 'encrypt to myself' option
         * Fix a bug with decrypting message with several recipients.
