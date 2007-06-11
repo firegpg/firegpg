@@ -1,9 +1,10 @@
 Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
         - predwindow.dtd
             - ask-for-save-pass ?
+        - firegpg.properties
+            - newVersionAlert
 Tâches libres :
 	- ajouter la possibilité de chiffrer et signer en même temps
-	- Cacher la console lors d'executions GPG sous windows
 	- Rajouter la posibilité de faire des traitement sur les fichiers téléchargés ? [Possible ?]
 	- Création du 'gestionnaire de trousseau' avec  [Prioritaire ?]
 		- Nouvelle clé - Édition confiance clé - Édition mot de passe clé

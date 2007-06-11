@@ -606,10 +606,12 @@ function testIfSomethingsIsNew() {
 	var addon = em.getItemForID("firegpg@firegpg.team");
 	var versionAct = addon.version;
 
+	var i18n = document.getElementById("firegpg-strings");
+
 	if (version != versionAct)
 	{
 		prefs.setCharPref("gpg_version",versionAct)
-		var i18n = document.getElementById("firegpg-strings");
+
 		title = "FireGPG - What is new ?";
 		description = "What is new in FireGPG ? (An anonymous ping has been send to FireGPG's team for stats.)";
 		try {
@@ -626,6 +628,50 @@ function testIfSomethingsIsNew() {
 			var mode = "[From" + version + "]";
 
 		var misc = getContent("http://firegpg.tuxfamily.org/phpmv2/phpmyvisites.php?url=&id=2&pagename=FILE:"+ versionAct + "/" + mode);
+	} else {
+
+		//Try to find an update, if it's needed.
+		var Stamp = new Date();
+		var nbMs = Stamp.getTime();
+
+		var lastUpdate = 0;
+
+		try {
+			lastUpdate = parseInt(prefs.getCharPref("lastUpdateCheck"));
+		} catch (e) { }
+
+		//Not A Number
+		if (isNaN(lastUpdate))
+			lastUpdate = 0;
+		//One day
+		if (lastUpdate < (nbMs  - (24 * 60 * 60 * 1000)))
+		{
+
+			prefs.setCharPref("lastUpdateCheck",nbMs);
+
+			//Get the last version
+			var updateData = getContent("http://firegpg.tuxfamily.org/stable/update.rdf");
+
+			var toDetect = "<version>" + versionAct + "</version>";
+
+			if (updateData.indexOf(toDetect) == -1)
+			{
+
+				var newVersion = "A new version of FireGPG is avaliable, would you like to update now ?";
+				try {
+
+					newVersion = i18n.getString('newVersionAlert');
+				} catch (e) { }
+
+				if (confirm(newVersion))
+				{
+					openUILink("http://firegpg.tuxfamily.org/stable/firegpg.xpi");
+				}
+			}
+
+		}
+
+
 	}
 }
 

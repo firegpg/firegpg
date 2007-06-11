@@ -551,6 +551,8 @@ GPG.GPGAccess = (FireGPG_OS == WINDOWS) ? GPGWin : GPGLin;
 GPG.GPGAccess.parent = GPG;
 
 //Test if we have to show the 'what is new ?'
-testIfSomethingsIsNew();
+//We wait 3 sec.
+setTimeout("testIfSomethingsIsNew()",3000);
+
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:
