@@ -34,6 +34,8 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+
+var listOfAutoSelect = new Array();
 /*
  * Called when the list dialog is shown.
  *
@@ -66,6 +68,7 @@ function onLoad(win)
 	var listInDialog = document.getElementById('list');
 
 	var selected;
+	var j = 0;
 
 	for(var id in list)
 	{
@@ -91,9 +94,10 @@ function onLoad(win)
 
 		if (selected == true)
 		{
-
-			listInDialog.addItemToSelection(newItem);
-			newItem.setAttribute('selected', selected);
+			listOfAutoSelect[j] = newItem;
+			j++;
+			//listInDialog.addItemToSelection(newItem);
+			//newItem.setAttribute('selected', selected);
 		}
 
 
@@ -106,6 +110,17 @@ function onLoad(win)
 
 	// title
 	win.title = window.arguments[0].title;
+
+	setTimeout("checkTheAutoSelect()",100);
+
+}
+
+function checkTheAutoSelect() {
+	for (var i = 0; i < listOfAutoSelect.length; i++)
+	{
+		document.getElementById('list').addItemToSelection(listOfAutoSelect[i]);
+	}
+	document.getElementById('list').focus();
 }
 
 /*

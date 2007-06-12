@@ -43,7 +43,6 @@
   <script src="list.js"/>
   <description control="list" id="description" value="default description"/>
   <listbox id="list" seltype="multiple" flex="1" rows="20" style="width:35em">
-    <listitem/>
   </listbox>
 </dialog>
 
