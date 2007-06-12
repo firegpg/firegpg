@@ -28,13 +28,13 @@
 <!ENTITY firegpgMenu.labelExport "Export">
 <!ENTITY firegpgContext.labelExport "Export">
 <!ENTITY firegpgToolbar.labelExport "Export">
-<!ENTITY firegpgPopInfo.labelBonjour "Bienvenue !<br />FireGPG à été installé correctement !">
-<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG parviens à accéder à GnuPG !">
-<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG ne parviens pas à accéder à GnuPG : L'avez vous installé ? Son chemin est-il correctement défini ?">
-<!ENTITY firegpgPopInfo.labelKeyOk "Une clé privée à corrctement été définie !">
-<!ENTITY firegpgPopInfo.labelKeyErr "Attention: veuillez définir une clé privée dans les options !">
-<!ENTITY firegpgPopInfo.close "Fermer">
+<!ENTITY firegpgPopInfo.labelBonjour "Welcome !<br />FireGPG was installed correctly !">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG can access to GnuPG !">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG cannot access to GnuPG : did you installed it ? Its path is correct ?">
+<!ENTITY firegpgPopInfo.labelKeyOk "A private key is choosed !">
+<!ENTITY firegpgPopInfo.labelKeyErr "Warning: please choose a private key in the options!">
+<!ENTITY firegpgPopInfo.close "Close">
 <!ENTITY firegpgPopInfo.options "Options">
-<!ENTITY firegpgContext.labelEditeur "Open editor">
-<!ENTITY firegpgMenu.labelEditeur "Open editor">
-<!ENTITY firegpgToolbar.labelEditeur "Open editor">
+<!ENTITY firegpgContext.labelEditeur "Open the editor">
+<!ENTITY firegpgMenu.labelEditeur "Open the editor">
+<!ENTITY firegpgToolbar.labelEditeur "Open the editor">

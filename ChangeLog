@@ -1,24 +1,28 @@
+2007-06-12  Achraf cherti
+	* some orthography/grammar errors are fixed in the french/english locales.
+	* translation of some untranslated strings in en-US locale (it was in French)
+
 2007-06-11  Maximilien Cuony
-        * Auo detect neew version and propose update for FireGPG.
+	* Auto detect new version and propose update for FireGPG.
 
 2007-06-09  Maximilien Cuony
-        * 0.4.1 packed, and uploaded to the server !
-        * de, pl, es, nl, pt, it updated too.
-        * Updated locates
+	* 0.4.1 packed, and uploaded to the server !
+	* de, pl, es, nl, pt, it updated too.
+	* Updated locates
 
 2007-06-08  Maximilien Cuony
-        * Add 'encrypt to myself' option
-        * Fix a bug with decrypting message with several recipients.
-        * Fix a bug with private select key.
-        * Improve performances : init Gpg only when use it !
+	* Add 'encrypt to myself' option
+	* Fix a bug with decrypting message with several recipients.
+	* Fix a bug with private select key.
+	* Improve performances : init Gpg only when use it !
 
 2007-06-07  Maximilien Cuony
-        * Fixed proble with Options' tabs.
-        * BYEBYE WINDOWS CONSOLE ! Use a program from Alexander Avdonin.
-        * Try to detect gpg on windows.
-        * Added pt_BR translation
-        * Some english corrections from Scott Morrison <scott@math.berkeley.edu>
-        * Update locate for ES.
+	* Fixed proble with Options' tabs.
+	* BYEBYE WINDOWS CONSOLE ! Use a program from Alexander Avdonin.
+	* Try to detect gpg on windows.
+	* Added pt_BR translation
+	* Some english corrections from Scott Morrison <scott@math.berkeley.edu>
+	* Update locate for ES.
 
 2007-06-06  Achraf cherti
 	* declaration of some undeclared variables.

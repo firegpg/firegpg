@@ -7,11 +7,11 @@
 <!ENTITY show-website-checkbox "Show FireGPG website in signed or crypted text">
 <!ENTITY change-gpg-path-button "Setting GPG's path">
 <!ENTITY change-gpg-path-checkbox "Manually specify the path of GPG:">
-<!ENTITY result-always-in-new-window "Always display the result of an encoding or a signature in new window.">
-<!ENTITY no-gpg-agent-checkbox "Force to turn off gpg's agent (can fix some errors)">
+<!ENTITY result-always-in-new-window "Always display the result of an encoding or a signature in a new window.">
+<!ENTITY no-gpg-agent-checkbox "Force to turn off GPG's Agent (can fix some errors)">
 <!ENTITY ask-for-save-pass "By default, ask for save password.">
 <!ENTITY gmail-no-no-sign-checkbox "Don't show 'No signature found [...]'">
-<!ENTITY gmail-need-a-restart "These options need a broswer restart.">
+<!ENTITY gmail-need-a-restart "These options need a browser restart.">
 <!ENTITY gmail-buttons-label "Buttons to show :">
 <!ENTITY gmail-buton-sign-checkbox "Sign">
 <!ENTITY gmail-buton-signsend-checkbox "Sign and Send">

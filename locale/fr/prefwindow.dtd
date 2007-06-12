@@ -8,13 +8,13 @@
 <!ENTITY change-gpg-path-button "Changer le chemin">
 <!ENTITY change-gpg-path-checkbox "Spécifier le chemin de GPG manuellement :">
 <!ENTITY result-always-in-new-window "Toujours afficher le résultat du chiffrement ou de la signature dans une nouvelle fenêtre.">
-<!ENTITY no-gpg-agent-checkbox "Forcer la désactivation de l'agent gpg (peut résoudre certains problèmes)">
-<!ENTITY ask-for-save-pass "Par defaut, demander la mémoriation du mot de passe.">
+<!ENTITY no-gpg-agent-checkbox "Forcer la désactivation de l'agent GPG (peut résoudre certains problèmes)">
+<!ENTITY ask-for-save-pass "Par défaut, demander la mémorisation du mot de passe.">
 <!ENTITY gmail-no-no-sign-checkbox "Ne pas afficher 'Aucune signature trouvée [...]'">
-<!ENTITY gmail-need-a-restart "Ces options nécessites le redémmarage de Firefox">
+<!ENTITY gmail-need-a-restart "Ces options nécessitent le redémmarage de Firefox">
 <!ENTITY gmail-buttons-label "Boutons à afficher :">
 <!ENTITY gmail-buton-sign-checkbox "Signer">
 <!ENTITY gmail-buton-signsend-checkbox "Signer et Envoyer">
 <!ENTITY gmail-buton-crypt-checkbox "Chiffrer">
 <!ENTITY gmail-buton-cryptsend-checkbox "Chiffrer et Envoyer">
-<!ENTITY allvays-to-myself-checkbox "Toujours encrypter les messages pour soi-même.">
+<!ENTITY allvays-to-myself-checkbox "Toujours chiffrer les messages pour soi-même.">

@@ -33,8 +33,8 @@
 <!ENTITY firegpgToolbar.labelExport "Exporter">
 <!ENTITY firegpgPopInfo.labelBonjour "Bienvenue ! FireGPG à été installé correctement !">
 <!ENTITY firegpgPopInfo.labelAccessOk "FireGPG parviens à accéder à GnuPG !">
-<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG ne parviens pas à accéder à GnuPG : L'avez vous installé ? Son chemin est-il correctement défini ?">
-<!ENTITY firegpgPopInfo.labelKeyOk "Une clé privée à corrctement été définie !">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG ne parviens pas à accéder à GnuPG : l'avez vous installé ? Son chemin est-il correctement défini ?">
+<!ENTITY firegpgPopInfo.labelKeyOk "Une clé privée a correctement été définie !">
 <!ENTITY firegpgPopInfo.labelKeyErr "Attention: veuillez définir une clé privée dans les options !">
 <!ENTITY firegpgPopInfo.close "Fermer">
 <!ENTITY firegpgPopInfo.options "Options">
