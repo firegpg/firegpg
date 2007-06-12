@@ -58,14 +58,20 @@ var savedPassword = null; /* the private key password */
  *
  * null is returned if the public key is not choosed.
  */
-function choosePublicKey() /* TODO : remove */
+function choosePublicKey(preSelect /* optional */) /* TODO : remove */
 {
-	var params = {title: '', description: '', list: {}, selected_items: {}};
+
+	if(preSelect == undefined)
+		preSelect = {};
+
+	var params = {title: '', description: '', list: {}, selected_items: {}, preSelect: {}};
 	var i18n = document.getElementById("firegpg-strings");
 
 	params.title = i18n.getString('choosePublicKeyTitle');
 	params.description = i18n.getString('choosePublicKeyDescription');
 	params.list = GPG.listKeys();
+	params.preSelect = preSelect;
+
 
 	var dlg = window.openDialog('chrome://firegpg/content/list.xul',
 	                            '', 'chrome, dialog, modal, resizable=yes',
@@ -109,7 +115,7 @@ function choosePublicKey() /* TODO : remove */
  */
 function choosePrivateKey()
 {
-	var params = {title: '', description: '', list: {}, selected_item: null};
+	var params = {title: '', description: '', list: {}, selected_item: null, preSelect: {}};
 
 	params.title = 'FireGPG - private key' /* TODO i18n */
 	params.description = 'Choose the private key:' /* TODO i18n */

@@ -5,7 +5,7 @@
  * 1.1 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
  * http://www.mozilla.org/MPL/
- * 
+ *
  * Software distributed under the License is distributed on an "AS IS" basis,
  * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
  * for the specific language governing rights and limitations under the
@@ -31,14 +31,14 @@
  * and other provisions required by the GPL or the LGPL. If you do not delete
  * the provisions above, a recipient may use your version of this file under
  * the terms of any one of the MPL, the GPL or the LGPL.
- * 
+ *
  * ***** END LICENSE BLOCK ***** */
 
-/* 
+/*
  * Called when the list dialog is shown.
  *
  * window.arguments[0] will contain this object :
- *   {description: '', title: '', list: {'ID': 'Label'}, 
+ *   {description: '', title: '', list: {'ID': 'Label'},
  *    selected_items:'' *the default selected ID* }
  */
 function onLoad(win)
@@ -46,22 +46,69 @@ function onLoad(win)
 	if(window.arguments == undefined)
 		return;
 
+	var preSelect = window.arguments[0].preSelect;
+
+	//PreSelect
+	if (preSelect.length == 0)
+		var autoSelectMode = false;
+	else
+	{
+		var autoSelectMode = true;
+		var testList = "";
+		for (var i = 0; i < preSelect.length; i++)
+		{
+			testList = testList + preSelect[i] + " ";
+		}
+	}
+
 	// the list
 	var list = window.arguments[0].list;
 	var listInDialog = document.getElementById('list');
-	for(var id in list) 
-		listInDialog.appendItem(list[id], id);
-		/* TODO test selected_items and select the item with this id by default ? */
-	
+
+	var selected;
+
+	for(var id in list)
+	{
+
+		selected = false;
+
+		if (autoSelectMode == true)
+		{
+
+			var reg = new RegExp('[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}', 'gi');
+
+			var theMail = reg.exec(list[id]);
+
+			if (theMail != null)
+			{
+				if (testList.indexOf(theMail) != -1)
+					selected = true;
+			}
+
+		}
+
+		var newItem = listInDialog.appendItem(list[id], id);
+
+		if (selected == true)
+		{
+
+			listInDialog.addItemToSelection(newItem);
+			newItem.setAttribute('selected', selected);
+		}
+
+
+	}
+
+
 	// description
 	var description = window.arguments[0].description;
 	document.getElementById('description').value = description;
 
 	// title
-	win.title = window.arguments[0].title; 
+	win.title = window.arguments[0].title;
 }
 
-/* 
+/*
  * If Ok button is pressed.
  */
 function onAccept()
@@ -77,10 +124,10 @@ function onAccept()
 		var item = listInDialog.selectedItems[i];
 		result.push(item.value);
 	}
-	
+
 	window.arguments[0].selected_items = result;
 
-	/* TODO if no item selected, don't hide window and say it's important 
+	/* TODO if no item selected, don't hide window and say it's important
 	  to select an item ! */
 
 	return true;

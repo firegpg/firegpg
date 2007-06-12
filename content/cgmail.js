@@ -485,6 +485,8 @@ var cGmail = {
 				//This code has to mix with the previous else/if block
 				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);
 
+				var whoWillGotTheMail = cGmail.getToCcBccMail(cGmail.lastDomToverify.document,info1);
+
 				var boutonBox = cGmail.lastDomToverify.document.getElementById('sb_' + info1).firstChild;
 
 
@@ -492,7 +494,7 @@ var cGmail = {
 					return;
 
 
-				var keyID = choosePublicKey();
+				var keyID = choosePublicKey(whoWillGotTheMail);
 
 				if (keyID == null || keyID == "")
 					return;
@@ -570,6 +572,46 @@ var cGmail = {
 			return contenuMail;
 	},
 
+	getToCcBccMail: function(dDocument,idMail) {
+		var forWho = "";
+		var tmpFor = "";
+
+		// The TO textareara
+		try { tmpFor = dDocument.getElementById('to_' + idMail).value; }
+		catch (e) { tmpFor = ""; }
+
+		forWho = tmpFor;
+
+		// The CC textareara
+		try { tmpFor = dDocument.getElementById('cc_' + idMail).value; }
+		catch (e) { tmpFor = ""; }
+
+		forWho = forWho + " " + tmpFor;
+
+
+		// The DCC textareara
+		try { tmpFor = dDocument.getElementById('bcc_' + idMail).value; }
+		catch (e) { tmpFor = ""; }
+
+		forWho = forWho + " " + tmpFor;
+
+		//Pattern
+		var reg = new RegExp('[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}', 'gi');
+
+		var aMail = reg.exec(forWho);
+
+		var i = 0;
+		var returnList = new Array();
+
+		while(aMail != null)
+		{
+			returnList[i] = aMail;
+			i++;
+			aMail = reg.exec(forWho);
+		}
+
+		return returnList;
+	},
 	setMailContent: function(dDocument,idMail,newText)
 	{
 
