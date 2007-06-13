@@ -544,9 +544,35 @@ var cGmail = {
 
 				if (select2 == "")
 				{
-					var i18n = document.getElementById("firegpg-strings");
-					alert(i18n.getString("gmailSelectError"));
-					return "";
+
+					//Ok, we try now to get all content
+					try { var select = dDocument.getElementById('hc_' + idMail).contentWindow.document.body.innerHTML; }
+					catch (e) { var select = ""; }
+
+					if ( select != "")
+					{
+
+						var indexOfQuote = select.indexOf('<span class="gmail_quote">');
+
+						contenuMail = Selection.wash(select.substring(0,indexOfQuote));
+
+					}
+					else
+					{
+						var textarera =	dDocument.getElementById('ta_' + idMail);
+						select2 = textarera.value;
+
+						var indexOfQuote = select2.indexOf("\n> ");
+						select2 = select2.substring(0,indexOfQuote);
+
+						indexOfQuote = select2.lastIndexOf("\n");
+						contenuMail = Selection.wash(select2.substring(0,indexOfQuote));
+
+					}
+					//var i18n = document.getElementById("firegpg-strings");
+					//alert(i18n.getString("gmailSelectError"));
+					//return "";
+
 				}
 				else
 				{
@@ -564,11 +590,10 @@ var cGmail = {
 				var s = new XMLSerializer();
 				var d = documentFragment;
 				var str = s.serializeToString(d);
-
+				alert(str);
 				contenuMail = Selection.wash(str);
 
 			}
-
 			return contenuMail;
 	},
 

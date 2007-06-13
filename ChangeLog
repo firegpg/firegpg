@@ -1,6 +1,9 @@
+2007-06-13  Maximilien Cuony
+	* Find the news mails content in cgmail (but a bit experimental)
+
 2007-06-12  Maximilien Cuony
 	* Autoselect the recipants for crypt in gmail !
-	
+
 2007-06-12  Achraf cherti
 	* some orthography/grammar errors are fixed in the french/english locales.
 	* translation of some untranslated strings in en-US locale (it was in French)
