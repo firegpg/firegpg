@@ -61,8 +61,17 @@ var cGmailListener = {
 		if(aFlag & STATE_STOP) {
 			// If it's the page with a GMail message
 			if(aProgress.DOMWindow.document.getElementById('msg_0') != null || aProgress.DOMWindow.document.getElementById('msgs') != null) {
-				cGmail.lastDomToverify = aProgress.DOMWindow;
-				setTimeout("cGmail.onDelayLoad()", 1000);
+				if (aProgress.DOMWindow.document.body.hasAttribute("gpg") == false)
+				{
+
+					aProgress.DOMWindow.document.body.setAttribute("gpg","ok");
+
+					cGmail.lastDomToverify = aProgress.DOMWindow;
+					setTimeout("cGmail.onDelayLoad()", 1000); //Fast connexions
+					setTimeout("cGmail.onDelayLoad()", 5000); //Slow connexions
+
+				}
+
 			}
 		}
 		return 0;
@@ -79,6 +88,9 @@ var cGmailListener = {
 var cGmail = {
 	/* TODO it's not too big ? Can we separe this function to some little simple functions ? */
 	onDelayLoad: function() {
+		//Say that we can have now events now...
+		this.lastDomToverify.document.body.removeAttribute('gpg');
+
 		for (var i = 0; i < this.LastNombreMail; i++) {
 			if (this.lastDomToverify.document.getElementById('rc_' + i) != null) {
 
@@ -89,77 +101,10 @@ var cGmail = {
 						// 13 Childs !!
 						var replyBox = this.lastDomToverify.document.getElementById('rc_' + i).firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild.firstChild;
 
-						var contenuMail = this.lastDomToverify.document.getElementById('mb_' + i);
-
-	/*TMPREMOVE
-						var listNodes = contenuMail.getElementsByTagName("a");
-
-
-						var monTexteMieux = "";
-
-						for (var i = 0; i < listNodes.length; i++) {
-	    					try {	 if (listNodes[i].getAttribute("href").indexOf("attid=") != -1)
-							{
-								var papa = listNodes[i].parentNode;
-								var papatexte = papa.innerHTML;
-
-								var reg=new RegExp("<b>[^<]*</b>", "gi"); //Élimination des scripts
-								papatexte = papatexte.replace(reg,"");
-
-								var reg=new RegExp("<a[^>]*>[^<]*</a>", "gi"); //Élimination des scripts
-								papatexte = papatexte.replace(reg,"");
-
-								var reg=new RegExp("K", "gi"); //Élimination des scripts
-								papatexte = papatexte.replace(reg,"");
-
-								var reg=new RegExp("<br>", "gi"); //Élimination des scripts
-								papatexte = papatexte.replace(reg,"");
-
-								if ((papatexte / 1) < 3) //Jusqu'a 2k, ça PEUT être une signature.
-								{
-
-									var xhr_object = new XMLHttpRequest();
-
-
-									xhr_object.open("GET", "https://mail.google.com/mail/" + listNodes[i].getAttribute("href"), false);
-									xhr_object.send(null);
-
-									while(xhr_object.readyState != 4)
-										{ }
-
-									var dataToTry = xhr_object.responseText;
-
-									//Verify GPG'data presence
-									var firstPosition = dataToTry.indexOf("-----BEGIN PGP SIGNATURE-----");
-									var lastPosition = dataToTry.indexOf("-----END PGP SIGNATURE-----");
-
-									if (firstPosition != -1 && lastPosition != -1)
-									{
-										monTexteMieux = dataToTry;
-									}
-
-
-								}
-
-							} } catch(e) { alert(e); }
-		   				}
-
-						*/
-
-						var range = this.lastDomToverify.document.createRange();
-						range.selectNode(contenuMail);
-						var documentFragment = range.cloneContents();
-						var s = new XMLSerializer();
-						var d = documentFragment;
-						var str = s.serializeToString(d);
-
-						/*TMPREMOVEif (monTexteMieux == "") */
-							contenuMail = Selection.wash(str);
-						/*TMPREMOVEelse
-							contenuMail = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\n" + Selection.wash(str) + monTexteMieux;*/
+						var contenuMail = this.getMailContent(i);
 
 						var td = this.lastDomToverify.document.createElement("td");
-			/*TMPREMOVE			alert(contenuMail); */
+
 						td.setAttribute("class","");
 						td.setAttribute("id","sm_verify");
 
@@ -172,7 +117,7 @@ var cGmail = {
 							if (cGmail.nonosign != true)
 							{
 								td.setAttribute("style","color: orange;");
-								td.innerHTML = i18n.getString("GMailNoS"); //"Aucun signature n'a été trouvé dans ce mail."; testtset@testtest.testtset";
+								td.innerHTML = i18n.getString("GMailNoS");
 							}
 						}
 						else if (resultTest == "erreur") {
@@ -243,8 +188,8 @@ var cGmail = {
 				}
 			}
 		}
-	},
 
+	},
 	simpleLoad: function(e) {
 		var Ddocument = e.target.defaultView.wrappedJSObject.document;
 
@@ -340,6 +285,8 @@ var cGmail = {
 	},
 
 	addComposeBoutons: function(box,Ddocument,info1) {
+		//If we add compose boutons, it's can due to a reply, and we sould retest the signs.
+
 		// For i18N
 		var i18n = document.getElementById("firegpg-strings");
 
@@ -354,7 +301,7 @@ var cGmail = {
 
 		try {
 
-		var tmpListener = new Object;
+			var tmpListener = new Object;
 			tmpListener = null;
 			tmpListener = new cGmail.callBack("tralala",info1)
 			box.addEventListener('click',tmpListener,true);
@@ -363,6 +310,8 @@ var cGmail = {
 	},
 
 	listenerLoad: function(e) {
+
+
 		try {
 
 			var urlPage = e.target.defaultView.wrappedJSObject.location.host;
@@ -377,6 +326,7 @@ var cGmail = {
 
 
 	listenerUnload: function() {
+
 		gBrowser.removeProgressListener(cGmailListener);
 	},
 
@@ -385,6 +335,9 @@ var cGmail = {
 		this._info1 = info1;
 
 		this.handleEvent = function(event) { // Function in the function for handle... events.
+			//If we click to discrad, we should redo the tests.
+
+
 			var i18n = document.getElementById("firegpg-strings");
 
 			if (event.target.id == "sm_decrypt") {
@@ -440,7 +393,7 @@ var cGmail = {
 			else if (event.target.id == "sndsign" || event.target.id == "sign")
 			{
 
-				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);
+				var mailContent = cGmail.getWriteMailContent(cGmail.lastDomToverify.document,info1);
 
 				var boutonBox = cGmail.lastDomToverify.document.getElementById('sb_' + info1).firstChild;
 
@@ -468,7 +421,7 @@ var cGmail = {
 				}
 				else {
 
-					cGmail.setMailContent(cGmail.lastDomToverify.document,info1,result.output);
+					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.output);
 
 					if (event.target.id == "sndsign")
 					{
@@ -483,7 +436,7 @@ var cGmail = {
 			{
 
 				//This code has to mix with the previous else/if block
-				var mailContent = cGmail.getMailContent(cGmail.lastDomToverify.document,info1);
+				var mailContent = cGmail.getWriteMailContent(cGmail.lastDomToverify.document,info1);
 
 				var whoWillGotTheMail = cGmail.getToCcBccMail(cGmail.lastDomToverify.document,info1);
 
@@ -508,7 +461,7 @@ var cGmail = {
 				}
 				else {
 
-					cGmail.setMailContent(cGmail.lastDomToverify.document,info1,result.output);
+					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.output);
 
 					if (event.target.id == "sndcrypt")
 					{
@@ -521,7 +474,7 @@ var cGmail = {
 			}
 		};
 	},
-	getMailContent: function(dDocument,idMail)
+	getWriteMailContent: function(dDocument,idMail)
 	{
 
 			//Mode RichEditing
@@ -556,6 +509,7 @@ var cGmail = {
 
 						contenuMail = Selection.wash(select.substring(0,indexOfQuote));
 
+						this.composeIndexOfQuote  = indexOfQuote;
 					}
 					else
 					{
@@ -566,6 +520,9 @@ var cGmail = {
 						select2 = select2.substring(0,indexOfQuote);
 
 						indexOfQuote = select2.lastIndexOf("\n");
+						textarera.selectionStart = 0;
+						textarera.selectionEnd = indexOfQuote;
+
 						contenuMail = Selection.wash(select2.substring(0,indexOfQuote));
 
 					}
@@ -637,14 +594,15 @@ var cGmail = {
 
 		return returnList;
 	},
-	setMailContent: function(dDocument,idMail,newText)
+	setWriteMailContent: function(dDocument,idMail,newText)
 	{
 
 			//Mode RichEditing
 
 
 			try { //First, we look for a selection
-			var select = dDocument.getElementById('hc_' + idMail).contentWindow.getSelection();
+				var iFrame = dDocument.getElementById('hc_' + idMail).contentWindow;
+				var select = iFrame.getSelection();
 			} catch (e) { var select = ""; }
 
 			if (select.toString() == "")
@@ -655,30 +613,46 @@ var cGmail = {
 				try {
 					var textarera =	dDocument.getElementById('ta_' + idMail);
 					var value = textarera.value;
-					var startPos = textarera.selectionStart;
-					var endPos = textarera.selectionEnd;
-					var chaine = textarera.value;
 
-					// We create the new string and replace it into the focused element
-					textarera.value = chaine.substring(0, startPos) + newText + chaine.substring(endPos, chaine.length);
+				} catch (e) { }
 
-					// We select the new text.
-					textarera.selectionStart = startPos;
-					textarera.selectionEnd = startPos + text.length ;
+				try {
+					if (value == "" || value == null) //Ho, in fact, nothing is selected in plain text too, so it's a richtextmode
+					{
+
+						try { var select = iFrame.document.body.innerHTML; }
+						catch (e) { var select = ""; }
+
+						var reg=new RegExp("\n", "gi");
+						newText = newText.replace(reg,"<br>");
+
+						iFrame.document.body.innerHTML = newText + select.substring(this.composeIndexOfQuote, select.length) + "<br /><br />";
+
+					}
+					else { //Plaintext (there are a selection evrytime dues to getWriteMailContent
+						var startPos = textarera.selectionStart;
+						var endPos = textarera.selectionEnd;
+						var chaine = textarera.value;
+
+						// We create the new string and replace it into the focused element
+						textarera.value = chaine.substring(0, startPos) + newText + chaine.substring(endPos, chaine.length);
+
+						// We select the new text.
+						textarera.selectionStart = startPos;
+						textarera.selectionEnd = startPos + text.length ;
+					}
 
 
 				} catch (e) { }
 
-			} else {
+			} else { //RichEditing, have a selection
 
 				var reg=new RegExp("\n", "gi");
 				newText = newText.replace(reg,"<br>");
 
 				var range = select.getRangeAt(0);
 				var el = dDocument.createElement("div");
-			//	var txt = dDocument.createTextNode(newText);
 				el.innerHTML = newText;
-			//	el.appendChild(txt)
 
 				range.deleteContents();
 				range.insertNode(el);
@@ -704,7 +678,80 @@ var cGmail = {
 					children[i].dispatchEvent(evt);
 			} } catch (e) { }
 			}
+	},
+
+	//Retrun the content of a mail, need id (0-n)
+	getMailContent: function(i) {
+		var contenuMail = this.lastDomToverify.document.getElementById('mb_' + i);
+		var range = this.lastDomToverify.document.createRange();
+		range.selectNode(contenuMail);
+		var documentFragment = range.cloneContents();
+		var s = new XMLSerializer();
+		var d = documentFragment;
+		var str = s.serializeToString(d);
+		contenuMail = Selection.wash(str);
+		return contenuMail;
+
+
+/*TMPREMOVE
+						var listNodes = contenuMail.getElementsByTagName("a");
+
+
+						var monTexteMieux = "";
+
+						for (var i = 0; i < listNodes.length; i++) {
+	    					try {	 if (listNodes[i].getAttribute("href").indexOf("attid=") != -1)
+							{
+								var papa = listNodes[i].parentNode;
+								var papatexte = papa.innerHTML;
+
+								var reg=new RegExp("<b>[^<]*</b>", "gi"); //Élimination des scripts
+								papatexte = papatexte.replace(reg,"");
+
+								var reg=new RegExp("<a[^>]*>[^<]*</a>", "gi"); //Élimination des scripts
+								papatexte = papatexte.replace(reg,"");
+
+								var reg=new RegExp("K", "gi"); //Élimination des scripts
+								papatexte = papatexte.replace(reg,"");
+
+								var reg=new RegExp("<br>", "gi"); //Élimination des scripts
+								papatexte = papatexte.replace(reg,"");
+
+								if ((papatexte / 1) < 3) //Jusqu'a 2k, ça PEUT être une signature.
+								{
+
+									var xhr_object = new XMLHttpRequest();
+
+
+									xhr_object.open("GET", "https://mail.google.com/mail/" + listNodes[i].getAttribute("href"), false);
+									xhr_object.send(null);
+
+									while(xhr_object.readyState != 4)
+										{ }
+
+									var dataToTry = xhr_object.responseText;
+
+									//Verify GPG'data presence
+									var firstPosition = dataToTry.indexOf("-----BEGIN PGP SIGNATURE-----");
+									var lastPosition = dataToTry.indexOf("-----END PGP SIGNATURE-----");
+
+									if (firstPosition != -1 && lastPosition != -1)
+									{
+										monTexteMieux = dataToTry;
+									}
+
+
+								}
+
+							} } catch(e) { alert(e); }
+		   				}
+
+						*/
+
+
 	}
+
+
 };
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

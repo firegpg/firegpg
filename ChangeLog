@@ -1,3 +1,7 @@
+2007-06-14  Maximilien Cuony
+	* Improve performances in cgmail
+	* Fix a bug in autoselect in cgmail.
+
 2007-06-13  Maximilien Cuony
 	* Find the news mails content in cgmail (but a bit experimental)
 
