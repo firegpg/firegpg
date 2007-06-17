@@ -1,3 +1,6 @@
+2007-06-17  Maximilien Cuony
+	* Added AUTHORS, COPYING and REDAME in the Xpi file
+
 2007-06-14  Maximilien Cuony
 	* Improve performances in cgmail
 	* Fix a bug in autoselect in cgmail.

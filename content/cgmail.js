@@ -692,61 +692,59 @@ var cGmail = {
 		contenuMail = Selection.wash(str);
 		return contenuMail;
 
+	},
 
-/*TMPREMOVE
-						var listNodes = contenuMail.getElementsByTagName("a");
+	getMimeMailContens: function(id) {
+		var contenuMail = this.lastDomToverify.document.getElementById('mb_' + id);
 
+		var listNodes = contenuMail.getElementsByTagName("a");
 
-						var monTexteMieux = "";
+		for (var i = 0; i < listNodes.length; i++) {
+		try {	 if (listNodes[i].getAttribute("href").indexOf("attid=") != -1)
+			{
+				var papa = listNodes[i].parentNode;
+				var papatexte = papa.innerHTML;
 
-						for (var i = 0; i < listNodes.length; i++) {
-	    					try {	 if (listNodes[i].getAttribute("href").indexOf("attid=") != -1)
-							{
-								var papa = listNodes[i].parentNode;
-								var papatexte = papa.innerHTML;
+				var reg=new RegExp("<b>[^<]*</b>", "gi"); //Élimination des scripts
+				papatexte = papatexte.replace(reg,"");
 
-								var reg=new RegExp("<b>[^<]*</b>", "gi"); //Élimination des scripts
-								papatexte = papatexte.replace(reg,"");
+				var reg=new RegExp("<a[^>]*>[^<]*</a>", "gi"); //Élimination des scripts
+				papatexte = papatexte.replace(reg,"");
 
-								var reg=new RegExp("<a[^>]*>[^<]*</a>", "gi"); //Élimination des scripts
-								papatexte = papatexte.replace(reg,"");
+				var reg=new RegExp("K", "gi"); //Élimination des scripts
+				papatexte = papatexte.replace(reg,"");
 
-								var reg=new RegExp("K", "gi"); //Élimination des scripts
-								papatexte = papatexte.replace(reg,"");
+				var reg=new RegExp("<br>", "gi"); //Élimination des scripts
+				papatexte = papatexte.replace(reg,"");
 
-								var reg=new RegExp("<br>", "gi"); //Élimination des scripts
-								papatexte = papatexte.replace(reg,"");
+				if ((papatexte / 1) < 3) //Jusqu'a 2k, ça PEUT être une signature.
+				{
 
-								if ((papatexte / 1) < 3) //Jusqu'a 2k, ça PEUT être une signature.
-								{
-
-									var xhr_object = new XMLHttpRequest();
-
-
-									xhr_object.open("GET", "https://mail.google.com/mail/" + listNodes[i].getAttribute("href"), false);
-									xhr_object.send(null);
-
-									while(xhr_object.readyState != 4)
-										{ }
-
-									var dataToTry = xhr_object.responseText;
-
-									//Verify GPG'data presence
-									var firstPosition = dataToTry.indexOf("-----BEGIN PGP SIGNATURE-----");
-									var lastPosition = dataToTry.indexOf("-----END PGP SIGNATURE-----");
-
-									if (firstPosition != -1 && lastPosition != -1)
-									{
-										monTexteMieux = dataToTry;
-									}
+					var xhr_object = new XMLHttpRequest();
 
 
-								}
+					xhr_object.open("GET", "https://mail.google.com/mail/" + listNodes[i].getAttribute("href"), false);
+					xhr_object.send(null);
 
-							} } catch(e) { alert(e); }
-		   				}
+					while(xhr_object.readyState != 4)
+						{ }
 
-						*/
+					var dataToTry = xhr_object.responseText;
+
+					//Verify GPG'data presence
+					var firstPosition = dataToTry.indexOf("-----BEGIN PGP SIGNATURE-----");
+					var lastPosition = dataToTry.indexOf("-----END PGP SIGNATURE-----");
+
+					if (firstPosition != -1 && lastPosition != -1)
+					{
+						monTexteMieux = dataToTry;
+					}
+
+
+				}
+
+			} } catch(e) { alert(e); }
+		}
 
 
 	}
