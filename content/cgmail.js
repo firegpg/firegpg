@@ -59,6 +59,24 @@ var cGmailListener = {
 	onStateChange: function(aProgress, aRequest, aFlag, aStatus) {
 		// If a document's loading is finished
 		if(aFlag & STATE_STOP) {
+
+			//If we need ton find the IK information
+			if (cGmail.ik == null)
+			{
+
+				if (aRequest.name.indexOf("?ik=") != -1 || aRequest.name.indexOf("&ik=") != -1)
+				{
+
+					var reg= new RegExp("ik\\=[a-zA-Z0-9]+");
+					cGmail.ik = aRequest.name.match(reg);
+
+					if (cGmail.ik != null && cGmail.ik != "")
+					{
+						cGmail.ik = cGmail.ik.toString().substring(3);
+					}
+				}
+
+			}
 			// If it's the page with a GMail message
 			if(aProgress.DOMWindow.document.getElementById('msg_0') != null || aProgress.DOMWindow.document.getElementById('msgs') != null) {
 				if (aProgress.DOMWindow.document.body.hasAttribute("gpg") == false)
@@ -690,11 +708,59 @@ var cGmail = {
 		var d = documentFragment;
 		var str = s.serializeToString(d);
 		contenuMail = Selection.wash(str);
+
+
+
 		return contenuMail;
 
 	},
 
+	foundTheGoodId: function(id) {
+		var tmpListNode = this.lastDomToverify.document.getElementById('mh_' + id).firstChild.firstChild.childNodes;
+		//Class = FHR.
+		for(var i = 0; i < tmpListNode.length; i++)
+		{
+			for (var iATT = 0; iATT < tmpListNode[i].attributes.length; iATT++)
+			{
+				if (tmpListNode[i].attributes[iATT].name == "class" && tmpListNode[i].attributes[iATT].value == "fhr")
+				{
+					var tmpListNode2 = tmpListNode[i].childNodes;
+					//Class = LL.
+					for(var j = 0; j < tmpListNode2.length; j++)
+					{
+						if (tmpListNode2[j].firstChild && tmpListNode2[j].firstChild.attributes)
+						{
+							for (var jATT = 0; jATT < tmpListNode2[j].firstChild.attributes.length; jATT++)
+							{
+								if (tmpListNode2[j].firstChild.attributes[jATT].name == "class" && tmpListNode2[j].firstChild.attributes[jATT].value == "ll")
+								{
+									return tmpListNode2[j].firstChild.id.toString().substring(3);
+								}
+							}
+						}
+						if (tmpListNode2[j].lastChild && tmpListNode2[j].lastChild.attributes)
+						{
+							for (var jATT = 0; jATT < tmpListNode2[j].lastChild.attributes.length; jATT++)
+							{
+								if (tmpListNode2[j].lastChild.attributes[jATT].name == "class" && tmpListNode2[j].lastChild.attributes[jATT].value == "ll")
+								{
+									return tmpListNode2[j].lastChild.id.toString().substring(3);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return null;
+	},
+
 	getMimeMailContens: function(id) {
+
+		//alert(getContent("https://mail.google.com/mail/?ik=" + this.ik + "&view=om&th=" + this.foundTheGoodId(i) + "&zx="));
+
+		//ATTENTION : PSENER AU VÉRIFICATEUR DE DCX.
+
 		var contenuMail = this.lastDomToverify.document.getElementById('mb_' + id);
 
 		var listNodes = contenuMail.getElementsByTagName("a");

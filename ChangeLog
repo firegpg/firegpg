@@ -1,4 +1,5 @@
 2007-06-17  Maximilien Cuony
+	* Can get the mime content of a mail (need implemantation now, but work with a simple alert)
 	* Added AUTHORS, COPYING and REDAME in the Xpi file
 
 2007-06-14  Maximilien Cuony
