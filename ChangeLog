@@ -1,3 +1,6 @@
+2007-06-18  Maximilien Cuony
+	* Fixed a bug with cygwin on windows (thanks to Kevin Hilton and Marco Bonetti for report and help)
+
 2007-06-17  Maximilien Cuony
 	* Can get the mime content of a mail (need implemantation now, but work with a simple alert)
 	* Added AUTHORS, COPYING and REDAME in the Xpi file

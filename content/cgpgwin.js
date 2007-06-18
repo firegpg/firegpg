@@ -87,6 +87,7 @@ var GPGWin = {
 
 		// The signed text
 		var crypttext = getFromFile(tmpOutput);
+
 		var result2 = GPGReturn;
 		result2.output = crypttext;
 		result2.sdOut = result;

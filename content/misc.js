@@ -313,7 +313,9 @@ function getTmpFile(permission /* optional */) {
 	else
 		var fileName = TMP_FILES;
 
-	fileobj.append(fileName);
+	var date = new Date();
+
+	fileobj.append( Math.floor(Math.random() * 9999) + date.getTime() + Math.floor(Math.random() * 9999) + Math.floor(Math.random() * 9999) + fileName);
 	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, permission);
 	fileobj.permissions = permission;
 	return fileobj.path;
@@ -586,11 +588,11 @@ function runWinCommand(command, arg) {
 	var reg = new RegExp("\"", "gi");
 	var args = arg.replace(reg, "\\\"");
 
-	args = ["/WAIT","/NOWINDOW",'cmd /c "' + args + '"'];
+	args = ["/WAIT","/NOWINDOW","/WAITIDLE","/REALTIME" ,'cmd /c "' + args + '"'];
 
 	process.run(true, args, args.length);
 
-	//removeFile(commandWindows);
+	removeFile(commandWindows);
 
 }
 
