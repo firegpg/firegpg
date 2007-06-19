@@ -524,7 +524,8 @@ var cGmail = {
 					{
 
 						var indexOfQuote = select.indexOf('<span class="gmail_quote">');
-
+						if (indexOfQuote == -1)
+							indexOfQuote = select.length;
 						contenuMail = Selection.wash(select.substring(0,indexOfQuote));
 
 						this.composeIndexOfQuote  = indexOfQuote;
@@ -538,6 +539,13 @@ var cGmail = {
 						select2 = select2.substring(0,indexOfQuote);
 
 						indexOfQuote = select2.lastIndexOf("\n");
+
+						if (indexOfQuote == -1)
+						{
+							select2 = textarera.value;
+							indexOfQuote = select2.length;
+						}
+
 						textarera.selectionStart = 0;
 						textarera.selectionEnd = indexOfQuote;
 

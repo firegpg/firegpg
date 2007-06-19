@@ -1,20 +1,20 @@
 <!ENTITY prefwindow.title "FireGPG tercihler">
-<!ENTITY pane1.title "General">
+<!ENTITY pane1.title "Genel">
 <!ENTITY pane2.title "Gmail">
-<!ENTITY gmail-enabled-checkbox.label "GMail support">
+<!ENTITY gmail-enabled-checkbox.label "GMail desteği">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
-<!ENTITY private-keys-label.text "Varsayılan özel anahtar:">
+<!ENTITY private-keys-labelİmza bulunamadıözel anahtar:">
 <!ENTITY show-website-checkbox "FireGPG websitesini imza ve şifre metni içinde göster">
 <!ENTITY change-gpg-path-button "GPG ayarlarının yolu">
 <!ENTITY change-gpg-path-checkbox "GPG yolunu elle belirle:">
-<!ENTITY result-always-in-new-window "Her bir şifreleme veya imzalma sonuçunu herzaman yeni bir pencerede göster.">
+<!ENTITY result-always-in-new-window "Her bir şifreleme veya imzalama sonuçunu her zaman yeni bir pencerede göster.">
 <!ENTITY no-gpg-agent-checkbox "GPG gereçini kapanmaya zorla (bazı hatalar düzelebilir)">
-<!ENTITY ask-for-save-pass "By default, ask for save password.">
-<!ENTITY gmail-no-no-sign-checkbox "Don't show 'No signature found [...]'">
-<!ENTITY gmail-need-a-restart "This options need a broswer restart.">
-<!ENTITY gmail-buttons-label "Butons to show :">
-<!ENTITY gmail-buton-sign-checkbox "Sign">
-<!ENTITY gmail-buton-signsend-checkbox "Sign and Send">
-<!ENTITY gmail-buton-crypt-checkbox "Crypt">
-<!ENTITY gmail-buton-cryptsend-checkbox "Crypt and Send">
-<!ENTITY allvays-to-myself-checkbox "Allvays encrypt to myself.">
+<!ENTITY ask-for-save-pass "Varsayılan, parolayı kaydetmek için sor.">
+<!ENTITY gmail-no-no-sign-checkbox "Gösterme 'İmza bulunamadı [...]'">
+<!ENTITY gmail-need-a-restart "Bu seçenek tarayıcının yeniden başalamasını gerektirir.">
+<!ENTITY gmail-buttons-label "Göster düğmeler :">
+<!ENTITY gmail-buton-sign-checkbox "İmza">
+<!ENTITY gmail-buton-signsend-checkbox "İmza ve Gönder">
+<!ENTITY gmail-buton-crypt-checkbox "Şifre">
+<!ENTITY gmail-buton-cryptsend-checkbox "Şifre ve Gönder">
+<!ENTITY allvays-to-myself-checkbox "Her zaman şifrele.">

@@ -11,10 +11,10 @@
 <!ENTITY no-gpg-agent-checkbox "Forza disattivazione di gpg's agent (può risolvere alcuni errori)">
 <!ENTITY ask-for-save-pass "By default, ask for save password.">
 <!ENTITY gmail-no-no-sign-checkbox "Nascondi 'Nessuna firma trovata [...]' ">
-<!ENTITY gmail-need-a-restart "Questa opzione necessita di un riavvio del browser">
+<!ENTITY gmail-need-a-restart "Queste opzioni necessitano di un riavvio del browser">
 <!ENTITY gmail-buttons-label "Mostra pulsanti">
 <!ENTITY gmail-buton-sign-checkbox "Firma">
 <!ENTITY gmail-buton-signsend-checkbox "Firma e Invia">
 <!ENTITY gmail-buton-crypt-checkbox "Cripta">
 <!ENTITY gmail-buton-cryptsend-checkbox "Cripta e invia">
-<!ENTITY allvays-to-myself-checkbox "Allvays encrypt to myself.">
+<!ENTITY allvays-to-myself-checkbox "Seleziona sempre la mia chiave per criptare">

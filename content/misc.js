@@ -665,7 +665,7 @@ function testIfSomethingsIsNew() {
 			if (updateData.indexOf(toDetect) == -1)
 			{
 
-				var newVersion = "A new version of FireGPG is avaliable, would you like to update now ?";
+				var newVersion = "A new version of FireGPG is available, would you like to update now?";
 				try {
 
 					newVersion = i18n.getString('newVersionAlert');

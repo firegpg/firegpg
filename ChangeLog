@@ -1,3 +1,9 @@
+2007-06-19  Maximilien Cuony
+	* 0.4.2 packed, and uploaded to the server !
+	* it, zh-CN, zh-TW, tr, pt_BR updated
+	* New locate : ko-KR
+	* Updated locates
+
 2007-06-18  Maximilien Cuony
 	* Fixed a bug with cygwin on windows (thanks to Kevin Hilton and Marco Bonetti for report and help)
 

@@ -1,7 +1,7 @@
 <!ENTITY prefwindow.title "FireGPG 选项">
-<!ENTITY pane1.title "General">
+<!ENTITY pane1.title "一般情况">
 <!ENTITY pane2.title "Gmail">
-<!ENTITY gmail-enabled-checkbox.label "GMail support">
+<!ENTITY gmail-enabled-checkbox.label "GMail支持">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "默认私钥：">
 <!ENTITY show-website-checkbox "在签署或加密的文本中显示FireGPG网站">
@@ -11,11 +11,11 @@
 <!ENTITY no-gpg-agent-checkbox "强制关闭GPG代理（可解决一些错误）">
 <!ENTITY ask-for-save-pass "默认询问是否保存密码。">
 <!-- translated from English by Weakish Jiang (weakish@gmail.com) -->
-<!ENTITY gmail-no-no-sign-checkbox "Don't show 'No signature found [...]'">
-<!ENTITY gmail-need-a-restart "This options need a broswer restart.">
-<!ENTITY gmail-buttons-label "Butons to show :">
-<!ENTITY gmail-buton-sign-checkbox "Sign">
-<!ENTITY gmail-buton-signsend-checkbox "Sign and Send">
-<!ENTITY gmail-buton-crypt-checkbox "Crypt">
-<!ENTITY gmail-buton-cryptsend-checkbox "Crypt and Send">
-<!ENTITY allvays-to-myself-checkbox "Allvays encrypt to myself.">
+<!ENTITY gmail-no-no-sign-checkbox "不要显示'找不到签名[...]'">
+<!ENTITY gmail-need-a-restart "此选项需要重启浏览器才能生效。">
+<!ENTITY gmail-buttons-label "显示的按钮：">
+<!ENTITY gmail-buton-sign-checkbox "签名">
+<!ENTITY gmail-buton-signsend-checkbox "签名并发送">
+<!ENTITY gmail-buton-crypt-checkbox "加密">
+<!ENTITY gmail-buton-cryptsend-checkbox "加密并发送">
+<!ENTITY allvays-to-myself-checkbox "发信给自己时总是加密">

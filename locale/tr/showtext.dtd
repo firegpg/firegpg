@@ -1,6 +1,6 @@
-<!ENTITY crypt-button "Crypt">
-<!ENTITY dcrypt-button "Decrypt">
-<!ENTITY sign-button "Sign">
-<!ENTITY verify-button "Verify">
-<!ENTITY open-button "Open">
-<!ENTITY save-button "Save">
+<!ENTITY crypt-button "Şifre">
+<!ENTITY dcrypt-button "Şifre Çöz">
+<!ENTITY sign-button "İmza">
+<!ENTITY verify-button "Doğrula">
+<!ENTITY open-button "Aç">
+<!ENTITY save-button "Kaydet">

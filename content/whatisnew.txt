@@ -1,26 +1,25 @@
-=== Version 0.4.1 ===
+=== Version 0.4.2 ===
 
 Bugs :
-- Good new for Windows users : Now the console is hidden when we call Gpg !
-  (Use a program from Alexander Avdonin, thanks for his authorization)
+- Fixed a bug with Cygwin in Windows (thanks to Kevin Hilton and Marco Bonetti for the report and help)
 
-Functionalities :
-- You can now encrypt for severals recipients ! (And decrypt this king of messages too).
-- You can choose if you want to always encrypt to yourself.
-- Now GPG is only init. when you use it, it's should improve performances when you open new windows.
-- On windows, we try to find gpg.exe in some emplacements.
-- Option to select the buttons to show in gmail.
-- Option to turn of 'No sign found [...]'
-- A new option's windows.
+Functionalities:
+- Improve performance in Gmail.*
+- Auto-select recipients for crypt in Gmail!
+- Find the new mail content in Gmail.*
+- Auto detect new versions and propose updates for FireGPG.*
 
-Locates :
-- de, pl, es, nl, pt have been updated.
-- pt_BR have been added.
-- Scott Morrison send us some corrections in English. (And Re-Thanks for his donation !).
+Locales :
+- it, zh-CN, zh-TW, tr and pt_BR have been updated, ko-KR has been added.
+- Some orthography/grammar errors have been fixed in the French/English locales.
+- Translation of some untranslated strings in en-US locale (it was in French)
 
 Misc :
-- We send now an anonymous ping to ourself, for count the number of FireGPG's users.
-- Don't forget to report bugs in our forum (http://firegpg.tuxfamily.org/forum) or by email at firegpg@gmail.com !
+- Added AUTHORS, COPYING and README in the XPI file
+- In regards to full support of OpenPGP/Mime, we're working on it.  We're about 20% of the way to completion.*
+- Don't forget to report bugs to our forum or by email at firegpg@gmail.com !
+
+* For more information, see the post on our forum : http://firegpg.tuxfamily.org/forum/viewtopic.php?pid=453#p453
 
 Thanks you for using FireGPG !
     FireGPG's team.
