@@ -573,7 +573,7 @@ var cGmail = {
 				var s = new XMLSerializer();
 				var d = documentFragment;
 				var str = s.serializeToString(d);
-				alert(str);
+
 				contenuMail = Selection.wash(str);
 
 			}
