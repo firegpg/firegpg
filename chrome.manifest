@@ -12,6 +12,7 @@ locale	firegpg es	locale/es/
 locale	firegpg zh-CN	locale/zh-CN/
 locale	firegpg zh-TW	locale/zh-TW/
 locale	firegpg nl	locale/nl/
+locale	firegpg ca	locale/ca/
 locale	firegpg ko-KR	locale/ko-KR/
 skin	firegpg	classic/1.0	skin/
 overlay	chrome://browser/content/browser.xul	chrome://firegpg/content/firefoxOverlay.xul

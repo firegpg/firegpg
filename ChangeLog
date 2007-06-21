@@ -1,3 +1,8 @@
+2007-06-21  Maximilien Cuony
+	* Fix problem with pl locate.
+	* pl, tr, de, pt, updated
+	* ca added
+
 2007-06-19  Maximilien Cuony
 	* 0.4.2 packed, and uploaded to the server !
 	* it, zh-CN, zh-TW, tr, pt_BR updated

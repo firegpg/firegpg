@@ -9,7 +9,7 @@
 <!ENTITY change-gpg-path-checkbox "Ustaw ścieżkę GPG ręcznie">
 <!ENTITY result-always-in-new-window "Zawsze wyśietlaj rezultat szyfrowania lub podpisywania w osobnym oknie.">
 <!ENTITY no-gpg-agent-checkbox "Wymuś wyłączenie agenta GPG's (może rozwiązać niektóre problemy)">
-<!ENTITY ask-for-save-pass "By default, ask for save password.">
+<!ENTITY ask-for-save-pass "Domyślnie, pytaj czy zapisać hasło">
 <!ENTITY gmail-no-no-sign-checkbox "Nie pokazuj 'Nie znaleziono podpisu [...]'">
 <!ENTITY gmail-need-a-restart "Ta opcja wymaga restartu przeglądarki">
 <!ENTITY gmail-buttons-label "Widoczne przyciski :">

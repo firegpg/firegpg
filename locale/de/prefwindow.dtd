@@ -9,7 +9,7 @@
 <!ENTITY change-gpg-path-checkbox "Benutzerdefinierter Pfad zu GnuPG:">
 <!ENTITY result-always-in-new-window "Zeige die Ergebnisse von VerschlÃŒsseln/Signieren immer in einem neuen Fenster.">
 <!ENTITY no-gpg-agent-checkbox "Deaktivere den gpg-agent (kann einige Fehler beheben)">
-<!ENTITY ask-for-save-pass "By default, ask for save password.">
+<!ENTITY ask-for-save-pass "Passwort standardmäßig (nach Abfrage) speichern">
 <!ENTITY gmail-no-no-sign-checkbox "Verstecke 'Keine Signaturen gefunden [...]'">
 <!ENTITY gmail-need-a-restart "Einige Optionen erfordernen einen Browserneustart.">
 <!ENTITY gmail-buttons-label "Angezeigte Buttons:">

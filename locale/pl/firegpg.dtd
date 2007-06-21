@@ -29,6 +29,6 @@
 <!ENTITY firegpgContext.labelExport "Eksportuj">
 <!ENTITY firegpgToolbar.labelExport "Eksportuj">
 <!ENTITY firegpgPopInfo.options "Opcje">
-<!ENTITY firegpgContext.labelEditeur ""Otwórz edytor"">
-<!ENTITY firegpgMenu.labelEditeur ""Otwórz edytor"">
-<!ENTITY firegpgToolbar.labelEditeur ""Otwórz edytor"">
+<!ENTITY firegpgContext.labelEditeur "Otwórz edytor">
+<!ENTITY firegpgMenu.labelEditeur "Otwórz edytor">
+<!ENTITY firegpgToolbar.labelEditeur "Otwórz edytor">
