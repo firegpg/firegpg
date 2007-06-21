@@ -74,14 +74,6 @@ function getGPGAgentArgument() {
 }
 
 function getGPGTrustArgument(/* Optionnal */ forceNo) {
-	// Check to see if gpgAuth has disabled the --trust-model always flag - KLH
-	if (gpgAuth == null)
-	{
-		var gpgAuth = new Object();
-		gpgAuth.useGPGTrustArguemnt = true;
-	}
-
-
 	if (useGPGTrust && forceNo != true)
 		return ' --trust-model always';
 	else

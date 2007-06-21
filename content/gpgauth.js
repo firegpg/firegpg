@@ -14,8 +14,6 @@ var gpgAuth = {
 		document.addEventListener( "gpg_auth:login", this.login, false, true );
 		document.addEventListener( "unload", function() { gpgAuth.listenerUnload() }, false );
 		this.gpg_elements = new Array();
-		this.useGPGTrustArguemnt = true;
-		gpgAuth.useGPGTrustArguemnt = true;
 		this.prefs = Components.classes["@mozilla.org/preferences-service;1"].
 				getService(Components.interfaces.nsIPrefService);
 		this.prefs = this.prefs.getBranch("extensions.firegpg.gpgauth");
