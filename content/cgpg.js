@@ -302,13 +302,13 @@ var GPG = {
      * keyIdList is an array contain a liste of ID :
 	 *   ['id1', 'id2', etc.]
 	 */
-	baseCrypt: function(text, keyIdList) {
+	baseCrypt: function(text, keyIdList, fromGpgAuth /*Optional*/) {
 		this.initGPGACCESS();
 
-		var result = this.GPGAccess.crypt(text, keyIdList);
+		var result = this.GPGAccess.crypt(text, keyIdList,fromGpgAuth);
 		var tresult = result.sdOut;
 
-		result.sdOut = "ok";
+			result.sdOut = "ok";
 
 		if(tresult.indexOf("END_ENCRYPTION") == "-1") {
 			result.sdOut = "erreur";
@@ -321,7 +321,7 @@ var GPG = {
 	/*
 	* Function to decrypt a text.
 	*/
-	decrypt: function() {
+	decrypt: function( fromGpgAuth /*Optional*/) {
 		this.initGPGACCESS();
 
 		// GPG verification
@@ -331,7 +331,11 @@ var GPG = {
 		// For i18n
 		var i18n = document.getElementById("firegpg-strings");
 
-		var text = Selection.get();
+		if ( fromGpgAuth ) {
+			text = fromGpgAuth;
+		} else {
+			var text = Selection.get();
+		}
 
 		if (text == "") {
 			alert(i18n.getString("noData"));
@@ -383,6 +387,11 @@ var GPG = {
 			alert(i18n.getString("decryptFailed") + sdOut2);
 		}
 		else {
+			// If the text was passed by the extension and not collected from an element,
+			// return the encrypted result to the calling function - KLH
+			if ( fromGpgAuth ) {
+				return crypttext;
+			}
 			//We test is the selection in editable :
 			if(Selection.isEditable()) {
 				//If yes, we edit this selection with the new text

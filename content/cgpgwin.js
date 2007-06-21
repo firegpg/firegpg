@@ -168,11 +168,14 @@ var GPGWin = {
 	/*
 	 * Function to crypt a text.
 	 */
-	crypt: function(text, keyIdList) {
+	crypt: function(text, keyIdList, fromGpgAuth /*Optional*/) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
+
+		if (fromGpgAuth == null)
+			fromGpgAuth = false;
 
 		putIntoFile(tmpInput,text); // Temp
 
@@ -192,7 +195,7 @@ var GPGWin = {
 
 		runWinCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
-		           " --quiet" +  getGPGTrustArgument() + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+		           " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
 		           " " + keyIdListArgument +
 				   getGPGCommentArgument() + getGPGAgentArgument() +
 		           " --output " + tmpOutput +

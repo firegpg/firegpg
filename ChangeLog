@@ -1,4 +1,5 @@
 2007-06-21  Maximilien Cuony
+	* First implementation of gpgAuth.
 	* Fix problem with pl locate.
 	* pl, tr, de, pt, updated
 	* ca added

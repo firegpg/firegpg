@@ -73,8 +73,16 @@ function getGPGAgentArgument() {
 		return '';
 }
 
-function getGPGTrustArgument() {
-	if (useGPGTrust)
+function getGPGTrustArgument(/* Optionnal */ forceNo) {
+	// Check to see if gpgAuth has disabled the --trust-model always flag - KLH
+	if (gpgAuth == null)
+	{
+		var gpgAuth = new Object();
+		gpgAuth.useGPGTrustArguemnt = true;
+	}
+
+
+	if (useGPGTrust && forceNo != true)
 		return ' --trust-model always';
 	else
 		return '';
@@ -199,11 +207,14 @@ var GPGLin = {
 	/*
 	 * Function to crypt a text.
 	 */
-	crypt: function(texte, keyIdList) {
+	crypt: function(texte, keyIdList, fromGpgAuth /*Optional*/) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
+
+		if (fromGpgAuth == null)
+			fromGpgAuth = false;
 
 		putIntoFile(tmpInput,texte); // Temp
 
@@ -221,7 +232,7 @@ var GPGLin = {
 
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet" +  getGPGTrustArgument() + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+		           " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
 		           " " + keyIdListArgument +
 				   getGPGCommentArgument() + getGPGAgentArgument() +
 		           " --output " + tmpOutput +
