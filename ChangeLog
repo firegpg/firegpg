@@ -1,4 +1,5 @@
 2007-06-21  Maximilien Cuony
+	* 0.4.2.1 packed, and uploaded to the server !
 	* First implementation of gpgAuth.
 	* Fix problem with pl locate.
 	* pl, tr, de, pt, updated
