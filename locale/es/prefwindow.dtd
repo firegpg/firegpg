@@ -4,6 +4,7 @@
 <!ENTITY no-gpg-agent-checkbox "Apagar a la fuerza el agente gpg (puede solucionar errores)">
 <!ENTITY pane1.title "General">
 <!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
 <!ENTITY gmail-enabled-checkbox.label "Integración con Gmail">
 <!ENTITY prefwindow.title "Preferencias de FireGPG">
 <!ENTITY private-keys-label.text "Clave personal por defecto">
@@ -18,3 +19,9 @@
 <!ENTITY gmail-buton-crypt-checkbox "Cifrar">
 <!ENTITY gmail-buton-cryptsend-checkbox "Cifrar y enviar">
 <!ENTITY allvays-to-myself-checkbox "Cifrar siempre que me envíe a mi mismo">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (Requires Restart of Firefox)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Per-domain settings:">

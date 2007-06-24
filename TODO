@@ -1,8 +1,11 @@
 Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
         - predwindow.dtd
-            - ask-for-save-pass ?
+            "Per-domain settings:"
+            "Always decrypt messages from Authenticated Servers"
+            "Always decrypt messages from Authenticated Servers"
+            "Enable gpgAuth (Requires Restart of Firefox)"
         - firegpg.properties
-            - newVersionAlert
+
 Tâches libres :
 	- ajouter la possibilité de chiffrer et signer en même temps
 	- Rajouter la posibilité de faire des traitement sur les fichiers téléchargés ? [Possible ?]

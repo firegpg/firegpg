@@ -105,7 +105,8 @@ function onLoad(win)
 	/* call some important events */
 	onChangeGPGPathCheckbox();
 
-
+	/* gpgAUth */
+	getIgnored_servers( document.getElementById('domain_list') );
 }
 
 /*

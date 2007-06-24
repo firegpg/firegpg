@@ -1,6 +1,7 @@
 <!ENTITY prefwindow.title "Preferències del FireGPG">
 <!ENTITY pane1.title "General">
 <!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
 <!ENTITY gmail-enabled-checkbox.label "Suport per al GMail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Clau privada per defecte:">
@@ -18,3 +19,9 @@
 <!ENTITY gmail-buton-crypt-checkbox "Encripta">
 <!ENTITY gmail-buton-cryptsend-checkbox "Encripta i Envia">
 <!ENTITY allvays-to-myself-checkbox "Encripta sempre a mi mateix.">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (Requires Restart of Firefox)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Per-domain settings:">

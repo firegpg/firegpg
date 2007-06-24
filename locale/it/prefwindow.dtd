@@ -1,6 +1,7 @@
 <!ENTITY prefwindow.title "FireGPG - Preferenza">
 <!ENTITY pane1.title "Generale">
 <!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
 <!ENTITY gmail-enabled-checkbox.label "GMail support">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Chiave privata di default">
@@ -18,3 +19,9 @@
 <!ENTITY gmail-buton-crypt-checkbox "Cripta">
 <!ENTITY gmail-buton-cryptsend-checkbox "Cripta e invia">
 <!ENTITY allvays-to-myself-checkbox "Seleziona sempre la mia chiave per criptare">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (Requires Restart of Firefox)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Per-domain settings:">

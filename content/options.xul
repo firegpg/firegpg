@@ -126,6 +126,31 @@
             </rows>
         </grid>
     </prefpane>
+
+    <prefpane id="pane3" label="&pane3.title;" flex="1" image="chrome://firegpg/skin/opt-gpgauth.png">
+		<preferences id="preferences_gpgauth">
+			<preference id="enable-gpgauth-pref" name="extensions.firegpg.gpgauth.global.enable_gpgauth" type="bool"/>
+			<preference id="global-allow-keyring-pref" name="extensions.firegpg.gpgauth.global.allow_keyring" type="bool"/>
+		</preferences>
+		<checkbox id="enable-gpgauth-check" preference="enable-gpgauth-pref" oncommand="alert( 'You must restart Firefox for this setting to take effect' );" label="&enable-gpgauth-check.label;" accesskey="&enable-gpgauth-check.accesskey;"/>
+		<checkbox id="global-allow-keyring-check" preference="global-allow-keyring-pref" label="&global-allow-keyring-check.label;" accesskey="&global-allow-keyring-check.accesskey;"/>
+		<label control="domain_list">&per-domain-preferences.label;</label>
+		<vbox>
+			<listbox id="domain_list" rows="4">
+				<listhead>
+					<listheader label="Domain"/>
+					<listheader label="Event"/>
+					<listheader label="Enabled"/>
+				</listhead>
+				<listcols>
+					<listcol flex="1"/>
+					<listcol flex="1"/>
+					<listcol flex="1"/>
+				</listcols>
+			</listbox>
+		</vbox>
+	</prefpane>
+
     <stringbundleset id="stringbundleset">
         <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
     </stringbundleset>
@@ -136,6 +161,7 @@
     <script src="cgpgwin.js"/>
     <script src="cgpg.js"/>
     <script src="options.js"/>
+    <script src="gpgauth_options.js"/>
 
 </prefwindow>
 

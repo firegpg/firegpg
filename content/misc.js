@@ -565,6 +565,28 @@ function runCommand(command, arg) {
 }
 
 /*
+ * getContent of a webpage, using a xmlhttprequest
+ */
+
+function getContentXHttp(url)
+{
+	p = new XMLHttpRequest();
+	p.onload = null;
+	p.open("GET", url, false);
+	p.send(null);
+
+	if ( p.status != "200" )
+	{
+	    return null;
+	}
+	else
+	{
+	    contenu = p.responseText;
+	    return contenu;
+	}
+}
+
+/*
 * Run a command on windows (with a hidden dos box)
 */
 function runWinCommand(command, arg) {

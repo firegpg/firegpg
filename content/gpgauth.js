@@ -11,16 +11,27 @@ var gpgAuth = {
 	onLoad: function() {
 		this.initialized = true;
 		this.strings = document.getElementById( "firegpg-strings" );
-		document.addEventListener( "gpg_auth:login", this.login, false, true );
-		document.addEventListener( "unload", function() { gpgAuth.listenerUnload() }, false );
+
 		this.gpg_elements = new Array();
 		this.prefs = Components.classes["@mozilla.org/preferences-service;1"].
 				getService(Components.interfaces.nsIPrefService);
 		this.prefs = this.prefs.getBranch("extensions.firegpg.gpgauth");
+
+		if ( this.prefs.prefHasUserValue( ".global.enable_gpgauth" ) ) {
+			var gpgauth_enabled = this.prefs.getBoolPref( ".global.enable_gpgauth" );
+		} else {
+			var gpgauth_enabled = false;
+		}
+		
+		if ( gpgauth_enabled ) {
+			window.addEventListener( "gpg_auth:login", this.login, false, true );
+			window.addEventListener( "unload", function() { gpgAuth.listenerUnload() }, false );
+		}
+
 	},
 
 	listenerUnload: function( event ) {
-		document.removeEventListener( "gpg_auth:login", this.login, false, true );
+		window.removeEventListener( "gpg_auth:login", this.login, false, true );
 	},
 
 	// This function gets called by the "gpg:login" event that is emitted from
@@ -245,13 +256,14 @@ var gpgAuth = {
 		if ( user_token && ms < 300000 ) {
 			var result = GPG.decrypt( user_token );
 			var random_re = new RegExp( "^gpgauth[0-9]string[0-9][0-9]for[0-9]auth[0-9][0-9]dont[0-9]use[0-9]it[0-9][a-z]for[0-9]another[0-9][a-z]gpgauth[a-z0-9]+gpgauthv1$", "i" );
-			if ( result && random_re.test(result)) {
-				content.document.getElementById( "gpg_auth:user_token" ).innerHTML = result;
-				content.document.getElementById( "gpg_auth:form" ).submit();
-
-			} else {
-			alert( "Aborting" );
-			return false;
+			if ( result ) {
+				if ( random_re.test( result ) ) {
+					content.document.getElementById( "gpg_auth:user_token" ).innerHTML = result;
+					content.document.getElementById( "gpg_auth:form" ).submit();
+				}  else {
+					alert( "The server did not provide a token compatible with this version of FireGPG; Aborting." );
+					return false;
+				}
 			}
 		} else {
 			alert( "The server did not provide an encrypted token for us to decrypt; Aborting" );

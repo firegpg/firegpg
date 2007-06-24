@@ -1,6 +1,7 @@
 <!ENTITY prefwindow.title "FireGPG 選項">
 <!ENTITY pane1.title "一般情況">
 <!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
 <!ENTITY gmail-enabled-checkbox.label "GMail支持">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "默認私鑰：">
@@ -19,3 +20,9 @@
 <!ENTITY gmail-buton-crypt-checkbox "加密">
 <!ENTITY gmail-buton-cryptsend-checkbox "加密並發送">
 <!ENTITY allvays-to-myself-checkbox "發信給自己時總是加密">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (Requires Restart of Firefox)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Per-domain settings:">

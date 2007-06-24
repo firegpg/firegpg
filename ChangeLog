@@ -1,3 +1,9 @@
+2007-06-24  Maximilien Cuony
+	* 0.4.2.1 repacked, and uploaded to the server !
+	* Apply diff of 22/06 for gpgAuth
+	* Implement getContentXhttp
+	* getMimeMailContens finished !
+
 2007-06-21  Maximilien Cuony
 	* 0.4.2.1 packed, and uploaded to the server !
 	* First implementation of gpgAuth.

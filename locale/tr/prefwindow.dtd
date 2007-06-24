@@ -1,6 +1,7 @@
 <!ENTITY prefwindow.title "FireGPG tercihler">
 <!ENTITY pane1.title "Genel">
 <!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
 <!ENTITY gmail-enabled-checkbox.label "GMail desteği">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-labelİmza bulunamadıözel anahtar:">
@@ -18,3 +19,9 @@
 <!ENTITY gmail-buton-crypt-checkbox "Şifre">
 <!ENTITY gmail-buton-cryptsend-checkbox "Şifre ve Gönder">
 <!ENTITY allvays-to-myself-checkbox "Her zaman şifrele.">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (Requires Restart of Firefox)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Per-domain settings:">

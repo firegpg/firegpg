@@ -717,8 +717,6 @@ var cGmail = {
 		var str = s.serializeToString(d);
 		contenuMail = Selection.wash(str);
 
-
-
 		return contenuMail;
 
 	},
@@ -765,59 +763,32 @@ var cGmail = {
 
 	getMimeMailContens: function(id) {
 
-		//alert(getContent("https://mail.google.com/mail/?ik=" + this.ik + "&view=om&th=" + this.foundTheGoodId(i) + "&zx="));
+		
+			var idOfTheMail = this.foundTheGoodId(id);
 
-		//ATTENTION : PSENER AU VÉRIFICATEUR DE DCX.
+		if (this.messageCache == null || this.messageCache[idOfTheMail] == null)
+		{
 
-		var contenuMail = this.lastDomToverify.document.getElementById('mb_' + id);
+			var mailData = getContentXHttp("https://mail.google.com/mail/?ik=" + this.ik + "&view=om&th=" + idOfTheMail + "&zx=");
 
-		var listNodes = contenuMail.getElementsByTagName("a");
 
-		for (var i = 0; i < listNodes.length; i++) {
-		try {	 if (listNodes[i].getAttribute("href").indexOf("attid=") != -1)
+			//temps en temps des probs en https (déconection) alors on utilise le http
+			if (mailData.indexOf("<html>") == 0)
 			{
-				var papa = listNodes[i].parentNode;
-				var papatexte = papa.innerHTML;
+				alert("!");
+				mailData = getContentXHttp("http://mail.google.com/mail/?ik=" + this.ik + "&view=om&th=" + idOfTheMail + "&zx=");
+			}
 
-				var reg=new RegExp("<b>[^<]*</b>", "gi"); //Élimination des scripts
-				papatexte = papatexte.replace(reg,"");
+			if (this.messageCache == null)
+				this.messageCache = { };
 
-				var reg=new RegExp("<a[^>]*>[^<]*</a>", "gi"); //Élimination des scripts
-				papatexte = papatexte.replace(reg,"");
+			this.messageCache[idOfTheMail] = mailData;
 
-				var reg=new RegExp("K", "gi"); //Élimination des scripts
-				papatexte = papatexte.replace(reg,"");
-
-				var reg=new RegExp("<br>", "gi"); //Élimination des scripts
-				papatexte = papatexte.replace(reg,"");
-
-				if ((papatexte / 1) < 3) //Jusqu'a 2k, ça PEUT être une signature.
-				{
-
-					var xhr_object = new XMLHttpRequest();
-
-
-					xhr_object.open("GET", "https://mail.google.com/mail/" + listNodes[i].getAttribute("href"), false);
-					xhr_object.send(null);
-
-					while(xhr_object.readyState != 4)
-						{ }
-
-					var dataToTry = xhr_object.responseText;
-
-					//Verify GPG'data presence
-					var firstPosition = dataToTry.indexOf("-----BEGIN PGP SIGNATURE-----");
-					var lastPosition = dataToTry.indexOf("-----END PGP SIGNATURE-----");
-
-					if (firstPosition != -1 && lastPosition != -1)
-					{
-						monTexteMieux = dataToTry;
-					}
-
-
-				}
-
-			} } catch(e) { alert(e); }
+			return mailData;
+		}
+		else
+		{
+			return this.messageCache[idOfTheMail];
 		}
 
 

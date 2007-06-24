@@ -382,9 +382,11 @@ var GPG = {
 		if (result == "erreurPass") {
 			alert(i18n.getString("decryptFailedPassword"));
 			eraseSavedPassword();
+			return;
 		}
 		else if (result == "erreur") {
 			alert(i18n.getString("decryptFailed") + sdOut2);
+			return;
 		}
 		else {
 			// If the text was passed by the extension and not collected from an element,

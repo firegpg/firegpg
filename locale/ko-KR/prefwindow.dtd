@@ -1,6 +1,7 @@
 <!ENTITY prefwindow.title "FireGPG 설정">
 <!ENTITY pane1.title "일반">
 <!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
 <!ENTITY gmail-enabled-checkbox.label "Gmail 지원">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "기본 개인키:">
@@ -18,3 +19,9 @@
 <!ENTITY gmail-buton-crypt-checkbox "암호화">
 <!ENTITY gmail-buton-cryptsend-checkbox "암호화하여 전송">
 <!ENTITY allvays-to-myself-checkbox "항상 나 자신에게 암호화하여 보내기">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (Requires Restart of Firefox)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Per-domain settings:">
