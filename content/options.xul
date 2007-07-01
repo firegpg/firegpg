@@ -50,7 +50,7 @@
             <preference id="result-always-in-new-window-pref" name="extensions.firegpg.result_always_in_new_window" type="bool"/>
             <preference id="ask-for-save-pass-pref" name="extensions.firegpg.default_memory" type="bool"/>
             <preference id="allvays-to-myself-pref" name="extensions.firegpg.allvays_to_myself" type="bool"/>
-
+            <preference id="no-updates" name="extensions.firegpg.no_updates" type="bool"/>
         </preferences>
 
         <!-- Always sign or verify in a new window -->
@@ -64,6 +64,7 @@
 
         <checkbox  id="allvays-to-myself-checkbox" preference="allvays-to-myself-pref" label="&allvays-to-myself-checkbox;"/>
 
+        <checkbox  id="updates-checkbox" preference="no-updates" label="&turn-off-updates;" onclick="showWarnigs()"/>
 
 
         <!-- list of private keys -->

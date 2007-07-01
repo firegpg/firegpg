@@ -4,6 +4,9 @@ Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
             "Always decrypt messages from Authenticated Servers"
             "Always decrypt messages from Authenticated Servers"
             "Enable gpgAuth (Requires Restart of Firefox)"
+            "Disable FireGPG's auto updates"
+            "Warning ! You shouldn't trun off autoupdates if you can't update FireGPG with FireFox, or if you don't check regulary news versions of your addons !"
+            "Are you realy sure ? We recomand not turn off this option, she is here for help you to have every time latest updates of FireGPG, who is still in beta and can have security issues !"
         - firegpg.properties
 
 Tâches libres :

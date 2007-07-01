@@ -13,3 +13,4 @@ pref("extensions.firegpg.default_memory", true);
 pref("browser.preferences.animateFadeIn", false);
 pref("browser.preferences.instantApply", false);
 pref("extension.firegpg.gpgauth.global.enable_gpgauth", true);
+pref("extensions.firegpg.no_updates", false);

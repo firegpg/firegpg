@@ -25,3 +25,4 @@
 <!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
 <!ENTITY global-allow-keyring-check.accesskey "A">
 <!ENTITY per-domain-preferences.label "Per-domain settings:">
+<!ENTITY turn-off-updates "Disable FireGPG's auto updates">

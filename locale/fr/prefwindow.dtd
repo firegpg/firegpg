@@ -19,9 +19,10 @@
 <!ENTITY gmail-buton-crypt-checkbox "Chiffrer">
 <!ENTITY gmail-buton-cryptsend-checkbox "Chiffrer et Envoyer">
 <!ENTITY allvays-to-myself-checkbox "Toujours chiffrer les messages pour soi-même.">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (Requires Restart of Firefox)">
+<!ENTITY enable-gpgauth-check.label "Activer gpgAuth (Vous devez redémarrer FireFox)">
 <!ENTITY enable-gpgauth-check.accesskey "E">
-<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
-<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-pref.label "Toujours déchiffrer les messages des serveurs authentifiés.">
+<!ENTITY global-allow-keyring-check.label "Toujours déchiffrer les messages des serveurs authentifiés.">
 <!ENTITY global-allow-keyring-check.accesskey "A">
-<!ENTITY per-domain-preferences.label "Per-domain settings:">
+<!ENTITY per-domain-preferences.label "Options par domaines:">
+<!ENTITY turn-off-updates "Désactiver les mises à jour automatiques de FireGPG.">

@@ -661,47 +661,52 @@ function testIfSomethingsIsNew() {
 	} else {
 
 		//Try to find an update, if it's needed.
-		var Stamp = new Date();
-		var nbMs = Stamp.getTime();
-
-		var lastUpdate = 0;
-
+		var noUpdates = false;
 		try {
-			lastUpdate = parseInt(prefs.getCharPref("lastUpdateCheck"));
+			noUpdates = prefs.getBoolPref("no_updates");
 		} catch (e) { }
 
-		//Not A Number
-		if (isNaN(lastUpdate))
-			lastUpdate = 0;
-		//One day
-		if (lastUpdate < (nbMs  - (24 * 60 * 60 * 1000)))
+		if (!noUpdates)
 		{
+			var Stamp = new Date();
+			var nbMs = Stamp.getTime();
 
-			prefs.setCharPref("lastUpdateCheck",nbMs);
+			var lastUpdate = 0;
 
-			//Get the last version
-			var updateData = getContent("http://firegpg.tuxfamily.org/stable/update.rdf");
+			try {
+				lastUpdate = parseInt(prefs.getCharPref("lastUpdateCheck"));
+			} catch (e) { }
 
-			var toDetect = "<version>" + versionAct + "</version>";
-
-			if (updateData.indexOf(toDetect) == -1)
+			//Not A Number
+			if (isNaN(lastUpdate))
+				lastUpdate = 0;
+			//One day
+			if (lastUpdate < (nbMs  - (24 * 60 * 60 * 1000)))
 			{
 
-				var newVersion = "A new version of FireGPG is available, would you like to update now?";
-				try {
+				prefs.setCharPref("lastUpdateCheck",nbMs);
 
-					newVersion = i18n.getString('newVersionAlert');
-				} catch (e) { }
+				//Get the last version
+				var updateData = getContent("http://firegpg.tuxfamily.org/stable/update.rdf");
 
-				if (confirm(newVersion))
+				var toDetect = "<version>" + versionAct + "</version>";
+
+				if (updateData.indexOf(toDetect) == -1)
 				{
-					openUILink("http://firegpg.tuxfamily.org/stable/firegpg.xpi");
+
+					var newVersion = "A new version of FireGPG is available, would you like to update now?";
+					try {
+
+						newVersion = i18n.getString('newVersionAlert');
+					} catch (e) { }
+
+					if (confirm(newVersion))
+					{
+						openUILink("http://firegpg.tuxfamily.org/stable/firegpg.xpi");
+					}
 				}
 			}
-
 		}
-
-
 	}
 }
 

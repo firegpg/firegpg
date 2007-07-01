@@ -136,4 +136,16 @@ function chooseGPGPath()
 	}
 }
 
+/* Show warnings if use try to disable updates */
+function showWarnigs()
+{
+	var checkBox = document.getElementById("updates-checkbox");
+	//Si c'est false, il est entrain d'activer
+	if (checkBox.checked == false)
+	{
+		var i18n = document.getElementById("firegpg-strings");
+		if (!confirm(i18n.getString('turn-off-updates-w1')) || !confirm(i18n.getString('turn-off-updates-w2')))
+			checkBox.checked = true;
+	}
+}
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8
