@@ -1,5 +1,6 @@
 2007-07-08  Maximilien Cuony
 	* Added more information when select a key (id, dates (created, expire))
+	* Information about the firefox restart nedded when the gpg's path is edited.
 
 2007-07-01  Maximilien Cuony
 	* Option to disable auto-update

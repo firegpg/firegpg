@@ -80,13 +80,16 @@
 
         <!-- specify the gpg path -->
         <checkbox id="change-gpg-path-checkbox" checked="true" preference="specify-gpg-path-pref"
-                  label="&change-gpg-path-checkbox;" control="gpg-path-textbox"
+                  label="&change-gpg-path-checkbox; *" control="gpg-path-textbox"
                   oncommand="onChangeGPGPathCheckbox(this, true);"/>
         <hbox>
             <textbox id="gpg-path-textbox"  preference="gpg-path-pref"/>
-            <button id="change-gpg-path-button" label="&change-gpg-path-button;"
+            <button id="change-gpg-path-button" label="&change-gpg-path-button; *"
                   control="gpg-path-textbox" oncommand="chooseGPGPath();"/>
         </hbox>
+
+
+       <label  id="gmail-need-a-restart-label" value="* &gmail-need-a-restart;"/>
 
     </prefpane>
     <prefpane id="paneGmail" label="&pane2.title;" flex="1" image="chrome://firegpg/skin/opt-gmail.png">
