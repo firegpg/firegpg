@@ -26,3 +26,7 @@
 <!ENTITY global-allow-keyring-check.accesskey "A">
 <!ENTITY per-domain-preferences.label "Options par domaines:">
 <!ENTITY turn-off-updates "Désactiver les mises à jour automatiques de FireGPG.">
+<!ENTITY key-name "Nom">
+<!ENTITY key-id "Id">
+<!ENTITY key-create "Création">
+<!ENTITY key-expire "Expiration">

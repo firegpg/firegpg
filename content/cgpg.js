@@ -240,9 +240,15 @@ var GPG = {
 		for (var i = 0; i < list.length; i++) {
 			var infos = new Array();
 			try { infos = list[i].split(":");
-
+			//4: key id. 9 = key name. 5: creation date, 6: expire date
 			if(infos[0] == "pub" || infos[0] == "sec")
-				retour[infos[4]] = infos[9] ;
+			{
+				var keyId = infos[4];
+				var keyName = infos[9];
+				var keyDate = infos[5];
+				var keyExpi = infos[6];
+				retour[infos[4]] = new Array(keyName, keyDate,keyExpi);
+			}
 			} catch (e) { }
 		}
 

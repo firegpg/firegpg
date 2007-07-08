@@ -69,7 +69,14 @@
 
         <!-- list of private keys -->
         <label  id="private-keys-label" value="&private-keys-label.text;"/>
-        <listbox id="private-keys-listbox" rows="4" onselect="privateKeySelected(this)" />
+        <listbox id="private-keys-listbox" rows="4" onselect="privateKeySelected(this)">
+            <listhead>
+                <listheader label="&key-name;"></listheader>
+                <listheader label="&key-id;"></listheader>
+                <listheader label="&key-create;"></listheader>
+                <listheader label="&key-expire;"></listheader>
+            </listhead>
+        </listbox>
 
         <!-- specify the gpg path -->
         <checkbox id="change-gpg-path-checkbox" checked="true" preference="specify-gpg-path-pref"

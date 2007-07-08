@@ -90,11 +90,36 @@ function onLoad(win)
 
 		}
 
-		var newItem = listInDialog.appendItem(list[id], id);
+
+
+		var  item   = document.createElement('listitem');
+
+		var  child1 = document.createElement('listcell');
+		child1.setAttribute('label', list[id][0]);
+		item.appendChild(child1);
+
+		var  child2 = document.createElement('listcell');
+		child2.setAttribute('label', id);
+		item.appendChild(child2);
+
+		var  child3 = document.createElement('listcell');
+		child3.setAttribute('label', list[id][1]);
+		item.appendChild(child3);
+
+		var  child4 = document.createElement('listcell');
+		child4.setAttribute('label', list[id][02]);
+		item.appendChild(child4);
+
+		listInDialog.appendChild(item);
+
+		//var newItem = listInDialog.appendItem(list[id], id);
+
+
+
 
 		if (selected == true)
 		{
-			listOfAutoSelect[j] = newItem;
+			listOfAutoSelect[j] = item;
 			j++;
 			//listInDialog.addItemToSelection(newItem);
 			//newItem.setAttribute('selected', selected);
@@ -137,7 +162,7 @@ function onAccept()
 	var result = [];
 	for(var i = 0; i < listInDialog.selectedItems.length; i++) {
 		var item = listInDialog.selectedItems[i];
-		result.push(item.value);
+		result.push(item.childNodes[1].getAttribute('label'));
 	}
 
 	window.arguments[0].selected_items = result;
