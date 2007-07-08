@@ -70,7 +70,7 @@ var GPGWin = {
 		try { // DON'T MOVE THIS LINE !
 			runWinCommand(tmpRun, // DON'T MOVE THIS LINE !
 			           '"' + this.getGPGCommand() + '" "' + tmpStdOut + '"' +
-			           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
+			           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
 			           " --default-key " + keyID +
 			           " --output " + tmpOutput +
 			           " --passphrase-fd 0 " +
@@ -118,7 +118,7 @@ var GPGWin = {
 
 		runWinCommand(tmpRun,
 		          '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
-		           " --quiet --no-tty" +  getGPGTrustArgument() + " --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+		           getGPGBonusCommand() + " --quiet --no-tty" +  getGPGTrustArgument() + " --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
 		           " --verify " + tmpInput);
 
 		// We get the result
@@ -152,7 +152,7 @@ var GPGWin = {
 
 		runWinCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons" + getGPGAgentArgument() + " " + mode);
+		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons" + getGPGAgentArgument() + " " + mode);
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -195,7 +195,7 @@ var GPGWin = {
 
 		runWinCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
-		           " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+		           getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
 		           " " + keyIdListArgument +
 				   getGPGCommentArgument() + getGPGAgentArgument() +
 		           " --output " + tmpOutput +
@@ -249,7 +249,7 @@ var GPGWin = {
 		try {  // DON'T MOVE THIS LINE !
 			runWinCommand(tmpRun,
 			           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
-			           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
+			           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
 			           " --passphrase-fd 0 " +
 			           " --output " + tmpOutput +
 			           " --decrypt " + tmpInput +
@@ -298,7 +298,7 @@ var GPGWin = {
 
 		runWinCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
 		           " --version");
 
 		// We get the result
@@ -336,7 +336,7 @@ var GPGWin = {
 
 		runWinCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
 		           " --import " + tmpInput);
 
 		// We get the result
@@ -367,7 +367,7 @@ var GPGWin = {
 
 		runWinCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
 		           " --export " + key);
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -396,7 +396,7 @@ var GPGWin = {
 
 		runWinCommand(tmpRun,
 		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
-		           " " + option +
+		           getGPGBonusCommand() + " " + option +
 		           " --version");
 		// We get the result
 		var result = getFromFile(tmpStdOut);

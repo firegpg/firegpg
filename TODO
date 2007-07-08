@@ -11,6 +11,7 @@ Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
             "Id"
             "Created"
             "Expire"
+            "pane4.title"
         - firegpg.properties
 
 

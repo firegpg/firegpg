@@ -80,6 +80,38 @@ function getGPGTrustArgument(/* Optionnal */ forceNo) {
 		return '';
 }
 
+//Return the agurments who the user want to add. SPACE BEFORE, NO SPACE IN LAST CHARACTER
+function getGPGBonusCommand(){
+	var arguement = "";
+	try {
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                           getService(Components.interfaces.nsIPrefService);
+			prefs = prefs.getBranch("extensions.firegpg.");
+			arguement = prefs.getCharPref("gpg_user_options");
+
+	} catch (e)  { }
+
+	if (arguement == '')
+		return "";
+
+	//We remove double-spaces
+	var reg=new RegExp("  ", "gi");
+	arguement = arguement.replace(reg," ");
+	arguement = arguement.replace(reg," ");
+	arguement = arguement.replace(reg," ");
+	arguement = arguement.replace(reg," ");
+	arguement = arguement.replace(reg," ");
+
+	//Spaces at beginig and and
+	arguement =  arguement.replace(/^\s+/, '').replace(/\s+$/, '');
+
+	if (arguement == '')
+		return "";
+
+	return " " + arguement;
+
+}
+
 
 /*
  * Class to access to GPG on GNU/Linux.
@@ -111,12 +143,13 @@ var GPGLin = {
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
 		try { runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" +
+		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" +
 		           " --default-key " + keyID +
 		           " --output " + tmpOutput +
 		           " --passphrase-file " + tmpPASS + "" +
 				   getGPGCommentArgument() + getGPGAgentArgument() +
-		           " --clearsign " + tmpInput); } catch (e) { }
+		           " --clearsign " + tmpInput
+			   ); } catch (e) { }
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
 		// We get the result
@@ -152,8 +185,9 @@ var GPGLin = {
 
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet" +  getGPGTrustArgument() + " --no-tty --no-verbose --status-fd 1 --armor" +  getGPGAgentArgument() +
-		           " --verify " + tmpInput);
+		           getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument() + " --no-tty --no-verbose --status-fd 1 --armor" +  getGPGAgentArgument() +
+		           " --verify " + tmpInput
+			   );
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -183,7 +217,8 @@ var GPGLin = {
 
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons" + getGPGAgentArgument() + " " + mode );
+		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons" + getGPGAgentArgument() + " " + mode
+			   );
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -224,11 +259,12 @@ var GPGLin = {
 
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+		           getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
 		           " " + keyIdListArgument +
 				   getGPGCommentArgument() + getGPGAgentArgument() +
 		           " --output " + tmpOutput +
-		           " --encrypt " + tmpInput);
+		           " --encrypt " + tmpInput
+			   );
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -272,10 +308,11 @@ var GPGLin = {
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
 		try { runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
+		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
 		           " --passphrase-file " + tmpPASS +
 		           " --output " + tmpOutput +
-		           " --decrypt " + tmpInput); } catch (e) { }
+		           " --decrypt " + tmpInput
+			   ); } catch (e) { }
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
 		// We get the result
@@ -308,8 +345,9 @@ var GPGLin = {
 
 		runCommand(tmpRun,
 		           "" + this.getGPGCommand() + "" +  " " + tmpStdOut +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
-		           " --version");
+		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+		           " --version"
+			   );
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -341,8 +379,9 @@ var GPGLin = {
 
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
-		           " --import " + tmpInput);
+		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+		           " --import " + tmpInput
+			   );
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -369,7 +408,7 @@ var GPGLin = {
 
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
 		           " --export " + key);
 
 		// We get the result
@@ -396,7 +435,7 @@ var GPGLin = {
 
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           " --status-fd 1 " + option +
+		           getGPGBonusCommand() + " --status-fd 1 " + option +
 		           " --version" );
 
 		// We get the result

@@ -43,8 +43,6 @@
         <!-- preferences -->
         <preferences>
             <preference id="default-private-key-pref" name="extensions.firegpg.default_private_key" type="string"/>
-            <preference id="gpg-path-pref" name="extensions.firegpg.gpg_path" type="string"/>
-            <preference id="specify-gpg-path-pref" name="extensions.firegpg.specify_gpg_path" type="bool"/>
             <preference id="no-gpg-agent-pref" name="extensions.firegpg.no_gpg_agent" type="bool"/>
             <preference id="show-web-site-pref" name="extensions.firegpg.show_website" type="bool"/>
             <preference id="result-always-in-new-window-pref" name="extensions.firegpg.result_always_in_new_window" type="bool"/>
@@ -77,6 +75,24 @@
                 <listheader label="&key-expire;"></listheader>
             </listhead>
         </listbox>
+    </prefpane>
+
+
+
+    <prefpane id="paneGpg" label="&pane4.title;" flex="1" image="chrome://firegpg/skin/opt-gpg.png">
+        <!-- preferences -->
+        <preferences>
+
+            <preference id="gpg-path-pref" name="extensions.firegpg.gpg_path" type="string"/>
+            <preference id="specify-gpg-path-pref" name="extensions.firegpg.specify_gpg_path" type="bool"/>
+            <preference id="gpg-add-options-pref" name="extensions.firegpg.gpg_user_options" type="string"/>
+
+        </preferences>
+
+
+        <label  id="gpg-add-options-label" value="&gpg-add-options;"/>
+        <textbox id="gpg-add-options-textbox"  preference="gpg-add-options-pref"/>
+
 
         <!-- specify the gpg path -->
         <checkbox id="change-gpg-path-checkbox" checked="true" preference="specify-gpg-path-pref"
@@ -92,6 +108,8 @@
        <label  id="gmail-need-a-restart-label" value="* &gmail-need-a-restart;"/>
 
     </prefpane>
+
+
     <prefpane id="paneGmail" label="&pane2.title;" flex="1" image="chrome://firegpg/skin/opt-gmail.png">
         <preferences>
             <preference id="gmail-enabled-pref" name="extensions.firegpg.gmail_enabled" type="bool"/>
@@ -138,6 +156,11 @@
         </grid>
     </prefpane>
 
+
+
+
+    <!-- Gpg auth -->
+
     <prefpane id="pane3" label="&pane3.title;" flex="1" image="chrome://firegpg/skin/opt-gpgauth.png">
 		<preferences id="preferences_gpgauth">
 			<preference id="enable-gpgauth-pref" name="extensions.firegpg.gpgauth.global.enable_gpgauth" type="bool"/>
@@ -161,6 +184,7 @@
 			</listbox>
 		</vbox>
 	</prefpane>
+    <!-- end of gpg auth -->
 
     <stringbundleset id="stringbundleset">
         <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
