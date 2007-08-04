@@ -50,6 +50,14 @@ function onLoad(win)
         {
                 document.getElementById('buttons-box').style.display = 'none';
         }
+
+
+        if (window.arguments[0].validSign != null)
+        {
+
+                document.getElementById('dcryptsignresult').style.display = '';
+                document.getElementById('dcryptsignresult').value = document.getElementById("firegpg-strings").getString("validSignInCrypt") + " " + window.arguments[0].validSign;
+        }
 }
 
 /*
@@ -131,6 +139,60 @@ function crypt() {
 	}
 }
 
+
+//Crypt and sign
+function cryptandsign(){
+        // GPG verification
+        if(!GPG.selfTest())
+                return;
+
+        // For i18n
+        var i18n = document.getElementById("firegpg-strings");
+
+        var text = getSelectedText();
+
+        if (text == "") {
+                alert(i18n.getString("noData"));
+                return;
+        }
+
+        // Needed for a crypt
+        var keyIdList = choosePublicKey();
+
+        if(keyIdList == null)
+                return;
+
+        // Needed for a sign
+        var keyID = getSelfKey();
+        if(keyID == null)
+                return;
+
+        var password = getPrivateKeyPassword();
+        if(password == null)
+                return;
+
+        // We get the result
+        var result = GPG.baseCryptAndSign(text, keyIdList,false,password, keyID);
+        var crypttext = result.output;
+        var sdOut2 = result.sdOut2;
+        result = result.sdOut;
+
+        // If the crypt failled
+        if(result == "erreur") {
+                // We alert the user
+                alert(i18n.getString("cryptAndSignFailed") + sdOut2);
+        }
+        else if(result == "erreurPass") {
+                // We alert the user
+                eraseSavedPassword();
+                alert(i18n.getString("cryptAndSignFailedPass"));
+        }
+        else {
+                setSeletedText(crypttext);
+        }
+
+}
+
 //Decrypt the text
 function dcrypt() {
         // GPG verification
@@ -193,6 +255,26 @@ function dcrypt() {
         }
         else {
                 setSeletedText(crypttext);
+
+                //If a vliad sign was found, infos about are in sdOut2
+                if (result == "signValid")
+                {
+                        infos = sdOut2.split(" ");
+
+                        var infos2 = "";
+                        for (var ii = 1; ii < infos.length; ++ii)
+                        {  infos2 = infos2 + infos[ii] + " ";}
+
+
+                        document.getElementById('dcryptsignresult').style.display = '';
+                        document.getElementById('dcryptsignresult').value = i18n.getString("validSignInCrypt") + " " + infos2;
+                }
+                else
+                {
+                        document.getElementById('dcryptsignresult').style.display = 'none';
+                }
+
+
         }
 }
 

@@ -1,7 +1,10 @@
+2007-08-05 Maximilien Cuony
+	* Added Sign&Crypt to menu, editor, cgpg and cgpglin. [Todo: cgmail and cwin]
+
 2007-07-08  Maximilien Cuony
 	* Added more information when select a key (id, dates (created, expire))
 	* Information about the firefox restart nedded when the gpg's path is edited.
-	* Add feature to add some opion to gpg's command line
+	* Add feature to add some option to gpg's command line
 
 2007-07-01  Maximilien Cuony
 	* Option to disable auto-update

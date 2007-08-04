@@ -51,10 +51,12 @@
   <script src="cgpg.js"/>
   <description control="text" id="description" value="default description"/>
   <textbox id="text" multiline="true" rows="25" cols="80"/>
+  <label id="dcryptsignresult" style="display: none;" />
   <hbox id="buttons-box">
     <button id="open-button" label="&open-button;" oncommand="openf();"/>
     <button id="save-button" label="&save-button;" oncommand="savef();"/>
     <button id="crypt-button" label="&crypt-button;" oncommand="crypt();"/>
+    <button id="cryptandsign-button" label="&cryptandsign-button;" oncommand="cryptandsign();"/>
     <button id="dcrypt-button" label="&dcrypt-button;" oncommand="dcrypt();"/>
     <button id="sign-button" label="&sign-button;" oncommand="sign();"/>
     <button id="verify-button" label="&verify-button;" oncommand="verify();"/>

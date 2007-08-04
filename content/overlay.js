@@ -53,6 +53,8 @@ var firegpg = {
 			GPG.verify();
 		else if(action == "CRYPT")
 			GPG.crypt();
+		else if(action == "CRYPTSIGN")
+			GPG.cryptAndSign();
 		else if(action == "DECRYPT")
 			GPG.decrypt();
 		else if(action == "IMPORT")

@@ -59,6 +59,7 @@
         <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgMenu.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-crypt menuitem-iconic" label="&firegpgMenu.labelCrypt;" oncommand="firegpg.onMenuItemCommand(event,'CRYPT')"/>
+        <menuitem class="firegpg-menu-cryptsign menuitem-iconic" label="&firegpgMenu.labelCryptSign;" oncommand="firegpg.onMenuItemCommand(event,'CRYPTSIGN')"/>
         <menuitem class="firegpg-menu-decrypt menuitem-iconic" label="&firegpgMenu.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DECRYPT')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-import menuitem-iconic" label="&firegpgMenu.labelImport;" oncommand="firegpg.onMenuItemCommand(event,'IMPORT')"/>
@@ -79,6 +80,7 @@
         <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgContext.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-crypt menuitem-iconic" label="&firegpgContext.labelCrypt;" oncommand="firegpg.onMenuItemCommand(event,'CRYPT')"/>
+        <menuitem class="firegpg-menu-cryptsign menuitem-iconic" label="&firegpgContext.labelCryptSign;" oncommand="firegpg.onMenuItemCommand(event,'CRYPTSIGN')"/>
         <menuitem class="firegpg-menu-decrypt menuitem-iconic" label="&firegpgContext.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DECRYPT')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-import menuitem-iconic" label="&firegpgContext.labelImport;" oncommand="firegpg.onMenuItemCommand(event,'IMPORT')"/>
@@ -98,6 +100,7 @@
         <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgToolbar.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-crypt menuitem-iconic" label="&firegpgToolbar.labelCrypt;" oncommand="firegpg.onMenuItemCommand(event,'CRYPT')"/>
+        <menuitem class="firegpg-menu-cryptsign menuitem-iconic" label="&firegpgToolbar.labelCryptSign;" oncommand="firegpg.onMenuItemCommand(event,'CRYPTSIGN')"/>
         <menuitem class="firegpg-menu-decrypt menuitem-iconic" label="&firegpgToolbar.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'DECRYPT')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-import menuitem-iconic" label="&firegpgToolbar.labelImport;" oncommand="firegpg.onMenuItemCommand(event,'IMPORT')"/>

@@ -284,6 +284,67 @@ var GPGLin = {
 		return result2;
 	},
 
+
+	/*
+	 * Function to crypt and sign a text.
+	 */
+	cryptAndSign: function(texte, keyIdList, fromGpgAuth, password, keyID) {
+		var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
+		var tmpRun = getTmpFileRunning();
+
+		if (fromGpgAuth == null)
+			fromGpgAuth = false;
+
+		putIntoFile(tmpInput,texte); // Temp
+
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		removeFile(tmpOutput);
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.sh")
+
+		/* key id list in the arguments */
+		var keyIdListArgument = '';
+		for(var i = 0; i < keyIdList.length; i++)
+			keyIdListArgument += ((i > 0) ? ' ' : '') + '-r ' + keyIdList[i];
+		putIntoFile(tmpRun,running);
+
+
+		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
+		runCommand(tmpRun,
+		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
+		           getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+		           " " + keyIdListArgument +
+				   getGPGCommentArgument() + getGPGAgentArgument() +
+			   " --default-key " + keyID +
+			   " --sign" +
+			   " --passphrase-file " + tmpPASS +
+		           " --output " + tmpOutput +
+		           " --encrypt " + tmpInput
+			   );
+		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
+
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// The crypted text
+		var crypttexte = getFromFile(tmpOutput);
+		var result2 = GPGReturn;
+		result2.output = crypttexte;
+		result2.sdOut = result;
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpStdOut);
+		removeFile(tmpOutput);
+		removeFile(tmpRun);
+
+		return result2;
+	},
+
 	/*
 	 * Function to decrypt a text.
 	 */

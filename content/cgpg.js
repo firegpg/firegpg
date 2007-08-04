@@ -324,6 +324,96 @@ var GPG = {
 		return result;
 	},
 
+
+
+	/*
+	* Function to crypt and sign a text.
+	*/
+	cryptAndSign: function() {
+		this.initGPGACCESS();
+
+		// GPG verification
+		if(!GPG.selfTest())
+			return;
+
+		// For i18n
+		var i18n = document.getElementById("firegpg-strings");
+		var text = Selection.get();
+
+		if (text == "") {
+			alert(i18n.getString("noData"));
+			return;
+		}
+
+		// Needed for a crypt
+		var keyIdList = choosePublicKey();
+
+		if(keyIdList == null)
+			return;
+
+		// Needed for a sign
+		var keyID = getSelfKey();
+		if(keyID == null)
+			return;
+
+		var password = getPrivateKeyPassword();
+		if(password == null)
+			return;
+
+		// We get the result
+		var result = this.baseCryptAndSign(text, keyIdList,false,password, keyID);
+		var crypttext = result.output;
+		var sdOut2 = result.sdOut2;
+		result = result.sdOut;
+
+		// If the crypt failled
+		if(result == "erreur") {
+			// We alert the user
+			alert(i18n.getString("cryptAndSignFailed") + sdOut2);
+		}
+		else
+		if(result == "erreurPass") {
+			// We alert the user
+			eraseSavedPassword();
+			alert(i18n.getString("cryptAndSignFailedPass"));
+		}
+		else {
+			//We test is the selection in editable :
+			if(Selection.isEditable()) {
+				//If yes, we edit this selection with the new text
+				Selection.set(crypttext);
+			}
+			else {
+				//Else, we show a windows with the result
+				showText(crypttext);
+			}
+		}
+	},
+
+	/*
+     * keyIdList is an array contain a liste of ID :
+	 *   ['id1', 'id2', etc.]
+	 */
+	baseCryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID) {
+		this.initGPGACCESS();
+
+		var result = this.GPGAccess.cryptAndSign(text, keyIdList,fromGpgAuth, password, keyID);
+		var tresult = result.sdOut;
+			result.sdOut = "ok";
+
+		if(tresult.indexOf("END_ENCRYPTION") == "-1") {
+			result.sdOut = "erreur";
+			result.sdOut2 = tresult;
+
+			if(tresult.indexOf("BAD_PASSPHRASE") != "-1") {
+			result.sdOut = "erreurPass";
+			}
+		}
+
+		return result;
+	},
+
+
 	/*
 	* Function to decrypt a text.
 	*/
@@ -400,14 +490,26 @@ var GPG = {
 			if ( fromGpgAuth ) {
 				return crypttext;
 			}
+
+			var signAndCryptResult = undefined;
+
+			//If there was a sign with the crypted text
+			if (result == "signValid")
+			{
+				infos = sdOut2.split(" ");
+				signAndCryptResult = "";
+				for (var ii = 1; ii < infos.length; ++ii)
+				{  signAndCryptResult = signAndCryptResult + infos[ii] + " ";}
+			}
+
 			//We test is the selection in editable :
 			if(Selection.isEditable()) {
 				//If yes, we edit this selection with the new text
-				Selection.set(crypttext);
+				Selection.set(crypttext,signAndCryptResult);
 			}
 			else {
 				//Else, we show a windows with the result
-				showText(crypttext);
+				showText(crypttext,undefined,undefined,undefined,signAndCryptResult);
 			}
 		}
 	},
@@ -427,6 +529,17 @@ var GPG = {
 
 			if(tresult.indexOf("BAD_PASSPHRASE") != "-1")
 				result.sdOut = "erreurPass";
+		}
+
+		//Il y avait une signature dans le truc
+		if(tresult.indexOf("GOODSIG") != "-1")
+		{
+			infos = tresult;
+			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
+			infos = tresult.replace(infos, "");
+			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
+			result.sdOut2 = infos;
+			result.sdOut = "signValid";
 		}
 
 		return result;

@@ -13,6 +13,15 @@ Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
             "Expire"
             "pane4.title"
         - firegpg.properties
+            cryptAndSignFailedPass
+            cryptAndSignFailed
+            validSignInCrypt
+        - showtext.dtd
+            cryptandsign-button
+        - firegpg.dtd
+            firegpgContext.labelCryptSign
+            firegpgMenu.labelCryptSign
+            firegpgToolbar.labelCryptSign
 
 
 Tâches libres :

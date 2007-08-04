@@ -38,3 +38,6 @@
 <!ENTITY firegpgPopInfo.labelKeyErr "Attention: veuillez définir une clé privée dans les options !">
 <!ENTITY firegpgPopInfo.close "Fermer">
 <!ENTITY firegpgPopInfo.options "Options">
+<!ENTITY firegpgContext.labelCryptSign "Signer et chiffrer">
+<!ENTITY firegpgMenu.labelCryptSign "Signer et chiffrer">
+<!ENTITY firegpgToolbar.labelCryptSign "Signer et chiffrer">

@@ -134,18 +134,22 @@ function choosePrivateKey()
 /*
  * Show 'text' in a dialog.
  */
-function showText(text, description /* optional */, title /* optional */, doShowButtons /* optional */) {
+function showText(text, description /* optional */, title /* optional */, doShowButtons /* optional */, validSign /* Optional */) {
 	/* default description and title values */
 	var i18n = document.getElementById("firegpg-strings");
 
 	/* setting params */
-	var params = {text: text, title: title, description: description, doShowButtons: doShowButtons};
+	var params = {text: text, title: title, description: description, doShowButtons: doShowButtons, validSign: validSign};
 	if(title == undefined)
 		params.title = i18n.getString('showTextDefaultTitle');
 	if(description == undefined)
 		params.description = i18n.getString('showTextDefaultDescription');
 	if(doShowButtons == undefined)
 		params.doShowButtons = false;
+
+	if(validSign == undefined)
+		params.validSign = null;
+		
 	/* open the dialog */
 	window.openDialog('chrome://firegpg/content/showtext.xul',
 	                  '', 'chrome, dialog, resizable=yes',
