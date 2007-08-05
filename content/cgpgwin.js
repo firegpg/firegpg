@@ -279,6 +279,73 @@ var GPGWin = {
 		return result2;
 	},
 
+	/*
+	 * Function to crypt and sign a text.
+	 */
+	cryptAndSign: function(texte, keyIdList, fromGpgAuth, password, keyID) {
+		var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+		var tmpPASS = getTmpPassFile(); // tmpPASSWORD
+		var tmpStdOut = getTmpFile(); // Output from gpg
+		var tmpRun = getTmpFileRunning();
+
+		putIntoFile(tmpInput,texte); // Temp
+
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		removeFile(tmpOutput);
+
+		// We lanch gpg
+		var running = getContent("chrome://firegpg/content/run.bat");
+		var reg=new RegExp("\n", "gi");
+		running = running.replace(reg,"\r\n");
+
+		putIntoFile(tmpRun,running);
+
+		var keyIdListArgument = '';
+		for(var i = 0; i < keyIdList.length; i++)
+			keyIdListArgument += ((i > 0) ? ' ' : '') + '-r ' + keyIdList[i];
+
+		///////////////////////////////////////////////////
+		//DON'T MOVE OR ADD ANY LINES NEXT THIS MESSAGE !//
+		///////////////////////////////////////////////////
+
+		putIntoFile(tmpPASS,password);   // DON'T MOVE THIS LINE !
+		try {  // DON'T MOVE THIS LINE !
+			runWinCommand(tmpRun,
+			           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
+			           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGCommentArgument() + getGPGAgentArgument() +
+				   " " + keyIdListArgument +
+			           " --passphrase-fd 0 " +
+				   " --default-key " + keyID +
+				   " --sign" +
+			           " --output " + tmpOutput +
+			           " --encrypt " + tmpInput +
+			           " < " + tmpPASS);
+		}
+		catch (e) {} //If execution fail, script is stopped and don't erase the password, so we add a catch
+
+		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
+
+		//You can move next lines
+
+		// We get the result
+		var result = getFromFile(tmpStdOut);
+
+		// The decrypted text
+		var crypttext = getFromFile(tmpOutput);
+		var result2 = GPGReturn;
+		result2.output = crypttext;
+		result2.sdOut = result;
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpStdOut);
+		removeFile(tmpOutput);
+		removeFile(tmpRun);
+
+		return result2;
+	},
+
 	/* This if we can work with GPG */
 	selfTest: function() {
 

@@ -2,6 +2,8 @@ pref("extensions.firegpg.gmail_butons_sign", true);
 pref("extensions.firegpg.gmail_butons_sign_send", true);
 pref("extensions.firegpg.gmail_butons_crypt", true);
 pref("extensions.firegpg.gmail_butons_crypt_send", true);
+pref("extensions.firegpg.gmail_butons_sign_crypt", true);
+pref("extensions.firegpg.gmail_butons_sign_crypt_send", true);
 pref("extensions.firegpg.gmail_enabled", true);
 pref("extensions.firegpg.default_private_key", "");
 pref("extensions.firegpg.gpg_path", "");

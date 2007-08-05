@@ -1,5 +1,5 @@
 Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
-        - predwindow.dtd
+        - prefwindow.dtd
             "Per-domain settings:"
             "Always decrypt messages from Authenticated Servers"
             "Always decrypt messages from Authenticated Servers"
@@ -12,16 +12,21 @@ Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
             "Created"
             "Expire"
             "pane4.title"
+            gmail-buton-signcrypt-checkbox
+            gmail-buton-signcryptsend-checkbox
         - firegpg.properties
             cryptAndSignFailedPass
             cryptAndSignFailed
             validSignInCrypt
+            GMailSAC
+            GMailSACS
         - showtext.dtd
             cryptandsign-button
         - firegpg.dtd
             firegpgContext.labelCryptSign
             firegpgMenu.labelCryptSign
             firegpgToolbar.labelCryptSign
+
 
 
 Tâches libres :

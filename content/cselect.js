@@ -242,6 +242,12 @@ var Selection = {
 			// We select the new text.
 			focused.selectionStart = startPos;
 			focused.selectionEnd = startPos + text.length ;
+
+			//We need to alert the user if a valid sign was found !
+			if (infoSignAndCrypt != undefined)
+			{
+				alert(document.getElementById("firegpg-strings").getString("validSignInCrypt") + " " + infoSignAndCrypt);
+			}
 		}
 	}
 }

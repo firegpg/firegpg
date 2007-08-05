@@ -118,6 +118,8 @@
             <preference id="gmail-buton-signsend" name="extensions.firegpg.gmail_butons_sign_send" type="bool"/>
             <preference id="gmail-buton-crypt" name="extensions.firegpg.gmail_butons_crypt" type="bool"/>
             <preference id="gmail-buton-cryptsend" name="extensions.firegpg.gmail_butons_crypt_send" type="bool"/>
+            <preference id="gmail-buton-signcrypt" name="extensions.firegpg.gmail_butons_sign_crypt" type="bool"/>
+            <preference id="gmail-buton-signcryptsend" name="extensions.firegpg.gmail_butons_sign_crypt_send" type="bool"/>
         </preferences>
 
         <label  id="gmail-need-a-restart-label" value="&gmail-need-a-restart;"/>
@@ -151,6 +153,12 @@
                         label="&gmail-buton-crypt-checkbox;"/>
                     <checkbox id="gmail-no-no-cryptsend-checkbox" preference="gmail-buton-cryptsend"
                         label="&gmail-buton-cryptsend-checkbox;"/>
+                </row>
+                 <row>
+                    <checkbox id="gmail-buton-signcrypt-checkbox" preference="gmail-buton-signcrypt"
+                        label="&gmail-buton-signcrypt-checkbox;"/>
+                    <checkbox id="gmail-no-no-signcryptsend-checkbox" preference="gmail-buton-signcryptsend"
+                        label="&gmail-buton-signcryptsend-checkbox;"/>
                 </row>
             </rows>
         </grid>

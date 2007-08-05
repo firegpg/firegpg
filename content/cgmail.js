@@ -274,11 +274,18 @@ var cGmail = {
 			try {	var b_crypt_s = prefs.getBoolPref("gmail_butons_crypt_send");	}
 			catch (e) { var b_crypt_s = true; }
 
+			try {	var b_signcrypt = prefs.getBoolPref("gmail_butons_sign_crypt");	}
+			catch (e) { var b_signcrypt = true; }
+			try {	var b_signcrypt_s = prefs.getBoolPref("gmail_butons_sign_crypt_send");	}
+			catch (e) { var b_signcrypt_s = true; }
+
 			cGmail.nonosign = nonosign;
 			cGmail.b_sign = b_sign;
 			cGmail.b_sign_s = b_sign_s;
 			cGmail.b_crypt = b_crypt;
 			cGmail.b_crypt_s = b_crypt_s;
+			cGmail.b_signcrypt = b_signcrypt;
+			cGmail.b_signcrypt_s = b_signcrypt_s;
 		}
 	},
 
@@ -316,6 +323,10 @@ var cGmail = {
 			this.addBouton(i18n.getString("GMailC"),"crypt",box,Ddocument,info1);
 		if (cGmail.b_crypt_s == true)
 			this.addBouton(i18n.getString("GMailCS"),"sndcrypt",box,Ddocument,info1);
+		if (cGmail.b_signcrypt == true)
+			this.addBouton(i18n.getString("GMailSAC"),"signcrypt",box,Ddocument,info1);
+		if (cGmail.b_signcrypt_s == true)
+			this.addBouton(i18n.getString("GMailSACS"),"sndsigncrypt",box,Ddocument,info1);
 
 		try {
 
@@ -392,6 +403,7 @@ var cGmail = {
 				var password = getPrivateKeyPassword();
 				var result = GPG.baseDecrypt(contenuMail,password);
 				var crypttext = result.output;
+				var sdOut2 = result.sdOut2;
 				result = result.sdOut;
 
 				if (password == null)
@@ -406,7 +418,20 @@ var cGmail = {
 					alert(i18n.getString("decryptFailed"));
 				}
 				else
-					showText(crypttext);
+				{
+					var signAndCryptResult = undefined;
+
+					//If there was a sign with the crypted text
+					if (result == "signValid")
+					{
+						infos = sdOut2.split(" ");
+						signAndCryptResult = "";
+						for (var ii = 1; ii < infos.length; ++ii)
+						{  signAndCryptResult = signAndCryptResult + infos[ii] + " ";}
+					}
+
+					showText(crypttext,undefined,undefined,undefined,signAndCryptResult);
+				}
 			}
 			else if (event.target.id == "sndsign" || event.target.id == "sign")
 			{
@@ -482,6 +507,60 @@ var cGmail = {
 					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.output);
 
 					if (event.target.id == "sndcrypt")
+					{
+						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
+						boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
+						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
+					}
+
+				}
+			}
+			else if (event.target.id == "sndsigncrypt" || event.target.id == "signcrypt")
+			{
+
+				//This code has to mix with the previous else/if block
+				var mailContent = cGmail.getWriteMailContent(cGmail.lastDomToverify.document,info1);
+
+				var whoWillGotTheMail = cGmail.getToCcBccMail(cGmail.lastDomToverify.document,info1);
+
+				var boutonBox = cGmail.lastDomToverify.document.getElementById('sb_' + info1).firstChild;
+
+
+				if (mailContent == "")
+					return;
+
+
+				var keyID = choosePublicKey(whoWillGotTheMail);
+
+				if (keyID == null || keyID == "")
+					return;
+
+				// Needed for a sign
+				var keySignID = getSelfKey();
+				if(keySignID == null)
+					return;
+
+				var password = getPrivateKeyPassword();
+				if(password == null)
+					return;
+
+				var result = GPG.baseCryptAndSign(mailContent, keyID,false,password, keySignID);
+
+						// If the sign failled
+				if(result.sdOut == "erreur") {
+					// We alert the user
+					alert(i18n.getString("cryptAndSignFailed"));
+				}
+				if(result.sdOut == "erreurPass") {
+					// We alert the user
+					eraseSavedPassword();
+					alert(i18n.getString("cryptAndSignFailedPass"));
+				}
+				else {
+
+					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.output);
+
+					if (event.target.id == "sndsigncrypt")
 					{
 						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
 						boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
@@ -763,7 +842,7 @@ var cGmail = {
 
 	getMimeMailContens: function(id) {
 
-		
+
 			var idOfTheMail = this.foundTheGoodId(id);
 
 		if (this.messageCache == null || this.messageCache[idOfTheMail] == null)

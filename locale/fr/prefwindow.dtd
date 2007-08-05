@@ -32,3 +32,5 @@
 <!ENTITY key-expire "Expiration">
 <!ENTITY pane4.title "Gpg">
 <!ENTITY gpg-add-options "Arguments suplémentaires pour Gpg : (ATTENTION ! Peut empêcher FireGPG de fonctionner ! Lisez la doc.)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Signer et Chiffrer">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Signer, Chiffrer et envoyer">
