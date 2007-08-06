@@ -38,3 +38,6 @@
 <!ENTITY firegpgContext.labelEditeur "Düzenleyici ile aç">
 <!ENTITY firegpgMenu.labelEditeur "Düzenleyici ile aç">
 <!ENTITY firegpgToolbar.labelEditeur "Düzenleyici ile aç">
+<!ENTITY firegpgContext.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgMenu.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgToolbar.labelCryptSign "Sign and Crypt">

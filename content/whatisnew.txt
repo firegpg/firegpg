@@ -1,36 +1,26 @@
-=== Version 0.4.2.1 ===
+=== Version 0.4.3 ===
 
-Small update for locates :
+No, FireGPG is not dead. We're very busy, but here is a new update !
 
-- Fix problem with pl locate.
-- pl, tr, de, pt updated
-- ca added
-- (Notice) gpgAuth is now implemented, for developpment
-
-Forum's topic : http://firegpg.tuxfamily.org/forum/viewtopic.php?pid=515#p515
-
-=== Version 0.4.2 ===
+There are only new functionalities, who seem to be important to you (we revive a lot of mails and messages on the forum..)
 
 Bugs :
-- Fixed a bug with Cygwin in Windows (thanks to Kevin Hilton and Marco Bonetti for the report and help)
+- Nothing :)
 
 Functionalities:
-- Improve performance in Gmail.*
-- Auto-select recipients for crypt in Gmail!
-- Find the new mail content in Gmail.*
-- Auto detect new versions and propose updates for FireGPG.*
+- Option to disable auto-update. WE STRONGLY RECOMMAND TO NOT USE THIS.
+- Add feature to add some option to gpg's command line. Dangerous, read the doc.
+- Added more information when select a key (id, dates (created, expire))
+- Sign&Crypt implemented. Information about this kind of messages are in a label of the editor or an alert box if the sign a valid.
 
 Locales :
-- it, zh-CN, zh-TW, tr and pt_BR have been updated, ko-KR has been added.
-- Some orthography/grammar errors have been fixed in the French/English locales.
-- Translation of some untranslated strings in en-US locale (it was in French)
+- Nothnig.
 
 Misc :
-- Added AUTHORS, COPYING and README in the XPI file
-- In regards to full support of OpenPGP/Mime, we're working on it.  We're about 20% of the way to completion.*
+- In regards to full support of OpenPGP/Mime, we're working on it.  We're about 25% of the way to completion.
 - Don't forget to report bugs to our forum or by email at firegpg@gmail.com !
 
-* For more information, see the post on our forum : http://firegpg.tuxfamily.org/forum/viewtopic.php?pid=453#p453
+* Post on our forum about this version : http://firegpg.tuxfamily.org/forum/viewtopic.php?id=180
 
 Thanks you for using FireGPG !
     FireGPG's team.

@@ -38,3 +38,6 @@
 <!ENTITY firegpgContext.labelEditeur "편집기 열기">
 <!ENTITY firegpgMenu.labelEditeur "편집기 열기">
 <!ENTITY firegpgToolbar.labelEditeur "편집기 열기">
+<!ENTITY firegpgContext.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgMenu.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgToolbar.labelCryptSign "Sign and Crypt">

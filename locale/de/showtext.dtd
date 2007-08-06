@@ -4,3 +4,4 @@
 <!ENTITY verify-button "Unterschrift überprüfen">
 <!ENTITY open-button "Öffnen">
 <!ENTITY save-button "Speichern">
+<!ENTITY cryptandsign-button "Sign and crypt">

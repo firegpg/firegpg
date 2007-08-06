@@ -1,33 +1,5 @@
 Chaînes auquelles il faudra demander la traduction AVANT UNE NOUVELLE VERSION :
-        - prefwindow.dtd
-            "Per-domain settings:"
-            "Always decrypt messages from Authenticated Servers"
-            "Always decrypt messages from Authenticated Servers"
-            "Enable gpgAuth (Requires Restart of Firefox)"
-            "Disable FireGPG's auto updates"
-            "Warning ! You shouldn't trun off autoupdates if you can't update FireGPG with FireFox, or if you don't check regulary news versions of your addons !"
-            "Are you realy sure ? We recomand not turn off this option, she is here for help you to have every time latest updates of FireGPG, who is still in beta and can have security issues !"
-            "Name"
-            "Id"
-            "Created"
-            "Expire"
-            "pane4.title"
-            gmail-buton-signcrypt-checkbox
-            gmail-buton-signcryptsend-checkbox
-        - firegpg.properties
-            cryptAndSignFailedPass
-            cryptAndSignFailed
-            validSignInCrypt
-            GMailSAC
-            GMailSACS
-        - showtext.dtd
-            cryptandsign-button
-        - firegpg.dtd
-            firegpgContext.labelCryptSign
-            firegpgMenu.labelCryptSign
-            firegpgToolbar.labelCryptSign
-
-
+ 
 
 Tâches libres :
 	- ajouter la possibilité de chiffrer et signer en même temps

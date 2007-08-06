@@ -4,3 +4,4 @@
 <!ENTITY verify-button "驗證">
 <!ENTITY open-button "打開">
 <!ENTITY save-button "保存">
+<!ENTITY cryptandsign-button "Sign and crypt">

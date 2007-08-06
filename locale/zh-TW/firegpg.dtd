@@ -38,4 +38,7 @@
 <!ENTITY firegpgContext.labelEditeur "打開編輯器">
 <!ENTITY firegpgMenu.labelEditeur "打開編輯器">
 <!ENTITY firegpgToolbar.labelEditeur "打開編輯器">
+<!ENTITY firegpgContext.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgMenu.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgToolbar.labelCryptSign "Sign and Crypt">
 <!-- translated from English by Weakish Jiang (weakish@gmail.com) -->

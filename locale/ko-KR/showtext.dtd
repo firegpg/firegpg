@@ -4,3 +4,4 @@
 <!ENTITY verify-button "서명 확인">
 <!ENTITY open-button "파일 열기">
 <!ENTITY save-button "저장">
+<!ENTITY cryptandsign-button "Sign and crypt">

@@ -38,3 +38,6 @@
 <!ENTITY firegpgContext.labelEditeur "Open tekstverwerker">
 <!ENTITY firegpgMenu.labelEditeur "Open tekstverwerker">
 <!ENTITY firegpgToolbar.labelEditeur "Open tekstverwerker">
+<!ENTITY firegpgContext.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgMenu.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgToolbar.labelCryptSign "Sign and Crypt">
