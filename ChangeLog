@@ -1,10 +1,10 @@
 2007-08-06 Maximilien Cuony
 	* 0.4.3 packed, and uploaded to the server !
-	* All locates updated
+	* All locales updated
 
 2007-08-05 Maximilien Cuony
-	* Sign&Crypt implemented.
-	* Added Sign&Crypt to menu, editor, cgpg and cgpglin. [Todo: cgmail and cwin]
+	* Sign + enrypt support.
+	* Added sign & enrypt to menu, editor, cgpg and cgpglin. [Todo: cgmail and cwin]
 
 2007-07-08  Maximilien Cuony
 	* Added more information when select a key (id, dates (created, expire))
@@ -23,15 +23,15 @@
 2007-06-21  Maximilien Cuony
 	* 0.4.2.1 packed, and uploaded to the server !
 	* First implementation of gpgAuth.
-	* Fix problem with pl locate.
+	* Fix problem with pl locale.
 	* pl, tr, de, pt, updated
 	* ca added
 
 2007-06-19  Maximilien Cuony
 	* 0.4.2 packed, and uploaded to the server !
 	* it, zh-CN, zh-TW, tr, pt_BR updated
-	* New locate : ko-KR
-	* Updated locates
+	* New locale : ko-KR
+	* Updated locales
 
 2007-06-18  Maximilien Cuony
 	* Fixed a bug with cygwin on windows (thanks to Kevin Hilton and Marco Bonetti for report and help)
@@ -60,7 +60,7 @@
 2007-06-09  Maximilien Cuony
 	* 0.4.1 packed, and uploaded to the server !
 	* de, pl, es, nl, pt, it updated too.
-	* Updated locates
+	* Updated locales
 
 2007-06-08  Maximilien Cuony
 	* Add 'encrypt to myself' option
@@ -74,7 +74,7 @@
 	* Try to detect gpg on windows.
 	* Added pt_BR translation
 	* Some english corrections from Scott Morrison <scott@math.berkeley.edu>
-	* Update locate for ES.
+	* Update locale for ES.
 
 2007-06-06  Achraf cherti
 	* declaration of some undeclared variables.
@@ -89,7 +89,7 @@
 
 2007-06-05  Maximilien Cuony
 	* 0.4 packed, and uploaded to the server !
-	* Added new strings to locates
+	* Added new strings to locales
 
 2007-06-04  Maximilien Cuony
 	* Solved encoding problem !!!!! :).
@@ -104,8 +104,8 @@
 	* Gmail: Ask keys BEFORE passparse for sign.
 	* Site: Correct a mistake with 'turc'
 	* Site: Added the plugin's md5.
-	* Added Simplified Chinese and Traditional Chinese locate.
-	* Added Dutch locate.
+	* Added Simplified Chinese and Traditional Chinese locale.
+	* Added Dutch locale.
 
 2007-04-06  Maximilien Cuony
 	* 0.3.3 Packed, and uploaded to the server !
@@ -300,7 +300,7 @@
 	* Class select is finished !
 	* Add menu incons (all with GPL's license)
 	* cgpg : crypt and dcrypt added
-	* Add fr locate
+	* Add fr locale
 	* Add base menu's icone
 	* Add comment 'http://firegpg.tuxfamily.org' for signs and crypts
 	* Update URL link
