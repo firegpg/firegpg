@@ -37,12 +37,26 @@
 const nsIExtensionManager_CONRACTID = "@mozilla.org/extensions/manager;1";
 const idAppli = "firegpg@firegpg.team";
 const comment = "http://firegpg.tuxfamily.org";
+const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;;
+const WINDOWS = "WINNT";
 
 var useGPGAgent = true;
 var useGPGTrust = true;
 
-// The comment argument is returned if it's activated in the options.
-// else, "" is returned.
+/*
+ * This operating system is an UNIX-like ? (like GNU/Linux or Mac OS X)
+ */
+function isUnix() {
+	if(FireGPG_OS != WINDOWS)
+		return true;
+	else
+		return false;
+}
+
+/*
+ * The comment argument is returned if it's activated in the options.
+ * else, "" is returned.
+ */
 function getGPGCommentArgument() {
 	var comment_argument = "";
 	var key = "extensions.firegpg.show_website";
@@ -56,7 +70,9 @@ function getGPGCommentArgument() {
 	return comment_argument;
 }
 
-// Add --no-use-agent if user requet for this
+/*
+ * Add --no-use-agent if user requet for this
+ */
 function getGPGAgentArgument() {
 	/*var comment_argument = "";
 	var key = "extensions.firegpg.no_gpg_agent";
@@ -109,53 +125,81 @@ function getGPGBonusCommand(){
 	return " " + arguement;
 }
 
+/*
+ * Return a the command to run programs.
+ */
+function getRunningCommand() {
+	return getContent("chrome://firegpg/content/run" + (isUnix() ? '.sh' : '.bat'));
+}
 
 /*
  * Class to access to GPG on GNU/Linux.
  */
 var GPGLin = {
-	//var: parent,
-
 	/*
 	 * Function to sign a text.
 	 */
-	sign: function(texte, password, keyID) {
+	sign: function(text, password, keyID) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
-		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
+		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
 
-		putIntoFile(tmpInput, texte); // Temp
+		putIntoFile(tmpInput, text); // Temp
 
 		// The file already exist, but GPG don't work if he exist, so we del it.
 		removeFile(tmpOutput);
 
-		// We lanch gpg
-		var running = getContent("chrome://firegpg/content/run.sh")
-
+		// We launch gpg
+		var running = getRunningCommand();
 		putIntoFile(tmpRun,running);
 
+		///////////////////////////////////////////////////
+		//DON'T MOVE OR ADD ANY LINES NEXT THIS MESSAGE !//
+		///////////////////////////////////////////////////
 
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
-		try { runCommand(tmpRun,
-		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" +
-		           " --default-key " + keyID +
-		           " --output " + tmpOutput +
-		           " --passphrase-file " + tmpPASS + "" +
-				   getGPGCommentArgument() + getGPGAgentArgument() +
-		           " --clearsign " + tmpInput
-			   ); } catch (e) { }
+		try { // DON'T MOVE THIS LINE !
+			/* TODO ces deux fonctions aussi les unifier */
+			if(isUnix()) {
+				runCommand(
+					tmpRun, // DON'T MOVE THIS LINE !
+					'' + this.getGPGCommand() + '' +  " " + tmpStdOut +
+					getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" +
+					" --default-key " + keyID +
+					" --output " + tmpOutput +
+					" --passphrase-file " + tmpPASS + "" +
+					getGPGCommentArgument() + getGPGAgentArgument() +
+					" --clearsign " + tmpInput
+				); 
+			}
+			else {
+				runWinCommand(
+					tmpRun, // DON'T MOVE THIS LINE !
+					'"' + this.getGPGCommand() + '" "' + tmpStdOut + '"' +
+					getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
+					getGPGAgentArgument() + 
+					" --default-key " + keyID +
+					" --output " + tmpOutput +
+					" --passphrase-fd 0 " +
+					getGPGCommentArgument() +
+					" --clearsign " + tmpInput +
+					" < " + tmpPASS
+				);
+			}
+		} catch (e) {}
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
+		// You can move next lines
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
 
 		// The signed text
-		var crypttexte = getFromFile(tmpOutput);
+		var crypttext = getFromFile(tmpOutput);
+
 		var result2 = GPGReturn;
-		result2.output = crypttexte;
+		result2.output = crypttext;
 		result2.sdOut = result;
 
 		// We delete tempory files
@@ -176,15 +220,31 @@ var GPGLin = {
 		putIntoFile(tmpInput,text); // TMP
 
 		// We lanch gpg
-		var running = getContent("chrome://firegpg/content/run.sh")
+		var running = getRunningCommand();
+		if(!isUnix()) {
+			/* à quoi ça sert sous Win ? TODO */
+			var reg=new RegExp("\n", "gi");
+			running = running.replace(reg,"\r\n");
+		}
 
 		putIntoFile(tmpRun,running);
-
-		runCommand(tmpRun,
-		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument() + " --no-tty --no-verbose --status-fd 1 --armor" +  getGPGAgentArgument() +
-		           " --verify " + tmpInput
-			   );
+		
+		if(isUnix()) {
+			runCommand(
+				tmpRun,
+				'' + this.getGPGCommand() + '' +  " " + tmpStdOut +
+				getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument() + " --no-tty --no-verbose --status-fd 1 --armor" +  getGPGAgentArgument() +
+				" --verify " + tmpInput
+			);
+		}
+		else {
+			runWinCommand(
+				tmpRun,
+				'"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
+				getGPGBonusCommand() + " --quiet --no-tty" +  getGPGTrustArgument() + " --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+				" --verify " + tmpInput
+			);
+		}
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -208,14 +268,21 @@ var GPGLin = {
 			mode = "--list-secret-keys";
 
 		// We lanch gpg
-		var running = getContent("chrome://firegpg/content/run.sh")
+		var running = getRunningCommand();
 
 		putIntoFile(tmpRun,running);
 
-		runCommand(tmpRun,
-		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons" + getGPGAgentArgument() + " " + mode
-			   );
+		if(isUnix()) {
+			runCommand(tmpRun,
+					   '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
+					   getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons" + getGPGAgentArgument() + " " + mode
+			);
+		} else {
+			runWinCommand(tmpRun,
+				'"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
+				getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons" + getGPGAgentArgument() + " " + mode
+			);
+		}
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -240,36 +307,54 @@ var GPGLin = {
 		if (fromGpgAuth == null)
 			fromGpgAuth = false;
 
-		putIntoFile(tmpInput,texte); // Temp
+		putIntoFile(tmpInput,text); // Temp
 
 		// The file already exist, but GPG don't work if he exist, so we del it.
 		removeFile(tmpOutput);
 
 		// We lanch gpg
-		var running = getContent("chrome://firegpg/content/run.sh")
+		var running = getRunningCommand();
+		if(!isUnix()) {
+			/* TODO pourquoi ? */
+			var reg = new RegExp("\n", "gi");
+			running = running.replace(reg,"\r\n");
+		}
 
 		/* key id list in the arguments */
 		var keyIdListArgument = '';
 		for(var i = 0; i < keyIdList.length; i++)
 			keyIdListArgument += ((i > 0) ? ' ' : '') + '-r ' + keyIdList[i];
+
 		putIntoFile(tmpRun,running);
 
-		runCommand(tmpRun,
-		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
-		           " " + keyIdListArgument +
-				   getGPGCommentArgument() + getGPGAgentArgument() +
-		           " --output " + tmpOutput +
-		           " --encrypt " + tmpInput
-			   );
+		if(isUnix()) {
+			runCommand(
+				tmpRun,
+			   '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
+			   getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+			   " " + keyIdListArgument +
+			   getGPGCommentArgument() + getGPGAgentArgument() +
+			   " --output " + tmpOutput +
+			   " --encrypt " + tmpInput);
+		} else {
+			runWinCommand(
+				tmpRun,
+				'"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
+				getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + 
+				" --no-tty --no-verbose --status-fd 1 --armor --batch" +
+				" " + keyIdListArgument +
+				getGPGCommentArgument() + getGPGAgentArgument() +
+				" --output " + tmpOutput +
+				" --encrypt " + tmpInput);
+		}
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
 
 		// The crypted text
-		var crypttexte = getFromFile(tmpOutput);
+		var crypttext = getFromFile(tmpOutput);
 		var result2 = GPGReturn;
-		result2.output = crypttexte;
+		result2.output = crypttext;
 		result2.sdOut = result;
 
 		// We delete tempory files
@@ -311,17 +396,33 @@ var GPGLin = {
 
 
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
-		runCommand(tmpRun,
-		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
-		           " " + keyIdListArgument +
-				   getGPGCommentArgument() + getGPGAgentArgument() +
-			   " --default-key " + keyID +
-			   " --sign" +
-			   " --passphrase-file " + tmpPASS +
-		           " --output " + tmpOutput +
-		           " --encrypt " + tmpInput
-			   );
+
+		if(isUnix()) {
+			runCommand(tmpRun,
+					   '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
+					   getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+					   " " + keyIdListArgument +
+					   getGPGCommentArgument() + getGPGAgentArgument() +
+				   " --default-key " + keyID +
+				   " --sign" +
+				   " --passphrase-file " + tmpPASS +
+					   " --output " + tmpOutput +
+					   " --encrypt " + tmpInput
+				   );
+		}
+		else {
+			runWinCommand(
+				tmpRun,
+				'"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
+				getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGCommentArgument() + getGPGAgentArgument() +
+				" " + keyIdListArgument +
+				" --passphrase-fd 0 " +
+				" --default-key " + keyID +
+				" --sign" +
+				" --output " + tmpOutput +
+				" --encrypt " + tmpInput +
+				" < " + tmpPASS);
+		}
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
 		// We get the result
@@ -344,6 +445,7 @@ var GPGLin = {
 
 	/*
 	 * Function to decrypt a text.
+	 * TODO
 	 */
 	decrypt: function(texte,password) {
 		var tmpInput = getTmpFile();  // Data unsigned
@@ -391,7 +493,7 @@ var GPGLin = {
 		return result2;
 	},
 
-	/* This if we can work with GPG */
+	/* This if we can work with GPG TODO */
 	selfTest: function() {
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
@@ -422,7 +524,7 @@ var GPGLin = {
 		return true;
 	},
 
-	// Import a key
+	// Import a key TODO
 	kimport: function(text) {
 		var tmpInput = getTmpFile();  // Key
 		var tmpStdOut = getTmpFile(); // Output from gpg
@@ -453,7 +555,7 @@ var GPGLin = {
 		return result;
 	},
 
-	// Export a key
+	// Export a key TODO
 	kexport: function(key) {
 
 		var tmpStdOut = getTmpFile(); // Output from gpg
@@ -480,7 +582,7 @@ var GPGLin = {
 		return result;
 	},
 
-	//Do a test of a commande
+	//Do a test of a commande TODO
 	runATest: function(option) {
 
 		var tmpStdOut = getTmpFile(); // Output from gpg
@@ -509,11 +611,11 @@ var GPGLin = {
 		return true;
 	},
 
-	//Return the GPG's command to use
+	//Return the GPG's command to use TODO
 	getGPGCommand: function () {
 		return this.GpgCommand;
 	},
-	//Do some tests for find the right command...
+	//Do some tests for find the right command... TODO
 	tryToFoundTheRightCommand: function () {
 		//Year, on linux no test, because it's a good Os.
 		//We only look if the user wants to force the path.

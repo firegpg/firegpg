@@ -324,8 +324,6 @@ var GPG = {
 		return result;
 	},
 
-
-
 	/*
 	* Function to crypt and sign a text.
 	*/
@@ -660,6 +658,7 @@ var GPG = {
 		else
 			return result;
 	} ,
+
 	//Init subclass.
 	initGPGACCESS: function() {
 		if (this.allreadyinit == true)
@@ -673,7 +672,6 @@ var GPG = {
 
 		this.allreadyinit = true;
 	}
-
 };
 
 // We load the good class for the OS
