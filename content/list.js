@@ -51,14 +51,18 @@ function onLoad(win)
 	var preSelect = window.arguments[0].preSelect;
 
 	//PreSelect
+	/*
+	 * TODO preSelect.length warning (see below)
+	 */
 	if (preSelect.length == 0)
 		var autoSelectMode = false;
 	else
 	{
 		var autoSelectMode = true;
 		var testList = "";
-		for (var i = 0; i < preSelect.length; i++)
-		{
+		/* TODO here a warning : 
+		 * "reference to undefined property preSelect.length */
+		for (var i = 0; i < preSelect.length; i++) {
 			testList = testList + preSelect[i] + " ";
 		}
 	}

@@ -292,7 +292,7 @@ var GPGAccess = {
 	/*
 	 * Function to encrypt a text.
 	 */
-	crypt: function(texte, keyIdList, fromGpgAuth /*Optional*/) {
+	crypt: function(text, keyIdList, fromGpgAuth /*Optional*/) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg
@@ -363,7 +363,7 @@ var GPGAccess = {
 	/*
 	 * Function to encrypt and sign a text.
 	 */
-	cryptAndSign: function(texte, keyIdList, fromGpgAuth, password, keyID) {
+	cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
@@ -373,7 +373,7 @@ var GPGAccess = {
 		if (fromGpgAuth == null)
 			fromGpgAuth = false;
 
-		putIntoFile(tmpInput,texte); // Temp
+		putIntoFile(tmpInput,text); // Temp
 
 		// The file already exist, but GPG don't work if he exist, so we del it.
 		removeFile(tmpOutput);
@@ -443,14 +443,14 @@ var GPGAccess = {
 	/*
 	 * Function to decrypt a text.
 	 */
-	decrypt: function(texte,password) {
+	decrypt: function(text,password) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
 		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
 
-		putIntoFile(tmpInput,texte); // Temp
+		putIntoFile(tmpInput,text); // Temp
 
 		// The file already exist, but GPG don't work if he exist, so we del it.
 		removeFile(tmpOutput);
@@ -495,9 +495,9 @@ var GPGAccess = {
 		var result = getFromFile(tmpStdOut);
 
 		// The decrypted text
-		var crypttexte = getFromFile(tmpOutput);
+		var crypttext = getFromFile(tmpOutput);
 		var result2 = GPGReturn;
-		result2.output = crypttexte;
+		result2.output = crypttext;
 		result2.sdOut = result;
 
 		// We delete tempory files

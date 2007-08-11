@@ -41,6 +41,7 @@ const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
 const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
 const NS_NETWORKINPUT_CONTRACTID = "@mozilla.org/network/file-input-stream;1";
 const NS_NETWORKINPUTS_CONTRACTID = "@mozilla.org/scriptableinputstream;1";
+const NS_PROCESSUTIL_CONTRACTID = "@mozilla.org/process/util;1";
 
 const TMP_DIRECTORY = "TmpD";
 const TMP_FILES = "fgpg_tmpFile";
@@ -89,7 +90,7 @@ function choosePublicKey(preSelect /* optional */) /* TODO : remove */
 
 		prefs = prefs.getBranch("extensions.firegpg.");
 		try {
-			to_my_self = prefs.getBoolPref("allvays_to_myself",false);
+			var to_my_self = prefs.getBoolPref("allvays_to_myself",false);
 		} catch (e) {
 			to_my_self = false;
 		}

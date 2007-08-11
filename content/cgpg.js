@@ -36,7 +36,6 @@
 
 /* DELETE THIS ? TODO
 const NS_IPCSERVICE_CONTRACTID  = "@mozilla.org/process/ipc-service;1";
-const NS_PROCESSUTIL_CONTRACTID = "@mozilla.org/process/util;1";
 */
 
 // Return class, for return 2 or 3 informations in an object.
@@ -661,7 +660,7 @@ var GPG = {
 
 	//Init subclass.
 	initGPGACCESS: function() {
-		if (this.allreadyinit == true)
+		if(this.allreadyinit != undefined && this.allreadyinit == true)
 			return;
 
 				//Find the right command for Gpg
