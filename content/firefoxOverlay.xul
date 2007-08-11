@@ -41,8 +41,7 @@
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script src="overlay.js"/>
   <script src="misc.js"/>
-  <script src="cgpgwin.js"/>
-  <script src="cgpglin.js"/>
+  <script src="cgpgaccess.js"/>
   <script src="cgpg.js"/>
   <script src="cgmail.js"/>
   <script src="cselect.js"/>

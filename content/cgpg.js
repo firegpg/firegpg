@@ -34,12 +34,10 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+/* DELETE THIS ? TODO
 const NS_IPCSERVICE_CONTRACTID  = "@mozilla.org/process/ipc-service;1";
-const NS_APPINFO_CONTRACTID = "@mozilla.org/xre/app-info;1";
 const NS_PROCESSUTIL_CONTRACTID = "@mozilla.org/process/util;1";
-
-const WINDOWS = "WINNT";
-const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;;
+*/
 
 // Return class, for return 2 or 3 informations in an object.
 var GPGReturn = {
@@ -420,7 +418,7 @@ var GPG = {
 
 		// GPG verification
 		if(!GPG.selfTest())
-			return;
+			return '';
 
 		// For i18n
 		var i18n = document.getElementById("firegpg-strings");
@@ -433,7 +431,7 @@ var GPG = {
 
 		if (text == "") {
 			alert(i18n.getString("noData"));
-			return;
+			return '';
 		}
 
 		//Verify GPG'data presence
@@ -454,7 +452,7 @@ var GPG = {
 
 		if (firstPosition == -1 || lastPosition == -1) {
 			alert(i18n.getString("noGPGData"));
-			return;
+			return '';
 		}
 
 		text = text.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
@@ -463,7 +461,7 @@ var GPG = {
 		var password = getPrivateKeyPassword();
 
 		if(password == null) {
-			return;
+			return '';
 		}
 
 		// We get the result
@@ -476,11 +474,11 @@ var GPG = {
 		if (result == "erreurPass") {
 			alert(i18n.getString("decryptFailedPassword"));
 			eraseSavedPassword();
-			return;
+			return '';
 		}
 		else if (result == "erreur") {
 			alert(i18n.getString("decryptFailed") + sdOut2);
-			return;
+			return '';
 		}
 		else {
 			// If the text was passed by the extension and not collected from an element,
@@ -510,6 +508,8 @@ var GPG = {
 				showText(crypttext,undefined,undefined,undefined,signAndCryptResult);
 			}
 		}
+
+		return '';
 	},
 
 	baseDecrypt: function(text,password) {
@@ -675,7 +675,7 @@ var GPG = {
 };
 
 // We load the good class for the OS
-GPG.GPGAccess = (FireGPG_OS == WINDOWS) ? GPGWin : GPGLin;
+GPG.GPGAccess = GPGAccess;
 GPG.GPGAccess.parent = GPG;
 
 //Test if we have to show the 'what is new ?'

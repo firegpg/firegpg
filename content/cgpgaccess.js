@@ -35,10 +35,11 @@
  * ***** END LICENSE BLOCK ***** */
 
 const nsIExtensionManager_CONRACTID = "@mozilla.org/extensions/manager;1";
+const NS_APPINFO_CONTRACTID = "@mozilla.org/xre/app-info;1";
+const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;
+const OS_WINDOWS = "WINNT";
 const idAppli = "firegpg@firegpg.team";
 const comment = "http://firegpg.tuxfamily.org";
-const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;
-const WINDOWS = "WINNT";
 
 var useGPGAgent = true;
 var useGPGTrust = true;
@@ -47,10 +48,10 @@ var useGPGTrust = true;
  * This operating system is an UNIX-like ? (like GNU/Linux or Mac OS X)
  */
 function isUnix() {
-	if(FireGPG_OS != WINDOWS)
+	if(FireGPG_OS != OS_WINDOWS)
 		return true;
-	else
-		return false;
+
+	return false;
 }
 
 /*

@@ -646,8 +646,8 @@ function testIfSomethingsIsNew() {
 	{
 		prefs.setCharPref("gpg_version",versionAct)
 
-		title = "FireGPG - What is new ?";
-		description = "What is new in FireGPG ? (An anonymous ping has been send to FireGPG's team for stats.)";
+		var title = "FireGPG - What is new ?";
+		var description = "What is new in FireGPG ? (An anonymous ping has been send to FireGPG's team for stats.)";
 		try {
 
 			title = i18n.getString('whatIsNewTitle');

@@ -200,8 +200,7 @@
 
 
     <script src="misc.js"/>
-    <script src="cgpglin.js"/>
-    <script src="cgpgwin.js"/>
+    <script src="cgpgaccess.js"/>
     <script src="cgpg.js"/>
     <script src="options.js"/>
     <script src="gpgauth_options.js"/>
