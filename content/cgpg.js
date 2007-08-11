@@ -149,7 +149,7 @@ var GPG = {
 		else if (result == "erreur")
 			alert(i18n.getString("verifFailed"));
 		else {
-			infos = result.split(" ");
+			var infos = result.split(" ");
 
 			var infos2 = "";
 			for (var ii = 1; ii < infos.length; ++ii)
@@ -434,7 +434,7 @@ var GPG = {
 		}
 
 		//Verify GPG'data presence
-		reg=new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
+		var reg=new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
 		text = text.replace(reg, "FIREGPGTRALALABEGINHIHAN");
 
 		reg=new RegExp("\\- \\-\\-\\-\\-\\-END PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
@@ -491,7 +491,7 @@ var GPG = {
 			//If there was a sign with the crypted text
 			if (result == "signValid")
 			{
-				infos = sdOut2.split(" ");
+				var infos = sdOut2.split(" ");
 				signAndCryptResult = "";
 				for (var ii = 1; ii < infos.length; ++ii)
 				{  signAndCryptResult = signAndCryptResult + infos[ii] + " ";}
@@ -531,7 +531,7 @@ var GPG = {
 		//Il y avait une signature dans le truc
 		if(tresult.indexOf("GOODSIG") != "-1")
 		{
-			infos = tresult;
+			var infos = tresult;
 			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
 			infos = tresult.replace(infos, "");
 			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);

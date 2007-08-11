@@ -163,8 +163,8 @@ function showText(text, description /* optional */, title /* optional */, doShow
 
 function showEditor() {
 	var i18n = document.getElementById("firegpg-strings");
-	title = i18n.getString('editorTitle');
-	description = i18n.getString('editorDescription');
+	var title = i18n.getString('editorTitle');
+	var description = i18n.getString('editorDescription');
 	showText('',description,title);
 }
 

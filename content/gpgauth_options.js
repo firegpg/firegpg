@@ -9,7 +9,7 @@ function getIgnored_servers( parent ) {
 	friendly_names[ 'allow_keyring' ] = "Allow access to GPG keyring";
 	friendly_names[ 'ignore_not_trusted' ] = "Ignore if key not trusted in GPG Keyring";
 	friendly_names[ 'ignore_server_keyerror' ] = "Ignore if key not found in GPG Keyring";
-	preferences = document.getElementById( "preferences_gpgauth" );
+	var preferences = document.getElementById( "preferences_gpgauth" );
 	for ( var pref in pref_list ) {
 		var listitem = document.createElement( "listitem" );
 		listitem.setAttribute( 'disabled', false );
