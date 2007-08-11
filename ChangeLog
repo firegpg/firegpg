@@ -1,8 +1,13 @@
-2007-08-06 Maximilien Cuony
+2007-08-11 Achraf cherti
+	* The classes GPGLin and GPGWin are unified in GPGAccess.
+	* some warnings are fixed.
+	* AUTHORS file updated
+
+2007-08-06  Maximilien Cuony
 	* 0.4.3 packed, and uploaded to the server !
 	* All locales updated
 
-2007-08-05 Maximilien Cuony
+2007-08-05  Maximilien Cuony
 	* Sign + enrypt support.
 	* Added sign & enrypt to menu, editor, cgpg and cgpglin. [Todo: cgmail and cwin]
 

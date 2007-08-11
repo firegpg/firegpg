@@ -2,6 +2,9 @@ FireGPG Team <firegpg@gmail.com> including :
     Achraf cherti
     Maximilien Cuony
 
+GPG Auth module :
+	Kyle L. Huff
+
 Translations :
     French and English translation by FireGPG Team
     Italian translation by Alessandro Pascali
@@ -16,12 +19,13 @@ Translations :
     Brazilian Portuguese translation by Eri Ramos Bastos
 
 Website translations :
-	Traditional and Simplified Chinese by Weakish Jiang 
+	Deutch by Bob Van Hove
+	Traditional and Simplified Chinese by Weakish Jiang
 	Spanish by Priapo
 
 Patchs by :
     Ilya Chernikov (Mac OS Bug)
-    hometoast (Windows Bug)
+    Hometoast (Windows Bug)
 
 Misc :
     Use the program hstart.exe by Alexander Avdonin (http://www.ntwind.com/software/utilities/hstart.html)
