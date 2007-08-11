@@ -37,7 +37,7 @@
 const nsIExtensionManager_CONRACTID = "@mozilla.org/extensions/manager;1";
 const idAppli = "firegpg@firegpg.team";
 const comment = "http://firegpg.tuxfamily.org";
-const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;;
+const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;
 const WINDOWS = "WINNT";
 
 var useGPGAgent = true;
@@ -74,14 +74,6 @@ function getGPGCommentArgument() {
  * Add --no-use-agent if user requet for this
  */
 function getGPGAgentArgument() {
-	/*var comment_argument = "";
-	var key = "extensions.firegpg.no_gpg_agent";
-	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
-	                       getService(Components.interfaces.nsIPrefBranch);
-
-	if(prefs.getPrefType(key) == prefs.PREF_BOOL)
-		if(prefs.getBoolPref(key))
-			comment_argument = ;*/
 	if (useGPGAgent)
 		return ' --no-use-agent';
 	else
@@ -95,7 +87,7 @@ function getGPGTrustArgument(/* Optionnal */ forceNo) {
 		return '';
 }
 
-//Return the agurments who the user want to add. SPACE BEFORE, NO SPACE IN LAST CHARACTER
+// Return the agurments who the user want to add. SPACE BEFORE, NO SPACE IN LAST CHARACTER
 function getGPGBonusCommand(){
 	var arguement = "";
 	try {
@@ -135,10 +127,7 @@ function getRunningCommand() {
 /*
  * Class to access to GPG on GNU/Linux.
  */
-var GPGLin = {
-	/*
-	 * Function to sign a text.
-	 */
+var GPGAccess = {
 	sign: function(text, password, keyID) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
@@ -161,7 +150,7 @@ var GPGLin = {
 
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
 		try { // DON'T MOVE THIS LINE !
-			/* TODO ces deux fonctions aussi les unifier */
+			/* TODO ces deux fonctions aussi les unifier ? */
 			if(isUnix()) {
 				runCommand(
 					tmpRun, // DON'T MOVE THIS LINE !
@@ -211,7 +200,9 @@ var GPGLin = {
 		return result2;
 	},
 
-	// Verify a sign
+	/*
+	 * Verify a signature
+	 */
 	verify: function(text) {
 		var tmpInput = getTmpFile();  // Signed data
 		var tmpStdOut = getTmpFile(); // Output from gpg
@@ -258,7 +249,9 @@ var GPGLin = {
 		return result;
 	},
 
-	// List differents keys
+	/*
+	 * List differents keys
+	 */
 	listkey: function(onlyPrivate) {
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
@@ -296,7 +289,7 @@ var GPGLin = {
 	},
 
 	/*
-	 * Function to crypt a text.
+	 * Function to encrypt a text.
 	 */
 	crypt: function(texte, keyIdList, fromGpgAuth /*Optional*/) {
 		var tmpInput = getTmpFile();  // Data unsigned
@@ -366,15 +359,14 @@ var GPGLin = {
 		return result2;
 	},
 
-
 	/*
-	 * Function to crypt and sign a text.
+	 * Function to encrypt and sign a text.
 	 */
 	cryptAndSign: function(texte, keyIdList, fromGpgAuth, password, keyID) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
-		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
+		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
 
 		if (fromGpgAuth == null)
@@ -386,13 +378,17 @@ var GPGLin = {
 		removeFile(tmpOutput);
 
 		// We lanch gpg
-		var running = getContent("chrome://firegpg/content/run.sh")
+		var running = getRunningCommand();
+		if(!isUnix()) {
+			var reg=new RegExp("\n", "gi");
+			running = running.replace(reg,"\r\n");
+		}
+		putIntoFile(tmpRun,running);
 
 		/* key id list in the arguments */
 		var keyIdListArgument = '';
 		for(var i = 0; i < keyIdList.length; i++)
 			keyIdListArgument += ((i > 0) ? ' ' : '') + '-r ' + keyIdList[i];
-		putIntoFile(tmpRun,running);
 
 
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
@@ -429,9 +425,9 @@ var GPGLin = {
 		var result = getFromFile(tmpStdOut);
 
 		// The crypted text
-		var crypttexte = getFromFile(tmpOutput);
+		var crypttext = getFromFile(tmpOutput);
 		var result2 = GPGReturn;
-		result2.output = crypttexte;
+		result2.output = crypttext;
 		result2.sdOut = result;
 
 		// We delete tempory files
@@ -445,7 +441,6 @@ var GPGLin = {
 
 	/*
 	 * Function to decrypt a text.
-	 * TODO
 	 */
 	decrypt: function(texte,password) {
 		var tmpInput = getTmpFile();  // Data unsigned
@@ -460,19 +455,39 @@ var GPGLin = {
 		removeFile(tmpOutput);
 
 		// We lanch gpg
-		var running = getContent("chrome://firegpg/content/run.sh");
+		var running = getRunningCommand();
+		if(!isUnix()) {
+			var reg=new RegExp("\n", "gi");
+			running = running.replace(reg,"\r\n");
+		}
+
 
 		putIntoFile(tmpRun,running);
 
 
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
-		try { runCommand(tmpRun,
-		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
-		           " --passphrase-file " + tmpPASS +
-		           " --output " + tmpOutput +
-		           " --decrypt " + tmpInput
-			   ); } catch (e) { }
+		try { 
+			if(isUnix()) {
+				runCommand(
+					tmpRun,
+					'' + this.getGPGCommand() + '' +  " " + tmpStdOut +
+					getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
+					" --passphrase-file " + tmpPASS +
+					" --output " + tmpOutput +
+					" --decrypt " + tmpInput
+				);
+			} else {
+				runWinCommand(
+					tmpRun,
+					'"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
+					getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGAgentArgument() +
+					" --passphrase-fd 0 " +
+					" --output " + tmpOutput +
+					" --decrypt " + tmpInput +
+					" < " + tmpPASS
+				);
+			}
+		} catch (e) { }
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
 		// We get the result
@@ -493,21 +508,40 @@ var GPGLin = {
 		return result2;
 	},
 
-	/* This if we can work with GPG TODO */
+	/* This if we can work with GPG */
 	selfTest: function() {
+		//One test is ok, if the command dosen't change, it's should works..
+		if(!isUnix()) { /* TODO this test is good ? */
+			if(this.allreadysucceswiththeselftest == this.getGPGCommand())
+				return true;
+		}
+
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
 
-		// We lanch gpg
-		var running = getContent("chrome://firegpg/content/run.sh")
+		// We launch gpg
+		var running = getRunningCommand();
+		if(!isUnix()) {
+			var reg=new RegExp("\n", "gi");
+			running = running.replace(reg,"\r\n");
+		}
 
 		putIntoFile(tmpRun,running);
 
-		runCommand(tmpRun,
-		           "" + this.getGPGCommand() + "" +  " " + tmpStdOut +
-		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
-		           " --version"
-			   );
+		if(isUnix()) {
+			runCommand(
+				tmpRun,
+				"" + this.getGPGCommand() + "" +  " " + tmpStdOut +
+				getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+				" --version"
+			);
+		} else {
+			runWinCommand(
+				tmpRun, '"' + this.getGPGCommand() + '"' + " \"" + 
+				tmpStdOut + "\"" +
+				getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+				getGPGAgentArgument() +	" --version");
+		}
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -520,11 +554,10 @@ var GPGLin = {
 		if (result.indexOf("Foundation") == -1)
 			return false;
 
-
 		return true;
 	},
 
-	// Import a key TODO
+	// Import a key
 	kimport: function(text) {
 		var tmpInput = getTmpFile();  // Key
 		var tmpStdOut = getTmpFile(); // Output from gpg
@@ -533,15 +566,29 @@ var GPGLin = {
 		putIntoFile(tmpInput,text); // TMP
 
 		// We lanch gpg
-		var running = getContent("chrome://firegpg/content/run.sh")
+		var running = getRunningCommand();
+		if(!isUnix()) {
+			var reg=new RegExp("\n", "gi");
+			running = running.replace(reg,"\r\n");
+		}
 
 		putIntoFile(tmpRun,running);
 
-		runCommand(tmpRun,
-		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
-		           " --import " + tmpInput
-			   );
+		if(isUnix()) {
+			runCommand(tmpRun,
+				'' + this.getGPGCommand() + '' +  " " + tmpStdOut +
+				getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+				" --import " + tmpInput
+			);
+		}
+		else {
+			runWinCommand(
+				tmpRun,
+				'"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
+				getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+				" --import " + tmpInput
+			);
+		}
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -555,21 +602,31 @@ var GPGLin = {
 		return result;
 	},
 
-	// Export a key TODO
+	// Export a key
 	kexport: function(key) {
-
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
 
 		// We lanch gpg
-		var running = getContent("chrome://firegpg/content/run.sh")
+		var running = getRunningCommand();
+		if(!isUnix()) {
+			var reg=new RegExp("\n", "gi");
+			running = running.replace(reg,"\r\n");
+		}
 
 		putIntoFile(tmpRun,running);
 
+		if(isUnix()) {
 		runCommand(tmpRun,
 		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
 		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
 		           " --export " + key);
+		} else {
+			runWinCommand(tmpRun,
+		           '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
+		           getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + getGPGAgentArgument() +
+		           " --export " + key);
+		}
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -584,19 +641,31 @@ var GPGLin = {
 
 	//Do a test of a commande TODO
 	runATest: function(option) {
-
 		var tmpStdOut = getTmpFile(); // Output from gpg
 		var tmpRun = getTmpFileRunning();
 
 		// We lanch gpg
-		var running = getContent("chrome://firegpg/content/run.sh")
+		var running = getRunningCommand();
+		if(!isUnix()) {
+			var reg=new RegExp("\n", "gi");
+			running = running.replace(reg,"\r\n");
+		}
 
 		putIntoFile(tmpRun,running);
 
-		runCommand(tmpRun,
-		           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-		           getGPGBonusCommand() + " --status-fd 1 " + option +
-		           " --version" );
+		if(isUnix()) {
+			runCommand(
+				tmpRun,
+				'' + this.getGPGCommand() + '' +  " " + tmpStdOut +
+				getGPGBonusCommand() + " --status-fd 1 " + option +
+				" --version" );
+		} else {
+			runWinCommand(
+				tmpRun,
+				'"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
+				getGPGBonusCommand() + " " + option +
+				" --version");
+		}
 
 		// We get the result
 		var result = getFromFile(tmpStdOut);
@@ -611,30 +680,97 @@ var GPGLin = {
 		return true;
 	},
 
-	//Return the GPG's command to use TODO
+	//Return the GPG's command to use
 	getGPGCommand: function () {
 		return this.GpgCommand;
 	},
-	//Do some tests for find the right command... TODO
+		//Do some tests for find the right command... TODO
 	tryToFoundTheRightCommand: function () {
-		//Year, on linux no test, because it's a good Os.
-		//We only look if the user wants to force the path.
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
-		                       getService(Components.interfaces.nsIPrefService);
-		prefs = prefs.getBranch("extensions.firegpg.");
+		if(isUnix()) {
+			//Year, on linux no test, because it's a good Os.
+			//We only look if the user wants to force the path.
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+								   getService(Components.interfaces.nsIPrefService);
+			prefs = prefs.getBranch("extensions.firegpg.");
 
-		try {
-			var force = prefs.getBoolPref("specify_gpg_path");
-		}
-		catch (e) {
-			var force = false;
-		}
+			try {
+				var force = prefs.getBoolPref("specify_gpg_path");
+			}
+			catch (e) {
+				var force = false;
+			}
 
-		if (force == true)
-			this.GpgCommand = prefs.getCharPref("gpg_path");
+			if (force == true)
+				this.GpgCommand = prefs.getCharPref("gpg_path");
+			else {
+				prefs.setCharPref("gpg_path","gpg");
+				this.GpgCommand = "gpg";
+			}
+		}
 		else {
-			prefs.setCharPref("gpg_path","gpg");
-			this.GpgCommand = "gpg";
+			//Two choises : 1) The user want to set the path himself, so we use this.
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+								   getService(Components.interfaces.nsIPrefService);
+			prefs = prefs.getBranch("extensions.firegpg.");
+
+			try {
+				var force = prefs.getBoolPref("specify_gpg_path");
+			}
+			catch (e) {
+				var force = false;
+			}
+
+			if (force == true)
+				this.GpgCommand = prefs.getCharPref("gpg_path");
+			else {
+
+				//Or we will try to found a valid path.
+
+				//1) If there are allready a path set, he can be valid.
+				var gpg_path_in_options = prefs.getCharPref("gpg_path","");
+
+				if (gpg_path_in_options != "") {
+					this.GpgCommand = gpg_path_in_options;
+					if (this.selfTest() == true)
+						return; //It's work, yourou.
+				}
+
+				//2) We have to guess some path to see if it's work...
+
+				//TODO : Yes, it's horrible this copy/paste code...
+
+
+				//GNU ?
+				var testingcommand = "C:\\Program Files\\GNU\\GnuPG\\gpg.exe";
+				this.GpgCommand = testingcommand;
+				if (this.selfTest() == true)
+				{
+					//Don't forget to save the information for the nextime !
+					prefs.setCharPref("gpg_path",testingcommand);
+					return; //It's work, We're the best.
+				}
+
+				//Windows Privacy Tools ?
+				var testingcommand = "C:\\Program Files\\Windows Privacy Tools\\GnuPG\\gpg.exe";
+				this.GpgCommand = testingcommand;
+				if (this.selfTest() == true)
+				{
+					prefs.setCharPref("gpg_path",testingcommand);
+					//Don't forget to save the information for the nextime !
+					return; //It's work, mwahaha.
+				}
+
+				//Maybe in the path ?
+				var testingcommand = "gpg.exe";
+				this.GpgCommand = testingcommand;
+				if (this.selfTest() == true)
+				{
+					//Don't forget to save the information for the nextime !
+					prefs.setCharPref("gpg_path",testingcommand);
+					return; //It's work, hehehe.
+				}
+
+			}
 		}
 	}
 };
