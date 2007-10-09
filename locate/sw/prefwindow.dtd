@@ -1,0 +1,36 @@
+<!ENTITY prefwindow.title "FireGPG preferences">
+<!ENTITY pane1.title "General">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "GMail support">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Default private key:">
+<!ENTITY show-website-checkbox "Show FireGPG website in signed or crypted text">
+<!ENTITY change-gpg-path-button "Setting GPG's path">
+<!ENTITY change-gpg-path-checkbox "Manually specify the path of GPG:">
+<!ENTITY result-always-in-new-window "Always display the result of an encoding or a signature in a new window.">
+<!ENTITY no-gpg-agent-checkbox "Force to turn off GPG's Agent (can fix some errors)">
+<!ENTITY ask-for-save-pass "By default, ask for save password.">
+<!ENTITY gmail-no-no-sign-checkbox "Don't show 'No signature found [...]'">
+<!ENTITY gmail-need-a-restart "These options need a browser restart.">
+<!ENTITY gmail-buttons-label "Buttons to show :">
+<!ENTITY gmail-buton-sign-checkbox "Sign">
+<!ENTITY gmail-buton-signsend-checkbox "Sign and Send">
+<!ENTITY gmail-buton-crypt-checkbox "Crypt">
+<!ENTITY gmail-buton-cryptsend-checkbox "Crypt and Send">
+<!ENTITY allvays-to-myself-checkbox "Always encrypt to myself.">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (Requires Restart of Firefox)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Per-domain settings:">
+<!ENTITY turn-off-updates "Disable FireGPG's auto updates">
+<!ENTITY key-name "Name">
+<!ENTITY key-id "Id">
+<!ENTITY key-create "Created">
+<!ENTITY key-expire "Expire">
+<!ENTITY pane4.title "Gpg">
+<!ENTITY gpg-add-options "Add arguments to gpg's command line : (Warning ! Can break FireGPG ! Have a look at doc.)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Sign and Crypt">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Sign, Crypt and Send">
