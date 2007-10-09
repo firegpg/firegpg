@@ -1,7 +1,0 @@
-<!ENTITY crypt-button "Cifrar">
-<!ENTITY dcrypt-button "Decifrar">
-<!ENTITY sign-button "Assinar">
-<!ENTITY verify-button "Verificar">
-<!ENTITY open-button "Abrir">
-<!ENTITY save-button "Guardar">
-<!ENTITY cryptandsign-button "Sign and crypt">
