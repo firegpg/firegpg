@@ -1,3 +1,6 @@
+2007-10-09  Maximilien Cuony
+    * Sorting key's list by name
+
 2007-08-11 Achraf cherti
 	* The classes GPGLin and GPGWin are unified in GPGAccess.
 	* some warnings are fixed.

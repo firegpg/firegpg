@@ -42,6 +42,31 @@ const NS_IPCSERVICE_CONTRACTID  = "@mozilla.org/process/ipc-service;1";
 var GPGReturn = {
 }
 
+//Function to try array
+function Sortage(a,b) {
+    var infosA = new Array();
+	try { infosA = a.split(":") } catch(e) {};
+
+
+
+    var infosB = new Array();
+	try { infosB = b.split(":") } catch(e) {};
+
+    infosA = (infosA[9] + " ").toLowerCase();
+    infosB = (infosB[9] + " ").toLowerCase();
+
+    var i = 0;
+
+    while(infosA[i] == infosB[i] && i < infosA.lenght)
+        i++;
+
+    if (infosA[i]<infosB[i]) return -1;
+
+    if (a[i]==b[i]) return 0;
+
+    return 1;
+}
+
 // Main class for access to GPG
 var GPG = {
 	/*
@@ -233,6 +258,7 @@ var GPG = {
 		var list = result.split(reg);
 
 		// var reg2=new RegExp("[:]+", "g");
+        list.sort(Sortage);
 
 		for (var i = 0; i < list.length; i++) {
 			var infos = new Array();
@@ -248,6 +274,10 @@ var GPG = {
 			}
 			} catch (e) { }
 		}
+
+        for(id in retour) {
+            //alert(retour[id]);
+        }
 
 		return retour;
 	},
@@ -676,6 +706,8 @@ var GPG = {
 // We load the good class for the OS
 GPG.GPGAccess = GPGAccess;
 GPG.GPGAccess.parent = GPG;
+
+GPG.listKeys(true);
 
 //Test if we have to show the 'what is new ?'
 //We wait 3 sec.

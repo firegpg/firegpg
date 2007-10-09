@@ -48,6 +48,7 @@ function onLoad(win)
 	if(window.arguments == undefined)
 		return;
 
+
 	var preSelect = window.arguments[0].preSelect;
 
 	//PreSelect
@@ -60,7 +61,7 @@ function onLoad(win)
 	{
 		var autoSelectMode = true;
 		var testList = "";
-		/* TODO here a warning : 
+		/* TODO here a warning :
 		 * "reference to undefined property preSelect.length */
 		for (var i = 0; i < preSelect.length; i++) {
 			testList = testList + preSelect[i] + " ";
@@ -69,6 +70,10 @@ function onLoad(win)
 
 	// the list
 	var list = window.arguments[0].list;
+
+    //sorting list
+
+
 	var listInDialog = document.getElementById('list');
 
 	var selected;
@@ -142,6 +147,14 @@ function onLoad(win)
 
 	setTimeout("checkTheAutoSelect()",100);
 
+}
+
+/*
+ * Function wo wiil help the browser to try an array
+ */
+
+function Trillage(x1,x2) {
+    alert(x1 + " " + x2);
 }
 
 function checkTheAutoSelect() {
