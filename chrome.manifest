@@ -1,6 +1,7 @@
 content	firegpg	content/
 locale	firegpg	en-US	locale/en-US/
 locale	firegpg	fr	locale/fr/
+locale	firegpg	fr-CH	locale/fr/
 locale	firegpg de	locale/de/
 locale	firegpg it	locale/it/
 locale	firegpg pl	locale/pl/
