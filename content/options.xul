@@ -51,6 +51,12 @@
             <preference id="no-updates" name="extensions.firegpg.no_updates" type="bool"/>
         </preferences>
 
+        <hbox>
+            <label  id="firegpg-version-label" value="&firegpg-version-label.text;"/>
+
+            <label  id="firegpg-version-version" value=""/>
+        </hbox>
+
         <!-- Always sign or verify in a new window -->
         <checkbox  id="result-always-in-new-window" preference="result-always-in-new-window-pref"  label="&result-always-in-new-window;"/>
 

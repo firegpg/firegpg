@@ -35,7 +35,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-const FIREGPG_VERSION = '0.4';
+const FIREGPG_VERSION = '0.4.3';
 const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
 const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
 const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
@@ -150,7 +150,7 @@ function showText(text, description /* optional */, title /* optional */, doShow
 
 	if(validSign == undefined)
 		params.validSign = null;
-		
+
 	/* open the dialog */
 	window.openDialog('chrome://firegpg/content/showtext.xul',
 	                  '', 'chrome, dialog, resizable=yes',

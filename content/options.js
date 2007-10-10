@@ -137,6 +137,9 @@ function onLoad(win)
 
 	/* gpgAUth */
 	getIgnored_servers( document.getElementById('domain_list') );
+
+    //Set version number
+    document.getElementById('firegpg-version-version').value = FIREGPG_VERSION;
 }
 
 /*
