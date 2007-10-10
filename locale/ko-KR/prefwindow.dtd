@@ -1,0 +1,37 @@
+<!ENTITY prefwindow.title "FireGPG 설정">
+<!ENTITY pane1.title "일반">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Gmail 지원">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "기본 개인키:">
+<!ENTITY show-website-checkbox "암호화하거나 서명한 결과에 FireGPG 웹 사이트 표시">
+<!ENTITY change-gpg-path-button "GPG 경로 지정">
+<!ENTITY change-gpg-path-checkbox "GPG 프로그램 경로를 직접 지정:">
+<!ENTITY result-always-in-new-window "암호화하거나 서명한 결과를 항상 새 창에 표시">
+<!ENTITY no-gpg-agent-checkbox "GPG의 agent를 강제로 끄기 (일부 오류 해결 가능)">
+<!ENTITY ask-for-save-pass "암호를 저장할지 물어봄">
+<!ENTITY gmail-no-no-sign-checkbox "서명을 찾지 못했다는 안내문을 표시하지 않기">
+<!ENTITY gmail-need-a-restart "아래 설정들을 바꾸고 적용하려면 브라우저를 다시 실행해야합니다.">
+<!ENTITY gmail-buttons-label "표시할 단추들:">
+<!ENTITY gmail-buton-sign-checkbox "서명">
+<!ENTITY gmail-buton-signsend-checkbox "서명하여 전송">
+<!ENTITY gmail-buton-crypt-checkbox "암호화">
+<!ENTITY gmail-buton-cryptsend-checkbox "암호화하여 전송">
+<!ENTITY allvays-to-myself-checkbox "항상 나 자신에게 암호화하여 보내기">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (Requires Restart of Firefox)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Per-domain settings:">
+<!ENTITY turn-off-updates "Disable FireGPG's auto updates">
+<!ENTITY key-name "Name">
+<!ENTITY key-id "Id">
+<!ENTITY key-create "Created">
+<!ENTITY key-expire "Expire">
+<!ENTITY pane4.title "Gpg">
+<!ENTITY gpg-add-options "Add arguements to gpg's commande line : (Warning ! Can break FireGPG ! Have a look at doc.)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Sign and Crypt">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Sign, Crypt and Send">
+<!ENTITY firegpg-version-label.text "Current FireGPG's version :">
