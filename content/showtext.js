@@ -48,7 +48,7 @@ function onLoad(win)
 
         if (window.arguments[0].doShowButtons == true)
         {
-                document.getElementById('buttons-box').style.display = 'none';
+               document.getElementById('buttons-box').style.display = 'none';
         }
 
 
@@ -58,6 +58,7 @@ function onLoad(win)
                 document.getElementById('dcryptsignresult').style.display = '';
                 document.getElementById('dcryptsignresult').value = document.getElementById("firegpg-strings").getString("validSignInCrypt") + " " + window.arguments[0].validSign;
         }
+
 }
 
 /*

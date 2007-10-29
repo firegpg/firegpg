@@ -707,8 +707,6 @@ var GPG = {
 GPG.GPGAccess = GPGAccess;
 GPG.GPGAccess.parent = GPG;
 
-GPG.listKeys(true);
-
 //Test if we have to show the 'what is new ?'
 //We wait 3 sec.
 setTimeout("testIfSomethingsIsNew()",3000);

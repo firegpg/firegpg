@@ -641,6 +641,8 @@ function testIfSomethingsIsNew() {
 	var addon = em.getItemForID("firegpg@firegpg.team");
 	var versionAct = addon.version;
 
+    versionAct = FIREGPG_VERSION;
+
 	var i18n = document.getElementById("firegpg-strings");
 
 	if (version != versionAct)
@@ -654,7 +656,8 @@ function testIfSomethingsIsNew() {
 			title = i18n.getString('whatIsNewTitle');
 			description = i18n.getString('whatIsNewDescription');
 		} catch (e) { }
-		showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);
+
+        showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);
 		//Send the ping
 
 		if (version == "")
@@ -663,7 +666,9 @@ function testIfSomethingsIsNew() {
 			var mode = "[From" + version + "]";
 
 		var misc = getContent("http://firegpg.tuxfamily.org/phpmv2/phpmyvisites.php?url=&id=2&pagename=FILE:"+ versionAct + "/" + mode);
-	} else {
+
+
+    } else {
 
 		//Try to find an update, if it's needed.
 		var noUpdates = false;
