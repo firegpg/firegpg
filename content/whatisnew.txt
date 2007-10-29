@@ -1,24 +1,22 @@
-=== Version 0.4.3 ===
+=== Version 0.4.4 ===
 
-No, FireGPG is not dead. We're very busy, but here is a new update !
-
-There are only new functionalities, who seem to be important to you (we revive a lot of mails and messages on the forum..)
+A small update.
 
 Bugs :
-- Nothing :)
+- Fixed a probably bug in the update system (firegpg found update everytime, but it's specific of systems).
 
 Functionalities:
-- Option to disable auto-update. WE STRONGLY RECOMMAND TO NOT USE THIS.
-- Add feature to add some option to gpg's command line. Dangerous, read the doc.
-- Added more information when select a key (id, dates (created, expire))
-- Sign&Crypt implemented. Information about this kind of messages are in a label of the editor or an alert box if the sign a valid.
+- Version number add in the option pane.
+- Keys' list are now sorted by name.
 
 Locales :
-- Nothnig.
+- Fixed the problem with some locates.
+- We change our locate system, so if there is a problem please tell us :).
 
 Misc :
-- In regards to full support of OpenPGP/Mime, we're working on it.  We're about 25% of the way to completion.
-- Don't forget to report bugs to our forum or by email at firegpg@gmail.com !
+- Fixed some warnigs
+- AUTHORS updated
+- The classes GPGLin and GPGWin are unified in GPGAccess.
 
 * Post on our forum about this version : http://firegpg.tuxfamily.org/forum/viewtopic.php?id=180
 
