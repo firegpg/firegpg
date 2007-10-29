@@ -18,7 +18,7 @@ Misc :
 - AUTHORS updated
 - The classes GPGLin and GPGWin are unified in GPGAccess.
 
-* Post on our forum about this version : http://firegpg.tuxfamily.org/forum/viewtopic.php?id=180
+* Post on our forum about this version : http://firegpg.tuxfamily.org/forum/viewtopic.php?id=230
 
 Thanks you for using FireGPG !
     FireGPG's team.
