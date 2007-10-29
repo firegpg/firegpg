@@ -1,12 +1,12 @@
 2007-10-29  Maximilien Cuony
-    * 0.4.4 packed, and uploaded to the server !
+	* 0.4.4 packed, and uploaded to the server !
 
 2007-10-10  Maximilien Cuony
-    * Add version number in options
-    * Fixed a probable bug in update system.
+	* Add version number in options
+	* Fixed a probable bug in update system.
 
 2007-10-09  Maximilien Cuony
-    * Sorting key's list by name
+	* Sorting key's list by name
 
 2007-08-11 Achraf cherti
 	* The classes GPGLin and GPGWin are unified in GPGAccess.
