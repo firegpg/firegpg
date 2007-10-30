@@ -1,0 +1,42 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "Podpisz">
+<!ENTITY firegpgContext.labelCrypt "Zaszyfruj">
+<!ENTITY firegpgContext.labelVerif "Zweryfikuj">
+<!ENTITY firegpgContext.labelDecry "Odszyfruj">
+<!ENTITY firegpgContext.labelOptions "Opcje">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "Podpisz">
+<!ENTITY firegpgMenu.labelCrypt "Zaszyfruj">
+<!ENTITY firegpgMenu.labelVerif "Zweryfikuj">
+<!ENTITY firegpgMenu.labelDecry "Odszyfruj">
+<!ENTITY firegpgMenu.labelOptions "Opcje">
+<!ENTITY firegpgToolbar.labelSign "Podpisz">
+<!ENTITY firegpgToolbar.labelCrypt "Zaszyfruj">
+<!ENTITY firegpgToolbar.labelVerif "Zweryfikuj">
+<!ENTITY firegpgToolbar.labelDecry "Odszyfruj">
+<!ENTITY firegpgToolbar.labelOptions "Opcje">
+<!ENTITY firegpgMenu.labelErase "Wyczyść zapamiętane hasła">
+<!ENTITY firegpgContext.labelErase "Wyczyść zapamiętane hasła">
+<!ENTITY firegpgToolbar.labelErase "Wyczyść zapamiętane hasła">
+<!ENTITY firegpgMenu.labelImport "Importuj">
+<!ENTITY firegpgContext.labelImport "Importuj">
+<!ENTITY firegpgToolbar.labelImport "Importuj">
+<!ENTITY firegpgMenu.labelExport "Eksportuj">
+<!ENTITY firegpgContext.labelExport "Eksportuj">
+<!ENTITY firegpgToolbar.labelExport "Eksportuj">
+<!ENTITY firegpgPopInfo.labelBonjour "Welcome !<br />FireGPG was installed correctly !">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG can access to GnuPG !">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG cannot access to GnuPG : did you installed it ? Its path is correct ?">
+<!ENTITY firegpgPopInfo.labelKeyOk "A private key is choosed !">
+<!ENTITY firegpgPopInfo.labelKeyErr "Warning: please choose a private key in the options!">
+<!ENTITY firegpgPopInfo.close "Close">
+<!ENTITY firegpgPopInfo.options "Opcje">
+<!ENTITY firegpgContext.labelEditeur "Otwórz edytor">
+<!ENTITY firegpgMenu.labelEditeur "Otwórz edytor">
+<!ENTITY firegpgToolbar.labelEditeur "Otwórz edytor">
+<!ENTITY firegpgContext.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgMenu.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgToolbar.labelCryptSign "Sign and Crypt">

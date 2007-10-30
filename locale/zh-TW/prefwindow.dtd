@@ -1,0 +1,38 @@
+<!ENTITY prefwindow.title "FireGPG 選項">
+<!ENTITY pane1.title "一般情況">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "GMail支持">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "默認私鑰：">
+<!ENTITY show-website-checkbox "在簽署或加密的文本中顯示FireGPG網站">
+<!ENTITY change-gpg-path-button "設定GPG路徑">
+<!ENTITY change-gpg-path-checkbox "手動指定GPG路徑">
+<!ENTITY result-always-in-new-window "總是在新窗口顯示簽署或加密後的效果">
+<!ENTITY no-gpg-agent-checkbox "強制關閉GPG代理（可解決一些錯誤）">
+<!ENTITY ask-for-save-pass "默認詢問是否保存密碼。">
+<!ENTITY gmail-no-no-sign-checkbox "不要顯示'找不到簽名[...]'">
+<!ENTITY gmail-need-a-restart "此選項需要重啓瀏覽器才能生效。">
+<!ENTITY gmail-buttons-label "顯示的按鈕：">
+<!ENTITY gmail-buton-sign-checkbox "簽名">
+<!ENTITY gmail-buton-signsend-checkbox "簽名並發送">
+<!ENTITY gmail-buton-crypt-checkbox "加密">
+<!ENTITY gmail-buton-cryptsend-checkbox "加密並發送">
+<!ENTITY allvays-to-myself-checkbox "發信給自己時總是加密">
+<!ENTITY enable-gpgauth-check.label "啟用gpgAuth （需要重啟Firefox)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "總是解密來自已認証服務器的信件">
+<!ENTITY global-allow-keyring-check.label "總是解密來自已認証服務器的信件">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "據域名設置：">
+<!ENTITY turn-off-updates "禁用FireGPG自動升級">
+<!ENTITY key-name "姓名">
+<!ENTITY key-id "Id">
+<!ENTITY key-create "已創建的">
+<!ENTITY key-expire "過期">
+<!ENTITY pane4.title "Gpg">
+<!ENTITY gpg-add-options "Add arguements to gpg's commande line : (Warning ! Can break FireGPG ! Have a look at doc.)">
+<!ENTITY gmail-buton-signcrypt-checkbox "簽名并加密">
+<!ENTITY gmail-buton-signcryptsend-checkbox "簽名，加密并發送">
+<!ENTITY firegpg-version-label.text "Current FireGPG's version :">
+<!ENTITY hide-expired "Hide expired keys">

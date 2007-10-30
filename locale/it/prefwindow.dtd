@@ -1,0 +1,38 @@
+<!ENTITY prefwindow.title "FireGPG - Preferenza">
+<!ENTITY pane1.title "Generale">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "GMail support">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Chiave privata di default">
+<!ENTITY show-website-checkbox "Indica il sito FireGPG nel testo criptato o nella firma">
+<!ENTITY change-gpg-path-button "Seleziona cartella">
+<!ENTITY change-gpg-path-checkbox "Specifica un path per GPG alternativo:">
+<!ENTITY result-always-in-new-window "Visualizza sempre il testo criptato / firmato in una nuova finestra.">
+<!ENTITY no-gpg-agent-checkbox "Forza disattivazione di gpg's agent (può risolvere alcuni errori)">
+<!ENTITY ask-for-save-pass "By default, ask for save password.">
+<!ENTITY gmail-no-no-sign-checkbox "Nascondi 'Nessuna firma trovata [...]' ">
+<!ENTITY gmail-need-a-restart "Queste opzioni necessitano di un riavvio del browser">
+<!ENTITY gmail-buttons-label "Mostra pulsanti">
+<!ENTITY gmail-buton-sign-checkbox "Firma">
+<!ENTITY gmail-buton-signsend-checkbox "Firma e Invia">
+<!ENTITY gmail-buton-crypt-checkbox "Cripta">
+<!ENTITY gmail-buton-cryptsend-checkbox "Cripta e invia">
+<!ENTITY allvays-to-myself-checkbox "Seleziona sempre la mia chiave per criptare">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (Requires Restart of Firefox)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Per-domain settings:">
+<!ENTITY turn-off-updates "Disable FireGPG's auto updates">
+<!ENTITY key-name "Name">
+<!ENTITY key-id "Id">
+<!ENTITY key-create "Created">
+<!ENTITY key-expire "Expire">
+<!ENTITY pane4.title "Gpg">
+<!ENTITY gpg-add-options "Add arguements to gpg's commande line : (Warning ! Can break FireGPG ! Have a look at doc.)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Sign and Crypt">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Sign, Crypt and Send">
+<!ENTITY firegpg-version-label.text "Current FireGPG's version :">
+<!ENTITY hide-expired "Hide expired keys">
