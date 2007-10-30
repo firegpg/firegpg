@@ -752,11 +752,15 @@ var cGmail = {
 
 			} else { //RichEditing, have a selection
 
+                var reg=new RegExp("<", "gi");
+				newText = newText.replace(reg,"&lt;");
+
 				var reg=new RegExp("\n", "gi");
 				newText = newText.replace(reg,"<br>");
 
 				var range = select.getRangeAt(0);
 				var el = dDocument.createElement("div");
+
 				el.innerHTML = newText;
 
 				range.deleteContents();

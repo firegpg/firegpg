@@ -88,6 +88,13 @@ var GPG = {
 			return;
 		}
 
+        var tryPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
+
+        if (tryPosition != -1) {
+			if (!confirm(i18n.getString("alreadySign")))
+                return;
+		}
+
 		// Needed for a sign
 		var keyID = getSelfKey();
 		if(keyID == null)
@@ -191,20 +198,27 @@ var GPG = {
 		var reg = new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP SIGNED MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
 		text = text.replace(reg, "FIREGPGTRALALABEGINHIHAN");
 
+        var reg = new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP SIGNATURE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
+		text = text.replace(reg, "FIREGPGTRALALABEGINHIHANLAUTRE");
+
 		reg = new RegExp("\\- \\-\\-\\-\\-\\-END PGP SIGNATURE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
 		text = text.replace(reg, "FIREGPGTRALALAENDHIHAN");
 
 		// Verify GPG'data presence
 		var firstPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
+        var firstPosition2 = text.indexOf("-----BEGIN PGP SIGNATURE----");
 		var lastPosition = text.indexOf("-----END PGP SIGNATURE-----");
 
 		reg = new RegExp("FIREGPGTRALALABEGINHIHAN", "gi"); // We don't have to detect disabled balises
 		text = text.replace(reg, "-----BEGIN PGP SIGNED MESSAGE-----");
 
+        reg = new RegExp("FIREGPGTRALALABEGINHIHANLAUTRE", "gi"); // We don't have to detect disabled balises
+		text = text.replace(reg, "------BEGIN PGP SIGNATURE-----");
+
 		reg = new RegExp("FIREGPGTRALALAENDHIHAN", "gi"); // We don't have to detect disabled balises
 		text = text.replace(reg, "-----END PGP SIGNATURE-----");
 
-		if(firstPosition == -1 || lastPosition == -1)
+		if((firstPosition == -1 && firstPosition2 == -1) || lastPosition == -1)
 			return "noGpg";
 
 		text = text.substring(firstPosition,lastPosition + ("-----END PGP SIGNATURE-----").length);
@@ -299,6 +313,13 @@ var GPG = {
 		if (text == "") {
 			alert(i18n.getString("noData"));
 			return;
+		}
+
+        var tryPosition = text.indexOf("-----BEGIN PGP MESSAGE-----");
+
+        if (tryPosition != -1) {
+			if (!confirm(i18n.getString("alreadyCrypt")))
+                return;
 		}
 
 		// Needed for a crypt

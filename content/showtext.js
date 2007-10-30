@@ -117,6 +117,13 @@ function crypt() {
 		return;
 	}
 
+    var tryPosition = text.indexOf("-----BEGIN PGP MESSAGE-----");
+
+    if (tryPosition != -1) {
+        if (!confirm(i18n.getString("alreadyCrypt")))
+            return;
+    }
+
 	// Needed for a crypt
 	var keyID = choosePublicKey();
 
@@ -293,6 +300,13 @@ function sign() {
                 alert(i18n.getString("noData"));
                 return;
         }
+
+        var tryPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
+
+        if (tryPosition != -1) {
+			if (!confirm(i18n.getString("alreadySign")))
+                return;
+		}
 
         // Needed for a sign
         var keyID = getSelfKey();

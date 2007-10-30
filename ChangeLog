@@ -1,3 +1,9 @@
+2007-10-30  Maximilien Cuony
+    * Fixed problem with < in mail signed (gmail interface)
+    * Add warning if a text seem to be already crypted or signed.
+    * BEGIN PGP SIGNATURE supported
+    * On Unix system, try to use /usr/local/bin/gpg (for MacOs users)
+
 2007-10-29  Maximilien Cuony
 	* 0.4.4 packed, and uploaded to the server !
 

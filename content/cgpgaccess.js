@@ -162,14 +162,14 @@ var GPGAccess = {
 					" --passphrase-file " + tmpPASS + "" +
 					getGPGCommentArgument() + getGPGAgentArgument() +
 					" --clearsign " + tmpInput
-				); 
+				);
 			}
 			else {
 				runWinCommand(
 					tmpRun, // DON'T MOVE THIS LINE !
 					'"' + this.getGPGCommand() + '" "' + tmpStdOut + '"' +
-					getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + 
-					getGPGAgentArgument() + 
+					getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" +
+					getGPGAgentArgument() +
 					" --default-key " + keyID +
 					" --output " + tmpOutput +
 					" --passphrase-fd 0 " +
@@ -220,7 +220,7 @@ var GPGAccess = {
 		}
 
 		putIntoFile(tmpRun,running);
-		
+
 		if(isUnix()) {
 			runCommand(
 				tmpRun,
@@ -334,7 +334,7 @@ var GPGAccess = {
 			runWinCommand(
 				tmpRun,
 				'"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
-				getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + 
+				getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) +
 				" --no-tty --no-verbose --status-fd 1 --armor --batch" +
 				" " + keyIdListArgument +
 				getGPGCommentArgument() + getGPGAgentArgument() +
@@ -467,7 +467,7 @@ var GPGAccess = {
 
 
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
-		try { 
+		try {
 			if(isUnix()) {
 				runCommand(
 					tmpRun,
@@ -538,9 +538,9 @@ var GPGAccess = {
 			);
 		} else {
 			runWinCommand(
-				tmpRun, '"' + this.getGPGCommand() + '"' + " \"" + 
+				tmpRun, '"' + this.getGPGCommand() + '"' + " \"" +
 				tmpStdOut + "\"" +
-				getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + 
+				getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" +
 				getGPGAgentArgument() +	" --version");
 		}
 
@@ -690,6 +690,7 @@ var GPGAccess = {
 		if(isUnix()) {
 			//Year, on linux no test, because it's a good Os.
 			//We only look if the user wants to force the path.
+            //Edit : now a test for macOs Users.
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 								   getService(Components.interfaces.nsIPrefService);
 			prefs = prefs.getBranch("extensions.firegpg.");
@@ -704,7 +705,30 @@ var GPGAccess = {
 			if (force == true)
 				this.GpgCommand = prefs.getCharPref("gpg_path");
 			else {
-				prefs.setCharPref("gpg_path","gpg");
+
+
+                //First, test if it's had worked
+                var gpg_path_in_options = prefs.getCharPref("gpg_path","");
+
+				if (gpg_path_in_options != "") {
+					this.GpgCommand = gpg_path_in_options;
+					if (this.selfTest() == true)
+						return; //It's work, yourou.
+				}
+
+
+                //On mac, it's here (usualy)
+                var testingcommand = "/usr/local/bin/gpg";
+				this.GpgCommand = testingcommand;
+				if (this.selfTest() == true)
+				{
+					//Don't forget to save the information for the nextime !
+					prefs.setCharPref("gpg_path",testingcommand);
+					return; //It's work, We're the best.
+				}
+
+                //The default (works in most cases)
+                prefs.setCharPref("gpg_path","gpg");
 				this.GpgCommand = "gpg";
 			}
 		}
