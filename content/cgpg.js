@@ -262,6 +262,20 @@ var GPG = {
 		// We get informations from GPG
 		var result = this.GPGAccess.listkey(onlyPrivate);
 
+        //If we have to check the olds keys
+
+
+        var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+		                       getService(Components.interfaces.nsIPrefService);
+		prefs = prefs.getBranch("extensions.firegpg.");
+        var check_expi = false;
+        try {
+            check_expi = prefs.getBoolPref("hide_expired");
+        } catch (e) { }
+
+        var maintenant = new Date();
+        maintenant = maintenant.getTime();
+
 		// Parsing
 		var reg = new RegExp("\r", "g");
 		var result = result.replace(reg,"\n");
@@ -284,7 +298,21 @@ var GPG = {
 				var keyName = infos[9];
 				var keyDate = infos[5];
 				var keyExpi = infos[6];
-				retour[infos[4]] = new Array(keyName, keyDate,keyExpi);
+
+                if(check_expi)
+                {
+
+                    var splited = keyExpi.split(new RegExp("-", "g"));
+
+                    var tmp_date = new Date(splited[0],splited[1],splited[2]);
+
+                    if (isNaN(tmp_date.getTime()) || maintenant < tmp_date.getTime())
+                        retour[infos[4]] = new Array(keyName, keyDate,keyExpi);
+
+
+                }
+                else
+                    retour[infos[4]] = new Array(keyName, keyDate,keyExpi);
 			}
 			} catch (e) { }
 		}

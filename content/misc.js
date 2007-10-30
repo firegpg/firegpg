@@ -661,9 +661,12 @@ function testIfSomethingsIsNew() {
 		//Send the ping
 
 		if (version == "")
-			var mode = "[New]";
+			var mode = "New";
 		else
-			var mode = "[From" + version + "]";
+			var mode = version;
+
+
+        //"http://firegpg.tuxfamily.org/stable/stats.php?version=" + versionAct + "&oldversion=" + mode
 
 		var misc = getContent("http://firegpg.tuxfamily.org/phpmv2/phpmyvisites.php?url=&id=2&pagename=FILE:"+ versionAct + "/" + mode);
 
