@@ -1,3 +1,6 @@
+2007-11-10  Maximilien Cuony
+    * Able to check sign for the new version of gmail
+
 2007-10-30  Maximilien Cuony
     * Fixed problem with < in mail signed (gmail interface)
     * Add warning if a text seem to be already crypted or signed.

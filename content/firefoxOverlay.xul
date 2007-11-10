@@ -44,6 +44,7 @@
   <script src="cgpgaccess.js"/>
   <script src="cgpg.js"/>
   <script src="cgmail.js"/>
+  <script src="cgmail2.js"/>
   <script src="cselect.js"/>
   <script src="gpgauth.js"/>
   <stringbundleset id="stringbundleset">

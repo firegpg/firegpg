@@ -77,12 +77,19 @@ var cGmailListener = {
 				}
 
 			}
+
+
+
+
+
 			// If it's the page with a GMail message
 			if(aProgress.DOMWindow.document.getElementById('msg_0') != null || aProgress.DOMWindow.document.getElementById('msgs') != null) {
 				if (aProgress.DOMWindow.document.body.hasAttribute("gpg") == false)
 				{
 
 					aProgress.DOMWindow.document.body.setAttribute("gpg","ok");
+
+
 
 					cGmail.lastDomToverify = aProgress.DOMWindow;
 					setTimeout("cGmail.onDelayLoad()", 1000); //Fast connexions
@@ -104,6 +111,8 @@ var cGmailListener = {
 }
 
 var cGmail = {
+
+
 	/* TODO it's not too big ? Can we separe this function to some little simple functions ? */
 	onDelayLoad: function() {
 		//Say that we can have now events now...
@@ -211,6 +220,8 @@ var cGmail = {
 	simpleLoad: function(e) {
 		var Ddocument = e.target.defaultView.wrappedJSObject.document;
 
+
+
 		if (Ddocument.getElementById('compose_form') != null)
 		{
 			this.LastNombreMail = 2;
@@ -247,6 +258,7 @@ var cGmail = {
 	},
 
 	initSystem: function() {
+
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 		                        getService(Components.interfaces.nsIPrefService);
 		prefs = prefs.getBranch("extensions.firegpg.");
