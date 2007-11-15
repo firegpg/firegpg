@@ -82,6 +82,9 @@ function onLoad(win)
 	for(var id in list)
 	{
 
+        if (list[id][0] == undefined)
+            continue;
+
 		selected = false;
 
 		if (autoSelectMode == true)
