@@ -43,6 +43,7 @@ function cGmailNeedAction(e) { // TODO ?!
 */
 
 const GMAIL_MAIN_DOC_URL = "http://mail.google.com/mail/?ui=2&view=bsp&ver=ymdfwq781tpu";
+const GMAIL_MAIN_DOC_URL2 = "https://mail.google.com/mail/?ui=2&view=bsp&ver=ymdfwq781tpu";
 
 var cGmail2 = {
 
@@ -57,7 +58,7 @@ var cGmail2 = {
 
         var doc = cGmail2.doc[id];
 
-        if (doc != undefined && doc.location != undefined && doc.location.href == GMAIL_MAIN_DOC_URL)
+        if (doc != undefined && doc.location != undefined && (doc.location.href == GMAIL_MAIN_DOC_URL || doc.location.href == GMAIL_MAIN_DOC_URL2))
         {
 
             //test for messages
@@ -842,7 +843,7 @@ var cGmail2 = {
 
         var doc = aEvent.originalTarget;
 
-        if (doc.location.href == GMAIL_MAIN_DOC_URL) {
+        if (doc.location.href == GMAIL_MAIN_DOC_URL || doc.location.href == GMAIL_MAIN_DOC_URL2) {
 
             doc.getElementsByClassName = function(className) {
 

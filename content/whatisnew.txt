@@ -1,4 +1,6 @@
-=== Version 0.4.4 ===
+=== Version 0.4.5.2 ===
+
+Version 0.4.5.2 : Work with the https version of gmail too !
 
 FireGPG works with the new version of gmail !
 
