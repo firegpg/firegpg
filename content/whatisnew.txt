@@ -1,24 +1,24 @@
 === Version 0.4.4 ===
 
-A small update.
+FireGPG works with the new version of gmail !
 
 Bugs :
-- Fixed a probably bug in the update system (firegpg found update everytime, but it's specific of systems).
+- Fixed the 'undefined' keys
+- Fixed problem with < in mail signed (gmail interface)
 
 Functionalities:
-- Version number add in the option pane.
-- Keys' list are now sorted by name.
+- Gmail 2.0 support (old version will supported for a while)
+- Add warning if a text seem to be already crypted or signed.
+- BEGIN PGP SIGNATURE supported
+- Added option to hide expired keys
 
 Locales :
-- Fixed the problem with some locates.
-- We change our locate system, so if there is a problem please tell us :).
+- Updated as usual.
 
 Misc :
-- Fixed some warnigs
-- AUTHORS updated
-- The classes GPGLin and GPGWin are unified in GPGAccess.
+- On Unix system, try to use /usr/local/bin/gpg (for MacOs users)
 
-* Post on our forum about this version : http://firegpg.tuxfamily.org/forum/viewtopic.php?id=230
+* Post on our forum about this version : http://firegpg.tuxfamily.org/forum/viewtopic.php?pid=760
 
 Thanks you for using FireGPG !
     FireGPG's team.

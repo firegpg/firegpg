@@ -35,7 +35,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-const FIREGPG_VERSION = '0.4.4';
+const FIREGPG_VERSION = '0.4.5';
 const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
 const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
 const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
@@ -664,11 +664,7 @@ function testIfSomethingsIsNew() {
 			var mode = "New";
 		else
 			var mode = version;
-
-
-        //"http://firegpg.tuxfamily.org/stable/stats.php?version=" + versionAct + "&oldversion=" + mode
-
-		var misc = getContent("http://firegpg.tuxfamily.org/phpmv2/phpmyvisites.php?url=&id=2&pagename=FILE:"+ versionAct + "/" + mode);
+		var misc = getContent("http://firegpg.tuxfamily.org/stable/stats.php?version=" + versionAct + "&oldversion=" + mode);
 
 
     } else {
