@@ -223,6 +223,9 @@ var GPG = {
 		if((firstPosition == -1 && firstPosition2 == -1) || lastPosition == -1)
 			return "noGpg";
 
+        if (firstPosition == -1)
+            firstPosition = 0; //Only the sign. User have to select himself the right text.
+
 		text = text.substring(firstPosition,lastPosition + ("-----END PGP SIGNATURE-----").length);
 
 		// We get the result
