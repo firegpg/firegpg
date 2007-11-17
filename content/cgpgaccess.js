@@ -292,7 +292,7 @@ var GPGAccess = {
 	/*
 	 * Function to encrypt a text.
 	 */
-	crypt: function(text, keyIdList, fromGpgAuth /*Optional*/) {
+	crypt: function(text, keyIdList, fromGpgAuth /*Optional*/, binFileMode /*Optional*/) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpStdOut = getTmpFile(); // Output from gpg
@@ -301,7 +301,13 @@ var GPGAccess = {
 		if (fromGpgAuth == null)
 			fromGpgAuth = false;
 
-		putIntoFile(tmpInput,text); // Temp
+        if (binFileMode == null)
+			binFileMode = false;
+
+        if (binFileMode == false)
+    		putIntoFile(tmpInput,text); // Temp
+        else
+            putIntoBinFile(tmpInput,text); // Temp
 
 		// The file already exist, but GPG don't work if he exist, so we del it.
 		removeFile(tmpOutput);

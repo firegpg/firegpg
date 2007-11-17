@@ -1,4 +1,9 @@
+2007-11-17  Maximilien Cuony
+    * Add the 'Atach a chiffred file' feature.
+    * Improve gmail's performances (check dom only if the user click)
+
 2007-11-16  Maximilien Cuony
+    * Transform %A0 to %20 for gmail (dues to random changes)
     * 0.4.5.2 packed, and uploaded to the server !
     * HTTPS support
 	* 0.4.5 packed, and uploaded to the server !

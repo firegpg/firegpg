@@ -34,14 +34,6 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-/*
-function cGmailNeedAction(e) { // TODO ?!
-	if (e.target.id == "sndcrypt")	{
-		alert('Tu veut me faire du mal hein ? Méchant !');
-	}
-}
-*/
-
 const GMAIL_MAIN_DOC_URL = "http://mail.google.com/mail/?ui=2&view=bsp&ver=ymdfwq781tpu";
 const GMAIL_MAIN_DOC_URL2 = "https://mail.google.com/mail/?ui=2&view=bsp&ver=ymdfwq781tpu";
 
@@ -49,10 +41,14 @@ var cGmail2 = {
 
     doc: Array(),
 
+    docOccuped: Array(),
+
     current: 0,
 
     //Check the document for messages
     checkDoc: function(id) {
+
+
 
         var i18n = document.getElementById("firegpg-strings");
 
@@ -88,6 +84,7 @@ var cGmail2 = {
                     }
 
                     var contenuMail = this.getMailContent(listeTest[i],doc);
+
 
                     var td = doc.createElement("td");
 
@@ -127,7 +124,7 @@ var cGmail2 = {
 
                         td.innerHTML = i18n.getString("GMailD");
 
-                         var tmpListener = new Object;
+                        var tmpListener = new Object;
                         tmpListener = null;
                         tmpListener = new cGmail2.callBack(doc)
                         td.addEventListener('click',tmpListener,true);
@@ -180,15 +177,58 @@ var cGmail2 = {
 
                     } catch (e) {}
 
+                    //Add the button 'Attach and chiffred a file'
+                    if (listeTest[i].getAttribute('class').indexOf('LlWyA') != -1) {
+
+
+                        var tablebox = listeTest[i].parentNode.getElementsByTagName('table');
+                        tablebox = tablebox[0];
+
+                        var boxwhereadd = tablebox.parentNode;
+
+                        var span = doc.createElement("span");
+
+                        span.setAttribute("style","position: relative;  bottom: 26px;  right: 5px; float: right; margin-bottom: -30px;");
+
+                        span.innerHTML = '<img class="iyUIWc msHBT uVCMYd" src="images/cleardot.gif">&nbsp;<span gpg_action="add_crypted" style="font-size: 12px;" class="MRoIub">' + i18n.getString("GmailAddChiffred")+ '</span>';
+
+                        boxwhereadd.insertBefore(span,tablebox.nextSibling);
+
+                        var tmpListener = new Object;
+                        tmpListener = null;
+                        tmpListener = new cGmail2.callBack(doc)
+                        span.addEventListener('click',tmpListener,false);
+
+                    }
+
 
                 }
             }
             //END OF THE TEST FOR COMPOSE BUTTONS
 
-            setTimeout("cGmail2.checkDoc("+id+")", 5000);
+            cGmail2.docOccuped[id] = false;
+
+        }
+    },
+
+    clickOnDock: function(docid) {
+
+        this._docid = docid;
+
+        //
+        this.handleEvent = function(event) {
+
+            if (cGmail2.docOccuped[this._docid] == undefined || cGmail2.docOccuped[this._docid] == false)
+            {
+
+                setTimeout("cGmail2.checkDoc("+this._docid+")", 3000);
+                cGmail2.docOccuped[this._docid] = true;
+            }
 
 
         }
+
+
     },
 
     //Function to intercepd clicks on buttons
@@ -280,7 +320,6 @@ var cGmail2 = {
 			{
 
 				var mailContent = cGmail2.getWriteMailContent(this._doc,event.target.parentNode);
-
 
 				if (mailContent == "")
 					return;
@@ -400,50 +439,94 @@ var cGmail2 = {
 
 				}
 			}
+            else if (event.target.getAttribute('gpg_action') == "add_crypted")
+			{
+
+                //Ok, so the user want to crypt a file.
+
+                //First, we got the file. We will crypt him, and save it the the temp folder. Next, we ask gmail to add the file.
 
 
+                //Get the file
+                var nsIFilePicker = Components.interfaces.nsIFilePicker;
+                var fp = Components.classes["@mozilla.org/filepicker;1"]
+                        .createInstance(nsIFilePicker);
+                fp.init(window, null, nsIFilePicker.modeOpen);
+                fp.appendFilters(nsIFilePicker.filterText | nsIFilePicker.filterAll);
+                if (fp.show() != nsIFilePicker.returnOK) //L'utilisateur annule
+                  return;
+
+                var filePath = fp.file.path;
+
+                var data = getBinContent("file://" + filePath);
+
+                var whoWillGotTheMail = "";//cGmail2.getToCcBccMail(this._doc,event.target.parentNode);
 
 
+				if (data == "")
+					return;
 
 
+				var keyID = choosePublicKey(whoWillGotTheMail);
 
 
+				if (keyID == null || keyID == "")
+					return;
+
+				var result = GPG.baseCrypt(data,keyID,false,true);
+
+						// If the sign failled
+				if(result.sdOut == "erreur") {
+					// We alert the user
+					alert(i18n.getString("cryptFailed"));
+				}
+				else {
+
+					var newData = result.output;
+
+                    var fileobj = getTmpDir();
+
+                    fileobj.append( fp.file.leafName + ".asc");
+                    fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0777);
+
+                    putIntoBinFile(fileobj.path,newData);
 
 
+                    //We simulate the add
+                    var tablebox = event.target.parentNode.parentNode.getElementsByTagName('table');
+                    tablebox = tablebox[0];
+
+                    //The last span is evry time a "Attach file" button.
+
+                    //This is the 'Attach another'
+                    var FileButtonList = tablebox.getElementsByTagName('span');
+                    FileButton = FileButtonList[FileButtonList.length-1];
+
+                    //If he is hidden, there no files for the moment. We take an another button
+                    if (FileButton.parentNode.parentNode.parentNode.getAttribute("style").indexOf("display: none") != -1)
+                        FileButton = FileButtonList[FileButtonList.length-2];
 
 
+                    var evt = doc.createEvent("MouseEvents");
+					evt.initEvent("click", true, true);
+					FileButton.dispatchEvent(evt);
+
+                    //Get the list of inputs
+                    var InputList = tablebox.getElementsByTagName('input');
 
 
+                    for (var j = 0; j < InputList.length; j++) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           /* if (event.target.getAttribute('gpg_action') == 'sign') {
-
-                //cGmail2.sendEmail(event.target.parentNode,this._doc);
-
-                cGmail2.setWriteMailContent(this._doc,event.target.parentNode,"coin");
-
-            }*/
-
+                        if (InputList[j].getAttribute("type") == "file") {
+                            if (InputList[j].value == "")
+                            {
+                                InputList[j].value = fileobj.path;
+                                break;
+                            }
+                        }
+                    }
+				}
+			}
 		};
 	},
 
@@ -572,6 +655,10 @@ var cGmail2 = {
 
             }
 
+            //Remove stranges A0
+            var reg=new RegExp(unescape('%A0'), "gi");
+            contenuMail = contenuMail.replace(reg," ");
+
 
 			return contenuMail;
 	},
@@ -609,7 +696,7 @@ var cGmail2 = {
 
         tmp = tmp.firstChild;
 
-        tmp = tmp.childNodes[1];
+        tmp = tmp.childNodes[2];
 
         tmp = tmp.childNodes[1];
 
@@ -633,7 +720,7 @@ var cGmail2 = {
 
         tmp = tmp.firstChild;
 
-        tmp = tmp.childNodes[1];
+        tmp = tmp.childNodes[2];
 
         tmp = tmp.childNodes[1];
 
@@ -764,6 +851,11 @@ var cGmail2 = {
 		var str = s.serializeToString(d);
 		contenuMail = Selection.wash(str);
 
+
+        //Remove stranges A0
+        var reg=new RegExp(unescape('%A0'), "gi");
+        contenuMail = contenuMail.replace(reg," ");
+
 		return contenuMail;
 
 	},
@@ -869,7 +961,12 @@ var cGmail2 = {
 
             cGmail2.doc[cGmail2.current] = doc;
 
-            setTimeout("cGmail2.checkDoc("+cGmail2.current+")", 5000);
+            var tmpListener = new Object;
+            tmpListener = null;
+            tmpListener = new cGmail2.clickOnDock(cGmail2.current)
+            doc.addEventListener('mousedown',tmpListener,true);
+
+            //setTimeout("cGmail2.checkDoc("+cGmail2.current+")", 5000);
 
         }
 

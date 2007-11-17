@@ -384,10 +384,10 @@ var GPG = {
      * keyIdList is an array contain a liste of ID :
 	 *   ['id1', 'id2', etc.]
 	 */
-	baseCrypt: function(text, keyIdList, fromGpgAuth /*Optional*/) {
+	baseCrypt: function(text, keyIdList, fromGpgAuth /*Optional*/, binFileMode /*Optional*/) {
 		this.initGPGACCESS();
 
-		var result = this.GPGAccess.crypt(text, keyIdList,fromGpgAuth);
+		var result = this.GPGAccess.crypt(text, keyIdList,fromGpgAuth,binFileMode);
 		var tresult = result.sdOut;
 
 			result.sdOut = "ok";
