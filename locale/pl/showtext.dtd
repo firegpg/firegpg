@@ -1,0 +1,7 @@
+<!ENTITY crypt-button "Szyfruj">
+<!ENTITY dcrypt-button "Odszyfruj">
+<!ENTITY sign-button "Podpisz">
+<!ENTITY verify-button "Weryfikacja">
+<!ENTITY open-button "Otwórz">
+<!ENTITY save-button "Zapisz">
+<!ENTITY cryptandsign-button "Sign and crypt">

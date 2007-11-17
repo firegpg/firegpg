@@ -178,8 +178,10 @@ var GPG = {
 			alert(i18n.getString("noGPGData"));
 			return;
 		}
-		else if (result == "erreur")
-			alert(i18n.getString("verifFailed"));
+		else if (result == "erreur_bad")
+                alert(i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")");
+        else if (result == "erreur_no_key")
+                alert(i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")");
 		else {
 			var infos = result.split(" ");
 
@@ -228,7 +230,16 @@ var GPG = {
 
 		// If check failled
 		if(result.indexOf("GOODSIG") == "-1") {
-			return "erreur";
+
+
+            if(result.indexOf("BADSIG") != -1)
+                return "erreur_bad";
+
+            if(result.indexOf("NO_PUBKEY") != -1)
+                return "erreur_no_key";
+
+
+            return "erreur";
 		}
 		else {
 			// If he work, we get informations of the Key
@@ -256,7 +267,7 @@ var GPG = {
 
             var i18n = document.getElementById("firegpg-strings");
 
-			return infos + " (" + i18n.getString("signMadeThe") + date.toLocaleString() + ")";
+			return infos + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
 		}
 	},
 

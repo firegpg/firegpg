@@ -105,6 +105,14 @@ var cGmail2 = {
                         td.setAttribute("style","color: red;");
                         td.innerHTML = i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
                     }
+                    else if (resultTest == "erreur_bad") {
+                        td.setAttribute("style","color: red;");
+                        td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("falseSign") + ")"; //"La première signature de ce mail est incorrect !";
+                    }
+                    else if (resultTest == "erreur_no_key") {
+                        td.setAttribute("style","color: red;");
+                        td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("keyNotFound") + ")"; //"La première signature de ce mail est incorrect !";
+                    }
                     else {
                         infos = resultTest.split(" ");
                         var infos2 = "";

@@ -1,0 +1,7 @@
+<!ENTITY crypt-button "암호화">
+<!ENTITY dcrypt-button "복호화">
+<!ENTITY sign-button "서명">
+<!ENTITY verify-button "서명 확인">
+<!ENTITY open-button "파일 열기">
+<!ENTITY save-button "저장">
+<!ENTITY cryptandsign-button "서명하고 암호화">
