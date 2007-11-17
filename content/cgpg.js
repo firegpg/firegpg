@@ -234,11 +234,29 @@ var GPG = {
 			// If he work, we get informations of the Key
 			var infos = result;
 
+            infos2 = infos.substring(0,infos.indexOf("SIG_ID") + 7);
+
+
+			infos2 = result.replace(infos2, "");
+
+
+			infos2 = infos2.substring(0,infos2.indexOf("GNUPG") - 2);
+
+            infos2 = infos2.split(" ");
+
+            infos2 = infos2[infos2.length -1];
+
+            var date = new Date();
+
+            date.setTime(date);
+
 			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
 			infos = result.replace(infos, "");
 			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
 
-			return infos;
+            var i18n = document.getElementById("firegpg-strings");
+
+			return infos + " (" + i18n.getString("signMadeThe") + date.toLocaleString() + ")";
 		}
 	},
 
