@@ -229,7 +229,7 @@ var cGmail2 = {
             if (cGmail2.docOccuped[this._docid] == undefined || cGmail2.docOccuped[this._docid] == false)
             {
 
-                setTimeout("cGmail2.checkDoc("+this._docid+")", 3000);
+                setTimeout("cGmail2.checkDoc("+this._docid+")", 5000);
                 cGmail2.docOccuped[this._docid] = true;
             }
 
@@ -454,7 +454,6 @@ var cGmail2 = {
 
                 //First, we got the file. We will crypt him, and save it the the temp folder. Next, we ask gmail to add the file.
 
-
                 //Get the file
                 var nsIFilePicker = Components.interfaces.nsIFilePicker;
                 var fp = Components.classes["@mozilla.org/filepicker;1"]
@@ -468,7 +467,7 @@ var cGmail2 = {
 
                 var data = getBinContent("file://" + filePath);
 
-                var whoWillGotTheMail = "";//cGmail2.getToCcBccMail(this._doc,event.target.parentNode);
+                var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,event.target.parentNode.parentNode.parentNode);
 
 
 				if (data == "")
@@ -512,7 +511,14 @@ var cGmail2 = {
 
                     //If he is hidden, there no files for the moment. We take an another button
                     if (FileButton.parentNode.parentNode.parentNode.getAttribute("style").indexOf("display: none") != -1)
-                        FileButton = FileButtonList[FileButtonList.length-2];
+                    {
+
+                        if (FileButtonList[FileButtonList.length-2].innerHTML == FileButtonList[FileButtonList.length-1].innerHTML)
+                            FileButton = FileButtonList[FileButtonList.length-2];
+                        else
+                            FileButton = FileButtonList[FileButtonList.length-3];
+
+                    }
 
 
                     var evt = doc.createEvent("MouseEvents");
@@ -751,6 +757,8 @@ var cGmail2 = {
         tmp = tmp.childNodes[1];
 
         tmp = tmp.firstChild;
+
+
 
         var textareas = tmp .getElementsByTagName("textarea");
 

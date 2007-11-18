@@ -1,7 +1,8 @@
 2007-11-17  Maximilien Cuony
+    * Finish the 'attach a chiffred file'
     * Added the date of signs
     * Added information about sing verifs' faillures
-    * Add the 'Atach a chiffred file' feature.
+    * Add the 'Attach a chiffred file' feature.
     * Improve gmail's performances (check dom only if the user click)
 
 2007-11-16  Maximilien Cuony
