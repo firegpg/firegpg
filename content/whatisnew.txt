@@ -1,26 +1,27 @@
-=== Version 0.4.5.2 ===
+=== Version 0.4.6 ===
 
-Version 0.4.5.2 : Work with the https version of gmail too !
+Yes, already a new version of FireGPG to correct some problems : lag with the gmail 2.0 support and better sign checks !
 
-FireGPG works with the new version of gmail !
+Attach a chiffred file is a new feature for gmail too :).
 
 Bugs :
-- Fixed the 'undefined' keys
-- Fixed problem with < in mail signed (gmail interface)
+- Improuve sign checks with replacing strange space to normal spaces !
+- Better gmail's integration who don't make FireFox blocked for some seconds each 5sec. Check are only did if you click, and after 5sec.
 
 Functionalities:
-- Gmail 2.0 support (old version will supported for a while)
-- Add warning if a text seem to be already crypted or signed.
-- BEGIN PGP SIGNATURE supported
-- Added option to hide expired keys
+- Button to add a chiffred file as an attachment ! (Only for the new gmail's version)
+- Show the date of signs
+- Added informations about why a check failled (bad sign or key not found)
 
 Locales :
-- Updated as usual.
+- Nothing
 
 Misc :
-- On Unix system, try to use /usr/local/bin/gpg (for MacOs users)
+- We add a page about our contributors : http://firegpg.tuxfamily.org/?page=contrib&lang=fr !
 
-* Post on our forum about this version : http://firegpg.tuxfamily.org/forum/viewtopic.php?pid=760
+Thanks to them and don't forget to report bugs or sugestions ! (And donations are welcome too ;))
+
+* Post on our forum about this version : http://firegpg.tuxfamily.org/forum/viewtopic.php?pid=779
 
 Thanks you for using FireGPG !
     FireGPG's team.
