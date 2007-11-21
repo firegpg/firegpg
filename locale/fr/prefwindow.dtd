@@ -9,10 +9,10 @@
 <!ENTITY change-gpg-path-button "Changer le chemin">
 <!ENTITY change-gpg-path-checkbox "Spécifier le chemin de GPG manuellement :">
 <!ENTITY result-always-in-new-window "Toujours afficher le résultat du chiffrement ou de la signature dans une nouvelle fenêtre.">
-<!ENTITY no-gpg-agent-checkbox "Forcer la désactivation de l'agent GPG (peut résoudre certains problèmes)">
+<!ENTITY no-gpg-agent-checkbox "Forcer la désactivation de l'agent GPG (cela peut résoudre certains problèmes)">
 <!ENTITY ask-for-save-pass "Par défaut, demander la mémorisation du mot de passe.">
 <!ENTITY gmail-no-no-sign-checkbox "Ne pas afficher 'Aucune signature trouvée [...]'">
-<!ENTITY gmail-need-a-restart "Ces options nécessitent le redémmarage de Firefox">
+<!ENTITY gmail-need-a-restart "Ces options nécessitent le redémarrage de Firefox">
 <!ENTITY gmail-buttons-label "Boutons à afficher :">
 <!ENTITY gmail-buton-sign-checkbox "Signer">
 <!ENTITY gmail-buton-signsend-checkbox "Signer et Envoyer">
@@ -24,15 +24,15 @@
 <!ENTITY global-allow-keyring-pref.label "Toujours déchiffrer les messages des serveurs authentifiés.">
 <!ENTITY global-allow-keyring-check.label "Toujours déchiffrer les messages des serveurs authentifiés.">
 <!ENTITY global-allow-keyring-check.accesskey "A">
-<!ENTITY per-domain-preferences.label "Options par domaines:">
+<!ENTITY per-domain-preferences.label "Options par domaine :">
 <!ENTITY turn-off-updates "Désactiver les mises à jour automatiques de FireGPG.">
 <!ENTITY key-name "Nom">
 <!ENTITY key-id "Id">
 <!ENTITY key-create "Création">
 <!ENTITY key-expire "Expiration">
-<!ENTITY pane4.title "Gpg">
-<!ENTITY gpg-add-options "Arguments suplémentaires pour Gpg : (ATTENTION ! Peut empêcher FireGPG de fonctionner ! Lisez la doc.)">
-<!ENTITY gmail-buton-signcrypt-checkbox "Signer et Chiffrer">
-<!ENTITY gmail-buton-signcryptsend-checkbox "Signer, Chiffrer et envoyer">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "Arguments suplémentaires pour GPG : (ATTENTION ! Cela peut empêcher FireGPG de fonctionner ! Lisez la documentation)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Signer et chiffrer">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Signer, chiffrer et envoyer">
 <!ENTITY firegpg-version-label.text "Version de FireGPG :">
 <!ENTITY hide-expired "Cacher les clés expirées.">

@@ -27,16 +27,16 @@
 <!ENTITY firegpgMenu.labelExport "Exportar">
 <!ENTITY firegpgContext.labelExport "Exportar">
 <!ENTITY firegpgToolbar.labelExport "Exportar">
-<!ENTITY firegpgPopInfo.labelBonjour "Bem vindo !<br />O FireGPG foi corretamente instalado !">
-<!ENTITY firegpgPopInfo.labelAccessOk "O FireGPG consegue acessar o GnuPG !">
-<!ENTITY firegpgPopInfo.labelAccessErr "O FireGPG não consegue acessar o GnuPG: Tem a certeza que está instalado? A sua localização está corretamente definida?">
-<!ENTITY firegpgPopInfo.labelKeyOk "Chave privada definida corretamente!">
-<!ENTITY firegpgPopInfo.labelKeyErr "Atenção: Uma chave privada deve ser definada nas opções!">
+<!ENTITY firegpgPopInfo.labelBonjour "Bem vindo!<br />O FireGPG foi instalado corretamente!">
+<!ENTITY firegpgPopInfo.labelAccessOk "O FireGPG conseguiu acessar o GnuPG!">
+<!ENTITY firegpgPopInfo.labelAccessErr "O FireGPG não consegue acessar o GnuPG: você o instalou? O caminho para o executável está correto?">
+<!ENTITY firegpgPopInfo.labelKeyOk "Um chave privada foi escolhida!">
+<!ENTITY firegpgPopInfo.labelKeyErr "Atenção: uma chave privada deve ser definida nas opções.">
 <!ENTITY firegpgPopInfo.close "Fechar">
 <!ENTITY firegpgPopInfo.options "Opções">
 <!ENTITY firegpgContext.labelEditeur "Abrir editor">
 <!ENTITY firegpgMenu.labelEditeur "Abrir editor">
 <!ENTITY firegpgToolbar.labelEditeur "Abrir editor">
-<!ENTITY firegpgContext.labelCryptSign "Sign and Crypt">
-<!ENTITY firegpgMenu.labelCryptSign "Sign and Crypt">
-<!ENTITY firegpgToolbar.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgContext.labelCryptSign "Assinar e Cifrar">
+<!ENTITY firegpgMenu.labelCryptSign "Assinar e Cifrar">
+<!ENTITY firegpgToolbar.labelCryptSign "Assinar e Cifrar">

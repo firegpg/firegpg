@@ -1,7 +1,7 @@
-<!ENTITY crypt-button "Crypt">
+<!ENTITY crypt-button "Encrypt">
 <!ENTITY dcrypt-button "Decrypt">
 <!ENTITY sign-button "Sign">
 <!ENTITY verify-button "Verify">
 <!ENTITY open-button "Open">
 <!ENTITY save-button "Save">
-<!ENTITY cryptandsign-button "Sign and crypt">
+<!ENTITY cryptandsign-button "Sign and encrypt">

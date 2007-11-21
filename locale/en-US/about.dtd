@@ -1,4 +1,4 @@
 <!ENTITY about "About FireGPG">
-<!ENTITY version "Version:">
-<!ENTITY createdBy "Created By:">
-<!ENTITY homepage "Home Page:">
+<!ENTITY version "Version :">
+<!ENTITY createdBy "Created by :">
+<!ENTITY homepage "Home page :">
