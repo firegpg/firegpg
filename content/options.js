@@ -84,7 +84,7 @@ function onLoad(win)
 	var default_private_key = document.getElementById('default-private-key-pref').value;
 
 
-	listbox.appendItem('Ask for private key', ''); /* TODO i18n */
+	listbox.appendItem('Always ask for private key', ''); /* TODO i18n */
 
 
 	var default_item = null; /* this variable will contain the index of
