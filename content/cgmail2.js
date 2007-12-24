@@ -54,11 +54,15 @@ var cGmail2 = {
 
         var doc = cGmail2.doc[id];
 
+
+
+
+
         if (doc != undefined && doc.location != undefined && (doc.location.href == GMAIL_MAIN_DOC_URL || doc.location.href == GMAIL_MAIN_DOC_URL2))
         {
 
             //test for messages
-            var listeTest = doc.getElementsByClassName('ArwC7c');
+            var listeTest = doc.getElementsByClassName('ArwC7c','div');
 
             for (var i = 0; i < listeTest.length; i++) {
 
@@ -145,11 +149,14 @@ var cGmail2 = {
                 }
             }
 
+
+
             //END OF THE TEST FOR MESSAGES.
 
             //Test for compose buttons 'CoUvaf'
-            var listeTest = doc.getElementsByClassName('LlWyA');
-            var listeTest2 = doc.getElementsByClassName('CoUvaf');
+            var listeTest = doc.getElementsByClassName('LlWyA','div');
+            var listeTest2 = doc.getElementsByClassName('CoUvaf','div');
+
 
             listeTest = listeTest.concat(listeTest2);
 
@@ -963,20 +970,27 @@ var cGmail2 = {
 
         if (doc.location.href == GMAIL_MAIN_DOC_URL || doc.location.href == GMAIL_MAIN_DOC_URL2) {
 
-            doc.getElementsByClassName = function(className) {
+            doc.getElementsByClassName = function(className, tag) {
 
-            var elts =  doc.getElementsByTagName('*');
+            if (tag == undefined)
+                tag = "*"
+
+            className = " " + className + " "
+
+            var elts =  doc.getElementsByTagName(tag);
 
             var classArray = new Array();
 
             for (var j = 0; j < elts.length; ++j) {
 
-                if (elts[j].getAttribute('class') && elts[j].getAttribute('class').split(' ').inArray(className)) {
+               // if (elts[j].getAttribute('class') && elts[j].getAttribute('class').split(' ').inArray(className)) {
+
+                lf = "  " + elts[j].className + " "
+
+                if (lf.indexOf(className) > 0) {
 
                         classArray.push(elts[j]);
-
                     }
-
                 }
 
                 return classArray;

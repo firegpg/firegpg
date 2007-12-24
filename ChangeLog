@@ -1,4 +1,5 @@
 2007-12-24  Maximilien Cuony
+    * Improve performances with gmail 2
     * Change the system for upgrades or installs
     * Fixed a problem with the mail autodetect system.
     * Patch of tjm1983 applied, who improve signs for old gmail's version.

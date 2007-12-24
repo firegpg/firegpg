@@ -36,6 +36,7 @@
 
 var firegpg = {
 	onLoad: function() {
+
 		cGmail.initSystem();
         cGmail2.initSystem();
 
