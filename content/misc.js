@@ -657,13 +657,18 @@ function testIfSomethingsIsNew() {
 			description = i18n.getString('whatIsNewDescription');
 		} catch (e) { }
 
-        showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);
-		//Send the ping
+        //showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);
+
+        //Show the page
+        gBrowser.selectedTab = gBrowser.addTab("http://firegpg.tuxfamily.org/?page=nv");
+
+        //Send the ping
 
 		if (version == "")
 			var mode = "New";
 		else
 			var mode = version;
+
 		var misc = getContent("http://firegpg.tuxfamily.org/stable/stats.php?version=" + versionAct + "&oldversion=" + mode);
 
 
@@ -727,6 +732,75 @@ function htmlEncode(s) {
         str = str.replace(/>/g, "&gt;");
         str = str.replace(/"/g, "&quot;");
         return str;
+}
+
+
+/*
+* This fuction approximates gmail's line-wrapping rules, so that
+* a message can be wrapped before it's signed, instead of after,
+* which would break the signature.
+*/
+function gmailWrapping(text)
+{
+	var lines = text.split("\n");
+	var result = "";
+
+	// Wrap each line
+	for (var i = 0; i < lines.length; i++)
+	{
+		// gmail doesn't wrap lines with less than 81 characters
+		// or lines that have been quoted from previous messages
+		// in the usual way, so we don't bother either.
+		if (lines[i].length <= 80 || lines[i].substring(0,2) == "> ")
+			result = result + lines[i] + "\n";
+		else
+			// If we're wrapping a line, each of the resulting
+			// lines shouldn't be longer than 70 characters
+			// unless it has to be.
+			result = result + wrap(lines[i], 70) + "\n";
+	}
+
+	return result;
+}
+
+/*
+* This function wraps a single line of text into multiple lines,
+* each no longer than limit, unless a single word is too long.
+*/
+function wrap(text, limit)
+{
+	var result = "";
+
+	// Keep wrapping until the remainder is short enough.
+	while (text.length > limit)
+	{
+		var index = text.lastIndexOf(" ", limit);
+		// If the first word is too long, look for the first space
+		if (index == -1)
+			index = text.indexOf(" ");
+		// If there are no more spaces at all, give up.
+		if (index == -1)
+        {
+			break;
+		}
+		else
+		{
+			result = result + text.substring(0, index) + "\n";
+    		text = text.substring(index + 1);
+		}
+	}
+
+	return result + text;
+}
+
+//Trim function (remove spaces)
+function trim (str){
+    return str.replace(/^\s+/, "").replace(/\s+$/, "");
+}
+
+//TrimAndWash (clean a string, remove \n and spaces)
+function TrimAndWash(str) {
+    return trim(str).replace(/\n/, "");
 }
 
 

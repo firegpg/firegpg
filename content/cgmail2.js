@@ -339,7 +339,7 @@ var cGmail2 = {
 				if (password == null || keyID == null)
 					return;
 
-				var result = GPG.baseSign(mailContent,password,keyID);
+				var result = GPG.baseSign(gmailWrapping(mailContent),password,keyID);
 
 						// If the sign failled
 				if(result.sdOut == "erreur") {
@@ -602,9 +602,15 @@ var cGmail2 = {
 					{
 
 						var indexOfQuote = select.indexOf('<div class="gmail_quote">');
-						if (indexOfQuote == -1)
-							indexOfQuote = select.length;
-						contenuMail = Selection.wash(select.substring(0,indexOfQuote));
+
+                        contenuMail = Selection.wash(select.substring(0,indexOfQuote));
+
+                        if (indexOfQuote == -1 || TrimAndWash(contenuMail) == "")
+						{
+                            indexOfQuote = select.length;
+                            contenuMail = Selection.wash(select.substring(0,indexOfQuote));
+
+                        }
 
 						this.composeIndexOfQuote  = indexOfQuote;
 					}
@@ -649,16 +655,20 @@ var cGmail2 = {
 
                     indexOfQuote = select2.lastIndexOf("\n");
 
-                    if (indexOfQuote == -1)
+                    var contentu = select2.substring(0,indexOfQuote);
+
+                    if (indexOfQuote == -1 || TrimAndWash(contentu) == "")
                     {
                         select2 = textarea.value;
                         indexOfQuote = select2.length;
+
+                        var contentu = select2.substring(0,indexOfQuote);
                     }
 
                     textarea.selectionStart = 0;
                     textarea.selectionEnd = indexOfQuote;
 
-                    contenuMail = Selection.wash(select2.substring(0,indexOfQuote));
+                    contenuMail = Selection.wash(contentu);
                 }
                 else
 				{

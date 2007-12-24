@@ -471,7 +471,7 @@ var cGmail = {
 				if (password == null || keyID == null)
 					return;
 
-				var result = GPG.baseSign(mailContent,password,keyID);
+				var result = GPG.baseSign(gmailWrapping(mailContent),password,keyID);
 
 						// If the sign failled
 				if(result.sdOut == "erreur") {

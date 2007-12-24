@@ -1,3 +1,9 @@
+2007-12-24  Maximilien Cuony
+    * Change the system for upgrades or installs
+    * Fixed a problem with the mail autodetect system.
+    * Patch of tjm1983 applied, who improve signs for old gmail's version.
+    * Security problem fixed (reported by Roee Hay, IBM)
+
 2007-11-17  Maximilien Cuony
 	* 0.4.6 packed, and uploaded to the server !
 
