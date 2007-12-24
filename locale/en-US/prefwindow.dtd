@@ -7,10 +7,10 @@
 <!ENTITY private-keys-label.text "Default private key :">
 <!ENTITY show-website-checkbox "Display FireGPG website address in PGP comment field">
 <!ENTITY change-gpg-path-button "Browse">
-<!ENTITY change-gpg-path-checkbox "Manually specify the path to the gpg command :">
-<!ENTITY result-always-in-new-window "Always display result of encryption and/or signature in a new window">
+<!ENTITY change-gpg-path-checkbox "Specify the path of gpg :">
+<!ENTITY result-always-in-new-window "Always display result of encryption and/or signature in a new window.">
 <!ENTITY no-gpg-agent-checkbox "Force turning off GPG agent (can fix some issues)">
-<!ENTITY ask-for-save-pass "By default, ask to save password">
+<!ENTITY ask-for-save-pass "By default, ask to save password.">
 <!ENTITY gmail-no-no-sign-checkbox "Do not display 'No signature found [...]'">
 <!ENTITY gmail-need-a-restart "The browser must be restarted for these settings to take effect.">
 <!ENTITY gmail-buttons-label "Buttons to show :">

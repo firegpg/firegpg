@@ -719,4 +719,16 @@ function testIfSomethingsIsNew() {
 	}
 }
 
+// Encode html
+function htmlEncode(s) {
+        var str = new String(s);
+        str = str.replace(/&/g, "&amp;");
+        str = str.replace(/</g, "&lt;");
+        str = str.replace(/>/g, "&gt;");
+        str = str.replace(/"/g, "&quot;");
+        return str;
+}
+
+
+
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

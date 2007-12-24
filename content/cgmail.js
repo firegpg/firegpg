@@ -166,7 +166,7 @@ var cGmail = {
 							{  infos2 = infos2 + infos[ii] + " ";}
 
 							td.setAttribute("style","color: green;");
-							td.innerHTML = i18n.getString("GMailSOK") + " " + infos2; //"La première signature de ce mail est de testtest (testtest)
+							td.innerHTML = i18n.getString("GMailSOK") + " " + htmlEncode(infos2); //"La première signature de ce mail est de testtest (testtest)
 						}
 
 						/*td.setAttribute("style","color: orange;");
