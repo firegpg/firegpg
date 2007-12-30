@@ -1,42 +1,45 @@
+2007-12-30  Achraf cherti
+	* localization patch of Sebastien Wains applied
+
 2007-12-25  Maximilien Cuony
-    * 0.4.7 packed, and uploaded to the server !
+	* 0.4.7 packed, and uploaded to the server !
 
 2007-12-24  Maximilien Cuony
-    * Improve performances with gmail 2
-    * Change the system for upgrades or installs
-    * Fixed a problem with the mail autodetect system.
-    * Patch of tjm1983 applied, who improve signs for old gmail's version.
-    * Security problem fixed (reported by Roee Hay, IBM)
+	* Improve performances with gmail 2
+	* Change the system for upgrades or installs
+	* Fixed a problem with the mail autodetect system.
+	* Patch of tjm1983 applied, who improve signs for old gmail's version.
+	* Security problem fixed (reported by Roee Hay, IBM)
 
 2007-11-17  Maximilien Cuony
 	* 0.4.6 packed, and uploaded to the server !
 
 2007-11-17  Maximilien Cuony
-    * Finish the 'attach a chiffred file'
-    * Added the date of signs
-    * Added information about sing verifs' faillures
-    * Add the 'Attach a chiffred file' feature.
-    * Improve gmail's performances (check dom only if the user click)
+	* Finish the 'attach a chiffred file'
+	* Added the date of signs
+	* Added information about sing verifs' faillures
+	* Add the 'Attach a chiffred file' feature.
+	* Improve gmail's performances (check dom only if the user click)
 
 2007-11-16  Maximilien Cuony
-    * Transform %A0 to %20 for gmail (dues to random changes)
-    * 0.4.5.2 packed, and uploaded to the server !
-    * HTTPS support
+	* Transform %A0 to %20 for gmail (dues to random changes)
+	* 0.4.5.2 packed, and uploaded to the server !
+	* HTTPS support
 	* 0.4.5 packed, and uploaded to the server !
 
 2007-11-15  Maximilien Cuony
-    * Full support of the new version of gmail !!!
-    * Fixed the 'undefined' keys
+	* Full support of the new version of gmail !!!
+	* Fixed the 'undefined' keys
 
 2007-11-10  Maximilien Cuony
-    * Able to check sign for the new version of gmail
+	* Able to check sign for the new version of gmail
 
 2007-10-30  Maximilien Cuony
-    * Fixed problem with < in mail signed (gmail interface)
-    * Add warning if a text seem to be already crypted or signed.
-    * BEGIN PGP SIGNATURE supported
-    * On Unix system, try to use /usr/local/bin/gpg (for MacOs users)
-    * Added option to hide expired keys
+	* Fixed problem with < in mail signed (gmail interface)
+	* Add warning if a text seem to be already crypted or signed.
+	* BEGIN PGP SIGNATURE supported
+	* On Unix system, try to use /usr/local/bin/gpg (for MacOs users)
+	* Added option to hide expired keys
 
 2007-10-29  Maximilien Cuony
 	* 0.4.4 packed, and uploaded to the server !
