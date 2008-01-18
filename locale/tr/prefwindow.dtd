@@ -36,3 +36,4 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "İmza, Şifrele ve Gönder">
 <!ENTITY firegpg-version-label.text "Geçerli FireGPG Sürümü:">
 <!ENTITY hide-expired "Süresi biten anahtarı gizle">
+<!ENTITY use-api "Active FireGPG's api for Webpages (like roundcube)">

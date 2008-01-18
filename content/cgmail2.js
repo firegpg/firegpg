@@ -262,7 +262,7 @@ var cGmail2 = {
 
                 var mailNode = null;
 
-                tmpNode = tmpNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+                tmpNode = tmpNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
 
                 var tmpNode = tmpNode.getElementsByTagName('div');
 
@@ -275,8 +275,8 @@ var cGmail2 = {
                     }
                 }
 
-                if (mailNode == null)
-                    return;
+                if (mailNode == null) { alert('Mail node not found !');
+                    return; }
 
 				contenuMail = cGmail2.getMailContent(mailNode, this._doc);
 
@@ -296,7 +296,6 @@ var cGmail2 = {
 				contenuMail = contenuMail.replace(reg, "-----END PGP MESSAGE-----");
 
 				contenuMail = contenuMail.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
-
 
 				var password = getPrivateKeyPassword();
 				var result = GPG.baseDecrypt(contenuMail,password);
@@ -438,7 +437,7 @@ var cGmail2 = {
 					// We alert the user
 					alert(i18n.getString("cryptAndSignFailed"));
 				}
-				if(result.sdOut == "erreurPass") {
+                else if(result.sdOut == "erreurPass") {
 					// We alert the user
 					eraseSavedPassword();
 					alert(i18n.getString("cryptAndSignFailedPass"));

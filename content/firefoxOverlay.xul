@@ -47,6 +47,7 @@
   <script src="cgmail2.js"/>
   <script src="cselect.js"/>
   <script src="gpgauth.js"/>
+  <script src="api.js"/>
   <stringbundleset id="stringbundleset">
     <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
   </stringbundleset>
@@ -93,7 +94,7 @@
     </menu>
   </popup>
 
-  <toolbarpalette id="BrowserToolbarPalette">
+  <toolbarpalette id="FireGPGBrowserToolbarPalette">
     <menu id="toolbar-firegpg" class="menu-iconic firegpg-menu" label="&firegpgToolbar.label;" src="chrome://firegpg/skin/firegpg.png">
       <menupopup id="firegpg-toolbar-popup">
         <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgToolbar.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>

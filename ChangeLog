@@ -1,3 +1,7 @@
+2008-01-18  Maximilien Cuony
+    * Fix a problem with signandcrypt on windows
+    * Decrpt this mail rework now
+
 2007-12-30  Achraf cherti
 	* localization patch of Sebastien Wains applied
 

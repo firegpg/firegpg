@@ -178,6 +178,8 @@ var GPG = {
 			alert(i18n.getString("noGPGData"));
 			return;
 		}
+        else if (result == "erreur")
+                alert(i18n.getString("verifFailed"));
 		else if (result == "erreur_bad")
                 alert(i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")");
         else if (result == "erreur_no_key")

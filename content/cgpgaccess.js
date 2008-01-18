@@ -403,7 +403,7 @@ var GPGAccess = {
 		if(isUnix()) {
 			runCommand(tmpRun,
 					   '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-					   getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+					   getGPGBonusCommand() + " --quiet" + getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
 					   " " + keyIdListArgument +
 					   getGPGCommentArgument() + getGPGAgentArgument() +
 				   " --default-key " + keyID +
@@ -417,15 +417,19 @@ var GPGAccess = {
 			runWinCommand(
 				tmpRun,
 				'"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
-				getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + getGPGCommentArgument() + getGPGAgentArgument() +
-				" " + keyIdListArgument +
-				" --passphrase-fd 0 " +
+				getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+
+                " " + keyIdListArgument +
+                getGPGCommentArgument() + getGPGAgentArgument() +
 				" --default-key " + keyID +
+				" --passphrase-fd 0 " +
 				" --sign" +
 				" --output " + tmpOutput +
 				" --encrypt " + tmpInput +
 				" < " + tmpPASS);
 		}
+
+
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
 		// We get the result

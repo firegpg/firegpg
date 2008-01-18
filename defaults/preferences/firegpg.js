@@ -16,3 +16,4 @@ pref("browser.preferences.animateFadeIn", false);
 pref("browser.preferences.instantApply", false);
 pref("extension.firegpg.gpgauth.global.enable_gpgauth", true);
 pref("extensions.firegpg.no_updates", false);
+pref("extensions.firegpg.enable_gpgapi", true);

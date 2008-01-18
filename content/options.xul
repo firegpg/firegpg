@@ -50,6 +50,8 @@
             <preference id="allvays-to-myself-pref" name="extensions.firegpg.allvays_to_myself" type="bool"/>
             <preference id="no-updates" name="extensions.firegpg.no_updates" type="bool"/>
             <preference id="hide-expired-pref" name="extensions.firegpg.hide_expired" type="bool"/>
+            <preference id="use-api-pref" name="extensions.firegpg.enable_gpgapi" type="bool"/>
+
 
         </preferences>
 
@@ -72,6 +74,9 @@
 
         <!-- hide expired keys -->
         <checkbox  id="hide-expired" preference="hide-expired-pref" label="&hide-expired;"/>
+
+        <!-- Active FireGPG's api -->
+        <checkbox  id="use-api" preference="use-api-pref" label="&use-api;"/>
 
         <checkbox  id="updates-checkbox" preference="no-updates" label="&turn-off-updates;" onclick="showWarnigs()"/>
 

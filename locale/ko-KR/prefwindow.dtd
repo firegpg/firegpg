@@ -36,3 +36,4 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "서명하고 암호화해서 전송">
 <!ENTITY firegpg-version-label.text "현재 FireGPG 버전:">
 <!ENTITY hide-expired "만료된 키를 숨김">
+<!ENTITY use-api "Active FireGPG's api for Webpages (like roundcube)">
