@@ -432,7 +432,7 @@ var cGmail2 = {
 
 				var result = GPG.baseCryptAndSign(mailContent, keyID,false,password, keySignID);
 
-						// If the sign failled
+				// If the sign failled
 				if(result.sdOut == "erreur") {
 					// We alert the user
 					alert(i18n.getString("cryptAndSignFailed"));
@@ -942,21 +942,6 @@ var cGmail2 = {
 			cGmail2.b_signcrypt = b_signcrypt;
 			cGmail2.b_signcrypt_s = b_signcrypt_s;
 
-            Array.prototype.inArray = function(val) {
-
-                for(var a2 = 0; a2 < this.length; ++a2) {
-
-                    if(this[ a2] == val){
-
-                    return true;
-
-                    }
-
-                }
-
-                return false;
-
-            };
 
 
 		}
@@ -981,8 +966,6 @@ var cGmail2 = {
             var classArray = new Array();
 
             for (var j = 0; j < elts.length; ++j) {
-
-               // if (elts[j].getAttribute('class') && elts[j].getAttribute('class').split(' ').inArray(className)) {
 
                 lf = "  " + elts[j].className + " "
 

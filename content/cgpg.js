@@ -351,10 +351,6 @@ var GPG = {
 			} catch (e) { }
 		}
 
-        for(id in retour) {
-            //alert(retour[id]);
-        }
-
 		return retour;
 	},
 

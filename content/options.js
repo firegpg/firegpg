@@ -145,35 +145,27 @@ function onLoad(win)
 
     // Load gpgapi list :
 
-    auths_chain = ";google,234234;firegpg,234232123123;";
+    access = gpgApi.getAccessList();
 
-    var reg=new RegExp(";", "g");
+    for (var key in access) {
 
-    splitage = auths_chain.split(reg);
+        var  item   = document.createElement('listitem');
 
-    for (var i=0; i<splitage.length; i++) {
+        item.setAttribute('gpgApi-key',key);
 
-        domain_and_key = splitage[i];
+        var  child1 = document.createElement('listcell');
+        child1.setAttribute('label', access[key]);
+        item.appendChild(child1);
 
-        var reg2 = new RegExp(",", "g");
+        var  child2 = document.createElement('listcell');
+        child2.setAttribute('label', key.substr(0,40) + '...');
+        item.appendChild(child2);
 
-        domain_and_key = domain_and_key.split(reg2);
-
-		var  item   = document.createElement('listitem');
-
-		var  child1 = document.createElement('listcell');
-		child1.setAttribute('label', domain_and_key[0]);
-		item.appendChild(child1);
-
-		var  child2 = document.createElement('listcell');
-		child2.setAttribute('label', domain_and_key[1].substr(0,40) + '...');
-		item.appendChild(child2);
-
-		listbox.appendChild(item);
+        listbox.appendChild(item);
 
         item.setAttribute('ondblclick','apiRemoveMySelf(this);');
 
-	}
+    }
 
 }
 
@@ -186,6 +178,12 @@ function apiRemoveMySelf(item) {
         return;
 
     listbox = document.getElementById('api_domain_list');
+
+    access = gpgApi.getAccessList();
+
+    delete(access[item.getAttribute('gpgApi-key')]);
+
+    gpgApi.setAccessList(access);
 
     listbox.removeChild(item);
 

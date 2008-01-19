@@ -240,6 +240,7 @@
     <script src="misc.js"/>
     <script src="cgpgaccess.js"/>
     <script src="cgpg.js"/>
+    <script src="api.js"/>
     <script src="options.js"/>
     <script src="gpgauth_options.js"/>
 

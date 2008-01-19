@@ -5,7 +5,7 @@
  * 1.1 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
  * http://www.mozilla.org/MPL/
- * 
+ *
  * Software distributed under the License is distributed on an "AS IS" basis,
  * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
  * for the specific language governing rights and limitations under the
@@ -31,37 +31,44 @@
  * and other provisions required by the GPL or the LGPL. If you do not delete
  * the provisions above, a recipient may use your version of this file under
  * the terms of any one of the MPL, the GPL or the LGPL.
- * 
+ *
  * ***** END LICENSE BLOCK ***** */
 
-/* 
+/*
  * Called when password Window is shown.
  */
 function onLoad(win)
 {
 	if(window.arguments == undefined)
 		return;
-	
+
 	document.getElementById('password-textbox').value = window.arguments[0].password;
 	document.getElementById('save-password-checkbox').checked = window.arguments[0].save_password;
 	document.getElementById('description').value = window.arguments[0].question;
+
+    if (window.arguments[0].domain != false)
+    {
+        document.getElementById('save-password-checkbox').disabled = true;
+        document.getElementById('save-password-checkbox').label = 'FireGPG\'s api called form ' + window.arguments[0].domain;
+
+    }
 }
 
-/* 
+/*
  * If Ok button is pressed.
  */
 function onAccept()
 {
 	if(window.arguments == undefined)
 		return true;
-	
+
 	/* the password */
 	var password = document.getElementById('password-textbox').value;
 	window.arguments[0].password = password; /* TODO supprimer youMustEnterPassword de la traduction ? */
 
 	window.arguments[0].result = true;
 	window.arguments[0].save_password = document.getElementById('save-password-checkbox').checked ? true : false;
-	
+
 	return true;
 }
 

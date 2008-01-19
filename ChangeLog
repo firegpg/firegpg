@@ -1,3 +1,9 @@
+2008-01-19  Maximilien Cuony
+    * Continue to fix problem with signandcryp (thanks to kevdog)
+    * Fixed a big problem with array's protype (ConQuery works now, Firebug dosen't show strange infromations, ...)
+    * New locate : Serbian by Fedor Lucic
+    * First version of FireGPG's api !
+
 2008-01-18  Maximilien Cuony
     * Fix a problem with signandcrypt on windows
     * Decrpt this mail rework now
