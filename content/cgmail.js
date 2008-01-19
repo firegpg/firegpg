@@ -570,7 +570,7 @@ var cGmail = {
 				if(result.sdOut == "erreur") {
 					// We alert the user
 					alert(i18n.getString("cryptAndSignFailed"));
-				}
+				} else
 				if(result.sdOut == "erreurPass") {
 					// We alert the user
 					eraseSavedPassword();
