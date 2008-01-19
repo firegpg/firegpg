@@ -36,4 +36,8 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "签名，加密并发送">
 <!ENTITY firegpg-version-label.text "当前FireGPG版本">
 <!ENTITY hide-expired "不显示过期的公钥或密钥">
-<!ENTITY use-api "Active FireGPG's api for Webpages (like roundcube)">
+<!ENTITY use-api "Active FireGPG's api for Webpages (like roundcube) (restart required)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "Lists of allowed sites (double-click to remove)">
+<!ENTITY api-liste-domain.label "Domain">
+<!ENTITY api-liste-keyauth.label "Key">

@@ -36,4 +36,8 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "Assinar, Cifrar e Enviar">
 <!ENTITY firegpg-version-label.text "Versão atual do FireGPG:">
 <!ENTITY hide-expired "Esconder chaves expiradas.">
-<!ENTITY use-api "Active FireGPG's api for Webpages (like roundcube)">
+<!ENTITY use-api "Active FireGPG's api for Webpages (like roundcube) (restart required)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "Lists of allowed sites (double-click to remove)">
+<!ENTITY api-liste-domain.label "Domain">
+<!ENTITY api-liste-keyauth.label "Key">

@@ -793,6 +793,23 @@ function wrap(text, limit)
 	return result + text;
 }
 
+function genreate_api_key() {
+		var validchars = "";
+		var startvalid = "";
+
+		var minsize, maxsize, count, actualsize, random_value;
+		minsize = parseInt( 64 );
+		maxsize = parseInt( 128 );
+		startvalid = "";
+		validchars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		actualsize = Math.floor( Math.random() * ( maxsize - minsize + 1 ) ) + minsize;
+		random_value = startvalid.charAt( Math.floor( Math.random() * startvalid.length ) );
+		for (count = 1; count < actualsize; count++){
+			random_value += validchars.charAt( Math.floor( Math.random() * validchars.length ) );
+		}
+		return random_value;
+}
+
 //Trim function (remove spaces)
 function trim (str){
     return str.replace(/^\s+/, "").replace(/\s+$/, "");

@@ -400,34 +400,36 @@ var GPGAccess = {
 
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
 
-		if(isUnix()) {
-			runCommand(tmpRun,
-					   '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
-					   getGPGBonusCommand() + " --quiet" + getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
-					   " " + keyIdListArgument +
-					   getGPGCommentArgument() + getGPGAgentArgument() +
-				   " --default-key " + keyID +
-				   " --sign" +
-				   " --passphrase-file " + tmpPASS +
-					   " --output " + tmpOutput +
-					   " --encrypt " + tmpInput
-				   );
-		}
-		else {
-			runWinCommand(
-				tmpRun,
-				'"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
-				getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+        try {
 
-                " " + keyIdListArgument +
-                getGPGCommentArgument() + getGPGAgentArgument() +
-				" --default-key " + keyID +
-				" --passphrase-fd 0 " +
-				" --sign" +
-				" --output " + tmpOutput +
-				" --encrypt " + tmpInput +
-				" < " + tmpPASS);
-		}
+            if(isUnix()) {
+                runCommand(tmpRun,
+                           '' + this.getGPGCommand() + '' +  " " + tmpStdOut +
+                           getGPGBonusCommand() + " --quiet" + getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+                           " " + keyIdListArgument +
+                           getGPGCommentArgument() + getGPGAgentArgument() +
+                       " --default-key " + keyID +
+                       " --sign" +
+                       " --passphrase-file " + tmpPASS +
+                           " --output " + tmpOutput +
+                           " --encrypt " + tmpInput
+                       );
+            }
+            else {
+                runWinCommand(
+                    tmpRun,
+                    '"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" +
+                    getGPGBonusCommand() + " --quiet" +  getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+                    " " + keyIdListArgument +
+                    getGPGCommentArgument() + getGPGAgentArgument() +
+                    " --default-key " + keyID +
+                    " --passphrase-fd 0" +
+                    " --sign" +
+                    " --output " + tmpOutput +
+                    " --encrypt " + tmpInput +
+                    " < " + tmpPASS);
+            }
+        } catch (e) { }
 
 
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !

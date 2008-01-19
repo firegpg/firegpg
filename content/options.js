@@ -140,6 +140,56 @@ function onLoad(win)
 
     //Set version number
     document.getElementById('firegpg-version-version').value = FIREGPG_VERSION;
+
+    listbox = document.getElementById('api_domain_list');
+
+    // Load gpgapi list :
+
+    auths_chain = ";google,234234;firegpg,234232123123;";
+
+    var reg=new RegExp(";", "g");
+
+    splitage = auths_chain.split(reg);
+
+    for (var i=0; i<splitage.length; i++) {
+
+        domain_and_key = splitage[i];
+
+        var reg2 = new RegExp(",", "g");
+
+        domain_and_key = domain_and_key.split(reg2);
+
+		var  item   = document.createElement('listitem');
+
+		var  child1 = document.createElement('listcell');
+		child1.setAttribute('label', domain_and_key[0]);
+		item.appendChild(child1);
+
+		var  child2 = document.createElement('listcell');
+		child2.setAttribute('label', domain_and_key[1].substr(0,40) + '...');
+		item.appendChild(child2);
+
+		listbox.appendChild(item);
+
+        item.setAttribute('ondblclick','apiRemoveMySelf(this);');
+
+	}
+
+}
+
+/*
+ * Remove an auth key the the api
+ */
+function apiRemoveMySelf(item) {
+
+    if (confirm(document.getElementById("firegpg-strings").getString('remove-auth-key')) == false)
+        return;
+
+    listbox = document.getElementById('api_domain_list');
+
+    listbox.removeChild(item);
+
+
 }
 
 /*
