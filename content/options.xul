@@ -100,8 +100,11 @@
             <preference id="gpg-path-pref" name="extensions.firegpg.gpg_path" type="string"/>
             <preference id="specify-gpg-path-pref" name="extensions.firegpg.specify_gpg_path" type="bool"/>
             <preference id="gpg-add-options-pref" name="extensions.firegpg.gpg_user_options" type="string"/>
+            <preference id="use-gpg-agent-pref" name="extensions.firegpg.use_gpg_agent" type="bool"/>
 
         </preferences>
+
+        <checkbox  id="use-gpg-agent-checkbox" preference="use-gpg-agent-pref" label="&use-gpg-agent-checkbox;"/>
 
 
         <label  id="gpg-add-options-label" value="&gpg-add-options;"/>

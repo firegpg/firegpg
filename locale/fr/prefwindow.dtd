@@ -41,3 +41,4 @@
 <!ENTITY api-liste-access.label "Listes des sites autorisés (double-click pour supression)">
 <!ENTITY api-liste-domain.label "Domaine">
 <!ENTITY api-liste-keyauth.label "Clé">
+<!ENTITY use-gpg-agent-checkbox "Activer 'gpg-agent' (attention, peut causer des problèmes...)">

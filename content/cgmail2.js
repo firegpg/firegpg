@@ -54,175 +54,180 @@ var cGmail2 = {
 
         var doc = cGmail2.doc[id];
 
+        if (doc != undefined && doc.location != undefined) {
 
+            final_location = doc.location.href;
 
+            var regrex = new RegExp('^https?://mail.google.com/a/[a-zA-Z.]*');
 
+            final_location = final_location.replace(regrex, "http://mail.google.com/mail");
 
-        if (doc != undefined && doc.location != undefined && (doc.location.href == GMAIL_MAIN_DOC_URL || doc.location.href == GMAIL_MAIN_DOC_URL2))
-        {
+            if (final_location == GMAIL_MAIN_DOC_URL || final_location == GMAIL_MAIN_DOC_URL2)
+            {
 
-            //test for messages
-            var listeTest = doc.getElementsByClassName('ArwC7c','div');
+                //test for messages
+                var listeTest = doc.getElementsByClassName('ArwC7c','div');
 
-            for (var i = 0; i < listeTest.length; i++) {
+                for (var i = 0; i < listeTest.length; i++) {
 
-                if (listeTest[i].hasAttribute("gpg") == false) {
+                    if (listeTest[i].hasAttribute("gpg") == false) {
 
-                    listeTest[i].setAttribute("gpg","ok");
+                        listeTest[i].setAttribute("gpg","ok");
 
-                    var boutonboxs = listeTest[i].parentNode.getElementsByTagName("table");
+                        var boutonboxs = listeTest[i].parentNode.getElementsByTagName("table");
 
-                    boutonbox = "";
+                        boutonbox = "";
 
-                    //On cherche la boite avec les boutons
-                    for (var j = 0; j < boutonboxs.length; j++) {
-                        if (boutonboxs[j].getAttribute("class") == "EWdQcf") {
-                            boutonbox = boutonboxs[j].firstChild.firstChild;
+                        //On cherche la boite avec les boutons
+                        for (var j = 0; j < boutonboxs.length; j++) {
+                            if (boutonboxs[j].getAttribute("class") == "EWdQcf") {
+                                boutonbox = boutonboxs[j].firstChild.firstChild;
+                                break;
+                            }
+                        }
+
+                        if (boutonbox == "")
+                        {
                             break;
                         }
-                    }
 
-                    if (boutonbox == "")
-                    {
-                        break;
-                    }
-
-                    var contenuMail = this.getMailContent(listeTest[i],doc);
+                        var contenuMail = this.getMailContent(listeTest[i],doc);
 
 
-                    var td = doc.createElement("td");
+                        var td = doc.createElement("td");
 
 
-                    var resultTest = GPG.baseVerify(contenuMail);
+                        var resultTest = GPG.baseVerify(contenuMail);
 
-                    // For I18N
-                    var i18n = document.getElementById("firegpg-strings");
+                        // For I18N
+                        var i18n = document.getElementById("firegpg-strings");
 
-                    if (resultTest == "noGpg") {
-                        if (cGmail2.nonosign != true)
-                        {
-                            td.setAttribute("style","color: orange;");
-                            td.innerHTML = i18n.getString("GMailNoS");
+                        if (resultTest == "noGpg") {
+                            if (cGmail2.nonosign != true)
+                            {
+                                td.setAttribute("style","color: orange;");
+                                td.innerHTML = i18n.getString("GMailNoS");
+                            }
                         }
+                        else if (resultTest == "erreur") {
+                            td.setAttribute("style","color: red;");
+                            td.innerHTML = i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
+                        }
+                        else if (resultTest == "erreur_bad") {
+                            td.setAttribute("style","color: red;");
+                            td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("falseSign") + ")"; //"La première signature de ce mail est incorrect !";
+                        }
+                        else if (resultTest == "erreur_no_key") {
+                            td.setAttribute("style","color: red;");
+                            td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("keyNotFound") + ")"; //"La première signature de ce mail est incorrect !";
+                        }
+                        else {
+                            infos = resultTest.split(" ");
+                            var infos2 = "";
+                            for (var ii = 1; ii < infos.length; ++ii)
+                            {  infos2 = infos2 + infos[ii] + " ";}
+
+                            td.setAttribute("style","color: green;");
+                            td.innerHTML = i18n.getString("GMailSOK") + " " + htmlEncode(infos2); //"La première signature de ce mail est de testtest (testtest)
+                        }
+
+
+
+                        var firstPosition = contenuMail.indexOf("-----BEGIN PGP MESSAGE-----");
+                        var lastPosition = contenuMail.indexOf("-----END PGP MESSAGE-----");
+
+                        if (firstPosition != -1 && lastPosition != -1) {
+
+                            td.innerHTML = i18n.getString("GMailD");
+
+                            var tmpListener = new Object;
+                            tmpListener = null;
+                            tmpListener = new cGmail2.callBack(doc)
+                            td.addEventListener('click',tmpListener,true);
+                        }
+
+                        td.innerHTML = '<div class="X5Xvu" idlink=""><span class="" style="' + td.getAttribute("style") + '">' + td.innerHTML + '</span></div>';
+
+                        boutonbox.insertBefore(td,boutonbox.childNodes[boutonbox.childNodes.length - 1]);
+
                     }
-                    else if (resultTest == "erreur") {
-                        td.setAttribute("style","color: red;");
-                        td.innerHTML = i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
-                    }
-                    else if (resultTest == "erreur_bad") {
-                        td.setAttribute("style","color: red;");
-                        td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("falseSign") + ")"; //"La première signature de ce mail est incorrect !";
-                    }
-                    else if (resultTest == "erreur_no_key") {
-                        td.setAttribute("style","color: red;");
-                        td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("keyNotFound") + ")"; //"La première signature de ce mail est incorrect !";
-                    }
-                    else {
-                        infos = resultTest.split(" ");
-                        var infos2 = "";
-                        for (var ii = 1; ii < infos.length; ++ii)
-                        {  infos2 = infos2 + infos[ii] + " ";}
-
-                        td.setAttribute("style","color: green;");
-                        td.innerHTML = i18n.getString("GMailSOK") + " " + htmlEncode(infos2); //"La première signature de ce mail est de testtest (testtest)
-                    }
-
-
-
-                    var firstPosition = contenuMail.indexOf("-----BEGIN PGP MESSAGE-----");
-					var lastPosition = contenuMail.indexOf("-----END PGP MESSAGE-----");
-
-                    if (firstPosition != -1 && lastPosition != -1) {
-
-                        td.innerHTML = i18n.getString("GMailD");
-
-                        var tmpListener = new Object;
-                        tmpListener = null;
-                        tmpListener = new cGmail2.callBack(doc)
-                        td.addEventListener('click',tmpListener,true);
-                    }
-
-                    td.innerHTML = '<div class="X5Xvu" idlink=""><span class="" style="' + td.getAttribute("style") + '">' + td.innerHTML + '</span></div>';
-
-                    boutonbox.insertBefore(td,boutonbox.childNodes[boutonbox.childNodes.length - 1]);
-
                 }
-            }
 
 
 
-            //END OF THE TEST FOR MESSAGES.
+                //END OF THE TEST FOR MESSAGES.
 
-            //Test for compose buttons 'CoUvaf'
-            var listeTest = doc.getElementsByClassName('LlWyA','div');
-            var listeTest2 = doc.getElementsByClassName('CoUvaf','div');
-
-
-            listeTest = listeTest.concat(listeTest2);
-
-            for (var i = 0; i < listeTest.length; i++) {
-
-                if (listeTest[i].hasAttribute("gpg") == false) {
-
-                    listeTest[i].setAttribute("gpg","ok");
-
-                    //Position to add the button
-                    var spamLimite = listeTest[i].getElementsByTagName('span');
-                    spamLimite = spamLimite[0];
-
-                    if (cGmail2.b_sign == true)
-                        this.addBouton(listeTest[i],doc,i18n.getString("GMailS"),"sign",spamLimite);
-                    if (cGmail2.b_sign_s == true)
-                        this.addBouton(listeTest[i],doc,i18n.getString("GMailSS"),"sndsign",spamLimite);
-                    if (cGmail2.b_crypt == true)
-                        this.addBouton(listeTest[i],doc,i18n.getString("GMailC"),"crypt",spamLimite);
-                    if (cGmail2.b_crypt_s == true)
-                        this.addBouton(listeTest[i],doc,i18n.getString("GMailCS"),"sndcrypt",spamLimite);
-                    if (cGmail2.b_signcrypt == true)
-                        this.addBouton(listeTest[i],doc,i18n.getString("GMailSAC"),"signcrypt",spamLimite);
-                    if (cGmail2.b_signcrypt_s == true)
-                        this.addBouton(listeTest[i],doc,i18n.getString("GMailSACS"),"sndsigncrypt",spamLimite);
-
-                    try {
-
-                        var tmpListener = new Object;
-                        tmpListener = null;
-                        tmpListener = new cGmail2.callBack(doc)
-                        listeTest[i].addEventListener('click',tmpListener,true);
-
-                    } catch (e) {}
-
-                    //Add the button 'Attach and chiffred a file'
-                    if (listeTest[i].getAttribute('class').indexOf('LlWyA') != -1) {
+                //Test for compose buttons 'CoUvaf'
+                var listeTest = doc.getElementsByClassName('LlWyA','div');
+                var listeTest2 = doc.getElementsByClassName('CoUvaf','div');
 
 
-                        var tablebox = listeTest[i].parentNode.getElementsByTagName('table');
-                        tablebox = tablebox[0];
+                listeTest = listeTest.concat(listeTest2);
 
-                        var boxwhereadd = tablebox.parentNode;
+                for (var i = 0; i < listeTest.length; i++) {
 
-                        var span = doc.createElement("span");
+                    if (listeTest[i].hasAttribute("gpg") == false) {
 
-                        span.setAttribute("style","position: relative;  bottom: 26px;  right: 5px; float: right; margin-bottom: -30px;");
+                        listeTest[i].setAttribute("gpg","ok");
 
-                        span.innerHTML = '<img class="iyUIWc msHBT uVCMYd" src="images/cleardot.gif">&nbsp;<span gpg_action="add_crypted" style="font-size: 12px;" class="MRoIub">' + i18n.getString("GmailAddChiffred")+ '</span>';
+                        //Position to add the button
+                        var spamLimite = listeTest[i].getElementsByTagName('span');
+                        spamLimite = spamLimite[0];
 
-                        boxwhereadd.insertBefore(span,tablebox.nextSibling);
+                        if (cGmail2.b_sign == true)
+                            this.addBouton(listeTest[i],doc,i18n.getString("GMailS"),"sign",spamLimite);
+                        if (cGmail2.b_sign_s == true)
+                            this.addBouton(listeTest[i],doc,i18n.getString("GMailSS"),"sndsign",spamLimite);
+                        if (cGmail2.b_crypt == true)
+                            this.addBouton(listeTest[i],doc,i18n.getString("GMailC"),"crypt",spamLimite);
+                        if (cGmail2.b_crypt_s == true)
+                            this.addBouton(listeTest[i],doc,i18n.getString("GMailCS"),"sndcrypt",spamLimite);
+                        if (cGmail2.b_signcrypt == true)
+                            this.addBouton(listeTest[i],doc,i18n.getString("GMailSAC"),"signcrypt",spamLimite);
+                        if (cGmail2.b_signcrypt_s == true)
+                            this.addBouton(listeTest[i],doc,i18n.getString("GMailSACS"),"sndsigncrypt",spamLimite);
 
-                        var tmpListener = new Object;
-                        tmpListener = null;
-                        tmpListener = new cGmail2.callBack(doc)
-                        span.addEventListener('click',tmpListener,false);
+                        try {
+
+                            var tmpListener = new Object;
+                            tmpListener = null;
+                            tmpListener = new cGmail2.callBack(doc)
+                            listeTest[i].addEventListener('click',tmpListener,true);
+
+                        } catch (e) {}
+
+                        //Add the button 'Attach and chiffred a file'
+                        if (listeTest[i].getAttribute('class').indexOf('LlWyA') != -1) {
+
+
+                            var tablebox = listeTest[i].parentNode.getElementsByTagName('table');
+                            tablebox = tablebox[0];
+
+                            var boxwhereadd = tablebox.parentNode;
+
+                            var span = doc.createElement("span");
+
+                            span.setAttribute("style","position: relative;  bottom: 26px;  right: 5px; float: right; margin-bottom: -30px;");
+
+                            span.innerHTML = '<img class="iyUIWc msHBT uVCMYd" src="images/cleardot.gif">&nbsp;<span gpg_action="add_crypted" style="font-size: 12px;" class="MRoIub">' + i18n.getString("GmailAddChiffred")+ '</span>';
+
+                            boxwhereadd.insertBefore(span,tablebox.nextSibling);
+
+                            var tmpListener = new Object;
+                            tmpListener = null;
+                            tmpListener = new cGmail2.callBack(doc)
+                            span.addEventListener('click',tmpListener,false);
+
+                        }
+
 
                     }
-
-
                 }
+                //END OF THE TEST FOR COMPOSE BUTTONS
+
+                cGmail2.docOccuped[id] = false;
+
             }
-            //END OF THE TEST FOR COMPOSE BUTTONS
-
-            cGmail2.docOccuped[id] = false;
-
         }
     },
 
@@ -952,7 +957,13 @@ var cGmail2 = {
 
         var doc = aEvent.originalTarget;
 
-        if (doc.location.href == GMAIL_MAIN_DOC_URL || doc.location.href == GMAIL_MAIN_DOC_URL2) {
+        final_location = doc.location.href;
+
+        var regrex = new RegExp('^https?://mail.google.com/a/[a-zA-Z.]*');
+
+        final_location = final_location.replace(regrex, "http://mail.google.com/mail");
+
+        if (final_location == GMAIL_MAIN_DOC_URL || final_location == GMAIL_MAIN_DOC_URL2) {
 
             doc.getElementsByClassName = function(className, tag) {
 

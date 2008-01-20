@@ -41,7 +41,6 @@ const OS_WINDOWS = "WINNT";
 const idAppli = "firegpg@firegpg.team";
 const comment = "http://firegpg.tuxfamily.org";
 
-var useGPGAgent = true;
 var useGPGTrust = true;
 
 /*
@@ -75,7 +74,19 @@ function getGPGCommentArgument() {
  * Add --no-use-agent if user requet for this
  */
 function getGPGAgentArgument() {
-	if (useGPGAgent)
+
+    useGPGAgent = false;
+
+    var key = "extensions.firegpg.use_gpg_agent";
+	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+	                       getService(Components.interfaces.nsIPrefBranch);
+
+	if(prefs.getPrefType(key) == prefs.PREF_BOOL)
+		if(prefs.getBoolPref(key))
+            useGPGAgent = true;
+
+
+	if (!useGPGAgent)
 		return ' --no-use-agent';
 	else
 		return '';

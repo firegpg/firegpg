@@ -252,9 +252,7 @@ var GPG = {
 
             infos2 = infos.substring(0,infos.indexOf("SIG_ID") + 7);
 
-
 			infos2 = result.replace(infos2, "");
-
 
 			infos2 = infos2.substring(0,infos2.indexOf("GNUPG") - 2);
 
@@ -264,7 +262,7 @@ var GPG = {
 
             var date = new Date();
 
-            date.setTime(date);
+            date.setTime(infos2 * 1000);
 
 			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
 			infos = result.replace(infos, "");
@@ -640,12 +638,35 @@ var GPG = {
 		//Il y avait une signature dans le truc
 		if(tresult.indexOf("GOODSIG") != "-1")
 		{
+
+            infos2 = tresult.substring(0,tresult.indexOf("SIG_ID") + 7);
+
+			infos2 = tresult.replace(infos2, "");
+
+			infos2 = infos2.substring(0,infos2.indexOf("GNUPG") - 2);
+
+            infos2 = infos2.split(" ");
+
+            infos2 = infos2[infos2.length -1];
+
+
+            var date = new Date();
+
+            date.setTime(infos2 * 1000);
+            var i18n = document.getElementById("firegpg-strings");
+
 			var infos = tresult;
 			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
 			infos = tresult.replace(infos, "");
 			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
-			result.sdOut2 = infos;
+			result.sdOut2 = infos + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
 			result.sdOut = "signValid";
+
+
+
+
+
+
 		}
 
 		return result;

@@ -1,3 +1,10 @@
+2008-01-20  Maximilien Cuony
+    * Fixed a problem with signs' verification
+    * Added timestamps infos for sign inside a encrypted text
+    * Fixed a big problem with timestamp : now show the timestamp of the sign, and not the current...
+    * Added an option to active gpg-agent
+    * Support for all gmails :)
+
 2008-01-19  Maximilien Cuony
     * Continue to fix problem with signandcryp (thanks to kevdog)
     * Fixed a big problem with array's protype (ConQuery works now, Firebug dosen't show strange infromations, ...)
