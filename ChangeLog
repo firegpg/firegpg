@@ -1,3 +1,6 @@
+2008-01-21  Maximilien Cuony
+    * Fix a bug in password.js
+
 2008-01-20  Maximilien Cuony
     * Fixed a problem with signs' verification
     * Added timestamps infos for sign inside a encrypted text

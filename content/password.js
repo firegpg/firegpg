@@ -46,6 +46,9 @@ function onLoad(win)
 	document.getElementById('save-password-checkbox').checked = window.arguments[0].save_password;
 	document.getElementById('description').value = window.arguments[0].question;
 
+    if (window.arguments[0].domain == undefined)
+        window.arguments[0].domain = false;
+
     if (window.arguments[0].domain != false)
     {
         document.getElementById('save-password-checkbox').disabled = true;
