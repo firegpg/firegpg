@@ -1,5 +1,7 @@
 2008-01-21  Maximilien Cuony
+    * 0.4.8 packed, and uploaded to the server !
     * Fix a bug in password.js
+    * New locate : Hebrew by Echetz
 
 2008-01-20  Maximilien Cuony
     * Fixed a problem with signs' verification

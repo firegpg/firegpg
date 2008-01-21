@@ -35,7 +35,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-const FIREGPG_VERSION = '0.4.7';
+const FIREGPG_VERSION = '0.4.8';
 const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
 const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
 const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
