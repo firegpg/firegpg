@@ -2,10 +2,10 @@
 <!ENTITY pane1.title "Start">
 <!ENTITY pane2.title "Gmail">
 <!ENTITY pane3.title "gpgAuth">
-<!ENTITY gmail-enabled-checkbox.label "GMail-UnterstÃŒtzung">
+<!ENTITY gmail-enabled-checkbox.label "GMail-Unterstützung">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Privater Schlüssel:">
-<!ENTITY show-website-checkbox "Zeige die Webseite von FireGPG in signiertem oder verschlÃŒsseltem Text">
+<!ENTITY show-website-checkbox "Zeige die Webseite von FireGPG in signiertem oder verschlüsseltem Text">
 <!ENTITY change-gpg-path-button "Durchsuchen">
 <!ENTITY change-gpg-path-checkbox "Benutzerdefinierter Pfad zu GnuPG:">
 <!ENTITY result-always-in-new-window "Zeige die Ergebnisse von Verschlüsseln/Signieren immer in einem neuen Fenster.">
@@ -19,26 +19,27 @@
 <!ENTITY gmail-buton-crypt-checkbox "Verschlüsseln">
 <!ENTITY gmail-buton-cryptsend-checkbox "Verschlüsseln und Senden">
 <!ENTITY allvays-to-myself-checkbox "Auch auf meinen Namen verschlüsseln">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (Requires Restart of Firefox)">
+<!ENTITY enable-gpgauth-check.label "gpgAuth aktivieren (erfordert Neustart von Firefox)">
 <!ENTITY enable-gpgauth-check.accesskey "E">
-<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
-<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-pref.label "Nachrichten von authentifizierten Servern immer entschlüsseln">
+<!ENTITY global-allow-keyring-check.label "Nachrichten von authentifizierten Servern immer entschlüsseln">
 <!ENTITY global-allow-keyring-check.accesskey "A">
-<!ENTITY per-domain-preferences.label "Per-domain settings:">
-<!ENTITY turn-off-updates "Disable FireGPG's auto updates">
+<!ENTITY per-domain-preferences.label "Domain-spezifische Einstellungen">
+<!ENTITY turn-off-updates "Automatische Updates von FireGPG abstellen">
 <!ENTITY key-name "Name">
 <!ENTITY key-id "Id">
-<!ENTITY key-create "Created">
-<!ENTITY key-expire "Expire">
-<!ENTITY pane4.title "Gpg">
-<!ENTITY gpg-add-options "Add arguments to gpg's command line : (Warning ! Can break FireGPG ! Have a look at doc.)">
-<!ENTITY gmail-buton-signcrypt-checkbox "Sign and Crypt">
-<!ENTITY gmail-buton-signcryptsend-checkbox "Sign, Crypt and Send">
-<!ENTITY firegpg-version-label.text "Current FireGPG's version :">
-<!ENTITY hide-expired "Hide expired keys">
-<!ENTITY use-api "Active FireGPG's api for Webpages (like roundcube) (restart required)">
+<!ENTITY key-create "Erstellt">
+<!ENTITY key-expire "Ablaufdatum">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "Kommandozeilenparameter für GPG hinzufügen: (Achtung! Kann FireGPG stören. Bitte Dokumentation beachten)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Signieren und Verschlüsseln">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Signieren, Verschlüsseln und Absenden">
+<!ENTITY firegpg-version-label.text "Aktuelle Version von FireGPG:">
+<!ENTITY hide-expired "Abgelaufene Schlüssel verstecken">
+<!ENTITY use-api "FireGPG für alle Webseiten (wie roundcube) aktivieren (Neustart erforderlich)">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "Lists of allowed sites (double-click to remove)">
+<!ENTITY api-liste-access.label "Liste der erlaubten
+Websiten (Doppelklick zum Entfernen)">
 <!ENTITY api-liste-domain.label "Domain">
-<!ENTITY api-liste-keyauth.label "Key">
-<!ENTITY use-gpg-agent-checkbox "Active Gpg-agent (warnig, can make issues...)">
+<!ENTITY api-liste-keyauth.label "Schlüssel">
+<!ENTITY use-gpg-agent-checkbox "GPG-Agent aktivieren (Achtung, kann Probleme verursachen)">

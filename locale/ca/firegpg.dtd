@@ -37,6 +37,6 @@
 <!ENTITY firegpgContext.labelEditeur "Obre l'editor">
 <!ENTITY firegpgMenu.labelEditeur "Obre l'editor">
 <!ENTITY firegpgToolbar.labelEditeur "Obre l'editor">
-<!ENTITY firegpgContext.labelCryptSign "Sign and Crypt">
-<!ENTITY firegpgMenu.labelCryptSign "Sign and Crypt">
-<!ENTITY firegpgToolbar.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgContext.labelCryptSign "Firmar i Encriptar">
+<!ENTITY firegpgMenu.labelCryptSign "Firmar i Encriptar">
+<!ENTITY firegpgToolbar.labelCryptSign "Firmar i Encriptar">

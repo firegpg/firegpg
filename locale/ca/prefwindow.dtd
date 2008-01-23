@@ -19,26 +19,26 @@
 <!ENTITY gmail-buton-crypt-checkbox "Encripta">
 <!ENTITY gmail-buton-cryptsend-checkbox "Encripta i Envia">
 <!ENTITY allvays-to-myself-checkbox "Encripta sempre a mi mateix.">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (Requires Restart of Firefox)">
+<!ENTITY enable-gpgauth-check.label "Activar gpgAuth(S'ha de reiniciar Firefox)">
 <!ENTITY enable-gpgauth-check.accesskey "E">
-<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
-<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-pref.label "Desencripta sempre els missatges de Servidors Autenticats">
+<!ENTITY global-allow-keyring-check.label "Desencripta sempre missatges de Servidors Autenticats">
 <!ENTITY global-allow-keyring-check.accesskey "A">
-<!ENTITY per-domain-preferences.label "Per-domain settings:">
-<!ENTITY turn-off-updates "Disable FireGPG's auto updates">
-<!ENTITY key-name "Name">
+<!ENTITY per-domain-preferences.label "Configuració per domini">
+<!ENTITY turn-off-updates "Denegar FireGPG d'actualitzar-se automàticament">
+<!ENTITY key-name "NOM">
 <!ENTITY key-id "Id">
-<!ENTITY key-create "Created">
-<!ENTITY key-expire "Expire">
+<!ENTITY key-create "Creat">
+<!ENTITY key-expire "Caduca">
 <!ENTITY pane4.title "Gpg">
-<!ENTITY gpg-add-options "Add arguments to gpg's command line : (Warning ! Can break FireGPG ! Have a look at doc.)">
-<!ENTITY gmail-buton-signcrypt-checkbox "Sign and Crypt">
-<!ENTITY gmail-buton-signcryptsend-checkbox "Sign, Crypt and Send">
-<!ENTITY firegpg-version-label.text "Current FireGPG's version :">
-<!ENTITY hide-expired "Hide expired keys">
-<!ENTITY use-api "Active FireGPG's api for Webpages (like roundcube) (restart required)">
+<!ENTITY gpg-add-options "Afegir arguments a la linea de comandes de GPG : (Atenció! Pot trencar GPG ! Mira la documentació)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Firmar i Encriptar">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Firmar, Encriptar i Enviar">
+<!ENTITY firegpg-version-label.text "Versió actual de FireGPG : ">
+<!ENTITY hide-expired "Amagar claus caducades">
+<!ENTITY use-api "Activa el API de FIREGPG per pàgines Web (Requereix reiniciar)">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "Lists of allowed sites (double-click to remove)">
-<!ENTITY api-liste-domain.label "Domain">
-<!ENTITY api-liste-keyauth.label "Key">
-<!ENTITY use-gpg-agent-checkbox "Active Gpg-agent (warnig, can make issues...)">
+<!ENTITY api-liste-access.label "Llista de llocs permesos (doble click per eliminar)">
+<!ENTITY api-liste-domain.label "Domini">
+<!ENTITY api-liste-keyauth.label "Clau">
+<!ENTITY use-gpg-agent-checkbox "Activar Gpg-agent (Atenció, crear fallos...)">
