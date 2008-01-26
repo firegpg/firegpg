@@ -833,8 +833,11 @@ var cGmail2 = {
                 try { var select = iframe.contentWindow.document.body.innerHTML; }
                     catch (e) { var select = ""; }
 
-                    var reg=new RegExp("\n", "gi");
-                    newText = newText.replace(reg,"<br>");
+                var reg=new RegExp("<", "gi");
+                newText = newText.replace(reg,"&lt;");
+
+                var reg=new RegExp("\n", "gi");
+                newText = newText.replace(reg,"<br>");
 
                 iframe.contentWindow.document.body.innerHTML = newText + select.substring(this.composeIndexOfQuote, select.length) + "<br /><br />";
             }
@@ -847,7 +850,7 @@ var cGmail2 = {
                 newText = newText.replace(reg,"<br>");
 
                 var range = select.getRangeAt(0);
-                var el = dDocument.createElement("div");
+                var el = iframe.contentWindow.document.createElement("div");
 
                 el.innerHTML = newText;
 
