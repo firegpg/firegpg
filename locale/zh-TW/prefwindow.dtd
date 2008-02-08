@@ -42,3 +42,4 @@
 <!ENTITY api-liste-domain.label "域名">
 <!ENTITY api-liste-keyauth.label "激活Gpg-agent（警告，可能帶來問題······）">
 <!ENTITY use-gpg-agent-checkbox "密鑰">
+<!ENTITY search-description "Filter :">

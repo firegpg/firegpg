@@ -42,3 +42,4 @@
 <!ENTITY api-liste-domain.label "도메인">
 <!ENTITY api-liste-keyauth.label "키">
 <!ENTITY use-gpg-agent-checkbox "GPG 에이전트 활성화 (경고: 문제를 일으킬 수 있습니다...)">
+<!ENTITY search-description "Filter :">

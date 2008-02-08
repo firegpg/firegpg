@@ -1,3 +1,9 @@
+2008-02-08  Maximilien Cuony
+    * Support more domains for google apps
+    * Don't say there are an update of firegpg is the update page information is not accesible.
+    * Added bn locate
+    * Added a way to filter keys list
+
 2008-01-26  Maximilien Cuony
     * FireFox 3 support.
 

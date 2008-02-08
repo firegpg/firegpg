@@ -5,15 +5,15 @@
 <!ENTITY gmail-enabled-checkbox.label "GMail-Unterstützung">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Privater Schlüssel:">
-<!ENTITY show-website-checkbox "Zeige die Webseite von FireGPG in signiertem oder verschlüsseltem Text">
+<!ENTITY show-website-checkbox "Zeige die Webseite von FireGPG in unterschriebenem oder verschlüsseltem Text">
 <!ENTITY change-gpg-path-button "Durchsuchen">
 <!ENTITY change-gpg-path-checkbox "Benutzerdefinierter Pfad zu GnuPG:">
-<!ENTITY result-always-in-new-window "Zeige die Ergebnisse von Verschlüsseln/Signieren immer in einem neuen Fenster.">
+<!ENTITY result-always-in-new-window "Zeige die Ergebnisse von Verschlüsseln/Unterschreiben immer in einem neuen Fenster.">
 <!ENTITY no-gpg-agent-checkbox "Deaktivere den gpg-agent (kann einige Fehler beheben)">
 <!ENTITY ask-for-save-pass "Passwort standardmäßig (nach Abfrage) speichern">
 <!ENTITY gmail-no-no-sign-checkbox "Verstecke 'Keine Signaturen gefunden [...]'">
-<!ENTITY gmail-need-a-restart "Einige Optionen erfordernen einen Browserneustart.">
-<!ENTITY gmail-buttons-label "Angezeigte Buttons:">
+<!ENTITY gmail-need-a-restart "Einige Optionen erfordern einen Browserneustart.">
+<!ENTITY gmail-buttons-label "Angezeigte Schaltflächen:">
 <!ENTITY gmail-buton-sign-checkbox "Unterschreiben">
 <!ENTITY gmail-buton-signsend-checkbox "Unterschreiben und Senden">
 <!ENTITY gmail-buton-crypt-checkbox "Verschlüsseln">
@@ -25,21 +25,22 @@
 <!ENTITY global-allow-keyring-check.label "Nachrichten von authentifizierten Servern immer entschlüsseln">
 <!ENTITY global-allow-keyring-check.accesskey "A">
 <!ENTITY per-domain-preferences.label "Domain-spezifische Einstellungen">
-<!ENTITY turn-off-updates "Automatische Updates von FireGPG abstellen">
+<!ENTITY turn-off-updates "Automatische Updates von FireGPG deaktivieren">
 <!ENTITY key-name "Name">
 <!ENTITY key-id "Id">
 <!ENTITY key-create "Erstellt">
 <!ENTITY key-expire "Ablaufdatum">
 <!ENTITY pane4.title "GPG">
 <!ENTITY gpg-add-options "Kommandozeilenparameter für GPG hinzufügen: (Achtung! Kann FireGPG stören. Bitte Dokumentation beachten)">
-<!ENTITY gmail-buton-signcrypt-checkbox "Signieren und Verschlüsseln">
-<!ENTITY gmail-buton-signcryptsend-checkbox "Signieren, Verschlüsseln und Absenden">
+<!ENTITY gmail-buton-signcrypt-checkbox "Unterschreiben und Verschlüsseln">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Unterschreiben, Verschlüsseln und Senden">
 <!ENTITY firegpg-version-label.text "Aktuelle Version von FireGPG:">
 <!ENTITY hide-expired "Abgelaufene Schlüssel verstecken">
-<!ENTITY use-api "FireGPG für alle Webseiten (wie roundcube) aktivieren (Neustart erforderlich)">
+<!ENTITY use-api "FireGPG-APIs für Webseiten (wie roundcube) aktivieren (Neustart erforderlich)">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-access.label "Liste der erlaubten
 Websiten (Doppelklick zum Entfernen)">
 <!ENTITY api-liste-domain.label "Domain">
 <!ENTITY api-liste-keyauth.label "Schlüssel">
 <!ENTITY use-gpg-agent-checkbox "GPG-Agent aktivieren (Achtung, kann Probleme verursachen)">
+<!ENTITY search-description "Filter :">

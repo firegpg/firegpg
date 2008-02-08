@@ -710,7 +710,7 @@ function testIfSomethingsIsNew() {
 
 				var toDetect = "<version>" + versionAct + "</version>";
 
-				if (updateData.indexOf(toDetect) == -1)
+				if (updateData.indexOf('ec8030f7-c20a-464f-9b0e-13a3a9e97384') != -1 && updateData.indexOf(toDetect) == -1  )
 				{
 
 					var newVersion = "A new version of FireGPG is available, would you like to update now?";

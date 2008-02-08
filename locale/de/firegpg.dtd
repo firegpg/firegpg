@@ -2,18 +2,18 @@
 <!ENTITY firegpgToolbar.label "FireGPG">
 <!ENTITY firegpgToolbar.tooltip "FireGPG">
 <!ENTITY firegpgContext.label "FireGPG">
-<!ENTITY firegpgContext.labelSign "Signieren">
+<!ENTITY firegpgContext.labelSign "Unterschreiben">
 <!ENTITY firegpgContext.labelCrypt "Verschlüsseln">
 <!ENTITY firegpgContext.labelVerif "Signatur überprüfen">
 <!ENTITY firegpgContext.labelDecry "Entschlüsseln">
 <!ENTITY firegpgContext.labelOptions "Optionen">
 <!ENTITY firegpgMenu.label "FireGPG">
-<!ENTITY firegpgMenu.labelSign "Signieren">
+<!ENTITY firegpgMenu.labelSign "Unterschreiben">
 <!ENTITY firegpgMenu.labelCrypt "Verschlüsseln">
 <!ENTITY firegpgMenu.labelVerif "Signatur überprüfen">
 <!ENTITY firegpgMenu.labelDecry "Entschlüsseln">
 <!ENTITY firegpgMenu.labelOptions "Optionen">
-<!ENTITY firegpgToolbar.labelSign "Signieren">
+<!ENTITY firegpgToolbar.labelSign "Unterschreiben">
 <!ENTITY firegpgToolbar.labelCrypt "Verschlüsseln">
 <!ENTITY firegpgToolbar.labelVerif "Signatur überprüfen">
 <!ENTITY firegpgToolbar.labelDecry "Entschlüsseln">
@@ -37,6 +37,6 @@
 <!ENTITY firegpgContext.labelEditeur "Editor öffnen">
 <!ENTITY firegpgMenu.labelEditeur "Editor öffnen">
 <!ENTITY firegpgToolbar.labelEditeur "Editor öffnen">
-<!ENTITY firegpgContext.labelCryptSign "Signieren und Verschlüsseln">
-<!ENTITY firegpgMenu.labelCryptSign "Signieren und Verschlüsseln">
-<!ENTITY firegpgToolbar.labelCryptSign "Signieren und Verschlüsseln">
+<!ENTITY firegpgContext.labelCryptSign "Unterschreiben und Verschlüsseln">
+<!ENTITY firegpgMenu.labelCryptSign "Unterschreiben und Verschlüsseln">
+<!ENTITY firegpgToolbar.labelCryptSign "Unterschreiben und Verschlüsseln">

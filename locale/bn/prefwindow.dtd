@@ -1,5 +1,5 @@
 <!ENTITY prefwindow.title "FireGPG preferences">
-<!ENTITY pane1.title "General">
+<!ENTITY pane1.title "সাধারণ">
 <!ENTITY pane2.title "Gmail">
 <!ENTITY pane3.title "gpgAuth">
 <!ENTITY gmail-enabled-checkbox.label "GMail support">
@@ -9,7 +9,7 @@
 <!ENTITY change-gpg-path-button "Setting GPG's path">
 <!ENTITY change-gpg-path-checkbox "Manually specify the path of GPG:">
 <!ENTITY result-always-in-new-window "Always display the result of an encoding or a signature in a new window.">
-<!ENTITY no-gpg-agent-checkbox "Force to turn off GPG's Agent (can fix some errors)">
+<!ENTITY no-gpg-agent-checkbox "জিপিজি এর এজেন্ট বলপূর্বক বন্ধ করুন (এতে কিছু সমস্যার সমাধান হতে পারে)">
 <!ENTITY ask-for-save-pass "By default, ask for save password.">
 <!ENTITY gmail-no-no-sign-checkbox "Don't show 'No signature found [...]'">
 <!ENTITY gmail-need-a-restart "These options need a browser restart.">
@@ -26,8 +26,8 @@
 <!ENTITY global-allow-keyring-check.accesskey "A">
 <!ENTITY per-domain-preferences.label "Per-domain settings:">
 <!ENTITY turn-off-updates "Disable FireGPG's auto updates">
-<!ENTITY key-name "Name">
-<!ENTITY key-id "Id">
+<!ENTITY key-name "নাম">
+<!ENTITY key-id "আইডি">
 <!ENTITY key-create "Created">
 <!ENTITY key-expire "Expire">
 <!ENTITY pane4.title "Gpg">

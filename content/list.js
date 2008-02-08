@@ -36,6 +36,8 @@
 
 
 var listOfAutoSelect = new Array();
+
+var savedList = new Array();
 /*
  * Called when the list dialog is shown.
  *
@@ -78,6 +80,7 @@ function onLoad(win)
 
 	var selected;
 	var j = 0;
+    var k = 0;
 
 	for(var id in list)
 	{
@@ -123,6 +126,9 @@ function onLoad(win)
 		item.appendChild(child4);
 
 		listInDialog.appendChild(item);
+
+        savedList[k] = new Array(list[id][0], id, list[id][1], list[id][2], (list[id][0] + id + list[id][1] + list[id][2]) .toLowerCase()  );
+        k++;
 
 		//var newItem = listInDialog.appendItem(list[id], id);
 
@@ -191,6 +197,47 @@ function onAccept()
 	  to select an item ! */
 
 	return true;
+}
+
+/**
+ * Filter the keys list
+ */
+function filter() {
+    to_filtre = document.getElementById('search-textbox').value.toLowerCase();
+    var listInDialog = document.getElementById('list');
+
+    var n_items = listInDialog.childNodes.length;
+
+    for(var i = 0; i < (n_items - 1); i++) {
+		listInDialog.removeItemAt(0);
+    }
+
+    for(var i = 0; i < savedList.length; i++) {
+
+        if (to_filtre == '' || savedList[i][4].indexOf(to_filtre) != -1) {
+
+            var  item   = document.createElement('listitem');
+
+            var  child1 = document.createElement('listcell');
+            child1.setAttribute('label', savedList[i][0]);
+            item.appendChild(child1);
+
+            var  child2 = document.createElement('listcell');
+            child2.setAttribute('label', savedList[i][1]);
+            item.appendChild(child2);
+
+            var  child3 = document.createElement('listcell');
+            child3.setAttribute('label', savedList[i][2]);
+            item.appendChild(child3);
+
+            var  child4 = document.createElement('listcell');
+            child4.setAttribute('label', savedList[i][3]);
+            item.appendChild(child4);
+
+            listInDialog.appendChild(item);
+        }
+    }
+
 }
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

@@ -17,7 +17,7 @@
 <!ENTITY gmail-buton-sign-checkbox "Firma">
 <!ENTITY gmail-buton-signsend-checkbox "Firma e Invia">
 <!ENTITY gmail-buton-crypt-checkbox "Cripta">
-<!ENTITY gmail-buton-cryptsend-checkbox "Cripta e invia">
+<!ENTITY gmail-buton-cryptsend-checkbox "Cripta e Invia">
 <!ENTITY allvays-to-myself-checkbox "Seleziona sempre la mia chiave per criptare">
 <!ENTITY enable-gpgauth-check.label "Abilita GPGAuth (Richiede il riavvio di Firefox)">
 <!ENTITY enable-gpgauth-check.accesskey "E">
@@ -42,3 +42,4 @@
 <!ENTITY api-liste-domain.label "Dominio">
 <!ENTITY api-liste-keyauth.label "Chiave">
 <!ENTITY use-gpg-agent-checkbox "Attiva l'agente GPG (ATTENZIONE: potrebbe causare malfunzionamenti...)">
+<!ENTITY search-description "Filter :">

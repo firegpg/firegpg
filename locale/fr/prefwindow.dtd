@@ -42,3 +42,4 @@
 <!ENTITY api-liste-domain.label "Domaine">
 <!ENTITY api-liste-keyauth.label "Clé">
 <!ENTITY use-gpg-agent-checkbox "Activer 'gpg-agent' (attention, peut causer des problèmes...)">
+<!ENTITY search-description "Rechercher :">
