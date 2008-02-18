@@ -49,9 +49,6 @@ var firegpg = {
 	},
 	onDelayMenuAction: function(action)
 	{
-        var keyID = choosePublicKey(new Array("firegpg@gmail.com"));
-return;
-
 		if (action == "SIGN")
 			GPG.sign();
 		else if(action == "VERIF")
