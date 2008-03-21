@@ -496,10 +496,10 @@ var GPG = {
      * keyIdList is an array contain a liste of ID :
 	 *   ['id1', 'id2', etc.]
 	 */
-	baseCryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID) {
+	baseCryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode /*Optional*/) {
 		this.initGPGACCESS();
 
-		var result = this.GPGAccess.cryptAndSign(text, keyIdList,fromGpgAuth, password, keyID);
+		var result = this.GPGAccess.cryptAndSign(text, keyIdList,fromGpgAuth, password, keyID, binFileMode);
 		var tresult = result.sdOut;
 			result.sdOut = "ok";
 
@@ -583,7 +583,7 @@ var GPG = {
 			return '';
 		}
 		else if (result == "erreur") {
-			alert(i18n.getString("decryptFailed") + sdOut2);
+			alert(i18n.getString("decryptFailed") + "\n\n" + sdOut2);
 			return '';
 		}
 		else {

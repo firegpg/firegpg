@@ -78,10 +78,9 @@ function choosePublicKey(preSelect /* optional */) /* TODO : remove */
 	                            '', 'chrome, dialog, modal, resizable=yes',
 	                            params);
 	dlg.focus();
-
-	if(params.selected_items.length == 0)
+	if(params.selected_items.length == 0 || params.selected_items.length == undefined)
 	{
-		params.selected_items = null;
+		return null;
 	} //If we have to, add the private key too.
 	else {
 

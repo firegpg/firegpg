@@ -42,4 +42,4 @@
 <!ENTITY api-liste-domain.label "Dominio">
 <!ENTITY api-liste-keyauth.label "Chiave">
 <!ENTITY use-gpg-agent-checkbox "Attiva l'agente GPG (ATTENZIONE: potrebbe causare malfunzionamenti...)">
-<!ENTITY search-description "Filter :">
+<!ENTITY search-description "Filtro:">

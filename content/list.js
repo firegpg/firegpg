@@ -133,8 +133,6 @@ function onLoad(win)
 		//var newItem = listInDialog.appendItem(list[id], id);
 
 
-
-
 		if (selected == true)
 		{
 			listOfAutoSelect[j] = item;
@@ -145,7 +143,6 @@ function onLoad(win)
 
 
 	}
-
 
 	// description
 	var description = window.arguments[0].description;
@@ -161,10 +158,6 @@ function onLoad(win)
 /*
  * Function wo wiil help the browser to try an array
  */
-
-function Trillage(x1,x2) {
-    alert(x1 + " " + x2);
-}
 
 function checkTheAutoSelect() {
 	for (var i = 0; i < listOfAutoSelect.length; i++)
@@ -185,7 +178,8 @@ function onAccept()
 	var listInDialog = document.getElementById('list');
 
 	/* dictionary contain result['id'] = 'label' */
-	var result = [];
+	var result = new Array();
+
 	for(var i = 0; i < listInDialog.selectedItems.length; i++) {
 		var item = listInDialog.selectedItems[i];
 		result.push(item.childNodes[1].getAttribute('label'));

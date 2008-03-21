@@ -209,7 +209,7 @@ var cGmail2 = {
 
                             span.setAttribute("style","position: relative;  bottom: 26px;  right: 5px; float: right; margin-bottom: -30px;");
 
-                            span.innerHTML = '<img class="iyUIWc msHBT uVCMYd" src="images/cleardot.gif">&nbsp;<span gpg_action="add_crypted" style="font-size: 12px;" class="MRoIub">' + i18n.getString("GmailAddChiffred")+ '</span>';
+                            span.innerHTML = '<img class="iyUIWc msHBT uVCMYd" src="images/cleardot.gif">&nbsp;<span gpg_action="add_crypted" style="font-size: 12px;" class="MRoIub">' + i18n.getString("GmailAddChiffred")+ '</span>&nbsp;<span gpg_action="add_crypted_and_sign" style="font-size: 12px;" class="MRoIub">' + i18n.getString("GmailAddChiffredSignToo")+ '</span>';
 
                             boxwhereadd.insertBefore(span,tablebox.nextSibling);
 
@@ -219,6 +219,87 @@ var cGmail2 = {
                             span.addEventListener('click',tmpListener,false);
 
                         }
+
+                        form =  listeTest[i].parentNode.getElementsByTagName('form');
+                        form = form[0];
+                        // Code of Gmail S/MIME
+                        /*
+                            Copyright (C) 2005-2007 Richard Jones.
+                            Copyright (C) 2007-2008 Sean Leonard of SeanTek(R).
+
+                            GPL 2 License.
+                        */
+                        // Disable autosave and add appropriate notification
+                        if (false)
+                        {
+                            var subj = form.elements.namedItem("subject");
+
+                            // STGS Method
+                            function getValue()
+                            {
+                                // found two bad patterns: $q$_P$xVa$ -> t_a -> OP -> yUa -> BXa [->call] ...
+                                // $q$_P$UWa$ -> O0a -> iQ -> WVa -> YYa [->call] -> $CNp$ [->apply] -> $e$ ...
+                                // thus, search for what the stack function names start with
+                                if (getValue.caller == null) return this.__proto__.__lookupGetter__("value").apply(this);
+                                function stackMatch(pattern, func)
+                                {
+                                    for (var i = 0; i < pattern.length; i++)
+                                    {
+                                        if (func == null) return false;
+                                        if (func.name.indexOf(pattern[i]) != 0) return false;
+
+                                        func = func.caller;
+                                    }
+                                    return true;
+                                }
+                                const badpattern1 = ["$q$_P$", "$q$_P$", "$q$_P$", "$q$_P$", "$q$_P$", "$CNp$"];
+                                const badpattern2 = ["$q$_P$xVa", "$q$_P$t_a$", "$q$_P$OP$", "$q$_P$yUa$", "$q$_P$BXa$"];
+                                const badpattern3 = ["$R$_P$", "$R$_P$", "$R$_P$", "$R$_P$Lfb$", "$R$_P$xib$", "$Ouc$"];
+                                const badpattern4 = ["$Y$_P$", "$Y$_P$", "$Y$_P$", "$Y$_P$Uib$", "$Y$_P$Glb$"]; // then $rga$, $e$, $a$__protected__$
+                                if (stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
+                                {
+                                    function AutosaveWreckingBall() {};
+                                    AutosaveWreckingBall.prototype.value = "Wrecked";
+                                    AutosaveWreckingBall.prototype.toString = function() { return "[object AutosaveWreckingBall]"; }
+                                    throw new AutosaveWreckingBall();
+                                }
+                                else
+                                {
+                                    //debugger;  keep this around for later usage when needing to adjust badpatterns
+                                }
+                                // finally, if nothing matches:
+                                return this.__proto__.__lookupGetter__("value").apply(this);
+                            } // end getValue
+
+                            function setValue(s)
+                            {
+                                this.__proto__.__lookupSetter__("value").call(this,s);
+                            }
+
+                            form.ownerDocument.defaultView.setTimeout(getValue.toString() + "\ndocument.getElementById('" + subj.id + "').__defineGetter__('value', getValue);\n" +
+                            setValue.toString() + "\ndocument.getElementById('" + subj.id + "').__defineSetter__('value', setValue);\n",1);
+
+                            // message about autosave disabled
+                            var spanAS = form.ownerDocument.evaluate(".//div[contains(@class,'c1I77d')]/span[@class='x1Kcd']",
+                                                                            form.parentNode.parentNode, null,
+                                                                            XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+                            for (var o=0;o<spanAS.snapshotLength;o++)
+                            {
+                                // HARDCODED: Autosave disabled.
+                                spanAS.snapshotItem(o).innerHTML = "Autosave disabled";
+                            }
+
+
+                            var notifr = form.ownerDocument.evaluate("table[@class='ctb']//td/div[@class='cd']/span",
+                            this.form, null, XPathResult.ANY_TYPE, null);
+                           var notif = null, notifa = new Array();
+                           while (notif = notifr.iterateNext())
+                               notifa.push(notif);
+
+
+                        } // end if autosave disabled
+
+                        //End of code of Gmail S/MIME.
 
 
                     }
@@ -458,7 +539,7 @@ var cGmail2 = {
 
 				}
 			}
-            else if (event.target.getAttribute('gpg_action') == "add_crypted")
+            else if (event.target.getAttribute('gpg_action') == "add_crypted" || event.target.getAttribute('gpg_action') == "add_crypted_and_sign")
 			{
 
                 //Ok, so the user want to crypt a file.
@@ -480,25 +561,55 @@ var cGmail2 = {
 
                 var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,event.target.parentNode.parentNode.parentNode);
 
-
 				if (data == "")
 					return;
 
-
 				var keyID = choosePublicKey(whoWillGotTheMail);
-
 
 				if (keyID == null || keyID == "")
 					return;
 
-				var result = GPG.baseCrypt(data,keyID,false,true);
+                errors = false;
 
-						// If the sign failled
-				if(result.sdOut == "erreur") {
-					// We alert the user
-					alert(i18n.getString("cryptFailed"));
-				}
-				else {
+                if (event.target.getAttribute('gpg_action') == "add_crypted") {
+
+                    var result = GPG.baseCrypt(data,keyID,false,true);
+
+                            // If the sign failled
+                    if(result.sdOut == "erreur") {
+                        // We alert the user
+                        alert(i18n.getString("cryptFailed"));
+                        errors = true;
+                    }
+
+                } else {
+
+                    var keyIDSelf = getSelfKey();
+                    if(keyIDSelf == null)
+                        return;
+
+                    var password = getPrivateKeyPassword();
+                    if(password == null)
+                        return;
+
+                    // We get the result
+                    var result = GPG.baseCryptAndSign(data, keyID ,false,password, keyIDSelf,true);
+
+                    // If the crypt failled
+                    if(result.sdOut == "erreur") {
+                        // We alert the user
+                        alert(i18n.getString("cryptAndSignFailed") + result.sdOut2);
+                        errors = true;
+                    } else if(result.sdOut == "erreurPass") {
+                        // We alert the user
+                        eraseSavedPassword();
+                        alert(i18n.getString("cryptAndSignFailedPass"));
+                        errors = true;
+                    }
+
+                }
+
+                if (errors == false){
 
 					var newData = result.output;
 

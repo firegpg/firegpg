@@ -218,7 +218,7 @@ function chooseGPGPath()
 }
 
 /* Show warnings if use try to disable updates */
-function showWarnigs()
+function showWarnings()
 {
 	var checkBox = document.getElementById("updates-checkbox");
 	//Si c'est false, il est entrain d'activer

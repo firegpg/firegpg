@@ -380,7 +380,7 @@ var GPGAccess = {
 	/*
 	 * Function to encrypt and sign a text.
 	 */
-	cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID) {
+	cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode /*Optional*/) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
@@ -390,7 +390,13 @@ var GPGAccess = {
 		if (fromGpgAuth == null)
 			fromGpgAuth = false;
 
-		putIntoFile(tmpInput,text); // Temp
+        if (binFileMode == null)
+			binFileMode = false;
+
+        if (binFileMode == false)
+    		putIntoFile(tmpInput,text); // Temp
+        else
+            putIntoBinFile(tmpInput,text); // Temp
 
 		// The file already exist, but GPG don't work if he exist, so we del it.
 		removeFile(tmpOutput);

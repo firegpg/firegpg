@@ -1,0 +1,7 @@
+<!ENTITY crypt-button "عمِّ">
+<!ENTITY dcrypt-button "ظهّر">
+<!ENTITY sign-button "وقّع">
+<!ENTITY verify-button "تحقّق">
+<!ENTITY open-button "افتح">
+<!ENTITY save-button "احفظ">
+<!ENTITY cryptandsign-button "وقّع و عمِّ">

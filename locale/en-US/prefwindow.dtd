@@ -42,4 +42,4 @@
 <!ENTITY api-liste-domain.label "Domain">
 <!ENTITY api-liste-keyauth.label "Key">
 <!ENTITY use-gpg-agent-checkbox "Enable GPG-agent (warning, can lead to issues)">
-<!ENTITY search-description "Filter :">
+<!ENTITY search-description "Filter">

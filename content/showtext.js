@@ -259,7 +259,7 @@ function dcrypt() {
                 eraseSavedPassword();
         }
         else if (result == "erreur") {
-                alert(i18n.getString("decryptFailed") + sdOut2);
+                alert(i18n.getString("decryptFailed") + "\n\n" + sdOut2);
         }
         else {
                 setSeletedText(crypttext);

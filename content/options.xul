@@ -76,7 +76,7 @@
         <checkbox  id="hide-expired" preference="hide-expired-pref" label="&hide-expired;"/>
 
 
-        <checkbox  id="updates-checkbox" preference="no-updates" label="&turn-off-updates;" onclick="showWarnigs()"/>
+        <checkbox  id="updates-checkbox" preference="no-updates" label="&turn-off-updates;" onclick="showWarnings()"/>
 
 
         <!-- list of private keys -->

@@ -1,3 +1,11 @@
+2008-03-21  Maximilien Cuony
+    * Fixed a problem with the 'cancel'  button of the key list.
+    * Added a way to send encrpyt AND signed file on the gmail interface.
+    * Fixed some locales issues.
+    * Ass ar and ru locate.
+    * Fixed a false text in english ("Please select a valid PGP key before importing")
+    * Better output when a decrpyt fail.
+
 2008-02-08  Maximilien Cuony
     * Support more domains for google apps
     * Don't say there are an update of firegpg is the update page information is not accesible.
