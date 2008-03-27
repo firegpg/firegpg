@@ -169,33 +169,156 @@ var GPG = {
 			return;
 		}
 
-		var result = this.baseVerify(text);
+		var results = this.baseVerify(text);
 
 		// For I18N
 		var i18n = document.getElementById("firegpg-strings");
 
-		if (result == "noGpg") {
+		if (results.length == 0) {
 			alert(i18n.getString("noGPGData"));
 			return;
 		}
-        else if (result == "erreur")
-                alert(i18n.getString("verifFailed"));
-		else if (result == "erreur_bad")
-                alert(i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")");
-        else if (result == "erreur_no_key")
-                alert(i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")");
-		else {
-			var infos = result.split(" ");
+        else {
 
-			var infos2 = "";
-			for (var ii = 1; ii < infos.length; ++ii)
-			{  infos2 = infos2 + infos[ii] + " ";}
+            if (results.length != 1)
+                var resulttxt = results.length + i18n.getString("manyStrings") + "\n";
+            else
+                var resulttxt = "";
 
-			alert(i18n.getString("verifSuccess") + " " + infos2);
-		}
+            for (var rid in results) {
+
+                result = results[rid];
+
+                if (result == "erreur")
+                    resulttxt += i18n.getString("verifFailed") + "\n";
+                else if (result == "erreur_bad")
+                        resulttxt += i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")\n";
+                else if (result == "erreur_no_key")
+                        resulttxt +=  i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")\n";
+                else {
+                    var infos = result.split(" ");
+
+                    var infos2 = "";
+                    for (var ii = 1; ii < infos.length; ++ii)
+                    {  infos2 = infos2 + infos[ii] + " ";}
+
+                    resulttxt +=  i18n.getString("verifSuccess") + " " + infos2 + "\n";
+                }
+
+            }
+
+            alert(resulttxt);
+        }
 	},
 
-	baseVerify: function(text) {
+
+    baseVerify: function(text) {
+        this.initGPGACCESS();
+
+        return this.layers(text,0);
+
+    },
+
+    layers: function(text,layer) {
+        var newline = new RegExp("\r","gi");
+        text = text.replace(newline,"\n");
+        text="\n" + text;
+
+        var begintxt = "-----BEGIN PGP SIGNED MESSAGE-----";
+        var midtxt = "-----BEGIN PGP SIGNATURE-----";
+        var endtxt = "-----END PGP SIGNATURE-----";
+
+        var division=0;
+        var results=new Array();
+
+        var layerbegin = new RegExp("- " + begintxt,"gi");
+        var layermid = new RegExp("- " + midtxt,"gi");
+        var layerend = new RegExp("- " + endtxt,"gi");
+        var begin = new RegExp("\n" + begintxt,"gi");
+        var begin2 = new RegExp("\n" + midtxt,"gi");
+        var end = new RegExp("\n" + endtxt,"gi");
+
+        var firstPosition = 0;
+        var lastPosition = 0;
+        var divisiontxt = "";
+
+        while(firstPosition!=-1 && lastPosition!=-1)
+        {
+                firstPosition = text.search(begin);
+                firstPosition2 = text.search(begin2);
+                lastPosition = text.search(end);
+
+                if (firstPosition == -1 && firstPosition2 != -1)
+                    firstPosition = 0;
+
+                if( firstPosition!=-1 && lastPosition!=-1)
+                {
+                        division++;
+                        var divisiontxt=text.substring(firstPosition,lastPosition+endtxt.length+1);
+                        var tmpverifyresult = this.layerverify(divisiontxt,layer,division);
+                        divisiontxt = divisiontxt.replace(begin,"");
+                        divisiontxt = divisiontxt.replace(end,"");
+                        divisiontxt = divisiontxt.replace(layerbegin,begintxt);
+                        divisiontxt = divisiontxt.replace(layermid,midtxt);
+                        divisiontxt = divisiontxt.replace(layerend,endtxt);
+
+                        var subverif = this.layers(divisiontxt,layer+1);
+
+                        results.push(tmpverifyresult);
+
+                        results = results.concat(subverif);
+
+                        text=text.substring(lastPosition+endtxt.length);
+                }
+        }
+        return results;
+    },
+    layerverify: function(text,layer,division)
+    {
+        // We get the result
+		var result = this.GPGAccess.verify(text);
+
+		// If check failled
+		if(result.indexOf("GOODSIG") == "-1") {
+
+
+            if(result.indexOf("BADSIG") != -1)
+                return "erreur_bad";
+
+            if(result.indexOf("NO_PUBKEY") != -1)
+                return "erreur_no_key";
+
+            return "erreur";
+		}
+		else {
+			// If he work, we get informations of the Key
+			var infos = result;
+
+            infos2 = infos.substring(0,infos.indexOf("SIG_ID") + 7);
+
+			infos2 = result.replace(infos2, "");
+
+			infos2 = infos2.substring(0,infos2.indexOf("GNUPG") - 2);
+
+            infos2 = infos2.split(" ");
+
+            infos2 = infos2[infos2.length -1];
+
+            var date = new Date();
+
+            date.setTime(infos2 * 1000);
+
+			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
+			infos = result.replace(infos, "");
+			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
+
+            var i18n = document.getElementById("firegpg-strings");
+
+			return infos + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
+		}
+    },
+
+	/*baseVerify: function(text) {
 		this.initGPGACCESS();
 
 		// Verify GPG'data presence
@@ -273,7 +396,7 @@ var GPG = {
 			return infos + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
 		}
 	},
-
+    */
 	/*
 	 * List all keys.
 	 *

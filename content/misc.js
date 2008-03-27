@@ -53,6 +53,21 @@ const WRITE_PERMISSION_R = 0777;
 
 var savedPassword = null; /* the private key password */
 
+
+//Check if debuggin is enabled and if yes show up messages in console
+function fireGPGDebug(message, debugCode, fatal) {
+
+    if (fatal)
+        Components.utils.reportError("FireGPG-debug: [" + debugCode + "]"  + message);
+    else {
+
+        var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
+        consoleService.logStringMessage("FireGPG-debug: [" + debugCode + "]"  + message);
+
+    }
+
+}
+
 /*
  * Show a dialog (list.xul) to choose a list of
  * public keys (array).
@@ -61,6 +76,9 @@ var savedPassword = null; /* the private key password */
  */
 function choosePublicKey(preSelect /* optional */) /* TODO : remove */
 {
+
+    fireGPGDebug("","~misc-test~");
+
 
 	if(preSelect == undefined)
 		preSelect = {};
@@ -823,7 +841,5 @@ function trim (str){
 function TrimAndWash(str) {
     return trim(str).replace(/\n/, "");
 }
-
-
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

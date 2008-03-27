@@ -250,25 +250,25 @@ var gpgApi = {
 
 		// For I18N
 		var i18n = document.getElementById("firegpg-strings");
-
-		if (result == "noGpg") {
+    //TODO : multi signs ?
+		if (result.length == "0") {
             returnData.setAttribute('result', 'check-err');
             returnData.setAttribute('error', 'no-gpg');
 			return;
         }
-        else if (result == "erreur")
+        else if (result[0] == "erreur")
         {
             returnData.setAttribute('result', 'check-err');
             returnData.setAttribute('error', 'unknow');
 			return;
         }
-		else if (result == "erreur_bad")
+		else if (result[0] == "erreur_bad")
         {
             returnData.setAttribute('result', 'check-err');
             returnData.setAttribute('error', 'bad-sign');
 			return;
         }
-        else if (result == "erreur_no_key")
+        else if (result[0] == "erreur_no_key")
         {
             returnData.setAttribute('result', 'check-err');
             returnData.setAttribute('error', 'no-key');
@@ -276,7 +276,7 @@ var gpgApi = {
         }
 		else {
 
-            var infos = result.split(" ");
+            var infos = result[0].split(" ");
             infos2 = "";
 
             for (var ii = 1; ii < infos.length; ++ii)

@@ -1,3 +1,6 @@
+2008-03-27  Maximilien Cuony
+    * Added a multi-signs checks (thanks to jeff.sadowski)
+
 2008-03-21  Maximilien Cuony
     * Fixed a problem with the 'cancel'  button of the key list.
     * Added a way to send encrpyt AND signed file on the gmail interface.

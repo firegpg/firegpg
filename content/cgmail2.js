@@ -102,27 +102,27 @@ var cGmail2 = {
                         // For I18N
                         var i18n = document.getElementById("firegpg-strings");
 
-                        if (resultTest == "noGpg") {
+                        if (resultTest.length == 0) {
                             if (cGmail2.nonosign != true)
                             {
                                 td.setAttribute("style","color: orange;");
                                 td.innerHTML = i18n.getString("GMailNoS");
                             }
                         }
-                        else if (resultTest == "erreur") {
+                        else if (resultTest[0] == "erreur") {
                             td.setAttribute("style","color: red;");
                             td.innerHTML = i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
                         }
-                        else if (resultTest == "erreur_bad") {
+                        else if (resultTest[0] == "erreur_bad") {
                             td.setAttribute("style","color: red;");
                             td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("falseSign") + ")"; //"La première signature de ce mail est incorrect !";
                         }
-                        else if (resultTest == "erreur_no_key") {
+                        else if (resultTest[0] == "erreur_no_key") {
                             td.setAttribute("style","color: red;");
                             td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("keyNotFound") + ")"; //"La première signature de ce mail est incorrect !";
                         }
                         else {
-                            infos = resultTest.split(" ");
+                            infos = resultTest[0].split(" ");
                             var infos2 = "";
                             for (var ii = 1; ii < infos.length; ++ii)
                             {  infos2 = infos2 + infos[ii] + " ";}

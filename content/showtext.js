@@ -352,29 +352,45 @@ function verify() {
                 return;
         }
 
-        var result = GPG.baseVerify(text);
+        var results = GPG.baseVerify(text);
 
-        // For I18N
-        var i18n = document.getElementById("firegpg-strings");
+		// For I18N
+		var i18n = document.getElementById("firegpg-strings");
 
-        if (result == "noGpg") {
-                alert(i18n.getString("noGPGData"));
-                return;
-        }
-        else if (result == "erreur")
-                alert(i18n.getString("verifFailed"));
-        else if (result == "erreur_bad")
-                alert(i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")");
-        else if (result == "erreur_no_key")
-                alert(i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")");
+		if (results.length == 0) {
+			alert(i18n.getString("noGPGData"));
+			return;
+		}
         else {
-                infos = result.split(" ");
 
-                var infos2 = "";
-                for (var ii = 1; ii < infos.length; ++ii)
-                {  infos2 = infos2 + infos[ii] + " ";}
+            if (results.length != 1)
+                var resulttxt = results.length + i18n.getString("manyStrings") + "\n";
+            else
+                var resulttxt = "";
 
-                alert(i18n.getString("verifSuccess") + " " + infos2);
+            for (var rid in results) {
+
+                result = results[rid];
+
+                if (result == "erreur")
+                    resulttxt += i18n.getString("verifFailed") + "\n";
+                else if (result == "erreur_bad")
+                        resulttxt += i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")\n";
+                else if (result == "erreur_no_key")
+                        resulttxt +=  i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")\n";
+                else {
+                    var infos = result.split(" ");
+
+                    var infos2 = "";
+                    for (var ii = 1; ii < infos.length; ++ii)
+                    {  infos2 = infos2 + infos[ii] + " ";}
+
+                    resulttxt +=  i18n.getString("verifSuccess") + " " + infos2 + "\n";
+                }
+
+            }
+
+            alert(resulttxt);
         }
 }
 
