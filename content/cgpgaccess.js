@@ -39,7 +39,7 @@ const NS_APPINFO_CONTRACTID = "@mozilla.org/xre/app-info;1";
 const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;
 const OS_WINDOWS = "WINNT";
 const idAppli = "firegpg@firegpg.team";
-const comment = "http://firegpg.tuxfamily.org";
+const comment = "http://getfiregpg.org";
 
 var useGPGTrust = true;
 

@@ -35,7 +35,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-const FIREGPG_VERSION = '0.4.8';
+const FIREGPG_VERSION = '0.4.9';
 const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
 const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
 const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
@@ -57,6 +57,8 @@ var savedPassword = null; /* the private key password */
 //Check if debuggin is enabled and if yes show up messages in console
 function fireGPGDebug(message, debugCode, fatal) {
 
+    return;
+
     if (fatal)
         Components.utils.reportError("FireGPG-debug: [" + debugCode + "]"  + message);
     else {
@@ -76,9 +78,6 @@ function fireGPGDebug(message, debugCode, fatal) {
  */
 function choosePublicKey(preSelect /* optional */) /* TODO : remove */
 {
-
-    fireGPGDebug("","~misc-test~");
-
 
 	if(preSelect == undefined)
 		preSelect = {};
@@ -682,7 +681,7 @@ function testIfSomethingsIsNew() {
         //showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);
 
         //Show the page
-        gBrowser.selectedTab = gBrowser.addTab("http://firegpg.tuxfamily.org/?page=nv");
+        gBrowser.selectedTab = gBrowser.addTab("http://getfiregpg.org/?page=nv");
 
         //Send the ping
 
@@ -691,7 +690,7 @@ function testIfSomethingsIsNew() {
 		else
 			var mode = version;
 
-		var misc = getContent("http://firegpg.tuxfamily.org/stable/stats.php?version=" + versionAct + "&oldversion=" + mode);
+		var misc = getContent("http://getfiregpg.org/stable/stats.php?version=" + versionAct + "&oldversion=" + mode);
 
 
     } else {
@@ -723,9 +722,9 @@ function testIfSomethingsIsNew() {
 				prefs.setCharPref("lastUpdateCheck",nbMs);
 
 				//Get the last version
-				var updateData = getContent("http://firegpg.tuxfamily.org/stable/update.rdf");
+				var updateData = getContent("http://getfiregpg.org/stable/update.rdf");
 
-				var toDetect = "<version>" + versionAct + "</version>";
+				var toDetect = "NS1:version=\"" + versionAct + "\"";
 
 				if (updateData.indexOf('ec8030f7-c20a-464f-9b0e-13a3a9e97384') != -1 && updateData.indexOf(toDetect) == -1  )
 				{
@@ -738,7 +737,7 @@ function testIfSomethingsIsNew() {
 
 					if (confirm(newVersion))
 					{
-						openUILink("http://firegpg.tuxfamily.org/stable/firegpg.xpi");
+						openUILink("http://getfiregpg.org/stable/firegpg.xpi");
 					}
 				}
 			}

@@ -40,7 +40,7 @@
  * You can simply use this function, but directly call      *
  * FireGPG is allowd too, but can be more complex !         *
  *                                                          *
- * Version 0.4.7 - 19/01/07 - http://firegpg.tuxfamily.org  *
+ * Version 0.4.7 - 19/01/07 - http://getfiregpg.org  *
  ************************************************************/
 
 
