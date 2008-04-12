@@ -139,7 +139,10 @@ function onLoad(win)
 	getIgnored_servers( document.getElementById('domain_list') );
 
     //Set version number
-    document.getElementById('firegpg-version-version').value = FIREGPG_VERSION;
+    if (FIREGPG_STATUS != 'DEVEL')
+        document.getElementById('firegpg-version-version').value = FIREGPG_VERSION;
+    else
+        document.getElementById('firegpg-version-version').value = 'DEVEL - ' + FIREGPG_VERSION + ' - Svn version:  ' + FIREGPG_SVN;
 
     listbox = document.getElementById('api_domain_list');
 

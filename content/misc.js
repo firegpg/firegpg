@@ -36,6 +36,11 @@
 
 
 const FIREGPG_VERSION = '0.4.9';
+
+const FIREGPG_STATUS = 'DEVEL'; // DEVEL or RELASE. Use RELASE only for.. relases ;).
+
+const FIREGPG_SVN = "$Id$";
+
 const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
 const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
 const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
