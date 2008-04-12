@@ -34,7 +34,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-try {
+/*try {
      	const cid = "@getfiregpg.org/XPCOM/FireGPGCall;1";
 		obj = Components.classes[cid].createInstance();
 		obj = obj.QueryInterface(Components.interfaces.IFireGPGCall);
@@ -42,7 +42,7 @@ try {
 		alert(err);
     }
 	var res = obj.Add(3, 4);
-	alert('Performing 3+4. Returned ' + res + '.');
+	alert('Performing 3+4. Returned ' + res + '.');*/
 
 const FIREGPG_VERSION = '0.4.9';
 
