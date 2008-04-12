@@ -40,7 +40,7 @@
  * You can simply use this function, but directly call      *
  * FireGPG is allowd too, but can be more complex !         *
  *                                                          *
- * Version 0.4.7 - 19/01/07 - http://getfiregpg.org			*
+ * Version 0.4.7 - 19/01/07 - http://getfiregpg.org  *
  ************************************************************/
 
 
@@ -50,14 +50,14 @@ var FireGpgData;
 var FireGpgReturnData;
 
 // If firegpg respond
-var FireGPGHelloOk = false;
+var FireGgpHelloOk = false;
 
 // If the site seem to be allowd
-var FireGPGAllowUser = false;
+var FireGgpAllowUser = false;
 
 // Check if FireGPG's api is working
 // Return true or false
-function fireGPGHello() {
+function fireGgpHello() {
 
     fireGpgInitCall();
 
@@ -65,7 +65,7 @@ function fireGPGHello() {
 
     if (FireGpgReturnData.hasAttribute('result') && FireGpgReturnData.getAttribute('result') == 'firegpg-ok')
     {
-        FireGPGHelloOk = true;
+        FireGgpHelloOk = true;
         return true;
     }
     else
@@ -75,11 +75,11 @@ function fireGPGHello() {
 
 // Check if the auth key is valid
 // Return true or false
-function fireGPGAuth(auth_key) {
+function fireGgpAuth(auth_key) {
 
-    if (FireGPGHelloOk == false)
+    if (FireGgpHelloOk == false)
     {
-        if (fireGPGHello() == false) {
+        if (fireGgpHello() == false) {
             alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
             return false;
         }
@@ -93,7 +93,7 @@ function fireGPGAuth(auth_key) {
 
     if (FireGpgReturnData.hasAttribute('result') && FireGpgReturnData.getAttribute('result') == 'auth-ok')
     {
-        FireGPGAllowUser = true;
+        FireGgpAllowUser = true;
         return true;
     }
     else
@@ -103,11 +103,11 @@ function fireGPGAuth(auth_key) {
 
 // Try to register the website
 // Return the key or false
-function fireGPGRegister() {
+function fireGgpRegister() {
 
-    if (FireGPGHelloOk == false)
+    if (FireGgpHelloOk == false)
     {
-        if (fireGPGHello() == false) {
+        if (fireGgpHello() == false) {
             alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
             return false;
         }
@@ -126,19 +126,19 @@ function fireGPGRegister() {
 
 // Return the list of key
 // Return the keys or false
-function fireGPGListKey(auth_key) {
+function fireGgpListKey(auth_key) {
 
-    if (FireGPGHelloOk == false)
+    if (FireGgpHelloOk == false)
     {
-        if (fireGPGHello() == false) {
+        if (fireGgpHello() == false) {
             alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
             return false;
         }
     }
 
-    if (FireGPGAllowUser == false)
+    if (FireGgpAllowUser == false)
     {
-        if (fireGPGAuth(auth_key) == false) {
+        if (fireGgpAuth(auth_key) == false) {
             alert('FireGPG - api : Error with auth in listkey');
             return false;
         }
@@ -181,19 +181,19 @@ function fireGPGListKey(auth_key) {
 
 // Return the list of private key
 // Return the keys or false
-function fireGPGListPrivKey(auth_key) {
+function fireGgpListPrivKey(auth_key) {
 
-    if (FireGPGHelloOk == false)
+    if (FireGgpHelloOk == false)
     {
-        if (fireGPGHello() == false) {
+        if (fireGgpHello() == false) {
             alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
             return false;
         }
     }
 
-    if (FireGPGAllowUser == false)
+    if (FireGgpAllowUser == false)
     {
-        if (fireGPGAuth(auth_key) == false) {
+        if (fireGgpAuth(auth_key) == false) {
             alert('FireGPG - api : Error with auth in listprivkey');
             return false;
         }
@@ -237,19 +237,19 @@ function fireGPGListPrivKey(auth_key) {
 
 // Check if a sign is valid.
 // Return an object with diffrent informations
-function fireGPGCheck(auth_key, text) {
+function fireGgpCheck(auth_key, text) {
 
-    if (FireGPGHelloOk == false)
+    if (FireGgpHelloOk == false)
     {
-        if (fireGPGHello() == false) {
+        if (fireGgpHello() == false) {
             alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
             return false;
         }
     }
 
-    if (FireGPGAllowUser == false)
+    if (FireGgpAllowUser == false)
     {
-        if (fireGPGAuth(auth_key) == false) {
+        if (fireGgpAuth(auth_key) == false) {
             alert('FireGPG - api : Error with auth in check');
             return false;
         }
@@ -290,19 +290,19 @@ function fireGPGCheck(auth_key, text) {
 
 // Sign a text
 // Return an object with diffrent informations
-function fireGPGSign(auth_key, text, forceKey /* Optional */) {
+function fireGgpSign(auth_key, text, forceKey /* Optional */) {
 
-    if (FireGPGHelloOk == false)
+    if (FireGgpHelloOk == false)
     {
-        if (fireGPGHello() == false) {
+        if (fireGgpHello() == false) {
             alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
             return false;
         }
     }
 
-    if (FireGPGAllowUser == false)
+    if (FireGgpAllowUser == false)
     {
-        if (fireGPGAuth(auth_key) == false) {
+        if (fireGgpAuth(auth_key) == false) {
             alert('FireGPG - api : Error with auth in sign');
             return false;
         }
@@ -346,19 +346,19 @@ function fireGPGSign(auth_key, text, forceKey /* Optional */) {
 
 // Encrypt a text
 // Return an object with diffrent informations
-function fireGPGEncrypt(auth_key, text, dest_keys) {
+function fireGgpEncrypt(auth_key, text, dest_keys) {
 
-    if (FireGPGHelloOk == false)
+    if (FireGgpHelloOk == false)
     {
-        if (fireGPGHello() == false) {
+        if (fireGgpHello() == false) {
             alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
             return false;
         }
     }
 
-    if (FireGPGAllowUser == false)
+    if (FireGgpAllowUser == false)
     {
-        if (fireGPGAuth(auth_key) == false) {
+        if (fireGgpAuth(auth_key) == false) {
             alert('FireGPG - api : Error with auth in encrypt');
             return false;
         }
@@ -416,19 +416,19 @@ function fireGPGEncrypt(auth_key, text, dest_keys) {
 
 // Encrypt and sign  a text
 // Return an object with diffrent informations
-function fireGPGSignAndEncrypt(auth_key, text, dest_keys, forceKey /* Optional */) {
+function fireGgpSignAndEncrypt(auth_key, text, dest_keys, forceKey /* Optional */) {
 
-    if (FireGPGHelloOk == false)
+    if (FireGgpHelloOk == false)
     {
-        if (fireGPGHello() == false) {
+        if (fireGgpHello() == false) {
             alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
             return false;
         }
     }
 
-    if (FireGPGAllowUser == false)
+    if (FireGgpAllowUser == false)
     {
-        if (fireGPGAuth(auth_key) == false) {
+        if (fireGgpAuth(auth_key) == false) {
             alert('FireGPG - api : Error with auth in signandencrypt');
             return false;
         }
@@ -489,19 +489,19 @@ function fireGPGSignAndEncrypt(auth_key, text, dest_keys, forceKey /* Optional *
 
 // Decrypt a text
 // Return an object with diffrent informations
-function fireGPGDecrypt(auth_key, text) {
+function fireGgpDecrypt(auth_key, text) {
 
-    if (FireGPGHelloOk == false)
+    if (FireGgpHelloOk == false)
     {
-        if (fireGPGHello() == false) {
+        if (fireGgpHello() == false) {
             alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
             return false;
         }
     }
 
-    if (FireGPGAllowUser == false)
+    if (FireGgpAllowUser == false)
     {
-        if (fireGPGAuth(auth_key) == false) {
+        if (fireGgpAuth(auth_key) == false) {
             alert('FireGPG - api : Error with auth in decrypt');
             return false;
         }

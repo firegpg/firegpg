@@ -12,13 +12,11 @@
             document.write("Begin FireGPG's api test.<br />");
 
 //MhtfAurJgZ68Cc28kFIcq07yIYLY1Qf7va3Cqy3MfjdLGIvOJIoT84WdjmepjMXuPCN2iJXkFDW0uiUaqZcrkLFzjGrFZUYX7yzrnzXct
-            //var auth_key = '9psX0xBt4gcc7dyPOZGVXTfNVvHbKB53OpFIkX6RiyQQN5xVKSiedJIrmwrgk8vsXXNrBYCGoAKJaAhhymBQaxiex6w7PRapfDC2fN3wP2JRwJIiuop';
-			var auth_key = 'drnXAP68bgOSsvjpjUW7bdX3vulCHyIuwrFfbeOcL3E80roClEhEOkqXs6bdNLX9WuCU7OBaETPfeLwmELkYnus8IrvqztuOtuPZZUsV9h7';
-			var auth_key = 'drnXAP68bgOSsvjpjUW7bdX3vulCHyIuwrFfbeOcL3E80roClEhEOkqXs6bdNLX9WuCU7OBaETPfeLwmELkYnus8IrvqztuOtuPZZUsV9h7';
+            var auth_key = '9psX0xBt4gcc7dyPOZGVXTfNVvHbKB53OpFIkX6RiyQQN5xVKSiedJIrmwrgk8vsXXNrBYCGoAKJaAhhymBQaxiex6w7PRapfDC2fN3wP2JRwJIiuop';
 
             document.write("Test FireGPG's presence...");
 
-            if (fireGPGHello() == true)
+            if (fireGgpHello() == true)
             {
                 document.write("<span style=\"color: green;\">OK !</span><br />");
 
@@ -29,7 +27,7 @@
 
             document.write("Test FireGPG's auth...");
 
-            if (fireGPGAuth(auth_key) == true)
+            if (fireGgpAuth(auth_key) == true)
             {
                 document.write("<span style=\"color: green;\">OK !</span><br />");
 
@@ -39,7 +37,7 @@
 
                 document.write("Try to register...");
 
-                key = fireGPGRegister();
+                key = fireGgpRegister();
 
                 if (key != false)
                 {
@@ -55,7 +53,7 @@
 
             document.write("Getting key list...");
 
-            key_list = fireGPGListKey(auth_key);
+            key_list = fireGgpListKey(auth_key);
 
             if (key_list === false)
             {
@@ -72,7 +70,7 @@
 
             document.write("Getting Priv list...");
 
-            key_list = fireGPGListPrivKey(auth_key);
+            key_list = fireGgpListPrivKey(auth_key);
 
             if (key_list === false)
             {
@@ -91,7 +89,7 @@
 
             good_sign = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\ntest\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1.4.8 (GNU/Linux)\nComment: http://firegpg.tuxfamily.org\n\niEYEARECAAYFAkeSWbQACgkQBmo0B/+bqS+RrgCfQsVLAIZtMDsvTAojaT0nUYzq\n3bAAn1rh/TK/Af1vzOIlM204lTARLD0c\n=0TWS\n-----END PGP SIGNATURE-----\n";
 
-            result = fireGPGCheck(auth_key, good_sign);
+            result = fireGgpCheck(auth_key, good_sign);
 
             if (result === false)
             {
@@ -118,7 +116,7 @@
 
             good_sign = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\ntesst\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1.4.8 (GNU/Linux)\nComment: http://firegpg.tuxfamily.org\n\niEYEARECAAYFAkeSWbQACgkQBmo0B/+bqS+RrgCfQsVLAIZtMDsvTAojaT0nUYzq\n3bAAn1rh/TK/Af1vzOIlM204lTARLD0c\n=0TWS\n-----END PGP SIGNATURE-----\n";
 
-            result = fireGPGCheck(auth_key, good_sign);
+            result = fireGgpCheck(auth_key, good_sign);
 
             if (result === false)
             {
@@ -145,7 +143,7 @@
 
             good_sign = "E-----\nVersion: GnuPG v1.4.8 (GNU/Linux)\nComment: http://firegpg.tuxfamily.org\n\niEYEARECAAYFaKeSWbQACgkQBmo0B/+bqS+RrgCfQsVLAIZtMDsvTAojaT0nUYzq\n3bAAn1rh/TK/Af1vzOIlM204lTARLD0c\n=0TWS\n-----END PGP SIGNATURE-----\n";
 
-            result = fireGPGCheck(auth_key, good_sign);
+            result = fireGgpCheck(auth_key, good_sign);
 
             if (result === false)
             {
@@ -172,7 +170,7 @@
 
             text = "coucou !";
 
-            result = fireGPGSign(auth_key, text);
+            result = fireGgpSign(auth_key, text);
 
             if (result === false)
             {
@@ -199,7 +197,7 @@
 
             text = "-----BEGIN PGP MESSAGE-----\nVersion: GnuPG v1.4.8 (GNU/Linux)\nComment: http://firegpg.tuxfamily.org\n\nhM4D0ne3We+/B3QQAwDWm3Tofo+Z91cVEyB9bt2AxU91/nuwPWEuy9OVbEFUzPni\nf5e8PxV0+yisMsH6qLy+6wQ5dsiUQ1P9k8gM5SrDQN4jAmH199Jt8FEKHz5q4HQr\ncKbEhi2wWCgPdWfHu7ADAJ9+OMun/b8oaqNfVFTDtge+KZYYLJilVnjsbMlQHaEC\nsrB86Jw5T4f7PHoHbEEL82hmwnSnv2gBwrbOP5RFyFBCGtBfdoIUQLeVQ5UHns/+\nAGZeduHQo5SdpwW99JEEINKoAQ8rNOKDF6ucNBBZRVlOfJz4tRhcuVJ3m4jG9nMg\nTNbsw72kAbzDJsXxpaihV3CH1w1rg+iDcZ+qr/jfe3n3/TIGpFn0ByW9irkmRZp4\nzlLxhg8pJNdm7jXJb+q0OeSUKU/cSxoLMMjp/nbsGXBJ505YIYY5Uy8mJ4mAIDey\nrrTUKcv2GuO9c02hN2kc9QJSSx6OSi3doTfUjgdRovlHy3EymlKBb99o\n=Hm6B\n-----END PGP MESSAGE-----\n";
 
-            result = fireGPGDecrypt(auth_key, text);
+            result = fireGgpDecrypt(auth_key, text);
 
             if (result === false)
             {
@@ -228,7 +226,7 @@
 
             text = "COIN";
 
-            result = fireGPGEncrypt(auth_key, text, new Array('066A3407FF9BA92F','8CA2ACE7F1530A35'));
+            result = fireGgpEncrypt(auth_key, text, new Array('066A3407FF9BA92F','8CA2ACE7F1530A35'));
 
             if (result === false)
             {
@@ -257,7 +255,7 @@
 
             text = "COIN";
 
-            result = fireGPGSignAndEncrypt(auth_key, text, '066A3407FF9BA92F','122A1B6ADC53D658');
+            result = fireGgpSignAndEncrypt(auth_key, text, '066A3407FF9BA92F','122A1B6ADC53D658');
 
             if (result === false)
             {
