@@ -1,291 +1,235 @@
-<html>
-    <body >
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+	<head>
+		<title>FireGPG - Test de l'API</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="Content-Language" content="fr" />
+	</head>
+<body>
+		<!--
+			Exemple d'utilisation de FireGPG http://getfiregpg.org/ dans un site web !
 
-        <div id="gpgNode"></div>
+			Un tutoriel en français est présent dans http://achraf.cherti.name/blog/.
+		-->
 
+		<!-- Le noeud entre FireGPG et votre site web -->
+		<div id="gpgNode"></div>
 
-        <script src="firegpgapi.js"></script>
+		<!-- inclusion de l'API -->
+		<script src="firegpgapi.js"></script>
 
+		<!-- Fonctions utiles -->
+		<script type="text/javascript">
+			function title(message) {
+				document.write("<h2>" + message + "</h2>");
+			}
 
-        <script>
+			/*
+			 * Affiche un message de succès.
+			 */
+			function success_message(message) {
+				document.write("<span style=\"color: green;\">" + message + "</span><br />");
+			}
 
-            document.write("Begin FireGPG's api test.<br />");
+			/*
+			 * Affiche un message d'erreur.
+			 */
+			function error_message(message) {
+				document.write("<span style=\"color: red;\">" + message + "</span><br />");
+			}
 
-//MhtfAurJgZ68Cc28kFIcq07yIYLY1Qf7va3Cqy3MfjdLGIvOJIoT84WdjmepjMXuPCN2iJXkFDW0uiUaqZcrkLFzjGrFZUYX7yzrnzXct
-            var auth_key = '9psX0xBt4gcc7dyPOZGVXTfNVvHbKB53OpFIkX6RiyQQN5xVKSiedJIrmwrgk8vsXXNrBYCGoAKJaAhhymBQaxiex6w7PRapfDC2fN3wP2JRwJIiuop';
+			function message(message) {
+				document.write(message + "<br />");
+			}
 
-            document.write("Test FireGPG's presence...");
+			function new_line() {
+				document.write("<br />");
+			}
 
-            if (fireGgpHello() == true)
-            {
-                document.write("<span style=\"color: green;\">OK !</span><br />");
+			function pre_message(message) {
+				document.write("<pre>" + message + "</pre>");
+			}
+		</script>
 
-            } else {
-                document.write("<span style=\"color: red;\">Error !</span><br />");
-                talalsadasdasd(); //Make an error to stop
-            }
+		<script type="text/javascript">
+			/*
+			 * AKF - Authentification Key of FireGPG
+			 * (Clé de l'authentification FireGPG)
+			 */
+			var akf = '65FXci4FQo6V5dHmIGgAIdcLShxGfZ9D17Nii7sMWR08UxVT9UhPgqLaUEfhu3e257IUbRtMzWV0jyTuniaNdz14yaeEcKyRwi7Qi5Qknl2FhduR';
+			
+			/* 
+			 * Il faut rester poli, on 'salue' FireGPG :)
+			 */
+			if(fireGpgHello() == true)
+				success_message("L'extension FireGPG est présente !");
+			else
+				error_message("L'extension FireGPG n'est pas présente :-(");
 
-            document.write("Test FireGPG's auth...");
+			/* 
+			 * On s'authentifie auprès de FireGPG avec l'AKF
+			 */
+			title("Authentification avec l'AKF");
+			message("L'AKF utilisée est : " + akf);
+			if(fireGpgAuth(akf))
+				success_message("L'authentification avec l'AKF a été effectuée avec succès !");
+			else {
+				error_message("Erreur lors de l'enregistrement de FireGPG avec l'AKF !");
 
-            if (fireGgpAuth(auth_key) == true)
-            {
-                document.write("<span style=\"color: green;\">OK !</span><br />");
+				new_line();
+				message("Essayons d'obtenir l'AKF :");
 
-            } else {
-                document.write("<span style=\"color: red;\">Error !</span><br />");
+				akf = fireGpgRegister();
+				if(akf) {
+					success_message("Superbe, une AKF nous a été allouée ! C'est celle-ci :");
+					pre_message(akf);
+				}
+				else
+					error_message("La AKF n'a pas été retournée par FireGPG :(");
+			}
 
+			/*
+			 * On signe un texte, pour voir si cela marche ;-)
+			 */
+			text_to_sign = "Ce texte est à signer :)";
+			signed_text = ""; /* la signature sera mise ici */
+			title("Signature du texte : '" + text_to_sign + "'");
+			result = fireGpgSign(akf, text_to_sign);
+			if(result) {
+				if(result.sign_ok) {
+					success_message("Le texte a été signé avec succès.");
 
-                document.write("Try to register...");
+					message("La signature :");
+					pre_message(result.text);
+					
+					signed_text = result.text;
+				}
+				else {
+					error_message("Erreur lors de la signature du texte.");
+					error_message("Raison: " + result.reason);
+				}
+			}
+			else {
+				error_message("Erreur lors de la signature du texte.");
+                error_message("Raison: " + result.reason);
+			}
 
-                key = fireGgpRegister();
+			/*
+			 * On vérifie le texte signé avec notre clé.
+			 */
+			title("Vérification du texte précédemment signé...");
+            result = fireGpgCheck(akf, signed_text);
+			if(result) {
+				success_message("Le texte a pu être vérifié !");
 
-                if (key != false)
-                {
-                    document.write("<span style=\"color: green;\">OK ! : " + key + "</span><br />");
-
+                if(result.sign_valid == true) {
+					success_message("La signature est valide !");
+					success_message("Quelques informations : " + result.infos);
                 } else {
-                    document.write("<span style=\"color: red;\">Error !</span><br />");
-                   // tralala();
-                }
-
-
-            }
-
-            document.write("Getting key list...");
-
-            key_list = fireGgpListKey(auth_key);
-
-            if (key_list === false)
-            {
-                document.write("<span style=\"color: red;\">Error !</span><br />");
-                //talalsadasdasd(); //Make an error to stop
-
-            } else {
-                document.write("<span style=\"color: green;\">OK !</span><br />");
-
-                for (keyid in key_list) {
-                    document.write("<i>" + keyid + "</i> =>" + key_list[keyid] +"<br />");
+					error_message("La signature est invalide.");
+                    error_message("Raison: " + result.reason);
                 }
             }
+			else
+				error_message("Erreur lors de la vérification de la signature du texte.");
 
-            document.write("Getting Priv list...");
+			/*
+			 * On chiffre un texte...
+			 */
+            text = "Hello world";
+			encrypted_text = ""; /* on va mettre le texte chiffré ici */
+			privkey = "9BA19B12";
+			title("Chiffrement du texte : '" + text + "'");
+            result = fireGpgEncrypt(akf, text, new Array(privkey));
 
-            key_list = fireGgpListPrivKey(auth_key);
+			if(result) {
+				success_message("Le texte a pu être chiffré avec succès !");
 
-            if (key_list === false)
-            {
-                document.write("<span style=\"color: red;\">Error !</span><br />");
-                //talalsadasdasd(); //Make an error to stop
 
-            } else {
-                document.write("<span style=\"color: green;\">OK !</span><br />");
-
-                for (keyid in key_list) {
-                    document.write("<i>" + keyid + "</i> =>" + key_list[keyid] +"<br />");
-                }
-            }
-
-            document.write("Check a good sign...");
-
-            good_sign = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\ntest\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1.4.8 (GNU/Linux)\nComment: http://firegpg.tuxfamily.org\n\niEYEARECAAYFAkeSWbQACgkQBmo0B/+bqS+RrgCfQsVLAIZtMDsvTAojaT0nUYzq\n3bAAn1rh/TK/Af1vzOIlM204lTARLD0c\n=0TWS\n-----END PGP SIGNATURE-----\n";
-
-            result = fireGgpCheck(auth_key, good_sign);
-
-            if (result === false)
-            {
-                document.write("<span style=\"color: red;\">Error !</span><br />");
-                //talalsadasdasd(); //Make an error to stop
-
-            } else {
-                document.write("<span style=\"color: green;\">OK !</span>.");
-
-                if (result.sign_valid == true) {
-                    document.write("<span style=\"color: green;\">Sign is VALID.</span>");
-
-                    document.write("Infos : " + result.infos + "<br />");
-
+                if(result.encrypt_ok == true) {
+					message("Le texte chiffré :");
+					pre_message(result.text);
+					encrypted_text = result.text;
                 } else {
-                    document.write("<span style=\"color: red;\">Sign is INVALID.</span>");
-
-                    document.write("Reason : " + result.reason + "<br />");
-
+					error_message("Le chiffrement n'a pas pu être fait...");
+                    error_message("La raison: " + result.reason);
                 }
             }
+			else
+				error_message("Erreur lors du chiffrement du texte.");
 
-            document.write("Check a bad sign...");
+			/*
+			 * On déchiffre le texte
+			 */
+			title("Déchiffrement du texte précédemment chiffré...");
+            result = fireGpgDecrypt(akf, encrypted_text, new Array(privkey));
 
-            good_sign = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\ntesst\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1.4.8 (GNU/Linux)\nComment: http://firegpg.tuxfamily.org\n\niEYEARECAAYFAkeSWbQACgkQBmo0B/+bqS+RrgCfQsVLAIZtMDsvTAojaT0nUYzq\n3bAAn1rh/TK/Af1vzOIlM204lTARLD0c\n=0TWS\n-----END PGP SIGNATURE-----\n";
+			if(result) {
+				success_message("La fonction de déchiffrement a pu être appelée avec succès.");
 
-            result = fireGgpCheck(auth_key, good_sign);
-
-            if (result === false)
-            {
-                document.write("<span style=\"color: red;\">Error !</span><br />");
-                //talalsadasdasd(); //Make an error to stop
-
-            } else {
-                document.write("<span style=\"color: green;\">OK !</span>.");
-
-                if (result.sign_valid == true) {
-                    document.write("<span style=\"color: green;\">Sign is VALID.</span>");
-
-                    document.write("Infos : " + result.infos + "<br />");
-
+                if(result.decrypt_ok == true) {
+					message("Le texte déchiffré :");
+					pre_message(result.text);
                 } else {
-                    document.write("<span style=\"color: red;\">Sign is INVALID.</span>");
-
-                    document.write("Reason : " + result.reason + "<br />");
-
+					error_message("Le déchiffrement n'a pas pu être fait...");
+                    error_message("La raison: " + result.reason);
                 }
             }
+			else
+				error_message("Erreur lors du chiffrement du texte.");
 
-            document.write("Check a no sign...");
+			/*
+			 * Signe et chiffre le texte.
+			 */
+			title("Chiffrement et signature...");
+            result = fireGpgSignAndEncrypt(akf, text, new Array(privkey));
 
-            good_sign = "E-----\nVersion: GnuPG v1.4.8 (GNU/Linux)\nComment: http://firegpg.tuxfamily.org\n\niEYEARECAAYFaKeSWbQACgkQBmo0B/+bqS+RrgCfQsVLAIZtMDsvTAojaT0nUYzq\n3bAAn1rh/TK/Af1vzOIlM204lTARLD0c\n=0TWS\n-----END PGP SIGNATURE-----\n";
+			if(result) {
+				success_message("La fonction de chiffrement et signature a pu être appelée avec succès.");
 
-            result = fireGgpCheck(auth_key, good_sign);
-
-            if (result === false)
-            {
-                document.write("<span style=\"color: red;\">Error !</span><br />");
-                //talalsadasdasd(); //Make an error to stop
-
-            } else {
-                document.write("<span style=\"color: green;\">OK !</span>.");
-
-                if (result.sign_valid == true) {
-                    document.write("<span style=\"color: green;\">Sign is VALID.</span>");
-
-                    document.write("Infos : " + result.infos + "<br />");
-
+                if(result.signandencrypt_ok == true) {
+					message("Le texte chiffré et signé :");
+					pre_message(result.text);
                 } else {
-                    document.write("<span style=\"color: red;\">Sign is INVALID.</span>");
-
-                    document.write("Reason : " + result.reason + "<br />");
-
+					error_message("Le chiffrement et signature n'a pas pu être fait...");
+                    error_message("La raison: " + result.reason);
                 }
             }
+			else
+				error_message("Erreur lors du chiffrement et signature du texte.");
 
-            document.write("Signing a text...");
+			/*
+			 * Afficher les clés publiques.
+			 */
+			title("Affichage des clés publiques...");
+            key_list = fireGpgListKey(akf);
+			if (key_list) {
+				success_message("La liste des clés publiques a été obtenue.");
 
-            text = "coucou !";
+                for(id in key_list)
+					document.write("<i>" + id + "</i> ==>" + key_list[id] +"<br />");
+			}
+			else
+				error_message("Erreur lors de la demande de la liste des clés publiques.");
 
-            result = fireGgpSign(auth_key, text);
+			/*
+			 * Afficher les clés publiques.
+			 */
+			title("Affichage des clés privées...");
+            key_list = fireGpgListPrivKey(akf);
+			if (key_list) {
+				success_message("La liste des clés privées a été obtenue.");
 
-            if (result === false)
-            {
-                document.write("<span style=\"color: red;\">Error !</span><br />");
-                //talalsadasdasd(); //Make an error to stop
+                for(id in key_list)
+					document.write("<i>" + id + "</i> ==>" + key_list[id] +"<br />");
+			}
+			else
+				error_message("Erreur lors de la demande de la liste des clés privées.");
+		</script>
 
-            } else {
-                document.write("<span style=\"color: green;\">OK !</span>.");
+<!-- vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:
+-->
+	</body>
+</html>
 
-                if (result.sign_ok == true) {
-                    document.write("<span style=\"color: green;\">Sign succesfull.</span>");
-
-                    document.write("Text : " + result.text.replace(/\n/g,"<br />") + "<br />");
-
-                } else {
-                    document.write("<span style=\"color: red;\">Sign failled.</span>");
-
-                    document.write("Reason : " + result.reason + "<br />");
-
-                }
-            }
-
-            document.write("Decrypting a text...");
-
-            text = "-----BEGIN PGP MESSAGE-----\nVersion: GnuPG v1.4.8 (GNU/Linux)\nComment: http://firegpg.tuxfamily.org\n\nhM4D0ne3We+/B3QQAwDWm3Tofo+Z91cVEyB9bt2AxU91/nuwPWEuy9OVbEFUzPni\nf5e8PxV0+yisMsH6qLy+6wQ5dsiUQ1P9k8gM5SrDQN4jAmH199Jt8FEKHz5q4HQr\ncKbEhi2wWCgPdWfHu7ADAJ9+OMun/b8oaqNfVFTDtge+KZYYLJilVnjsbMlQHaEC\nsrB86Jw5T4f7PHoHbEEL82hmwnSnv2gBwrbOP5RFyFBCGtBfdoIUQLeVQ5UHns/+\nAGZeduHQo5SdpwW99JEEINKoAQ8rNOKDF6ucNBBZRVlOfJz4tRhcuVJ3m4jG9nMg\nTNbsw72kAbzDJsXxpaihV3CH1w1rg+iDcZ+qr/jfe3n3/TIGpFn0ByW9irkmRZp4\nzlLxhg8pJNdm7jXJb+q0OeSUKU/cSxoLMMjp/nbsGXBJ505YIYY5Uy8mJ4mAIDey\nrrTUKcv2GuO9c02hN2kc9QJSSx6OSi3doTfUjgdRovlHy3EymlKBb99o\n=Hm6B\n-----END PGP MESSAGE-----\n";
-
-            result = fireGgpDecrypt(auth_key, text);
-
-            if (result === false)
-            {
-                document.write("<span style=\"color: red;\">Error !</span><br />");
-                //talalsadasdasd(); //Make an error to stop
-
-            } else {
-                document.write("<span style=\"color: green;\">OK !</span>.");
-
-                if (result.decrypt_ok == true) {
-                    document.write("<span style=\"color: green;\">Decrypt succesfull.</span>");
-
-                    document.write("Text : " + result.text.replace(/\n/g,"<br />") + "<br />");
-
-                    document.write("Infos : " + result.signInfos + "<br />");
-
-                } else {
-                    document.write("<span style=\"color: red;\">Decrypt failled.</span>");
-
-                    document.write("Reason : " + result.reason + "<br />");
-
-                }
-            }
-
-            document.write("Encrypting a text...");
-
-            text = "COIN";
-
-            result = fireGgpEncrypt(auth_key, text, new Array('066A3407FF9BA92F','8CA2ACE7F1530A35'));
-
-            if (result === false)
-            {
-                document.write("<span style=\"color: red;\">Error !</span><br />");
-                //talalsadasdasd(); //Make an error to stop
-
-            } else {
-                document.write("<span style=\"color: green;\">OK !</span>.");
-
-                if (result.encrypt_ok == true) {
-                    document.write("<span style=\"color: green;\">Encrypt succesfull.</span>");
-
-                    document.write("Text : " + result.text.replace(/\n/g,"<br />") + "<br />");
-
-
-                } else {
-                    document.write("<span style=\"color: red;\">Encrypt failled.</span>");
-
-                    document.write("Reason : " + result.reason + "<br />");
-
-                }
-            }
-
-
-            document.write("Sign and Encrypting a text...");
-
-            text = "COIN";
-
-            result = fireGgpSignAndEncrypt(auth_key, text, '066A3407FF9BA92F','122A1B6ADC53D658');
-
-            if (result === false)
-            {
-                document.write("<span style=\"color: red;\">Error !</span><br />");
-                //talalsadasdasd(); //Make an error to stop
-
-            } else {
-                document.write("<span style=\"color: green;\">OK !</span>.");
-
-                if (result.signandencrypt_ok == true) {
-                    document.write("<span style=\"color: green;\">Sign and Encrypt succesfull.</span>");
-
-                    document.write("Text : " + result.text.replace(/\n/g,"<br />") + "<br />");
-
-
-                } else {
-                    document.write("<span style=\"color: red;\">Sign and Encrypt failled.</span>");
-
-                    document.write("Reason : " + result.reason + "<br />");
-
-                }
-            }
-
-
-
-
-
-            document.write("End of FireGPG's api test.<br />");
-
-        </script>
-
-
-</body></html>
