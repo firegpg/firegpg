@@ -19,13 +19,13 @@
 <!ENTITY gmail-buton-crypt-checkbox "Cifrar">
 <!ENTITY gmail-buton-cryptsend-checkbox "Cifrar e Enviar">
 <!ENTITY allvays-to-myself-checkbox "Cifrar sempre para mim mesmo.">
-<!ENTITY enable-gpgauth-check.label "\"Activar gpgAuth (é necessário reiniciar o Firefox)\"">
+<!ENTITY enable-gpgauth-check.label "Activar gpgAuth (é necessário reiniciar o Firefox)">
 <!ENTITY enable-gpgauth-check.accesskey "E">
 <!ENTITY global-allow-keyring-pref.label "Decifrar sempre as mensagens provenientes de Servidores Autenticados">
 <!ENTITY global-allow-keyring-check.label "Decifrar sempre as mensagens provenientes de Servidores Autenticados">
 <!ENTITY global-allow-keyring-check.accesskey "A">
 <!ENTITY per-domain-preferences.label "Configurações por domínio:">
-<!ENTITY turn-off-updates "\"Desactivar a actualização automática do FireGPG\"">
+<!ENTITY turn-off-updates "Desactivar a actualização automática do FireGPG">
 <!ENTITY key-name "Nome">
 <!ENTITY key-id "Identificador">
 <!ENTITY key-create "Criada em">
