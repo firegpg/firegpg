@@ -10,6 +10,9 @@
  * ChangeLog :
  *     12/04/08  Achraf Cherti
  *		   - rewrite of test.html, with some enhancements
+ *		   - functions "fireGgp<Name>" replaced by "fireGPG<Name>"
+ *		   - variables "FireGpg<Name>" replaced by "FireGPGName"
+ *		   - The div gpgNode is replaced by firegpg-node
  *
  *     19/01/07  Maximilien Cuony
  *         - The first version of the API, all important 
@@ -17,164 +20,201 @@
  *		   - Version 0.1 released
  */
 
-var FireGpgData;               // Data to pass to FireGPG
-var FireGpgReturnData;         // Data who FireGPG retruns
-var fireGpgHelloOk = false;    // If firegpg respond
-var fireGpgAllowUser = false;  // If the site seem to be allowd
+var FireGPGData;               // Data to send to FireGPG
+                               // It's an element in <div id="firegpg-node"></div>
 
-// Check if FireGPG's api is working
-// Return true or false
-function fireGpgHello() {
-	fireGpgInitCall();
-	fireGpgCall('hello');
+var FireGPGReturnData;         // Data returned by FireGPG
+                               // It's an element in <div id="firegpg-node"></div>
 
-	if(FireGpgReturnData.hasAttribute('result')&& FireGpgReturnData.getAttribute('result')== 'firegpg-ok')
-	{
-		fireGpgHelloOk = true;
+var FireGPGHelloOK = false;    // If FireGPG respond
+var FireGPGAllowUser = false;  // If the web site is allowed to use FireGPG
+var FireGPGAKF = '';           // the AKF is here, after FireGPGAllowUser=true
+
+/*
+ * Init the call of FireGPG (it's an internal function)
+ */
+function fireGPGInitCall() {
+	gpgNode = document.getElementById('firegpg-node');
+	/* TODO tester si gpgNode est là et faire un return */
+
+	if(FireGPGData == null) {
+		FireGPGData = document.createElement("firegpg:data");
+		gpgNode.appendChild(FireGPGData);
+	}
+
+	if(FireGPGReturnData == null) {
+		FireGPGReturnData = document.createElement("firegpg:returndata");
+		gpgNode.appendChild(FireGPGReturnData);
+	}
+
+	// remove previous data
+	attr2 = new Array();
+	attrs = FireGPGData.attributes;
+	for (i = 0; i < attrs.length; i++)
+		attr2[i] = attrs[i]['name'];
+
+	for (i=0; i<attr2.length; i++)
+		FireGPGData.removeAttribute(attr2[i]);
+
+	attr2 = new Array();
+	attrs = FireGPGReturnData.attributes;
+	for (i = 0; i < attrs.length; i++)
+		attr2[i] = attrs[i]['name'];
+
+	for (i=0; i<attr2.length; i++)
+		FireGPGReturnData.removeAttribute(attr2[i]);
+}
+
+/*
+ * Check if the FireGPG's API is available.
+ *
+ * It returns true if FireGPG is available or false.
+ */
+function fireGPGHello() {
+	fireGPGInitCall();
+	fireGPGCall('hello');
+
+	if(FireGPGReturnData.hasAttribute('result') && 
+	   FireGPGReturnData.getAttribute('result') == 'firegpg-ok') {
+		FireGPGHelloOK = true;
+		return true;
+	}
+	
+	return false;
+}
+
+/*
+ * Authentify your website with an AKF (Authentification Key of FireGPG).
+ *
+ * On success, true is returned.
+ * Else, it's false.
+ */
+function fireGPGAuth(akf) {
+	if(FireGPGHelloOK == false) {
+		if(fireGPGHello() == false) {
+			/* TODO pas de message dans le fichier firegpgapi.js */
+			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
+			return false;
+		}
+	}
+
+	fireGPGInitCall();
+	FireGPGData.setAttribute('auth_key', akf);
+	fireGPGCall('auth');
+
+	if(FireGPGReturnData.hasAttribute('result') && 
+	   FireGPGReturnData.getAttribute('result')== 'auth-ok') {
+		FireGPGAllowUser = true;
+		fireGPGAKF = akf;
 		return true;
 	}
 	else
 		return false;
-
 }
 
-// Check if the auth key is valid
-// Return true or false
-function fireGpgAuth(auth_key) {
-
-	if(fireGpgHelloOk == false)
-	{
-		if(fireGpgHello()== false) {
+/*
+ * If the website doesn't have an AKF, this function returns that.
+ *
+ * On error, false is returned.
+ */
+function fireGPGRegister() {
+	if(FireGPGHelloOK == false) {
+		if(fireGPGHello()== false) {
+			/* TODO pas de message dans le fichier firegpgapi.js */
 			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
 			return false;
 		}
 	}
 
-	fireGpgInitCall();
+	fireGPGInitCall();
+	fireGPGCall('register');
 
-	FireGpgData.setAttribute('auth_key', auth_key);
-
-	fireGpgCall('auth');
-
-	if(FireGpgReturnData.hasAttribute('result')&& FireGpgReturnData.getAttribute('result')== 'auth-ok')
-	{
-		fireGpgAllowUser = true;
-		return true;
-	}
+	if(FireGPGReturnData.hasAttribute('result') &&
+	   FireGPGReturnData.getAttribute('result')== 'register-ok')
+		return FireGPGReturnData.getAttribute('auth_key');
 	else
 		return false;
-
 }
 
-// Try to register the website
-// Return the key or false
-function fireGpgRegister() {
-
-	if(fireGpgHelloOk == false)
-	{
-		if(fireGpgHello()== false) {
+/*
+ * Returne the list of keys (associative key[id] = description).
+ *
+ * Or false, on error.
+ */
+function fireGPGListKey() {
+	if(FireGPGHelloOK == false) {
+		if(fireGPGHello()== false) {
 			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
 			return false;
 		}
 	}
 
-	fireGpgInitCall();
-
-	fireGpgCall('register');
-
-	if(FireGpgReturnData.hasAttribute('result')&& FireGpgReturnData.getAttribute('result')== 'register-ok')
-		return FireGpgReturnData.getAttribute('auth_key');
-	else
-		return false;
-
-}
-
-// Return the list of key
-// Return the keys or false
-function fireGpgListKey(auth_key) {
-
-	if(fireGpgHelloOk == false)
-	{
-		if(fireGpgHello()== false) {
-			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
-			return false;
-		}
-	}
-
-	if(fireGpgAllowUser == false)
-	{
-		if(fireGpgAuth(auth_key)== false) {
+	if(FireGPGAllowUser == false) {
+		if(fireGPGAuth(FireGPGAKF)== false) {
 			alert('FireGPG - api : Error with auth in listkey');
 			return false;
 		}
 	}
 
-	fireGpgInitCall();
+	fireGPGInitCall();
+	FireGPGData.setAttribute('auth_key', auth_key);
+	fireGPGCall('listkey');
 
-	FireGpgData.setAttribute('auth_key', auth_key);
-
-	fireGpgCall('listkey');
-
-	if(FireGpgReturnData.hasAttribute('result')&& FireGpgReturnData.getAttribute('result')== 'list-ok')
-	{
+	if(FireGPGReturnData.hasAttribute('result')&& FireGPGReturnData.getAttribute('result')== 'list-ok') {
 		return_list = new Array();
 
-		list = FireGpgReturnData.getAttribute('list');
-
+		list = FireGPGReturnData.getAttribute('list');
 		list = list.split(/,/g);
 
 		for (var i=0; i< list.length; i++) {
-
 			key_info = list[i];
-
 			key_info = key_info.split(/:/g);
 
-			if(key_info[0] != undefined && key_info[1] != undefined) {
-
-				return_list[fireGpgAddDoublePoint(key_info[0])] = fireGpgAddDoublePoint(key_info[1]);            }
+			if(key_info[0] != undefined && key_info[1] != undefined)
+				return_list[fireGPGAddDoublePoint(key_info[0])] = fireGPGAddDoublePoint(key_info[1]);
 		}
+
 		return return_list;
 	}
-	else
-	{
+	else {
 		alert('FireGPG - api : Error with listkeys');
 		return false;
 	}
-
-
 }
+
+/* TODO : ici */
 
 // Return the list of private key
 // Return the keys or false
-function fireGpgListPrivKey(auth_key) {
+function fireGPGListPrivKey(auth_key) {
 
-	if(fireGpgHelloOk == false)
+	if(FireGPGHelloOK == false)
 	{
-		if(fireGpgHello()== false) {
+		if(fireGPGHello()== false) {
 			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
 			return false;
 		}
 	}
 
-	if(fireGpgAllowUser == false)
+	if(FireGPGAllowUser == false)
 	{
-		if(fireGpgAuth(auth_key)== false) {
+		if(fireGPGAuth(auth_key)== false) {
 			alert('FireGPG - api : Error with auth in listprivkey');
 			return false;
 		}
 	}
 
-	fireGpgInitCall();
+	fireGPGInitCall();
 
-	FireGpgData.setAttribute('auth_key', auth_key);
+	FireGPGData.setAttribute('auth_key', auth_key);
 
-	fireGpgCall('listprivkey');
+	fireGPGCall('listprivkey');
 
-	if(FireGpgReturnData.hasAttribute('result')&& FireGpgReturnData.getAttribute('result')== 'list-ok')
+	if(FireGPGReturnData.hasAttribute('result')&& FireGPGReturnData.getAttribute('result')== 'list-ok')
 	{
 		return_list = new Array();
 
-		list = FireGpgReturnData.getAttribute('list');
+		list = FireGPGReturnData.getAttribute('list');
 
 		list = list.split(/,/g);
 
@@ -186,7 +226,7 @@ function fireGpgListPrivKey(auth_key) {
 
 			if(key_info[0] != undefined && key_info[1] != undefined) {
 
-				return_list[fireGpgAddDoublePoint(key_info[0])] = fireGpgAddDoublePoint(key_info[1]);            }
+				return_list[fireGPGAddDoublePoint(key_info[0])] = fireGPGAddDoublePoint(key_info[1]);            }
 		}
 		return return_list;
 	}
@@ -202,32 +242,32 @@ function fireGpgListPrivKey(auth_key) {
 
 // Check if a sign is valid.
 // Return an object with diffrent informations
-function fireGpgCheck(auth_key, text) {
+function fireGPGCheck(auth_key, text) {
 
-	if(fireGpgHelloOk == false)
+	if(FireGPGHelloOK == false)
 	{
-		if(fireGpgHello()== false) {
+		if(fireGPGHello()== false) {
 			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
 			return false;
 		}
 	}
 
-	if(fireGpgAllowUser == false)
+	if(FireGPGAllowUser == false)
 	{
-		if(fireGpgAuth(auth_key)== false) {
+		if(fireGPGAuth(auth_key)== false) {
 			alert('FireGPG - api : Error with auth in check');
 			return false;
 		}
 	}
 
-	fireGpgInitCall();
+	fireGPGInitCall();
 
-	FireGpgData.setAttribute('auth_key', auth_key);
-	FireGpgData.setAttribute('text', text);
+	FireGPGData.setAttribute('auth_key', auth_key);
+	FireGPGData.setAttribute('text', text);
 
-	fireGpgCall('check');
+	fireGPGCall('check');
 
-	if(FireGpgReturnData.hasAttribute('result')== false)
+	if(FireGPGReturnData.hasAttribute('result')== false)
 	{
 		alert('FireGPG - api : Error in check');
 		return false;
@@ -235,16 +275,16 @@ function fireGpgCheck(auth_key, text) {
 
 		var return_object = new Object();
 
-		if(FireGpgReturnData.getAttribute('result')== 'check-ok') {
+		if(FireGPGReturnData.getAttribute('result')== 'check-ok') {
 
 			return_object.sign_valid = true;
-			return_object.infos = FireGpgReturnData.getAttribute('check-infos');
+			return_object.infos = FireGPGReturnData.getAttribute('check-infos');
 
 
 		} else {
 
 			return_object.sign_valid = false;
-			return_object.reason = FireGpgReturnData.getAttribute('error'); //unknow, no-gpg, bad-sign, no-key, no-data, bad-pass
+			return_object.reason = FireGPGReturnData.getAttribute('error'); //unknow, no-gpg, bad-sign, no-key, no-data, bad-pass
 
 		}
 
@@ -255,35 +295,35 @@ function fireGpgCheck(auth_key, text) {
 
 // Sign a text
 // Return an object with diffrent informations
-function fireGpgSign(auth_key, text, forceKey /* Optional */) {
+function fireGPGSign(auth_key, text, forceKey /* Optional */) {
 
-	if(fireGpgHelloOk == false)
+	if(FireGPGHelloOK == false)
 	{
-		if(fireGpgHello()== false) {
+		if(fireGPGHello()== false) {
 			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
 			return false;
 		}
 	}
 
-	if(fireGpgAllowUser == false)
+	if(FireGPGAllowUser == false)
 	{
-		if(fireGpgAuth(auth_key)== false) {
+		if(fireGPGAuth(auth_key)== false) {
 			alert('FireGPG - api : Error with auth in sign');
 			return false;
 		}
 	}
 
-	fireGpgInitCall();
+	fireGPGInitCall();
 
-	FireGpgData.setAttribute('auth_key', auth_key);
-	FireGpgData.setAttribute('text', text);
+	FireGPGData.setAttribute('auth_key', auth_key);
+	FireGPGData.setAttribute('text', text);
 
 	if(forceKey != undefined)
-		FireGpgData.setAttribute('force-key', forceKey);
+		FireGPGData.setAttribute('force-key', forceKey);
 
-	fireGpgCall('sign');
+	fireGPGCall('sign');
 
-	if(FireGpgReturnData.hasAttribute('result')== false)
+	if(FireGPGReturnData.hasAttribute('result')== false)
 	{
 		alert('FireGPG - api : Error in sign');
 		return false;
@@ -291,16 +331,16 @@ function fireGpgSign(auth_key, text, forceKey /* Optional */) {
 
 		var return_object = new Object();
 
-		if(FireGpgReturnData.getAttribute('result')== 'sign-ok') {
+		if(FireGPGReturnData.getAttribute('result')== 'sign-ok') {
 
 			return_object.sign_ok = true;
-			return_object.text = FireGpgReturnData.getAttribute('text');
+			return_object.text = FireGPGReturnData.getAttribute('text');
 
 
 		} else {
 
 			return_object.sign_ok = false;
-			return_object.reason = FireGpgReturnData.getAttribute('error'); //unknow, bad-pass
+			return_object.reason = FireGPGReturnData.getAttribute('error'); //unknow, bad-pass
 
 		}
 
@@ -311,28 +351,28 @@ function fireGpgSign(auth_key, text, forceKey /* Optional */) {
 
 // Encrypt a text
 // Return an object with diffrent informations
-function fireGpgEncrypt(auth_key, text, dest_keys) {
+function fireGPGEncrypt(auth_key, text, dest_keys) {
 
-	if(fireGpgHelloOk == false)
+	if(FireGPGHelloOK == false)
 	{
-		if(fireGpgHello()== false) {
+		if(fireGPGHello()== false) {
 			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
 			return false;
 		}
 	}
 
-	if(fireGpgAllowUser == false)
+	if(FireGPGAllowUser == false)
 	{
-		if(fireGpgAuth(auth_key)== false) {
+		if(fireGPGAuth(auth_key)== false) {
 			alert('FireGPG - api : Error with auth in encrypt');
 			return false;
 		}
 	}
 
-	fireGpgInitCall();
+	fireGPGInitCall();
 
-	FireGpgData.setAttribute('auth_key', auth_key);
-	FireGpgData.setAttribute('text', text);
+	FireGPGData.setAttribute('auth_key', auth_key);
+	FireGPGData.setAttribute('text', text);
 
 	if(dest_keys instanceof Array) {
 
@@ -349,11 +389,11 @@ function fireGpgEncrypt(auth_key, text, dest_keys) {
 		dest_keys = dest_keys + "";
 
 
-	FireGpgData.setAttribute('keys', dest_keys);
+	FireGPGData.setAttribute('keys', dest_keys);
 
-	fireGpgCall('encrypt');
+	fireGPGCall('encrypt');
 
-	if(FireGpgReturnData.hasAttribute('result')== false)
+	if(FireGPGReturnData.hasAttribute('result')== false)
 	{
 		alert('FireGPG - api : Error in encrypt');
 		return false;
@@ -361,16 +401,16 @@ function fireGpgEncrypt(auth_key, text, dest_keys) {
 
 		var return_object = new Object();
 
-		if(FireGpgReturnData.getAttribute('result')== 'encrypt-ok') {
+		if(FireGPGReturnData.getAttribute('result')== 'encrypt-ok') {
 
 			return_object.encrypt_ok = true;
-			return_object.text = FireGpgReturnData.getAttribute('text');
+			return_object.text = FireGPGReturnData.getAttribute('text');
 
 
 		} else {
 
 			return_object.encrypt_ok = false;
-			return_object.reason = FireGpgReturnData.getAttribute('error'); //unknow, bad-pass
+			return_object.reason = FireGPGReturnData.getAttribute('error'); //unknow, bad-pass
 
 		}
 
@@ -381,31 +421,31 @@ function fireGpgEncrypt(auth_key, text, dest_keys) {
 
 // Encrypt and sign  a text
 // Return an object with diffrent informations
-function fireGpgSignAndEncrypt(auth_key, text, dest_keys, forceKey /* Optional */) {
+function fireGPGSignAndEncrypt(auth_key, text, dest_keys, forceKey /* Optional */) {
 
-	if(fireGpgHelloOk == false)
+	if(FireGPGHelloOK == false)
 	{
-		if(fireGpgHello()== false) {
+		if(fireGPGHello()== false) {
 			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
 			return false;
 		}
 	}
 
-	if(fireGpgAllowUser == false)
+	if(FireGPGAllowUser == false)
 	{
-		if(fireGpgAuth(auth_key)== false) {
+		if(fireGPGAuth(auth_key)== false) {
 			alert('FireGPG - api : Error with auth in signandencrypt');
 			return false;
 		}
 	}
 
-	fireGpgInitCall();
+	fireGPGInitCall();
 
-	FireGpgData.setAttribute('auth_key', auth_key);
-	FireGpgData.setAttribute('text', text);
+	FireGPGData.setAttribute('auth_key', auth_key);
+	FireGPGData.setAttribute('text', text);
 
 	if(forceKey != undefined)
-		FireGpgData.setAttribute('force-key', forceKey);
+		FireGPGData.setAttribute('force-key', forceKey);
 
 	if(dest_keys instanceof Array) {
 
@@ -422,11 +462,11 @@ function fireGpgSignAndEncrypt(auth_key, text, dest_keys, forceKey /* Optional *
 		dest_keys = dest_keys + "";
 
 
-	FireGpgData.setAttribute('keys', dest_keys);
+	FireGPGData.setAttribute('keys', dest_keys);
 
-	fireGpgCall('signandencrypt');
+	fireGPGCall('signandencrypt');
 
-	if(FireGpgReturnData.hasAttribute('result')== false)
+	if(FireGPGReturnData.hasAttribute('result')== false)
 	{
 		alert('FireGPG - api : Error in signandencrypt');
 		return false;
@@ -434,16 +474,16 @@ function fireGpgSignAndEncrypt(auth_key, text, dest_keys, forceKey /* Optional *
 
 		var return_object = new Object();
 
-		if(FireGpgReturnData.getAttribute('result')== 'signandencrypt-ok') {
+		if(FireGPGReturnData.getAttribute('result')== 'signandencrypt-ok') {
 
 			return_object.signandencrypt_ok = true;
-			return_object.text = FireGpgReturnData.getAttribute('text');
+			return_object.text = FireGPGReturnData.getAttribute('text');
 
 
 		} else {
 
 			return_object.signandencrypt_ok = false;
-			return_object.reason = FireGpgReturnData.getAttribute('error'); //unknow, bad-pass
+			return_object.reason = FireGPGReturnData.getAttribute('error'); //unknow, bad-pass
 
 		}
 
@@ -454,33 +494,33 @@ function fireGpgSignAndEncrypt(auth_key, text, dest_keys, forceKey /* Optional *
 
 // Decrypt a text
 // Return an object with diffrent informations
-function fireGpgDecrypt(auth_key, text) {
+function fireGPGDecrypt(auth_key, text) {
 
-	if(fireGpgHelloOk == false)
+	if(FireGPGHelloOK == false)
 	{
-		if(fireGpgHello()== false) {
+		if(fireGPGHello()== false) {
 			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
 			return false;
 		}
 	}
 
-	if(fireGpgAllowUser == false)
+	if(FireGPGAllowUser == false)
 	{
-		if(fireGpgAuth(auth_key)== false) {
+		if(fireGPGAuth(auth_key)== false) {
 			alert('FireGPG - api : Error with auth in decrypt');
 			return false;
 		}
 	}
 
-	fireGpgInitCall();
+	fireGPGInitCall();
 
-	FireGpgData.setAttribute('auth_key', auth_key);
-	FireGpgData.setAttribute('text', text);
+	FireGPGData.setAttribute('auth_key', auth_key);
+	FireGPGData.setAttribute('text', text);
 
 
-	fireGpgCall('decrypt');
+	fireGPGCall('decrypt');
 
-	if(FireGpgReturnData.hasAttribute('result')== false)
+	if(FireGPGReturnData.hasAttribute('result')== false)
 	{
 		alert('FireGPG - api : Error in decrypt');
 		return false;
@@ -488,21 +528,21 @@ function fireGpgDecrypt(auth_key, text) {
 
 		var return_object = new Object();
 
-		if(FireGpgReturnData.getAttribute('result')== 'decrypt-ok') {
+		if(FireGPGReturnData.getAttribute('result')== 'decrypt-ok') {
 
 			return_object.decrypt_ok = true;
 
 
-			return_object.text = FireGpgReturnData.getAttribute('text');
+			return_object.text = FireGPGReturnData.getAttribute('text');
 
-			if(FireGpgReturnData.hasAttribute('sign-info'))
-				return_object.signInfos = FireGpgReturnData.getAttribute('sign-info');
+			if(FireGPGReturnData.hasAttribute('sign-info'))
+				return_object.signInfos = FireGPGReturnData.getAttribute('sign-info');
 
 
 		} else {
 
 			return_object.decrypt_ok = false;
-			return_object.reason = FireGpgReturnData.getAttribute('error'); //unknow, bad-pass
+			return_object.reason = FireGPGReturnData.getAttribute('error'); //unknow, bad-pass
 
 		}
 
@@ -512,7 +552,7 @@ function fireGpgDecrypt(auth_key, text) {
 }
 
 // Change #1 to #, #2 to : and #3 to , in a string
-function fireGpgAddDoublePoint (s) {
+function fireGPGAddDoublePoint (s) {
 
 	if(s == undefined)
 		return;
@@ -527,46 +567,10 @@ function fireGpgAddDoublePoint (s) {
 
 }
 
-// InitFireGPG call
-function fireGpgInitCall() {
-
-	gpgNode = document.getElementById('gpgNode');
-
-	if(FireGpgData == null) {
-		FireGpgData = document.createElement("firegpg:data");
-		gpgNode.appendChild(FireGpgData);
-	}
-
-	if(FireGpgReturnData == null) {
-		FireGpgReturnData = document.createElement("firegpg:returndata");
-		gpgNode.appendChild(FireGpgReturnData);
-	}
-
-	// Remove previous data
-	attr2 = new Array();
-	attrs = FireGpgData.attributes;
-	for (i=0; i<attrs.length; i++) {
-		attr2[i] = attrs[i]['name'];
-	}
-	for (i=0; i<attr2.length; i++) {
-		FireGpgData.removeAttribute(attr2[i]);
-	}
-
-	attr2 = new Array();
-	attrs = FireGpgReturnData.attributes;
-	for (i=0; i<attrs.length; i++) {
-		attr2[i] = attrs[i]['name'];
-	}
-	for (i=0; i<attr2.length; i++) {
-		FireGpgReturnData.removeAttribute(attr2[i]);
-	}
-
-}
-
 // Call FireGPG
-function fireGpgCall(func ) {
+function fireGPGCall(func ) {
 
-	gpgNode = document.getElementById('gpgNode');
+	gpgNode = document.getElementById('firegpg-node');
 
 	var ev = document.createEvent("Events");
 	ev.initEvent("firegpg:" + func, true, false);

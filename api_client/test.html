@@ -14,7 +14,7 @@
 		-->
 
 		<!-- Le noeud entre FireGPG et votre site web -->
-		<div id="gpgNode"></div>
+		<div id="firegpg-node"></div>
 
 		<!-- inclusion de l'API -->
 		<script src="firegpgapi.js"></script>
@@ -62,7 +62,7 @@
 			/* 
 			 * Il faut rester poli, on 'salue' FireGPG :)
 			 */
-			if(fireGpgHello() == true)
+			if(fireGPGHello() == true)
 				success_message("L'extension FireGPG est présente !");
 			else
 				error_message("L'extension FireGPG n'est pas présente :-(");
@@ -72,7 +72,7 @@
 			 */
 			title("Authentification avec l'AKF");
 			message("L'AKF utilisée est : " + akf);
-			if(fireGpgAuth(akf))
+			if(fireGPGAuth(akf))
 				success_message("L'authentification avec l'AKF a été effectuée avec succès !");
 			else {
 				error_message("Erreur lors de l'enregistrement de FireGPG avec l'AKF !");
@@ -80,7 +80,7 @@
 				new_line();
 				message("Essayons d'obtenir l'AKF :");
 
-				akf = fireGpgRegister();
+				akf = fireGPGRegister();
 				if(akf) {
 					success_message("Superbe, une AKF nous a été allouée ! C'est celle-ci :");
 					pre_message(akf);
@@ -95,7 +95,7 @@
 			text_to_sign = "Ce texte est à signer :)";
 			signed_text = ""; /* la signature sera mise ici */
 			title("Signature du texte : '" + text_to_sign + "'");
-			result = fireGpgSign(akf, text_to_sign);
+			result = fireGPGSign(akf, text_to_sign);
 			if(result) {
 				if(result.sign_ok) {
 					success_message("Le texte a été signé avec succès.");
@@ -119,7 +119,7 @@
 			 * On vérifie le texte signé avec notre clé.
 			 */
 			title("Vérification du texte précédemment signé...");
-            result = fireGpgCheck(akf, signed_text);
+            result = fireGPGCheck(akf, signed_text);
 			if(result) {
 				success_message("Le texte a pu être vérifié !");
 
@@ -141,7 +141,7 @@
 			encrypted_text = ""; /* on va mettre le texte chiffré ici */
 			privkey = "9BA19B12";
 			title("Chiffrement du texte : '" + text + "'");
-            result = fireGpgEncrypt(akf, text, new Array(privkey));
+            result = fireGPGEncrypt(akf, text, new Array(privkey));
 
 			if(result) {
 				success_message("Le texte a pu être chiffré avec succès !");
@@ -163,7 +163,7 @@
 			 * On déchiffre le texte
 			 */
 			title("Déchiffrement du texte précédemment chiffré...");
-            result = fireGpgDecrypt(akf, encrypted_text, new Array(privkey));
+            result = fireGPGDecrypt(akf, encrypted_text, new Array(privkey));
 
 			if(result) {
 				success_message("La fonction de déchiffrement a pu être appelée avec succès.");
@@ -183,7 +183,7 @@
 			 * Signe et chiffre le texte.
 			 */
 			title("Chiffrement et signature...");
-            result = fireGpgSignAndEncrypt(akf, text, new Array(privkey));
+            result = fireGPGSignAndEncrypt(akf, text, new Array(privkey));
 
 			if(result) {
 				success_message("La fonction de chiffrement et signature a pu être appelée avec succès.");
@@ -203,7 +203,7 @@
 			 * Afficher les clés publiques.
 			 */
 			title("Affichage des clés publiques...");
-            key_list = fireGpgListKey(akf);
+            key_list = fireGPGListKey(akf);
 			if (key_list) {
 				success_message("La liste des clés publiques a été obtenue.");
 
@@ -217,7 +217,7 @@
 			 * Afficher les clés publiques.
 			 */
 			title("Affichage des clés privées...");
-            key_list = fireGpgListPrivKey(akf);
+            key_list = fireGPGListPrivKey(akf);
 			if (key_list) {
 				success_message("La liste des clés privées a été obtenue.");
 
