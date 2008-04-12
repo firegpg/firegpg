@@ -34,12 +34,21 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+try {
+     	const cid = "@getfiregpg.org/XPCOM/FireGPGCall;1";
+		obj = Components.classes[cid].createInstance();
+		obj = obj.QueryInterface(Components.interfaces.IFireGPGCall);
+	} catch (err) {
+		alert(err);
+    }
+	var res = obj.Add(3, 4);
+	alert('Performing 3+4. Returned ' + res + '.');
 
 const FIREGPG_VERSION = '0.4.9';
 
 const FIREGPG_STATUS = 'DEVEL'; // DEVEL or RELASE. Use RELASE only for.. relases ;).
 
-const FIREGPG_SVN = "$Id$";
+const FIREGPG_SVN = "Unknow";
 
 const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
 const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
