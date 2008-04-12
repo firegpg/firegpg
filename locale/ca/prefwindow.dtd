@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "Suport per al GMail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Clau privada per defecte:">
-<!ENTITY show-website-checkbox "Mostra la pàgina web del FireGPG als textos signats o encriptat">
+<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
 <!ENTITY change-gpg-path-button "Configuració de l'ubicació del GPG">
 <!ENTITY change-gpg-path-checkbox "Especificar manualment l'ubicació del GPG:">
 <!ENTITY result-always-in-new-window "Mostra sempre el resultat d'una codificació o una signatura en una nova finestra.">

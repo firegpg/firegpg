@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "תמיכה בג'י מייל (GMail)">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "מפתח פרטי ברירת מחדל">
-<!ENTITY show-website-checkbox "הראה את אתר FireGPG בטקסט חתום או מוצפן">
+<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
 <!ENTITY change-gpg-path-button "מגדיר מיקום ספריית 
 GPG">
 <!ENTITY change-gpg-path-checkbox "הגדר מיקום ספריית GPG : ">

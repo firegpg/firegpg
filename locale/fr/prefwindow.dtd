@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "Support GMail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Clé privée par défaut :">
-<!ENTITY show-website-checkbox "Afficher le site officiel de FireGPG dans le texte signé ou chiffré.">
+<!ENTITY show-website-checkbox "Afficher le site de FireGPG dans le champ de commentaire GPG.">
 <!ENTITY change-gpg-path-button "Changer le chemin">
 <!ENTITY change-gpg-path-checkbox "Spécifier le chemin de GPG manuellement :">
 <!ENTITY result-always-in-new-window "Toujours afficher le résultat du chiffrement ou de la signature dans une nouvelle fenêtre.">

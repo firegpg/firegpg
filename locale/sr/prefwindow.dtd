@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "GMail podrška">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Privatni ključ po defaultu:">
-<!ENTITY show-website-checkbox "Prikaži FireGPG-ov web sajt u potpisanom ili šifrovanom tekstu">
+<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
 <!ENTITY change-gpg-path-button "Postavljam putanju GPG-a.">
 <!ENTITY change-gpg-path-checkbox "Manuelno zadaj putanju GPG-a:">
 <!ENTITY result-always-in-new-window "Uvek prikaži rezultat kodiranja ili potpisivanja u novom prozoru.">

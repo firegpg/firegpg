@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "دعم جيميل">
 <!ENTITY gmail-enabled-checkbox.accesskey "ج">
 <!ENTITY private-keys-label.text "المفتاح السري المبدئي:">
-<!ENTITY show-website-checkbox "أظهر مسار موقع FireGPG في مقدمة النص الموقع أو المعمى.">
+<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
 <!ENTITY change-gpg-path-button "Setting GPG's path">
 <!ENTITY change-gpg-path-checkbox "حدد مسار GPG:">
 <!ENTITY result-always-in-new-window "دوما أظهر نتيجة التعمية أو التوقيع في نافذة جديدة.">

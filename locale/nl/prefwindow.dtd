@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "GMail ondersteuning">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Standaard private sleutel:">
-<!ENTITY show-website-checkbox "Toon FireGPG website in ondertekende of versleutelde tekst">
+<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
 <!ENTITY change-gpg-path-button "GPG's pad instellen">
 <!ENTITY change-gpg-path-checkbox "Manueel GPG's pad instellen:">
 <!ENTITY result-always-in-new-window "Altijd resultaten van versleuteling of ondertekening in een apart venster weergeven.">

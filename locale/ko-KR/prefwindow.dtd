@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "Gmail 지원">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "기본 개인키:">
-<!ENTITY show-website-checkbox "암호화하거나 서명한 결과에 FireGPG 웹 사이트 표시">
+<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
 <!ENTITY change-gpg-path-button "GPG 경로 지정">
 <!ENTITY change-gpg-path-checkbox "GPG 프로그램 경로를 직접 지정:">
 <!ENTITY result-always-in-new-window "암호화하거나 서명한 결과를 항상 새 창에 표시">

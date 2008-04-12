@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "GMail support">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Default private key:">
-<!ENTITY show-website-checkbox "Show FireGPG website in signed or crypted text">
+<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
 <!ENTITY change-gpg-path-button "Setting GPG's path">
 <!ENTITY change-gpg-path-checkbox "Manually specify the path of GPG:">
 <!ENTITY result-always-in-new-window "Always display the result of an encoding or a signature in a new window.">

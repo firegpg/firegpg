@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "GMail-Unterstützung">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Privater Schlüssel:">
-<!ENTITY show-website-checkbox "Zeige die Webseite von FireGPG in unterschriebenem oder verschlüsseltem Text">
+<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
 <!ENTITY change-gpg-path-button "Durchsuchen">
 <!ENTITY change-gpg-path-checkbox "Benutzerdefinierter Pfad zu GnuPG:">
 <!ENTITY result-always-in-new-window "Zeige die Ergebnisse von Verschlüsseln/Unterschreiben immer in einem neuen Fenster.">

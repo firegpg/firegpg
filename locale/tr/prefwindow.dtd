@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "GMail desteği">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Varsayılan özel anahtar:">
-<!ENTITY show-website-checkbox "FireGPG websitesini imza ve şifre metni içinde göster">
+<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
 <!ENTITY change-gpg-path-button "GPG ayarlarının yolu">
 <!ENTITY change-gpg-path-checkbox "GPG yolunu elle belirle:">
 <!ENTITY result-always-in-new-window "Her bir şifreleme veya imzalama sonuçunu her zaman yeni bir pencerede göster.">

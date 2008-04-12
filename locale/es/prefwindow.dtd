@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "Integración con Gmail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Clave personal por defecto">
-<!ENTITY show-website-checkbox "Mostrar la página web de FireGPG en el texto firmado o cifrado.">
+<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
 <!ENTITY change-gpg-path-button "Configuración de la ruta de GPG">
 <!ENTITY change-gpg-path-checkbox "Especificar manualmente la ruta de GPG:">
 <!ENTITY result-always-in-new-window "Mostrar siempre el resultado de una codificación o de una firma en una nueva ventana.">

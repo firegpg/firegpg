@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "GMail支持">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "默認私鑰：">
-<!ENTITY show-website-checkbox "在簽署或加密的文本中顯示FireGPG網站">
+<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
 <!ENTITY change-gpg-path-button "設定GPG路徑">
 <!ENTITY change-gpg-path-checkbox "手動指定GPG路徑">
 <!ENTITY result-always-in-new-window "總是在新窗口顯示簽署或加密後的效果">
