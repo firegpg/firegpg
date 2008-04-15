@@ -5,3 +5,4 @@ interface IFireGPGCall : nsISupports
 {
   long Add(in long a, in long b);
 };
+ 

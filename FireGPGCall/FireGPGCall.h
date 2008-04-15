@@ -1,7 +1,7 @@
 #ifndef _FireGPGCall_h
 #define _FireGPGCall_h
 
-#include "IFireGPGCall.h" 
+#include "IFireGPGCall.h"
 
 #define FIREGPG_CALL_CONTRACTID "@getfiregpg.org/XPCOM/FireGPGCall;1"
 #define FIREGPG_CALL_CLASSNAME "XpCOM to access to gpg (and pgp) for FireGPG"
@@ -21,7 +21,7 @@ private:
   ~FireGPGCall();
 
 protected:
-  /* additional members */
+  /* additional members */ 
 };
 
 #endif //_FireGPGCall_h
