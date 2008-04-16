@@ -1,4 +1,4 @@
-GECKO_SDK_PATH= C:\Documents and Settings\Admin\Mes documents\FireGPG\gecko-sdk
+GECKO_SDK_PATH= C:\gecko-sdk
 !IF "$(CFG)" == ""
 CFG=FireGPGCall - Win32 Debug
 !MESSAGE No configuration specified. Defaulting to FireGPGCall - Win32 Debug.
