@@ -48,6 +48,7 @@
   <script src="cselect.js"/>
   <script src="gpgauth.js"/>
   <script src="api.js"/>
+  <script src="new_api.js"/>
   <stringbundleset id="stringbundleset">
     <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
   </stringbundleset>
