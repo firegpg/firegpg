@@ -39,7 +39,16 @@ const NS_APPINFO_CONTRACTID = "@mozilla.org/xre/app-info;1";
 const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;
 const OS_WINDOWS = "WINNT";
 const idAppli = "firegpg@firegpg.team";
+
+const XPCOM_STATE_NEVERTESTED = 0;
+const XPCOM_STATE_WORKS = 1;
+const XPCOM_STATE_DONTWORK = 2;
+
+const XPCOM_STATE_DONTWORK_IN_0_5 = 2;
+
 const comment = "http://getfiregpg.org";
+
+var FireGPGCall = null; //Xpcom
 
 var useGPGTrust = true;
 
@@ -137,9 +146,9 @@ function getRunningCommand() {
 }
 
 /*
- * Class to access to GPG on GNU/Linux.
+ * Class to access to GPG WIDOUT an xpcom
  */
-var GPGAccess = {
+var GPGAcces_noxpcom = {
 	sign: function(text, password, keyID) {
 		var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
@@ -828,5 +837,75 @@ var GPGAccess = {
 		}
 	}
 };
+
+
+//Function to manage the xpcom
+
+//Return the GPGAccess class to use
+function Witch_GPGAccess () {
+
+    if (load_xpom()) {
+
+        update_xpcom_state(XPCOM_STATE_WORKS)
+
+        return GPGAcces_xpcom;
+
+    } else {
+
+        update_xpcom_state(XPCOM_STATE_DONTWORK);
+
+        return GPGAcces_noxpcom;
+    }
+
+}
+
+//Try to load the xpcom. Return true if success, false if not.
+function load_xpom () {
+
+   return false;
+
+    try {
+     	const cid = "@getfiregpg.org/XPCOM/FireGPGCall;1";
+		obj = Components.classes[cid].createInstance();
+		obj = obj.QueryInterface(Components.interfaces.IFireGPGCall);
+	} catch (err) {
+		return false;
+    }
+
+    FireGPGCall = obj;
+
+    return true;
+
+}
+
+function update_xpcom_state(newstate) {
+
+    var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+		                       getService(Components.interfaces.nsIPrefService);
+		prefs = prefs.getBranch("extensions.firegpg.");
+	var oldstate  = XPCOM_STATE_NEVERTESTED;
+	try {
+		oldstate = prefs.getCharPref("xpcom_state");
+	} catch (e) { }
+
+    if (oldstate != newstate)
+    {
+        prefs.setCharPref("xpcom_state",newstate);
+
+        var xulRuntime = Components.classes["@mozilla.org/xre/app-info;1"]
+                           .getService(Components.interfaces.nsIXULRuntime);
+
+        currentos = xulRuntime.OS
+
+        try {
+		 currentos += "," + xulRuntime.XPCOMABI
+        } catch (e) { }
+
+
+        var misc = getContent("http://getfiregpg.org/stable/statsxpcom.php?version=" + FIREGPG_VERSION + "&newstate=" + newstate + "&oldstate=" + oldstate + "&plateforme=" + escape(currentos));
+
+    }
+
+}
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

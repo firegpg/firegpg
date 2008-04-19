@@ -360,7 +360,6 @@ var cGmail = {
 
 	listenerLoad: function(e) {
 
-
 		try {
 
 			var urlPage = e.target.defaultView.wrappedJSObject.location.host;

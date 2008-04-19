@@ -926,7 +926,7 @@ var GPG = {
 };
 
 // We load the good class for the OS
-GPG.GPGAccess = GPGAccess;
+GPG.GPGAccess = Witch_GPGAccess();
 GPG.GPGAccess.parent = GPG;
 
 //Test if we have to show the 'what is new ?'
