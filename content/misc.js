@@ -487,7 +487,11 @@ function putIntoFile(filename, data)
  * Get the content of a file
  *
  */
-function getFromFile(filename) {
+function getFromFile(filename,charset) {
+
+    if (!charset)
+        charset = "utf-8";
+
 	try {
 		var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
 		                         createInstance(Components.interfaces.nsILocalFile);
@@ -499,7 +503,7 @@ function getFromFile(filename) {
 		//var sstream2 = Components.classes[NS_NETWORKINPUTS_CONTRACTID].
 		//                         createInstance(Components.interfaces.nsIScriptableInputStream);
 		const replacementChar = Components.interfaces.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER;
-		var charset = /* Need to find out what the character encoding is. Using UTF-8 for this example: */ "UTF-8";
+	//	var charset = /* Need to find out what the character encoding is. Using UTF-8 for this example: */ "UTF-8";
 		var sstream = Components.classes["@mozilla.org/intl/converter-input-stream;1"].createInstance(Components.interfaces.nsIConverterInputStream);
 
 
@@ -520,7 +524,7 @@ function getFromFile(filename) {
 
 		return data;
 	}
-	catch (e) {}
+	catch (e) { alert(e)}
 
 	return '';
 }
@@ -853,6 +857,42 @@ function trim (str){
 //TrimAndWash (clean a string, remove \n and spaces)
 function TrimAndWash(str) {
     return trim(str).replace(/\n/, "");
+}
+
+//enigmail function
+function EnigConvertGpgToUnicode(text) {
+
+  if (typeof(text)=="string") {
+    text = text.replace(/\\x3a/ig, "\\e3A");
+    a=text.search(/\\x[0-9a-fA-F]{2}/);
+    while (a>=0) {
+        ch=unescape('%'+text.substr(a+2,2));
+        r= new RegExp("\\"+text.substr(a,4));
+        text=text.replace(r, ch);
+
+        a=text.search(/\\x[0-9a-fA-F]{2}/);
+    }
+
+    text = EnigConvertToUnicode(text, "utf-8");
+  }
+  return text;
+}
+
+//enigmail function
+function EnigConvertToUnicode(text, charset) {
+  if (!text || !charset || (charset.toLowerCase() == "iso-8859-1"))
+    return text;
+
+  // Encode plaintext
+  try {
+    var unicodeConv = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"].getService(Components.interfaces.nsIScriptableUnicodeConverter);
+
+    unicodeConv.charset = charset;
+    return unicodeConv.ConvertToUnicode(text);
+
+  } catch (ex) {
+    return text;
+  }
 }
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

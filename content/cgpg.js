@@ -415,8 +415,7 @@ var GPG = {
 		var infos;
 
 		// We get informations from GPG
-		var result = this.GPGAccess.listkey(onlyPrivate);
-
+		var result = EnigConvertGpgToUnicode(this.GPGAccess.listkey(onlyPrivate));
         //If we have to check the olds keys
 
 
@@ -450,7 +449,7 @@ var GPG = {
 			if(infos[0] == "pub" || infos[0] == "sec")
 			{
 				var keyId = infos[4];
-				var keyName = infos[9];
+				var keyName = infos[9].replace(/\\e3A/g, ":");
 				var keyDate = infos[5];
 				var keyExpi = infos[6];
 

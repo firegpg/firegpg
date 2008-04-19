@@ -1,3 +1,6 @@
+2008-04-19  Maximilien Cuony
+    * FS#18
+
 2008-04-15  Maximilien Cuony
     * Now able to build an xpcom for windows and linux.
 

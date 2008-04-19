@@ -290,7 +290,7 @@ var GPGAccess = {
 		}
 
 		// We get the result
-		var result = getFromFile(tmpStdOut);
+		var result = getFromFile(tmpStdOut,"ISO-8859-1"); //as gnupg output the list with strange chars. We convert later.
 
 		// We delete tempory files
 		removeFile(tmpStdOut);
