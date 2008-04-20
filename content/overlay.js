@@ -39,6 +39,7 @@ var firegpg = {
 
 		cGmail.initSystem();
         cGmail2.initSystem();
+		APIListener.init();
 
 		// initialization code
 		this.initialized = true;

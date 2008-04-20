@@ -1,60 +1,64 @@
+2008-04-19  Achraf Cherti
+	* beginning the new API (internal API can be used by non-chrome Javascript)
+	* writing FireGPG.sign() function of the external API
+
 2008-04-20  Maximilien Cuony
-    * Begging ofxpcom support and stats
+	* Begging ofxpcom support and stats
 
 2008-04-19  Maximilien Cuony
-    * FS#18
+	* FS#18
 
 2008-04-15  Maximilien Cuony
-    * Now able to build an xpcom for windows and linux.
+	* Now able to build an xpcom for windows and linux.
 
 2008-04-12  Maximilien Cuony
-    * FS#15
-    * FS#14 part one.
+	* FS#15
+	* FS#14 part one.
 
 2008-03-28  Maximilien Cuony
-    * 0.4.9 packed, and uploaded to the server !
+	* 0.4.9 packed, and uploaded to the server !
 
 2008-03-27  Maximilien Cuony
-    * Added a multi-signs checks (thanks to jeff.sadowski)
+	* Added a multi-signs checks (thanks to jeff.sadowski)
 
 2008-03-21  Maximilien Cuony
-    * Fixed a problem with the 'cancel'  button of the key list.
-    * Added a way to send encrpyt AND signed file on the gmail interface.
-    * Fixed some locales issues.
-    * Ass ar and ru locate.
-    * Fixed a false text in english ("Please select a valid PGP key before importing")
-    * Better output when a decrpyt fail.
+	* Fixed a problem with the 'cancel'  button of the key list.
+	* Added a way to send encrpyt AND signed file on the gmail interface.
+	* Fixed some locales issues.
+	* Ass ar and ru locate.
+	* Fixed a false text in english ("Please select a valid PGP key before importing")
+	* Better output when a decrpyt fail.
 
 2008-02-08  Maximilien Cuony
-    * Support more domains for google apps
-    * Don't say there are an update of firegpg is the update page information is not accesible.
-    * Added bn locate
-    * Added a way to filter keys list
+	* Support more domains for google apps
+	* Don't say there are an update of firegpg is the update page information is not accesible.
+	* Added bn locate
+	* Added a way to filter keys list
 
 2008-01-26  Maximilien Cuony
-    * FireFox 3 support.
+	* FireFox 3 support.
 
 2008-01-21  Maximilien Cuony
-    * 0.4.8 packed, and uploaded to the server !
-    * Fix a bug in password.js
-    * New locate : Hebrew by Echetz
+	* 0.4.8 packed, and uploaded to the server !
+	* Fix a bug in password.js
+	* New locate : Hebrew by Echetz
 
 2008-01-20  Maximilien Cuony
-    * Fixed a problem with signs' verification
-    * Added timestamps infos for sign inside a encrypted text
-    * Fixed a big problem with timestamp : now show the timestamp of the sign, and not the current...
-    * Added an option to active gpg-agent
-    * Support for all gmails :)
+	* Fixed a problem with signs' verification
+	* Added timestamps infos for sign inside a encrypted text
+	* Fixed a big problem with timestamp : now show the timestamp of the sign, and not the current...
+	* Added an option to active gpg-agent
+	* Support for all gmails :)
 
 2008-01-19  Maximilien Cuony
-    * Continue to fix problem with signandcryp (thanks to kevdog)
-    * Fixed a big problem with array's protype (ConQuery works now, Firebug dosen't show strange infromations, ...)
-    * New locate : Serbian by Fedor Lucic
-    * First version of FireGPG's api !
+	* Continue to fix problem with signandcryp (thanks to kevdog)
+	* Fixed a big problem with array's protype (ConQuery works now, Firebug dosen't show strange infromations, ...)
+	* New locate : Serbian by Fedor Lucic
+	* First version of FireGPG's api !
 
 2008-01-18  Maximilien Cuony
-    * Fix a problem with signandcrypt on windows
-    * Decrpt this mail rework now
+	* Fix a problem with signandcrypt on windows
+	* Decrpt this mail rework now
 
 2007-12-30  Achraf cherti
 	* localization patch of Sebastien Wains applied

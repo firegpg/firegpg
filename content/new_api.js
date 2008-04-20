@@ -34,4 +34,119 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:
+/*
+ * API that will be used by the Javascript.
+ */
+var ExternalAPI = {
+    /*
+     * Error codes.
+     */
+    ERROR_NOTHING: 0,             /* no error */
+    ERROR_UNSELECTED_GPG_ID: 1,   /* if the GPG ID is not selected 
+                                     when the window is opened */
+    ERROR_BAD_GPG_ID: 2,          /* if the GPG id is bad, doesn't 
+                                     exist in the wall */
+    ERROR_PASS_NOT_ENTERED: 3,
+    ERROR_BAD_PASS: 3,
+    ERROR_UNKNOWN: 4,
+
+    /* 
+     * Initialize the API
+     */
+    init: function(e) {
+    },
+
+    /*
+     * Sign "text" and return an object contains two
+     * attributes :
+     *     result: the signed text
+     *     error:  contain one of FireGPG.ERROR_*
+     *
+     * gpg_id is facultative
+     */
+    sign: function(text, gpg_id) {
+        ret = {result:'', error:ExternalAPI.ERROR_NOTHING};
+
+        /* Get the GPG ID */
+        if(gpg_id == undefined) {
+            gpg_id = getSelfKey();
+
+            if(gpg_id == null) { 
+                ret.error = ExternalAPI.ERROR_BAD_GPG_ID;
+                return ret;
+            }
+        }
+
+        /* Get the password */
+        password = getPrivateKeyPassword(); /* TODO it's important to 
+                                               doesn't save the pw ? */
+        if(password == null) {
+            /* TODO est-ce nécessaire d'avoir un code d'erreur pour dire
+             * ERROR_PRIVATE_PASS_NOT_ENTERED et ERROR_PUBLIC... ? */
+            ret.error = ExternalAPI.ERROR_PASS_NOT_ENTERED;
+            return ret;
+        }
+
+        /* Sign the text */
+        var gpg_result = GPG.baseSign(text, password, gpg_id);
+        var gpg_error = gpg_result.sdOut;
+
+        if(gpg_error == 'erreur')
+            ret.error = ExternalAPI.ERROR_UNKNOWN;
+        else if(gpg_error == 'erreurPass')
+            ret.error = ExternalAPI.ERROR_BAD_PASSWORD;
+        else
+            ret.result = gpg_result.output;
+
+        return ret;
+    }
+};
+
+/*
+ * Listener functions
+ */
+var APIProgressListener = {
+    QueryInterface: function(aIID) {
+        if(aIID.equals(Components.interfaces.nsIWebProgressListener) ||
+           aIID.equals(Components.interfaces.nsISupportsWeakReference) ||
+           aIID.equals(Components.interfaces.nsISupports))
+            return this;
+
+		return Components.results.NS_NOINTERFACE;
+    },
+    
+    onStateChange: function(aProgress, aRequest, aFlag, aStatus) {},
+    onLocationChange: function(aProgress, aRequest, aURI) { return 0; },
+    onProgressChange: function() { return 0; },
+    onStatusChange: function() { return 0; },
+    onSecurityChange: function(){ return 0; },
+    onLinkIconAvailable: function() { return 0; }
+}
+
+var APIListener = {
+    init: function() {
+        document.getElementById("appcontent").addEventListener(
+            "DOMContentLoaded", 
+            APIListener.load, 
+            false);
+
+        window.addEventListener("unload", 
+            function() { APIListener.unload(); }, 
+            false);
+    },
+
+    load: function(e) {
+        ExternalAPI.e = e;
+        e.target.defaultView.wrappedJSObject.window.FireGPG = ExternalAPI;
+
+        gBrowser.addProgressListener(
+            APIProgressListener,
+            Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
+    },
+
+    unload: function() {
+	    gBrowser.removeProgressListener(APIProgressListener);
+    }
+};
+
+// vim:ai:et:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:
