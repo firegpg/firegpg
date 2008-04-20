@@ -542,7 +542,7 @@ var GPGAccess = {
     /*
         Function: sign
         Sign a text.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessCWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
 
         Parameters:
             text - The data to sign
@@ -561,7 +561,7 @@ var GPGAccess = {
     /*
         Function: verify
         Verify a text.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessCWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
 
         Parameters:
             text - A text with the GnuPG data to test.
@@ -578,7 +578,7 @@ var GPGAccess = {
     /*
         Function: listkey
         List  keys.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessCWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
 
         Parameters:
             onlyPrivate - Boolean, set to true if only a private key list is wanted.
@@ -595,7 +595,7 @@ var GPGAccess = {
     /*
         Function: crypt
         Encrypt a text.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessCWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
 
         Parameters:
             text - The data to encrypt
@@ -615,7 +615,7 @@ var GPGAccess = {
     /*
         Function: cryptAndSign
         Encrypt and sign a text.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessCWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
 
         Parameters:
             text - The data to encrypt
@@ -638,7 +638,7 @@ var GPGAccess = {
     /*
         Function: decrypt
         Decrypt a text.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessCWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
 
         Parameters:
             text - The data to decrypt
@@ -655,7 +655,7 @@ var GPGAccess = {
     /*
         Function: selfTest
         Return true if we're able to call GnuPG.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessCWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
 
     */
     selfTest: function() {
@@ -665,7 +665,7 @@ var GPGAccess = {
     /*
         Function: kimport
         Import a key.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessCWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
 
         Parameters:
             text - A text with the GnuPG data to import.
@@ -681,7 +681,7 @@ var GPGAccess = {
     /*
         Function: kexport
         Export a key.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessCWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
 
         Parameters:
             key - The key id to export.
@@ -698,7 +698,7 @@ var GPGAccess = {
         Function: runATest
         Test if we are currently able to run the a command.
 
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessCWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
 
         Parameters:
             option - The option to test.
@@ -714,7 +714,7 @@ var GPGAccess = {
     /*
         Function: tryToFoundTheRightCommand
         Do some test to be able to find a working GnuPG executable.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessCWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
 
     */
     tryToFoundTheRightCommand: function () {
@@ -750,8 +750,7 @@ var GPGAccessWindowsNoXpcom = {
 
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
 		try { // DON'T MOVE THIS LINE !
-			result = this.runGnupg(this.getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" +
-					this.getGPGAgentArgument() +
+			result = this.runGnupg(this.getBaseArugments() +
 					" --default-key " + keyID +
 					" --output " + tmpOutput +
 					" --passphrase-fd 0 " +
@@ -782,7 +781,7 @@ var GPGAccessWindowsNoXpcom = {
 
 		putIntoFile(tmpInput,text); // TMP
 
-		result = this.runGnupg(this.getGPGBonusCommand() + " --quiet --no-tty" +  this.getGPGTrustArgument() + " --no-verbose --status-fd 1 --armor" + this.getGPGAgentArgument() + " --verify " + tmpInput);
+		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() + " --verify " + tmpInput);
 
 		// We delete tempory files
 		removeFile(tmpInput);
@@ -799,7 +798,7 @@ var GPGAccessWindowsNoXpcom = {
 		if (onlyPrivate == true)
 			mode = "--list-secret-keys";
 
-		result = this.runGnupg(this.getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --with-colons" + this.getGPGAgentArgument() + " " + mode,"ISO-8859-1");
+		result = this.runGnupg(this.getBaseArugments() + " --with-colons " + mode,"ISO-8859-1");
 
         // We return result
 		return result;
@@ -828,9 +827,9 @@ var GPGAccessWindowsNoXpcom = {
 		for(var i = 0; i < keyIdList.length; i++)
 			keyIdListArgument += ((i > 0) ? ' ' : '') + '-r ' + keyIdList[i];
 
-		result = this.runGnupg(this.getGPGBonusCommand() + " --quiet" +  this.getGPGTrustArgument(fromGpgAuth) +" --no-tty --no-verbose --status-fd 1 --armor --batch" +
+		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() +
 				" " + keyIdListArgument +
-				this.getGPGCommentArgument() +this.getGPGAgentArgument() +
+				this.getGPGCommentArgument() +
 				" --output " + tmpOutput +
 				" --encrypt " + tmpInput);
 
@@ -876,9 +875,9 @@ var GPGAccessWindowsNoXpcom = {
 
         try {
 
-            result = this.runGnupg(this.getGPGBonusCommand() + " --quiet" +  this.getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+            result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() +
                     " " + keyIdListArgument +
-                    this.getGPGCommentArgument() + this.getGPGAgentArgument() +
+                    this.getGPGCommentArgument() +
                     " --default-key " + keyID +
                     " --passphrase-fd 0" +
                     " --sign" +
@@ -917,7 +916,7 @@ var GPGAccessWindowsNoXpcom = {
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
 
         try {
-			result = this.runGnupg(this.getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + this.getGPGAgentArgument() +
+			result = this.runGnupg(this.getBaseArugments() +
 					" --passphrase-fd 0 " +
 					" --output " + tmpOutput +
 					" --decrypt " + tmpInput +
@@ -943,7 +942,7 @@ var GPGAccessWindowsNoXpcom = {
     selfTest: function() {
         //One test is ok, if the command dosen't change, it's should works..
 
-		result = this.runGnupg(this.getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + this.getGPGAgentArgument() + " --version");
+		result = this.runGnupg(this.getBaseArugments()  + " --version");
 
 		// If the work Foundation is present, we can think that gpg is present ("... Copyright (C) 2006 Free Software Foundation, Inc. ...")
 		if (result.indexOf("Foundation") == -1)
@@ -959,7 +958,7 @@ var GPGAccessWindowsNoXpcom = {
 
 		putIntoFile(tmpInput,text); // TMP
 
-		result = this.runGnupg(this.getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + this.getGPGAgentArgument() + " --import " + tmpInput);
+		result = this.runGnupg(this.getBaseArugments()  + " --import " + tmpInput);
 
 		// We delete tempory files
 		removeFile(tmpInput);
@@ -970,7 +969,7 @@ var GPGAccessWindowsNoXpcom = {
 
     kexport: function(key) {
         //TODO: STRUCTURE
-		result = this.runGnupg(this.getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor" + this.getGPGAgentArgument() + " --export " + key);
+		result = this.runGnupg(this.getBaseArugments()  + " --export " + key);
 
 		// We return result
 		return result;
@@ -1080,7 +1079,7 @@ var GPGAccessWindowsXpcom = {
         return false;
     },
 
-    crypt: function(text, keyIdList, fromGpgAuth /*Optional*/, binFileMode /*Optional*/) {
+    crypt: function(text, keyIdList, fromGpgAuth, binFileMode) {
         return false;
     },
 
@@ -1141,11 +1140,11 @@ var GPGAccessUnixNoXpcom = {
 
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
 		try { // DON'T MOVE THIS LINE !
-			result = this.runGnupg(this.getGPGBonusCommand() + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" +
+			result = this.runGnupg(this.getBaseArugments()  +
 					" --default-key " + keyID +
 					" --output " + tmpOutput +
 					" --passphrase-file " + tmpPASS + "" +
-					this.getGPGCommentArgument() + this.getGPGAgentArgument() +
+					this.getGPGCommentArgument() +
 					" --clearsign " + tmpInput
 				);
 		} catch (e) {}
@@ -1200,9 +1199,9 @@ var GPGAccessUnixNoXpcom = {
 
         try {
 
-            result = this.runGnupg(this.getGPGBonusCommand() + " --quiet" + this.getGPGTrustArgument(fromGpgAuth) + " --no-tty --no-verbose --status-fd 1 --armor --batch" +
+            result = this.runGnupg(this.getBaseArugments() + this.getGPGTrustArgument(fromGpgAuth)  +
                            " " + keyIdListArgument +
-                           this.getGPGCommentArgument() + this.getGPGAgentArgument() +
+                           this.getGPGCommentArgument() +
                        " --default-key " + keyID +
                        " --sign" +
                        " --passphrase-file " + tmpPASS +
@@ -1240,7 +1239,7 @@ var GPGAccessUnixNoXpcom = {
 		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
 		try {
 
-			result = this.runGnupg(this.getGPGBonusCommand()  + " --quiet --no-tty --no-verbose --status-fd 1 --armor --batch" + this.getGPGAgentArgument() +
+			result = this.runGnupg(this.getBaseArugments() +
 					" --passphrase-file " + tmpPASS +
 					" --output " + tmpOutput +
 					" --decrypt " + tmpInput
