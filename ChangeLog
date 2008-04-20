@@ -1,9 +1,12 @@
+
+2008-04-20  Maximilien Cuony
+    * Reorganisation of cgpgaccess
+    * Added coude source documentation.
+	* Begging ofxpcom support and stats
+
 2008-04-19  Achraf Cherti
 	* beginning the new API (internal API can be used by non-chrome Javascript)
 	* writing FireGPG.sign() function of the external API
-
-2008-04-20  Maximilien Cuony
-	* Begging ofxpcom support and stats
 
 2008-04-19  Maximilien Cuony
 	* FS#18

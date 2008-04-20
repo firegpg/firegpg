@@ -342,7 +342,7 @@ function getTmpDir() {
  * Get an unique temporary file name.
  * The path + filename is returned.
  */
-function getTmpFile(permission /* optional */) {
+function getTmpFile(permission /* optional */, suffix_file)  {
 	if(permission == undefined)
 		permission = WRITE_PERMISSION;
 
@@ -352,6 +352,9 @@ function getTmpFile(permission /* optional */) {
 		var fileName = TMP_RFILES;
 	else
 		var fileName = TMP_FILES;
+
+    if(suffix_file != undefined)
+        fileName += '_S_' + suffix_file; //To be sure to be unique.
 
 	var date = new Date();
 
@@ -489,8 +492,8 @@ function putIntoFile(filename, data)
  */
 function getFromFile(filename,charset) {
 
-    if (!charset)
-        charset = "utf-8";
+    if (charset == undefined)
+        charset = "UTF-8";
 
 	try {
 		var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
@@ -524,7 +527,7 @@ function getFromFile(filename,charset) {
 
 		return data;
 	}
-	catch (e) { alert(e)}
+	catch (e) { }
 
 	return '';
 }
@@ -600,7 +603,6 @@ function runCommand(command, arg) {
 	var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
 	                      createInstance(Components.interfaces.nsILocalFile);
 	file.initWithPath(command);
-
 	var process = Components.classes[NS_PROCESSUTIL_CONTRACTID].
 	                         createInstance(Components.interfaces.nsIProcess);
 	process.init(file);

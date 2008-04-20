@@ -1,9 +1,8 @@
 Format: 1.35
 
 
-# You can add a title and sub-title to your menu like this:
-# Title: [project name]
-# SubTitle: [subtitle]
+Title: FireGPG
+SubTitle: Documentation of FireGPG's source code
 
 # You can add a footer to your documentation like this:
 # Footer: [text]
@@ -30,12 +29,15 @@ Format: 1.35
 # --------------------------------------------------------------------------
 
 
-File: GPGAccess  (content/cgpgaccess.js)
+File: GPGAccess  (no auto-title, content/cgpgaccess.js)
 
 Group: Index  {
 
    Index: Everything
    Class Index: Classes
    Function Index: Functions
+   Constant Index: Constants
+   File Index: Files
+   Variable Index: Variables
    }  # Group: Index
 
