@@ -43,6 +43,12 @@ Group: Dialogues-relatives  {
    File: Options  (no auto-title, content/options.js)
    }  # Group: Dialogues-relatives
 
+Group: Misc  {
+
+   File: GpgAuth  (no auto-title, content/gpgauth.js)
+   File: GpgAuth Options  (no auto-title, content/gpgauth_options.js)
+   }  # Group: Misc
+
 Group: Index  {
 
    Index: Everything

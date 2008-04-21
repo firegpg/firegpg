@@ -7,7 +7,16 @@
 * www.curetheitch.com
 * ***** END LICENSE BLOCK ***** */
 
+/*
+   Class: gpgAuth
+   This is the class who implement GpgAuth function. *As it's not the code of FireGPG authors, the documentation of this file is not complete*.
+*/
 var gpgAuth = {
+
+    /*
+    Function: onLoad
+    This function have to be documented.
+    */
 	onLoad: function() {
 		this.initialized = true;
 		this.strings = document.getElementById( "firegpg-strings" );
@@ -22,7 +31,7 @@ var gpgAuth = {
 		} else {
 			var gpgauth_enabled = false;
 		}
-		
+
 		if ( gpgauth_enabled ) {
 			window.addEventListener( "gpg_auth:login", this.login, false, true );
 			window.addEventListener( "unload", function() { gpgAuth.listenerUnload() }, false );
@@ -30,13 +39,20 @@ var gpgAuth = {
 
 	},
 
+   /*
+    Function: listenerUnload
+    This function have to be documented.
+    */
 	listenerUnload: function( event ) {
 		window.removeEventListener( "gpg_auth:login", this.login, false, true );
 	},
 
-	// This function gets called by the "gpg:login" event that is emitted from
-	// a gpgAuth enabled website. Events not caught by the webpage itself are
-	// bubbled up to extensions in Firefox.
+    /*
+    Function: login
+    This function gets called by the "gpg:login" event that is emitted from
+    a gpgAuth enabled website. Events not caught by the webpage itself are
+    bubbled up to extensions in Firefox.
+    */
 	login: function( event ) {
 		var random_value = gpgAuth.generate_random_token();
 		// Get the current domain name
@@ -244,7 +260,10 @@ var gpgAuth = {
 		}
 	},
 
-	// This function is called to decrypt the data sent by the server that is encrypted with the users public key
+    /*
+    Function: decrypt_user_token
+    This function is called to decrypt the data sent by the server that is encrypted with the users public key
+    */
 	decrypt_user_token: function( e ) {
 		var timestamp = new Date().getTime();
 		var ms = timestamp - gpgAuth.gpg_elements[ gpgAuth.domain ][ 'TIME_STAMP' ]; // Get miliseconds since login was pressed
@@ -271,8 +290,11 @@ var gpgAuth = {
 		}
 	},
 
-	// This is just a random string generator. It generates a random string that gets encrypted
-	// with the servers Public Key and sent to the server for decryption.
+    /*
+    Function: generate_random_token
+    This is just a random string generator. It generates a random string that gets encrypted
+    with the servers Public Key and sent to the server for decryption.
+    */
 	generate_random_token: function( e ) {
 		var validchars = "";
 		var startvalid = "";

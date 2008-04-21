@@ -62,7 +62,7 @@ const ACTION_ERASE = 'ERASE';
 
 /*
    Class: firegpg
-   This is the class to comunicate with the menus add in firefox. She watch the loading of new windows too.
+   This is the class to comunicate with the menus added in firefox. She watch the loading of new windows too.
 */
 var firegpg = {
 

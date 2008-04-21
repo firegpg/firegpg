@@ -1,3 +1,16 @@
+/* ***** BEGIN LICENSE BLOCK *****
+* I have not decided a license yet. This is demonstration code. All rights reserved at this time.
+* I need to determine which license will meet my goals and also maintain compatibility with
+* the FireGPG license(s).
+* This may not be reproduced or distributed without prior consent.
+* Copyright (C) 2007 Kyle L. Huff
+* www.curetheitch.com
+* ***** END LICENSE BLOCK ***** */
+
+/*
+Function: getIgnored_servers
+This function have to be documented.
+*/
 function getIgnored_servers( parent ) {
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 			getService(Components.interfaces.nsIPrefService);
@@ -34,6 +47,10 @@ function getIgnored_servers( parent ) {
 	}
 }
 
+/*
+Function: ToggleGpgAuthPref
+This function have to be documented.
+*/
 function ToggleGpgAuthPref( item ) {
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 			getService(Components.interfaces.nsIPrefService);
