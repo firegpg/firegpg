@@ -44,12 +44,28 @@
 	var res = obj.Add(3, 4);
 	alert('Performing 3+4. Returned ' + res + '.');*/
 
+/* Constant: FIREGPG_VERSION
+  The current version of FireGPG */
 const FIREGPG_VERSION = '0.4.9';
 
-const FIREGPG_STATUS = 'DEVEL'; // DEVEL or RELASE. Use RELASE only for.. relases ;).
+/* Constant: FIREGPG_STATUS
+  The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
+const FIREGPG_STATUS = 'DEVEL';
 
+/* Constant: FIREGPG_SVN
+  The current subversion's revision number. _Dosen't works for the moment_ */
 const FIREGPG_SVN = "Unknow";
 
+/*
+   Constants: Id for components.
+
+   NS_LOCALEFILE_CONTRACTID - Id for the component @mozilla.org/file/local;1
+   NS_DIRECTORYSERVICE_CONTRACTID    - Id for the component @mozilla.org/file/directory_service;1
+   NS_NETWORKOUTPUT_CONTRACTID   - Id for the component @mozilla.org/network/file-output-stream;1
+   NS_NETWORKINPUT_CONTRACTID   - Id for the @mozilla.org/network/file-input-stream;1
+   NS_NETWORKINPUTS_CONTRACTID   - Id for the component @mozilla.org/scriptableinputstream;1
+   NS_PROCESSUTIL_CONTRACTID   - Id for the component @mozilla.org/process/util;1
+*/
 const NS_LOCALEFILE_CONTRACTID = "@mozilla.org/file/local;1";
 const NS_DIRECTORYSERVICE_CONTRACTID = "@mozilla.org/file/directory_service;1";
 const NS_NETWORKOUTPUT_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
@@ -57,18 +73,53 @@ const NS_NETWORKINPUT_CONTRACTID = "@mozilla.org/network/file-input-stream;1";
 const NS_NETWORKINPUTS_CONTRACTID = "@mozilla.org/scriptableinputstream;1";
 const NS_PROCESSUTIL_CONTRACTID = "@mozilla.org/process/util;1";
 
+/*
+   Constants: Tempory files
+
+   TMP_DIRECTORY - The base name for files (dosen't same to be a directory)
+   TMP_FILES    - The file name for common files.
+   TMP_RFILES   - The file name for executable scripts.
+   TMP_EFILES   - The file name for executables..
+*/
 const TMP_DIRECTORY = "TmpD";
 const TMP_FILES = "fgpg_tmpFile";
 const TMP_RFILES = "fgpg_tmpFile.bat"; //.bat for windows, but don't affect linux
 const TMP_EFILES = "fgpg_tmpFile.exe"; //.exe for windows
+
+/*
+   Constants: Write modes for files.
+
+   WRITE_MODE - The default mode for files.
+   WRITE_PERMISSION    - The default permission for files
+   WRITE_PERMISSION_R   - The default permission for executable files
+*/
 const WRITE_MODE = 0x02 | 0x08 | 0x20;
 const WRITE_PERMISSION = 0600;
 const WRITE_PERMISSION_R = 0777;
 
+/*
+    Variable: savedPassword
+    The password of the private key, saved for later actions.
+ */
 var savedPassword = null; /* the private key password */
 
+/*
+    Variable: oldKeyID
+    The previous key selected.
+ */
+var oldKeyID = '';
 
-//Check if debuggin is enabled and if yes show up messages in console
+/*
+    Function: fireGPGDebug
+
+    Check if debuggin is enabled and if yes show up messages in console
+
+    Paramters:
+        message - The message
+        debugCode - The position in the code
+        fatal - True if it's a fatal error.
+
+*/
 function fireGPGDebug(message, debugCode, fatal) {
 
     return;
@@ -85,12 +136,16 @@ function fireGPGDebug(message, debugCode, fatal) {
 }
 
 /*
- * Show a dialog (list.xul) to choose a list of
- * public keys (array).
- *
- * null is returned if the public key is not choosed.
- */
-function choosePublicKey(preSelect /* optional */) /* TODO : remove */
+    Function: choosePublicKey
+
+    Show a dialog (list.xul) to choose a list of public keys (array).
+    null is returned if the public key is not choosed
+
+    Paramters:
+        preSelect - _Optional_. And array of kkey to preselect.
+
+*/
+function choosePublicKey(preSelect)
 {
 
 	if(preSelect == undefined)
@@ -140,10 +195,11 @@ function choosePublicKey(preSelect /* optional */) /* TODO : remove */
 }
 
 /*
- * Show a dialog (list.xul) to choose the private key.
- *
- * null is returned if the private key is not choosed.
- */
+    Function: choosePrivateKey
+
+    Show a dialog (list.xul) to choose a private key.
+    null is returned if no keys are chosen.
+*/
 function choosePrivateKey()
 {
 	var params = {title: '', description: '', list: {}, selected_item: null, preSelect: {}};
@@ -162,10 +218,21 @@ function choosePrivateKey()
 	}
 	return params.selected_items;
 }
+
+
 /*
- * Show 'text' in a dialog.
- */
-function showText(text, description /* optional */, title /* optional */, doShowButtons /* optional */, validSign /* Optional */) {
+    Function: showText
+
+    Show 'text' in a dialog (the editor)
+
+    Parameters:
+        text - The text to show display
+        description - _Optional_. The message to show. If not set, use the default.
+        title - _Optional_. The title of the window. If not set, use the default.
+        doShowButtons - _Optional_. If we have to show buttons to encrypt and so. Default to false.
+        validSign - _Optional_. The message for the validSign field.
+*/
+function showText(text, description, title, doShowButtons, validSign) {
 	/* default description and title values */
 	var i18n = document.getElementById("firegpg-strings");
 
@@ -188,9 +255,10 @@ function showText(text, description /* optional */, title /* optional */, doShow
 }
 
 /*
-* Open the editor (the showtext dialog)
-*/
+    Function: showEditor
 
+    Open the editor (the showtext.xul dialog)
+*/
 function showEditor() {
 	var i18n = document.getElementById("firegpg-strings");
 	var title = i18n.getString('editorTitle');
@@ -199,13 +267,20 @@ function showEditor() {
 }
 
 /*
- * Generic dialog to get a password.
- *
- * An object is returned :
- *  {password: "password", save_password: true/false}
- *
- * null is returned if cancel button is clicked.
- */
+    Function: getPassword
+
+    Show the generic dialog to get a password.
+
+    An object is returned :
+   {password: "password", save_password: true/false}$
+
+    null is returned if cancel button is clicked.
+
+    Parameters:
+        question - The text to show for the prompt.
+        save_password - _Optional_. The default value for the save password checkbox. If not set, value set in the options by the user is used.
+        domain - _Optional_. Say the password is asked form this page and disable the savepassword checkbox.
+*/
 function getPassword(question, save_password, domain) {
 	if(save_password == undefined) {
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
@@ -237,24 +312,42 @@ function getPassword(question, save_password, domain) {
 }
 
 /*
- * Sauvegarder le mot de passe dans le Password Manager
- * de Firefox.
- */
+    Function: savePassword
+    * TODO !*
+    Save a password in the password manager of Firefox
+
+    Parameters:
+        password - The password
+
+*/
 function savePassword(password) {
 }
 
-function getSavedPassword(password) {
+/*
+    Function: getSavedPassword
+    * TODO !*
+    Get the password saved in the password manager of Firefox
+*/
+function getSavedPassword() {
 }
 
 /*
- * This function uses getPassword() to return this object:
- *   {password: "the password", save_password: "save password ?"}
- *
- * If useSavedPassword = false, the password is asked each time,
- * even if it's already saved in the global variable savedPassword.
- *
- * null is returned on error.
- */
+    Function: getPrivateKeyPassword
+
+    This function uses getPassword() to get a password for a private key.
+
+    It's the user request for it, it's save the password for later.
+
+    If useSavedPassword = false, the password is asked each time,
+    even if it's already saved in the global variable savedPassword.
+
+    null is returned on error.
+
+    Parameters:
+        useSavedPassword - _Optional_. Set this to false to disable the use of a saved password
+        domain - _Optional_. The domain to pass to <getPassword>.
+
+*/
 function getPrivateKeyPassword(useSavedPassword /* default = true */, domain /* default = false*/) {
 	/* the default value of the optional variable */
 	if(useSavedPassword == undefined)
@@ -290,8 +383,9 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */, domain /* 
 }
 
 /*
- * This function erase the saved password (if for exemple a sign failled)
- */
+    Function: eraseSavedPassword
+    This function erase the saved password (it's for exemple when a sign failled)
+*/
 function eraseSavedPassword() {
 	savedPassword = null;
 
@@ -303,12 +397,13 @@ function eraseSavedPassword() {
 	catch (e) {}
 }
 
+
 /*
- * Funtion who return the default private key.
- *
- * null is returned if no key is selected.
- */
-var oldKeyID = '';
+    Function: getSelfKey
+
+    Function who return a  private key for the user (the default or the one selected in the list)
+    null is returned if no key is selected.
+*/
 function getSelfKey() {
 	var keyID;
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
@@ -329,19 +424,28 @@ function getSelfKey() {
 }
 
 /*
- * Get the path of a tmp file.
- * The path is returned.
- */
+    Function: getTmpDir
+
+   Get the path of a tmp file.
+    The path is returned.
+*/
 function getTmpDir() {
 	return Components.classes[NS_DIRECTORYSERVICE_CONTRACTID].
 	                  getService(Components.interfaces.nsIProperties).
 	                  get(TMP_DIRECTORY, Components.interfaces.nsIFile);
 }
 
+
 /*
- * Get an unique temporary file name.
- * The path + filename is returned.
- */
+    Function: getTmpFile
+
+    Get an unique temporary file name.
+    The path + filename is returned.
+
+    Parameters:
+        permission - _Optional_. The permission of the file. See <Write modes for files>
+        suffix_file - _Optional_. A suffix to add to the default file name.
+*/
 function getTmpFile(permission /* optional */, suffix_file)  {
 	if(permission == undefined)
 		permission = WRITE_PERMISSION;
@@ -365,18 +469,19 @@ function getTmpFile(permission /* optional */, suffix_file)  {
 }
 
 /*
- * Get an unique temporary file name, who can be executed
- * The path + filename is returned.
- */
-function getTmpFileRunning() { /* TODO *Running -> *CanBeLaunched ? */
+    Function: getTmpFileRunning
+    Get an unique temporary file name, who can be executed (scripts).
+    The path + filename is returned.
+*/
+function getTmpFileRunning() {
 	return getTmpFile(WRITE_PERMISSION_R);
 }
 
-
 /*
- * Get an unique temporary file nam for exes
- * The path + filename is returned.
- */
+    Function: getTmpFileExeRunning
+    Get an unique temporary file nam for executable files (.exe)
+    The path + filename is returned.
+*/
 function getTmpFileExeRunning() {
 
 	var fileobj = getTmpDir();
@@ -393,9 +498,10 @@ function getTmpFileExeRunning() {
 
 
 /*
- * Get an unique, temporary file name, for password (so it's random).
- * The path + filename is returned.
- */
+    Function: getTmpPassFile
+    Get an unique, temporary file name, for password (so it's random).
+    The path + filename is returned.
+*/
 function getTmpPassFile() {
 	var fileobj = getTmpDir();
 	var fileName = Math.floor(Math.random() * 9999);
@@ -438,8 +544,12 @@ function getTmpPassFile() {
 }
 
 /*
- * Remove a file.
- */
+    Function: removeFile
+    Delete a file.
+
+    Parameters:
+        path - The file to delete.
+*/
 function removeFile(path) {
 	var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
 	                         createInstance(Components.interfaces.nsILocalFile);
@@ -453,10 +563,15 @@ function removeFile(path) {
 	}
 }
 
+
 /*
- * Put data into a file.
- *
- */
+    Function: putIntoFile
+    Save data to a file. File saved in UTF-8 charset.
+
+    Parameters:
+        filename - The name of the file
+        data - The data to save
+*/
 function putIntoFile(filename, data)
 {
 	var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
@@ -487,9 +602,13 @@ function putIntoFile(filename, data)
 }
 
 /*
- * Get the content of a file
- *
- */
+    Function: getFromFile
+    Get the content of a file
+
+    Parameters:
+        filename - The location of the file.
+        charset - _Optional_. The charset of the file. Default to UTF-8
+*/
 function getFromFile(filename,charset) {
 
     if (charset == undefined)
@@ -532,7 +651,14 @@ function getFromFile(filename,charset) {
 	return '';
 }
 
-/* Set the content of a binary file */
+/*
+    Function: putIntoBinFile
+    Save data to a file, in binary mode.
+
+    Parameters:
+        filename - The name of the file
+        data - The data to save
+*/
 function putIntoBinFile(filename, data) {
 	// pngBinary already exists
 	var aFile = Components.classes["@mozilla.org/file/local;1"]
@@ -552,7 +678,13 @@ function putIntoBinFile(filename, data) {
 	}
 }
 
-/* Get the content of a binary file */
+/*
+    Function: getBinContent
+    Get the content of a binary file
+
+    Parameters:
+        aURL - The location of the file.
+*/
 function getBinContent(aURL) {
 	var ioService = Components.classes["@mozilla.org/network/io-service;1"].
 	                           getService(Components.interfaces.nsIIOService);
@@ -577,8 +709,12 @@ function getBinContent(aURL) {
 }
 
 /*
- * To get a content from any where (like chrome://)
- */
+    Function: getContent
+    Get the content of a resource form anywhere (like chrome://)
+
+    Parameters:
+        aURL - The location of the resource.
+*/
 function getContent(aURL){
 	var ioService = Components.classes["@mozilla.org/network/io-service;1"].
 	                           getService(Components.interfaces.nsIIOService);
@@ -597,8 +733,13 @@ function getContent(aURL){
 }
 
 /*
- * Run a command
- */
+    Function: runCommand
+    Run a command
+
+    Parameters:
+        command - The command to exectue
+        arg - The arguements for the command
+*/
 function runCommand(command, arg) {
 	var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
 	                      createInstance(Components.interfaces.nsILocalFile);
@@ -611,9 +752,12 @@ function runCommand(command, arg) {
 }
 
 /*
- * getContent of a webpage, using a xmlhttprequest
- */
+    Function: getContentXtttp
+    Get the content of a web resource by using a xmlhttprequest.
 
+    Parameters:
+        url - The url of the resource
+*/
 function getContentXHttp(url)
 {
 	p = new XMLHttpRequest();
@@ -633,7 +777,12 @@ function getContentXHttp(url)
 }
 
 /*
-* Run a command on windows (with a hidden dos box)
+    Function: runWinCommand
+    Run a command on windows (as a hidden dos box with hstart.exe)
+
+    Parameters:
+        command - The command to exectue
+        arg - The arguements for the command
 */
 function runWinCommand(command, arg) {
 
@@ -665,7 +814,8 @@ function runWinCommand(command, arg) {
 }
 
 /*
-* Test if we had to show the 'What is new' box, and send a ping.
+    Function: testIfSomethingsIsNew
+    Test if user update FireGPG or if he have to update, and show the What is new page send a ping or propose to update FireGPG if relevant.
 */
 function testIfSomethingsIsNew() {
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
@@ -765,7 +915,14 @@ function testIfSomethingsIsNew() {
 	}
 }
 
-// Encode html
+
+/*
+    Function: htmlEncode
+    Encode special chars (&, <, > et ") to they html values.
+
+    Parameters:
+        s - The text.
+*/
 function htmlEncode(s) {
         var str = new String(s);
         str = str.replace(/&/g, "&amp;");
@@ -777,9 +934,15 @@ function htmlEncode(s) {
 
 
 /*
-* This fuction approximates gmail's line-wrapping rules, so that
-* a message can be wrapped before it's signed, instead of after,
-* which would break the signature.
+    Function: gmailWrapping
+
+    This fuction approximates gmail's line-wrapping rules, so that
+    a message can be wrapped before it's signed, instead of after,
+    which would break the signature.
+
+    Parameters:
+        text - The text.
+
 */
 function gmailWrapping(text)
 {
@@ -805,8 +968,14 @@ function gmailWrapping(text)
 }
 
 /*
-* This function wraps a single line of text into multiple lines,
-* each no longer than limit, unless a single word is too long.
+    Function: wrap
+
+    This function wraps a single line of text into multiple lines,
+    each no longer than limit, unless a single word is too long.
+
+    Parameters:
+        text - The text.
+        limit - The maximum characters for one line.
 */
 function wrap(text, limit)
 {
@@ -834,6 +1003,12 @@ function wrap(text, limit)
 	return result + text;
 }
 
+/*
+    Function: genreate_api_key
+
+    Generate and random string between 64 and 128 charactes, probably unique.
+    This is usefull for the api.
+*/
 function genreate_api_key() {
 		var validchars = "";
 		var startvalid = "";
@@ -851,17 +1026,38 @@ function genreate_api_key() {
 		return random_value;
 }
 
-//Trim function (remove spaces)
+/*
+    Function: trim
+    Remove extra space at the end and the begging of the string.
+
+    Parameters:
+        str - The string
+*/
 function trim (str){
     return str.replace(/^\s+/, "").replace(/\s+$/, "");
 }
 
-//TrimAndWash (clean a string, remove \n and spaces)
+/*
+    Function: TrimAndWash
+    Remove extra space at the end and the begging of the string, and remove \n
+
+    Parameters:
+        str - The string
+*/
 function TrimAndWash(str) {
     return trim(str).replace(/\n/, "");
 }
 
-//enigmail function
+/*
+    Function: EnigConvertGpgToUnicode
+
+    Convert the gpg --with-collums text (who are strangly encoded) into a uniform Unicode string.
+
+    This function is from Enigmail, same license as FireGPG.
+
+    Parameters:
+        text - The text to convert
+*/
 function EnigConvertGpgToUnicode(text) {
 
   if (typeof(text)=="string") {
@@ -880,7 +1076,16 @@ function EnigConvertGpgToUnicode(text) {
   return text;
 }
 
-//enigmail function
+/*
+    Function: EnigConvertToUnicode
+
+    Convert the text, in the specified chaset, into an Unicode string.
+    This function is from Enigmail, same license as FireGPG.
+
+    Parameters:
+        text - The text to convert
+        charset - The charset of the text.
+*/
 function EnigConvertToUnicode(text, charset) {
   if (!text || !charset || (charset.toLowerCase() == "iso-8859-1"))
     return text;

@@ -45,8 +45,8 @@
         windows.arguments[0].title - The title of the window.
         windows.arguments[0].text - The text to put in the editor.
         windows.arguments[0].description - The description to show.
-        windows.arguments[0].doShowButtons - Set this to true to disable buttons (encrypt, ...)
-        windows.arguments[0].validSign - The text to display in the validSign label.
+        windows.arguments[0].doShowButtons -  _Optional_. Set this to true to disable buttons (encrypt, ...)
+        windows.arguments[0].validSign -  _Optional_. The text to display in the validSign label.
 */
 function onLoad(win) {
 

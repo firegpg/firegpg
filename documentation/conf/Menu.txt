@@ -33,6 +33,7 @@ Group: FireGPG Classes and functions  {
 
    File: GPGAccess  (no auto-title, content/cgpgaccess.js)
    File: Overlay  (no auto-title, content/overlay.js)
+   File: Misc  (no auto-title, content/misc.js)
    }  # Group: FireGPG Classes and functions
 
 Group: Dialogues-relatives  {

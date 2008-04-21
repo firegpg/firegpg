@@ -42,10 +42,10 @@
 
     Parameters:
         win - The form herself.
-        window.arguments[0].password - The password to pre-set.
-        window.arguments[0].save_password - The value of the savepassword checkbox.
-        window.arguments[0].question - The text to show for the prompt.
-        window.arguments[0].domain - Say the password is asked form this page and disable the savepassword checkbox.
+        window.arguments[0].password -  The password to pre-set.
+        window.arguments[0].save_password -  The default value of the savepassword checkbox.
+        window.arguments[0].question -  The text to show for the prompt.
+        window.arguments[0].domain - _Optional_. Say the password is asked form this page and disable the savepassword checkbox.
 */
 function onLoad(win)
 {

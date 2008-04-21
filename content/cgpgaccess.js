@@ -35,19 +35,19 @@
  * ***** END LICENSE BLOCK ***** */
 
 /* Constant: nsIExtensionManager_CONRACTID
-  The compoment id to manage extentions */
+  The component id to manage extentions */
 const nsIExtensionManager_CONRACTID = "@mozilla.org/extensions/manager;1";
 
 /* Constant: NS_APPINFO_CONTRACTID
-  The compoment id to test the current os */
+  The component id to test the current os */
 const NS_APPINFO_CONTRACTID = "@mozilla.org/xre/app-info;1";
 
 /* Constant: FireGPG_OS
-  The compoment to test the current os. */
+  The component to test the current os. */
 const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;
 
 /* Constant: OS_WINDOWS
-  The valure retruned by compoments if the os is window */
+  The value retruned by components if the os is window */
 const OS_WINDOWS = "WINNT";
 
 /* Constant: idAppli
