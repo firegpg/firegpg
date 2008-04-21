@@ -34,22 +34,35 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-
+/*
+    Variable: listOfAutoSelect
+    This is a tempory variable, witch contains key to select automaticaly.
+ */
 var listOfAutoSelect = new Array();
 
-var savedList = new Array();
 /*
- * Called when the list dialog is shown.
- *
- * window.arguments[0] will contain this object :
- *   {description: '', title: '', list: {'ID': 'Label'},
- *    selected_items:'' *the default selected ID* }
+    Variable: savedList
+    The full list of key (when we filter, we haven't all key in the list)
  */
+var savedList = new Array();
+
+/*
+    Function: onLoad
+
+    This function is called when the list.xul form is show.
+    It's make the diffrents list of key and pre-select the key who have to be selected.
+
+    Parameters:
+        win - The form herself.
+        window.arguments[0].list - The keys list. It's an array.
+        window.arguments[0].preSelect - The keys list to select. It's an array.
+        window.arguments[0].description - The text to show for the prompt.
+        window.arguments[0].title- The title of the window.
+*/
 function onLoad(win)
 {
 	if(window.arguments == undefined)
 		return;
-
 
 	var preSelect = window.arguments[0].preSelect;
 
@@ -59,8 +72,7 @@ function onLoad(win)
 	 */
 	if (preSelect.length == 0)
 		var autoSelectMode = false;
-	else
-	{
+	else	{
 		var autoSelectMode = true;
 		var testList = "";
 		/* TODO here a warning :
@@ -74,38 +86,31 @@ function onLoad(win)
 	var list = window.arguments[0].list;
 
     //sorting list
-
-
 	var listInDialog = document.getElementById('list');
 
 	var selected;
 	var j = 0;
     var k = 0;
 
-	for(var id in list)
-	{
+	for(var id in list){
 
         if (list[id][0] == undefined)
             continue;
 
 		selected = false;
 
-		if (autoSelectMode == true)
-		{
+		if (autoSelectMode == true) {
 
 			var reg = new RegExp('[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}', 'gi');
 
 			var theMail = reg.exec(list[id]);
 
-			if (theMail != null)
-			{
+			if (theMail != null) {
 				if (testList.indexOf(theMail) != -1)
 					selected = true;
 			}
 
 		}
-
-
 
 		var  item   = document.createElement('listitem');
 
@@ -133,14 +138,12 @@ function onLoad(win)
 		//var newItem = listInDialog.appendItem(list[id], id);
 
 
-		if (selected == true)
-		{
+		if (selected == true) {
 			listOfAutoSelect[j] = item;
 			j++;
 			//listInDialog.addItemToSelection(newItem);
 			//newItem.setAttribute('selected', selected);
 		}
-
 
 	}
 
@@ -156,22 +159,24 @@ function onLoad(win)
 }
 
 /*
- * Function wo wiil help the browser to try an array
- */
-
+    Function: checkTheAutoSelect
+    This function select the key present in <listOfAutoSelect>
+*/
 function checkTheAutoSelect() {
-	for (var i = 0; i < listOfAutoSelect.length; i++)
-	{
+
+	for (var i = 0; i < listOfAutoSelect.length; i++) {
 		document.getElementById('list').addItemToSelection(listOfAutoSelect[i]);
 	}
 	document.getElementById('list').focus();
 }
 
 /*
- * If Ok button is pressed.
- */
-function onAccept()
-{
+    Function: onAccept
+
+    This function is called when the _Ok_ button is pressed.
+    It's prepare the differents data to return them.
+*/
+function onAccept() {
 	if(window.arguments == undefined)
 		return true;
 
@@ -193,9 +198,10 @@ function onAccept()
 	return true;
 }
 
-/**
- * Filter the keys list
- */
+/*
+    Function: filter
+    This function filter the key list, based on the current value of _search-textbox_. She clear all and rebuild the list, based on <savedList>
+*/
 function filter() {
     to_filtre = document.getElementById('search-textbox').value.toLowerCase();
     var listInDialog = document.getElementById('list');

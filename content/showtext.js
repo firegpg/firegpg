@@ -35,10 +35,21 @@
  * ***** END LICENSE BLOCK ***** */
 
 /*
- * Called when dialog is shown.
- */
-function onLoad(win)
-{
+    Function: onLoad
+
+    This function is called when the showtext.xul form is show.
+    It's init the differents objets (like the translated strings).
+
+    Parameters:
+        win - The form herself.
+        windows.arguments[0].title - The title of the window.
+        windows.arguments[0].text - The text to put in the editor.
+        windows.arguments[0].description - The description to show.
+        windows.arguments[0].doShowButtons - Set this to true to disable buttons (encrypt, ...)
+        windows.arguments[0].validSign - The text to display in the validSign label.
+*/
+function onLoad(win) {
+
 	if(window.arguments == undefined)
 		return;
 
@@ -46,61 +57,68 @@ function onLoad(win)
 	document.getElementById('description').value = window.arguments[0].description;
 	document.title = window.arguments[0].title;
 
-        if (window.arguments[0].doShowButtons == true)
-        {
+        if (window.arguments[0].doShowButtons == true) {
                document.getElementById('buttons-box').style.display = 'none';
         }
 
 
-        if (window.arguments[0].validSign != null)
-        {
+        if (window.arguments[0].validSign != null) {
 
-                document.getElementById('dcryptsignresult').style.display = '';
-                document.getElementById('dcryptsignresult').value = document.getElementById("firegpg-strings").getString("validSignInCrypt") + " " + window.arguments[0].validSign;
+            document.getElementById('dcryptsignresult').style.display = '';
+            document.getElementById('dcryptsignresult').value = document.getElementById("firegpg-strings").getString("validSignInCrypt") + " " + window.arguments[0].validSign;
         }
 
 }
 
 /*
- * Open a file a show him for editinf
- */
+    Function: openf
+    Open a file a display it into the editor.
+*/
 function openf() {
 
-var nsIFilePicker = Components.interfaces.nsIFilePicker;
-  var fp = Components.classes["@mozilla.org/filepicker;1"]
+    var nsIFilePicker = Components.interfaces.nsIFilePicker;
+    var fp = Components.classes["@mozilla.org/filepicker;1"]
           .createInstance(nsIFilePicker);
-  fp.init(window, null, nsIFilePicker.modeOpen);
-  fp.appendFilters(nsIFilePicker.filterText | nsIFilePicker.filterAll);
-  if (fp.show() != nsIFilePicker.returnOK) //L'utilisateur annule
-    return;
 
-  var filePath = fp.file.path;
-  var data = getFromFile(filePath);
-  document.getElementById('text').value = data;
+    fp.init(window, null, nsIFilePicker.modeOpen);
+    fp.appendFilters(nsIFilePicker.filterText | nsIFilePicker.filterAll);
+
+    if (fp.show() != nsIFilePicker.returnOK) //L'utilisateur annule
+        return;
+
+    var filePath = fp.file.path;
+    var data = getFromFile(filePath);
+    document.getElementById('text').value = data;
 }
 
 /*
- * Save the text to a file
- */
+    Function: savef
+    Save the current data in the editor to a file
+*/
 function savef() {
-var nsIFilePicker = Components.interfaces.nsIFilePicker;
-  var fp = Components.classes["@mozilla.org/filepicker;1"]
-          .createInstance(nsIFilePicker);
-  fp.init(window, null, nsIFilePicker.modeSave);
-  fp.appendFilters(nsIFilePicker.filterText | nsIFilePicker.filterAll);
-  var a = fp.show();
-  if (a != nsIFilePicker.returnOK && a != nsIFilePicker.returnReplace) //L'utilisateur annule
-    return;
 
-  var filePath = fp.file.path;
-  var data = document.getElementById('text').value;
-  //Need to remove the file before save
-  removeFile(filePath);
-  putIntoFile(filePath,data);
+    var nsIFilePicker = Components.interfaces.nsIFilePicker;
+    var fp = Components.classes["@mozilla.org/filepicker;1"]
+        .createInstance(nsIFilePicker);
+
+    fp.init(window, null, nsIFilePicker.modeSave);
+    fp.appendFilters(nsIFilePicker.filterText | nsIFilePicker.filterAll);
+
+    var a = fp.show();
+
+    if (a != nsIFilePicker.returnOK && a != nsIFilePicker.returnReplace) //L'utilisateur annule
+        return;
+
+    var filePath = fp.file.path;
+    var data = document.getElementById('text').value;
+    //Need to remove the file before save
+    removeFile(filePath);
+    putIntoFile(filePath,data);
 }
 
 /*
-* Crypt the text
+    Function: crypt
+    Encrypt the current data of the editor.
 */
 function crypt() {
 	// GPG verification
@@ -148,253 +166,268 @@ function crypt() {
 }
 
 
-//Crypt and sign
+/*
+    Function: cryptandsign
+    Encrypt and sign the current data of the editor.
+*/
 function cryptandsign(){
-        // GPG verification
-        if(!GPG.selfTest())
-                return;
+    // GPG verification
+    if(!GPG.selfTest())
+        return;
 
-        // For i18n
-        var i18n = document.getElementById("firegpg-strings");
+    // For i18n
+    var i18n = document.getElementById("firegpg-strings");
 
-        var text = getSelectedText();
+    var text = getSelectedText();
 
-        if (text == "") {
-                alert(i18n.getString("noData"));
-                return;
-        }
+    if (text == "") {
+        alert(i18n.getString("noData"));
+        return;
+    }
 
-        // Needed for a crypt
-        var keyIdList = choosePublicKey();
+    // Needed for a crypt
+    var keyIdList = choosePublicKey();
 
-        if(keyIdList == null)
-                return;
+    if(keyIdList == null)
+        return;
 
-        // Needed for a sign
-        var keyID = getSelfKey();
-        if(keyID == null)
-                return;
+    // Needed for a sign
+    var keyID = getSelfKey();
+    if(keyID == null)
+        return;
 
-        var password = getPrivateKeyPassword();
-        if(password == null)
-                return;
+    var password = getPrivateKeyPassword();
+    if(password == null)
+        return;
 
-        // We get the result
-        var result = GPG.baseCryptAndSign(text, keyIdList,false,password, keyID);
-        var crypttext = result.output;
-        var sdOut2 = result.sdOut2;
-        result = result.sdOut;
+    // We get the result
+    var result = GPG.baseCryptAndSign(text, keyIdList,false,password, keyID);
+    var crypttext = result.output;
+    var sdOut2 = result.sdOut2;
+    result = result.sdOut;
 
-        // If the crypt failled
-        if(result == "erreur") {
-                // We alert the user
-                alert(i18n.getString("cryptAndSignFailed") + sdOut2);
-        }
-        else if(result == "erreurPass") {
-                // We alert the user
-                eraseSavedPassword();
-                alert(i18n.getString("cryptAndSignFailedPass"));
-        }
-        else {
-                setSeletedText(crypttext);
-        }
+    // If the crypt failled
+    if(result == "erreur") {
+        // We alert the user
+        alert(i18n.getString("cryptAndSignFailed") + sdOut2);
+    }
+    else if(result == "erreurPass") {
+        // We alert the user
+        eraseSavedPassword();
+        alert(i18n.getString("cryptAndSignFailedPass"));
+    }
+    else {
+        setSeletedText(crypttext);
+    }
 
 }
 
-//Decrypt the text
+/*
+    Function: dcrypt
+    Decrypt the current data of the editor.
+*/
 function dcrypt() {
-        // GPG verification
-        if(!GPG.selfTest())
-                return;
+    // GPG verification
+    if(!GPG.selfTest())
+        return;
 
-        // For i18n
-        var i18n = document.getElementById("firegpg-strings");
+    // For i18n
+    var i18n = document.getElementById("firegpg-strings");
 
-        var text = getSelectedText();
+    var text = getSelectedText();
 
-        if (text == "") {
-                alert(i18n.getString("noData"));
-                return;
+    if (text == "") {
+        alert(i18n.getString("noData"));
+        return;
+    }
+
+    //Verify GPG'data presence
+    reg=new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
+    text = text.replace(reg, "FIREGPGTRALALABEGINHIHAN");
+
+    reg=new RegExp("\\- \\-\\-\\-\\-\\-END PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
+    text = text.replace(reg, "FIREGPGTRALALAENDHIHAN");
+
+    var firstPosition = text.indexOf("-----BEGIN PGP MESSAGE-----");
+    var lastPosition = text.indexOf("-----END PGP MESSAGE-----");
+
+    reg=new RegExp("FIREGPGTRALALABEGINHIHAN", "gi"); // We don't have to detect disabled balises
+    text = text.replace(reg, "-----BEGIN PGP MESSAGE-----");
+
+    reg=new RegExp("FIREGPGTRALALAENDHIHAN", "gi"); // We don't have to detect disabled balises
+    text = text.replace(reg, "-----END PGP MESSAGE-----");
+
+    if (firstPosition == -1 || lastPosition == -1) {
+        alert(i18n.getString("noGPGData"));
+        return;
+    }
+
+    text = text.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
+
+    // Needed for a decrypt
+    var password = getPrivateKeyPassword();
+
+    if(password == null) {
+        return;
+    }
+
+    // We get the result
+    var result = GPG.baseDecrypt(text,password);
+    var crypttext = result.output;
+    var sdOut2 = result.sdOut2;
+    result = result.sdOut;
+
+    // If the crypt failled
+    if (result == "erreurPass") {
+        alert(i18n.getString("decryptFailedPassword"));
+        eraseSavedPassword();
+    }
+    else if (result == "erreur") {
+        alert(i18n.getString("decryptFailed") + "\n\n" + sdOut2);
+    }
+    else {
+        setSeletedText(crypttext);
+
+        //If a vliad sign was found, infos about are in sdOut2
+        if (result == "signValid")
+        {
+            infos = sdOut2.split(" ");
+
+            var infos2 = "";
+            for (var ii = 1; ii < infos.length; ++ii)
+            {  infos2 = infos2 + infos[ii] + " ";}
+
+
+            document.getElementById('dcryptsignresult').style.display = '';
+            document.getElementById('dcryptsignresult').value = i18n.getString("validSignInCrypt") + " " + infos2;
+        }
+        else
+        {
+            document.getElementById('dcryptsignresult').style.display = 'none';
         }
 
-        //Verify GPG'data presence
-        reg=new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
-        text = text.replace(reg, "FIREGPGTRALALABEGINHIHAN");
-
-        reg=new RegExp("\\- \\-\\-\\-\\-\\-END PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
-        text = text.replace(reg, "FIREGPGTRALALAENDHIHAN");
-
-        var firstPosition = text.indexOf("-----BEGIN PGP MESSAGE-----");
-        var lastPosition = text.indexOf("-----END PGP MESSAGE-----");
-
-        reg=new RegExp("FIREGPGTRALALABEGINHIHAN", "gi"); // We don't have to detect disabled balises
-        text = text.replace(reg, "-----BEGIN PGP MESSAGE-----");
-
-        reg=new RegExp("FIREGPGTRALALAENDHIHAN", "gi"); // We don't have to detect disabled balises
-        text = text.replace(reg, "-----END PGP MESSAGE-----");
-
-        if (firstPosition == -1 || lastPosition == -1) {
-                alert(i18n.getString("noGPGData"));
-                return;
-        }
-
-        text = text.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
-
-        // Needed for a decrypt
-        var password = getPrivateKeyPassword();
-
-        if(password == null) {
-                return;
-        }
-
-        // We get the result
-        var result = GPG.baseDecrypt(text,password);
-        var crypttext = result.output;
-        var sdOut2 = result.sdOut2;
-        result = result.sdOut;
-
-        // If the crypt failled
-        if (result == "erreurPass") {
-                alert(i18n.getString("decryptFailedPassword"));
-                eraseSavedPassword();
-        }
-        else if (result == "erreur") {
-                alert(i18n.getString("decryptFailed") + "\n\n" + sdOut2);
-        }
-        else {
-                setSeletedText(crypttext);
-
-                //If a vliad sign was found, infos about are in sdOut2
-                if (result == "signValid")
-                {
-                        infos = sdOut2.split(" ");
-
-                        var infos2 = "";
-                        for (var ii = 1; ii < infos.length; ++ii)
-                        {  infos2 = infos2 + infos[ii] + " ";}
-
-
-                        document.getElementById('dcryptsignresult').style.display = '';
-                        document.getElementById('dcryptsignresult').value = i18n.getString("validSignInCrypt") + " " + infos2;
-                }
-                else
-                {
-                        document.getElementById('dcryptsignresult').style.display = 'none';
-                }
-
-
-        }
+    }
 }
 
-//Sign the text
+/*
+    Function: sign
+    Sign the current data of the editor.
+*/
 function sign() {
-        // GPG verification
-        if(!GPG.selfTest())
-                return;
+    // GPG verification
+    if(!GPG.selfTest())
+        return;
 
-        // For i18n
-        var i18n = document.getElementById("firegpg-strings");
-        var text = getSelectedText();
+    // For i18n
+    var i18n = document.getElementById("firegpg-strings");
+    var text = getSelectedText();
 
-        if (text == "") {
-                alert(i18n.getString("noData"));
-                return;
-        }
+    if (text == "") {
+        alert(i18n.getString("noData"));
+        return;
+    }
 
-        var tryPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
+    var tryPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
 
-        if (tryPosition != -1) {
-			if (!confirm(i18n.getString("alreadySign")))
-                return;
-		}
+    if (tryPosition != -1) {
+        if (!confirm(i18n.getString("alreadySign")))
+            return;
+    }
 
-        // Needed for a sign
-        var keyID = getSelfKey();
-        if(keyID == null)
-                return;
+    // Needed for a sign
+    var keyID = getSelfKey();
+    if(keyID == null)
+        return;
 
-        var password = getPrivateKeyPassword();
-        if(password == null)
-                return;
+    var password = getPrivateKeyPassword();
 
-        var result = GPG.baseSign(text,password,keyID);
-        var crypttext = result.output;
-        var sdOut2 = result.sdOut2;
-        result = result.sdOut;
+    if(password == null)
+        return;
 
-        // If the sign failled
-        if(result == "erreur") {
-                // We alert the user
-                alert(i18n.getString("signFailed") + sdOut2);
-        }
-        else if(result == "erreurPass") {
-                        alert(i18n.getString("signFailedPassword"));
-                        eraseSavedPassword();
-        }
-        else {
-                setSeletedText(crypttext);
-        }
+    var result = GPG.baseSign(text,password,keyID);
+    var crypttext = result.output;
+    var sdOut2 = result.sdOut2;
+    result = result.sdOut;
+
+    // If the sign failled
+    if(result == "erreur") {
+        // We alert the user
+        alert(i18n.getString("signFailed") + sdOut2);
+    }
+    else if(result == "erreurPass") {
+        alert(i18n.getString("signFailedPassword"));
+        eraseSavedPassword();
+    }
+    else {
+        setSeletedText(crypttext);
+    }
 }
 
-//verfify the sin of a text
+/*
+    Function: verify
+    Verfiy signs of the current data of the editor.
+*/
 function verify() {
-        // GPG verification
-        if(!GPG.selfTest())
-                return;
+    // GPG verification
+    if(!GPG.selfTest())
+        return;
 
-        // For I18N
-        var i18n = document.getElementById("firegpg-strings");
+    // For I18N
+    var i18n = document.getElementById("firegpg-strings");
 
-        var text = getSelectedText();
+    var text = getSelectedText();
 
-        if (text == "") {
-                alert(i18n.getString("noData"));
-                return;
-        }
+    if (text == "") {
+        alert(i18n.getString("noData"));
+        return;
+    }
 
-        var results = GPG.baseVerify(text);
+    var results = GPG.baseVerify(text);
 
-		// For I18N
-		var i18n = document.getElementById("firegpg-strings");
+    // For I18N
+    var i18n = document.getElementById("firegpg-strings");
 
-		if (results.length == 0) {
-			alert(i18n.getString("noGPGData"));
-			return;
-		}
-        else {
+    if (results.length == 0) {
+        alert(i18n.getString("noGPGData"));
+        return;
+    }
+    else {
 
-            if (results.length != 1)
-                var resulttxt = results.length + i18n.getString("manyStrings") + "\n";
-            else
-                var resulttxt = "";
+        if (results.length != 1)
+            var resulttxt = results.length + i18n.getString("manyStrings") + "\n";
+        else
+            var resulttxt = "";
 
-            for (var rid in results) {
+        for (var rid in results) {
 
-                result = results[rid];
+            result = results[rid];
 
-                if (result == "erreur")
-                    resulttxt += i18n.getString("verifFailed") + "\n";
-                else if (result == "erreur_bad")
-                        resulttxt += i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")\n";
-                else if (result == "erreur_no_key")
-                        resulttxt +=  i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")\n";
-                else {
-                    var infos = result.split(" ");
+            if (result == "erreur")
+                resulttxt += i18n.getString("verifFailed") + "\n";
+            else if (result == "erreur_bad")
+                    resulttxt += i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")\n";
+            else if (result == "erreur_no_key")
+                    resulttxt +=  i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")\n";
+            else {
+                var infos = result.split(" ");
 
-                    var infos2 = "";
-                    for (var ii = 1; ii < infos.length; ++ii)
-                    {  infos2 = infos2 + infos[ii] + " ";}
+                var infos2 = "";
+                for (var ii = 1; ii < infos.length; ++ii)
+                {  infos2 = infos2 + infos[ii] + " ";}
 
-                    resulttxt +=  i18n.getString("verifSuccess") + " " + infos2 + "\n";
-                }
-
+                resulttxt +=  i18n.getString("verifSuccess") + " " + infos2 + "\n";
             }
 
-            alert(resulttxt);
         }
+
+        alert(resulttxt);
+    }
 }
 
-// Retrun the selected text (if nothing is selected, return all)
+/*
+    Function: getSelectedText
+    Return the current selected text of the editor. If nothing is selected, all text is returned.
+*/
 function getSelectedText()
 {
         var value = document.getElementById('text').value;
@@ -404,7 +437,13 @@ function getSelectedText()
         return value;
 }
 
-//Set a new text for the textbox, but only the selection if something is selected.
+/*
+    Function: setSeletedText
+    Remplace the current selected text of the editor with the text in parameter. If nothing is selected, all text is remplaced.
+
+    Parameters:
+        text - The new text.
+*/
 function setSeletedText(text)
 {
         var txtbox = document.getElementById('text');

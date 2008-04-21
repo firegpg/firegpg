@@ -29,7 +29,19 @@ SubTitle: Documentation of FireGPG's source code
 # --------------------------------------------------------------------------
 
 
-File: GPGAccess  (no auto-title, content/cgpgaccess.js)
+Group: FireGPG Classes and functions  {
+
+   File: GPGAccess  (no auto-title, content/cgpgaccess.js)
+   File: Overlay  (no auto-title, content/overlay.js)
+   }  # Group: FireGPG Classes and functions
+
+Group: Dialogues-relatives  {
+
+   File: List  (no auto-title, content/list.js)
+   File: Showtext  (no auto-title, content/showtext.js)
+   File: Password  (no auto-title, content/password.js)
+   File: Options  (no auto-title, content/options.js)
+   }  # Group: Dialogues-relatives
 
 Group: Index  {
 

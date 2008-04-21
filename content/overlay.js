@@ -34,8 +34,43 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+/*
+   Constants: Actions.
+
+   ACTION_SIGN - Sign the current selected data
+   ACTION_VERIF - Verifiy signs of the current selected data
+   ACTION_CRYPT - Encrypt the current selected data
+   ACTION_CRYPTSIGN -  Encrypt and sign the current selected data
+   ACTION_DECRYPT - Decrypt the current selected data
+   ACTION_IMPORT - Import the current selected data
+   ACTION_EXPORT - Show the dialog to export a key
+   ACTION_EDITEUR - Show the editor windows
+   ACTION_OPTS - Show the options windows
+   ACTION_ERASE - Erase the current saved password.
+*/
+
+const ACTION_SIGN = 'SIGN';
+const ACTION_VERIF = 'VERIF';
+const ACTION_CRYPT = 'CRYPT';
+const ACTION_CRYPTSIGN = 'CRYPTSIGN';
+const ACTION_DECRYPT = 'DECRYPT';
+const ACTION_IMPORT = 'IMPORT';
+const ACTION_EXPORT = 'EXPORT';
+const ACTION_EDITEUR = 'EDITEUR';
+const ACTION_OPTS = 'OPTS';
+const ACTION_ERASE = 'ERASE';
+
+/*
+   Class: firegpg
+   This is the class to comunicate with the menus add in firefox. She watch the loading of new windows too.
+*/
 var firegpg = {
-	onLoad: function() {
+
+    /*
+    Function: onLoad
+    This function is called when a new Firefox's windows is created. She init another listers, and the translator system.
+    */
+    onLoad: function() {
 
 		cGmail.initSystem();
         cGmail2.initSystem();
@@ -45,38 +80,52 @@ var firegpg = {
 		this.initialized = true;
 		this.strings = document.getElementById("firegpg-strings");
 	},
+
+    /*
+    Function: onMenuItemCommand
+    This function is called when a menu item is selected. It's call <onDelayMenuAction> 100 milliseconds laters (we have to wait dues to a bug).
+    */
 	onMenuItemCommand: function(e,action) {
 		setTimeout("firegpg.onDelayMenuAction('"+action+"')", 100);
 	},
+
+    /*
+    Function: onDelayMenuAction
+    This function is called to exectue an action. It's forward the the call to the correct function in <GPG> class, or load the right dialog.
+
+    Parameters:
+        action - The action to exectute. See <Actions>.
+
+    */
 	onDelayMenuAction: function(action)
 	{
-		if (action == "SIGN")
+		if (action == ACTION_SIGN)
 			GPG.sign();
-		else if(action == "VERIF")
+		else if(action == ACTION_VERIF)
 			GPG.verify();
-		else if(action == "CRYPT")
+		else if(action == ACTION_CRYPT)
 			GPG.crypt();
-		else if(action == "CRYPTSIGN")
+		else if(action == ACTION_CRYPTSIGN)
 			GPG.cryptAndSign();
-		else if(action == "DECRYPT")
+		else if(action == ACTION_DECRYPT)
 			GPG.decrypt();
-		else if(action == "IMPORT")
+		else if(action == ACTION_IMPORT)
 			GPG.kimport();
-		else if(action == "EXPORT")
+		else if(action == ACTION_EXPORT)
 			GPG.kexport();
-		else if(action == "EDITEUR")
+		else if(action == ACTION_EDITEUR)
 			showEditor('');
-		else if(action == "OPTS")
-		{
-			//pref("browser.preferences.animateFadeIn", false);
-			//pref("browser.preferences.instantApply", true); //
+		else if(action == ACTION_OPTS) {
 			window.openDialog("chrome://firegpg/content/options.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
-			// window.open("chrome://firegpg/content/options.xul",
-		}			//                      "optionsFiregpg", "chrome, centerscreen").focus();
-		else if (action == "ERASE")
+		}
+		else if (action == ACTION_ERASE)
 			eraseSavedPassword();
 	},
 
+    /*
+    Function: onToolbarButtonCommand
+    This function is called when the user click on a bouton of the toolbar. Action is just forwared to <onMenuItemCommand>.
+    */
 	onToolbarButtonCommand: function(e) {
 		// just reuse the function above.  you can change this, obviously!
 		firegpg.onMenuItemCommand(e);

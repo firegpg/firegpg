@@ -35,16 +35,20 @@
  * ***** END LICENSE BLOCK ***** */
 
 /*
- * Called when change-gpg-path-checkbox is checked/unchecked to
- * enable/disable some elements in the options interface.
- *
- * The arguments are optional.
- */
+    Function: onChangeGPGPathCheckbox
+    Called when change-gpg-path-checkbox is checked/unchecked to
+    enable/disable some elements in the options interface.
+
+    Parameters:
+        checkbox - _Optional_. The checkbox value. If not set, use the current value.
+        focus_textbox - _Optional_. Set it to true to fucus the text field
+*/
 function onChangeGPGPathCheckbox(checkbox, focus_textbox) {
 	/* checked ? */
 	if(checkbox == undefined)
 		checkbox = document.getElementById('change-gpg-path-checkbox');
-	var disabled = (checkbox.checked) ? false : true;
+
+    var disabled = (checkbox.checked) ? false : true;
 
 	/* button */
 	document.getElementById('change-gpg-path-button').disabled = disabled;
@@ -57,12 +61,12 @@ function onChangeGPGPathCheckbox(checkbox, focus_textbox) {
 }
 
 
-
 /*
- * This function is called when a private key is selected.
- */
-function privateKeySelected(listbox)
-{
+    Function: privateKeySelected
+    This function is called when a private key is selected. It's update the hidden field.
+*/
+
+function privateKeySelected(listbox) {
 	/* select the default key */
 	if (listbox.selectedItem.childNodes[1] != null)
 		var key_id = listbox.selectedItem.childNodes[1].getAttribute('label');
@@ -72,8 +76,15 @@ function privateKeySelected(listbox)
 }
 
 /*
- * onLoad is called when options dialog is loaded.
- */
+    Function: onLoad
+
+    This function is called when the options.xul form is show.
+    It's init the differents objets (like the translated strings, the keys lists, and the special values).
+
+    Parameters:
+        win - The form herself.
+
+*/
 function onLoad(win)
 {
 
@@ -173,8 +184,9 @@ function onLoad(win)
 }
 
 /*
- * Remove an auth key the the api
- */
+    Function: apiRemoveMySelf
+    Remove an auth key of the api
+*/
 function apiRemoveMySelf(item) {
 
     if (confirm(document.getElementById("firegpg-strings").getString('remove-auth-key')) == false)
@@ -193,12 +205,13 @@ function apiRemoveMySelf(item) {
 
 }
 
+
 /*
- * Open the file selected and return the choosen file.
- * If no file is selected, null is returned.
- */
-function fileSelector()
-{
+    Function: fileSelector
+    Open the file selected and return the choosen file.
+    If no file is selected, null is returned.
+*/
+function fileSelector() {
 	var nsIFilePicker = Components.interfaces.nsIFilePicker;
 	var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
 	var i18n = document.getElementById("firegpg-strings");
@@ -207,11 +220,12 @@ function fileSelector()
 	return (fp.show() == nsIFilePicker.returnOK) ? fp.file.path : null;
 }
 
+
 /*
- * It choose the GPG path.
- */
-function chooseGPGPath()
-{
+    Function: chooseGPGPath
+    Choose a gpg executable and set the values of the options.
+*/
+function chooseGPGPath() {
 	var gpg_path = fileSelector();
 
 	if(gpg_path != null) {
@@ -220,9 +234,11 @@ function chooseGPGPath()
 	}
 }
 
-/* Show warnings if use try to disable updates */
-function showWarnings()
-{
+/*
+    Function: showWarnings
+    Show warnings if use try to disable updates because it's _bad_ ^^.
+*/
+function showWarnings() {
 	var checkBox = document.getElementById("updates-checkbox");
 	//Si c'est false, il est entrain d'activer
 	if (checkBox.checked == false)
