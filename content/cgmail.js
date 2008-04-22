@@ -34,19 +34,25 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-/*
-function cGmailNeedAction(e) { // TODO ?!
-	if (e.target.id == "sndcrypt")	{
-		alert('Tu veut me faire du mal hein ? Méchant !');
-	}
-}
-*/
-
+/* Constant: STATE_START
+ State 'start' for ProgressListener */
 const STATE_START = Components.interfaces.nsIWebProgressListener.STATE_START;
+/* Constant: STATE_STOP
+  State 'stop' for ProgressListener */
 const STATE_STOP = Components.interfaces.nsIWebProgressListener.STATE_STOP;
 
+/*
+   Class: cGmailListener
+   This class implement a listener, to intercept page loaded.
+*/
 var cGmailListener = {
-	/* TODO description ? */
+	/*
+        Function: QueryInterface
+        This function return the Interface of the listen. Here to be a good listener.
+
+        Parameters:
+            aIID - ?
+    */
 	QueryInterface: function(aIID) {
 		if(aIID.equals(Components.interfaces.nsIWebProgressListener) ||
 		   aIID.equals(Components.interfaces.nsISupportsWeakReference) ||
@@ -55,8 +61,17 @@ var cGmailListener = {
 		throw Components.results.NS_NOINTERFACE;
 	},
 
-	/* TODO description ? */
-	onStateChange: function(aProgress, aRequest, aFlag, aStatus) {
+	/*
+        Function: onStateChange
+        This function is called when the state of a page change (loaded, ..)
+
+        Parameters:
+            aProgress - An object with the progression ?
+            aRequest - An object with the request
+            aFlag - Flags about the request.
+            aStatus - The status of the request.
+    */
+    onStateChange: function(aProgress, aRequest, aFlag, aStatus) {
 		// If a document's loading is finished
 		if(aFlag & STATE_STOP) {
 
@@ -78,18 +93,11 @@ var cGmailListener = {
 
 			}
 
-
-
-
-
 			// If it's the page with a GMail message
 			if(aProgress.DOMWindow.document.getElementById('msg_0') != null || aProgress.DOMWindow.document.getElementById('msgs') != null) {
-				if (aProgress.DOMWindow.document.body.hasAttribute("gpg") == false)
-				{
+				if (aProgress.DOMWindow.document.body.hasAttribute("gpg") == false) {
 
 					aProgress.DOMWindow.document.body.setAttribute("gpg","ok");
-
-
 
 					cGmail.lastDomToverify = aProgress.DOMWindow;
 					setTimeout("cGmail.onDelayLoad()", 1000); //Fast connexions
@@ -102,18 +110,50 @@ var cGmailListener = {
 		return 0;
 	},
 
-	// To be a good listener
+    /*
+        Function: onLocationChange
+        This function is called when the location change Here to be a good listener.
+
+        Parameters:
+            aProgress - The progress
+            aRequest - The request
+            aURI -  The new url.
+
+    */
 	onLocationChange: function(aProgress, aRequest, aURI) { return 0; },
+    /*
+        Function: onProgressChange
+        This function is called when the progress change Here to be a good listener.
+    */
 	onProgressChange: function() { return 0; },
-	onStatusChange: function() { return 0; },
-	onSecurityChange: function(){ return 0; },
-	onLinkIconAvailable: function() { return 0; }
+	/*
+        Function: onStatusChange
+        This function is called when the stage change Here to be a good listener.
+    */
+    onStatusChange: function() { return 0; },
+	/*
+        Function: onSecurityChange
+        This function is called when the security change Here to be a good listener.
+    */
+    onSecurityChange: function(){ return 0; },
+	/*
+        Function: onLinkIconAvailable
+        This function is called when the location change Here to be a good listener.
+    */
+    onLinkIconAvailable: function() { return 0; }
 }
 
+
+/*
+   Class: cGmail
+   This is the main class to manage gmail's function with the old interface.
+*/
 var cGmail = {
 
-
-	/* TODO it's not too big ? Can we separe this function to some little simple functions ? */
+	/*
+        Function: onDelayLoad
+        This function is called when a gmail page is loaded, after fiew seconds. She test signs, create buttons, etc...
+    */
 	onDelayLoad: function() {
 		//Say that we can have now events now...
 		this.lastDomToverify.document.body.removeAttribute('gpg');
@@ -225,13 +265,15 @@ var cGmail = {
 		}
 
 	},
+
+    /*
+        Function: simpleLoad
+        This function is called when a gmail page is loaded. She prepare some variables like the number of mails and add some buttons.
+    */
 	simpleLoad: function(e) {
 		var Ddocument = e.target.defaultView.wrappedJSObject.document;
 
-
-
-		if (Ddocument.getElementById('compose_form') != null)
-		{
+		if (Ddocument.getElementById('compose_form') != null)	{
 			this.LastNombreMail = 2;
 		}
 
@@ -265,6 +307,10 @@ var cGmail = {
 		}
 	},
 
+    /*
+        Function: initSystem
+        This function init the class : she load specific options, and attach listeners to the webpages.
+    */
 	initSystem: function() {
 
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
@@ -309,6 +355,17 @@ var cGmail = {
 		}
 	},
 
+    /*
+        Function: addBouton
+        This function create a html button at the end of a node.
+
+        Parameters:
+            label - The label of the button
+            id - The id of the button
+            box - The node where the button is added.
+            Ddocument - The page's document (of the node)
+            info1 -  Dosen't seem to be used.
+    */
 	addBouton: function(label,id,box,Ddocument,info1) {
 		var bouton = new Object;
 		bouton = null;
@@ -329,6 +386,15 @@ var cGmail = {
 		} catch (e) {}
 	},
 
+    /*
+        Function: addComposeBoutons
+        This function add compose boutons (sign, sign and send, ...) to a node.
+
+        Parameters:
+            box - The node where buttons are added.
+            Ddocument - The page's document (of the node)
+            info1 - Information who will be return when a buton is pressed.
+    */
 	addComposeBoutons: function(box,Ddocument,info1) {
 		//If we add compose boutons, it's can due to a reply, and we sould retest the signs.
 
@@ -358,6 +424,10 @@ var cGmail = {
 		} catch (e) {}
 	},
 
+    /*
+        Function: listenerLoad
+        This function is called by the listener when a page is loaded. She call anothers loadpage-relative function if it's a gmail page.
+    */
 	listenerLoad: function(e) {
 
 		try {
@@ -373,11 +443,23 @@ var cGmail = {
 	},
 
 
+    /*
+        Function: listenerUnload
+        This function is called by the listener when a page is closed. Listeners are destroyed.
+    */
 	listenerUnload: function() {
 
 		gBrowser.removeProgressListener(cGmailListener);
 	},
 
+    /*
+        Function: callBack
+        This create a function who is called when a button (or a link) is pressed. She execute the corespondig action (like sign..)
+
+        Parameters:
+            id - The id to save
+            info1 - The additionnal information to save.
+    */
 	callBack: function(id,info1) {
 		this._id = id; // Save infos
 		this._info1 = info1;
@@ -590,6 +672,15 @@ var cGmail = {
 			}
 		};
 	},
+
+    /*
+        Function: getWriteMailContent
+        Return the content of a mail in composition (his selection if something is selected)
+
+        Parameters:
+            dDocument- The html document
+            idMail - The id of the mail (gmail)
+    */
 	getWriteMailContent: function(dDocument,idMail)
 	{
 
@@ -678,6 +769,14 @@ var cGmail = {
 			return contenuMail;
 	},
 
+    /*
+        Function: getToCcBccMail
+        Return the To, CC and BCC filds' value of a mail in composition.
+
+        Parameters:
+            dDocument- The html document
+            idMail - The id of the mail (gmail)
+    */
 	getToCcBccMail: function(dDocument,idMail) {
 		var forWho = "";
 		var tmpFor = "";
@@ -718,6 +817,16 @@ var cGmail = {
 
 		return returnList;
 	},
+
+    /*
+        Function: setWriteMailContent
+        Set the content of a mail in composition (his selection if something is selected)
+
+        Parameters:
+            dDocument- The html document.
+            idMail - The id of the mail (gmail).
+            newText - The text to set.
+    */
 	setWriteMailContent: function(dDocument,idMail,newText)
 	{
 
@@ -790,7 +899,14 @@ var cGmail = {
 
 	},
 
-	/* Say to gmail that is time for send a mail ! */
+	/*
+        Function: sendEmail
+        Simulate a click on the send button.
+
+        Parameters:
+            nodeForScan - The node with the send button
+            dDocument - The document of the page
+    */
 	sendEmail: function(nodeForScan, dDocument)
 	{
 
@@ -808,7 +924,13 @@ var cGmail = {
 			}
 	},
 
-	//Retrun the content of a mail, need id (0-n)
+	/*
+        Function: getMailContent
+        Retrun the content of a mail
+
+        Parameters:
+            i - The mail's id (0 to n) (gmail)
+    */
 	getMailContent: function(i) {
 		var contenuMail = this.lastDomToverify.document.getElementById('mb_' + i);
 		var range = this.lastDomToverify.document.createRange();
@@ -823,6 +945,13 @@ var cGmail = {
 
 	},
 
+    /*
+        Function: foundTheGoodId
+        Get the interal id of a mail based on this mail id of the page (Used by <getMimeMailContens>).
+
+        Parameters:
+            id - The mail's id (0 to n) (gmail)
+    */
 	foundTheGoodId: function(id) {
 		var tmpListNode = this.lastDomToverify.document.getElementById('mh_' + id).firstChild.firstChild.childNodes;
 		//Class = FHR.
@@ -863,6 +992,13 @@ var cGmail = {
 		return null;
 	},
 
+    /*
+        Function: getMimeMailContens
+        Return the mime source of a mail
+
+        Parameters:
+            id - The mail's id (0 to n) (gmail)
+    */
 	getMimeMailContens: function(id) {
 
 

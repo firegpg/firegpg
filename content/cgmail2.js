@@ -34,18 +34,44 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+/* Constant: GMAIL_MAIN_DOC_URL
+ The url of the mail document for gmail */
 const GMAIL_MAIN_DOC_URL = "http://mail.google.com/mail/?ui=2&view=bsp&ver=ymdfwq781tpu";
+/* Constant: GMAIL_MAIN_DOC_URL2
+ The url of the mail document for gmail and https. */
 const GMAIL_MAIN_DOC_URL2 = "https://mail.google.com/mail/?ui=2&view=bsp&ver=ymdfwq781tpu";
 
+/*
+   Class: cGmail2
+   This is the main class to manage gmail's function with the new interface.
+*/
 var cGmail2 = {
 
+    /*
+    Variable: doc
+    A list of document who can be used.
+    */
     doc: Array(),
 
+    /*
+    Variable: docOccuped
+    A list of document who wait to be checked.
+    */
     docOccuped: Array(),
 
+    /*
+    Variable: current
+    The current document id used (to be unique)
+    */
     current: 0,
 
-    //Check the document for messages
+    /*
+        Function: checkDoc
+        This function check a document for sign and button to add on a page.
+
+        Parameters:
+            id - The document 's id of the click.
+    */
     checkDoc: function(id) {
 
 
@@ -312,6 +338,13 @@ var cGmail2 = {
         }
     },
 
+    /*
+        Function: clickOnDock
+        This function is called when the user click on the page. She will call <checkDoc> 5s later.
+
+        Parameters:
+            docid - The document 's id of the click.
+    */
     clickOnDock: function(docid) {
 
         this._docid = docid;
@@ -332,7 +365,13 @@ var cGmail2 = {
 
     },
 
-    //Function to intercepd clicks on buttons
+    /*
+        Function: callBack
+        This function create a function witch is called when the user click on a button
+
+        Parameters:
+            doc - The document of the button.
+    */
     callBack: function(doc) {
 
         this._doc = doc;
@@ -666,6 +705,17 @@ var cGmail2 = {
 		};
 	},
 
+    /*
+        Function: addBouton
+        This function create a html button at the end of a node.
+
+        Parameters:
+            box - The node where the button is added.
+            doc - The page's document (of the node)
+            label - The label of the button
+            action- The action of the button (for the callback)
+            spamLimite -  The node before when we create the button.
+    */
     addBouton: function(box,doc,label,action,spamLimite) {
 		var bouton = new Object;
 		bouton = null;
@@ -686,7 +736,14 @@ var cGmail2 = {
 		} catch (e) {}
 	},
 
-    /* Say to gmail that is time for send a mail ! */
+    /*
+        Function: sendEmail
+        Simulate a click on the send button.
+
+        Parameters:
+            nodeForScan - The node with the send button
+            dDocument - The document of the page
+    */
 	sendEmail: function(nodeForScan, dDocument)
 	{
 
@@ -701,6 +758,14 @@ var cGmail2 = {
 
 	},
 
+    /*
+        Function: getWriteMailContent
+        Return the content of a mail in composition (his selection if something is selected)
+
+        Parameters:
+            dDocument- The html document
+            boutonxboxnode - The note with the buttons of the mails
+    */
     getWriteMailContent: function(dDocument,boutonxboxnode)
 	{
 
@@ -809,7 +874,14 @@ var cGmail2 = {
 			return contenuMail;
 	},
 
-    //Return iframe if the iframe is used to compose the mail, textarea if not.
+    /*
+        Function: iframeOrTextarea
+        Return iframe if the iframe is used to compose the mail, textarea if not.
+
+        Parameters:
+            dDocument- The html document
+            boutonxboxnode - The note with the buttons of the mails
+    */
     iframeOrTextarea: function(dDocument,boutonxboxnode) {
 
         var iframe = cGmail2.getTheIframe(dDocument,boutonxboxnode);
@@ -831,7 +903,14 @@ var cGmail2 = {
 
     },
 
-    //Return the iframe used to compose a mail
+    /*
+        Function: getTheIframe
+        Return the iframe used to compose a mail
+
+        Parameters:
+            dDocument- The html document
+            boutonxboxnode - The note with the buttons of the mails
+    */
     getTheIframe: function(dDocument,boutonxboxnode) {
 
         var tmp = boutonxboxnode;
@@ -855,7 +934,14 @@ var cGmail2 = {
 
     },
 
-    //Return the textarea used to compose a mail
+    /*
+        Function: getTheTextarea
+        Return the textarea used to compose a mail
+
+        Parameters:
+            dDocument- The html document
+            boutonxboxnode - The note with the buttons of the mails
+    */
     getTheTextarea: function(dDocument,boutonxboxnode) {
 
         var tmp = boutonxboxnode;
@@ -878,6 +964,14 @@ var cGmail2 = {
 
     },
 
+    /*
+        Function: getToCcBccMail
+        Return the To, CC and BCC filds' value of a mail in composition.
+
+        Parameters:
+            dDocument- The html document
+            boutonxboxnode - The note with the buttons of the mails
+    */
 	getToCcBccMail: function(dDocument,boutonxboxnode) {
 		var forWho = "";
 		var tmpFor = "";
@@ -922,6 +1016,16 @@ var cGmail2 = {
 
 		return returnList;
 	},
+
+    /*
+        Function: setWriteMailContent
+        Set the content of a mail in composition (his selection if something is selected)
+
+        Parameters:
+            dDocument- The html document
+            boutonxboxnode - The note with the buttons of the mails
+            newText - The new text
+    */
 	setWriteMailContent: function(dDocument,boutonxboxnode,newText)
 	{
 
@@ -991,7 +1095,15 @@ var cGmail2 = {
 
 	},
 
-    //Retrun the content of a mail, need the div object with the mail
+
+    /*
+        Function: getMailContent
+        Retrun the content of a mail, need the div object with the mail
+
+        Parameters:
+            i - The mail node
+            doc - The document of the page.
+    */
 	getMailContent: function(i,doc) {
 		var contenuMail = i;
 		var range = doc.createRange();
@@ -1018,7 +1130,10 @@ var cGmail2 = {
 
     },*/
 
-    //Initialise le tout
+    /*
+        Function: initSystem
+        This function init the class : she load specific options, and attach listeners to the webpages.
+    */
     initSystem: function() {
 
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
@@ -1066,7 +1181,13 @@ var cGmail2 = {
 		}
 	},
 
+    /*
+        Function: pageLoaded
+        This function is called when a page is loaded. If it's seem to be a gmail page, listeners are added.
 
+        Parameters:
+            aEvent - The event of the load
+    */
     pageLoaded: function(aEvent) {
 
         var doc = aEvent.originalTarget;
