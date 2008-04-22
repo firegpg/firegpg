@@ -161,7 +161,6 @@ var Selection = {
 		var reg=new RegExp("<div class=\"ma\" style=\"border-top: 2px solid rgb*</table></div>", "gi"); //Spécialité gmail (ne devrait pas faire de confilts)
 		str = str.replace(reg,"");
 
-
 		var reg=new RegExp("<br[^>]*>", "gi");
 		str = str.replace(reg,"\n");
 		var reg=new RegExp("<br>", "gi");

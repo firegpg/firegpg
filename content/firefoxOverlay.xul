@@ -49,6 +49,7 @@
   <script src="gpgauth.js"/>
   <script src="api.js"/>
   <script src="new_api.js"/>
+  <script type="application/x-javascript" src="keyring.js"/>
   <stringbundleset id="stringbundleset">
     <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
   </stringbundleset>

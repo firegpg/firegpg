@@ -1,0 +1,45 @@
+.firegpg-keyring-block {
+	background: #fee;
+	border: solid 1px #000;
+	color: #000;
+	margin: 4px;
+	padding: 5px;
+    background-image: url(chrome://firegpg/skin/firegpgbox.png);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
+.firegpg-keyring-block-ok {
+	background: #efe;
+}
+
+.firegpg-keyring-block-caution {
+	background: #ffe;
+}
+
+.firegpg-keyring-block-failure {
+	background: #fee;
+}
+
+.firegpg-keyring-block-information {
+	background: #eef;
+}
+
+.firegpg-keyring-block .firegpg-keyring-header {
+	font-size: smaller;
+	font-weight: bold;
+	text-transform: lowercase;
+	font-variant: small-caps;
+	border-bottom: dotted 1px;
+}
+
+.firegpg-keyring-block .firegpg-keyring-options span {
+	font-size: smaller;
+	color: #00f;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.firegpg-keyring-block .firegpg-keyring-error {
+	color: #f00;
+}
