@@ -34,7 +34,10 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-// Class to handle selection
+/*
+   Class: Selection
+   Class to handle selection
+*/
 var Selection = {
 	/* find a select in a frame */
 	getFrame: function(frames) {
@@ -74,9 +77,10 @@ var Selection = {
 		return selObj;
 	},
 
-	/*
-	 * Return actual selection.
-	 */
+    /*
+    Function: get
+    Return current selection.
+    */
 	get: function() {
 		var i;
 
@@ -120,7 +124,13 @@ var Selection = {
 		return value;
 	},
 
-	/* Transform HTML to usable text to encrypt */
+	/*
+    Function: wash
+    Transform HTML to usable text to encrypt
+
+    Parameters:
+        text - The text to wash
+    */
 	wash: function(text) {
 		//Si il semblerais que l'on soit dans un texte html, on va éliminer les \n qui n'on rien à faire la !
 		if (text.indexOf("<br>") != -1 || text.indexOf("<BR>") != -1 || text.indexOf("<BR/>") != -1  || text.indexOf("<br/>") != -1  || text.indexOf("<BR />") != -1  || text.indexOf("<br />") != -1) {
@@ -187,9 +197,10 @@ var Selection = {
 		return str;
 	},
 
-	/*
-	 * Return true if the selection is editable.
-	 */
+    /*
+    Function: isEditable
+    Return true if the selection is editable.
+    */
 	isEditable: function() {
 		// We try to get a text from a textaera or input :
 		try {
@@ -211,9 +222,14 @@ var Selection = {
 		return true; //If it's ok !
 	},
 
-	/*
-	 * Modify the selection.
-	 */
+    /*
+    Function: set
+    Modify the selection, or show a dialog with the text if it's not possible.
+
+    Parameters:
+        text - The text to set.
+        infoSignAndCrypt - _Optional_. Informations about a signature into a decrypted text.
+    */
 	set: function(text, infoSignAndCrypt) {
 		/* if the option "always show in a new window" is checked */
 		var key = "extensions.firegpg.result_always_in_new_window";
