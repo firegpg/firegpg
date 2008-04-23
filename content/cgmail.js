@@ -912,15 +912,14 @@ var cGmail = {
 
 		var children = nodeForScan.childNodes;
 
-			for (var i = 0; i < children.length; i++)
-			 {
-			try {
-			if (children[i].attributes.getNamedItem("id").textContent == "snd")
-			{
-				var evt = dDocument.createEvent("MouseEvents");
-					evt.initEvent("click", true, true);
-					children[i].dispatchEvent(evt);
-			} } catch (e) { }
+			for (var i = 0; i < children.length; i++) {
+                try {
+                    if (children[i].attributes.getNamedItem("id").textContent == "snd")       {
+                        var evt = dDocument.createEvent("MouseEvents");
+                            evt.initEvent("click", true, true);
+                            children[i].dispatchEvent(evt);
+                    }
+                } catch (e) { }
 			}
 	},
 

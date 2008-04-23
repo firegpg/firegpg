@@ -33,7 +33,7 @@
 	border-bottom: dotted 1px;
 }
 
-.firegpg-keyring-block .firegpg-keyring-options span {
+.firegpg-keyring-block .firegpg-keyring-options span span {
 	font-size: smaller;
 	color: #00f;
 	cursor: pointer;
