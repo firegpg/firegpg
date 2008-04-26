@@ -5,9 +5,9 @@
 <!ENTITY gmail-enabled-checkbox.label "Supporto GMail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Chiave privata di default">
-<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
+<!ENTITY show-website-checkbox "Mostra l'indirizzo del sito web di FireGPG nel campo 'commenti' GPG">
 <!ENTITY change-gpg-path-button "Seleziona cartella">
-<!ENTITY change-gpg-path-checkbox "Specifica un path per GPG alternativo:">
+<!ENTITY change-gpg-path-checkbox "Specifica un percorso alternativo per GPG:">
 <!ENTITY result-always-in-new-window "Visualizza sempre il testo criptato / firmato in una nuova finestra.">
 <!ENTITY no-gpg-agent-checkbox "Forza disattivazione di gpg's agent (può risolvere alcuni errori)">
 <!ENTITY ask-for-save-pass "Chiedi di salvare la password come azione predefinita">
@@ -43,3 +43,4 @@
 <!ENTITY api-liste-keyauth.label "Chiave">
 <!ENTITY use-gpg-agent-checkbox "Attiva l'agente GPG (ATTENZIONE: potrebbe causare malfunzionamenti...)">
 <!ENTITY search-description "Filtro:">
+<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">

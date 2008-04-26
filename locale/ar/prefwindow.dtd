@@ -43,3 +43,4 @@
 <!ENTITY api-liste-keyauth.label "مفتاح">
 <!ENTITY use-gpg-agent-checkbox "فعّل gpg-agent (تحذير: قد يسبب مشاكلا)">
 <!ENTITY search-description "مرشّح:">
+<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">

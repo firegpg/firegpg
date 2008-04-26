@@ -17,3 +17,4 @@ pref("browser.preferences.instantApply", false);
 pref("extension.firegpg.gpgauth.global.enable_gpgauth", true);
 pref("extensions.firegpg.no_updates", false);
 pref("extensions.firegpg.enable_gpgapi", true);
+pref("extensions.firegpg.gmail_butons_use_select", false);

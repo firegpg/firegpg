@@ -44,3 +44,4 @@ Websiten (Doppelklick zum Entfernen)">
 <!ENTITY api-liste-keyauth.label "Schlüssel">
 <!ENTITY use-gpg-agent-checkbox "GPG-Agent aktivieren (Achtung, kann Probleme verursachen)">
 <!ENTITY search-description "Filter :">
+<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">

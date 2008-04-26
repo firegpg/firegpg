@@ -380,10 +380,33 @@ var cGmail2 = {
 
 			var i18n = document.getElementById("firegpg-strings");
 
-            //If the user want to decrypt the mail (can use normal attibutes)
-			if (event.target.innerHTML == i18n.getString("GMailD")) {
+            if (event.target.nodeName == "SELECT")
+                return;
 
-                var tmpNode = event.target;
+            try {
+
+                if (event.target.nodeName == "OPTION") {
+
+                    var tmpval = event.target.value;
+
+                    var target = event.target.parentNode;
+
+                    target.setAttribute('gpg_action', tmpval);
+
+                    target.value = "FireGPG";
+                } else {
+
+                    target = event.target;
+
+                }
+
+            } catch (e)  { alert(e);}
+
+
+            //If the user want to decrypt the mail (can use normal attibutes)
+			if (target.innerHTML == i18n.getString("GMailD")) {
+
+                var tmpNode = target;
 
                 var mailNode = null;
 
@@ -455,10 +478,10 @@ var cGmail2 = {
 					showText(crypttext,undefined,undefined,undefined,signAndCryptResult);
 				}
 			}
-			else if (event.target.getAttribute('gpg_action') == "sndsign" || event.target.getAttribute('gpg_action') == "sign")
+			else if (target.getAttribute('gpg_action') == "sndsign" || target.getAttribute('gpg_action') == "sign")
 			{
 
-				var mailContent = cGmail2.getWriteMailContent(this._doc,event.target.parentNode);
+				var mailContent = cGmail2.getWriteMailContent(this._doc,target.parentNode);
 
 				if (mailContent == "")
 					return;
@@ -483,22 +506,22 @@ var cGmail2 = {
 				}
 				else {
 
-					cGmail2.setWriteMailContent(this._doc,event.target.parentNode,result.output);
+					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.output);
 
-					if (event.target.getAttribute('gpg_action') == "sndsign")
+					if (target.getAttribute('gpg_action') == "sndsign")
 					{
-						cGmail2.sendEmail(event.target.parentNode,this._doc);
+						cGmail2.sendEmail(target.parentNode,this._doc);
 					}
 				}
 
 			}
-			else if (event.target.getAttribute('gpg_action') == "sndcrypt" || event.target.getAttribute('gpg_action') == "crypt")
+			else if (target.getAttribute('gpg_action') == "sndcrypt" || target.getAttribute('gpg_action') == "crypt")
 			{
 
 				//This code has to mix with the previous else/if block
-				var mailContent = cGmail2.getWriteMailContent(this._doc,event.target.parentNode);
+				var mailContent = cGmail2.getWriteMailContent(this._doc,target.parentNode);
 
-				var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,event.target.parentNode);
+				var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,target.parentNode);
 
 
 				if (mailContent == "")
@@ -519,22 +542,22 @@ var cGmail2 = {
 				}
 				else {
 
-					cGmail2.setWriteMailContent(this._doc,event.target.parentNode,result.output);
+					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.output);
 
-					if (event.target.getAttribute('gpg_action') == "sndcrypt")
+					if (target.getAttribute('gpg_action') == "sndcrypt")
 					{
-						cGmail2.sendEmail(event.target.parentNode,this._doc);
+						cGmail2.sendEmail(target.parentNode,this._doc);
 					}
 
 				}
 			}
-			else if (event.target.getAttribute('gpg_action') == "sndsigncrypt" || event.target.getAttribute('gpg_action') == "signcrypt")
+			else if (target.getAttribute('gpg_action') == "sndsigncrypt" || target.getAttribute('gpg_action') == "signcrypt")
 			{
 
 				//This code has to mix with the previous else/if block
-				var mailContent = cGmail2.getWriteMailContent(this._doc,event.target.parentNode);
+				var mailContent = cGmail2.getWriteMailContent(this._doc,target.parentNode);
 
-				var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,event.target.parentNode);
+				var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,target.parentNode);
 
 
 				if (mailContent == "")
@@ -569,16 +592,16 @@ var cGmail2 = {
 				}
 				else {
 
-					cGmail2.setWriteMailContent(this._doc,event.target.parentNode,result.output);
+					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.output);
 
-					if (event.target.getAttribute('gpg_action') == "sndsigncrypt")
+					if (target.getAttribute('gpg_action') == "sndsigncrypt")
 					{
-						cGmail2.sendEmail(event.target.parentNode,this._doc);
+						cGmail2.sendEmail(target.parentNode,this._doc);
 					}
 
 				}
 			}
-            else if (event.target.getAttribute('gpg_action') == "add_crypted" || event.target.getAttribute('gpg_action') == "add_crypted_and_sign")
+            else if (target.getAttribute('gpg_action') == "add_crypted" || target.getAttribute('gpg_action') == "add_crypted_and_sign")
 			{
 
                 //Ok, so the user want to crypt a file.
@@ -598,7 +621,7 @@ var cGmail2 = {
 
                 var data = getBinContent("file://" + filePath);
 
-                var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,event.target.parentNode.parentNode.parentNode);
+                var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,target.parentNode.parentNode.parentNode);
 
 				if (data == "")
 					return;
@@ -610,7 +633,7 @@ var cGmail2 = {
 
                 errors = false;
 
-                if (event.target.getAttribute('gpg_action') == "add_crypted") {
+                if (target.getAttribute('gpg_action') == "add_crypted") {
 
                     var result = GPG.baseCrypt(data,keyID,false,true);
 
@@ -661,7 +684,7 @@ var cGmail2 = {
 
 
                     //We simulate the add
-                    var tablebox = event.target.parentNode.parentNode.getElementsByTagName('table');
+                    var tablebox = target.parentNode.parentNode.getElementsByTagName('table');
                     tablebox = tablebox[0];
 
                     //The last span is evry time a "Attach file" button.
@@ -707,7 +730,8 @@ var cGmail2 = {
 
     /*
         Function: addBouton
-        This function create a html button at the end of a node.
+        This function create a html button at the end of a node
+        OR append a opton value on the select (who is created), if the user request for this.
 
         Parameters:
             box - The node where the button is added.
@@ -717,23 +741,67 @@ var cGmail2 = {
             spamLimite -  The node before when we create the button.
     */
     addBouton: function(box,doc,label,action,spamLimite) {
-		var bouton = new Object;
-		bouton = null;
-		bouton = doc.createElement("button");
 
-		bouton.setAttribute("type","button");
-        bouton.setAttribute("gpg_action",action);
+        if ( ! this.b_use_select_s) {
 
-        bouton.setAttribute("style","width: auto;");
+            var bouton = new Object;
+            bouton = null;
+            bouton = doc.createElement("button");
 
+            bouton.setAttribute("type","button");
+            bouton.setAttribute("gpg_action",action);
 
-		bouton.innerHTML = label;
-
-		try {
-			box.insertBefore(bouton,spamLimite);
+            bouton.setAttribute("style","width: auto;");
 
 
-		} catch (e) {}
+            bouton.innerHTML = label;
+
+            try {
+                box.insertBefore(bouton,spamLimite);
+
+
+            } catch (e) {}
+
+        } else { //we have to use a select list.
+
+            //We try to found a select who already exist.
+
+            var selectlist = box.getElementsByTagName('select');
+
+            if (selectlist[0])
+                var select = selectlist[0];
+            else {
+
+                var select = new Object;
+                select = null;
+                select = doc.createElement("select");
+
+                select.setAttribute("gpg_action","SELECT");
+
+                select.setAttribute("style","font-size: 80%; margin-left: 5px; margin-bottom: 5px;");
+
+                var option = new Option("FireGPG","FireGPG");
+
+                select.add(option,null);
+
+                try {
+                    box.insertBefore(select,spamLimite);
+
+                     var tmpListener = new Object;
+                    tmpListener = null;
+                    tmpListener = new cGmail2.callBack(doc)
+                    select.addEventListener('onchange',tmpListener,false);
+
+               } catch (e) {}
+
+            }
+
+            //Now we add the option.
+            var option = new Option("> " + label,action);
+
+            select.add(option,null);
+
+        }
 	},
 
     /*
@@ -1165,8 +1233,12 @@ var cGmail2 = {
 
 			try {	var b_signcrypt = prefs.getBoolPref("gmail_butons_sign_crypt");	}
 			catch (e) { var b_signcrypt = true; }
-			try {	var b_signcrypt_s = prefs.getBoolPref("gmail_butons_sign_crypt_send");	}
+
+            try {	var b_signcrypt_s = prefs.getBoolPref("gmail_butons_sign_crypt_send");	}
 			catch (e) { var b_signcrypt_s = true; }
+
+            try {	var b_use_select_s = prefs.getBoolPref("gmail_butons_use_select");	}
+			catch (e) { var b_use_select_s = false; }
 
 			cGmail2.nonosign = nonosign;
 			cGmail2.b_sign = b_sign;
@@ -1175,6 +1247,7 @@ var cGmail2 = {
 			cGmail2.b_crypt_s = b_crypt_s;
 			cGmail2.b_signcrypt = b_signcrypt;
 			cGmail2.b_signcrypt_s = b_signcrypt_s;
+            cGmail2.b_use_select_s = b_use_select_s;
 
 
 

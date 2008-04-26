@@ -43,3 +43,4 @@
 <!ENTITY api-liste-keyauth.label "Key">
 <!ENTITY use-gpg-agent-checkbox "Active Gpg-agent (warning, can lead issues...)">
 <!ENTITY search-description "Filter :">
+<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">

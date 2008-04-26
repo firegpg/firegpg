@@ -43,3 +43,4 @@
 <!ENTITY api-liste-keyauth.label "密钥">
 <!ENTITY use-gpg-agent-checkbox "激活Gpg-agent（警告，可能带来问题······）">
 <!ENTITY search-description "Filter :">
+<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">

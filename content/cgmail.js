@@ -345,6 +345,9 @@ var cGmail = {
 			try {	var b_signcrypt_s = prefs.getBoolPref("gmail_butons_sign_crypt_send");	}
 			catch (e) { var b_signcrypt_s = true; }
 
+            try {	var b_use_select_s = prefs.getBoolPref("gmail_butons_use_select");	}
+			catch (e) { var b_use_select_s = false; }
+
 			cGmail.nonosign = nonosign;
 			cGmail.b_sign = b_sign;
 			cGmail.b_sign_s = b_sign_s;
@@ -352,6 +355,7 @@ var cGmail = {
 			cGmail.b_crypt_s = b_crypt_s;
 			cGmail.b_signcrypt = b_signcrypt;
 			cGmail.b_signcrypt_s = b_signcrypt_s;
+            cGmail.b_use_select_s = b_use_select_s;
 		}
 	},
 
@@ -367,23 +371,69 @@ var cGmail = {
             info1 -  Dosen't seem to be used.
     */
 	addBouton: function(label,id,box,Ddocument,info1) {
-		var bouton = new Object;
-		bouton = null;
-		bouton = Ddocument.createElement("button");
 
-		bouton.setAttribute("type","button");
-		//bouton.setAttribute("tabindex","8");
-		bouton.setAttribute ("style","padding: 0pt 1em;");
-		bouton.setAttribute("id",id);
+        if ( ! this.b_use_select_s) {
 
-		bouton.innerHTML = label;
+            var bouton = new Object;
+            bouton = null;
+            bouton = Ddocument.createElement("button");
 
-		try {
-			box.innerHTML = box.innerHTML + " &nbsp;";
-			box.appendChild(bouton);
+            bouton.setAttribute("type","button");
+            //bouton.setAttribute("tabindex","8");
+            bouton.setAttribute ("style","padding: 0pt 1em;");
+            bouton.setAttribute("id",id);
+
+            bouton.innerHTML = label;
+
+            try {
+                box.innerHTML = box.innerHTML + " &nbsp;";
+                box.appendChild(bouton);
 
 
-		} catch (e) {}
+            } catch (e) {}
+
+        } else { //we have to use a select list.
+
+            //We try to found a select who already exist.
+
+            var selectlist = box.getElementsByTagName('select');
+
+            if (selectlist[0])
+                var select = selectlist[0];
+            else {
+
+                var select = new Object;
+                select = null;
+                select = Ddocument.createElement("select");
+
+                select.setAttribute("gpg_action","SELECT");
+
+                select.setAttribute("style","margin-left: 5px;");
+
+                var option = new Option("FireGPG","FireGPG");
+
+                select.add(option,null);
+
+                try {
+                    box.appendChild(select);
+
+                     var tmpListener = new Object;
+                    tmpListener = null;
+                    tmpListener = new cGmail.callBack("tralala",info1)
+                    select.addEventListener('onchange',tmpListener,false);
+
+               } catch (e) { alert(e);}
+
+            }
+
+            //Now we add the option.
+            var option = new Option("> " + label,id);
+
+            select.add(option,null);
+
+        }
+
+
 	},
 
     /*
@@ -470,7 +520,31 @@ var cGmail = {
 
 			var i18n = document.getElementById("firegpg-strings");
 
-			if (event.target.id == "sm_decrypt") {
+
+            if (event.target.nodeName == "SELECT")
+                return;
+
+            try {
+
+                if (event.target.nodeName == "OPTION") {
+
+                    var tmpval = event.target.value;
+
+                    var target = event.target.parentNode;
+
+                    target.id = tmpval;
+
+                    target.value = "FireGPG";
+                } else {
+
+                    target = event.target;
+
+                }
+
+            } catch (e)  { alert(e);}
+
+
+			if (target.id == "sm_decrypt") {
 				var contenuMail = cGmail.lastDomToverify.document.getElementById('mb_' + info1);
 
 				var range = cGmail.lastDomToverify.document.createRange();
@@ -534,7 +608,7 @@ var cGmail = {
 					showText(crypttext,undefined,undefined,undefined,signAndCryptResult);
 				}
 			}
-			else if (event.target.id == "sndsign" || event.target.id == "sign")
+			else if (target.id == "sndsign" || target.id == "sign")
 			{
 
 				var mailContent = cGmail.getWriteMailContent(cGmail.lastDomToverify.document,info1);
@@ -567,7 +641,7 @@ var cGmail = {
 
 					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.output);
 
-					if (event.target.id == "sndsign")
+					if (target.id == "sndsign")
 					{
 						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
 						boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
@@ -576,7 +650,7 @@ var cGmail = {
 				}
 
 			}
-			else if (event.target.id == "sndcrypt" || event.target.id == "crypt")
+			else if (target.id == "sndcrypt" || target.id == "crypt")
 			{
 
 				//This code has to mix with the previous else/if block
@@ -607,7 +681,7 @@ var cGmail = {
 
 					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.output);
 
-					if (event.target.id == "sndcrypt")
+					if (target.id == "sndcrypt")
 					{
 						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
 						boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
@@ -616,7 +690,7 @@ var cGmail = {
 
 				}
 			}
-			else if (event.target.id == "sndsigncrypt" || event.target.id == "signcrypt")
+			else if (target.id == "sndsigncrypt" || target.id == "signcrypt")
 			{
 
 				//This code has to mix with the previous else/if block
@@ -661,7 +735,7 @@ var cGmail = {
 
 					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.output);
 
-					if (event.target.id == "sndsigncrypt")
+					if (target.id == "sndsigncrypt")
 					{
 						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
 						boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;

@@ -137,6 +137,8 @@
             <preference id="gmail-buton-cryptsend" name="extensions.firegpg.gmail_butons_crypt_send" type="bool"/>
             <preference id="gmail-buton-signcrypt" name="extensions.firegpg.gmail_butons_sign_crypt" type="bool"/>
             <preference id="gmail-buton-signcryptsend" name="extensions.firegpg.gmail_butons_sign_crypt_send" type="bool"/>
+            <preference id="gmail-buton-use-select" name="extensions.firegpg.gmail_butons_use_select" type="bool"/>
+
         </preferences>
 
         <label  id="gmail-need-a-restart-label" value="&gmail-need-a-restart;"/>
@@ -179,6 +181,9 @@
                 </row>
             </rows>
         </grid>
+
+        <checkbox id="gmail-buton-use-select-checkbox" preference="gmail-buton-use-select"
+              label="&gmail-buton-use-select-checkbox;"/>
     </prefpane>
 
     <!-- Gpg api -->
