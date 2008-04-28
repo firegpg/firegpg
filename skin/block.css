@@ -1,0 +1,47 @@
+body {
+	background: #fee url("firegpgbox.png") no-repeat scroll right bottom;
+	border: solid 1px #000;
+	color: #000;
+	margin: 0;
+	padding: 5px;
+}
+
+body.ok {
+	background-color: #efe;
+}
+
+body.caution {
+	background-color: #ffe;
+}
+
+body.failure {
+	background-color: #fee;
+}
+
+body.information {
+	background-color: #eef;
+}
+
+#header {
+	display: inline;
+	font-size: smaller;
+	font-variant: small-caps;
+	font-weight: bold;
+	text-transform: lowercase;
+	border-bottom: dotted 1px;
+}
+
+#options span {
+	font-size: smaller;
+	color: #00f;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+body.failure #output {
+	color: #f00;
+}
+
+#message {
+	padding: 4px 0;
+}

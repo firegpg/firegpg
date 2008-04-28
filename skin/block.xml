@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Block context</title>
+		<link rel="stylesheet" type="text/css" href="block.css" />
+	</head>
+	<body>
+		<div id="header"></div>
+		<pre id="output" style="display: none;"></pre>
+		<div id="message"></div>
+		<div id="options">
+			<span tabindex="0" id="toggle-original">Show Original</span> |
+			<span tabindex="0" id="action"></span>
+		</div>
+		<pre id="original" style="display: none;">
+		</pre>
+	</body>
+</html>

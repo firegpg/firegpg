@@ -1,46 +1,36 @@
 var Keyring = { };
 
 Keyring.Tags = {
+    PgpBlockStart: "-----BEGIN PGP",
 	KeyStart: "-----BEGIN PGP PUBLIC KEY BLOCK-----",
 	KeyEnd: "-----END PGP PUBLIC KEY BLOCK-----",
 	SignedMessageStart: "-----BEGIN PGP SIGNED MESSAGE-----",
 	SignatureStart: "-----BEGIN PGP SIGNATURE-----",
 	SignatureEnd: "-----END PGP SIGNATURE-----",
 	EncryptedMessageStart: "-----BEGIN PGP MESSAGE-----",
-	EncryptedMessageEnd: "-----END PGP MESSAGE-----",
-    Start: "-----BEGIN PGP"
+	EncryptedMessageEnd: "-----END PGP MESSAGE-----"
 };
 
-Keyring.Types = {
-	Key: "KEY",
-	Sign: "SIGN",
-	Encrypt: "ENCRYPT"
+Keyring.KEY_BLOCK = 1;
+Keyring.SIGN_BLOCK = 2;
+Keyring.MESSAGE_BLOCK = 3;
+
+Keyring.Strings = {
+	Key: "PHP Public Key",
+	SignedMessage: "PGP Signed Message",
+	EncryptedMessage: "PGP Encrypted Message",
+	Import: "Import",
+	VerifySignature: "Verify Signature",
+	Decrypt: "Decrypt",
+	SignatureUnverified: "unverified",
+	SignatureInvalid: "invalid",
+	SignatureBy: "signed by %1, %2",
+	Unsigned: "unsigned",
 };
 
-Keyring.Elements = {
-	Original: "ORIGINAL",
-	Title: "TITLE",
-	Action: "ACTION",
-    Cleared: "CLEARED"
-};
 
-Keyring.Actions = {
-	ShowHide: "SHOWHIDE",
-	Verifiy: "VERIFY",
-	Decrypt: "DECRYPT",
-    Import: "IMPORT"
-};
-
-Keyring.HandleBlock = function(document, range,type) {
-	var newEl = document.createElement("div");
-	newEl.setAttribute("class", "firegpg-keyring-block");
-    newEl.setAttribute("firegpg-type", type);
-
-    //Create box with the original text
-	var originalPre = document.createElement("pre");
-    originalPre.setAttribute("style", "display:  none;");
-    originalPre.setAttribute("firegpg-element", Keyring.Elements.Original);
-
+Keyring.HandleBlock = function(document, range, blockType) {
+	// Get content, remove whitespace from beginning of the lines.
 
     var s = new XMLSerializer();
 	var d = range.cloneContents();
@@ -48,205 +38,84 @@ Keyring.HandleBlock = function(document, range,type) {
 
     var content = Selection.wash(str);
 
-    var fragment = range.extractContents(originalPre);
+    var fragment = range.extractContents();
 
-	var contentNode = document.createTextNode(content);
-	originalPre.appendChild(contentNode);
+	// We use an iframe to prevent the owning page from accessing potentially
+	// private information (contents of encrypted message).
+	var frame = document.createElement("iframe");
+	range.insertNode(frame);
+	frame.contentWindow.location.href = "chrome://firegpg/skin/block.xml";
+	frame.style.border = "0px";
+	frame.style.width = "100%";
 
-    //Create the title
-    var titleSpan = document.createElement("span");
-    titleSpan.setAttribute("class", "firegpg-keyring-header");
-    titleSpan.setAttribute("firegpg-element", Keyring.Elements.Title);
+	frame.addEventListener("load", function() {
+		var block = {
+			body: frame.contentDocument.getElementsByTagName("body")[0],
+			header: frame.contentDocument.getElementById("header"),
+			output: frame.contentDocument.getElementById("output"),
+			message: frame.contentDocument.getElementById("message"),
+			action: frame.contentDocument.getElementById("action"),
+			original: frame.contentDocument.getElementById("original"),
+		}
 
-    switch(type) {
-        case Keyring.Types.Key:
-            titleSpan.innerHTML = "PGP Public Key //I18N";
-            break;
+		// Universal set up
+		block.original.textContent = content;
+		frame.contentDocument.getElementById("toggle-original").addEventListener("click", function() {
+			var style = block.original.style;
+			if(style.display == "block")
+				style.display = "none";
+			else
+				style.display = "block";
+			frame.style.height = block.body.scrollHeight + "px";
+		}, false);
+		var actionHandler = function() {
+			switch(blockType) {
+				case Keyring.KEY_BLOCK:
+					Keyring.ImportKey(block.original.textContent, block);
+					break;
+				case Keyring.SIGN_BLOCK:
+					Keyring.VerifySignature(block.original.textContent, block);
+					break;
+				case Keyring.MESSAGE_BLOCK:
+					Keyring.DecryptMessage(block.original.textContent, block);
+					break;
+			}
+			frame.style.height = block.body.scrollHeight + "px";
+		};
+		block.action.addEventListener("click", actionHandler, false);
 
-        case Keyring.Types.Sign:
-            titleSpan.innerHTML = "PGP Signed Message - Unverified //I18N";
-            break;
+		switch(blockType) {
+			case Keyring.KEY_BLOCK:
+				block.body.className = "information";
+				block.header.textContent = Keyring.Strings.Key;
+				block.action.textContent = Keyring.Strings.Import;
+				break;
+			case Keyring.SIGN_BLOCK:
+				block.body.className = "caution";
+				block.header.textContent = Keyring.Strings.SignedMessage + ", " + Keyring.Strings.SignatureUnverified;
+				block.action.textContent = Keyring.Strings.VerifySignature;
 
-        case Keyring.Types.Encrypt:
-            titleSpan.innerHTML = "PGP Encrypted Message //I18N";
-            break;
-    }
-
-
-    //Create the actions
-    var actionDiv = document.createElement("div");
-
-    actionDiv.setAttribute("class", "firegpg-keyring-options");
-    actionDiv.setAttribute("firegpg-element", Keyring.Elements.Action);
-    actionDiv.innerHTML = '<span><span firegpg-action="' + Keyring.Actions.ShowHide +'">Show Original //I18N</span></span>';
-
-    switch(type) {
-        case Keyring.Types.Key:
-            actionDiv.innerHTML += '<span> | <span firegpg-action="' + Keyring.Actions.Import +'">Import //I18N</span></span>';
-            break;
-
-        case Keyring.Types.Sign:
-            actionDiv.innerHTML += '<span> | <span firegpg-action="' + Keyring.Actions.Verifiy +'">Verify Signature //I18N</span></span>';
-            break;
-
-        case Keyring.Types.Encrypt:
-            actionDiv.innerHTML += '<span> | <span firegpg-action="' + Keyring.Actions.Decrypt +'">Decryp //I18N</span></span>';
-            break;
-    }
-
-
-
-    //Create the cleaned text (text only for signs but needed for later).
-
-    var cleanedPre = document.createElement("pre");
-        cleanedPre.setAttribute("firegpg-element", Keyring.Elements.Cleared);
-
-    if (type == Keyring.Types.Sign) {
-
-
-        //We  extract the content from the content found before.
-
-        var cleanContent = content;
-
-        cleanContent = cleanContent.substring(
-            cleanContent.indexOf("\n\n",cleanContent.indexOf(Keyring.Tags.SignedMessageStart) + Keyring.Tags.SignedMessageStart.length) + 2,
-            cleanContent.lastIndexOf(Keyring.Tags.SignatureStart) - 1
-            );
-
-    } else {
-        var cleanContent = "";
-        cleanedPre.style.display = 'none';
-    }
-
-    var contentNode2 = document.createTextNode(cleanContent);
-        cleanedPre.appendChild(contentNode2);
-
-
-    //Append childs
-    newEl.appendChild(titleSpan);
-    newEl.appendChild(cleanedPre);
-    newEl.appendChild(actionDiv);
-    newEl.appendChild(originalPre);
-
-    //Add listener
-    newEl.addEventListener('click',this.callback,true);
-
-	range.insertNode(newEl);
-}
-
-Keyring.callback = function(event) {
-
-    if (!event.target.hasAttribute("firegpg-action"))
-        return;
-
-    var nodeslist = event.target.parentNode.parentNode.parentNode.childNodes;
-
-    for (var i = 0; i < nodeslist.length; i++) {
-        try {
-            switch (nodeslist[i].attributes.getNamedItem("firegpg-element").textContent) {
-
-                case Keyring.Elements.Original:
-                    var originalNode = nodeslist[i];
-                    break;
-
-                case Keyring.Elements.Title:
-                    var titleNode = nodeslist[i];
-                    break;
-
-                case Keyring.Elements.Cleared:
-                    var clearedNode = nodeslist[i];
-                    break;
-            }
-        } catch (e) { }
-
-    }
-    switch (event.target.getAttribute("firegpg-action")) {
-
-        case Keyring.Actions.ShowHide:
-
-            if (originalNode.style.display == "none") {
-                event.target.innerHTML = "Hide Original //I18N";
-                originalNode.style.display = "block";
-            } else {
-                event.target.innerHTML = "Show Original //I18N";
-                originalNode.style.display = "none";
-            }
-
-            break;
-
-        case Keyring.Actions.Import:
-
-            if (confirm("I18N ! Import ?\n"+ originalNode.innerHTML)) {
-
-                titleNode.innerHTML = "PGP Public Key" + " - Impoted // I18N";
-                titleNode.style.color = "green";
-
-            } else { //FOR TESTS ONLY
-                titleNode.innerHTML = "PGP Public Key" + " - Not imported, error. // I18N";
-                titleNode.style.color = "red";
-            }
-
-            event.target.parentNode.innerHTML = "";
-
-            break;
-
-        case Keyring.Actions.Decrypt:
-
-            if (confirm("I18N ! Decrypt ?\n"+ originalNode.innerHTML)) {
-
-                titleNode.innerHTML = "PGP Encrypted Message" + " - Decrypted // I18N";
-                titleNode.style.color = "green";
-
-                clearedNode.innerHTML = "Message decrypted";
-                clearedNode.style.display = 'block';
-
-            } else { //FOR TESTS ONLY
-                titleNode.innerHTML = "PGP Encrypted Message" + " - Decryption failled - No private key // I18N";
-                titleNode.style.color = "red";
-            }
-
-            event.target.parentNode.innerHTML = "";
-
-            break;
-
-        case Keyring.Actions.Verifiy:
-
-            if (confirm("I18N ! Verify ?\n"+ originalNode.innerHTML)) {
-
-                titleNode.innerHTML = "PGP Signed Message" + " - Valid sign from tralla on trallalal // I18N";
-                titleNode.style.color = "green";
-
-
-            } else { //FOR TESTS ONLY
-                titleNode.innerHTML = "PGP Signed Message" + " - Verify failled - No private key // I18N";
-                titleNode.style.color = "red";
-            }
-
-            event.target.parentNode.innerHTML = "";
-
-            break;
-
-
-    }
-
-}
+				// Extract the message without the header and signature
+				block.message.innerHTML = content.substring(content.indexOf("\n\n"), content.indexOf(Keyring.Tags.SignatureStart)).replace(/</gi,"&lt;").replace(/>/gi,"&gt;").replace(/\n/gi,"<br />");
+				break;
+			case Keyring.MESSAGE_BLOCK:
+				block.body.className = "caution";
+				block.header.textContent = Keyring.Strings.EncryptedMessage;
+				block.action.textContent = Keyring.Strings.Decrypt;
+				break;
+		}
+		frame.style.height = block.body.scrollHeight + "px";
+	}, false);
+};
 
 Keyring.HandlePage = function(document) {
 
 	var filter = function(node) {
-		try
-		{
-			if(node.parentNode.parentNode.getAttribute("class").substr(0, 21) == "firegpg-keyring-block")
-				return NodeFilter.FILTER_SKIP;
-		}
-		catch(e) {
-		}
 		return NodeFilter.FILTER_ACCEPT;
 	};
 
-	var haveBlocks = false;
 	var haveStart = false;
-    var finished = false;
+	var blockType;
 	var tw = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT, filter, false);
 	var node, range, idx, search, baseIdx;
 	while((node = tw.nextNode())) {
@@ -254,22 +123,22 @@ Keyring.HandlePage = function(document) {
 		while(true) {
 			if(!haveStart) {
 
-                if (node.textContent.indexOf(Keyring.Tags.Start, idx) == -1)
+                if (node.textContent.indexOf(Keyring.Tags.PgpBlockStart, idx) == -1)
                     break;
 
                 baseIdx = idx;
 				idx = node.textContent.indexOf(Keyring.Tags.KeyStart, baseIdx);
+                blockType = Keyring.KEY_BLOCK;
 				search = Keyring.Tags.KeyEnd;
-                type = Keyring.Types.Key;
 				if(idx == -1) {
 					idx = node.textContent.indexOf(Keyring.Tags.SignedMessageStart, baseIdx);
 					search = Keyring.Tags.SignatureEnd;
-                    type = Keyring.Types.Sign;
+                    blockType = Keyring.SIGN_BLOCK;
 				}
 				if(idx == -1) {
 					idx = node.textContent.indexOf(Keyring.Tags.EncryptedMessageStart, baseIdx);
 					search = Keyring.Tags.EncryptedMessageEnd;
-                    type = Keyring.Types.Encrypt;
+                    blockType = Keyring.MESSAGE_BLOCK;
 				}
 
 				if(idx == -1)
@@ -281,7 +150,6 @@ Keyring.HandlePage = function(document) {
 				idx += 6;
 			}
 			if(haveStart) {
-                savedIdx = idx;
 
                 tryOne = node.textContent.indexOf(search, idx);
 
@@ -290,33 +158,22 @@ Keyring.HandlePage = function(document) {
 
 				idx = node.textContent.indexOf(search, this.ignoreInners(idx,tryOne,node.textContent));
 
-                if(idx == -1)
+                if(idx == -1) {
 					break;
+				}
 
                 haveStart = false;
 				range.setEnd(node, idx + search.length);
-				Keyring.HandleBlock(document, range,type);
-				haveBlocks = true;
+				Keyring.HandleBlock(document, range, blockType);
 				range.detach();
 				idx += search.length;
 			}
 		}
 
-
-	}
-
-	if(haveBlocks) {
-		var h = document.getElementsByTagName("head");
-		if(h.length == 0)
-			return;
-		var style = document.createElement("link");
-		style.setAttribute("rel", "stylesheet");
-		style.setAttribute("type", "text/css");
-		style.setAttribute("href", "chrome://firegpg/skin/client.css");
-		h[0].appendChild(style);
 	}
 
 };
+
 
 Keyring.ignoreInners = function(idx, end,node) {
 
@@ -346,10 +203,108 @@ Keyring.ignoreInners = function(idx, end,node) {
 
 }
 
+Keyring.ImportKey = function(content, block) {
+	var result = {
+		success: confirm("Test question: was the import successful?"),
+		output: "gpg: key 4A3BFD9E: public key \"IPCop Development Group\n(http://www.ipcop.org/) <ipcop-devel at lists.sourceforge.net>\" imported"
+	};
+
+	if(!result.success)
+		result.output = "gpg: error reading `public_key.asc': general error\ngpg: import from `public_key.asc' failed: general error";
+
+	block.output.style.display = "block";
+	block.output.textContent = result.output;
+
+	if(result.success) {
+		block.body.className = "information";
+	}
+	else {
+		block.body.className = "failure";
+	}
+};
+
+Keyring.VerifySignature = function(content, block) {
+	var result = {
+		success: confirm("Test question: was this signature valid?"),
+		signer: "Ryan Patterson <cgamesplay@cgamesplay.com>",
+		signed: "1:59 pm on 3/18/2008",
+		output: "gpg: Signature made Sun Apr 27 16:38:11 2008 EDT using DSA key ID A61A40ED\ngpg: Good signature from \"Ryan Patterson <cgamesplay@gmail.com>\"\ngpg: WARNING: This key is not certified with a trusted signature!\ngpg:          There is no indication that the signature belongs to the owner.\nPrimary key fingerprint: 247B E558 0BD3 9397 A952  13AB D784 F4CC A61A 40ED"
+	};
+
+	// For testing:
+	if(!result.success)
+		result.output = "gpg: Signature made Fri Mar 28 14:09:12 2008 EDT using DSA key ID A61A40ED\ngpg: BAD signature from \"Ryan Patterson <cgamesplay@gmail.com>\"";
+
+	block.output.style.display = "block";
+	block.output.textContent = result.output;
+
+	if(result.success) {
+		block.body.className = "ok";
+		block.header.textContent = Keyring.Strings.SignedMessage + ", " + Keyring.Strings.SignatureBy.replace("%1", result.signer, "g").replace("%2", result.signed, "g");
+	}
+	else {
+
+		block.body.className = "failure";
+		block.header.textContent = Keyring.Strings.SignedMessage + ", " + Keyring.Strings.SignatureInvalid;
+	}
+};
+
+Keyring.DecryptMessage = function(content, block) {
+	var result = {
+		success: confirm("Test question: was the decryption possible?"),
+		message: "hello!",
+		signer: "Ryan Patterson <cgamesplay@cgamesplay.com>",
+		signed: "1:59 pm on 3/18/2008",
+		output: "gpg: encrypted with 2048-bit ELG key, ID 157091C3, created 2006-09-20\n      \"Ryan Patterson <cgamesplay@gmail.com>\"\ngpg: Signature made Sun Apr 27 16:38:11 2008 EDT using DSA key ID A61A40ED\ngpg: Good signature from \"Ryan Patterson <cgamesplay@gmail.com>\"\ngpg: WARNING: This key is not certified with a trusted signature!\ngpg:          There is no indication that the signature belongs to the owner.\nPrimary key fingerprint: 247B E558 0BD3 9397 A952  13AB D784 F4CC A61A 40ED"
+	};
+
+	// For testing:
+	if(!result.success) {
+		delete result.message;
+		result.output = "gpg: encrypted with ELG key, ID D278A68C\ngpg: decryption failed: No secret key";
+	}
+	else {
+		if(!confirm("Test question: was the message signed?")) {
+			delete result.signer;
+			delete result.signed;
+			result.output = "gpg: encrypted with 2048-bit ELG key, ID 157091C3, created 2006-09-20\n      \"Ryan Patterson <cgamesplay@gmail.com>\"";
+		}
+		else if(!confirm("Test question: was the signature valid?")) {
+			result.success = false;
+			result.output = "gpg: encrypted with 2048-bit ELG key, ID 157091C3, created 2006-09-20\n      \"Ryan Patterson <cgamesplay@gmail.com>\"\ngpg: Signature made Fri Mar 28 14:09:12 2008 EDT using DSA key ID A61A40ED\ngpg: BAD signature from \"Ryan Patterson <cgamesplay@gmail.com>\"";
+		}
+	}
+
+	block.output.style.display = "block";
+	block.output.textContent = result.output;
+
+	if(result.success) {
+		block.body.className = "ok";
+		block.header.textContent = Keyring.Strings.EncryptedMessage + ", ";
+		if(result.signer)
+			block.header.textContent += Keyring.Strings.SignatureBy.replace("%1", result.signer, "g").replace("%2", result.signed, "g");
+		else
+			block.header.textContent += Keyring.Strings.Unsigned;
+		block.message.textContent = result.message;
+	}
+	else {
+		block.body.className = "failure";
+		block.header.textContent = Keyring.Strings.EncryptedMessage;
+		if(result.message)
+			block.message.textContent = result.message;
+		else
+			block.message.textContent = "";
+	}
+};
+
 Keyring.onPageLoad = function(aEvent) {
     var doc = aEvent.originalTarget;
     if(doc.nodeName != "#document")
         return;
+
+	// Don't handle chrome pages
+	if(doc.location.protocol == "chrome:")
+		return;
 
     Keyring.HandlePage(doc);
 };
