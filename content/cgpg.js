@@ -768,7 +768,7 @@ var FireGPG = {
         // We get the result
 		var result = this.GPGAccess.verify(text);
 
-        returnObject.sdOut = result.sdOut;
+        returnObject.sdOut = result.sdOut; alert(result.sdOut);
 
 		// If check failled
 		if(result.sdOut.indexOf("GOODSIG") == "-1") {
@@ -808,6 +808,7 @@ var FireGPG = {
             returnObject.result = RESULT_SUCCESS;
 
             var infos2 = "";
+            infos = infos.split(" ");
             for (var ii = 1; ii < infos.length; ++ii)
                 infos2 = infos2 + infos[ii] + " ";
 

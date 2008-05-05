@@ -181,7 +181,7 @@ function sign() {
     Verfiy signs of the current data of the editor.
 */
 function verify() {
-    FireGPG.baseVerify(false, getSelectedText());
+    FireGPG.verify(false, getSelectedText());
 }
 
 /*

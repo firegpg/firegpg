@@ -45,7 +45,7 @@
   <script src="list.js"/>
    <vbox>
         <description control="list" id="description" value="default description"/>
-        <listbox id="list" seltype="multiple" flex="1" rows="20" style="width:35em">
+        <listbox id="list" seltype="multiple" flex="1" rows="20" style="width:35em" ondblclick="acceptDialog()">
           <listhead>
               <listheader label="&key-name;"></listheader>
               <listheader label="&key-id;"></listheader>
