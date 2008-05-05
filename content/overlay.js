@@ -60,10 +60,10 @@ const ACTION_EDITEUR = 'EDITEUR';
 const ACTION_OPTS = 'OPTS';
 const ACTION_ERASE = 'ERASE';
 
-/*
-   Class: firegpg
-   This is the class to comunicate with the menus added in firefox. She watch the loading of new windows too.
-*/
+ /*
+  * Class: firegpg
+  * This is the class to comunicate with the menus added in firefox. She watch the loading of new windows too.
+  */
 var firegpg = {
 
     /*
@@ -98,22 +98,21 @@ var firegpg = {
         action - The action to exectute. See <Actions>.
 
     */
-	onDelayMenuAction: function(action)
-	{
+	onDelayMenuAction: function(action) {
 		if (action == ACTION_SIGN)
-			GPG.sign();
+			FireGPG.sign();
 		else if(action == ACTION_VERIF)
-			GPG.verify();
+			FireGPG.verify();
 		else if(action == ACTION_CRYPT)
-			GPG.crypt();
+			FireGPG.crypt();
 		else if(action == ACTION_CRYPTSIGN)
-			GPG.cryptAndSign();
+			FireGPG.cryptAndSign();
 		else if(action == ACTION_DECRYPT)
-			GPG.decrypt();
+			FireGPG.decrypt();
 		else if(action == ACTION_IMPORT)
-			GPG.kimport();
+			FireGPG.kimport();
 		else if(action == ACTION_EXPORT)
-			GPG.kexport();
+			FireGPG.kexport();
 		else if(action == ACTION_EDITEUR)
 			showEditor('');
 		else if(action == ACTION_OPTS) {

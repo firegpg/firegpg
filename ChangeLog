@@ -1,4 +1,7 @@
 2008-04-28  Maximilien Cuony
+    * Commiting the new kernel of FireGPG. _API is now broken, gpgauth is not tested_
+
+2008-04-28  Maximilien Cuony
     * New inline system
 
 2008-04-26  Maximilien Cuony

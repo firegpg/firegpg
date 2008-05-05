@@ -156,7 +156,14 @@ function choosePublicKey(preSelect)
 
 	params.title = i18n.getString('choosePublicKeyTitle');
 	params.description = i18n.getString('choosePublicKeyDescription');
-	params.list = GPG.listKeys();
+
+    keylistcall = FireGPG.listKeys();
+
+    if (keylistcall.result == RESULT_SUCCESS)
+        params.list = keylistcall.keylist;
+    else
+        return;
+
 	params.preSelect = preSelect;
 
 
@@ -206,7 +213,12 @@ function choosePrivateKey()
 
 	params.title = 'FireGPG - private key' /* TODO i18n */
 	params.description = 'Choose the private key:' /* TODO i18n */
-	params.list = GPG.listKeys(true);
+	keylistcall = FireGPG.listKeys(true);
+
+    if (keylistcall.result == RESULT_SUCCESS)
+        params.list = keylistcall.keylist;
+    else
+        return;
 
 	var dlg = window.openDialog('chrome://firegpg/content/list.xul',
 	                            '', 'chrome, dialog, modal, resizable=yes',
@@ -746,7 +758,7 @@ function runCommand(command, arg) {
 	file.initWithPath(command);
 	var process = Components.classes[NS_PROCESSUTIL_CONTRACTID].
 	                         createInstance(Components.interfaces.nsIProcess);
-	process.init(file);
+	process.init(file); 
 	var args = arg.split(' ');
 	process.run(true, args, args.length);
 }

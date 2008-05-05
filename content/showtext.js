@@ -121,48 +121,12 @@ function savef() {
     Encrypt the current data of the editor.
 */
 function crypt() {
-	// GPG verification
-	if(!GPG.selfTest())
-		return;
 
-	// For i18n
-	var i18n = document.getElementById("firegpg-strings");
+    var result = FireGPG.crypt(false,getSelectedText());
 
-	var text = getSelectedText();
+    if (result.result == RESULT_SUCCESS)
+        setSeletedText(result.encrypted);
 
-       	if (text == "") {
-		alert(i18n.getString("noData"));
-		return;
-	}
-
-    var tryPosition = text.indexOf("-----BEGIN PGP MESSAGE-----");
-
-    if (tryPosition != -1) {
-        if (!confirm(i18n.getString("alreadyCrypt")))
-            return;
-    }
-
-	// Needed for a crypt
-	var keyID = choosePublicKey();
-
-	if(keyID == null) {
-		return;
-	}
-
-	// We get the result
-	var result = GPG.baseCrypt(text, keyID);
-	var crypttext = result.output;
-	var sdOut2 = result.sdOut2;
-	result = result.sdOut;
-
-	// If the crypt failled
-	if(result == "erreur") {
-		// We alert the user
-		alert(i18n.getString("cryptFailed") + sdOut2);
-	}
-	else {
-		setSeletedText(crypttext);
-	}
 }
 
 
@@ -171,54 +135,10 @@ function crypt() {
     Encrypt and sign the current data of the editor.
 */
 function cryptandsign(){
-    // GPG verification
-    if(!GPG.selfTest())
-        return;
+    var result = FireGPG.cryptAndSign(false,getSelectedText());
 
-    // For i18n
-    var i18n = document.getElementById("firegpg-strings");
-
-    var text = getSelectedText();
-
-    if (text == "") {
-        alert(i18n.getString("noData"));
-        return;
-    }
-
-    // Needed for a crypt
-    var keyIdList = choosePublicKey();
-
-    if(keyIdList == null)
-        return;
-
-    // Needed for a sign
-    var keyID = getSelfKey();
-    if(keyID == null)
-        return;
-
-    var password = getPrivateKeyPassword();
-    if(password == null)
-        return;
-
-    // We get the result
-    var result = GPG.baseCryptAndSign(text, keyIdList,false,password, keyID);
-    var crypttext = result.output;
-    var sdOut2 = result.sdOut2;
-    result = result.sdOut;
-
-    // If the crypt failled
-    if(result == "erreur") {
-        // We alert the user
-        alert(i18n.getString("cryptAndSignFailed") + sdOut2);
-    }
-    else if(result == "erreurPass") {
-        // We alert the user
-        eraseSavedPassword();
-        alert(i18n.getString("cryptAndSignFailedPass"));
-    }
-    else {
-        setSeletedText(crypttext);
-    }
+    if (result.result == RESULT_SUCCESS)
+        setSeletedText(result.encrypted);
 
 }
 
@@ -227,86 +147,20 @@ function cryptandsign(){
     Decrypt the current data of the editor.
 */
 function dcrypt() {
-    // GPG verification
-    if(!GPG.selfTest())
-        return;
 
-    // For i18n
-    var i18n = document.getElementById("firegpg-strings");
+    var result = FireGPG.decrypt(false,getSelectedText());
 
-    var text = getSelectedText();
-
-    if (text == "") {
-        alert(i18n.getString("noData"));
-        return;
-    }
-
-    //Verify GPG'data presence
-    reg=new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
-    text = text.replace(reg, "FIREGPGTRALALABEGINHIHAN");
-
-    reg=new RegExp("\\- \\-\\-\\-\\-\\-END PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
-    text = text.replace(reg, "FIREGPGTRALALAENDHIHAN");
-
-    var firstPosition = text.indexOf("-----BEGIN PGP MESSAGE-----");
-    var lastPosition = text.indexOf("-----END PGP MESSAGE-----");
-
-    reg=new RegExp("FIREGPGTRALALABEGINHIHAN", "gi"); // We don't have to detect disabled balises
-    text = text.replace(reg, "-----BEGIN PGP MESSAGE-----");
-
-    reg=new RegExp("FIREGPGTRALALAENDHIHAN", "gi"); // We don't have to detect disabled balises
-    text = text.replace(reg, "-----END PGP MESSAGE-----");
-
-    if (firstPosition == -1 || lastPosition == -1) {
-        alert(i18n.getString("noGPGData"));
-        return;
-    }
-
-    text = text.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
-
-    // Needed for a decrypt
-    var password = getPrivateKeyPassword();
-
-    if(password == null) {
-        return;
-    }
-
-    // We get the result
-    var result = GPG.baseDecrypt(text,password);
-    var crypttext = result.output;
-    var sdOut2 = result.sdOut2;
-    result = result.sdOut;
-
-    // If the crypt failled
-    if (result == "erreurPass") {
-        alert(i18n.getString("decryptFailedPassword"));
-        eraseSavedPassword();
-    }
-    else if (result == "erreur") {
-        alert(i18n.getString("decryptFailed") + "\n\n" + sdOut2);
-    }
-    else {
-        setSeletedText(crypttext);
-
-        //If a vliad sign was found, infos about are in sdOut2
-        if (result == "signValid")
-        {
-            infos = sdOut2.split(" ");
-
-            var infos2 = "";
-            for (var ii = 1; ii < infos.length; ++ii)
-            {  infos2 = infos2 + infos[ii] + " ";}
+    if (result.result == RESULT_SUCCESS)
+        setSeletedText(result.decrypted);
 
 
-            document.getElementById('dcryptsignresult').style.display = '';
-            document.getElementById('dcryptsignresult').value = i18n.getString("validSignInCrypt") + " " + infos2;
-        }
-        else
-        {
-            document.getElementById('dcryptsignresult').style.display = 'none';
-        }
+    if (result.signresult == RESULT_SUCCESS) {
+        var i18n = document.getElementById("firegpg-strings");
+        document.getElementById('dcryptsignresult').style.display = '';
+        document.getElementById('dcryptsignresult').value = i18n.getString("validSignInCrypt") + " " + result.signresulttext;
+    } else
+        document.getElementById('dcryptsignresult').style.display = 'none';
 
-    }
 }
 
 /*
@@ -314,53 +168,12 @@ function dcrypt() {
     Sign the current data of the editor.
 */
 function sign() {
-    // GPG verification
-    if(!GPG.selfTest())
-        return;
 
-    // For i18n
-    var i18n = document.getElementById("firegpg-strings");
-    var text = getSelectedText();
+    var result = FireGPG.sign(false,getSelectedText());
 
-    if (text == "") {
-        alert(i18n.getString("noData"));
-        return;
-    }
+    if (result.result == RESULT_SUCCESS)
+        setSeletedText(result.signed);
 
-    var tryPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
-
-    if (tryPosition != -1) {
-        if (!confirm(i18n.getString("alreadySign")))
-            return;
-    }
-
-    // Needed for a sign
-    var keyID = getSelfKey();
-    if(keyID == null)
-        return;
-
-    var password = getPrivateKeyPassword();
-
-    if(password == null)
-        return;
-
-    var result = GPG.baseSign(text,password,keyID);
-    var crypttext = result.output;
-    var sdOut2 = result.sdOut2;
-    result = result.sdOut;
-
-    // If the sign failled
-    if(result == "erreur") {
-        // We alert the user
-        alert(i18n.getString("signFailed") + sdOut2);
-    }
-    else if(result == "erreurPass") {
-        alert(i18n.getString("signFailedPassword"));
-        eraseSavedPassword();
-    }
-    else {
-        setSeletedText(crypttext);
-    }
 }
 
 /*
@@ -368,60 +181,7 @@ function sign() {
     Verfiy signs of the current data of the editor.
 */
 function verify() {
-    // GPG verification
-    if(!GPG.selfTest())
-        return;
-
-    // For I18N
-    var i18n = document.getElementById("firegpg-strings");
-
-    var text = getSelectedText();
-
-    if (text == "") {
-        alert(i18n.getString("noData"));
-        return;
-    }
-
-    var results = GPG.baseVerify(text);
-
-    // For I18N
-    var i18n = document.getElementById("firegpg-strings");
-
-    if (results.length == 0) {
-        alert(i18n.getString("noGPGData"));
-        return;
-    }
-    else {
-
-        if (results.length != 1)
-            var resulttxt = results.length + i18n.getString("manyStrings") + "\n";
-        else
-            var resulttxt = "";
-
-        for (var rid in results) {
-
-            result = results[rid];
-
-            if (result == "erreur")
-                resulttxt += i18n.getString("verifFailed") + "\n";
-            else if (result == "erreur_bad")
-                    resulttxt += i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")\n";
-            else if (result == "erreur_no_key")
-                    resulttxt +=  i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")\n";
-            else {
-                var infos = result.split(" ");
-
-                var infos2 = "";
-                for (var ii = 1; ii < infos.length; ++ii)
-                {  infos2 = infos2 + infos[ii] + " ";}
-
-                resulttxt +=  i18n.getString("verifSuccess") + " " + infos2 + "\n";
-            }
-
-        }
-
-        alert(resulttxt);
-    }
+    FireGPG.baseVerify(false, getSelectedText());
 }
 
 /*

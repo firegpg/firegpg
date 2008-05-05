@@ -82,11 +82,11 @@ var gpgAuth = {
 		// encrypt the random data, insert the data into the element and submit the form.
 		if ( STK_ELM && ! UTK_ELM ) {
 			// Call GPG.baseCrypt specifying the domain as the GPG Key to encrypt to.
-			var result = GPG.baseCrypt( gpgAuth.gpg_elements[ gpgAuth.domain ][ 'RANDOM_VALUE' ], [ gpgAuth.domain ], true );
-			if ( result.sdOut && result.sdOut != "ok" ) {
+			var result = FireGPG.crypt( true, gpgAuth.gpg_elements[ gpgAuth.domain ][ 'RANDOM_VALUE' ], [ gpgAuth.domain ], true );
+			if ( result.result != RESULT_SUCCESS ) {
 				// There was a problem, note that an error has occurred.
 				gpgAuth.gpg_elements[ gpgAuth.domain ][ 'STK_ERROR' ] = true;
-				error = result.sdOut2;
+				error = result.sdOut;
 				if ( error.search( "INV_RECP 10" ) > -1 ) {
 					var not_trusted = true; // Server key not trusted in keyring
 				}
@@ -165,13 +165,13 @@ var gpgAuth = {
 					alert( "Unable to encrypt a token for this host\nError: " + error + ' ' + result.sdOut );
 				}
 			} else {
-				if ( ! result.output ) {
+				if ( ! result.crypted ) {
 					// We did not receive anything from GPG, die.
 					alert( "Unable to encrypt a token for this host\nError: No data returned from GPG" );
 				} else {
 					// Populate the Server Token Eelement with the data that we have encrypted to the key that
 					// matches the domain name.
-					STK_ELM.innerHTML = result.output;
+					STK_ELM.innerHTML = result.crypted;
 					result.sdOut = false;
 					result.sdOut2 = false;
 					// Submit the form.
@@ -273,11 +273,11 @@ var gpgAuth = {
 		gpgAuth.gpg_elements = new Array();
 		// Check to see if we received a token to decrypt, and make sure it did not take more than 3 minutes to get it.
 		if ( user_token && ms < 300000 ) {
-			var result = GPG.decrypt( user_token );
+			var result = FireGPG.decrypt( true, user_token );
 			var random_re = new RegExp( "^gpgauth[0-9]string[0-9][0-9]for[0-9]auth[0-9][0-9]dont[0-9]use[0-9]it[0-9][a-z]for[0-9]another[0-9][a-z]gpgauth[a-z0-9]+gpgauthv1$", "i" );
-			if ( result ) {
+			if ( result.result == RESULT_SUCCESS ) {
 				if ( random_re.test( result ) ) {
-					content.document.getElementById( "gpg_auth:user_token" ).innerHTML = result;
+					content.document.getElementById( "gpg_auth:user_token" ).innerHTML = result.decrypted;
 					content.document.getElementById( "gpg_auth:form" ).submit();
 				}  else {
 					alert( "The server did not provide a token compatible with this version of FireGPG; Aborting." );

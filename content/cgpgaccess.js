@@ -764,7 +764,7 @@ var GPGAccessWindowsNoXpcom = {
 		// The signed text
 		var crypttext = getFromFile(tmpOutput);
 
-		var result2 = GPGReturn;
+		var result2 = new GPGReturn();
 		result2.output = crypttext;
 		result2.sdOut = result;
 
@@ -776,7 +776,6 @@ var GPGAccessWindowsNoXpcom = {
     },
 
     verify: function(text) {
-        //TODO: STRUCTURE
 		var tmpInput = getTmpFile();  // Signed data
 
 		putIntoFile(tmpInput,text); // TMP
@@ -786,13 +785,14 @@ var GPGAccessWindowsNoXpcom = {
 		// We delete tempory files
 		removeFile(tmpInput);
 
+        var result2 = new GPGReturn();
+		result2.sdOut = result;
+
 		// We return result
-		return result;
+		return result2;
     },
 
     listkey: function(onlyPrivate) {
-        //TODO: STRUCTURE
-
 		var mode = "--list-keys";
 
 		if (onlyPrivate == true)
@@ -800,8 +800,11 @@ var GPGAccessWindowsNoXpcom = {
 
 		result = this.runGnupg(this.getBaseArugments() + " --with-colons " + mode,"ISO-8859-1");
 
+        var result2 = new GPGReturn();
+		result2.sdOut = result;
+
         // We return result
-		return result;
+		return result2;
     },
 
     crypt: function(text, keyIdList, fromGpgAuth, binFileMode) {
@@ -835,7 +838,7 @@ var GPGAccessWindowsNoXpcom = {
 
 		// The crypted text
 		var crypttext = getFromFile(tmpOutput);
-		var result2 = GPGReturn;
+		var result2 = new GPGReturn();
 		result2.output = crypttext;
 		result2.sdOut = result;
 
@@ -846,7 +849,7 @@ var GPGAccessWindowsNoXpcom = {
 		return result2;
     },
 
-    cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode /*Optional*/) {
+    cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode) {
         var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
@@ -891,7 +894,7 @@ var GPGAccessWindowsNoXpcom = {
 
 		// The crypted text
 		var crypttext = getFromFile(tmpOutput);
-		var result2 = GPGReturn;
+		var result2 = new GPGReturn();
 		result2.output = crypttext;
 		result2.sdOut = result;
 
@@ -928,7 +931,7 @@ var GPGAccessWindowsNoXpcom = {
 
 		// The decrypted text
 		var crypttext = getFromFile(tmpOutput);
-		var result2 = GPGReturn;
+		var result2 = new GPGReturn();
 		result2.output = crypttext;
 		result2.sdOut = result;
 
@@ -952,8 +955,6 @@ var GPGAccessWindowsNoXpcom = {
     },
 
     kimport: function(text) {
-        //TODO: STRUCTURE
-
         var tmpInput = getTmpFile();  // Key
 
 		putIntoFile(tmpInput,text); // TMP
@@ -963,16 +964,21 @@ var GPGAccessWindowsNoXpcom = {
 		// We delete tempory files
 		removeFile(tmpInput);
 
+        var result2 = new GPGReturn();
+		result2.sdOut = result;
+
 		// We return result
-		return result;
+		return result2;
     },
 
     kexport: function(key) {
-        //TODO: STRUCTURE
 		result = this.runGnupg(this.getBaseArugments()  + " --export " + key);
 
+        var result2 = new GPGReturn();
+		result2.sdOut = result;
+
 		// We return result
-		return result;
+		return result2;
     },
 
     runATest: function(option) {
@@ -1153,7 +1159,7 @@ var GPGAccessUnixNoXpcom = {
 		// The signed text
 		var crypttext = getFromFile(tmpOutput);
 
-		var result2 = GPGReturn;
+		var result2 = new GPGReturn();
 		result2.output = crypttext;
 		result2.sdOut = result;
 
@@ -1214,7 +1220,7 @@ var GPGAccessUnixNoXpcom = {
 
 		// The crypted text
 		var crypttext = getFromFile(tmpOutput);
-		var result2 = GPGReturn;
+		var result2 = new GPGReturn();
 		result2.output = crypttext;
 		result2.sdOut = result;
 
@@ -1250,7 +1256,7 @@ var GPGAccessUnixNoXpcom = {
 
 		// The decrypted text
 		var crypttext = getFromFile(tmpOutput);
-		var result2 = GPGReturn;
+		var result2 = new GPGReturn();
 		result2.output = crypttext;
 		result2.sdOut = result;
 
@@ -1343,11 +1349,11 @@ var GPGAccessUnixXpcom = {
         return false;
     },
 
-    crypt: function(text, keyIdList, fromGpgAuth /*Optional*/, binFileMode /*Optional*/) {
+    crypt: function(text, keyIdList, fromGpgAuth /*Optional*/, binFileMode) {
         return false;
     },
 
-    cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode /*Optional*/) {
+    cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode) {
         return false;
     },
 

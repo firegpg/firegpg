@@ -123,39 +123,35 @@ var cGmail2 = {
                         var td = doc.createElement("td");
 
 
-                        var resultTest = GPG.baseVerify(contenuMail);
+                        var resultTest = FireGPG.verify(true,contenuMail);
 
-                        // For I18N
-                        var i18n = document.getElementById("firegpg-strings");
+						// For I18N
+						var i18n = document.getElementById("firegpg-strings");
 
-                        if (resultTest.length == 0) {
-                            if (cGmail2.nonosign != true)
-                            {
-                                td.setAttribute("style","color: orange;");
-                                td.innerHTML = i18n.getString("GMailNoS");
-                            }
-                        }
-                        else if (resultTest[0] == "erreur") {
+						if (resultTest.result == RESULT_ERROR_NO_GPG_DATA) {
+							if (cGmail2.nonosign != true)
+							{
+								td.setAttribute("style","color: orange;");
+								td.innerHTML = i18n.getString("GMailNoS");
+							}
+						}
+                        else if (resultTest.signresult ==RESULT_ERROR_UNKNOW) {
                             td.setAttribute("style","color: red;");
                             td.innerHTML = i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
                         }
-                        else if (resultTest[0] == "erreur_bad") {
+                        else if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
                             td.setAttribute("style","color: red;");
                             td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("falseSign") + ")"; //"La première signature de ce mail est incorrect !";
                         }
-                        else if (resultTest[0] == "erreur_no_key") {
+                        else if (resultTest.signresult == RESULT_ERROR_NO_KEY) {
                             td.setAttribute("style","color: red;");
                             td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("keyNotFound") + ")"; //"La première signature de ce mail est incorrect !";
                         }
-                        else {
-                            infos = resultTest[0].split(" ");
-                            var infos2 = "";
-                            for (var ii = 1; ii < infos.length; ++ii)
-                            {  infos2 = infos2 + infos[ii] + " ";}
+						else {
 
-                            td.setAttribute("style","color: green;");
-                            td.innerHTML = i18n.getString("GMailSOK") + " " + htmlEncode(infos2); //"La première signature de ce mail est de testtest (testtest)
-                        }
+							td.setAttribute("style","color: green;");
+							td.innerHTML = i18n.getString("GMailSOK") + " " + htmlEncode(resultTest.signresulttext); //"La première signature de ce mail est de testtest (testtest)
+						}
 
 
 
@@ -428,55 +424,11 @@ var cGmail2 = {
 
 				contenuMail = cGmail2.getMailContent(mailNode, this._doc);
 
-				reg=new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
-				contenuMail = contenuMail.replace(reg, "FIREGPGTRALALABEGINHIHAN");
+				var result = FireGPG.decrypt(false,contenuMail);
 
-				reg=new RegExp("\\- \\-\\-\\-\\-\\-END PGP MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
-				contenuMail = contenuMail.replace(reg, "FIREGPGTRALALAENDHIHAN");
+                if (result.result == RESULT_SUCCESS)
+					showText(result.decrypted,undefined,undefined,undefined,result.signresulttext);
 
-				var firstPosition = contenuMail.indexOf("-----BEGIN PGP MESSAGE-----");
-				var lastPosition = contenuMail.indexOf("-----END PGP MESSAGE-----");
-
-				reg=new RegExp("FIREGPGTRALALABEGINHIHAN", "gi"); // We don't have to detect disabled balises
-				contenuMail = contenuMail.replace(reg, "-----BEGIN PGP MESSAGE-----");
-
-				reg=new RegExp("FIREGPGTRALALAENDHIHAN", "gi"); // We don't have to detect disabled balises
-				contenuMail = contenuMail.replace(reg, "-----END PGP MESSAGE-----");
-
-				contenuMail = contenuMail.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
-
-				var password = getPrivateKeyPassword();
-				var result = GPG.baseDecrypt(contenuMail,password);
-				var crypttext = result.output;
-				var sdOut2 = result.sdOut2;
-				result = result.sdOut;
-
-				if (password == null)
-					return;
-
-				// If the crypt failled
-				if (result == "erreurPass") {
-					alert(i18n.getString("decryptFailedPassword"));
-					eraseSavedPassword();
-				}
-				else if (result == "erreur") {
-					alert(i18n.getString("decryptFailed"));
-				}
-				else
-				{
-					var signAndCryptResult = undefined;
-
-					//If there was a sign with the crypted text
-					if (result == "signValid")
-					{
-						infos = sdOut2.split(" ");
-						signAndCryptResult = "";
-						for (var ii = 1; ii < infos.length; ++ii)
-						{  signAndCryptResult = signAndCryptResult + infos[ii] + " ";}
-					}
-
-					showText(crypttext,undefined,undefined,undefined,signAndCryptResult);
-				}
 			}
 			else if (target.getAttribute('gpg_action') == "sndsign" || target.getAttribute('gpg_action') == "sign")
 			{
@@ -486,32 +438,14 @@ var cGmail2 = {
 				if (mailContent == "")
 					return;
 
-				var keyID = getSelfKey();
-				var password = getPrivateKeyPassword();
+				var result = FireGPG.sign(false,gmailWrapping(mailContent));
 
+                if (result.result == RESULT_SUCCESS) {
 
-				if (password == null || keyID == null)
-					return;
-
-				var result = GPG.baseSign(gmailWrapping(mailContent),password,keyID);
-
-						// If the sign failled
-				if(result.sdOut == "erreur") {
-					// We alert the user
-					alert(i18n.getString("signFailed"));
-				}
-				else if(result.sdOut == "erreurPass") {
-						alert(i18n.getString("signFailedPassword"));
-						eraseSavedPassword();
-				}
-				else {
-
-					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.output);
+					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.signed);
 
 					if (target.getAttribute('gpg_action') == "sndsign")
-					{
 						cGmail2.sendEmail(target.parentNode,this._doc);
-					}
 				}
 
 			}
@@ -523,26 +457,14 @@ var cGmail2 = {
 
 				var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,target.parentNode);
 
-
 				if (mailContent == "")
 					return;
 
+                var result = FireGPG.crypt(false,mailContent,null, false, false,whoWillGotTheMail);
 
-				var keyID = choosePublicKey(whoWillGotTheMail);
+				if(result.result == RESULT_SUCCESS) {
 
-				if (keyID == null || keyID == "")
-					return;
-
-				var result = GPG.baseCrypt(mailContent,keyID);
-
-						// If the sign failled
-				if(result.sdOut == "erreur") {
-					// We alert the user
-					alert(i18n.getString("cryptFailed"));
-				}
-				else {
-
-					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.output);
+					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
 
 					if (target.getAttribute('gpg_action') == "sndcrypt")
 					{
@@ -563,22 +485,7 @@ var cGmail2 = {
 				if (mailContent == "")
 					return;
 
-
-				var keyID = choosePublicKey(whoWillGotTheMail);
-
-				if (keyID == null || keyID == "")
-					return;
-
-				// Needed for a sign
-				var keySignID = getSelfKey();
-				if(keySignID == null)
-					return;
-
-				var password = getPrivateKeyPassword();
-				if(password == null)
-					return;
-
-				var result = GPG.baseCryptAndSign(mailContent, keyID,false,password, keySignID);
+				var result = FireGPG.cryptAndSign(false, mailContent, null ,false,null, null,true, whoWillGotTheMail);
 
 				// If the sign failled
 				if(result.sdOut == "erreur") {
@@ -592,7 +499,7 @@ var cGmail2 = {
 				}
 				else {
 
-					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.output);
+					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
 
 					if (target.getAttribute('gpg_action') == "sndsigncrypt")
 					{
@@ -626,54 +533,28 @@ var cGmail2 = {
 				if (data == "")
 					return;
 
-				var keyID = choosePublicKey(whoWillGotTheMail);
-
-				if (keyID == null || keyID == "")
-					return;
-
                 errors = false;
 
                 if (target.getAttribute('gpg_action') == "add_crypted") {
 
-                    var result = GPG.baseCrypt(data,keyID,false,true);
+                    var result = FireGPG.crypt(false,data,null, false, true,whoWillGotTheMail);
 
-                            // If the sign failled
-                    if(result.sdOut == "erreur") {
-                        // We alert the user
-                        alert(i18n.getString("cryptFailed"));
+                    if(result.result != RESULT_SUCCESS)
                         errors = true;
-                    }
 
                 } else {
 
-                    var keyIDSelf = getSelfKey();
-                    if(keyIDSelf == null)
-                        return;
-
-                    var password = getPrivateKeyPassword();
-                    if(password == null)
-                        return;
-
                     // We get the result
-                    var result = GPG.baseCryptAndSign(data, keyID ,false,password, keyIDSelf,true);
+                    var result = FireGPG.cryptAndSign(false, data, null ,false,null, null,true, whoWillGotTheMail);
 
-                    // If the crypt failled
-                    if(result.sdOut == "erreur") {
-                        // We alert the user
-                        alert(i18n.getString("cryptAndSignFailed") + result.sdOut2);
+                    if(result.result != RESULT_SUCCESS)
                         errors = true;
-                    } else if(result.sdOut == "erreurPass") {
-                        // We alert the user
-                        eraseSavedPassword();
-                        alert(i18n.getString("cryptAndSignFailedPass"));
-                        errors = true;
-                    }
 
                 }
 
                 if (errors == false){
 
-					var newData = result.output;
+					var newData = result.encrypted;
 
                     var fileobj = getTmpDir();
 

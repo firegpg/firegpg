@@ -38,8 +38,35 @@
 const NS_IPCSERVICE_CONTRACTID  = "@mozilla.org/process/ipc-service;1";
 */
 
-// Return class, for return 2 or 3 informations in an object.
-var GPGReturn = {
+
+const RESULT_SUCCESS = 0;
+const RESULT_CANCEL = 1;
+const RESULT_ERROR_UNKNOW = 2;
+const RESULT_ERROR_PASSWORD = 3;
+const RESULT_ERROR_NO_DATA = 4;
+const RESULT_ERROR_ALREADY_SIGN = 5;
+const RESULT_ERROR_BAD_SIGN = 5;
+const RESULT_ERROR_NO_KEY = 6;
+const RESULT_ERROR_ALREADY_CRYPT = 7;
+const RESULT_ERROR_NO_GPG_DATA = 7;
+const RESULT_ERROR_INIT_FAILLED = 8;
+
+function GPGReturn() {
+
+    this.result = null;
+    this.ouput = null;
+    this.sdOut = null;
+    this.encrypted = null;
+    this.decrypted = null;
+    this.signed = null;
+    this.signsresults = null;
+    this.signresult = null;
+    this.signresulttext = null;
+    this.signresultuser = null;
+    this.signresultdate = null;
+    this.keylist = null;
+    this.exported  = null;
+
 }
 
 //Function to try array
@@ -67,357 +94,145 @@ function Sortage(a,b) {
     return 1;
 }
 
-// Main class for access to GPG
-var GPG = {
-	/*
-	* Function to sign a text.
-	*/
-	sign: function() {
-		this.initGPGACCESS();
+var FireGPG = {
 
-		// GPG verification
-		if(!GPG.selfTest())
-			return;
+    sign: function(silent, text, keyID, password) {
 
-		// For i18n
-		var i18n = document.getElementById("firegpg-strings");
-		var text = Selection.get();
+        var returnObject = new GPGReturn();
 
-		if (text == "") {
-			alert(i18n.getString("noData"));
-			return;
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+        var i18n = document.getElementById("firegpg-strings");
+
+        // GPG verification
+        var gpgTest = FireGPG.selfTest(silent);
+
+		if(gpgTest.result != RESULT_SUCCESS) {
+            returnObject.result = gpgTest.result;
+            return returnObject;
+        }
+
+
+        if (text == undefined || text == null) {
+            var autoSetMode = true;
+            text = Selection.get();
+        }
+
+        if (text == "") {
+            if (!silent)
+                alert(i18n.getString("noData"));
+
+            returnObject.result = RESULT_ERROR_NO_DATA;
+			return returnObject;
 		}
 
         var tryPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
 
         if (tryPosition != -1) {
-			if (!confirm(i18n.getString("alreadySign")))
-                return;
+			if (!silent && !confirm(i18n.getString("alreadySign"))) {
+                returnObject.result = RESULT_ERROR_ALREADY_SIGN;
+                return returnObject;
+            }
 		}
 
 		// Needed for a sign
-		var keyID = getSelfKey();
-		if(keyID == null)
-			return;
+		if (keyID == undefined || keyID == null) {
+            keyID = getSelfKey();
+        }
 
-		var password = getPrivateKeyPassword();
-		if(password == null)
-			return;
+        if(keyID == null) {
+            returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
 
-		var result = this.baseSign(text,password,keyID);
-		var crypttext = result.output;
-		var sdOut2 = result.sdOut2;
-		result = result.sdOut;
+		if (password == undefined || password == null) {
+            password = getPrivateKeyPassword();
+        }
 
-		// If the sign failled
-		if(result == "erreur") {
-			// We alert the user
-			alert(i18n.getString("signFailed") + sdOut2);
+		if(password == null) {
+			returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+        // We get the result
+		var result = this.GPGAccess.sign(text, password, keyID);
+
+        returnObject.sdOut = result.sdOut;
+        returnObject.output = result.output;
+
+        if(result.sdOut.indexOf("BAD_PASSPHRASE") != -1) {
+
+            if (!silent)
+                alert(i18n.getString("signFailedPassword"));
+
+            eraseSavedPassword();
+
+            returnObject.result = RESULT_ERROR_PASSWORD;
+            return returnObject;
 		}
-		else if(result == "erreurPass") {
-				alert(i18n.getString("signFailedPassword"));
-				eraseSavedPassword();
+
+		if(result.sdOut.indexOf("SIG_CREATED") == -1)
+		{
+			if (!silent)
+                alert(i18n.getString("signFailed") + "\n" + result.sdOut);
+
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
 		}
-		else {
+
+
+        if (autoSetMode) {
 			// We test if the selection is editable :
 			if(Selection.isEditable()) {
 				// If yes, we edit this selection with the new text
-				Selection.set(crypttext);
+				Selection.set(result.output);
 			}
 			else //Else, we show a windows with the result
-				showText(crypttext);
-		}
-	},
-
-	baseSign: function(text,password,keyID) {
-		this.initGPGACCESS();
-
-		// We get the result
-		var result = this.GPGAccess.sign(text, password, keyID);
-		var tresult = result.sdOut;
-
-		result.sdOut = "ok";
-
-		if(tresult.indexOf("SIG_CREATED") == "-1")
-		{
-			result.sdOut = "erreur";
-			result.sdOut2 = tresult;
+				showText(result.output);
 		}
 
-		if(tresult.indexOf("BAD_PASSPHRASE") != "-1") {
-			result.sdOut = "erreurPass";
-		}
+        returnObject.signed = result.output;
 
-		return result;
-	},
-
-	// Verify a signature
-	verify: function() {
-		this.initGPGACCESS();
-
-		// GPG verification
-		if(!GPG.selfTest())
-			return;
-
-		// For I18N
-		var i18n = document.getElementById("firegpg-strings");
-
-		var text = Selection.get();
-
-		if (text == "") {
-			alert(i18n.getString("noData"));
-			return;
-		}
-
-		var results = this.baseVerify(text);
-
-		// For I18N
-		var i18n = document.getElementById("firegpg-strings");
-
-		if (results.length == 0) {
-			alert(i18n.getString("noGPGData"));
-			return;
-		}
-        else {
-
-            if (results.length != 1)
-                var resulttxt = results.length + i18n.getString("manyStrings") + "\n";
-            else
-                var resulttxt = "";
-
-            for (var rid in results) {
-
-                result = results[rid];
-
-                if (result == "erreur")
-                    resulttxt += i18n.getString("verifFailed") + "\n";
-                else if (result == "erreur_bad")
-                        resulttxt += i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")\n";
-                else if (result == "erreur_no_key")
-                        resulttxt +=  i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")\n";
-                else {
-                    var infos = result.split(" ");
-
-                    var infos2 = "";
-                    for (var ii = 1; ii < infos.length; ++ii)
-                    {  infos2 = infos2 + infos[ii] + " ";}
-
-                    resulttxt +=  i18n.getString("verifSuccess") + " " + infos2 + "\n";
-                }
-
-            }
-
-            alert(resulttxt);
-        }
-	},
-
-
-    baseVerify: function(text) {
-        this.initGPGACCESS();
-
-        return this.layers(text,0);
+        returnObject.result = RESULT_SUCCESS;
+        return returnObject;
 
     },
 
-    layers: function(text,layer) {
-        var newline = new RegExp("\r","gi");
-        text = text.replace(newline,"\n");
-        text="\n" + text;
-
-        var begintxt = "-----BEGIN PGP SIGNED MESSAGE-----";
-        var midtxt = "-----BEGIN PGP SIGNATURE-----";
-        var endtxt = "-----END PGP SIGNATURE-----";
-
-        var division=0;
-        var results=new Array();
-
-        var layerbegin = new RegExp("- " + begintxt,"gi");
-        var layermid = new RegExp("- " + midtxt,"gi");
-        var layerend = new RegExp("- " + endtxt,"gi");
-        var begin = new RegExp("\n" + begintxt,"gi");
-        var begin2 = new RegExp("\n" + midtxt,"gi");
-        var end = new RegExp("\n" + endtxt,"gi");
-
-        var firstPosition = 0;
-        var lastPosition = 0;
-        var divisiontxt = "";
-
-        while(firstPosition!=-1 && lastPosition!=-1)
-        {
-                firstPosition = text.search(begin);
-                firstPosition2 = text.search(begin2);
-                lastPosition = text.search(end);
-
-                if (firstPosition == -1 && firstPosition2 != -1)
-                    firstPosition = 0;
-
-                if( firstPosition!=-1 && lastPosition!=-1)
-                {
-                        division++;
-                        var divisiontxt=text.substring(firstPosition,lastPosition+endtxt.length+1);
-                        var tmpverifyresult = this.layerverify(divisiontxt,layer,division);
-                        divisiontxt = divisiontxt.replace(begin,"");
-                        divisiontxt = divisiontxt.replace(end,"");
-                        divisiontxt = divisiontxt.replace(layerbegin,begintxt);
-                        divisiontxt = divisiontxt.replace(layermid,midtxt);
-                        divisiontxt = divisiontxt.replace(layerend,endtxt);
-
-                        var subverif = this.layers(divisiontxt,layer+1);
-
-                        results.push(tmpverifyresult);
-
-                        results = results.concat(subverif);
-
-                        text=text.substring(lastPosition+endtxt.length);
-                }
-        }
-        return results;
-    },
-    layerverify: function(text,layer,division)
-    {
-        // We get the result
-		var result = this.GPGAccess.verify(text);
-
-		// If check failled
-		if(result.indexOf("GOODSIG") == "-1") {
-
-
-            if(result.indexOf("BADSIG") != -1)
-                return "erreur_bad";
-
-            if(result.indexOf("NO_PUBKEY") != -1)
-                return "erreur_no_key";
-
-            return "erreur";
-		}
-		else {
-			// If he work, we get informations of the Key
-			var infos = result;
-
-            infos2 = infos.substring(0,infos.indexOf("SIG_ID") + 7);
-
-			infos2 = result.replace(infos2, "");
-
-			infos2 = infos2.substring(0,infos2.indexOf("GNUPG") - 2);
-
-            infos2 = infos2.split(" ");
-
-            infos2 = infos2[infos2.length -1];
-
-            var date = new Date();
-
-            date.setTime(infos2 * 1000);
-
-			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
-			infos = result.replace(infos, "");
-			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
-
-            var i18n = document.getElementById("firegpg-strings");
-
-			return infos + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
-		}
-    },
-
-	/*baseVerify: function(text) {
-		this.initGPGACCESS();
-
-		// Verify GPG'data presence
-		var reg = new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP SIGNED MESSAGE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
-		text = text.replace(reg, "FIREGPGTRALALABEGINHIHAN");
-
-        var reg = new RegExp("\\- \\-\\-\\-\\-\\-BEGIN PGP SIGNATURE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
-		text = text.replace(reg, "FIREGPGTRALALABEGINHIHANLAUTRE");
-
-		reg = new RegExp("\\- \\-\\-\\-\\-\\-END PGP SIGNATURE\\-\\-\\-\\-\\-", "gi"); // We don't have to detect disabled balises
-		text = text.replace(reg, "FIREGPGTRALALAENDHIHAN");
-
-		// Verify GPG'data presence
-		var firstPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
-        var firstPosition2 = text.indexOf("-----BEGIN PGP SIGNATURE----");
-		var lastPosition = text.indexOf("-----END PGP SIGNATURE-----");
-
-		reg = new RegExp("FIREGPGTRALALABEGINHIHAN", "gi"); // We don't have to detect disabled balises
-		text = text.replace(reg, "-----BEGIN PGP SIGNED MESSAGE-----");
-
-        reg = new RegExp("FIREGPGTRALALABEGINHIHANLAUTRE", "gi"); // We don't have to detect disabled balises
-		text = text.replace(reg, "------BEGIN PGP SIGNATURE-----");
-
-		reg = new RegExp("FIREGPGTRALALAENDHIHAN", "gi"); // We don't have to detect disabled balises
-		text = text.replace(reg, "-----END PGP SIGNATURE-----");
-
-		if((firstPosition == -1 && firstPosition2 == -1) || lastPosition == -1)
-			return "noGpg";
-
-        if (firstPosition == -1)
-            firstPosition = 0; //Only the sign. User have to select himself the right text.
-
-		text = text.substring(firstPosition,lastPosition + ("-----END PGP SIGNATURE-----").length);
-
-		// We get the result
-		var result = this.GPGAccess.verify(text);
-
-		// If check failled
-		if(result.indexOf("GOODSIG") == "-1") {
-
-
-            if(result.indexOf("BADSIG") != -1)
-                return "erreur_bad";
-
-            if(result.indexOf("NO_PUBKEY") != -1)
-                return "erreur_no_key";
-
-
-            return "erreur";
-		}
-		else {
-			// If he work, we get informations of the Key
-			var infos = result;
-
-            infos2 = infos.substring(0,infos.indexOf("SIG_ID") + 7);
-
-			infos2 = result.replace(infos2, "");
-
-			infos2 = infos2.substring(0,infos2.indexOf("GNUPG") - 2);
-
-            infos2 = infos2.split(" ");
-
-            infos2 = infos2[infos2.length -1];
-
-            var date = new Date();
-
-            date.setTime(infos2 * 1000);
-
-			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
-			infos = result.replace(infos, "");
-			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
-
-            var i18n = document.getElementById("firegpg-strings");
-
-			return infos + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
-		}
-	},
-    */
-	/*
+    /*
 	 * List all keys.
 	 *
 	 * An object is returned :
 	 *     object["key_id"] = "Name (name) <email>"
 	 */
 	listKeys: function(onlyPrivate) {
-		this.initGPGACCESS();
 
-		var retour = new Array();
+        var returnObject = new GPGReturn();
 
-		// GPG verification
-		if(!GPG.selfTest())
-			return retour;
+        this.initGPGACCESS();
+        var i18n = document.getElementById("firegpg-strings");
+
+        // GPG verification
+        var gpgTest = FireGPG.selfTest();
+
+		if(gpgTest.result != RESULT_SUCCESS) {
+            returnObject.result = gpgTest.result;
+            return returnObject;
+        }
 
 		var infos;
 
-		// We get informations from GPG
-		var result = EnigConvertGpgToUnicode(this.GPGAccess.listkey(onlyPrivate));
-        //If we have to check the olds keys
+        var result = this.GPGAccess.listkey(onlyPrivate);
 
+		// We get informations from GPG
+		result = EnigConvertGpgToUnicode(result.sdOut);
+
+        returnObject.sdOut = result;
+
+        returnObject.keylist = new Array();
+
+        //If we have to check the olds keys
 
         var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 		                       getService(Components.interfaces.nsIPrefService);
@@ -453,213 +268,592 @@ var GPG = {
 				var keyDate = infos[5];
 				var keyExpi = infos[6];
 
-                if(check_expi)
-                {
+                if(check_expi)  {
 
                     var splited = keyExpi.split(new RegExp("-", "g"));
 
                     var tmp_date = new Date(splited[0],splited[1],splited[2]);
 
                     if (isNaN(tmp_date.getTime()) || maintenant < tmp_date.getTime())
-                        retour[infos[4]] = new Array(keyName, keyDate,keyExpi);
-
+                        returnObject.keylist[infos[4]] = new Array(keyName, keyDate,keyExpi);
 
                 }
                 else
-                    retour[infos[4]] = new Array(keyName, keyDate,keyExpi);
+                    returnObject.keylist[infos[4]] = new Array(keyName, keyDate,keyExpi);
 			}
 			} catch (e) { }
 		}
 
-		return retour;
+        returnObject.result = RESULT_SUCCESS;
+
+		return returnObject;
 	},
 
+    /*
+	* Function to import a public key.
+	*/
+	kimport: function(silent, text) {
+
+        var returnObject = new GPGReturn();
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+        var i18n = document.getElementById("firegpg-strings");
+
+        // GPG verification
+        var gpgTest = FireGPG.selfTest(silent);
+
+		if(gpgTest.result != RESULT_SUCCESS) {
+            returnObject.result = gpgTest.result;
+            return returnObject;
+        }
+
+        if (text == undefined || text == null)
+            text = Selection.get();
+
+        if (text == "") {
+            if (!silent)
+                alert(i18n.getString("noData"));
+
+            returnObject.result = RESULT_ERROR_NO_DATA;
+			return returnObject;
+		}
+
+        //Verify GPG'data presence
+		var firstPosition = text.indexOf("-----BEGIN PGP PUBLIC KEY BLOCK-----");
+		var lastPosition = text.indexOf("-----END PGP PUBLIC KEY BLOCK-----");
+
+		if (firstPosition == -1 || lastPosition == -1) {
+			if (!silent)
+                alert(i18n.getString("noGPGData"));
+
+            returnObject.result = RESULT_ERROR_NO_GPG_DATA;
+            return returnObject;
+		}
+
+        text = text.substring(firstPosition,lastPosition + ("-----END PGP PUBLIC KEY BLOCK-----").length);
+
+		// We get the result
+		var result = this.GPGAccess.kimport(text);
+
+        returnObject.sdOut = result.sdOut;
+
+        if (result.sdOut.indexOf("IMPORT_OK") == -1) {
+            if (!silent)
+                alert(i18n.getString("importFailed"));
+
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+
+        } else {
+            if (!silent)
+                alert(i18n.getString("importOk"));
+
+            returnObject.result = RESULT_SUCCESS;
+            return returnObject;
+        }
+
+	},
+
+
 	/*
+	* Function to import a public key.
+	*/
+	kexport: function(silent, keyID) {
+		var returnObject = new GPGReturn();
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+        var i18n = document.getElementById("firegpg-strings");
+
+        // GPG verification
+        var gpgTest = FireGPG.selfTest(silent);
+
+		if(gpgTest.result != RESULT_SUCCESS) {
+            returnObject.result = gpgTest.result;
+            return returnObject;
+        }
+
+		// Needed for a crypt
+        if (keyID == undefined || keyID == null)
+            keyID = choosePublicKey();
+
+		if(keyID == null) {
+            returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+
+        var result = this.GPGAccess.kexport(keyID);
+
+        returnObject.sdOut = result.sdOut;
+
+		if (result.sdOut == "") {
+
+            if (!silent)
+                alert(i18n.getString("exportFailed"));
+
+			returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+		}	else  {
+                if (!silent)
+                    showText(result.sdOut);
+
+                returnObject.exported = result.sdOut;
+                returnObject.result = RESULT_SUCCESS;
+                return returnObject;
+		}
+	},
+
+    /*
 	* Function to crypt a text.
 	*/
-	crypt: function() {
-		this.initGPGACCESS();
+	crypt: function(silent, text, keyIdList, fromGpgAuth, binFileMode, autoSelect ) {
 
-		// GPG verification
-		if(!GPG.selfTest())
-			return;
+        var returnObject = new GPGReturn();
 
-		// For i18n
-		var i18n = document.getElementById("firegpg-strings");
-		var text = Selection.get();
+        if (silent == undefined)
+            silent = false;
 
-		if (text == "") {
-			alert(i18n.getString("noData"));
-			return;
+        this.initGPGACCESS();
+        var i18n = document.getElementById("firegpg-strings");
+
+        // GPG verification
+        var gpgTest = FireGPG.selfTest(silent);
+
+		if(gpgTest.result != RESULT_SUCCESS) {
+            returnObject.result = gpgTest.result;
+            return returnObject;
+        }
+
+
+        if (text == undefined || text == null) {
+            var autoSetMode = true;
+            text = Selection.get();
+        }
+
+        if (text == "") {
+            if (!silent)
+                alert(i18n.getString("noData"));
+
+            returnObject.result = RESULT_ERROR_NO_DATA;
+			return returnObject;
 		}
 
         var tryPosition = text.indexOf("-----BEGIN PGP MESSAGE-----");
 
         if (tryPosition != -1) {
-			if (!confirm(i18n.getString("alreadyCrypt")))
-                return;
+			if (!silent && !confirm(i18n.getString("alreadyCrypt"))) {
+                returnObject.result = RESULT_ERROR_ALREADY_CRYPT;
+                return returnObject;
+            }
 		}
-
-		// Needed for a crypt
-		var keyIdList = choosePublicKey();
-
-		if(keyIdList == null)
-			return;
-
-		// We get the result
-		var result = this.baseCrypt(text, keyIdList);
-		var crypttext = result.output;
-		var sdOut2 = result.sdOut2;
-		result = result.sdOut;
-
-		// If the crypt failled
-		if(result == "erreur") {
-			// We alert the user
-			alert(i18n.getString("cryptFailed") + sdOut2);
-		}
-		else {
-			//We test is the selection in editable :
-			if(Selection.isEditable()) {
-				//If yes, we edit this selection with the new text
-				Selection.set(crypttext);
-			}
-			else {
-				//Else, we show a windows with the result
-				showText(crypttext);
-			}
-		}
-	},
-
-	/*
-     * keyIdList is an array contain a liste of ID :
-	 *   ['id1', 'id2', etc.]
-	 */
-	baseCrypt: function(text, keyIdList, fromGpgAuth /*Optional*/, binFileMode /*Optional*/) {
-		this.initGPGACCESS();
-
-		var result = this.GPGAccess.crypt(text, keyIdList,fromGpgAuth,binFileMode);
-		var tresult = result.sdOut;
-
-			result.sdOut = "ok";
-
-		if(tresult.indexOf("END_ENCRYPTION") == "-1") {
-			result.sdOut = "erreur";
-			result.sdOut2 = tresult;
-		}
-
-		return result;
-	},
-
-	/*
-	* Function to crypt and sign a text.
-	*/
-	cryptAndSign: function() {
-		this.initGPGACCESS();
-
-		// GPG verification
-		if(!GPG.selfTest())
-			return;
-
-		// For i18n
-		var i18n = document.getElementById("firegpg-strings");
-		var text = Selection.get();
-
-		if (text == "") {
-			alert(i18n.getString("noData"));
-			return;
-		}
-
-		// Needed for a crypt
-		var keyIdList = choosePublicKey();
-
-		if(keyIdList == null)
-			return;
 
 		// Needed for a sign
-		var keyID = getSelfKey();
-		if(keyID == null)
-			return;
+		if (keyIdList == undefined || keyIdList == null) {
+            keyIdList = choosePublicKey(autoSelect);
+        }
 
-		var password = getPrivateKeyPassword();
-		if(password == null)
-			return;
+        if(keyIdList == null) {
+            returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
 
 		// We get the result
-		var result = this.baseCryptAndSign(text, keyIdList,false,password, keyID);
-		var crypttext = result.output;
-		var sdOut2 = result.sdOut2;
-		result = result.sdOut;
+		var result = this.GPGAccess.crypt(text, keyIdList,fromGpgAuth,binFileMode);
 
-		// If the crypt failled
-		if(result == "erreur") {
-			// We alert the user
-			alert(i18n.getString("cryptAndSignFailed") + sdOut2);
+
+
+        returnObject.sdOut = result.sdOut;
+        returnObject.output = result.output;
+
+
+		if(result.sdOut.indexOf("END_ENCRYPTION") == -1)
+		{
+			if (!silent)
+                alert(i18n.getString("cryptFailed") + "\n" + result.sdOut);
+
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
 		}
-		else
-		if(result == "erreurPass") {
-			// We alert the user
-			eraseSavedPassword();
-			alert(i18n.getString("cryptAndSignFailedPass"));
-		}
-		else {
-			//We test is the selection in editable :
+
+
+        if (autoSetMode) {
+			// We test if the selection is editable :
 			if(Selection.isEditable()) {
-				//If yes, we edit this selection with the new text
-				Selection.set(crypttext);
+				// If yes, we edit this selection with the new text
+				Selection.set(result.output);
 			}
-			else {
-				//Else, we show a windows with the result
-				showText(crypttext);
-			}
+			else //Else, we show a windows with the result
+				showText(result.output);
 		}
+
+        returnObject.encrypted = result.output;
+
+        returnObject.result = RESULT_SUCCESS;
+        return returnObject;
+
+
 	},
 
-	/*
-     * keyIdList is an array contain a liste of ID :
-	 *   ['id1', 'id2', etc.]
-	 */
-	baseCryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode /*Optional*/) {
-		this.initGPGACCESS();
 
+    cryptAndSign: function(silent, text, keyIdList, fromGpgAuth, password, keyID, binFileMode, autoSelect ) {
+
+        var returnObject = new GPGReturn();
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+        var i18n = document.getElementById("firegpg-strings");
+
+        // GPG verification
+        var gpgTest = FireGPG.selfTest(silent);
+
+		if(gpgTest.result != RESULT_SUCCESS) {
+            returnObject.result = gpgTest.result;
+            return returnObject;
+        }
+
+
+        if (text == undefined || text == null) {
+            var autoSetMode = true;
+            text = Selection.get();
+        }
+
+        if (text == "") {
+            if (!silent)
+                alert(i18n.getString("noData"));
+
+            returnObject.result = RESULT_ERROR_NO_DATA;
+			return returnObject;
+		}
+
+        var tryPosition = text.indexOf("-----BEGIN PGP MESSAGE-----");
+
+        if (tryPosition != -1) {
+			if (!silent && !confirm(i18n.getString("alreadyCrypt"))) {
+                returnObject.result = RESULT_ERROR_ALREADY_CRYPT;
+                return returnObject;
+            }
+		}
+
+		// Needed for a sign
+		if (keyIdList == undefined || keyIdList == null) {
+            keyIdList = choosePublicKey(autoSelect);
+        }
+
+        if(keyIdList == null) {
+            returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+        // Needed for a sign
+		if (keyID == undefined || keyID == null) {
+            keyID = getSelfKey();
+        }
+
+        if(keyID == null) {
+            returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+		if (password == undefined || password == null) {
+            password = getPrivateKeyPassword();
+        }
+
+		if(password == null) {
+			returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+		// We get the result
 		var result = this.GPGAccess.cryptAndSign(text, keyIdList,fromGpgAuth, password, keyID, binFileMode);
-		var tresult = result.sdOut;
-			result.sdOut = "ok";
 
-		if(tresult.indexOf("END_ENCRYPTION") == "-1") {
-			result.sdOut = "erreur";
-			result.sdOut2 = tresult;
 
-			if(tresult.indexOf("BAD_PASSPHRASE") != "-1") {
-			result.sdOut = "erreurPass";
-			}
+        returnObject.sdOut = result.sdOut;
+        returnObject.output = result.output;
+
+
+        if(result.sdOut.indexOf("BAD_PASSPHRASE") != -1)
+		{
+			if (!silent)
+                alert(i18n.getString("cryptAndSignFailedPass"));
+
+            eraseSavedPassword();
+
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
 		}
 
-		return result;
+		if(result.sdOut.indexOf("END_ENCRYPTION") == -1)
+		{
+			if (!silent)
+                alert(i18n.getString("cryptAndSignFailed") + "\n" + result.sdOut);
+
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+		}
+
+
+        if (autoSetMode) {
+			// We test if the selection is editable :
+			if(Selection.isEditable()) {
+				// If yes, we edit this selection with the new text
+				Selection.set(result.output);
+			}
+			else //Else, we show a windows with the result
+				showText(result.output);
+		}
+
+        returnObject.encrypted = result.output;
+
+        returnObject.result = RESULT_SUCCESS;
+        return returnObject;
+
+
 	},
 
+    // Verify a signature
+	verify: function(silent, text) {
 
-	/*
-	* Function to decrypt a text.
-	*/
-	decrypt: function( fromGpgAuth /*Optional*/) {
-		this.initGPGACCESS();
+        var returnObject = new GPGReturn();
 
-		// GPG verification
-		if(!GPG.selfTest())
-			return '';
+        if (silent == undefined)
+            silent = false;
 
-		// For i18n
+        this.initGPGACCESS();
+        var i18n = document.getElementById("firegpg-strings");
+
+        // GPG verification
+        var gpgTest = FireGPG.selfTest(silent);
+
+		if(gpgTest.result != RESULT_SUCCESS) {
+            returnObject.result = gpgTest.result;
+            return returnObject;
+        }
+
+
+        if (text == undefined || text == null) {
+            var autoSetMode = true;
+            text = Selection.get();
+        }
+
+        if (text == "") {
+            if (!silent)
+                alert(i18n.getString("noData"));
+
+            returnObject.result = RESULT_ERROR_NO_DATA;
+			return returnObject;
+		}
+
+		var results = this.layers(text,0);
+
+        returnObject.signsresults = results;
+
+		// For I18N
 		var i18n = document.getElementById("firegpg-strings");
 
-		if ( fromGpgAuth ) {
-			text = fromGpgAuth;
+		if (results.length == 0) {
+			if (!silent)
+                alert(i18n.getString("noGPGData"));
+
+            returnObject.result = RESULT_ERROR_NO_GPG_DATA;
+			return returnObject;
+		}
+        else {
+
+            if (results.length != 1)
+                var resulttxt = results.length + ' ' + i18n.getString("manyStrings") + "\n";
+            else
+                var resulttxt = "";
+
+            for (var rid in results) {
+
+                result = results[rid];
+
+                if (result.result == RESULT_ERROR_UNKNOW)
+                    resulttxt += i18n.getString("verifFailed") + "\n";
+                else if (result.result == RESULT_ERROR_BAD_SIGN)
+                        resulttxt += i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")\n";
+                else if (result.result == RESULT_ERROR_NO_KEY)
+                        resulttxt +=  i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")\n";
+                else {
+                    resulttxt +=  i18n.getString("verifSuccess") + " " + result.signresulttext + "\n";
+                }
+            }
+
+            if (!silent)
+                alert(resulttxt);
+
+            returnObject.signsresulttext = resulttxt;
+
+            returnObject.signresult = results[0].result;
+            returnObject.signresulttext = results[0].signresulttext;
+            returnObject.signresultuser = results[0].signresultuser;
+            returnObject.signresultdate = results[0].signresultdate;
+
+            returnObject.result = RESULT_SUCCESS;
+
+            return returnObject;
+
+        }
+	},
+
+    layers: function(text,layer, resultss) {
+        var newline = new RegExp("\r","gi");
+        text = text.replace(newline,"\n");
+        text="\n" + text;
+
+        var begintxt = "-----BEGIN PGP SIGNED MESSAGE-----";
+        var midtxt = "-----BEGIN PGP SIGNATURE-----";
+        var endtxt = "-----END PGP SIGNATURE-----";
+
+        var division=0;
+
+
+
+        if (resultss == undefined)
+            resultss = new Array();
+
+
+        var layerbegin = new RegExp("- " + begintxt,"gi");
+        var layermid = new RegExp("- " + midtxt,"gi");
+        var layerend = new RegExp("- " + endtxt,"gi");
+        var begin = new RegExp("\n" + begintxt,"gi");
+        var begin2 = new RegExp("\n" + midtxt,"gi");
+        var end = new RegExp("\n" + endtxt,"gi");
+
+        var firstPosition = 0;
+        var lastPosition = 0;
+        var divisiontxt = "";
+
+        while(firstPosition!=-1 && lastPosition!=-1)
+        {
+                firstPosition = text.search(begin);
+                firstPosition2 = text.search(begin2);
+                lastPosition = text.search(end);
+
+                if (firstPosition == -1 && firstPosition2 != -1)
+                    firstPosition = 0;
+
+                if( firstPosition!=-1 && lastPosition!=-1) {
+                        division++;
+                        var divisiontxt=text.substring(firstPosition,lastPosition+endtxt.length+1);
+                        var tmpverifyresult = this.layerverify(divisiontxt,layer,division);
+                        divisiontxt = divisiontxt.replace(begin,"");
+                        divisiontxt = divisiontxt.replace(end,"");
+                        divisiontxt = divisiontxt.replace(layerbegin,begintxt);
+                        divisiontxt = divisiontxt.replace(layermid,midtxt);
+                        divisiontxt = divisiontxt.replace(layerend,endtxt);
+
+                        resultss[resultss.length] = tmpverifyresult;
+
+                        resultss = this.layers(divisiontxt,layer+1, resultss);
+                       //resultss = resultss.concat(subverif);
+
+                        text=text.substring(lastPosition+endtxt.length);
+                }
+        }
+        return resultss;
+    },
+
+    layerverify: function(text,layer,division) {
+        var returnObject = new GPGReturn();
+
+        // We get the result
+		var result = this.GPGAccess.verify(text);
+
+        returnObject.sdOut = result.sdOut;
+
+		// If check failled
+		if(result.sdOut.indexOf("GOODSIG") == "-1") {
+
+            returnObject.result = RESULT_ERROR_UNKNOW;
+
+            if(result.sdOut.indexOf("BADSIG") != -1)
+                returnObject.result = RESULT_ERROR_BAD_SIGN;
+
+            if(result.sdOut.indexOf("NO_PUBKEY") != -1)
+                returnObject.result = RESULT_ERROR_NO_KEY;
+
 		} else {
-			var text = Selection.get();
+			// If he work, we get informations of the Key
+			var infos = result.sdOut;
+
+            infos2 = infos.substring(0,infos.indexOf("SIG_ID") + 7);
+
+			infos2 = result.sdOut.replace(infos2, "");
+
+			infos2 = infos2.substring(0,infos2.indexOf("GNUPG") - 2);
+
+            infos2 = infos2.split(" ");
+
+            infos2 = infos2[infos2.length -1];
+
+            var date = new Date();
+
+            date.setTime(infos2 * 1000);
+
+			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
+			infos = result.sdOut.replace(infos, "");
+			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
+
+            var i18n = document.getElementById("firegpg-strings");
+
+            returnObject.result = RESULT_SUCCESS;
+
+            var infos2 = "";
+            for (var ii = 1; ii < infos.length; ++ii)
+                infos2 = infos2 + infos[ii] + " ";
+
+
+            returnObject.signresulttext = infos2 + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
+            returnObject.signresultuser = infos2 ;
+            returnObject.signresultdate = date.toLocaleString();
+
 		}
 
-		if (text == "") {
-			alert(i18n.getString("noData"));
-			return '';
+        return returnObject;
+
+    },
+
+    /*
+	* Function to decrypt a text.
+	*/
+	decrypt: function(silent, text, password) {
+		var returnObject = new GPGReturn();
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+        var i18n = document.getElementById("firegpg-strings");
+
+        // GPG verification
+        var gpgTest = FireGPG.selfTest(silent);
+
+		if(gpgTest.result != RESULT_SUCCESS) {
+            returnObject.result = gpgTest.result;
+            return returnObject;
+        }
+
+
+        if (text == undefined || text == null) {
+            var autoSetMode = true;
+            text = Selection.get();
+        }
+
+        if (text == "") {
+            if (!silent)
+                alert(i18n.getString("noData"));
+
+            returnObject.result = RESULT_ERROR_NO_DATA;
+			return returnObject;
 		}
 
 		//Verify GPG'data presence
@@ -679,91 +873,58 @@ var GPG = {
 		text = text.replace(reg, "-----END PGP MESSAGE-----");
 
 		if (firstPosition == -1 || lastPosition == -1) {
-			alert(i18n.getString("noGPGData"));
-			return '';
+			if (!silent)
+                alert(i18n.getString("noGPGData"));
+
+            returnObject.result = RESULT_ERROR_NO_GPG_DATA;
+            return returnObject;
 		}
 
 		text = text.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
 
 		// Needed for a decrypt
-		var password = getPrivateKeyPassword();
+		if (password == undefined || password == null)
+            password = getPrivateKeyPassword();
 
 		if(password == null) {
-			return '';
-		}
+			returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
 
 		// We get the result
-		var result = this.baseDecrypt(text,password);
-		var crypttext = result.output;
-		var sdOut2 = result.sdOut2;
-		result = result.sdOut;
-
-		// If the crypt failled
-		if (result == "erreurPass") {
-			alert(i18n.getString("decryptFailedPassword"));
-			eraseSavedPassword();
-			return '';
-		}
-		else if (result == "erreur") {
-			alert(i18n.getString("decryptFailed") + "\n\n" + sdOut2);
-			return '';
-		}
-		else {
-			// If the text was passed by the extension and not collected from an element,
-			// return the encrypted result to the calling function - KLH
-			if ( fromGpgAuth ) {
-				return crypttext;
-			}
-
-			var signAndCryptResult = undefined;
-
-			//If there was a sign with the crypted text
-			if (result == "signValid")
-			{
-				var infos = sdOut2.split(" ");
-				signAndCryptResult = "";
-				for (var ii = 1; ii < infos.length; ++ii)
-				{  signAndCryptResult = signAndCryptResult + infos[ii] + " ";}
-			}
-
-			//We test is the selection in editable :
-			if(Selection.isEditable()) {
-				//If yes, we edit this selection with the new text
-				Selection.set(crypttext,signAndCryptResult);
-			}
-			else {
-				//Else, we show a windows with the result
-				showText(crypttext,undefined,undefined,undefined,signAndCryptResult);
-			}
-		}
-
-		return '';
-	},
-
-	baseDecrypt: function(text,password) {
-		this.initGPGACCESS();
-
 		var result = this.GPGAccess.decrypt(text,password);
-		var tresult = result.sdOut;
 
-		result.sdOut = "ok";
+        returnObject.sdOut = result.sdOut;
+        returnObject.output = result.output;
 
-		if(tresult.indexOf("DECRYPTION_OKAY") == "-1")
-		{
-			result.sdOut = "erreur";
-			result.sdOut2 = tresult;
 
-			if(tresult.indexOf("BAD_PASSPHRASE") != "-1")
-				result.sdOut = "erreurPass";
+        if(result.sdOut.indexOf("BAD_PASSPHRASE") != -1) {
+
+            if (!silent)
+                alert(i18n.getString("decryptFailedPassword"));
+
+            eraseSavedPassword();
+
+            returnObject.result = RESULT_ERROR_PASSWORD;
+            return returnObject;
 		}
 
-		//Il y avait une signature dans le truc
-		if(tresult.indexOf("GOODSIG") != "-1")
-		{
 
-            infos2 = tresult.substring(0,tresult.indexOf("SIG_ID") + 7);
+        if(result.sdOut.indexOf("DECRYPTION_OKAY") == -1)	{
+			if (!silent)
+                alert(i18n.getString("decryptFailed") + "\n" + result.sdOut);
 
-			infos2 = tresult.replace(infos2, "");
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+		}
+
+
+        //Il y avait une signature dans le truc //TODO: detect bad signs.
+		if(result.sdOut.indexOf("GOODSIG") != -1) {
+
+            infos2 = result.sdOut.substring(0,result.sdOut.indexOf("SIG_ID") + 7);
+
+			infos2 = result.sdOut.replace(infos2, "");
 
 			infos2 = infos2.substring(0,infos2.indexOf("GNUPG") - 2);
 
@@ -775,159 +936,92 @@ var GPG = {
             var date = new Date();
 
             date.setTime(infos2 * 1000);
-            var i18n = document.getElementById("firegpg-strings");
 
-			var infos = tresult;
+			var infos = result.sdOut;
 			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
-			infos = tresult.replace(infos, "");
+			infos = result.sdOut.replace(infos, "");
 			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
-			result.sdOut2 = infos + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
-			result.sdOut = "signValid";
 
+            infos = infos.split(" ");
+            infos2 = "";
+            for (var ii = 1; ii < infos.length; ++ii)
+                infos2 = infos2 + infos[ii] + " ";
 
-
-
-
+            returnObject.signresult = RESULT_SUCCESS;
+            returnObject.signresulttext = infos2 + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
+            returnObject.signresultuser = infos2;
+            returnObject.signresultdate = date.toLocaleString();
 
 		}
 
-		return result;
+
+        if (autoSetMode) {
+            //We test is the selection in editable :
+            if(Selection.isEditable()) {
+                //If yes, we edit this selection with the new text
+                Selection.set(result.output,returnObject.signresulttext);
+            }  else {
+                //Else, we show a windows with the result
+                showText(result.output,undefined,undefined,undefined,returnObject.signresulttext);
+            }
+        }
+
+        returnObject.decrypted = result.output;
+
+        returnObject.result = RESULT_SUCCESS;
+        return returnObject;
 	},
 
-	/*
-	 * Test if GPG exists.
-	 * Return false on error.
-	 */
-	selfTest: function() {
-		this.initGPGACCESS();
-		// For i18n
-		var i18n = document.getElementById("firegpg-strings");
-
-		if (this.GPGAccess.selfTest() == false) {
-			alert(i18n.getString("selfTestFailled"));
-			return false;
-		}
-
-		return true;
-	},
-
-	/*
-	* Function to import a public key.
-	*/
-	kimport: function() {
-		this.initGPGACCESS();
-		// GPG verification
-		if(!GPG.selfTest())
-			return;
-
-		// For i18n
-		var i18n = document.getElementById("firegpg-strings");
-
-		var text = Selection.get();
-
-		if (text == "") {
-			alert(i18n.getString("noData"));
-			return;
-		}
-
-		var retour = this.baseKimport(text);
-
-		if (retour == "noGPG") {
-			alert(i18n.getString("noGPGData"));
-			return;
-		}
-		else if (retour == "error") {
-			alert(i18n.getString("importFailed"));
-		}
-		else if (retour == "ok") {
-			alert(i18n.getString("importOk"));
-		}
-	},
-
-	baseKimport: function(text) {
-		this.initGPGACCESS();
-		//Verify GPG'data presence
-		var firstPosition = text.indexOf("-----BEGIN PGP PUBLIC KEY BLOCK-----");
-		var lastPosition = text.indexOf("-----END PGP PUBLIC KEY BLOCK-----");
-
-		if (firstPosition == -1 || lastPosition == -1) {
-			return "noGPG";
-		}
-
-		text = text.substring(firstPosition,lastPosition + ("-----END PGP PUBLIC KEY BLOCK-----").length);
-
-		// We get the result
-		var result = this.GPGAccess.kimport(text);
-
-		// If the crypt failled
-		if(result.indexOf("IMPORT_OK") == "-1")
-			return "error";
-		else
-			return "ok";
-	},
-
-	/*
-	* Function to import a public key.
-	*/
-	kexport: function() {
-		this.initGPGACCESS();
-		// GPG verification
-		if(!GPG.selfTest())
-			return;
-
-		// For i18n
-		var i18n = document.getElementById("firegpg-strings");
 
 
-		// Needed for a crypt
-		var keyID = choosePublicKey();
-
-		if(keyID == null) {
-			return;
-		}
-
-
-		var retour = this.baseExport(keyID);
-
-		if (retour == "error") {
-			alert(i18n.getString("exportFailed"));
-		}
-		else  {
-				showText(retour);
-		}
-	},
-
-	baseExport: function(key) {
-		this.initGPGACCESS();
-
-		// We get the result
-		var result = this.GPGAccess.kexport(key);
-
-		// If the crypt failled
-		if(result == "")
-			return "error";
-		else
-			return result;
-	} ,
-
-	//Init subclass.
+    //Init subclass.
 	initGPGACCESS: function() {
 		if(this.allreadyinit != undefined && this.allreadyinit == true)
 			return;
 
-				//Find the right command for Gpg
+		//Find the right command for Gpg
 		this.GPGAccess.tryToFoundTheRightCommand();
 
 		useGPGAgent = this.GPGAccess.runATest('--no-use-agent');
 		useGPGTrust = this.GPGAccess.runATest('--trust-model always');
 
 		this.allreadyinit = true;
-	}
-};
+	},
+
+
+
+    /*
+	 * Test if GPG exists.
+	 * Return false on error.
+	 */
+	selfTest: function(silent) {
+		this.initGPGACCESS();
+
+        if (silent == undefined)
+            silent = false;
+
+		// For i18n
+		var i18n = document.getElementById("firegpg-strings");
+
+		if (this.GPGAccess.selfTest() == false) {
+			if (!silent)
+                alert(i18n.getString("selfTestFailled"));
+
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_INIT_FAILLED;
+            return returnObject;
+		}
+
+        var returnObject = new GPGReturn();
+        returnObject.result = RESULT_SUCCESS;
+        return returnObject;
+	},
+
+}
 
 // We load the good class for the OS
-GPG.GPGAccess = Witch_GPGAccess();
-GPG.GPGAccess.parent = GPG;
+FireGPG.GPGAccess = Witch_GPGAccess();
+FireGPG.GPGAccess.parent = FireGPG;
 
 //Test if we have to show the 'what is new ?'
 //We wait 3 sec.

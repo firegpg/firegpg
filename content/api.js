@@ -177,7 +177,12 @@ var gpgApi = {
             return;
         }
 
-        keylist = GPG.listKeys();
+        keylistcall = FireGPG.listKeys();
+
+        if (keylistcall.result == RESULT_SUCCESS)
+            keylist = keylistcall.keylist;
+        else
+            return;
 
         return_list = "";
 
@@ -207,7 +212,12 @@ var gpgApi = {
             return;
         }
 
-        keylist = GPG.listKeys(true);
+        keylistcall = FireGPG.listKeys(true);
+
+        if (keylistcall.result == RESULT_SUCCESS)
+            keylist = keylistcall.keylist;
+        else
+            return;
 
         return_list = "";
 
