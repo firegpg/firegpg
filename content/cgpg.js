@@ -69,18 +69,20 @@ function GPGReturn() {
 
 }
 
+function GPGKey() {
+    this.keyName = null;
+    this.keyExpi = null;
+    this.keyDate = null;
+    this.keyId = null;
+    this.subKeys = new Array();
+
+}
+
 //Function to try array
 function Sortage(a,b) {
-    var infosA = new Array();
-	try { infosA = a.split(":") } catch(e) {};
 
-
-
-    var infosB = new Array();
-	try { infosB = b.split(":") } catch(e) {};
-
-    infosA = (infosA[9] + " ").toLowerCase();
-    infosB = (infosB[9] + " ").toLowerCase();
+    infosA = (a.keyName + " ").toLowerCase();
+    infosB = (b.keyName + " ").toLowerCase();
 
     var i = 0;
 
@@ -255,34 +257,68 @@ var FireGPG = {
 		var list = result.split(reg);
 
 		// var reg2=new RegExp("[:]+", "g");
-        list.sort(Sortage);
+
 
 		for (var i = 0; i < list.length; i++) {
 			var infos = new Array();
-			try { infos = list[i].split(":");
-			//4: key id. 9 = key name. 5: creation date, 6: expire date
-			if(infos[0] == "pub" || infos[0] == "sec")
-			{
-				var keyId = infos[4];
-				var keyName = infos[9].replace(/\\e3A/g, ":");
-				var keyDate = infos[5];
-				var keyExpi = infos[6];
 
-                if(check_expi)  {
+			try {
+                infos = list[i].split(":");
+                //4: key id. 9 = key name. 5: creation date, 6: expire date
+                if(infos[0] == "pub" || infos[0] == "sec" || infos[0] == "uid" ) {
 
-                    var splited = keyExpi.split(new RegExp("-", "g"));
+                    if (infos[0] == "uid") {
 
-                    var tmp_date = new Date(splited[0],splited[1],splited[2]);
+                        var keyId = infos[7];
+                        var keyDate = "";
+                        var keyExpi = "";
 
-                    if (isNaN(tmp_date.getTime()) || maintenant < tmp_date.getTime())
-                        returnObject.keylist[infos[4]] = new Array(keyName, keyDate,keyExpi);
+                    } else {
+                        var keyId = infos[4];
+                        var keyDate = infos[5];
+                        var keyExpi = infos[6];
+                    }
 
+                    var keyName = infos[9].replace(/\\e3A/g, ":");
+
+                    var theKey = new GPGKey();
+
+                    theKey.keyDate = keyDate;
+                    theKey.keyExpi  = keyExpi;
+                    theKey.keyId = keyId;
+                    theKey.keyName = keyName;
+
+                    if(check_expi)  {
+
+                        var splited = keyExpi.split(new RegExp("-", "g"));
+
+                        var tmp_date = new Date(splited[0],splited[1],splited[2]);
+
+                        if (isNaN(tmp_date.getTime()) || maintenant < tmp_date.getTime()) {
+
+                        if (infos[0] == "uid")
+                            returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
+                        else
+                            returnObject.keylist.push(theKey);
+
+                        }
+
+                    }  else {
+
+                        if (infos[0] == "uid")
+                            returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
+                        else
+                            returnObject.keylist.push(theKey);
+                    }
                 }
-                else
-                    returnObject.keylist[infos[4]] = new Array(keyName, keyDate,keyExpi);
-			}
-			} catch (e) { }
+			} catch (e) { alert(e) ; }
 		}
+
+        // Sorts keys
+        returnObject.keylist.sort(Sortage);
+
+        for (var i = 0; i < returnObject.keylist.length; i++)
+            returnObject.keylist[i].subKeys.sort(Sortage);
 
         returnObject.result = RESULT_SUCCESS;
 
@@ -768,7 +804,7 @@ var FireGPG = {
         // We get the result
 		var result = this.GPGAccess.verify(text);
 
-        returnObject.sdOut = result.sdOut; alert(result.sdOut);
+        returnObject.sdOut = result.sdOut;
 
 		// If check failled
 		if(result.sdOut.indexOf("GOODSIG") == "-1") {

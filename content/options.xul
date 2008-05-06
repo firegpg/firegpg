@@ -81,14 +81,39 @@
 
         <!-- list of private keys -->
         <label  id="private-keys-label" value="&private-keys-label.text;"/>
-        <listbox id="private-keys-listbox" rows="4" onselect="privateKeySelected(this)">
+<!--        <listbox id="" rows="4" >
             <listhead>
                 <listheader label="&key-name;"></listheader>
                 <listheader label="&key-id;"></listheader>
                 <listheader label="&key-create;"></listheader>
                 <listheader label="&key-expire;"></listheader>
             </listhead>
-        </listbox>
+        </listbox> -->
+
+
+
+        <tree id="private-keys-listbox" flex="1" hidecolumnpicker="false" onselect="privateKeySelected(this)">
+
+            <treecols>
+
+                <treecol primary="true" flex="1"  label="&key-name;" persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+                <treecol name="id" label="&key-id;" syle="width: 100px" flex="0" persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+                <treecol  label="&key-create;" syle="width: 100px" flex="0"  persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+                <treecol  label="&key-expire;" syle="width: 100px" flex="0" persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+            </treecols>
+
+            <treechildren id="private-keys-listbox-child" properties=""/>
+
+        </tree>
+
     </prefpane>
 
 

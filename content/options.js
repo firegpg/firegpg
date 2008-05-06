@@ -67,11 +67,13 @@ function onChangeGPGPathCheckbox(checkbox, focus_textbox) {
 */
 
 function privateKeySelected(listbox) {
+
 	/* select the default key */
-	if (listbox.selectedItem.childNodes[1] != null)
-		var key_id = listbox.selectedItem.childNodes[1].getAttribute('label');
+	if (listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id') != "")
+		var key_id = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id');
 	else //User selected AskForPrivateKey
 		var key_id = "";
+
 	document.getElementById('default-private-key-pref').value = key_id;
 }
 
@@ -95,59 +97,68 @@ function onLoad(win)
     else
         gpg_keys = new Array();
 
-	var listbox = document.getElementById('private-keys-listbox');
+	var listbox = document.getElementById('private-keys-listbox-child');
 
 	/* read the default private key */
 	var default_private_key = document.getElementById('default-private-key-pref').value;
 
+	//listbox.appendItem('Always ask for private key', ''); /* TODO i18n */
 
-	listbox.appendItem('Always ask for private key', ''); /* TODO i18n */
+    var AskKey = new GPGKey();
+
+    AskKey.keyName = 'Always ask for private key';/* TODO i18n */
 
 
-	var default_item = null; /* this variable will contain the index of
+    var Ditem = CreateTreeItemKey(AskKey, document);
+
+    listbox.appendChild(Ditem);
+
+	var default_item = 0; /* this variable will contain the index of
 	                          the default private key item */
 
 	/* add all keys in the list box and find
 	 * the default item */
+    var current = 0;
 	for(var key in gpg_keys) {
 
-		var  item   = document.createElement('listitem');
+        if (gpg_keys[key].keyName) {
 
-		var  child1 = document.createElement('listcell');
-		child1.setAttribute('label', gpg_keys[key][0]);
-		item.appendChild(child1);
+            current++;
 
-		var  child2 = document.createElement('listcell');
-		child2.setAttribute('label', key);
-		item.appendChild(child2);
+            item = CreateTreeItemKey(gpg_keys[key], document);
 
-		var  child3 = document.createElement('listcell');
-		child3.setAttribute('label', gpg_keys[key][1]);
-		item.appendChild(child3);
+            if(default_private_key == gpg_keys[key].keyId)
+                default_item = current;
 
-		var  child4 = document.createElement('listcell');
-		child4.setAttribute('label', gpg_keys[key][02]);
-		item.appendChild(child4);
+            if (gpg_keys[key].subKeys.length > 0) {
+
+                item.setAttribute("container", "true");
+                var subChildren=document.createElement("treechildren");
+
+                for(var skey in gpg_keys[key].subKeys) {
+
+                    if (gpg_keys[key].subKeys[skey].keyName) {
+
+                        if(default_private_key == gpg_keys[key].subKeys[skey].keyId)
+                            default_item = -1;
+
+                        var subItem = CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document);
+
+                        subChildren.appendChild(subItem);
+                    }
+
+                    item.appendChild(subChildren);
+
+                }
+            }
+
+            listbox.appendChild(item);
 
 
-		listbox.appendChild(item);
-
-		//alert(key + " " + gpg_keys[key][0] + " " + gpg_keys[key][1] + " " + gpg_keys[key][2]);
-
-		//var item = listbox.appendItem(gpg_keys[key][0], key);
-
-		if(default_private_key == key)
-			default_item = item;
+        }
 	}
-	listbox.flex = 1;
-	/* select the default item */
-	if(default_item != null)
-		listbox.selectItem(default_item);
-	else {
-		listbox.selectedIndex = 0;
-	}
 
-	listbox.focus();
+	document.getElementById('private-keys-listbox').view.selection.select(default_item);
 
 	/* call some important events */
 	onChangeGPGPathCheckbox();

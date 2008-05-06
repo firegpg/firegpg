@@ -758,7 +758,7 @@ function runCommand(command, arg) {
 	file.initWithPath(command);
 	var process = Components.classes[NS_PROCESSUTIL_CONTRACTID].
 	                         createInstance(Components.interfaces.nsIProcess);
-	process.init(file); 
+	process.init(file);
 	var args = arg.split(' ');
 	process.run(true, args, args.length);
 }
@@ -1114,4 +1114,45 @@ function EnigConvertToUnicode(text, charset) {
   }
 }
 
+
+/*
+  Function: CreateTreeItemKey
+
+  Return a Treeitem for the key in parameter
+
+  Parameters:
+    key - The key
+    document - The current document.
+*/
+function CreateTreeItemKey(key, document) {
+    var  item  = document.createElement('treeitem');
+
+    var row = document.createElement('treerow');
+
+    var  child1 = document.createElement('treecell');
+    child1.setAttribute('label', key.keyName);
+    row.appendChild(child1);
+
+    var  child2 = document.createElement('treecell');
+    child2.setAttribute('label', key.keyId);
+    row.appendChild(child2);
+
+    var  child3 = document.createElement('treecell');
+    child3.setAttribute('label', key.keyDate);
+    row.appendChild(child3);
+
+    var  child4 = document.createElement('treecell');
+    child4.setAttribute('label', key.keyExpi);
+    row.appendChild(child4);
+
+    row.setAttribute('gpg-id',key.keyId);
+
+    item.appendChild(row);
+
+
+
+    return item;
+
+
+}
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

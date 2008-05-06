@@ -1,3 +1,7 @@
+2008-05-06  Maximilien Cuony
+    * Reforming key lists communication system, implementing subkey system.
+    * New key list implemented for options.
+
 2008-05-05  Maximilien Cuony
     * Commiting the new kernel of FireGPG. _API is now broken, gpgauth is not tested_
     * Double-click on keys' list simulate a click on 'Ok'

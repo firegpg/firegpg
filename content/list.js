@@ -94,7 +94,7 @@ function onLoad(win)
 
 	for(var id in list){
 
-        if (list[id][0] == undefined)
+        if (list[id].keyName == "")
             continue;
 
 		selected = false;
@@ -103,7 +103,7 @@ function onLoad(win)
 
 			var reg = new RegExp('[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}', 'gi');
 
-			var theMail = reg.exec(list[id]);
+			var theMail = reg.exec(list[id].keyName);
 
 			if (theMail != null) {
 				if (testList.indexOf(theMail) != -1)
@@ -115,24 +115,24 @@ function onLoad(win)
 		var  item   = document.createElement('listitem');
 
 		var  child1 = document.createElement('listcell');
-		child1.setAttribute('label', list[id][0]);
+		child1.setAttribute('label', list[id].keyName);
 		item.appendChild(child1);
 
 		var  child2 = document.createElement('listcell');
-		child2.setAttribute('label', id);
+		child2.setAttribute('label', list[id].keyId);
 		item.appendChild(child2);
 
 		var  child3 = document.createElement('listcell');
-		child3.setAttribute('label', list[id][1]);
+		child3.setAttribute('label', list[id].keyDate);
 		item.appendChild(child3);
 
 		var  child4 = document.createElement('listcell');
-		child4.setAttribute('label', list[id][02]);
+		child4.setAttribute('label', list[id].keyExpi);
 		item.appendChild(child4);
 
 		listInDialog.appendChild(item);
 
-        savedList[k] = new Array(list[id][0], id, list[id][1], list[id][2], (list[id][0] + id + list[id][1] + list[id][2]) .toLowerCase()  );
+        savedList[k] = new Array(list[id].keyName, list[id].keyId, list[id].keyDate, list[id].keyExpi, (list[id].keyName + list[id].keyId+ list[id].keyDate + list[id].keyExpi) .toLowerCase()  );
         k++;
 
 		//var newItem = listInDialog.appendItem(list[id], id);
