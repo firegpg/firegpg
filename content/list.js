@@ -135,15 +135,63 @@ function onLoad(win)
         savedList[k] = new Array(list[id].keyName, list[id].keyId, list[id].keyDate, list[id].keyExpi, (list[id].keyName + list[id].keyId+ list[id].keyDate + list[id].keyExpi) .toLowerCase()  );
         k++;
 
-		//var newItem = listInDialog.appendItem(list[id], id);
-
-
 		if (selected == true) {
 			listOfAutoSelect[j] = item;
 			j++;
-			//listInDialog.addItemToSelection(newItem);
-			//newItem.setAttribute('selected', selected);
 		}
+
+        //TODO : Find a better way
+        if (list[id].subKeys.length > 0) {
+
+            for(var kid in list[id].subKeys){
+
+                if (list[id].subKeys[kid].keyName == "")
+                    continue;
+
+                selected = false;
+
+                if (autoSelectMode == true) {
+
+                    var reg = new RegExp('[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}', 'gi');
+
+                    var theMail = reg.exec(list[id].subKeys[kid].keyName);
+
+                    if (theMail != null) {
+                        if (testList.indexOf(theMail) != -1)
+                            selected = true;
+                    }
+
+                }
+
+                var  item   = document.createElement('listitem');
+
+                var  child1 = document.createElement('listcell');
+                child1.setAttribute('label', "> " +list[id].subKeys[kid].keyName);
+                item.appendChild(child1);
+
+                var  child2 = document.createElement('listcell');
+                child2.setAttribute('label', list[id].keyId);
+                item.appendChild(child2);
+
+                var  child3 = document.createElement('listcell');
+                child3.setAttribute('label', list[id].subKeys[kid].keyDate);
+                item.appendChild(child3);
+
+                var  child4 = document.createElement('listcell');
+                child4.setAttribute('label', list[id].subKeys[kid].keyExpi);
+                item.appendChild(child4);
+
+                listInDialog.appendChild(item);
+
+                savedList[k] = new Array("> " + list[id].subKeys[kid].keyName, list[id].keyId, list[id].subKeys[kid].keyDate, list[id].subKeys[kid].keyExpi, (list[id].subKeys[kid].keyName + list[id].subKeys[kid].keyId+ list[id].subKeys[kid].keyDate + list[id].subKeys[kid].keyExpi) .toLowerCase()  );
+                k++;
+
+                if (selected == true) {
+                    listOfAutoSelect[j] = item;
+                    j++;
+                }
+            }
+        }
 
 	}
 

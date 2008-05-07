@@ -1123,8 +1123,9 @@ function EnigConvertToUnicode(text, charset) {
   Parameters:
     key - The key
     document - The current document.
+    forceId - If we have to force the id of the key
 */
-function CreateTreeItemKey(key, document) {
+function CreateTreeItemKey(key, document, forceId) {
     var  item  = document.createElement('treeitem');
 
     var row = document.createElement('treerow');
@@ -1145,7 +1146,12 @@ function CreateTreeItemKey(key, document) {
     child4.setAttribute('label', key.keyExpi);
     row.appendChild(child4);
 
-    row.setAttribute('gpg-id',key.keyId);
+    var id = key.keyId;
+
+    if (forceId != undefined)
+        id = forceId;
+
+    row.setAttribute('gpg-id', id);
 
     item.appendChild(row);
 

@@ -52,7 +52,7 @@
   <script src="cgpg.js"/>
 
   <description control="text" id="description" value="default description"/>
-  <textbox id="text" multiline="true" rows="25" cols="80"/>
+  <textbox id="text" multiline="true" rows="25" cols="80" flex="1"/>
   <label id="dcryptsignresult" style="display: none;" />
 
   <hbox id="buttons-box">

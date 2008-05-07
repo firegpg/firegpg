@@ -139,10 +139,7 @@ function onLoad(win)
 
                     if (gpg_keys[key].subKeys[skey].keyName) {
 
-                        if(default_private_key == gpg_keys[key].subKeys[skey].keyId)
-                            default_item = -1;
-
-                        var subItem = CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document);
+                        var subItem = CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
 
                         subChildren.appendChild(subItem);
                     }

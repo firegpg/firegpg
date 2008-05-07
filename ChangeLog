@@ -1,3 +1,7 @@
+2008-05-07  Maximilien Cuony
+    * Implemented sub key for key selection (but widout the new keys' list system)
+    * Add flexibility to some dialogs
+
 2008-05-06  Maximilien Cuony
     * Reforming key lists communication system, implementing subkey system.
     * New key list implemented for options.

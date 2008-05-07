@@ -43,7 +43,7 @@
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         ondialogaccept="return onAccept()">
   <script src="list.js"/>
-   <vbox>
+   <vbox  flex="1" >
         <description control="list" id="description" value="default description"/>
         <listbox id="list" seltype="multiple" flex="1" rows="20" style="width:35em" ondblclick="acceptDialog()">
           <listhead>
