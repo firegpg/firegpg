@@ -66,6 +66,7 @@ function GPGReturn() {
     this.signresultdate = null;
     this.keylist = null;
     this.exported  = null;
+    this.messagetext = null;
 
 }
 
@@ -126,6 +127,8 @@ var FireGPG = {
             if (!silent)
                 alert(i18n.getString("noData"));
 
+            returnObject.messagetext = i18n.getString("noData");
+
             returnObject.result = RESULT_ERROR_NO_DATA;
 			return returnObject;
 		}
@@ -169,6 +172,8 @@ var FireGPG = {
             if (!silent)
                 alert(i18n.getString("signFailedPassword"));
 
+            returnObject.messagetext = i18n.getString("signFailedPassword");
+
             eraseSavedPassword();
 
             returnObject.result = RESULT_ERROR_PASSWORD;
@@ -179,6 +184,8 @@ var FireGPG = {
 		{
 			if (!silent)
                 alert(i18n.getString("signFailed") + "\n" + result.sdOut);
+
+            returnObject.messagetext = i18n.getString("signFailed" + "\n" + result.sdOut);
 
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
@@ -353,6 +360,8 @@ var FireGPG = {
             if (!silent)
                 alert(i18n.getString("noData"));
 
+            returnObject.messagetext = i18n.getString("noData");
+
             returnObject.result = RESULT_ERROR_NO_DATA;
 			return returnObject;
 		}
@@ -365,6 +374,7 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("noGPGData"));
 
+            returnObject.messagetext = i18n.getString("noGPGData");
             returnObject.result = RESULT_ERROR_NO_GPG_DATA;
             return returnObject;
 		}
@@ -378,8 +388,9 @@ var FireGPG = {
 
         if (result.sdOut.indexOf("IMPORT_OK") == -1) {
             if (!silent)
-                alert(i18n.getString("importFailed"));
+                alert(i18n.getString("importFailed") + "\n" + result.sdOut);
 
+            returnObject.messagetext = i18n.getString("importFailed")  + "\n" + result.sdOut;
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
 
@@ -387,6 +398,7 @@ var FireGPG = {
             if (!silent)
                 alert(i18n.getString("importOk"));
 
+            returnObject.messagetext = i18n.getString("importOk");
             returnObject.result = RESULT_SUCCESS;
             return returnObject;
         }
@@ -433,6 +445,7 @@ var FireGPG = {
             if (!silent)
                 alert(i18n.getString("exportFailed"));
 
+            returnObject.messagetext = i18n.getString("exportFailed");
 			returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
 		}	else  {
@@ -476,6 +489,7 @@ var FireGPG = {
             if (!silent)
                 alert(i18n.getString("noData"));
 
+            returnObject.messagetext = i18n.getString("noData");
             returnObject.result = RESULT_ERROR_NO_DATA;
 			return returnObject;
 		}
@@ -484,6 +498,7 @@ var FireGPG = {
 
         if (tryPosition != -1) {
 			if (!silent && !confirm(i18n.getString("alreadyCrypt"))) {
+
                 returnObject.result = RESULT_ERROR_ALREADY_CRYPT;
                 return returnObject;
             }
@@ -513,6 +528,7 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("cryptFailed") + "\n" + result.sdOut);
 
+            returnObject.messagetext = i18n.getString("cryptFailed") + "\n" + result.sdOut;
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
 		}
@@ -565,6 +581,7 @@ var FireGPG = {
             if (!silent)
                 alert(i18n.getString("noData"));
 
+            returnObject.messagetext = i18n.getString("noData");
             returnObject.result = RESULT_ERROR_NO_DATA;
 			return returnObject;
 		}
@@ -621,7 +638,7 @@ var FireGPG = {
                 alert(i18n.getString("cryptAndSignFailedPass"));
 
             eraseSavedPassword();
-
+            returnObject.messagetext = i18n.getString("cryptAndSignFailedPass");
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
 		}
@@ -631,6 +648,7 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("cryptAndSignFailed") + "\n" + result.sdOut);
 
+            returnObject.messagetext = i18n.getString("cryptAndSignFailed") + "\n" + result.sdOut;
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
 		}
@@ -683,6 +701,7 @@ var FireGPG = {
             if (!silent)
                 alert(i18n.getString("noData"));
 
+            returnObject.messagetext = i18n.getString("noData");
             returnObject.result = RESULT_ERROR_NO_DATA;
 			return returnObject;
 		}
@@ -698,6 +717,7 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("noGPGData"));
 
+            returnObject.messagetext = i18n.getString("noGPGData");
             returnObject.result = RESULT_ERROR_NO_GPG_DATA;
 			return returnObject;
 		}
@@ -889,6 +909,7 @@ var FireGPG = {
             if (!silent)
                 alert(i18n.getString("noData"));
 
+            returnObject.messagetext = i18n.getString("noData");
             returnObject.result = RESULT_ERROR_NO_DATA;
 			return returnObject;
 		}
@@ -913,6 +934,7 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("noGPGData"));
 
+            returnObject.messagetext = i18n.getString("noGPGData");
             returnObject.result = RESULT_ERROR_NO_GPG_DATA;
             return returnObject;
 		}
@@ -941,7 +963,7 @@ var FireGPG = {
                 alert(i18n.getString("decryptFailedPassword"));
 
             eraseSavedPassword();
-
+            returnObject.messagetext = i18n.getString("decryptFailedPassword");
             returnObject.result = RESULT_ERROR_PASSWORD;
             return returnObject;
 		}
@@ -951,6 +973,7 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("decryptFailed") + "\n" + result.sdOut);
 
+            returnObject.messagetext = i18n.getString("decryptFailed") + "\n" + result.sdOut;
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
 		}
@@ -1044,6 +1067,7 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("selfTestFailled"));
 
+            returnObject.messagetext = i18n.getString("selfTestFailled");
             var returnObject = new GPGReturn();
             returnObject.result = RESULT_ERROR_INIT_FAILLED;
             return returnObject;

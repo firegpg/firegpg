@@ -204,97 +204,73 @@ Keyring.ignoreInners = function(idx, end,node) {
 }
 
 Keyring.ImportKey = function(content, block) {
-	var result = {
-		success: confirm("Test question: was the import successful?"),
-		output: "gpg: key 4A3BFD9E: public key \"IPCop Development Group\n(http://www.ipcop.org/) <ipcop-devel at lists.sourceforge.net>\" imported"
-	};
 
-	if(!result.success)
-		result.output = "gpg: error reading `public_key.asc': general error\ngpg: import from `public_key.asc' failed: general error";
+    result = FireGPG.kimport(true,content);
 
 	block.output.style.display = "block";
-	block.output.textContent = result.output;
+    block.output.textContent = "<b>" + result.messagetext;
 
-	if(result.success) {
-		block.body.className = "information";
-	}
-	else {
+	if(result.result == RESULT_SUCCESS)
+		block.body.className = "ok";
+	else
 		block.body.className = "failure";
-	}
+
 };
 
 Keyring.VerifySignature = function(content, block) {
-	var result = {
-		success: confirm("Test question: was this signature valid?"),
-		signer: "Ryan Patterson <cgamesplay@cgamesplay.com>",
-		signed: "1:59 pm on 3/18/2008",
-		output: "gpg: Signature made Sun Apr 27 16:38:11 2008 EDT using DSA key ID A61A40ED\ngpg: Good signature from \"Ryan Patterson <cgamesplay@gmail.com>\"\ngpg: WARNING: This key is not certified with a trusted signature!\ngpg:          There is no indication that the signature belongs to the owner.\nPrimary key fingerprint: 247B E558 0BD3 9397 A952  13AB D784 F4CC A61A 40ED"
-	};
 
-	// For testing:
-	if(!result.success)
-		result.output = "gpg: Signature made Fri Mar 28 14:09:12 2008 EDT using DSA key ID A61A40ED\ngpg: BAD signature from \"Ryan Patterson <cgamesplay@gmail.com>\"";
+    var i18n = document.getElementById("firegpg-strings");
 
-	block.output.style.display = "block";
-	block.output.textContent = result.output;
+    resultTest = FireGPG.verify(true,content);
 
-	if(result.success) {
-		block.body.className = "ok";
-		block.header.textContent = Keyring.Strings.SignedMessage + ", " + Keyring.Strings.SignatureBy.replace("%1", result.signer, "g").replace("%2", result.signed, "g");
-	}
-	else {
 
-		block.body.className = "failure";
-		block.header.textContent = Keyring.Strings.SignedMessage + ", " + Keyring.Strings.SignatureInvalid;
-	}
+
+    if (resultTest.signresult ==RESULT_ERROR_UNKNOW) {
+        block.body.className = "failure";
+        block.header.textContent = Keyring.Strings.SignedMessage + ", " +i18n.getString("verifFailed");
+    }
+    else if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
+        block.body.className = "failure";
+        block.header.textContent = Keyring.Strings.SignedMessage + ", " + i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")";
+    }
+    else if (resultTest.signresult == RESULT_ERROR_NO_KEY) {
+        block.body.className = "failure";
+        block.header.textContent = Keyring.Strings.SignedMessage + ", " + i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")";
+    }
+    else {
+        block.body.className = "ok";
+        block.header.textContent = Keyring.Strings.SignedMessage + ", " + i18n.getString("verifSuccess") + " " + resultTest.signresulttext;
+    }
+
 };
 
 Keyring.DecryptMessage = function(content, block) {
-	var result = {
-		success: confirm("Test question: was the decryption possible?"),
-		message: "hello!",
-		signer: "Ryan Patterson <cgamesplay@cgamesplay.com>",
-		signed: "1:59 pm on 3/18/2008",
-		output: "gpg: encrypted with 2048-bit ELG key, ID 157091C3, created 2006-09-20\n      \"Ryan Patterson <cgamesplay@gmail.com>\"\ngpg: Signature made Sun Apr 27 16:38:11 2008 EDT using DSA key ID A61A40ED\ngpg: Good signature from \"Ryan Patterson <cgamesplay@gmail.com>\"\ngpg: WARNING: This key is not certified with a trusted signature!\ngpg:          There is no indication that the signature belongs to the owner.\nPrimary key fingerprint: 247B E558 0BD3 9397 A952  13AB D784 F4CC A61A 40ED"
-	};
 
-	// For testing:
-	if(!result.success) {
-		delete result.message;
-		result.output = "gpg: encrypted with ELG key, ID D278A68C\ngpg: decryption failed: No secret key";
-	}
-	else {
-		if(!confirm("Test question: was the message signed?")) {
-			delete result.signer;
-			delete result.signed;
-			result.output = "gpg: encrypted with 2048-bit ELG key, ID 157091C3, created 2006-09-20\n      \"Ryan Patterson <cgamesplay@gmail.com>\"";
-		}
-		else if(!confirm("Test question: was the signature valid?")) {
-			result.success = false;
-			result.output = "gpg: encrypted with 2048-bit ELG key, ID 157091C3, created 2006-09-20\n      \"Ryan Patterson <cgamesplay@gmail.com>\"\ngpg: Signature made Fri Mar 28 14:09:12 2008 EDT using DSA key ID A61A40ED\ngpg: BAD signature from \"Ryan Patterson <cgamesplay@gmail.com>\"";
-		}
-	}
+    var i18n = document.getElementById("firegpg-strings");
 
-	block.output.style.display = "block";
-	block.output.textContent = result.output;
+    var result = FireGPG.decrypt(true,content);
 
-	if(result.success) {
-		block.body.className = "ok";
-		block.header.textContent = Keyring.Strings.EncryptedMessage + ", ";
-		if(result.signer)
-			block.header.textContent += Keyring.Strings.SignatureBy.replace("%1", result.signer, "g").replace("%2", result.signed, "g");
-		else
-			block.header.textContent += Keyring.Strings.Unsigned;
-		block.message.textContent = result.message;
-	}
-	else {
-		block.body.className = "failure";
-		block.header.textContent = Keyring.Strings.EncryptedMessage;
-		if(result.message)
-			block.message.textContent = result.message;
-		else
-			block.message.textContent = "";
-	}
+    if (result.result == RESULT_SUCCESS) {
+
+        block.body.className = "ok";
+        block.message.textContent = result.decrypted;
+
+        if (result.signresulttext)
+            block.header.textContent = Keyring.Strings.EncryptedMessage + ", " + i18n.getString("validSignInCrypt") + " " + result.signresulttext;
+        
+    } else if (result.result == RESULT_ERROR_PASSWORD) {
+
+        block.body.className = "failure";
+        block.header.textContent = Keyring.Strings.EncryptedMessage + ", " + result.messagetext;
+
+    } else {
+
+        block.body.className = "failure";
+        block.output.style.display = "block";
+        block.output.textContent = result.messagetext;
+
+    }
+
 };
 
 Keyring.onPageLoad = function(aEvent) {

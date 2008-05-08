@@ -1,3 +1,6 @@
+2008-05-08  Maximilien Cuony
+    * Inline system is now usable :)
+
 2008-05-07  Maximilien Cuony
     * Implemented sub key for key selection (but widout the new keys' list system)
     * Add flexibility to some dialogs
