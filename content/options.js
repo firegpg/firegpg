@@ -102,11 +102,9 @@ function onLoad(win)
 	/* read the default private key */
 	var default_private_key = document.getElementById('default-private-key-pref').value;
 
-	//listbox.appendItem('Always ask for private key', ''); /* TODO i18n */
-
     var AskKey = new GPGKey();
 
-    AskKey.keyName = 'Always ask for private key';/* TODO i18n */
+    AskKey.keyName = document.getElementById('firegpg-ask-for-private-label').value;
 
 
     var Ditem = CreateTreeItemKey(AskKey, document);

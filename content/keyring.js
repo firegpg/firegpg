@@ -15,21 +15,10 @@ Keyring.KEY_BLOCK = 1;
 Keyring.SIGN_BLOCK = 2;
 Keyring.MESSAGE_BLOCK = 3;
 
-Keyring.Strings = {
-	Key: "PHP Public Key",
-	SignedMessage: "PGP Signed Message",
-	EncryptedMessage: "PGP Encrypted Message",
-	Import: "Import",
-	VerifySignature: "Verify Signature",
-	Decrypt: "Decrypt",
-	SignatureUnverified: "unverified",
-	SignatureInvalid: "invalid",
-	SignatureBy: "signed by %1, %2",
-	Unsigned: "unsigned",
-};
-
-
 Keyring.HandleBlock = function(document, range, blockType) {
+
+    var i18n = document.getElementById("firegpg-strings");
+
 	// Get content, remove whitespace from beginning of the lines.
 
     var s = new XMLSerializer();
@@ -49,14 +38,19 @@ Keyring.HandleBlock = function(document, range, blockType) {
 	frame.style.width = "100%";
 
 	frame.addEventListener("load", function() {
+
+
+
 		var block = {
 			body: frame.contentDocument.getElementsByTagName("body")[0],
 			header: frame.contentDocument.getElementById("header"),
 			output: frame.contentDocument.getElementById("output"),
 			message: frame.contentDocument.getElementById("message"),
 			action: frame.contentDocument.getElementById("action"),
-			original: frame.contentDocument.getElementById("original"),
+			original: frame.contentDocument.getElementById("original")
 		}
+
+        frame.contentDocument.getElementById("toggle-original").textContent = Keyring.i18n.getString("show-original")
 
 		// Universal set up
 		block.original.textContent = content;
@@ -87,21 +81,21 @@ Keyring.HandleBlock = function(document, range, blockType) {
 		switch(blockType) {
 			case Keyring.KEY_BLOCK:
 				block.body.className = "information";
-				block.header.textContent = Keyring.Strings.Key;
-				block.action.textContent = Keyring.Strings.Import;
+				block.header.textContent = Keyring.i18n.getString("key-block");
+				block.action.textContent = Keyring.i18n.getString("import");
 				break;
 			case Keyring.SIGN_BLOCK:
 				block.body.className = "caution";
-				block.header.textContent = Keyring.Strings.SignedMessage + ", " + Keyring.Strings.SignatureUnverified;
-				block.action.textContent = Keyring.Strings.VerifySignature;
+				block.header.textContent = Keyring.i18n.getString("signed-message")  + ", " + Keyring.i18n.getString("unverified");
+				block.action.textContent = Keyring.i18n.getString("verify");
 
 				// Extract the message without the header and signature
 				block.message.innerHTML = content.substring(content.indexOf("\n\n"), content.indexOf(Keyring.Tags.SignatureStart)).replace(/</gi,"&lt;").replace(/>/gi,"&gt;").replace(/\n/gi,"<br />");
 				break;
 			case Keyring.MESSAGE_BLOCK:
 				block.body.className = "caution";
-				block.header.textContent = Keyring.Strings.EncryptedMessage;
-				block.action.textContent = Keyring.Strings.Decrypt;
+				block.header.textContent = Keyring.i18n.getString("encrypted-message") ;
+				block.action.textContent = Keyring.i18n.getString("decrypt");
 				break;
 		}
 		frame.style.height = block.body.scrollHeight + "px";
@@ -208,7 +202,7 @@ Keyring.ImportKey = function(content, block) {
     result = FireGPG.kimport(true,content);
 
 	block.output.style.display = "block";
-    block.output.textContent = "<b>" + result.messagetext;
+    block.output.textContent = result.messagetext;
 
 	if(result.result == RESULT_SUCCESS)
 		block.body.className = "ok";
@@ -227,19 +221,19 @@ Keyring.VerifySignature = function(content, block) {
 
     if (resultTest.signresult ==RESULT_ERROR_UNKNOW) {
         block.body.className = "failure";
-        block.header.textContent = Keyring.Strings.SignedMessage + ", " +i18n.getString("verifFailed");
+        block.header.textContent = i18n.getString("signed-message") + ", " +i18n.getString("verifFailed");
     }
     else if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
         block.body.className = "failure";
-        block.header.textContent = Keyring.Strings.SignedMessage + ", " + i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")";
+        block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")";
     }
     else if (resultTest.signresult == RESULT_ERROR_NO_KEY) {
         block.body.className = "failure";
-        block.header.textContent = Keyring.Strings.SignedMessage + ", " + i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")";
+        block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")";
     }
     else {
         block.body.className = "ok";
-        block.header.textContent = Keyring.Strings.SignedMessage + ", " + i18n.getString("verifSuccess") + " " + resultTest.signresulttext;
+        block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifSuccess") + " " + resultTest.signresulttext;
     }
 
 };
@@ -256,12 +250,12 @@ Keyring.DecryptMessage = function(content, block) {
         block.message.textContent = result.decrypted;
 
         if (result.signresulttext)
-            block.header.textContent = Keyring.Strings.EncryptedMessage + ", " + i18n.getString("validSignInCrypt") + " " + result.signresulttext;
-        
+            block.header.textContent = i18n.getString("encrypted-message") + ", " + i18n.getString("validSignInCrypt") + " " + result.signresulttext;
+
     } else if (result.result == RESULT_ERROR_PASSWORD) {
 
         block.body.className = "failure";
-        block.header.textContent = Keyring.Strings.EncryptedMessage + ", " + result.messagetext;
+        block.header.textContent = i18n.getString("encrypted-message") + ", " + result.messagetext;
 
     } else {
 
@@ -282,11 +276,17 @@ Keyring.onPageLoad = function(aEvent) {
 	if(doc.location.protocol == "chrome:")
 		return;
 
+
+
     Keyring.HandlePage(doc);
+
+
 };
 
 Keyring.initSystem = function() {
     try {
         document.getElementById("appcontent").addEventListener("DOMContentLoaded", Keyring.onPageLoad, false);
     } catch (e) { }
+
+    Keyring.i18n = document.getElementById("firegpg-strings");
 };

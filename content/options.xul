@@ -55,6 +55,8 @@
 
         </preferences>
 
+
+
         <hbox>
             <label  id="firegpg-version-label" value="&firegpg-version-label.text;"/>
 
@@ -90,6 +92,8 @@
             </listhead>
         </listbox> -->
 
+        <!-- hidden label -->
+        <label  id="firegpg-ask-for-private-label" value="&firegpg-ask-for-private-label.text;" style="display: none;"/>
 
 
         <tree id="private-keys-listbox" flex="1" hidecolumnpicker="false" onselect="privateKeySelected(this)">

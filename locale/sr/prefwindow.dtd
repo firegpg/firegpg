@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "GMail podrška">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Privatni ključ po defaultu:">
-<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
+<!ENTITY show-website-checkbox "Prikaži adresu FireGPG sajta u GPG polju za komentare">
 <!ENTITY change-gpg-path-button "Postavljam putanju GPG-a.">
 <!ENTITY change-gpg-path-checkbox "Manuelno zadaj putanju GPG-a:">
 <!ENTITY result-always-in-new-window "Uvek prikaži rezultat kodiranja ili potpisivanja u novom prozoru.">
@@ -36,11 +36,12 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "Potpiši, Šifruj i Pošalji">
 <!ENTITY firegpg-version-label.text "Trenutna verzija FireGPG-a:">
 <!ENTITY hide-expired "Sakrij ">
-<!ENTITY use-api "Active FireGPG's api for Webpages (like roundcube) (restart required)">
+<!ENTITY use-api "Aktivni FireGPG API za sajtove (kao Roundcube)(Restart potreban) ">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "Lists of allowed sites (double-click to remove)">
-<!ENTITY api-liste-domain.label "Domain">
-<!ENTITY api-liste-keyauth.label "Key">
-<!ENTITY use-gpg-agent-checkbox "Active Gpg-agent (warning, can lead issues...)">
-<!ENTITY search-description "Filter :">
-<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">
+<!ENTITY api-liste-access.label "Liste dozvoljenih sajtova (dupli-klik za brisanje)">
+<!ENTITY api-liste-domain.label "Domen">
+<!ENTITY api-liste-keyauth.label "Ključ">
+<!ENTITY use-gpg-agent-checkbox "Aktivni GPG-agent (može dovesti izlaske)">
+<!ENTITY search-description "Filter:">
+<!ENTITY gmail-buton-use-select-checkbox "Ne prikazuj dugmad nego drop-down listu.">
+<!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">

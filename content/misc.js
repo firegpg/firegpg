@@ -211,8 +211,12 @@ function choosePrivateKey()
 {
 	var params = {title: '', description: '', list: {}, selected_item: null, preSelect: {}};
 
-	params.title = 'FireGPG - private key' /* TODO i18n */
-	params.description = 'Choose the private key:' /* TODO i18n */
+    var i18n = document.getElementById("firegpg-strings");
+
+	params.title = i18n.getString('choosePrivateKeyTitle');
+	params.description = i18n.getString('choosePrivateKeyDescription');
+
+
 	keylistcall = FireGPG.listKeys(true);
 
     if (keylistcall.result == RESULT_SUCCESS)
