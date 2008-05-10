@@ -53,7 +53,7 @@ const FIREGPG_VERSION = '0.4.9';
 const FIREGPG_STATUS = 'DEVEL';
 
 /* Constant: FIREGPG_SVN
-  The current subversion's revision number. _Dosen't works for the moment_ */
+  The current subversion's revision number. */
 const FIREGPG_SVN = "$Rev$";
 
 /*
