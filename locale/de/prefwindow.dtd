@@ -46,3 +46,4 @@ Websiten (Doppelklick zum Entfernen)">
 <!ENTITY search-description "Filter :">
 <!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">
 <!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
+<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">

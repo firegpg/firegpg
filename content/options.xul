@@ -50,6 +50,7 @@
             <preference id="allvays-to-myself-pref" name="extensions.firegpg.allvays_to_myself" type="bool"/>
             <preference id="no-updates" name="extensions.firegpg.no_updates" type="bool"/>
             <preference id="hide-expired-pref" name="extensions.firegpg.hide_expired" type="bool"/>
+            <preference id="inline-activated-pref" name="extensions.firegpg.activate_inline" type="bool"/>
 
 
 
@@ -76,6 +77,8 @@
 
         <!-- hide expired keys -->
         <checkbox  id="hide-expired" preference="hide-expired-pref" label="&hide-expired;"/>
+
+        <checkbox  id="inline-activated" preference="inline-activated-pref" label="&inline-activated;"/>
 
 
         <checkbox  id="updates-checkbox" preference="no-updates" label="&turn-off-updates;" onclick="showWarnings()"/>

@@ -276,7 +276,8 @@ Keyring.onPageLoad = function(aEvent) {
 	if(doc.location.protocol == "chrome:")
 		return;
 
-
+    if (doc.location.href.indexOf("mail.google.com") != -1)
+        return;
 
     Keyring.HandlePage(doc);
 
@@ -284,6 +285,20 @@ Keyring.onPageLoad = function(aEvent) {
 };
 
 Keyring.initSystem = function() {
+
+    var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+	                           getService(Components.interfaces.nsIPrefService);
+
+    prefs = prefs.getBranch("extensions.firegpg.");
+    try {
+        activate = prefs.getBoolPref("activate_inline");
+    } catch (e) {
+        activate = true;
+    }
+
+    if (!activate)
+        return;
+    
     try {
         document.getElementById("appcontent").addEventListener("DOMContentLoaded", Keyring.onPageLoad, false);
     } catch (e) { }

@@ -45,3 +45,4 @@
 <!ENTITY search-description "Filtro:">
 <!ENTITY gmail-buton-use-select-checkbox "Usa menu a tendina al posto dei pulsanti">
 <!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
+<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
