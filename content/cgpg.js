@@ -38,7 +38,22 @@
 const NS_IPCSERVICE_CONTRACTID  = "@mozilla.org/process/ipc-service;1";
 */
 
+/*
+   Constants: FireGPG's actions results
 
+   RESULT_SUCCESS - The operation was successfull or the signature is correct
+   RESULT_CANCEL - The operation was canceled, for exemple the user click on cancel when his password is asked.
+   RESULT_ERROR_UNKNOW - An unkonw error happend
+   RESULT_ERROR_PASSWORD - The specified password was wrong.
+   RESULT_ERROR_NO_DATA - There wasen't any text to do the operation
+   RESULT_ERROR_ALREADY_SIGN - The text is already signed
+   RESULT_ERROR_BAD_SIGN - The signature was bad
+   RESULT_ERROR_NO_KEY - Impossible to verify the signature beacause there wasn't the public key in the keyring
+   RESULT_ERROR_ALREADY_CRYPT - The text is already encrypted
+   RESULT_ERROR_NO_GPG_DATA - The text is not a vlid PGP block
+   RESULT_ERROR_INIT_FAILLED - There is a problem with GPG, impossible to execute the executable.
+
+*/
 const RESULT_SUCCESS = 0;
 const RESULT_CANCEL = 1;
 const RESULT_ERROR_UNKNOW = 2;
@@ -50,6 +65,33 @@ const RESULT_ERROR_NO_KEY = 6;
 const RESULT_ERROR_ALREADY_CRYPT = 7;
 const RESULT_ERROR_NO_GPG_DATA = 7;
 const RESULT_ERROR_INIT_FAILLED = 8;
+
+
+/*
+    Function: GPGReturn
+
+    This function return a basic object, with variable to return informations about a FireGPG's operation
+
+    Returns:
+
+        An object with this variables to null :
+
+        result - The result of the action see <FireGPG's actions results>
+        ouput - The output form GnuPG
+        sdOut - The sdOut form GnuPG
+        encrypted - The encrypted data with GnuPG
+        decrypted - The decrypted data with GnuPG
+        signed - The signed data with GnuPG
+        signsresults - An array with <GPGReturn> data for each sign's result in the data.
+        signresult - The sign result for the first sign (or the current sign if we're in the signsresults array)
+        signresulttext - The message for the result of the test on the first sign (or the current sign if we're in the signsresults array)
+        signresultuser - The username of the key of the first sign (or the current sign if we're in the signsresults array)
+        signresultdate - The date of the first sign (or the current sign if we're in the signsresults array)
+        keylist - An array of <GPGKey> with the key of the specified keyring (private or public)
+        exported - The exported key with GnuPG
+        messagetext - The message who is showed in the lasted alert (usefull when the silent mode is activated)
+
+*/
 
 function GPGReturn() {
 
@@ -70,6 +112,22 @@ function GPGReturn() {
 
 }
 
+/*
+    Function: GPGKey
+
+    This function return a basic object, who represent a PGP key
+
+    Returns:
+
+        An object with this variables to null :
+
+        keyName - The key's name
+        keyExpi - The key's expire date
+        keyDate - The key's creation date
+        keyId - The key's id
+        subKeys - An array of <GPGKey> with the subkey of the key.
+
+*/
 function GPGKey() {
     this.keyName = null;
     this.keyExpi = null;
@@ -79,7 +137,17 @@ function GPGKey() {
 
 }
 
-//Function to try array
+/*
+    Function: Sortage
+
+    This is a function used to sort an array of <GPGKey> by the key name
+    Use it like this : thearray.sort(Sortage)
+
+    Parameters:
+        a - Internal
+        b - Internal
+
+*/
 function Sortage(a,b) {
 
     infosA = (a.keyName + " ").toLowerCase();
@@ -97,8 +165,24 @@ function Sortage(a,b) {
     return 1;
 }
 
+/*
+   Class: FireGPG
+   This is the main kernel for FireGPG, who give access to all GPG functions (sign, encrypt, ...)
+*/
 var FireGPG = {
 
+    /*
+        Function: sign
+        Function to sign a text.
+
+        Return a <GPGReturn> object.
+
+        Parameters:
+            slient - _Optional_, default to false. Set this to true to disable any alert for the user
+            text - _Optional_, if not set try to use the selection. The text to sign
+            keyID - _Optional_, if not set use the default private key or ask the user. The private keyID used to sign.
+            password - _Optional_, if not set ask the user.
+    */
     sign: function(silent, text, keyID, password) {
 
         var returnObject = new GPGReturn();
@@ -210,11 +294,15 @@ var FireGPG = {
     },
 
     /*
-	 * List all keys.
-	 *
-	 * An object is returned :
-	 *     object["key_id"] = "Name (name) <email>"
-	 */
+        Function: listKeys
+        Who return a list of key in the keyring
+
+        Return a <GPGReturn> object.
+
+        Parameters:
+            onlyPrivate - _Optional_, default to false. Set this to true to get only the private keys.
+
+    */
 	listKeys: function(onlyPrivate) {
 
         var returnObject = new GPGReturn();
@@ -333,8 +421,15 @@ var FireGPG = {
 	},
 
     /*
-	* Function to import a public key.
-	*/
+        Function: kimport
+        Function to import a sign.
+
+        Return a <GPGReturn> object.
+
+        Parameters:
+            slient - _Optional_, default to false. Set this to true to disable any alert for the user
+            text - _Optional_, if not set try to use the selection. The text to import
+    */
 	kimport: function(silent, text) {
 
         var returnObject = new GPGReturn();
@@ -407,8 +502,15 @@ var FireGPG = {
 
 
 	/*
-	* Function to import a public key.
-	*/
+        Function: kexport
+        Function to export a key
+
+        Return a <GPGReturn> object.
+
+        Parameters:
+            slient - _Optional_, default to false. Set this to true to disable any alert for the user
+            keyID - _Optional_, if not set use ask the user. The public keyID to export
+    */
 	kexport: function(silent, keyID) {
 		var returnObject = new GPGReturn();
 
@@ -459,8 +561,19 @@ var FireGPG = {
 	},
 
     /*
-	* Function to crypt a text.
-	*/
+        Function: crypt
+        Function to encrypt a text.
+
+        Return a <GPGReturn> object.
+
+        Parameters:
+            slient - _Optional_, default to false. Set this to true to disable any alert for the user
+            text - _Optional_, if not set try to use the selection. The text to encrypt
+            keyIdList - _Optional_, if not set ask the user. An array of recipients' keys' id to encrypt
+            fromGpgAuth - _Optional_, Default to false. Internal
+            binFileMode - _Optional_, Default to false. Set this to true if data isensn't  simple text.
+            autoSelect - _Optional_, An array of recipients' keys' id to autoselect on the key's list selection.
+    */
 	crypt: function(silent, text, keyIdList, fromGpgAuth, binFileMode, autoSelect ) {
 
         var returnObject = new GPGReturn();
@@ -552,7 +665,22 @@ var FireGPG = {
 
 	},
 
+    /*
+        Function: cryptAndSign
+        Function to encrypt and sign a text.
 
+        Return a <GPGReturn> object.
+
+        Parameters:
+            slient - _Optional_, default to false. Set this to true to disable any alert for the user
+            text - _Optional_, if not set try to use the selection. The text to sign
+            keyID - _Optional_, if not set use the default private key or ask the user. The private keyID used to sign.
+            fromGpgAuth - _Optional_, Default to false. Internal
+            password - _Optional_, if not set ask the user. The password of the private key.
+            keyIdList - _Optional_, if not set ask the user. An array of recipients' keys' id to encrypt
+            binFileMode - _Optional_, Default to false. Set this to true if data isensn't  simple text.
+            autoSelect - _Optional_, An array of recipients' keys' id to autoselect on the key's list selection.
+    */
     cryptAndSign: function(silent, text, keyIdList, fromGpgAuth, password, keyID, binFileMode, autoSelect ) {
 
         var returnObject = new GPGReturn();
@@ -672,7 +800,16 @@ var FireGPG = {
 
 	},
 
-    // Verify a signature
+    /*
+        Function: verify
+        Function to verify signs in a text.
+
+        Return a <GPGReturn> object.
+
+        Parameters:
+            slient - _Optional_, default to false. Set this to true to disable any alert for the user
+            text - _Optional_, if not set try to use the selection. The text to verify
+    */
 	verify: function(silent, text) {
 
         var returnObject = new GPGReturn();
@@ -760,6 +897,17 @@ var FireGPG = {
         }
 	},
 
+    /*
+        Function: layers
+        Find each layer of a test and verify it (resurcise function)
+
+        Return an array of resultss <GPGReturn> object.
+
+        Parameters:
+            text - The text to verify
+            layer - The current layer
+            resultss - _Optional_. The current array who should be returned.
+    */
     layers: function(text,layer, resultss) {
         var newline = new RegExp("\r","gi");
         text = text.replace(newline,"\n");
@@ -818,6 +966,17 @@ var FireGPG = {
         return resultss;
     },
 
+    /*
+        Function: layerverify
+        Internal, verify a part of a test.
+
+        Return a <GPGReturn> object.
+
+        Parameters:
+            text - The text to verify
+            layer - The current layer
+            division - The current layer level
+    */
     layerverify: function(text,layer,division) {
         var returnObject = new GPGReturn();
 
@@ -880,8 +1039,16 @@ var FireGPG = {
     },
 
     /*
-	* Function to decrypt a text.
-	*/
+        Function: decrypt
+        Function to decrypt a text.
+
+        Return a <GPGReturn> object.
+
+        Parameters:
+            slient - _Optional_, default to false. Set this to true to disable any alert for the user
+            text - _Optional_, if not set try to use the selection. The text to decrypt.
+            password - _Optional_, if not set ask the user. The password of the key used to encrypt the data.
+    */
 	decrypt: function(silent, text, password) {
 		var returnObject = new GPGReturn();
 
@@ -1034,7 +1201,10 @@ var FireGPG = {
 
 
 
-    //Init subclass.
+    /*
+        Function: initGPGACCESS
+        Init the GPGAccess class (try to found the GnuPG's command, etc.).
+    */
 	initGPGACCESS: function() {
 		if(this.allreadyinit != undefined && this.allreadyinit == true)
 			return;
@@ -1051,9 +1221,14 @@ var FireGPG = {
 
 
     /*
-	 * Test if GPG exists.
-	 * Return false on error.
-	 */
+        Function: selfTest
+        This if are able to access to a GnuPG executable
+
+        Return a <GPGReturn> object.
+
+        Parameters:
+            slient - _Optional_, default to false. Set this to true to disable any alert for the user
+    */
 	selfTest: function(silent) {
 		this.initGPGACCESS();
 

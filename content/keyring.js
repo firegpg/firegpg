@@ -1,5 +1,54 @@
-var Keyring = { };
+/* ***** BEGIN LICENSE BLOCK *****
+ *   Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is FireGPG.
+ *
+ * The Initial Developer of the Original Code is
+ * FireGPG Team.
+ * Portions created by the Initial Developer are Copyright (C) 2007
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s): Ryan Patterson for the base and the idea
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
 
+
+/*
+   Constants: Tags of PGP's blocks
+
+   Keyring.Tags.PgpBlockStart - Start of a PGP block
+   Keyring.Tags.KeyStart - Star of a PGP key
+   Keyring.Tags.KeyEnd - End of a PGP key
+   Keyring.Tags.SignedMessageStart - Start of a signed message
+   Keyring.Tags.SignatureStart - Start of a sign
+   Keyring.Tags.SignatureEnd - End of a sign
+   Keyring.Tags.EncryptedMessageStart - Start of an encrypted message
+   Keyring.Tags.EncryptedMessageEnd - End of an encrypted message
+
+
+*/
 Keyring.Tags = {
     PgpBlockStart: "-----BEGIN PGP",
 	KeyStart: "-----BEGIN PGP PUBLIC KEY BLOCK-----",
@@ -11,10 +60,34 @@ Keyring.Tags = {
 	EncryptedMessageEnd: "-----END PGP MESSAGE-----"
 };
 
+/*
+   Constants: Types of blocs
+
+   Keyring.KEY_BLOCK - It's a key block
+   Keyring.SIGN_BLOCK    - It's a sign block
+   Keyring.MESSAGE_BLOCK   - It's a message block
+*/
 Keyring.KEY_BLOCK = 1;
 Keyring.SIGN_BLOCK = 2;
 Keyring.MESSAGE_BLOCK = 3;
 
+
+/*
+   Class: Keyring
+   This class a system to detect and manage pgp block found in pages
+*/
+var Keyring = { };
+
+
+/*
+    Function: HandleBlock
+    This function build a secure iframe for a PGP's block, and add listeners for actions on this block
+
+    Parameters:
+        document - The current document
+        range - A range with the PGP  block selected
+        blockType - The type of block, see <Types of blocs>
+*/
 Keyring.HandleBlock = function(document, range, blockType) {
 
     var i18n = document.getElementById("firegpg-strings");
@@ -38,8 +111,6 @@ Keyring.HandleBlock = function(document, range, blockType) {
 	frame.style.width = "100%";
 
 	frame.addEventListener("load", function() {
-
-
 
 		var block = {
 			body: frame.contentDocument.getElementsByTagName("body")[0],
@@ -102,6 +173,14 @@ Keyring.HandleBlock = function(document, range, blockType) {
 	}, false);
 };
 
+/*
+    Function: HandlePage
+    This function parse a page to find PGP's block.
+
+    Parameters:
+        document - The current document
+
+*/
 Keyring.HandlePage = function(document) {
 
 	var filter = function(node) {
@@ -168,7 +247,16 @@ Keyring.HandlePage = function(document) {
 
 };
 
+/*
+    Function: ignoreInners
+    This is a function for .<HandlePage>, who try to avoid detection of PGP block into PGP blocks
 
+    Parameters:
+        idx - The current position of the block detection
+        end - The last position of the block detected
+        node - The node where we works
+
+*/
 Keyring.ignoreInners = function(idx, end,node) {
 
         if  (end == -1)
@@ -197,6 +285,15 @@ Keyring.ignoreInners = function(idx, end,node) {
 
 }
 
+/*
+    Function: ImportKey
+    This is the function called when the user click on "Import" for a PGP's key block
+
+    Parameters:
+        content - The PGP data.
+        block - The block who contain the iframe
+
+*/
 Keyring.ImportKey = function(content, block) {
 
     result = FireGPG.kimport(true,content);
@@ -211,6 +308,15 @@ Keyring.ImportKey = function(content, block) {
 
 };
 
+/*
+    Function: VerifySignature
+    This is the function called when the user click on "Verify" for a PGP's signed message block
+
+    Parameters:
+        content - The PGP data.
+        block - The block who contain the iframe
+
+*/
 Keyring.VerifySignature = function(content, block) {
 
     var i18n = document.getElementById("firegpg-strings");
@@ -238,6 +344,15 @@ Keyring.VerifySignature = function(content, block) {
 
 };
 
+/*
+    Function: DecryptMessage
+    This is the function called when the user click on "Decrypt" for a PGP's encrypted message block
+
+    Parameters:
+        content - The PGP data.
+        block - The block who contain the iframe
+
+*/
 Keyring.DecryptMessage = function(content, block) {
 
     var i18n = document.getElementById("firegpg-strings");
@@ -267,6 +382,14 @@ Keyring.DecryptMessage = function(content, block) {
 
 };
 
+/*
+    Function: onPageLoad
+    This function is called when a page is loaded
+
+    Parameters:
+        aEvent - The event of the loading
+
+*/
 Keyring.onPageLoad = function(aEvent) {
     var doc = aEvent.originalTarget;
     if(doc.nodeName != "#document")
@@ -284,6 +407,11 @@ Keyring.onPageLoad = function(aEvent) {
 
 };
 
+/*
+    Function: initSystem
+    This function is called by FireGPG when a new Firefox's windows is created.
+
+*/
 Keyring.initSystem = function() {
 
     var prefs = Components.classes["@mozilla.org/preferences-service;1"].
@@ -298,7 +426,7 @@ Keyring.initSystem = function() {
 
     if (!activate)
         return;
-    
+
     try {
         document.getElementById("appcontent").addEventListener("DOMContentLoaded", Keyring.onPageLoad, false);
     } catch (e) { }
