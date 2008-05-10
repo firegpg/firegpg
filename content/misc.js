@@ -54,7 +54,7 @@ const FIREGPG_STATUS = 'DEVEL';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number. _Dosen't works for the moment_ */
-const FIREGPG_SVN = "Unknow";
+const FIREGPG_SVN = "$Rev$";
 
 /*
    Constants: Id for components.
