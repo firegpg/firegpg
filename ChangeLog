@@ -1,6 +1,7 @@
 2008-05-10  Maximilien Cuony
     * Showing svn version number in options
     * Inline system almost done.
+    * FS#49
 
 2008-05-09  Maximilien Cuony
     * Translating lot of strings

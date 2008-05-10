@@ -34,12 +34,12 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-/* Constant: STATE_START
+/* Constant: FGPG_STATE_START
  State 'start' for ProgressListener */
-const STATE_START = Components.interfaces.nsIWebProgressListener.STATE_START;
-/* Constant: STATE_STOP
+const FGPG_STATE_START = Components.interfaces.nsIWebProgressListener.STATE_START;
+/* Constant: FGPG_STATE_STOP
   State 'stop' for ProgressListener */
-const STATE_STOP = Components.interfaces.nsIWebProgressListener.STATE_STOP;
+const FGPG_STATE_STOP = Components.interfaces.nsIWebProgressListener.STATE_STOP;
 
 /*
    Class: cGmailListener
@@ -73,7 +73,7 @@ var cGmailListener = {
     */
     onStateChange: function(aProgress, aRequest, aFlag, aStatus) {
 		// If a document's loading is finished
-		if(aFlag & STATE_STOP) {
+		if(aFlag & FGPG_STATE_STOP) {
 
 			//If we need ton find the IK information
 			if (cGmail.ik == null)
