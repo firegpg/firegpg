@@ -1,47 +1,50 @@
+2008-05-21  Achraf Cherti
+	* creating generate_docs.sh, to generate documentation directory width Natural Docs
+
 2008-05-10  Maximilien Cuony
-    * Showing svn version number in options
-    * Inline system almost done.
-    * FS#49
-    * More documentation
+	* Showing svn version number in options
+	* Inline system almost done.
+	* FS#49
+	* More documentation
 
 2008-05-09  Maximilien Cuony
-    * Translating lot of strings
-    * Changed to logo for inline system
+	* Translating lot of strings
+	* Changed to logo for inline system
 
 2008-05-08  Maximilien Cuony
-    * Inline system is now usable :)
+	* Inline system is now usable :)
 
 2008-05-07  Maximilien Cuony
-    * Implemented sub key for key selection (but widout the new keys' list system)
-    * Add flexibility to some dialogs
+	* Implemented sub key for key selection (but widout the new keys' list system)
+	* Add flexibility to some dialogs
 
 2008-05-06  Maximilien Cuony
-    * Reforming key lists communication system, implementing subkey system.
-    * New key list implemented for options.
+	* Reforming key lists communication system, implementing subkey system.
+	* New key list implemented for options.
 
 2008-05-05  Maximilien Cuony
-    * Commiting the new kernel of FireGPG. _API is now broken, gpgauth is not tested_
-    * Double-click on keys' list simulate a click on 'Ok'
+	* Commiting the new kernel of FireGPG. _API is now broken, gpgauth is not tested_
+	* Double-click on keys' list simulate a click on 'Ok'
 
 2008-04-28  Maximilien Cuony
-    * New inline system
+	* New inline system
 
 2008-04-26  Maximilien Cuony
-    *  FS#51
+	*  FS#51
 
 2008-04-23  Maximilien Cuony
-    * Inline system almost done. Waiting for new cgpg now.
+	* Inline system almost done. Waiting for new cgpg now.
 
 2008-04-22  Maximilien Cuony
-    * More documentation
-    * Begging of implemetation of the inline system.
+	* More documentation
+	* Begging of implemetation of the inline system.
 
 2008-04-21  Maximilien Cuony
-    * More documentation
+	* More documentation
 
 2008-04-20  Maximilien Cuony
-    * Reorganisation of cgpgaccess
-    * Added coude source documentation.
+	* Reorganisation of cgpgaccess
+	* Added coude source documentation.
 	* Begging ofxpcom support and stats
 
 2008-04-19  Achraf Cherti

@@ -35,19 +35,22 @@
  * ***** END LICENSE BLOCK ***** */
 
 /*
- * Function: FireGPG
- *
  * API that will be used by the Javascript.
  */
 var ExternalAPI = {
     /*
-     * Error codes.
-     */
-    ERROR_NOTHING: 0,             /* no error */
-    ERROR_UNSELECTED_GPG_ID: 1,   /* if the GPG ID is not selected 
-                                     when the window is opened */
-    ERROR_BAD_GPG_ID: 2,          /* if the GPG id is bad, doesn't 
-                                     exist in the wall */
+       Constants: FireGPG's API constants
+
+       FireGPG.ERROR_NOTHING - no error
+       FireGPG.ERROR_UNSELECTED_GPG_ID - if the Key ID was not selected when the window was opened
+       FireGPG.ERROR_BAD_GPG_ID - if the Key ID is bad or it does not exist
+       FireGPG.ERROR_PASS_NOT_ENTERED - if no password is entered
+       FireGPG.ERROR_BAD_PASS - the password is incorrect
+       FireGPG.ERROR_UNKNOWN - unknown error 
+    */
+    ERROR_NOTHING: 0,
+    ERROR_UNSELECTED_GPG_ID: 1,
+    ERROR_BAD_GPG_ID: 2,
     ERROR_PASS_NOT_ENTERED: 3,
     ERROR_BAD_PASS: 3,
     ERROR_UNKNOWN: 4,
@@ -59,21 +62,23 @@ var ExternalAPI = {
     },
 
     /*
-     * Sign "text" and return an object contains two
-     * attributes :
-     *     result: the signed text
-     *     error:  contain one of FireGPG.ERROR_*
+     * Function: FireGPG.sign(text, pub_key_id)
      *
-     * gpg_id is facultative
+     * Sign a text and return an object containing two
+     * attributes :
+     *     - result: the text signed
+     *     - error:  a constant FireGPG.ERROR_*
+     *
+     * NB: pub_key_id is optional.
      */
-    sign: function(text, gpg_id) {
+    sign: function(text, pub_key_id) {
         ret = {result:'', error:ExternalAPI.ERROR_NOTHING};
 
         /* Get the GPG ID */
-        if(gpg_id == undefined) {
-            gpg_id = getSelfKey();
+        if(pub_key_id == undefined) {
+            pub_key_id = getSelfKey();
 
-            if(gpg_id == null) { 
+            if(pub_key_id == null) { 
                 ret.error = ExternalAPI.ERROR_BAD_GPG_ID;
                 return ret;
             }
@@ -90,7 +95,7 @@ var ExternalAPI = {
         }
 
         /* Sign the text */
-        var gpg_result = GPG.baseSign(text, password, gpg_id);
+        var gpg_result = GPG.baseSign(text, password, pub_key_id);
         var gpg_error = gpg_result.sdOut;
 
         if(gpg_error == 'erreur')
@@ -101,6 +106,24 @@ var ExternalAPI = {
             ret.result = gpg_result.output;
 
         return ret;
+    }
+
+    /*
+     * Function: FireGPG.encrypt(text, priv_key_id)
+     * 
+     * Encrypt a text and return the result in an object.
+     *
+     * Parameters:
+     *     text - the text, encrypt
+     *     priv_key_id - the GPG id of the private key (optional)
+     *
+     * Returns:
+     *     An object containing two attributes:
+     *
+     *     result - the encrypted text
+     *     error -  a constant containing a constant FireGPG.ERROR_*
+     */
+    encrypt: function(text, priv_key_id) {
     }
 };
 

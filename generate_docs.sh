@@ -1,3 +1,3 @@
 #!/bin/sh
-mkdir -p docs
+mkdir -p documentation
 exec naturaldocs -i . -o HTML documentation -p .
