@@ -35,6 +35,8 @@
  * ***** END LICENSE BLOCK ***** */
 
 /*
+ * Function: FireGPG
+ *
  * API that will be used by the Javascript.
  */
 var ExternalAPI = {
