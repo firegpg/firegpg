@@ -3,5 +3,5 @@
 [scriptable, uuid(fa6b4f61-5828-4e15-aebb-02d8dbfa689f)]
 interface IFireGPGCall : nsISupports
 {
-  long Add(in long a, in long b, in long c);
+  string Call(in string path, in string  parameters, in string sdin);
 };

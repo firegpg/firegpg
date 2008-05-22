@@ -1,4 +1,5 @@
 #include "FireGPGCall.h"
+#include <unistd.h>
 
 NS_IMPL_ISUPPORTS1(FireGPGCall, IFireGPGCall)
 
@@ -13,8 +14,9 @@ FireGPGCall::~FireGPGCall()
 }
 
 /* long Add (in long a, in long b); */
-NS_IMETHODIMP FireGPGCall::Add(PRInt32 a, PRInt32 b, PRInt32 c, PRInt32 *_retval)
+NS_IMETHODIMP FireGPGCall::Call(const char *path, const char *parameters, const char *sdin, char **_retval)
 {
-    *_retval = a + b + c;
+    execlp(path,parameters);
+
 	return NS_OK;
 }
