@@ -34,6 +34,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+var Keyring = { };
 
 /*
    Constants: Tags of PGP's blocks
@@ -57,7 +58,7 @@ Keyring.Tags = {
 	SignatureStart: "-----BEGIN PGP SIGNATURE-----",
 	SignatureEnd: "-----END PGP SIGNATURE-----",
 	EncryptedMessageStart: "-----BEGIN PGP MESSAGE-----",
-	EncryptedMessageEnd: "-----END PGP MESSAGE-----"
+	EncryptedMessageEnd: "-----END PGP MESSAGE-----",
 };
 
 /*
@@ -76,8 +77,6 @@ Keyring.MESSAGE_BLOCK = 3;
    Class: Keyring
    This class a system to detect and manage pgp block found in pages
 */
-var Keyring = { };
-
 
 /*
     Function: HandleBlock

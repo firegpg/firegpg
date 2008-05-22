@@ -41,8 +41,8 @@
 	} catch (err) {
 		alert(err);
     }
-	var res = obj.Add(3, 4);
-	alert('Performing 3+4. Returned ' + res + '.');*/
+	var res = obj.Add(3, 4, 5);
+	alert('Performing 3+4+5. Returned ' + res + '.');*/
 
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */

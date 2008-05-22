@@ -106,7 +106,7 @@ function onLoad(win)
 			var theMail = reg.exec(list[id].keyName);
 
 			if (theMail != null) {
-				if (testList.indexOf(theMail) != -1)
+				if (testList.toString().toLowerCase().indexOf(theMail.toString().toLowerCase()) != -1)
 					selected = true;
 			}
 
@@ -157,7 +157,7 @@ function onLoad(win)
                     var theMail = reg.exec(list[id].subKeys[kid].keyName);
 
                     if (theMail != null) {
-                        if (testList.indexOf(theMail) != -1)
+                        if (testList.toString().toLowerCase().indexOf(theMail.toString().toLowerCase()) != -1)
                             selected = true;
                     }
 

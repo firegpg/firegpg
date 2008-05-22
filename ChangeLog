@@ -1,6 +1,13 @@
+2008-05-22  Maximilien Cuony
+    * Tests on the Xpcom
+    * FS#59
+
 2008-05-21  Achraf Cherti
 	* creating generate_docs.sh, to generate documentation directory width Natural Docs
-	* understanding naturaldocs and documenting constants and two function in the external API
+    * understanding naturaldocs and documenting constants and two function in the external API
+
+2008-05-11  Maximilien Cuony
+    * New logo
 
 2008-05-10  Maximilien Cuony
 	* Showing svn version number in options

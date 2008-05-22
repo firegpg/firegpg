@@ -13,10 +13,8 @@ FireGPGCall::~FireGPGCall()
 }
 
 /* long Add (in long a, in long b); */
-NS_IMETHODIMP FireGPGCall::Add(PRInt32 a, PRInt32 b, PRInt32 *_retval)
+NS_IMETHODIMP FireGPGCall::Add(PRInt32 a, PRInt32 b, PRInt32 c, PRInt32 *_retval)
 {
-    *_retval = a + b;
+    *_retval = a + b + c;
 	return NS_OK;
 }
-
- 

@@ -28,21 +28,21 @@ class NS_NO_VTABLE IFireGPGCall : public nsISupports {
   NS_DEFINE_STATIC_IID_ACCESSOR(IFIREGPGCALL_IID)
 
   /* long Add (in long a, in long b); */
-  NS_IMETHOD Add(PRInt32 a, PRInt32 b, PRInt32 *_retval) = 0;
+  NS_IMETHOD Add(PRInt32 a, PRInt32 b, PRInt32 c, PRInt32 *_retval) = 0;
 
 };
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_IFIREGPGCALL \
-  NS_IMETHOD Add(PRInt32 a, PRInt32 b, PRInt32 *_retval);
+  NS_IMETHOD Add(PRInt32 a, PRInt32 b, PRInt32 c, PRInt32 *_retval);
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_IFIREGPGCALL(_to) \
-  NS_IMETHOD Add(PRInt32 a, PRInt32 b, PRInt32 *_retval) { return _to Add(a, b, _retval); }
+  NS_IMETHOD Add(PRInt32 a, PRInt32 b, PRInt32 c, PRInt32 *_retval) { return _to Add(a, b, c, _retval); }
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_IFIREGPGCALL(_to) \
-  NS_IMETHOD Add(PRInt32 a, PRInt32 b, PRInt32 *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Add(a, b, _retval); }
+  NS_IMETHOD Add(PRInt32 a, PRInt32 b, PRInt32 c, PRInt32 *_retval) { return !_to ? NS_ERROR_NULL_POINTER : _to->Add(a, b, c, _retval); }
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -77,7 +77,7 @@ _MYCLASS_::~_MYCLASS_()
 }
 
 /* long Add (in long a, in long b); */
-NS_IMETHODIMP _MYCLASS_::Add(PRInt32 a, PRInt32 b, PRInt32 *_retval)
+NS_IMETHODIMP _MYCLASS_::Add(PRInt32 a, PRInt32 b, PRInt32 c, PRInt32 *_retval)
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }
