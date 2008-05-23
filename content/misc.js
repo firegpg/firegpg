@@ -34,7 +34,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-/*
+
 try {
      	const cid = "@getfiregpg.org/XPCOM/FireGPGCall;1";
 		obj = Components.classes[cid].createInstance();
@@ -42,9 +42,9 @@ try {
 	} catch (err) {
 		alert(err);
     }
-	var res = obj.Call("cp","cp /tmp/a /tmp/b","");
-    alert(res);
-
+	var res = obj.Call("gpg","gpg --passphrase-fd 0 --output /tmp/b --batch --no-verbose --quiet --no-tty --armor --status-fd 1 --decrypt /tmp/a.gpg","testtest\n");
+    prompt("Call : 'gpg', parmaters: 'gpg --passphrase-fd 0 --output /tmp/b --batch --no-verbose --quiet --no-tty --armor --status-fd 1 --decrypt /tmp/a.gpg', send on sdin : 'testtest\\n'", res);
+//
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */
 const FIREGPG_VERSION = '0.4.9';
