@@ -46,7 +46,7 @@ var ExternalAPI = {
        FireGPG.ERROR_BAD_GPG_ID - if the Key ID is bad or it does not exist
        FireGPG.ERROR_PASS_NOT_ENTERED - if no password is entered
        FireGPG.ERROR_BAD_PASS - the password is incorrect
-       FireGPG.ERROR_UNKNOWN - unknown error 
+       FireGPG.ERROR_UNKNOWN - unknown error
     */
     ERROR_NOTHING: 0,
     ERROR_UNSELECTED_GPG_ID: 1,
@@ -55,7 +55,7 @@ var ExternalAPI = {
     ERROR_BAD_PASS: 3,
     ERROR_UNKNOWN: 4,
 
-    /* 
+    /*
      * Initialize the API
      */
     init: function(e) {
@@ -78,14 +78,14 @@ var ExternalAPI = {
         if(pub_key_id == undefined) {
             pub_key_id = getSelfKey();
 
-            if(pub_key_id == null) { 
+            if(pub_key_id == null) {
                 ret.error = ExternalAPI.ERROR_BAD_GPG_ID;
                 return ret;
             }
         }
 
         /* Get the password */
-        password = getPrivateKeyPassword(); /* TODO it's important to 
+        password = getPrivateKeyPassword(); /* TODO it's important to
                                                doesn't save the pw ? */
         if(password == null) {
             /* TODO est-ce nécessaire d'avoir un code d'erreur pour dire
@@ -106,11 +106,11 @@ var ExternalAPI = {
             ret.result = gpg_result.output;
 
         return ret;
-    }
+    },
 
     /*
      * Function: FireGPG.encrypt(text, priv_key_id)
-     * 
+     *
      * Encrypt a text and return the result in an object.
      *
      * Parameters:
@@ -139,7 +139,7 @@ var APIProgressListener = {
 
 		return Components.results.NS_NOINTERFACE;
     },
-    
+
     onStateChange: function(aProgress, aRequest, aFlag, aStatus) {},
     onLocationChange: function(aProgress, aRequest, aURI) { return 0; },
     onProgressChange: function() { return 0; },
@@ -151,12 +151,12 @@ var APIProgressListener = {
 var APIListener = {
     init: function() {
         document.getElementById("appcontent").addEventListener(
-            "DOMContentLoaded", 
-            APIListener.load, 
+            "DOMContentLoaded",
+            APIListener.load,
             false);
 
-        window.addEventListener("unload", 
-            function() { APIListener.unload(); }, 
+        window.addEventListener("unload",
+            function() { APIListener.unload(); },
             false);
     },
 
