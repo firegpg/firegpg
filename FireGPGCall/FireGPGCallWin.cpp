@@ -1,79 +1,37 @@
+
 #include "FireGPGCall.h"
-#include <unistd.h>
 #include <stdio.h>
 #include <string.h>
 #include "nsMemory.h"
 #include "nsCOMPtr.h"
 #include "plstr.h"
 #include <stdio.h>
-#include <sys/socket.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include <sys/wait.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-char** split(char* chaine,const char* delim,int vide){
-
- char** tab=NULL; //tableau de chaine, tableau resultat
- char *ptr; //pointeur sur une partie de
- int sizeStr; //taille de la chaine à recupérer
- int sizeTab=0; //taille du tableau de chaine
- char* largestring; //chaine à traiter
-
- int sizeDelim=strlen(delim); //taille du delimiteur
+#include <Io.h>
+#include <windows.h> 
+#include <tchar.h>
+#include <stdio.h> 
+#include <iostream>
+#include <stdlib.h>
+#include <string>
 
 
- largestring = chaine; //comme ca on ne modifie pas le pointeur d'origine
- //(faut ke je verifie si c bien nécessaire)
+#define BUFSIZE 10240 
+#define SMALLBUFSIZE 2 
+ 
+HANDLE hChildStdinRd, hChildStdinWr,  
+   hChildStdoutRd, hChildStdoutWr, 
+   hProcess, hStdout;
+ 
+INT CreateChildProcess(const char *); 
+VOID WriteToPipe(VOID); 
+VOID ReadFromPipe(VOID); 
+VOID ErrorExit(LPSTR); 
 
-
- while( (ptr=strstr(largestring, delim))!=NULL ){
- sizeStr=ptr-largestring;
-
- //si la chaine trouvé n'est pas vide ou si on accepte les chaine vide
- if(vide==1 || sizeStr!=0){
- //on alloue une case en plus au tableau de chaines
- sizeTab++;
- tab= (char**) realloc(tab,sizeof(char*)*sizeTab);
-
- //on alloue la chaine du tableau
- tab[sizeTab-1]=(char*) malloc( sizeof(char)*(sizeStr+1) );
- strncpy(tab[sizeTab-1],largestring,sizeStr);
- tab[sizeTab-1][sizeStr]='\0';
- }
-
- //on decale le pointeur largestring pour continuer la boucle apres le premier elément traiter
- ptr=ptr+sizeDelim;
- largestring=ptr;
- }
-
- //si la chaine n'est pas vide, on recupere le dernier "morceau"
- if(strlen(largestring)!=0){
- sizeStr=strlen(largestring);
- sizeTab++;
- tab= (char**) realloc(tab,sizeof(char*)*sizeTab);
- tab[sizeTab-1]=(char*) malloc( sizeof(char)*(sizeStr+1) );
- strncpy(tab[sizeTab-1],largestring,sizeStr);
- tab[sizeTab-1][sizeStr]='\0';
- }
- else if(vide==1){ //si on fini sur un delimiteur et si on accepte les mots vides,on ajoute un mot vide
- sizeTab++;
- tab= (char**) realloc(tab,sizeof(char*)*sizeTab);
- tab[sizeTab-1]=(char*) malloc( sizeof(char)*1 );
- tab[sizeTab-1][0]='\0';
-
- }
-
- //on ajoute une case à null pour finir le tableau
- sizeTab++;
- tab= (char**) realloc(tab,sizeof(char*)*sizeTab);
- tab[sizeTab-1]=NULL;
-
- return tab;
- }
 
 NS_IMPL_ISUPPORTS1(FireGPGCall, IFireGPGCall)
 
@@ -90,81 +48,145 @@ FireGPGCall::~FireGPGCall()
 /* long Add (in long a, in long b); */
 NS_IMETHODIMP FireGPGCall::Call(const char *path, const char *parameters, const char *sdin, char **_retval)
 {
+	DWORD dwRead, dwWritten; 
+   CHAR chBuf[BUFSIZE]; 
+
+   SECURITY_ATTRIBUTES saAttr; 
+   BOOL fSuccess; 
+ 
+// Set the bInheritHandle flag so pipe handles are inherited. 
+ 
+   saAttr.nLength = sizeof(SECURITY_ATTRIBUTES); 
+   saAttr.bInheritHandle = TRUE; 
+   saAttr.lpSecurityDescriptor = NULL; 
+
+// Get the handle to the current STDOUT. 
+ 
+   hStdout = GetStdHandle(STD_OUTPUT_HANDLE); 
+ 
+// Create a pipe for the child process's STDOUT. 
+ 
+   if (! CreatePipe(&hChildStdoutRd, &hChildStdoutWr, &saAttr, 0)) 
+      ErrorExit("Stdout pipe creation failed\n"); 
+
+// Ensure that the read handle to the child process's pipe for STDOUT is not inherited.
+
+   SetHandleInformation( hChildStdoutRd, HANDLE_FLAG_INHERIT, 0);
+
+// Create a pipe for the child process's STDIN. 
+ 
+   if (! CreatePipe(&hChildStdinRd, &hChildStdinWr, &saAttr, 0)) 
+      ErrorExit("Stdin pipe creation failed\n"); 
+
+// Ensure that the write handle to the child process's pipe for STDIN is not inherited. 
+ 
+   SetHandleInformation( hChildStdinWr, HANDLE_FLAG_INHERIT, 0);
+ 
+// Now create the child process. 
+   
+   fSuccess = CreateChildProcess(parameters);
+   if (fSuccess == 0) 
+      ErrorExit("Create process failed with"); 
+ 
+
+   WriteFile(hChildStdinWr, sdin, PL_strlen(sdin) , &dwWritten, NULL);
+
+   CloseHandle(hChildStdinWr);
+
+   int i = 0;
+   
+	while( WaitForSingleObject(hProcess,0) != WAIT_OBJECT_0) { //Fin du processus (normaolement)
+
+	  Sleep(250);
+
+      ReadFile( hChildStdoutRd, (char *)chBuf + i, BUFSIZE - i, &dwRead,         NULL);
+		i += dwRead;
+
+	  }
 
 
-    char c[1];  /* declare a char array */
-    int n = 0;
+	chBuf[i] = (char)'\0';
 
-    char buffer[10240];
-
-    //char *tmpCommand = strcat((char*)path," ");
-    //char *command = strcat(tmpCommand,(char*)parameters);
-
-    pid_t child;
-    int fd[2];
-    int rc;
-
-    rc = socketpair( AF_UNIX, SOCK_STREAM, 0, fd );
-    if ( rc < 0 ) {
-      perror("Cannot open socketpair");
-      exit(0);
-    }
-    child = fork();
-    if (child < 0) {
-      perror("Cannot fork");
-      exit(0);
-    }
-    if (child == 0) { /* child - it uses fd[1] */
-      close (fd[0]);
-      if (fd[1] != STDIN_FILENO) { /*Redirect standard input to socketpair*/
-        if (dup2(fd[1], STDIN_FILENO) != STDIN_FILENO) {
-      perror("Cannot dup2 stdin");
-      exit(0);
-        }
-      }
-      if (fd[1] != STDOUT_FILENO) { /*Redirect standard output to socketpair*/
-        if (dup2(fd[1], STDOUT_FILENO) != STDOUT_FILENO) {
-      perror("Cannot dup2 stdout");
-      exit(0);
-        }
-      }
-
-    char *const *argv=split((char*)parameters," ",0);
-
-      if (execvp(path, argv) < 0) {
-        perror("Cannot exec");
-        exit(0);
-      }
-      exit(0);
-    }
-
-    write(fd[0], sdin, strlen(sdin));
-
-    int status = 0;
-    waitpid( child, &status, 0 );
-
-    fcntl(fd[0], F_SETFL, O_NONBLOCK | fcntl(fd[0], F_GETFL));
-
-    while(1) {
-     read(fd[0],c,1);
-      if(c[0]!=-74 && n < 10240) {
-        buffer[n] = c[0];
-        n++;
-      }
-      else {
-        break;
-      }
-    }
-
-    buffer[n] = (char)'\0';
-
-    * _retval = (char*) nsMemory::Alloc(PL_strlen(buffer) + 1);
+    * _retval = (char*) nsMemory::Alloc(PL_strlen(chBuf) + 1);
     if (! *_retval)
         return NS_ERROR_NULL_POINTER;
-    PL_strcpy(*_retval, buffer);
+    PL_strcpy(*_retval,chBuf);
 
-    close(fd[0]);
-    close(fd[1]);
 
-	return NS_OK;
+	return NS_OK; 
+}
+
+
+INT CreateChildProcess(const char *parameters) 
+{ 
+	TCHAR chBuf[1000];
+
+	int i = 0;
+
+	parameters++; //Ignore first char
+
+	while(*parameters) 
+	{ 
+		
+		chBuf[i] = *parameters;
+		i++;
+		parameters++; 
+	} 
+
+	chBuf[i] = (char)'\0';
+
+	
+	
+//	TCHAR szCmdline[] = chBuf;
+
+		//TEXT("C:\\Program Files\\GNU\\GnuPG\\gpg.exe --passphrase-fd 0 --output c:\\out.txt --batch --no-verbose --quiet --no-tty --armor --status-fd 1 --decrypt c:\\test.txt.gpg");
+	   // (char[])parameters
+   PROCESS_INFORMATION piProcInfo; 
+   STARTUPINFO siStartInfo;
+   INT bFuncRetn = FALSE; 
+ 
+// Set up members of the PROCESS_INFORMATION structure. 
+ 
+   ZeroMemory( &piProcInfo, sizeof(PROCESS_INFORMATION) );
+ 
+// Set up members of the STARTUPINFO structure. 
+ 
+   ZeroMemory( &siStartInfo, sizeof(STARTUPINFO) );
+   siStartInfo.cb = sizeof(STARTUPINFO); 
+   siStartInfo.hStdError = hChildStdoutWr;
+   siStartInfo.hStdOutput = hChildStdoutWr;
+   siStartInfo.hStdInput = hChildStdinRd;
+   siStartInfo.dwFlags |= STARTF_USESTDHANDLES;
+ 
+// Create the child process. 
+    
+   bFuncRetn = CreateProcess(NULL, 
+      chBuf,
+      NULL,          // process security attributes 
+      NULL,          // primary thread security attributes 
+      TRUE,          // handles are inherited 
+      0,             // creation flags 
+      NULL,          // use parent's environment 
+      NULL,          // use parent's current directory 
+      &siStartInfo,  // STARTUPINFO pointer 
+      &piProcInfo);  // receives PROCESS_INFORMATION 
+   
+   if (bFuncRetn == 0) 
+      ErrorExit("CreateProcess failed\n");
+   else 
+   {
+	   hProcess = piProcInfo.hProcess; 
+      //CloseHandle(piProcInfo.hProcess);
+      //CloseHandle(piProcInfo.hThread);
+      return bFuncRetn;
+   }
+}
+ 
+
+
+ 
+VOID ErrorExit (LPSTR lpszMessage) 
+{ 
+   fprintf(stderr, "%s\n", lpszMessage); 
+   ExitProcess(0); 
 }

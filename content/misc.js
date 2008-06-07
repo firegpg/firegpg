@@ -42,8 +42,8 @@ try {
 	} catch (err) {
 		alert(err);
     }
-	var res = obj.Call("gpg","gpg --passphrase-fd 0 --output /tmp/b --batch --no-verbose --quiet --no-tty --armor --status-fd 1 --decrypt /tmp/a.gpg","testtest\n");
-    prompt("Call : 'gpg', parmaters: 'gpg --passphrase-fd 0 --output /tmp/b --batch --no-verbose --quiet --no-tty --armor --status-fd 1 --decrypt /tmp/a.gpg', send on sdin : 'testtest\\n'", res);
+	var res = obj.Call("C:\\Program Files\\GNU\\GnuPG\\gpg.exe"," C:\\Program Files\\GNU\\GnuPG\\gpg.exe --version","testtest\n");
+    alert(res);
 //
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */

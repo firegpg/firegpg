@@ -197,7 +197,7 @@ LINK32_OBJS= \
 	"$(INTDIR)\FireGPGCallModule.obj"
 
 "$(OUTDIR)\FireGPGCall.dll" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
-    $(LINK32) @<<
+    $(LINK32) @<<sz
   $(LINK32_FLAGS) $(LINK32_OBJS)
 <<
 
@@ -211,7 +211,7 @@ OutDir=.\Debug
 !ENDIF
 
 NO_EXTERNAL_DEPS=1
-
+f
 !IF "$(NO_EXTERNAL_DEPS)" != "1"
 !IF EXISTS("FireGPGCall.dep")
 !INCLUDE "FireGPGCall.dep"
@@ -222,7 +222,7 @@ NO_EXTERNAL_DEPS=1
 
 
 !IF "$(CFG)" == "FireGPGCall - Win32 Release" || "$(CFG)" == "FireGPGCall - Win32 Debug"
-SOURCE=.\FireGPGCallWin.cpp
+SOURCE=.\FireGPGCall.cpp
 
 "$(INTDIR)\FireGPGCall.obj"	"$(INTDIR)\FireGPGCall.sbr" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
