@@ -505,11 +505,16 @@ var GPGAccess = {
         Return a arguement to force gnupg to use not trusted keys.
 
         Parameters:
-            forceNo - _Optionnal_  ingore the tests and don't disable the tursting system.
+            fromGpgAuth - _Optionnal_  use the GpgAuth's parameter
 
     */
-    getGPGTrustArgument: function (forceNo){
-       if (useGPGTrust && forceNo != true)
+    getGPGTrustArgument: function (fromGpgAuth) {
+
+        if (fromGpgAuth != undefined && fromGpgAuth == true)
+            if ( gpgAuth.prefs.prefHasUserValue( '.global.trust_model' ) && gpgAuth.prefs.getCharPref( '.global.trust_model' ) != "" )
+                return ' --trust-model ' + gpgAuth.prefs.getCharPref( '.global.trust_model' );
+
+       if (useGPGTrust)
            return ' --trust-model always';
        else
            return '';
@@ -830,7 +835,7 @@ var GPGAccessWindowsNoXpcom = {
 		for(var i = 0; i < keyIdList.length; i++)
 			keyIdListArgument += ((i > 0) ? ' ' : '') + '-r ' + keyIdList[i];
 
-		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() +
+		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument(fromGpgAuth) +
 				" " + keyIdListArgument +
 				this.getGPGCommentArgument() +
 				" --output " + tmpOutput +
@@ -878,7 +883,7 @@ var GPGAccessWindowsNoXpcom = {
 
         try {
 
-            result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() +
+            result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument(fromGpgAuth) +
                     " " + keyIdListArgument +
                     this.getGPGCommentArgument() +
                     " --default-key " + keyID +

@@ -35,7 +35,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-try {
+/*try {
      	const cid = "@getfiregpg.org/XPCOM/FireGPGCall;1";
 		obj = Components.classes[cid].createInstance();
 		obj = obj.QueryInterface(Components.interfaces.IFireGPGCall);

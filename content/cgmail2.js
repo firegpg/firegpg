@@ -252,9 +252,9 @@ var cGmail2 = {
                             GPL 2 License.
                         */
                         // Disable autosave and add appropriate notification
-                        if (false)
+                        if (true)
                         {
-                            var subj = form.elements.namedItem("subject");
+                           var subj = form.elements.namedItem("subject");
 
                             // STGS Method
                             function getValue()
@@ -278,7 +278,8 @@ var cGmail2 = {
                                 const badpattern2 = ["$q$_P$xVa", "$q$_P$t_a$", "$q$_P$OP$", "$q$_P$yUa$", "$q$_P$BXa$"];
                                 const badpattern3 = ["$R$_P$", "$R$_P$", "$R$_P$", "$R$_P$Lfb$", "$R$_P$xib$", "$Ouc$"];
                                 const badpattern4 = ["$Y$_P$", "$Y$_P$", "$Y$_P$", "$Y$_P$Uib$", "$Y$_P$Glb$"]; // then $rga$, $e$, $a$__protected__$
-                                if (stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
+                                const badpattern5 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$ZBa$", "$Z$_P$nGb$"];
+                                if (stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
                                 {
                                     function AutosaveWreckingBall() {};
                                     AutosaveWreckingBall.prototype.value = "Wrecked";
@@ -286,20 +287,21 @@ var cGmail2 = {
                                     throw new AutosaveWreckingBall();
                                 }
                                 else
-                                {
-                                    //debugger;  keep this around for later usage when needing to adjust badpatterns
+                                { alert("fail");
+                                    // debugger; // keep this around for later usage when needing to adjust badpatterns
                                 }
                                 // finally, if nothing matches:
                                 return this.__proto__.__lookupGetter__("value").apply(this);
                             } // end getValue
 
-                            function setValue(s)
-                            {
-                                this.__proto__.__lookupSetter__("value").call(this,s);
-                            }
+                           function setValue(s)
+		{
+			this.__proto__.__lookupSetter__("value").call(this,s);
+		}
 
-                            form.ownerDocument.defaultView.setTimeout(getValue.toString() + "\ndocument.getElementById('" + subj.id + "').__defineGetter__('value', getValue);\n" +
-                            setValue.toString() + "\ndocument.getElementById('" + subj.id + "').__defineSetter__('value', setValue);\n",1);
+		form.ownerDocument.defaultView.setTimeout(getValue.toString() + "\ndocument.getElementById('" + subj.id + "').__defineGetter__('value', getValue);\n" +
+		setValue.toString() + "\ndocument.getElementById('" + subj.id + "').__defineSetter__('value', setValue);\n",1);
+
 
                             // message about autosave disabled
                             var spanAS = form.ownerDocument.evaluate(".//div[contains(@class,'c1I77d')]/span[@class='x1Kcd']",
@@ -312,14 +314,7 @@ var cGmail2 = {
                             }
 
 
-                            var notifr = form.ownerDocument.evaluate("table[@class='ctb']//td/div[@class='cd']/span",
-                            this.form, null, XPathResult.ANY_TYPE, null);
-                           var notif = null, notifa = new Array();
-                           while (notif = notifr.iterateNext())
-                               notifa.push(notif);
-
-
-                        } // end if autosave disabled
+                     } // end if autosave disabled
 
                         //End of code of Gmail S/MIME.
 
