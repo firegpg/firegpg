@@ -532,11 +532,13 @@ var FireGPG = {
         if (keyID == undefined || keyID == null)
             keyID = choosePublicKey();
 
+
 		if(keyID == null) {
             returnObject.result = RESULT_CANCEL;
             return returnObject;
         }
 
+        keyID = keyID[0];
 
         var result = this.GPGAccess.kexport(keyID);
 

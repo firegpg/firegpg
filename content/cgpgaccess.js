@@ -341,6 +341,8 @@ var GPGAccessCallerWindowsXpcom =  function(parameters, sdtIn,charset)  {
 */
 var GPGAccessCallerUnixNoXpcom  =  function(parameters,charset)  {
 
+
+
    	var tmpStdOut = getTmpFile(null,'output'); // Output from gpg
 	var tmpRun = getTmpFileRunning();
 
