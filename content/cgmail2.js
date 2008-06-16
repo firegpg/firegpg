@@ -244,7 +244,19 @@ var cGmail2 = {
 
                         form =  listeTest[i].parentNode.getElementsByTagName('form');
                         form = form[0];
-                        // Code of Gmail S/MIME
+
+
+                        var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+	                           getService(Components.interfaces.nsIPrefService);
+
+                        prefs = prefs.getBranch("extensions.firegpg.");
+                        try {
+                            disable_autosave = prefs.getBoolPref("gmail_disable_autosave");
+                        } catch (e) {
+                            disable_autosave = false;
+                        }
+
+                         // Based on code of Gmail S/MIME
                         /*
                             Copyright (C) 2005-2007 Richard Jones.
                             Copyright (C) 2007-2008 Sean Leonard of SeanTek(R).
@@ -252,8 +264,20 @@ var cGmail2 = {
                             GPL 2 License.
                         */
                         // Disable autosave and add appropriate notification
-                        if (false)
+
+                        if (disable_autosave)
                         {
+
+                            String.prototype.startsWith = function(s)
+                            {
+                                return (this.match('^'+s)==s);
+                            };
+
+                            String.prototype.trim = function() {
+                                return this.replace(/^\s+|\s+$/g, '');
+                            };
+
+
                            var subj = form.elements.namedItem("subject");
 
                             // STGS Method
@@ -268,7 +292,7 @@ var cGmail2 = {
                                     for (var i = 0; i < pattern.length; i++)
                                     {
                                         if (func == null) return false;
-                                        if (func.name.indexOf(pattern[i]) != 0) return false;
+                                        if (func.name.indexOf(pattern[i]) != 0 && func.name.indexOf(pattern[i]) != 2) return false;
 
                                         func = func.caller;
                                     }
@@ -279,7 +303,16 @@ var cGmail2 = {
                                 const badpattern3 = ["$R$_P$", "$R$_P$", "$R$_P$", "$R$_P$Lfb$", "$R$_P$xib$", "$Ouc$"];
                                 const badpattern4 = ["$Y$_P$", "$Y$_P$", "$Y$_P$", "$Y$_P$Uib$", "$Y$_P$Glb$"]; // then $rga$, $e$, $a$__protected__$
                                 const badpattern5 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$ZBa$", "$Z$_P$nGb$"];
-                                if (stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
+
+                                //Our *seem* to be better [the_glu]
+                                const badpattern6 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$", "Y$_P$"];
+
+                                //$Z$_P$jJa$ $Z$_P$Q3b$ $Z$_P$ft$ $Z$_P$tkb$ $ZY$_P$tDa$
+                                //$Z$_P$lJa$ $Z$_P$V3b$ $Z$_P$ht$ $Z$_P$wkb$ $RY$_P$vDa$
+
+                                //$Z$_P$jJa$ $Z$_P$oka$ $Z$_P$xna$ $Wg$_P$ui$ $Lh$
+
+                                if (stackMatch(badpattern6, getValue.caller) || stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
                                 {
                                     function AutosaveWreckingBall() {};
                                     AutosaveWreckingBall.prototype.value = "Wrecked";
@@ -287,7 +320,7 @@ var cGmail2 = {
                                     throw new AutosaveWreckingBall();
                                 }
                                 else
-                                { alert("fail");
+                                {
                                     // debugger; // keep this around for later usage when needing to adjust badpatterns
                                 }
                                 // finally, if nothing matches:
@@ -310,7 +343,7 @@ var cGmail2 = {
                             for (var o=0;o<spanAS.snapshotLength;o++)
                             {
                                 // HARDCODED: Autosave disabled.
-                                spanAS.snapshotItem(o).innerHTML = "Autosave disabled";
+                                spanAS.snapshotItem(o).innerHTML = i18n.getString("autosave-disabled");
                             }
 
 

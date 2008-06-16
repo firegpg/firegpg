@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "Integración con Gmail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Clave personal por defecto">
-<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
+<!ENTITY show-website-checkbox "Mostrar la dirección de la página web de FireGPG en el campo de comentarios">
 <!ENTITY change-gpg-path-button "Configuración de la ruta de GPG">
 <!ENTITY change-gpg-path-checkbox "Especificar manualmente la ruta de GPG:">
 <!ENTITY result-always-in-new-window "Mostrar siempre el resultado de una codificación o de una firma en una nueva ventana.">
@@ -42,7 +42,8 @@
 <!ENTITY api-liste-domain.label "dominio">
 <!ENTITY api-liste-keyauth.label "Llave">
 <!ENTITY use-gpg-agent-checkbox "Activar el Agente-GPG (precaución, puede tener problemas...)">
-<!ENTITY search-description "Filter :">
-<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">
-<!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
-<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
+<!ENTITY search-description "Filtrar:">
+<!ENTITY gmail-buton-use-select-checkbox "Mostrar una lista desplegable en vez de botones.">
+<!ENTITY firegpg-ask-for-private-label.text "Preguntar siempre por la llave privada">
+<!ENTITY inline-activated "Activar el handler para bloques PgP en páginas (necesita reiniciar)">
+<!ENTITY gmail-disable-autosave-checkbox "Disable auto save">

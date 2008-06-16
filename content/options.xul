@@ -170,6 +170,7 @@
             <preference id="gmail-buton-signcrypt" name="extensions.firegpg.gmail_butons_sign_crypt" type="bool"/>
             <preference id="gmail-buton-signcryptsend" name="extensions.firegpg.gmail_butons_sign_crypt_send" type="bool"/>
             <preference id="gmail-buton-use-select" name="extensions.firegpg.gmail_butons_use_select" type="bool"/>
+            <preference id="gmail-disable-autosave" name="extensions.firegpg.gmail_disable_autosave" type="bool"/>
 
         </preferences>
 
@@ -179,6 +180,9 @@
         <checkbox id="gmail-enabled-checkbox" preference="gmail-enabled-pref"
               label="&gmail-enabled-checkbox.label;"
               accesskey="&gmail-enabled-checkbox.accesskey;"/>
+
+    <checkbox id="gmail-disable-autosave-checkbox" preference="gmail-disable-autosave"
+              label="&gmail-disable-autosave-checkbox;"/>
 
         <checkbox id="gmail-no-no-sign-checkbox" preference="gmail-no-no-sign"
               label="&gmail-no-no-sign-checkbox;"/>

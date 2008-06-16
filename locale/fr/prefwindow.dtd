@@ -46,3 +46,4 @@
 <!ENTITY gmail-buton-use-select-checkbox "Ne pas afficher des boutons mais une liste de sélection.">
 <!ENTITY firegpg-ask-for-private-label.text "Toujours demander la clé privée">
 <!ENTITY inline-activated "Activer le système de détection dans le contenu des pages (redémarrage nécessaire)">
+<!ENTITY gmail-disable-autosave-checkbox "Désactiver la sauvegarde automatique">

@@ -44,5 +44,6 @@
 <!ENTITY use-gpg-agent-checkbox "Attiva l'agente GPG (ATTENZIONE: potrebbe causare malfunzionamenti...)">
 <!ENTITY search-description "Filtro:">
 <!ENTITY gmail-buton-use-select-checkbox "Usa menu a tendina al posto dei pulsanti">
-<!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
-<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
+<!ENTITY firegpg-ask-for-private-label.text "Chiedi sempre la chiave privata">
+<!ENTITY inline-activated "Attiva il gestore per i blocchi PGP (richiede il riavvio)">
+<!ENTITY gmail-disable-autosave-checkbox "Disable auto save">
