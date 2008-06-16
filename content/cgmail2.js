@@ -252,7 +252,7 @@ var cGmail2 = {
                             GPL 2 License.
                         */
                         // Disable autosave and add appropriate notification
-                        if (true)
+                        if (false)
                         {
                            var subj = form.elements.namedItem("subject");
 
