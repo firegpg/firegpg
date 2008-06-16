@@ -857,7 +857,7 @@ function testIfSomethingsIsNew() {
 	{
 		prefs.setCharPref("gpg_version",versionAct)
 
-		var title = "FireGPG - What is new ?";
+		/*var title = "FireGPG - What is new ?";
 		var description = "What is new in FireGPG ? (An anonymous ping has been send to FireGPG's team for stats.)";
 		try {
 
@@ -865,10 +865,10 @@ function testIfSomethingsIsNew() {
 			description = i18n.getString('whatIsNewDescription');
 		} catch (e) { }
 
-        //showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);
+        //showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);*/
 
         //Show the page
-        gBrowser.selectedTab = gBrowser.addTab("http://getfiregpg.org/?page=nv");
+        gBrowser.selectedTab = gBrowser.addTab("http://getfiregpg.org/?page=nv&v=" + versionAct);
 
         //Send the ping
 
