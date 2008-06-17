@@ -1,6 +1,9 @@
+2008-06-17 Maximilien Cuony
+    * Patching gpgAuh
+
 2008-06-16  Maximilien Cuony
     * FS#17
-    
+
 2008-06-14  Maximilien Cuony
     * Fixed export problem
     * Patching gpgAuth
