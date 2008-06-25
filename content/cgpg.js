@@ -270,7 +270,7 @@ var FireGPG = {
                 alert(i18n.getString("signFailed") + "\n" + result.sdOut);
 
             returnObject.messagetext = i18n.getString("signFailed" + "\n" + result.sdOut);
-
+            eraseSavedPassword();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
 		}
@@ -643,6 +643,7 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("cryptFailed") + "\n" + result.sdOut);
 
+            eraseSavedPassword();
             returnObject.messagetext = i18n.getString("cryptFailed") + "\n" + result.sdOut;
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
@@ -778,6 +779,7 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("cryptAndSignFailed") + "\n" + result.sdOut);
 
+            eraseSavedPassword();
             returnObject.messagetext = i18n.getString("cryptAndSignFailed") + "\n" + result.sdOut;
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
@@ -1144,6 +1146,7 @@ var FireGPG = {
 
             returnObject.messagetext = i18n.getString("decryptFailed") + "\n" + result.sdOut;
             returnObject.result = RESULT_ERROR_UNKNOW;
+            eraseSavedPassword();
             return returnObject;
 		}
 

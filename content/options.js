@@ -81,14 +81,23 @@ function privateKeySelected(listbox) {
     Function: onLoad
 
     This function is called when the options.xul form is show.
-    It's init the differents objets (like the translated strings, the keys lists, and the special values).
+    It's init the differents objects (like the translated strings, the keys lists, and the special values).
 
     Parameters:
         win - The form herself.
 
 */
-function onLoad(win)
-{
+function onLoad(win) {
+
+     //Set version number
+    if (FIREGPG_STATUS != 'DEVEL')
+        document.getElementById('firegpg-version-version').value = FIREGPG_VERSION;
+    else
+        document.getElementById('firegpg-version-version').value = 'DEVEL - ' + FIREGPG_VERSION + ' - Svn version:  ' + FIREGPG_SVN;
+
+
+    if (GPGAccess.FireGPGCall != null)
+        document.getElementById('firegpg-version-version').value +=  ' -  XpCom';
 
    keylistcall = FireGPG.listKeys(true);
 
@@ -161,11 +170,6 @@ function onLoad(win)
 	/* gpgAUth */
 	getIgnored_servers( document.getElementById('domain_list') );
 
-    //Set version number
-    if (FIREGPG_STATUS != 'DEVEL')
-        document.getElementById('firegpg-version-version').value = FIREGPG_VERSION;
-    else
-        document.getElementById('firegpg-version-version').value = 'DEVEL - ' + FIREGPG_VERSION + ' - Svn version:  ' + FIREGPG_SVN;
 
     listbox = document.getElementById('api_domain_list');
 

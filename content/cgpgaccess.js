@@ -54,7 +54,6 @@ const OS_WINDOWS = "WINNT";
   The id of firegpg. */
 const idAppli = "firegpg@firegpg.team";
 
-
 /*
    Constants: States of the xpcom support.
 
@@ -64,6 +63,7 @@ const idAppli = "firegpg@firegpg.team";
    XPCOM_STATE_DONTWORK_IN_0_5   - The xpcom of version 0.5 dosen't work.
 */
 
+//WE HAVE TO CHANGE THIS VALUES BEFORE THE RELEASE !
 const XPCOM_STATE_NEVERTESTED = 0;
 const XPCOM_STATE_WORKS = 1;
 const XPCOM_STATE_DONTWORK = 2;
@@ -119,7 +119,6 @@ function Witch_GPGAccess () {
         } else {
 
             GPGAccess.runGnupg = GPGAccessCallerWindowsXpcom;
-
 
             GPGAccess.sign = GPGAccessWindowsXpcom.sign;
             GPGAccess.verify = GPGAccessWindowsXpcom.verify;
@@ -191,9 +190,7 @@ function Witch_GPGAccess () {
     She return false if an erreor happend, or ture if all works.
 
 */
-function loadXpcom () {
-
-   return false;
+function loadXpcom () { return false;
 
     try {
      	const cid = "@getfiregpg.org/XPCOM/FireGPGCall;1";
@@ -203,7 +200,7 @@ function loadXpcom () {
 		return false;
     }
 
-    FireGPGCall = obj;
+    GPGAccess.FireGPGCall = obj;
 
     return true;
 
@@ -318,6 +315,9 @@ var GPGAccessCallerWindowsNoXpcom =  function(parameters,charset) {
 */
 var GPGAccessCallerWindowsXpcom =  function(parameters, sdtIn,charset)  {
 
+    var res = obj.Call(this.getGPGCommand()," " + this.getGPGCommand() + parameters ,sdtIn + "\n");
+
+    return res;
 
 }
 
@@ -389,7 +389,9 @@ var GPGAccessCallerUnixNoXpcom  =  function(parameters,charset)  {
 */
 var GPGAccessCallerUnixXpcom  =  function(parameters,  sdtIn,charset)  {
 
+    var res = obj.Call(this.getGPGCommand()," " + this.getGPGCommand() + parameters ,sdtIn + "\n");
 
+    return res;
 }
 
 
@@ -1081,48 +1083,129 @@ var GPGAccessWindowsNoXpcom = {
 var GPGAccessWindowsXpcom = {
 
     sign: function (text, password, keyID) {
-        return false;
+        var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+
+		putIntoFile(tmpInput, text); // Temp
+
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		removeFile(tmpOutput);
+
+			result = this.runGnupg(this.getBaseArugments() +
+					" --default-key " + keyID +
+					" --output " + tmpOutput +
+					" --passphrase-fd 0 " +
+					this.getGPGCommentArgument() +
+					" --clearsign " + tmpInput
+				, password);
+
+
+		// The signed text
+		var crypttext = getFromFile(tmpOutput);
+
+		var result2 = new GPGReturn();
+		result2.output = crypttext;
+		result2.sdOut = result;
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpOutput);
+
+		return result2;
     },
 
-    verify: function(text) {
-        return false;
-    },
+    verify: GPGAccessWindowsNoXpcom.verify,
 
-    listkey: function(onlyPrivate) {
-        return false;
-    },
+    listkey:GPGAccessWindowsNoXpcom.listkey,
 
-    crypt: function(text, keyIdList, fromGpgAuth, binFileMode) {
-        return false;
-    },
+    crypt: GPGAccessWindowsNoXpcom.crypt,
 
-    cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode /*Optional*/) {
-        return false;
+    cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode) {
+        var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+
+		if (fromGpgAuth == null)
+			fromGpgAuth = false;
+
+        if (binFileMode == null)
+			binFileMode = false;
+
+        if (binFileMode == false)
+    		putIntoFile(tmpInput,text); // Temp
+        else
+            putIntoBinFile(tmpInput,text); // Temp
+
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		removeFile(tmpOutput);
+
+		/* key id list in the arguments */
+		var keyIdListArgument = '';
+		for(var i = 0; i < keyIdList.length; i++)
+			keyIdListArgument += ((i > 0) ? ' ' : '') + '-r ' + keyIdList[i];
+
+            result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument(fromGpgAuth) +
+                    " " + keyIdListArgument +
+                    this.getGPGCommentArgument() +
+                    " --default-key " + keyID +
+                    " --passphrase-fd 0" +
+                    " --sign" +
+                    " --output " + tmpOutput +
+                    " --encrypt " + tmpInput,
+                    password);
+
+		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
+
+		// The crypted text
+		var crypttext = getFromFile(tmpOutput);
+		var result2 = new GPGReturn();
+		result2.output = crypttext;
+		result2.sdOut = result;
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpOutput);
+
+		return result2;
     },
 
     decrypt: function(text,password) {
-        return false;
+        var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+
+		putIntoFile(tmpInput,text); // Temp
+
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		removeFile(tmpOutput);
+
+
+			result = this.runGnupg(this.getBaseArugments() +
+					" --passphrase-fd 0 " +
+					" --output " + tmpOutput +
+					" --decrypt " + tmpInput
+				, password);
+
+		// The decrypted text
+		var crypttext = getFromFile(tmpOutput);
+		var result2 = new GPGReturn();
+		result2.output = crypttext;
+		result2.sdOut = result;
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpOutput);
+
+		return result2;
     },
 
-    selfTest: function() {
-        return false;
-    },
+    selfTest: GPGAccessWindowsNoXpcom.selfTest,
 
-    kimport: function(text) {
-        return false;
-    },
+    kimport: GPGAccessWindowsNoXpcom.kimport,
 
-    kexport: function(key) {
-        return false;
-    },
+    kexport: GPGAccessWindowsNoXpcom.kexport,
 
-    runATest: function(option) {
-        return false;
-    },
+    runATest: GPGAccessWindowsNoXpcom.runATest,
 
-    tryToFoundTheRightCommand: function () {
-        return false;
-    }
+    tryToFoundTheRightCommand: GPGAccessWindowsNoXpcom.tryToFoundTheRightCommand,
 
 }
 
@@ -1344,49 +1427,27 @@ var GPGAccessUnixNoXpcom = {
 */
 var GPGAccessUnixXpcom = {
 
-    sign: function (text, password, keyID) {
-        return false;
-    },
+    sign: GPGAccessWindowsXpcom.sign,
 
-    verify: function(text) {
-        return false;
-    },
+    verify: GPGAccessUnixNoXpcom.verify,
 
-    listkey: function(onlyPrivate) {
-        return false;
-    },
+    listkey:GPGAccessUnixNoXpcom.listkey,
 
-    crypt: function(text, keyIdList, fromGpgAuth /*Optional*/, binFileMode) {
-        return false;
-    },
+    crypt: GPGAccessUnixNoXpcom.crypt,
 
-    cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode) {
-        return false;
-    },
+    cryptAndSign: GPGAccessUnixNoXpcom.cryptAndSign,
 
-    decrypt: function(text,password) {
-        return false;
-    },
+    decrypt: GPGAccessUnixNoXpcom.decrypt,
 
-    selfTest: function() {
-        return false;
-    },
+    selfTest: GPGAccessUnixNoXpcom.selfTest,
 
-    kimport: function(text) {
-        return false;
-    },
+    kimport: GPGAccessUnixNoXpcom.kimport,
 
-    kexport: function(key) {
-        return false;
-    },
+    kexport: GPGAccessUnixNoXpcom.kexport,
 
-    runATest: function(option) {
-        return false;
-    },
+    runATest: GPGAccessUnixNoXpcom.runATest,
 
-    tryToFoundTheRightCommand: function () {
-        return false;
-    }
+    tryToFoundTheRightCommand: GPGAccessUnixNoXpcom.tryToFoundTheRightCommand,
 
 }
 
