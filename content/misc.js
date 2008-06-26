@@ -123,14 +123,14 @@ var oldKeyID = '';
 */
 function fireGPGDebug(message, debugCode, fatal) {
 
-    return;
+    //return;
 
     if (fatal)
         Components.utils.reportError("FireGPG-debug: [" + debugCode + "]"  + message);
     else {
 
         var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
-        consoleService.logStringMessage("FireGPG-debug: [" + debugCode + "]"  + message);
+        consoleService.logStringMessage("FireGPG-debug: [" + debugCode + "] "  + message);
 
     }
 
@@ -1112,9 +1112,11 @@ function EnigConvertToUnicode(text, charset) {
     var unicodeConv = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"].getService(Components.interfaces.nsIScriptableUnicodeConverter);
 
     unicodeConv.charset = charset;
+
     return unicodeConv.ConvertToUnicode(text);
 
   } catch (ex) {
+    fireGPGDebug(ex,'EnigConvertToUnicode',true);
     return text;
   }
 }

@@ -211,7 +211,7 @@ OutDir=.\Debug
 !ENDIF
 
 NO_EXTERNAL_DEPS=1
-f
+
 !IF "$(NO_EXTERNAL_DEPS)" != "1"
 !IF EXISTS("FireGPGCall.dep")
 !INCLUDE "FireGPGCall.dep"

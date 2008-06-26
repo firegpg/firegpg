@@ -68,19 +68,26 @@ NS_IMETHODIMP FireGPGCall::Call(const char *path, const char *parameters, const 
     if (fSuccess == 0)
         ErrorExit("Create process failed with");
 
+	//On attend qu'il attend.
+	WaitForInputIdle(hProcess,0);
+
     WriteFile(hChildStdinWr, sdin, PL_strlen(sdin) , &dwWritten, NULL);
 
     CloseHandle(hChildStdinWr);
 
     int i = 0;
+	int secu = 0;
 
-    while( WaitForSingleObject(hProcess,0) != WAIT_OBJECT_0) { //Fin du processus (normaolement)
 
-        Sleep(250);
-
-        ReadFile( hChildStdoutRd, (char *)chBuf + i, BUFSIZE - i, &dwRead,         NULL);
-        i += dwRead;
+    while(WaitForSingleObject(hProcess,0) == WAIT_TIMEOUT && secu <= 10) { //Fin du processus (normaolement) ou 2.5 s passées
+		secu++;
+		Sleep(250);
     }
+
+
+
+	ReadFile( hChildStdoutRd, (char *)chBuf + i, BUFSIZE - i, &dwRead, NULL);
+	i += dwRead;
 
     chBuf[i] = (char)'\0';
 
@@ -123,7 +130,8 @@ INT CreateChildProcess(const char *parameters) {
     siStartInfo.hStdError = hChildStdoutWr;
     siStartInfo.hStdOutput = hChildStdoutWr;
     siStartInfo.hStdInput = hChildStdinRd;
-    siStartInfo.dwFlags |= STARTF_USESTDHANDLES;
+    siStartInfo.dwFlags |= STARTF_USESTDHANDLES | STARTF_USESHOWWINDOW;
+	siStartInfo.wShowWindow = SW_HIDE;
 
     // Create the child process.
     bFuncRetn = CreateProcess(NULL,

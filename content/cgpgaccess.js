@@ -190,7 +190,7 @@ function Witch_GPGAccess () {
     She return false if an erreor happend, or ture if all works.
 
 */
-function loadXpcom () { return false;
+function loadXpcom () {
 
     try {
      	const cid = "@getfiregpg.org/XPCOM/FireGPGCall;1";
@@ -268,6 +268,8 @@ function updateXpcomState(newstate) {
 */
 var GPGAccessCallerWindowsNoXpcom =  function(parameters,charset) {
 
+    fireGPGDebug('"' + this.getGPGCommand() + '"' + " \"" + tmpStdOut + "\"" + parameters,'GPGAccessCallerWindowsNoXpcom');
+
     var tmpStdOut = getTmpFile(null,'output');
     var tmpRun = getTmpFileRunning();
 
@@ -315,7 +317,14 @@ var GPGAccessCallerWindowsNoXpcom =  function(parameters,charset) {
 */
 var GPGAccessCallerWindowsXpcom =  function(parameters, sdtIn,charset)  {
 
+    if (charset == undefined)
+        charset = "utf-8";
+
+    fireGPGDebug(this.getGPGCommand() + " " + this.getGPGCommand() + parameters + "[" + sdtIn + "]",'GPGAccessCallerWindowsXpcom');
+
     var res = obj.Call(this.getGPGCommand()," " + this.getGPGCommand() + parameters ,sdtIn + "\n");
+
+    res = EnigConvertToUnicode(res, charset);
 
     return res;
 
@@ -341,7 +350,7 @@ var GPGAccessCallerWindowsXpcom =  function(parameters, sdtIn,charset)  {
 */
 var GPGAccessCallerUnixNoXpcom  =  function(parameters,charset)  {
 
-
+    fireGPGDebug(this.getGPGCommand() + ' ' + tmpStdOut + parameters,'GPGAccessCallerUnixNoXpcom');
 
    	var tmpStdOut = getTmpFile(null,'output'); // Output from gpg
 	var tmpRun = getTmpFileRunning();
@@ -387,9 +396,16 @@ var GPGAccessCallerUnixNoXpcom  =  function(parameters,charset)  {
         <GPGAccessCallerUnixNoXpcom>
 
 */
-var GPGAccessCallerUnixXpcom  =  function(parameters,  sdtIn,charset)  {
+var GPGAccessCallerUnixXpcom  =  function(parameters, sdtIn, charset)  {
+
+    if (charset == undefined)
+        charset = "utf-8";
+
+    fireGPGDebug(this.getGPGCommand() + " " + this.getGPGCommand() + parameters + "[" + sdtIn + "]",'GPGAccessCallerUnixXpcom');
 
     var res = obj.Call(this.getGPGCommand()," " + this.getGPGCommand() + parameters ,sdtIn + "\n");
+
+    res = EnigConvertToUnicode(res, charset);
 
     return res;
 }
@@ -1116,7 +1132,20 @@ var GPGAccessWindowsXpcom = {
 
     verify: GPGAccessWindowsNoXpcom.verify,
 
-    listkey:GPGAccessWindowsNoXpcom.listkey,
+    listkey: function(onlyPrivate) {
+		var mode = "--list-keys";
+
+		if (onlyPrivate == true)
+			mode = "--list-secret-keys";
+
+		result = this.runGnupg(this.getBaseArugments() + " --with-colons " + mode,"","ISO-8859-1");
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result;
+
+        // We return result
+		return result2;
+    },
 
     crypt: GPGAccessWindowsNoXpcom.crypt,
 
@@ -1152,8 +1181,6 @@ var GPGAccessWindowsXpcom = {
                     " --output " + tmpOutput +
                     " --encrypt " + tmpInput,
                     password);
-
-		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
 		// The crypted text
 		var crypttext = getFromFile(tmpOutput);
@@ -1431,13 +1458,13 @@ var GPGAccessUnixXpcom = {
 
     verify: GPGAccessUnixNoXpcom.verify,
 
-    listkey:GPGAccessUnixNoXpcom.listkey,
+    listkey: GPGAccessWindowsXpcom.listkey,
 
     crypt: GPGAccessUnixNoXpcom.crypt,
 
-    cryptAndSign: GPGAccessUnixNoXpcom.cryptAndSign,
+    cryptAndSign: GPGAccessWindowsXpcom.cryptAndSign,
 
-    decrypt: GPGAccessUnixNoXpcom.decrypt,
+    decrypt: GPGAccessWindowsXpcom.decrypt,
 
     selfTest: GPGAccessUnixNoXpcom.selfTest,
 

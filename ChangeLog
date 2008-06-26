@@ -1,5 +1,6 @@
 2008-06-26 Maximilien Cuony
     * Url with numbers for google apps
+    * xpcom on windows seem ok.
 
 2008-06-25 Maximilien Cuony
     * Xpcom on linux implemented
