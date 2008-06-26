@@ -84,7 +84,7 @@ var cGmail2 = {
 
             final_location = doc.location.href;
 
-            var regrex = new RegExp('^https?://mail.google.com/a/[a-zA-Z.-]*');
+            var regrex = new RegExp('^https?://mail.google.com/a/[a-zA-Z.-0-9]*');
 
             final_location = final_location.replace(regrex, "http://mail.google.com/mail");
 
