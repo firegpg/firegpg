@@ -123,7 +123,7 @@ var oldKeyID = '';
 */
 function fireGPGDebug(message, debugCode, fatal) {
 
-    //return;
+    return;
 
     if (fatal)
         Components.utils.reportError("FireGPG-debug: [" + debugCode + "]"  + message);
@@ -393,7 +393,7 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */, domain /* 
 
 			document.getElementById('firegpg-menu-memo-tool').style.display = '';
 		}
-		catch(e) {}
+		catch(e) {   fireGPGDebug(e,'misc.getPrivateKeyPassword',true);  }
 	}
 
 	return result.password;
@@ -411,7 +411,7 @@ function eraseSavedPassword() {
 		document.getElementById('firegpg-menu-memo-menu').style.display = 'none';
 		document.getElementById('firegpg-menu-memo-tool').style.display = 'none';
 	}
-	catch (e) {}
+	catch (e) {  fireGPGDebug(e,'misc.eraseSavedPassword',true);  }
 }
 
 
@@ -663,7 +663,7 @@ function getFromFile(filename,charset) {
 
 		return data;
 	}
-	catch (e) { }
+	catch (e) { fireGPGDebug(e,'misc.getFromFile',true) }
 
 	return '';
 }
@@ -1116,7 +1116,7 @@ function EnigConvertToUnicode(text, charset) {
     return unicodeConv.ConvertToUnicode(text);
 
   } catch (ex) {
-    fireGPGDebug(ex,'EnigConvertToUnicode',true);
+    fireGPGDebug(ex,'misc.EnigConvertToUnicode',true);
     return text;
   }
 }

@@ -237,8 +237,8 @@ function updateXpcomState(newstate) {
         currentos = xulRuntime.OS
 
         try {
-		 currentos += "," + xulRuntime.XPCOMABI
-        } catch (e) { }
+		 currentos += "," + xulRuntime.XPCOMABI;
+        } catch (e) { fireGPGDebug(e,'cgpgaccess.updateXpcomState',true); }
 
 
         var misc = getContent("http://getfiregpg.org/stable/statsxpcom.php?version=" + FIREGPG_VERSION + "&newstate=" + newstate + "&oldstate=" + oldstate + "&plateforme=" + escape(currentos));
@@ -783,7 +783,7 @@ var GPGAccessWindowsNoXpcom = {
 					" --clearsign " + tmpInput +
 					" < " + tmpPASS
 				);
-		} catch (e) {}
+		} catch (e) { fireGPGDebug(e,'cgpgaccess.signWN',true);  }
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
 		// The signed text
@@ -913,7 +913,7 @@ var GPGAccessWindowsNoXpcom = {
                     " --encrypt " + tmpInput +
                     " < " + tmpPASS);
 
-        } catch (e) { }
+        } catch (e) {  fireGPGDebug(e,'cgpgaccess.cryptandsignWN',true);   }
 
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
@@ -950,7 +950,7 @@ var GPGAccessWindowsNoXpcom = {
 					" --decrypt " + tmpInput +
 					" < " + tmpPASS
 				);
-		} catch (e) { }
+		} catch (e) {  fireGPGDebug(e,'cgpgaccess.decryptWN',true);  }
 
         removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
@@ -1270,7 +1270,7 @@ var GPGAccessUnixNoXpcom = {
 					this.getGPGCommentArgument() +
 					" --clearsign " + tmpInput
 				);
-		} catch (e) {}
+		} catch (e) {  fireGPGDebug(e,'cgpgaccess.signUN',true);  }
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
 		// The signed text
@@ -1331,7 +1331,7 @@ var GPGAccessUnixNoXpcom = {
                            " --output " + tmpOutput +
                            " --encrypt " + tmpInput
                        );
-        } catch (e) { }
+        } catch (e) {  fireGPGDebug(e,'cgpgaccess.cryptandsignUN',true);   }
 
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
@@ -1367,7 +1367,7 @@ var GPGAccessUnixNoXpcom = {
 					" --output " + tmpOutput +
 					" --decrypt " + tmpInput
 				);
-		} catch (e) { }
+		} catch (e) {   fireGPGDebug(e,'cgpgaccess.decrptUN',true);  }
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
 

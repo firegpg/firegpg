@@ -406,7 +406,7 @@ var FireGPG = {
                             returnObject.keylist.push(theKey);
                     }
                 }
-			} catch (e) { alert(e) ; }
+			} catch (e) { fireGPGDebug(e,'cgpg.listkeys',true);  }
 		}
 
         // Sorts keys

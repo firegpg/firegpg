@@ -225,7 +225,7 @@ var cGmail = {
 							td.addEventListener('click',tmpListener,true);
 						}
 
-					} catch (e) { }
+					} catch (e) { fireGPGDebug(e,'cgmail.onDelayLoad',true); }
 				}
 			}
 
@@ -386,7 +386,7 @@ var cGmail = {
                 box.appendChild(bouton);
 
 
-            } catch (e) {}
+            } catch (e) { fireGPGDebug(e,'cgmail.addBouton',true); }
 
         } else { //we have to use a select list.
 
@@ -418,7 +418,7 @@ var cGmail = {
                     tmpListener = new cGmail.callBack("tralala",info1)
                     select.addEventListener('onchange',tmpListener,false);
 
-               } catch (e) { alert(e);}
+               } catch (e) { fireGPGDebug(e,'cgmail.addBouton2',true); }
 
             }
 
@@ -467,7 +467,7 @@ var cGmail = {
 			tmpListener = new cGmail.callBack("tralala",info1)
 			box.addEventListener('click',tmpListener,true);
 
-		} catch (e) {}
+		} catch (e) { fireGPGDebug(e,'cgmail.addComposeBoutons',true); }
 	},
 
     /*
@@ -485,7 +485,7 @@ var cGmail = {
 				gBrowser.addProgressListener(cGmailListener,
 				         Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
 			}
-		} catch (e) { }
+		} catch (e) { fireGPGDebug(e,'cgmail.listenerLoad',true); }
 	},
 
 
@@ -537,7 +537,7 @@ var cGmail = {
 
                 }
 
-            } catch (e)  { alert(e);}
+            } catch (e)  {  fireGPGDebug(e,'cgmail.callBack',true); }
 
 
 			if (target.id == "sm_decrypt") {
@@ -892,7 +892,7 @@ var cGmail = {
                             evt.initEvent("click", true, true);
                             children[i].dispatchEvent(evt);
                     }
-                } catch (e) { }
+                } catch (e) {  fireGPGDebug(e,'cgmail.sendEmail',true);  }
 			}
 	},
 

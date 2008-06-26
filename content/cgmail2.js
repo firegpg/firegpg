@@ -216,7 +216,7 @@ var cGmail2 = {
                             tmpListener = new cGmail2.callBack(doc)
                             listeTest[i].addEventListener('click',tmpListener,true);
 
-                        } catch (e) {}
+                        } catch (e) {  fireGPGDebug(e,'cgmail2.checkDoc',true);  }
 
                         //Add the button 'Attach and chiffred a file'
                         if (listeTest[i].getAttribute('class').indexOf('LlWyA') != -1) {
@@ -424,7 +424,7 @@ var cGmail2 = {
 
                 }
 
-            } catch (e)  { alert(e);}
+            } catch (e)  { fireGPGDebug(e,'cgmail2.callBack',true);  }
 
 
             //If the user want to decrypt the mail (can use normal attibutes)
@@ -669,7 +669,7 @@ var cGmail2 = {
                 box.insertBefore(bouton,spamLimite);
 
 
-            } catch (e) {}
+            } catch (e) { fireGPGDebug(e,'cgmail2.addBouton',true);  }
 
         } else { //we have to use a select list.
 
@@ -701,7 +701,7 @@ var cGmail2 = {
                     tmpListener = new cGmail2.callBack(doc)
                     select.addEventListener('onchange',tmpListener,false);
 
-               } catch (e) {}
+               } catch (e) { fireGPGDebug(e,'cgmail2.addBouton2',true);  }
 
             }
 
@@ -731,7 +731,7 @@ var cGmail2 = {
 				var evt = dDocument.createEvent("MouseEvents");
 					evt.initEvent("click", true, true);
 					children[0].dispatchEvent(evt);
-			 } catch (e) { }
+			 } catch (e) { fireGPGDebug(e,'cgmail2.sendEmail',true);  }
 
 	},
 
