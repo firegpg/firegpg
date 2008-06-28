@@ -49,7 +49,7 @@ char** split(char* chaine,const char* delim,int vide) {
         sizeStr=strlen(largestring);
         sizeTab++;
         tab = (char**) realloc(tab,sizeof(char*)*sizeTab);
-        tab[sizeTab-1]v=v(char*) malloc( sizeof(char)*(sizeStr+1) );
+        tab[sizeTab-1]=(char*) malloc( sizeof(char)*(sizeStr+1) );
         strncpy(tab[sizeTab-1],largestring,sizeStr);
         tab[sizeTab-1][sizeStr] = '\0';
     }
@@ -67,7 +67,7 @@ char** split(char* chaine,const char* delim,int vide) {
     tab[sizeTab-1] = NULL;
 
     return tab;
-
+}
 
 NS_IMPL_ISUPPORTS1(FireGPGCall, IFireGPGCall)
 
