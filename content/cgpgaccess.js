@@ -304,7 +304,7 @@ var GPGAccessCallerWindowsNoXpcom =  function(parameters,charset) {
     Parameters:
         parameters - The parameters for gnupg.
         sdtIn - The data to send to gnupg on the sdIn
-        charset - _Optional_. The charset to read the sdtIn (UTF-8 by default)
+        charset - _Optional_. The charset to read the sdtIn (utf-8 by default)
 
     Return:
         The sdOut of the execution
@@ -573,13 +573,14 @@ var GPGAccess = {
             text - The data to sign
             password - The password of the private key
             keyID - The ID of the private key to use.
+            notClear - Do not make a clear sign
 
         Return:
             A <GPGReturn> structure.
 
 
     */
-    sign: function (text, password, keyID) {
+    sign: function (text, password, keyID, notClear) {
         return false;
     },
 
@@ -763,7 +764,7 @@ var GPGAccess = {
 */
 var GPGAccessWindowsNoXpcom = {
 
-    sign: function (text, password, keyID) {
+    sign: function (text, password, keyID, notClear) {
         var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
@@ -780,7 +781,7 @@ var GPGAccessWindowsNoXpcom = {
 					" --output " + tmpOutput +
 					" --passphrase-fd 0 " +
 					this.getGPGCommentArgument() +
-					" --clearsign " + tmpInput +
+					" --"  + (!notClear ? "clear" : "") +"sign " + tmpInput +
 					" < " + tmpPASS
 				);
 		} catch (e) { fireGPGDebug(e,'cgpgaccess.signWN',true);  }
@@ -973,7 +974,7 @@ var GPGAccessWindowsNoXpcom = {
 		result = this.runGnupg(this.getBaseArugments()  + " --version");
 
 		// If the work Foundation is present, we can think that gpg is present ("... Copyright (C) 2006 Free Software Foundation, Inc. ...")
-		if (result.indexOf("Foundation") == -1)
+		if (!result || result.indexOf("Foundation") == -1)
 			return false;
 
 		return true;
@@ -1009,7 +1010,7 @@ var GPGAccessWindowsNoXpcom = {
     runATest: function(option) {
 		result = this.runGnupg(this.getGPGBonusCommand() + " --status-fd 1 " + option + " --version");
 
-		if(result.indexOf("Foundation") == "-1")
+		if(!result || result.indexOf("Foundation") == "-1")
 			return false;
 
 		return true;
@@ -1098,7 +1099,7 @@ var GPGAccessWindowsNoXpcom = {
 */
 var GPGAccessWindowsXpcom = {
 
-    sign: function (text, password, keyID) {
+    sign: function (text, password, keyID, notClear) {
         var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 
@@ -1112,7 +1113,7 @@ var GPGAccessWindowsXpcom = {
 					" --output " + tmpOutput +
 					" --passphrase-fd 0 " +
 					this.getGPGCommentArgument() +
-					" --clearsign " + tmpInput
+					" --"  + (!notClear ? "clear" : "") +"sign " + tmpInput
 				, password);
 
 
@@ -1251,7 +1252,7 @@ var GPGAccessWindowsXpcom = {
 */
 var GPGAccessUnixNoXpcom = {
 
-    sign: function (text, password, keyID) {
+    sign: function (text, password, keyID, notClear) {
         var tmpInput = getTmpFile();  // Data unsigned
 		var tmpOutput = getTmpFile(); // Data signed
 		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
@@ -1268,7 +1269,7 @@ var GPGAccessUnixNoXpcom = {
 					" --output " + tmpOutput +
 					" --passphrase-file " + tmpPASS + "" +
 					this.getGPGCommentArgument() +
-					" --clearsign " + tmpInput
+					" --"  + (!notClear ? "clear" : "") +"sign " + tmpInput
 				);
 		} catch (e) {  fireGPGDebug(e,'cgpgaccess.signUN',true);  }
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !

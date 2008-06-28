@@ -47,7 +47,7 @@
 //
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */
-const FIREGPG_VERSION = '0.4.9';
+const FIREGPG_VERSION = '0.5BETA';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
@@ -123,7 +123,8 @@ var oldKeyID = '';
 */
 function fireGPGDebug(message, debugCode, fatal) {
 
-    return;
+    if (FIREGPG_STATUS == "RELASE" && !fatal)
+        return;
 
     if (fatal)
         Components.utils.reportError("FireGPG-debug: [" + debugCode + "]"  + message);

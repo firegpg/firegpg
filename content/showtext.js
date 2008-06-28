@@ -177,6 +177,19 @@ function sign() {
 }
 
 /*
+    Function: signUnClear
+    Sign the current data of the editor (unclear)
+*/
+function signUnClear() {
+
+    var result = FireGPG.sign(false,getSelectedText(),null,null,true);
+
+    if (result.result == RESULT_SUCCESS)
+        setSeletedText(result.signed);
+
+}
+
+/*
     Function: verify
     Verfiy signs of the current data of the editor.
 */

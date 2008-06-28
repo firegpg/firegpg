@@ -36,10 +36,10 @@
 
 /* Constant: GMAIL_MAIN_DOC_URL
  The url of the mail document for gmail */
-const GMAIL_MAIN_DOC_URL = "http://mail.google.com/mail/?ui=2&view=bsp&ver=ymdfwq781tpu";
+const GMAIL_MAIN_DOC_URL = "http://mail.google.com/mail/?ui=2&view=bsp&ver=";
 /* Constant: GMAIL_MAIN_DOC_URL2
  The url of the mail document for gmail and https. */
-const GMAIL_MAIN_DOC_URL2 = "https://mail.google.com/mail/?ui=2&view=bsp&ver=ymdfwq781tpu";
+const GMAIL_MAIN_DOC_URL2 = "https://mail.google.com/mail/?ui=2&view=bsp&ver=";
 
 /*
    Class: cGmail2
@@ -88,8 +88,7 @@ var cGmail2 = {
 
             final_location = final_location.replace(regrex, "http://mail.google.com/mail");
 
-            if (final_location == GMAIL_MAIN_DOC_URL || final_location == GMAIL_MAIN_DOC_URL2)
-            {
+            if (final_location.indexOf(GMAIL_MAIN_DOC_URL) == 0 || final_location .indexOf(GMAIL_MAIN_DOC_URL2) == 0) {
 
                 //test for messages
                 var listeTest = doc.getElementsByClassName('ArwC7c','div');
@@ -113,9 +112,7 @@ var cGmail2 = {
                         }
 
                         if (boutonbox == "")
-                        {
                             break;
-                        }
 
                         var contenuMail = this.getMailContent(listeTest[i],doc);
 
@@ -1180,7 +1177,7 @@ var cGmail2 = {
 
         final_location = final_location.replace(regrex, "http://mail.google.com/mail");
 
-        if (final_location == GMAIL_MAIN_DOC_URL || final_location == GMAIL_MAIN_DOC_URL2) {
+        if (final_location.indexOf(GMAIL_MAIN_DOC_URL) == 0 || final_location .indexOf(GMAIL_MAIN_DOC_URL2) == 0) {
 
             doc.getElementsByClassName = function(className, tag) {
 

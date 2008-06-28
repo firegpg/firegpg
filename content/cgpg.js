@@ -182,13 +182,17 @@ var FireGPG = {
             text - _Optional_, if not set try to use the selection. The text to sign
             keyID - _Optional_, if not set use the default private key or ask the user. The private keyID used to sign.
             password - _Optional_, if not set ask the user.
+            notClear - _Optional_, Do not make a clear sign
     */
-    sign: function(silent, text, keyID, password) {
+    sign: function(silent, text, keyID, password, notClear) {
 
         var returnObject = new GPGReturn();
 
         if (silent == undefined)
             silent = false;
+
+        if (notClear == undefined)
+            notClear = false;
 
         this.initGPGACCESS();
         var i18n = document.getElementById("firegpg-strings");
@@ -246,7 +250,7 @@ var FireGPG = {
         }
 
         // We get the result
-		var result = this.GPGAccess.sign(text, password, keyID);
+		var result = this.GPGAccess.sign(text, password, keyID, notClear);
 
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;

@@ -24,7 +24,7 @@ FILES = FireGPGCall.cpp FireGPGCallModule.cpp
 TARGET = FireGPGCall.so
 
 build:
-	$(CXX) -Wall -Os -o $(TARGET) $(GECKO_CONFIG_INCLUDE) $(GECKO_DEFINES) $(GECKO_INCLUDES) $(GECKO_LDFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(FILES)
+	$(CXX) -Wall -Os -o $(TARGET) $(GECKO_CONFIG_INCLUDE) $(GECKO_DEFINES) $(GECKO_INCLUDES) $(FILES) $(GECKO_SDK_PATH)/lib/libxpcomglue_s.a $(GECKO_LDFLAGS)  $(CPPFLAGS) $(CXXFLAGS)
 	chmod +x $(TARGET)
 	strip $(TARGET)
 
