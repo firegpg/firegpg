@@ -869,7 +869,7 @@ function testIfSomethingsIsNew() {
         //showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);*/
 
         //Show the page
-        gBrowser.selectedTab = gBrowser.addTab("http://getfiregpg.org/?page=nv&v=" + versionAct);
+        gBrowser.selectedTab = gBrowser.addTab("http://getfiregpg.org/index.php?page=nv&v=" + versionAct);
 
         //Send the ping
 
