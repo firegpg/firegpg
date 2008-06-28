@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "GMail-Unterstützung">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Privater Schlüssel:">
-<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
+<!ENTITY show-website-checkbox "Zeige FireGBG Website Adresse im GPG Kommentarfeld">
 <!ENTITY change-gpg-path-button "Durchsuchen">
 <!ENTITY change-gpg-path-checkbox "Benutzerdefinierter Pfad zu GnuPG:">
 <!ENTITY result-always-in-new-window "Zeige die Ergebnisse von Verschlüsseln/Unterschreiben immer in einem neuen Fenster.">
@@ -43,8 +43,8 @@ Websiten (Doppelklick zum Entfernen)">
 <!ENTITY api-liste-domain.label "Domain">
 <!ENTITY api-liste-keyauth.label "Schlüssel">
 <!ENTITY use-gpg-agent-checkbox "GPG-Agent aktivieren (Achtung, kann Probleme verursachen)">
-<!ENTITY search-description "Filter :">
-<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">
-<!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
-<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
-<!ENTITY gmail-disable-autosave-checkbox "Disable auto save">
+<!ENTITY search-description "Filter:">
+<!ENTITY gmail-buton-use-select-checkbox "Zeige keine Buttons sondern eine Drop Down Liste">
+<!ENTITY firegpg-ask-for-private-label.text "Immer nach privatem Schlüssel fragen">
+<!ENTITY inline-activated "Aktiviere Handler für PGP blöcke in Seiten (Neustart benötigt)">
+<!ENTITY gmail-disable-autosave-checkbox "Automatisches Speichern abschalten">

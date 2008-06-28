@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "GMail支持">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "默认私钥：">
-<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
+<!ENTITY show-website-checkbox "在GPG注释中显示FireGPG网站">
 <!ENTITY change-gpg-path-button "设定GPG路径">
 <!ENTITY change-gpg-path-checkbox "手动指定GPG路径">
 <!ENTITY result-always-in-new-window "总是在新窗口显示签署或加密后的效果">
@@ -42,8 +42,8 @@
 <!ENTITY api-liste-domain.label "域名">
 <!ENTITY api-liste-keyauth.label "密钥">
 <!ENTITY use-gpg-agent-checkbox "激活Gpg-agent（警告，可能带来问题······）">
-<!ENTITY search-description "Filter :">
-<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">
-<!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
-<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
-<!ENTITY gmail-disable-autosave-checkbox "Disable auto save">
+<!ENTITY search-description "滤嘴">
+<!ENTITY gmail-buton-use-select-checkbox "显示下拉菜单而不是一串按钮">
+<!ENTITY firegpg-ask-for-private-label.text "总是请求私钥">
+<!ENTITY inline-activated "激活对页面中的PGP区块的解析（需要重启）">
+<!ENTITY gmail-disable-autosave-checkbox "禁用自动保存">

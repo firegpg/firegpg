@@ -46,4 +46,4 @@
 <!ENTITY gmail-buton-use-select-checkbox "Mostrar una lista desplegable en vez de botones.">
 <!ENTITY firegpg-ask-for-private-label.text "Preguntar siempre por la llave privada">
 <!ENTITY inline-activated "Activar el handler para bloques PgP en páginas (necesita reiniciar)">
-<!ENTITY gmail-disable-autosave-checkbox "Disable auto save">
+<!ENTITY gmail-disable-autosave-checkbox "Desactivar autoguardado">

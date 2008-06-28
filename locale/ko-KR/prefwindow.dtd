@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "Gmail 지원">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "기본 개인키:">
-<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
+<!ENTITY show-website-checkbox "FireGPG 웹사이트 주소를 GPG 주석 영역에 보이기">
 <!ENTITY change-gpg-path-button "GPG 경로 지정">
 <!ENTITY change-gpg-path-checkbox "GPG 프로그램 경로를 직접 지정:">
 <!ENTITY result-always-in-new-window "암호화하거나 서명한 결과를 항상 새 창에 표시">
@@ -42,8 +42,8 @@
 <!ENTITY api-liste-domain.label "도메인">
 <!ENTITY api-liste-keyauth.label "키">
 <!ENTITY use-gpg-agent-checkbox "GPG 에이전트 활성화 (경고: 문제를 일으킬 수 있습니다...)">
-<!ENTITY search-description "Filter :">
-<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">
-<!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
-<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
-<!ENTITY gmail-disable-autosave-checkbox "Disable auto save">
+<!ENTITY search-description "필터:">
+<!ENTITY gmail-buton-use-select-checkbox "버튼 대신 드롭다운 리스트 보이기">
+<!ENTITY firegpg-ask-for-private-label.text "항상 개인키를 물어봄">
+<!ENTITY inline-activated "문서 내의 PGP 블럭에 대한 핸들러 활성화 (재시작 필요)">
+<!ENTITY gmail-disable-autosave-checkbox "자동 저장 비활성화">

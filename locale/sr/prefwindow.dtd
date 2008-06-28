@@ -44,6 +44,6 @@
 <!ENTITY use-gpg-agent-checkbox "Aktivni GPG-agent (može dovesti izlaske)">
 <!ENTITY search-description "Filter:">
 <!ENTITY gmail-buton-use-select-checkbox "Ne prikazuj dugmad nego drop-down listu.">
-<!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
-<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
-<!ENTITY gmail-disable-autosave-checkbox "Disable auto save">
+<!ENTITY firegpg-ask-for-private-label.text "Uvek traži privatni ključ">
+<!ENTITY inline-activated "Aktiviraj upravljač za PGP blokove u stranicama (potreban restart)">
+<!ENTITY gmail-disable-autosave-checkbox "Isključi autosave">

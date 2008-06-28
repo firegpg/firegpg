@@ -1,3 +1,9 @@
+2008-06-28 Maximilien Cuony
+    * Making xpcom realy working
+    * Updating doc
+    * Updating locates
+    * Version number set to 0.5BETA
+
 2008-06-26 Maximilien Cuony
     * Url with numbers for google apps
     * xpcom on windows seem ok.
