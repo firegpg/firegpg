@@ -188,7 +188,7 @@ var gpgApi = {
 
         for (key in keylist) {
 
-            return_list = return_list + gpgApi.removeDoublePoint(key) + ":" + gpgApi.removeDoublePoint(keylist[key]) + ",";
+            return_list = return_list + gpgApi.removeDoublePoint(keylist[key].keyId) + ":" + gpgApi.removeDoublePoint(keylist[key].keyName) + ",";
         }
 
         returnData.setAttribute('list', return_list);
@@ -223,7 +223,7 @@ var gpgApi = {
 
         for (key in keylist) {
 
-            return_list = return_list + gpgApi.removeDoublePoint(key) + ":" + gpgApi.removeDoublePoint(keylist[key]) + ",";
+            return_list = return_list + gpgApi.removeDoublePoint(keylist[key].keyId) + ":" + gpgApi.removeDoublePoint(keylist[key].keyName) + ",";
         }
 
         returnData.setAttribute('list', return_list);
@@ -256,29 +256,29 @@ var gpgApi = {
 			return;
 		}
 
-		var result = GPG.baseVerify(text);
+		var result = FireGPG.verify(true,text);
 
 		// For I18N
 		var i18n = document.getElementById("firegpg-strings");
     //TODO : multi signs ?
-		if (result.length == "0") {
+		if (result.result == RESULT_ERROR_NO_GPG_DATA) {
             returnData.setAttribute('result', 'check-err');
             returnData.setAttribute('error', 'no-gpg');
 			return;
         }
-        else if (result[0] == "erreur")
+        else if (result.result != RESULT_SUCCESS)
         {
             returnData.setAttribute('result', 'check-err');
             returnData.setAttribute('error', 'unknow');
 			return;
         }
-		else if (result[0] == "erreur_bad")
+		else if (result.signresult== RESULT_ERROR_BAD_SIGN)
         {
             returnData.setAttribute('result', 'check-err');
             returnData.setAttribute('error', 'bad-sign');
 			return;
         }
-        else if (result[0] == "erreur_no_key")
+        else if (result.signresult == RESULT_ERROR_NO_KEY)
         {
             returnData.setAttribute('result', 'check-err');
             returnData.setAttribute('error', 'no-key');
@@ -286,14 +286,8 @@ var gpgApi = {
         }
 		else {
 
-            var infos = result[0].split(" ");
-            infos2 = "";
-
-            for (var ii = 1; ii < infos.length; ++ii)
-			{  infos2 = infos2 + infos[ii] + " ";}
-
 			returnData.setAttribute('result', 'check-ok');
-            returnData.setAttribute('check-infos', infos2);
+            returnData.setAttribute('check-infos', result.signresulttext);
 
             return;
 
@@ -308,7 +302,6 @@ var gpgApi = {
     // Return in 'text' a signed text
     // Paramters : 'auth_key' --> the key for the website, 'text' -> the text to check, 'force-key' --> optional, to force the gpg's key to use
     sign: function ( event ) {
-
 
         data = gpgApi.getDataNode(event.target);
 
@@ -340,23 +333,19 @@ var gpgApi = {
 		if(password == null)
 			return;
 
-        var result = GPG.baseSign(text,password,keyID);
-		var crypttext = result.output;
-		var sdOut2 = result.sdOut2;
-		result = result.sdOut;
-
-
+        var result = FireGPG.sign(true,text,keyID,password);
 
 		// For I18N
 		var i18n = document.getElementById("firegpg-strings");
 
-		if (result == "erreur")
+		if (result.result  == RESULT_SUCCESS)
         {
-            returnData.setAttribute('result', 'sign-err');
-            returnData.setAttribute('error', 'unknow');
-			return;
+            returnData.setAttribute('result', 'sign-ok');
+            returnData.setAttribute('text', result.signed);
+
+            return;
         }
-		else if (result == "erreurPass")
+		else if (result.result  == RESULT_ERROR_PASSWORD)
         {
             returnData.setAttribute('result', 'sign-err');
             returnData.setAttribute('error', 'bad-pass');
@@ -364,10 +353,9 @@ var gpgApi = {
         }
 		else {
 
-			returnData.setAttribute('result', 'sign-ok');
-            returnData.setAttribute('text', crypttext);
-
-            return;
+			returnData.setAttribute('result', 'sign-err');
+            returnData.setAttribute('error', 'unknow');
+			return;
 
         }
 
@@ -410,25 +398,24 @@ var gpgApi = {
 		if(keyID == null)
 			return;
 
-        keyIdList = keys.split(/;/g);
+         keyIdList = keys.split(/;/g);
+
 
         var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
 		if(password == null)
 			return
 
         // We get the result
-		var result = GPG.baseCryptAndSign(text, keyIdList,false,password, keyID);
-		var crypttext = result.output;
-		var sdOut2 = result.sdOut2;
-		result = result.sdOut;
+		var result = FireGPG.cryptAndSign(true,text,keyIdList,false,password,keyID);
 
-		if (result == "erreur")
+		if (result.result  == RESULT_SUCCESS)
         {
-            returnData.setAttribute('result', 'signandencrypt-err');
-            returnData.setAttribute('error', 'unknow');
-			return;
+            returnData.setAttribute('result', 'signandencrypt-ok');
+            returnData.setAttribute('text', result.encrypted);
+
+            return;
         }
-		else if (result == "erreurPass")
+		else if (result.result  == RESULT_ERROR_PASSWORD)
         {
             returnData.setAttribute('result', 'signandencrypt-err');
             returnData.setAttribute('error', 'bad-pass');
@@ -436,10 +423,9 @@ var gpgApi = {
         }
 		else {
 
-			returnData.setAttribute('result', 'signandencrypt-ok');
-            returnData.setAttribute('text', crypttext);
-
-            return;
+			returnData.setAttribute('result', 'signandencrypt-err');
+            returnData.setAttribute('error', 'unknow');
+			return;
 
         }
 
@@ -478,23 +464,20 @@ var gpgApi = {
         keyIdList = keys.split(/;/g);
 
         // We get the result
-		var result = GPG.baseCrypt(text, keyIdList);
-		var crypttext = result.output;
-		var sdOut2 = result.sdOut2;
-		result = result.sdOut;
+		var result = FireGPG.crypt(true, text, keyIdList);
 
-		if (result == "erreur")
+		if (result.result  == RESULT_SUCCESS)
         {
-            returnData.setAttribute('result', 'encrypt-err');
-            returnData.setAttribute('error', 'unknow');
-			return;
+            returnData.setAttribute('result', 'encrypt-ok');
+            returnData.setAttribute('text', result.encrypted);
+
+            return;
         }
 		else {
 
-			returnData.setAttribute('result', 'encrypt-ok');
-            returnData.setAttribute('text', crypttext);
-
-            return;
+			returnData.setAttribute('result', 'encrypt-err');
+            returnData.setAttribute('error', 'unknow');
+			return;
 
         }
 
@@ -535,23 +518,27 @@ var gpgApi = {
 			return;
 
         // We get the result
-		var result = GPG.baseDecrypt(text,password);
-		var crypttext = result.output;
-		var sdOut2 = result.sdOut2;
-		result = result.sdOut;
-
+		var result = FireGPG.decrypt(true, text,password);
 
 
 		// For I18N
 		var i18n = document.getElementById("firegpg-strings");
 
-		if (result == "erreur")
+		if (result.result  == RESULT_SUCCESS)
         {
-            returnData.setAttribute('result', 'decrypt-err');
-            returnData.setAttribute('error', 'unknow');
-			return;
+            //If there was a sign with the crypted text
+			if (result.signresult == RESULT_SUCCESS)
+			{
+                returnData.setAttribute('sign-info', result.signresulttext);
+			}
+
+
+			returnData.setAttribute('result', 'decrypt-ok');
+            returnData.setAttribute('text', result.decrypted);
+
+            return;
         }
-		else if (result == "erreurPass")
+		else if (result.result  == RESULT_ERROR_PASSWORD)
         {
             returnData.setAttribute('result', 'decrypt-err');
             returnData.setAttribute('error', 'bad-pass');
@@ -559,22 +546,9 @@ var gpgApi = {
         }
 		else {
 
-            //If there was a sign with the crypted text
-			if (result == "signValid")
-			{
-				var infos = sdOut2.split(" ");
-				signAndCryptResult = "";
-				for (var ii = 1; ii < infos.length; ++ii)
-				{  signAndCryptResult = signAndCryptResult + infos[ii] + " ";}
-
-                returnData.setAttribute('sign-info', signAndCryptResult);
-			}
-
-
-			returnData.setAttribute('result', 'decrypt-ok');
-            returnData.setAttribute('text', crypttext);
-
-            return;
+            returnData.setAttribute('result', 'decrypt-err');
+            returnData.setAttribute('error', 'unknow');
+			return;
 
         }
 

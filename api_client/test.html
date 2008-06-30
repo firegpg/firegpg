@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 	<head>
 		<title>FireGPG - Test de l'API</title>
@@ -57,9 +57,9 @@
 			 * AKF - Authentification Key of FireGPG
 			 * (Clé de l'authentification FireGPG)
 			 */
-			var akf = '65FXci4FQo6V5dHmIGgAIdcLShxGfZ9D17Nii7sMWR08UxVT9UhPgqLaUEfhu3e257IUbRtMzWV0jyTuniaNdz14yaeEcKyRwi7Qi5Qknl2FhduR';
-			
-			/* 
+			var akf = 'om2ESPYGlJ92By2LEs7jKjy9WCJts0Zt00EiixpTIcWoBGzPQBIsQ5TqlgUFBBcRWeXU9lcfwxKamAlHtitm';
+
+			/*
 			 * Il faut rester poli, on 'salue' FireGPG :)
 			 */
 			if(fireGPGHello() == true)
@@ -67,7 +67,7 @@
 			else
 				error_message("L'extension FireGPG n'est pas présente :-(");
 
-			/* 
+			/*
 			 * On s'authentifie auprès de FireGPG avec l'AKF
 			 */
 			title("Authentification avec l'AKF");
@@ -102,7 +102,7 @@
 
 					message("La signature :");
 					pre_message(result.text);
-					
+
 					signed_text = result.text;
 				}
 				else {
@@ -139,7 +139,7 @@
 			 */
             text = "Hello world";
 			encrypted_text = ""; /* on va mettre le texte chiffré ici */
-			privkey = "9BA19B12";
+			privkey = "1D59334D929E7331";
 			title("Chiffrement du texte : '" + text + "'");
             result = fireGPGEncrypt(akf, text, new Array(privkey));
 
@@ -232,4 +232,3 @@
 -->
 	</body>
 </html>
-

@@ -15,7 +15,7 @@
  *		   - The div gpgNode is replaced by firegpg-node
  *
  *     19/01/07  Maximilien Cuony
- *         - The first version of the API, all important 
+ *         - The first version of the API, all important
  *           functions are implemented.
  *		   - Version 0.1 released
  */
@@ -74,12 +74,12 @@ function fireGPGHello() {
 	fireGPGInitCall();
 	fireGPGCall('hello');
 
-	if(FireGPGReturnData.hasAttribute('result') && 
+	if(FireGPGReturnData.hasAttribute('result') &&
 	   FireGPGReturnData.getAttribute('result') == 'firegpg-ok') {
 		FireGPGHelloOK = true;
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -102,7 +102,7 @@ function fireGPGAuth(akf) {
 	FireGPGData.setAttribute('auth_key', akf);
 	fireGPGCall('auth');
 
-	if(FireGPGReturnData.hasAttribute('result') && 
+	if(FireGPGReturnData.hasAttribute('result') &&
 	   FireGPGReturnData.getAttribute('result')== 'auth-ok') {
 		FireGPGAllowUser = true;
 		fireGPGAKF = akf;
@@ -141,45 +141,58 @@ function fireGPGRegister() {
  *
  * Or false, on error.
  */
-function fireGPGListKey() {
-	if(FireGPGHelloOK == false) {
+function fireGPGListKey(auth_key) {
+
+	if(FireGPGHelloOK == false)
+	{
 		if(fireGPGHello()== false) {
 			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
 			return false;
 		}
 	}
 
-	if(FireGPGAllowUser == false) {
-		if(fireGPGAuth(FireGPGAKF)== false) {
-			alert('FireGPG - api : Error with auth in listkey');
+	if(FireGPGAllowUser == false)
+	{
+		if(fireGPGAuth(auth_key)== false) {
+			alert('FireGPG - api : Error with auth in listprivkey');
 			return false;
 		}
 	}
 
 	fireGPGInitCall();
+
 	FireGPGData.setAttribute('auth_key', auth_key);
+
 	fireGPGCall('listkey');
 
-	if(FireGPGReturnData.hasAttribute('result')&& FireGPGReturnData.getAttribute('result')== 'list-ok') {
+	if(FireGPGReturnData.hasAttribute('result')&& FireGPGReturnData.getAttribute('result')== 'list-ok')
+	{
 		return_list = new Array();
 
 		list = FireGPGReturnData.getAttribute('list');
+
 		list = list.split(/,/g);
 
 		for (var i=0; i< list.length; i++) {
+
 			key_info = list[i];
+
 			key_info = key_info.split(/:/g);
 
-			if(key_info[0] != undefined && key_info[1] != undefined)
-				return_list[fireGPGAddDoublePoint(key_info[0])] = fireGPGAddDoublePoint(key_info[1]);
-		}
+			if(key_info[0] != undefined && key_info[1] != undefined) {
 
+				return_list[fireGPGAddDoublePoint(key_info[0])] = fireGPGAddDoublePoint(key_info[1]);            }
+		}
 		return return_list;
 	}
-	else {
-		alert('FireGPG - api : Error with listkeys');
+	else
+	{
+		alert('FireGPG - api : Error with listprivkeys');
 		return false;
 	}
+
+	return;
+
 }
 
 /* TODO : ici */
