@@ -203,16 +203,11 @@ function loadXpcom () {
 			disabled = prefs.getBoolPref("disable_xpcom");
 		} catch (e) { }
 
-
-
     if (disabled) {
-
         updateXpcomState(XPCOM_STATE_DISABLED);
 		return false;
-
-    }
-
-
+   }
+   
     try {
      	const cid = "@getfiregpg.org/XPCOM/FireGPGCall;1";
 		obj = Components.classes[cid].createInstance();

@@ -1251,8 +1251,8 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("selfTestFailled"));
 
-            returnObject.messagetext = i18n.getString("selfTestFailled");
             var returnObject = new GPGReturn();
+            returnObject.messagetext = i18n.getString("selfTestFailled");
             returnObject.result = RESULT_ERROR_INIT_FAILLED;
             return returnObject;
 		}

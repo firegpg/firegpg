@@ -289,7 +289,7 @@ var cGmail2 = {
                                     for (var i = 0; i < pattern.length; i++)
                                     {
                                         if (func == null) return false;
-                                        if (func.name.indexOf(pattern[i]) != 0 && func.name.indexOf(pattern[i]) != 2) return false;
+                                        if (func.name.indexOf(pattern[i]) != 0 && func.name.indexOf(pattern[i]) != 3) return false;
 
                                         func = func.caller;
                                     }
@@ -302,12 +302,7 @@ var cGmail2 = {
                                 const badpattern5 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$ZBa$", "$Z$_P$nGb$"];
 
                                 //Our *seem* to be better [the_glu]
-                                const badpattern6 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$", "Y$_P$"];
-
-                                //$Z$_P$jJa$ $Z$_P$Q3b$ $Z$_P$ft$ $Z$_P$tkb$ $ZY$_P$tDa$
-                                //$Z$_P$lJa$ $Z$_P$V3b$ $Z$_P$ht$ $Z$_P$wkb$ $RY$_P$vDa$
-
-                                //$Z$_P$jJa$ $Z$_P$oka$ $Z$_P$xna$ $Wg$_P$ui$ $Lh$
+                                const badpattern6 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$", "$_P$"];
 
                                 if (stackMatch(badpattern6, getValue.caller) || stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
                                 {
@@ -319,7 +314,6 @@ var cGmail2 = {
                                 else
                                 {
                                     // debugger; // keep this around for later usage when needing to adjust badpatterns
-                                    FireGPGDebug(getValue.caller,"AutoSaveDisabler");
                                 }
                                 // finally, if nothing matches:
                                 return this.__proto__.__lookupGetter__("value").apply(this);
