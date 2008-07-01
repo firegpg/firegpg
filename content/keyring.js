@@ -375,7 +375,7 @@ Keyring.DecryptMessage = function(content, block) {
 
         block.body.className = "failure";
         block.output.style.display = "block";
-        block.output.textContent = result.messagetext;
+        block.output.textContent = trim(result.messagetext);
 
     }
 

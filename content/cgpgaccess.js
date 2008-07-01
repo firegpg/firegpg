@@ -60,14 +60,19 @@ const idAppli = "firegpg@firegpg.team";
    XPCOM_STATE_NEVERTESTED - Never tryied to use the xpcom
    XPCOM_STATE_WORKS    - The xpcom works and we use it.
    XPCOM_STATE_DONTWORK   - The xpcom dosen't work.
+   XPCOM_STATE_DISABLED   - The xpcom is disabled
    XPCOM_STATE_DONTWORK_IN_0_5   - The xpcom of version 0.5 dosen't work.
 */
 
-//WE HAVE TO CHANGE THIS VALUES BEFORE THE RELEASE !
+
+
+const XPCOM_STATE_DONTWORK_IN_0_5 = 2;
+const XPCOM_STATE_DISABLED_IN_0_5 = 3;
+
 const XPCOM_STATE_NEVERTESTED = 0;
 const XPCOM_STATE_WORKS = 1;
 const XPCOM_STATE_DONTWORK = 2;
-const XPCOM_STATE_DONTWORK_IN_0_5 = 2;
+const XPCOM_STATE_DISABLED = 3;
 
 /* Constant: comment
   The firegpg's comment to add to gnupg texts. */
@@ -96,8 +101,6 @@ function Witch_GPGAccess () {
     //TODO : Better ???
 
     if (loadXpcom()) {
-
-        updateXpcomState(XPCOM_STATE_WORKS)
 
         if (GPGAccess.isUnix()) {
 
@@ -139,7 +142,6 @@ function Witch_GPGAccess () {
 
     } else {
 
-        updateXpcomState(XPCOM_STATE_DONTWORK);
 
         if (GPGAccess.isUnix()) {
 
@@ -192,15 +194,36 @@ function Witch_GPGAccess () {
 */
 function loadXpcom () {
 
+    var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                           getService(Components.interfaces.nsIPrefService);
+    prefs = prefs.getBranch("extensions.firegpg.");
+
+    var disabled = false;
+		try {
+			disabled = prefs.getBoolPref("disable_xpcom");
+		} catch (e) { }
+
+
+
+    if (disabled) {
+
+        updateXpcomState(XPCOM_STATE_DISABLED);
+		return false;
+
+    }
+
+
     try {
      	const cid = "@getfiregpg.org/XPCOM/FireGPGCall;1";
 		obj = Components.classes[cid].createInstance();
 		obj = obj.QueryInterface(Components.interfaces.IFireGPGCall);
 	} catch (err) {
+        updateXpcomState(XPCOM_STATE_DONTWORK);
 		return false;
     }
 
     GPGAccess.FireGPGCall = obj;
+    updateXpcomState(XPCOM_STATE_WORKS);
 
     return true;
 

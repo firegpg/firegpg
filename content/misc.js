@@ -831,6 +831,7 @@ function runWinCommand(command, arg) {
 
 }
 
+
 /*
     Function: testIfSomethingsIsNew
     Test if user update FireGPG or if he have to update, and show the What is new page send a ping or propose to update FireGPG if relevant.

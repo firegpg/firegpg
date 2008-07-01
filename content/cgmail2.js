@@ -319,6 +319,7 @@ var cGmail2 = {
                                 else
                                 {
                                     // debugger; // keep this around for later usage when needing to adjust badpatterns
+                                    FireGPGDebug(getValue.caller,"AutoSaveDisabler");
                                 }
                                 // finally, if nothing matches:
                                 return this.__proto__.__lookupGetter__("value").apply(this);
@@ -510,14 +511,14 @@ var cGmail2 = {
 				if (mailContent == "")
 					return;
 
-				var result = FireGPG.cryptAndSign(false, mailContent, null ,false,null, null,true, whoWillGotTheMail);
+				var result = FireGPG.cryptAndSign(false, mailContent, null ,false,null, null, false, whoWillGotTheMail);
 
 				// If the sign failled
-				if(result.sdOut == "erreur") {
+				if(result.result == RESULT_ERROR_UNKNOW) {
 					// We alert the user
 					alert(i18n.getString("cryptAndSignFailed"));
 				}
-                else if(result.sdOut == "erreurPass") {
+                else if(result.result == RESULT_ERROR_PASSWORD) {
 					// We alert the user
 					eraseSavedPassword();
 					alert(i18n.getString("cryptAndSignFailedPass"));
@@ -696,7 +697,7 @@ var cGmail2 = {
                      var tmpListener = new Object;
                     tmpListener = null;
                     tmpListener = new cGmail2.callBack(doc)
-                    select.addEventListener('onchange',tmpListener,false);
+                    select.addEventListener('onchange',tmpListener,true);
 
                } catch (e) { fireGPGDebug(e,'cgmail2.addBouton2',true);  }
 
