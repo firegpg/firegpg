@@ -33,10 +33,10 @@
 <!ENTITY firegpgPopInfo.labelKeyOk "Une clé privée à corrctement été définie !">
 <!ENTITY firegpgPopInfo.labelKeyErr "Attention: veuillez définir une clé privée dans les options !">
 <!ENTITY firegpgPopInfo.close "Fermer">
-<!ENTITY firegpgPopInfo.options "Options">
+<!ENTITY firegpgPopInfo.options "Instellingen">
 <!ENTITY firegpgContext.labelEditeur "Open tekstverwerker">
 <!ENTITY firegpgMenu.labelEditeur "Open tekstverwerker">
 <!ENTITY firegpgToolbar.labelEditeur "Open tekstverwerker">
-<!ENTITY firegpgContext.labelCryptSign "Sign and Crypt">
-<!ENTITY firegpgMenu.labelCryptSign "Sign and Crypt">
-<!ENTITY firegpgToolbar.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgContext.labelCryptSign "Onderteken en Versleutel">
+<!ENTITY firegpgMenu.labelCryptSign "Onderteken en Versleutel">
+<!ENTITY firegpgToolbar.labelCryptSign "Onderteken en Versleutel">

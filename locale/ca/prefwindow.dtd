@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "Suport per al GMail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Clau privada per defecte:">
-<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
+<!ENTITY show-website-checkbox "Mostra el lloc web de FireGPG en un camp de comentari de GPG">
 <!ENTITY change-gpg-path-button "Configuració de l'ubicació del GPG">
 <!ENTITY change-gpg-path-checkbox "Especificar manualment l'ubicació del GPG:">
 <!ENTITY result-always-in-new-window "Mostra sempre el resultat d'una codificació o una signatura en una nova finestra.">
@@ -42,8 +42,8 @@
 <!ENTITY api-liste-domain.label "Domini">
 <!ENTITY api-liste-keyauth.label "Clau">
 <!ENTITY use-gpg-agent-checkbox "Activar Gpg-agent (Atenció, crear fallos...)">
-<!ENTITY search-description "Filter :">
-<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">
-<!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
-<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
-<!ENTITY gmail-disable-autosave-checkbox "Disable auto save">
+<!ENTITY search-description "filtre">
+<!ENTITY gmail-buton-use-select-checkbox "No mostris botons sino una llista">
+<!ENTITY firegpg-ask-for-private-label.text "Demanar sempre per la clau privada">
+<!ENTITY inline-activated "Activa el controlador per a blocs GPG en les pàgines (es necessita reiniciar)">
+<!ENTITY gmail-disable-autosave-checkbox "Deshabilitar autoguardar">
