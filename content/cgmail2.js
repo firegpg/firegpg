@@ -514,7 +514,6 @@ var cGmail2 = {
 				}
                 else if(result.result == RESULT_ERROR_PASSWORD) {
 					// We alert the user
-					eraseSavedPassword();
 					alert(i18n.getString("cryptAndSignFailedPass"));
 				}
 				else {
