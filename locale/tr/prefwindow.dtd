@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "GMail desteği">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Varsayılan özel anahtar:">
-<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
+<!ENTITY show-website-checkbox "GPG açıklama alanında FireGPG websitesi adresini göster">
 <!ENTITY change-gpg-path-button "GPG ayarlarının yolu">
 <!ENTITY change-gpg-path-checkbox "GPG yolunu elle belirle:">
 <!ENTITY result-always-in-new-window "Her bir şifreleme veya imzalama sonuçunu her zaman yeni bir pencerede göster.">
@@ -36,14 +36,15 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "İmza, Şifrele ve Gönder">
 <!ENTITY firegpg-version-label.text "Geçerli FireGPG Sürümü:">
 <!ENTITY hide-expired "Süresi biten anahtarı gizle">
-<!ENTITY use-api "Active FireGPG's api for Webpages (like roundcube) (restart required)">
+<!ENTITY use-api "Web sayfaları için FireGPG apisini aktif yap (tekrar 
+başlatmak gerekir)">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "Lists of allowed sites (double-click to remove)">
-<!ENTITY api-liste-domain.label "Domain">
-<!ENTITY api-liste-keyauth.label "Key">
-<!ENTITY use-gpg-agent-checkbox "Active Gpg-agent (warning, can lead issues...)">
-<!ENTITY search-description "Filter :">
-<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">
-<!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
-<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
-<!ENTITY gmail-disable-autosave-checkbox "Disable auto save">
+<!ENTITY api-liste-access.label "İzin verilen siteler(kaldırmak için çift-tıkla)">
+<!ENTITY api-liste-domain.label "Alan">
+<!ENTITY api-liste-keyauth.label "Anahtar">
+<!ENTITY use-gpg-agent-checkbox "Ggp-ajan aktif yap (uyarı, sorunlar başlayabilir...)">
+<!ENTITY search-description "Filtre :">
+<!ENTITY gmail-buton-use-select-checkbox "Aşağı çekilen listeyse düğmeleri gösterme.">
+<!ENTITY firegpg-ask-for-private-label.text "Özel anahtarı herzaman sor">
+<!ENTITY inline-activated "Sayfalar içindeki PGP blokları için elden geçirmeyi aktif yap (tekrar başlatmak gerekir)">
+<!ENTITY gmail-disable-autosave-checkbox "Otomatik kaydeti engelle">

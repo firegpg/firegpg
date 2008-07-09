@@ -44,4 +44,9 @@ body.failure #output {
 
 #message {
 	padding: 4px 0;
+    white-space: pre-wrap;
 }
+
+#original {
+	white-space: pre-wrap;
+ }

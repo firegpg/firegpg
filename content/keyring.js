@@ -126,10 +126,14 @@ Keyring.HandleBlock = function(document, range, blockType) {
 		block.original.textContent = content;
 		frame.contentDocument.getElementById("toggle-original").addEventListener("click", function() {
 			var style = block.original.style;
-			if(style.display == "block")
+			if(style.display == "block") {
 				style.display = "none";
-			else
+                this.textContent = Keyring.i18n.getString("show-original");
+            }
+			else {
 				style.display = "block";
+                this.textContent = Keyring.i18n.getString("hide-original");
+            }
 			frame.style.height = block.body.scrollHeight + "px";
 		}, false);
 		var actionHandler = function() {
@@ -160,7 +164,7 @@ Keyring.HandleBlock = function(document, range, blockType) {
 				block.action.textContent = Keyring.i18n.getString("verify");
 
 				// Extract the message without the header and signature
-				block.message.innerHTML = content.substring(content.indexOf("\n\n"), content.indexOf(Keyring.Tags.SignatureStart)).replace(/</gi,"&lt;").replace(/>/gi,"&gt;").replace(/\n/gi,"<br />");
+				block.message.innerHTML = content.substring(content.indexOf("\n\n") + 2, content.indexOf(Keyring.Tags.SignatureStart)).replace(/</gi,"&lt;").replace(/>/gi,"&gt;").replace(/\n/gi,"<br />");
 				break;
 			case Keyring.MESSAGE_BLOCK:
 				block.body.className = "caution";
@@ -196,6 +200,9 @@ Keyring.HandlePage = function(document) {
 			if(!haveStart) {
 
                 if (node.textContent.indexOf(Keyring.Tags.PgpBlockStart, idx) == -1)
+                    break;
+
+                if (node.parentNode.nodeName == 'TEXTAREA')
                     break;
 
                 baseIdx = idx;
@@ -238,7 +245,7 @@ Keyring.HandlePage = function(document) {
 				range.setEnd(node, idx + search.length);
 				Keyring.HandleBlock(document, range, blockType);
 				range.detach();
-				idx += search.length;
+				idx =0; //+= search.length;
 			}
 		}
 
@@ -326,15 +333,15 @@ Keyring.VerifySignature = function(content, block) {
 
     if (resultTest.signresult ==RESULT_ERROR_UNKNOW) {
         block.body.className = "failure";
-        block.header.textContent = i18n.getString("signed-message") + ", " +i18n.getString("verifFailed");
+        block.header.textContent = i18n.getString("signed-message") + ", " +i18n.getString("verifFailedGeneral");
     }
     else if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
         block.body.className = "failure";
-        block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")";
+        block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifFailedFalse");
     }
     else if (resultTest.signresult == RESULT_ERROR_NO_KEY) {
         block.body.className = "failure";
-        block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")";
+        block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifFailedUnknownKey") ;
     }
     else {
         block.body.className = "ok";

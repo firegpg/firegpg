@@ -1,4 +1,9 @@
 2008-07-02 Maximilien Cuony
+    * FS#79
+    * FS#82
+    * Patching inline with a patch from Ryan Patterson
+
+2008-07-02 Maximilien Cuony
     * FS#78
     * 0.5 packed, and uploaded to the server !
 
