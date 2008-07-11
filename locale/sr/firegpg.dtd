@@ -41,3 +41,9 @@ FireGPG je instaliran!">
 <!ENTITY firegpgContext.labelCryptSign "Potpiši i Šifruj">
 <!ENTITY firegpgMenu.labelCryptSign "Potpiši i Šifruj">
 <!ENTITY firegpgToolbar.labelCryptSign "Potpiši i Šifruj">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgContext.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgMenu.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgContext.labelClearSign "Clear sign">
+<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
+<!ENTITY firegpgMenu.labelClearSign "Clear sign">

@@ -41,3 +41,9 @@
 <!ENTITY firegpgContext.labelCryptSign "وقّع و عمِّ">
 <!ENTITY firegpgMenu.labelCryptSign "وقّع و عمِّ">
 <!ENTITY firegpgToolbar.labelCryptSign "وقّع و عمِّ">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgContext.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgMenu.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgContext.labelClearSign "Clear sign">
+<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
+<!ENTITY firegpgMenu.labelClearSign "Clear sign">

@@ -41,3 +41,9 @@ FireGPG installation was successful.">
 <!ENTITY firegpgContext.labelCryptSign "Sign and encrypt">
 <!ENTITY firegpgMenu.labelCryptSign "Sign and encrypt">
 <!ENTITY firegpgToolbar.labelCryptSign "Sign and encryptEnc">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgContext.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgMenu.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgContext.labelClearSign "Clear sign">
+<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
+<!ENTITY firegpgMenu.labelClearSign "Clear sign">

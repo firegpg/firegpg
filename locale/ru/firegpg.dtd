@@ -40,3 +40,9 @@
 <!ENTITY firegpgContext.labelCryptSign "Подписать и зашифровать">
 <!ENTITY firegpgMenu.labelCryptSign "Подписать и зашифровать">
 <!ENTITY firegpgToolbar.labelCryptSign "Подписать и зашифровать">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgContext.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgMenu.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgContext.labelClearSign "Clear sign">
+<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
+<!ENTITY firegpgMenu.labelClearSign "Clear sign">
