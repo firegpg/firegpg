@@ -1,0 +1,102 @@
+/*
+ * The contents of this file are subject to the Mozilla Public
+ * License Version 1.1 (the "MPL"); you may not use this file
+ * except in compliance with the MPL. You may obtain a copy of
+ * the MPL at http://www.mozilla.org/MPL/
+ * 
+ * Software distributed under the MPL is distributed on an "AS
+ * IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+ * implied. See the MPL for the specific language governing
+ * rights and limitations under the MPL.
+ * 
+ * The Original Code is protoZilla.
+ * 
+ * The Initial Developer of the Original Code is Ramalingam Saravanan.
+ * Portions created by Ramalingam Saravanan <svn@xmlterm.org> are
+ * Copyright (C) 2000 Ramalingam Saravanan. All Rights Reserved.
+ * 
+ * Contributor(s):
+ * 
+ * Alternatively, the contents of this file may be used under the
+ * terms of the GNU General Public License (the "GPL"), in which case
+ * the provisions of the GPL are applicable instead of
+ * those above. If you wish to allow use of your version of this
+ * file only under the terms of the GPL and not to allow
+ * others to use your version of this file under the MPL, indicate
+ * your decision by deleting the provisions above and replace them
+ * with the notice and other provisions required by the GPL.
+ * If you do not delete the provisions above, a recipient
+ * may use your version of this file under either the MPL or the
+ * GPL.
+ */
+
+#include "nsIPipeListener.idl"
+
+interface nsIURI;
+interface nsIRunnable;
+interface nsIRequestObserver;
+
+%{C++
+#define NS_IPCBUFFER_CLASSNAME "IPC Buffer"
+#define NS_IPCBUFFER_CONTRACTID "@mozilla.org/process/ipc-buffer;1"
+     
+#define NS_IPCBUFFER_CID                         \
+{ /* 8431e1c1-7ab1-11d4-8f02-006008948af5 */     \
+   0x8431e1c1, 0x7ab1, 0x11d4,                   \
+{0x8f, 0x02, 0x00, 0x60, 0x08, 0x94, 0x8a, 0xf5} }
+
+%}
+
+/* nsIIPCBuffer is an interface to a byte buffer.
+ * It is thread-safe, i.e.,it may be called from any thread. It uses a
+ * monitor to ensure data integrity.
+ */
+
+[scriptable, uuid(8431e1c0-7ab1-11d4-8f02-006008948af5)]
+interface nsIIPCBuffer : nsIPipeListener
+{
+  /**
+   * Opens byte buffer
+   *
+   */
+
+  void open(in unsigned long maxBytes, in boolean overflowFile);
+
+  /**
+   * Loads an URI into the console buffer (use instead of the open method)
+   * @param aURI        URI to be loaded
+   *
+   * @param maxBytes    maximum number of bytes to be read
+   *                    (maxBytes == -1 => unlimited buffer size)
+   *
+   * @param synchronous determines whether to load synchronously
+   */
+  void openURI(in nsIURI aURI, in long maxBytes, in boolean synchronous,
+               in nsIRequestObserver observer, in nsISupports ctxt);
+
+  /**
+   * Opens an input stream to access buffer data;
+   * should be called only after the OnStopRequest call to streamListener.
+   * Note: On closing the stream, the buffer will be cleared
+   */
+  nsIInputStream openInputStream();
+
+  /**
+   * Returns data from buffer
+   * (as a NUL-terminated string)
+   */
+  string getData();
+
+  /**
+   * True if onStopRequest method of StreamListener has been invoked
+   */
+  readonly attribute boolean stopped;
+
+  /**
+   * Count of total bytes in buffer (or overflow file)
+   */
+  readonly attribute unsigned long totalBytes;
+};
+
+
+///////////////////////////////////////////////////////////////////////////////

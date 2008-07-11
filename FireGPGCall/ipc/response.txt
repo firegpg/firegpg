@@ -1,0 +1,21 @@
+
+> The api that I think should move to nsIProcess is GetEnv.  This interface,
+> already has API related to the running of an exe, namely Kill().
+
+I'll remove GetEnv from the IPC extension as soon as you add it to nsIProcess
+
+> Should the Open() parameters on the nsIPipeConsole be turned into preferences -
+> or at least #define's?
+
+IPC does not have a UI at this time
+
+> In ExecPipe, you init most of the out vars, but not all of them to null.  You
+> should also init env?
+
+env is actually an input variable! (an array of strings)
+
+> nsPipeChannel
+> This class is not threadsafe.  Not sure if you intend it to be.
+
+Do nsIChannel implementations need to be thread-safe? If not, I'd leave it
+the way it is.

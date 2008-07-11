@@ -1,0 +1,28 @@
+IPC for OS/2 and eComstation
+=================================
+
+BUILD INSTRUCTIONS
+---------------------------------
+
+To build IPC for OS/2, you must first create Makefiles with the included
+MAKEMAKE.CMD script. The script accepts the following arguments.
+
+MAKEMAKE.CMD [/R] [ObjDir]
+
+  /R: build recursively all Makefiles
+
+  ObjDir: should correspond to the MOZ_OBJDIR parameter of your .mozconfig, if
+          defined.
+
+Then, simply go to %MOZ_OBJDIR\extensions\ipc and do a make.
+
+CONTACTS
+---------------------------------
+
+For questions specific to the OS/2 port of IPC, contact Davide Bresolin at
+davide@teamos2.it.
+
+For general questions about Enigmail, see the official enigmail web site at
+http://enigmail.mozdev.org
+
+

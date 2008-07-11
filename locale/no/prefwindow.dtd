@@ -1,0 +1,49 @@
+<!ENTITY prefwindow.title "FireGPG instillinger">
+<!ENTITY pane1.title "Generellt">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Støtte for Gmail">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Standard privat nøkkel :">
+<!ENTITY show-website-checkbox "Vis FireGPG's addrese i GnuPG's kommentarfelt">
+<!ENTITY change-gpg-path-button "Utforsk">
+<!ENTITY change-gpg-path-checkbox "Spesifiser stien til gpg :">
+<!ENTITY result-always-in-new-window "Alltid vis resultat av kryptering og/eller dekryptering i nytt vindu.">
+<!ENTITY no-gpg-agent-checkbox "Tving nedstenging av GPG agenten (Kan fikse noen problemer)">
+<!ENTITY ask-for-save-pass "Spør om du vil lagre passord">
+<!ENTITY gmail-no-no-sign-checkbox "Ikke vis 'Ingen signatur funnet [...]'">
+<!ENTITY gmail-need-a-restart "Du må starte nettleseren på nytt før noen av instillingene blir gjeldene">
+<!ENTITY gmail-buttons-label "Knapper som skal vises :">
+<!ENTITY gmail-buton-sign-checkbox "Signer">
+<!ENTITY gmail-buton-signsend-checkbox "Signer og send">
+<!ENTITY gmail-buton-crypt-checkbox "Krypter">
+<!ENTITY gmail-buton-cryptsend-checkbox "Krypter og send">
+<!ENTITY allvays-to-myself-checkbox "Alltid krypter til meg selv">
+<!ENTITY enable-gpgauth-check.label "Aktiver gpgAuth (Nettleseren må startes på nytt)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Alltid dekrypter meldinger fra autentiserte servere">
+<!ENTITY global-allow-keyring-check.label "Alltid dekrypter meldinger fra autentiserte servere">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Per domene instillinger :">
+<!ENTITY turn-off-updates "Slå av FireGPG automatiske oppdateringer">
+<!ENTITY key-name "Navn">
+<!ENTITY key-id "Id">
+<!ENTITY key-create "Lager">
+<!ENTITY key-expire "Utgår">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "Legg til argumenter til gpg kommandoen : (Forsiktig : FireGPG kan slutte å virke ! Les dokumentasjonen.)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Signer og krypter">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Signer, krypter og send">
+<!ENTITY firegpg-version-label.text "FireGPG version :">
+<!ENTITY hide-expired "Skjul utgåtte nøkler">
+<!ENTITY use-api "Slå på FireGPG API for websider (slik som roundcube) (omstart pågrevd)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "Liste av godkjente sider (dobbelklikk for å fjerne)">
+<!ENTITY api-liste-domain.label "Domene">
+<!ENTITY api-liste-keyauth.label "Nøkkel">
+<!ENTITY use-gpg-agent-checkbox "Slå på GPG-agent (Advarsel, kan føre til problemer)">
+<!ENTITY search-description "Filter">
+<!ENTITY gmail-buton-use-select-checkbox "Vis liste istedet for knapper">
+<!ENTITY firegpg-ask-for-private-label.text "Alltid spør etter privat nøkkel">
+<!ENTITY inline-activated "Sjekk for PGP blokker i nettsider (omstart påkrevd)">
+<!ENTITY gmail-disable-autosave-checkbox "Slå av autolagring">

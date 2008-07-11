@@ -1,0 +1,8 @@
+Test programs for IPCService
+----------------------------
+
+ipctest.js: Tests interfaces in nsIProcessInfo, nsIPipeConsole, nsIIPCService
+         (Execute as "xpcshell ipctest.js")
+
+pipetest: A simple command line interface to a shell
+          (Type "quit" to exit.)

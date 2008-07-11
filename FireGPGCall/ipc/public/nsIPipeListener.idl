@@ -1,0 +1,106 @@
+/*
+ * The contents of this file are subject to the Mozilla Public
+ * License Version 1.1 (the "MPL"); you may not use this file
+ * except in compliance with the MPL. You may obtain a copy of
+ * the MPL at http://www.mozilla.org/MPL/
+ * 
+ * Software distributed under the MPL is distributed on an "AS
+ * IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+ * implied. See the MPL for the specific language governing
+ * rights and limitations under the MPL.
+ * 
+ * The Original Code is protoZilla.
+ * 
+ * The Initial Developer of the Original Code is Ramalingam Saravanan.
+ * Portions created by Ramalingam Saravanan <svn@xmlterm.org> are
+ * Copyright (C) 2000 Ramalingam Saravanan. All Rights Reserved.
+ * 
+ * Contributor(s):
+ * 
+ * Alternatively, the contents of this file may be used under the
+ * terms of the GNU General Public License (the "GPL"), in which case
+ * the provisions of the GPL are applicable instead of
+ * those above. If you wish to allow use of your version of this
+ * file only under the terms of the GPL and not to allow
+ * others to use your version of this file under the MPL, indicate
+ * your decision by deleting the provisions above and replace them
+ * with the notice and other provisions required by the GPL.
+ * If you do not delete the provisions above, a recipient
+ * may use your version of this file under either the MPL or the
+ * GPL.
+ */
+
+#include "nsIStreamListener.idl"
+
+%{C++
+#include "IPCProcess.h"
+#include "nsString.h"
+
+#define NS_PIPELISTENER_CLASSNAME "IPC PipeListener"
+#define NS_PIPELISTENER_CONTRACTID "@mozilla.org/process/pipe-listener;1"
+%}
+     
+/* nsIPipeListener provides a StreamListener sink.
+ * It's implementations should be thread-safe.
+ */
+
+[ptr] native IPCFileDescStar(IPCFileDesc);
+
+[scriptable, uuid(8431e1d0-7ab1-11d4-8f02-006008948af5)]
+interface nsIPipeListener : nsIStreamListener
+{
+  /**
+   * Observes any asynchronous request associated with console.
+   * (E.g., when console is used to capture stdout from
+   *  nsIPipeTransport.execAsync)
+   */
+  void observe(in nsIRequestObserver observer, in nsISupports ctxt);
+
+  /**
+   * true if console pipe thread is joinable
+   */
+  readonly attribute boolean joinable;
+
+  /**
+   * Close input pipe and blocks for console logging thread to terminate,
+   * ensuring that all data already written to the console pipe is available
+   * for reading from console buffer.
+   */
+  void join();
+
+  /**
+   * Shuts down listener (without blocking).
+   * Any data already written to the input pipe is discarded.
+   */
+  void shutdown();
+
+  /**
+   * Accesses buffer data as a string of arbitrary bytes,
+   * including NUL characters.
+   */
+  void getByteData(out unsigned long count,
+                   [retval, size_is(count)] out string data);
+
+  /**
+   * True if data has been lost (i.e., getByteData does not return all data)
+   */
+  readonly attribute boolean overflowed;
+
+  /**
+   * Writes string
+   */
+  void write(in string str);
+
+  /**
+   * Writes byte buffer
+   */
+  [noscript] void writeBuf(in string buf, in unsigned long count);
+
+  /**
+   * Returns pipe file descriptor associated with listener.
+   */
+  [noscript] IPCFileDescStar GetFileDesc();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
