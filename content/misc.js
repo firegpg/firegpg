@@ -1083,20 +1083,24 @@ function TrimAndWash(str) {
 */
 function EnigConvertGpgToUnicode(text) {
 
-  if (typeof(text)=="string") {
-    text = text.replace(/\\x3a/ig, "\\e3A");
-    a=text.search(/\\x[0-9a-fA-F]{2}/);
-    while (a>=0) {
-        ch=unescape('%'+text.substr(a+2,2));
-        r= new RegExp("\\"+text.substr(a,4));
-        text=text.replace(r, ch);
+    try {
 
-        a=text.search(/\\x[0-9a-fA-F]{2}/);
-    }
+        if (typeof(text)=="string") {
+            text = text.replace(/\\x3a/ig, "\\e3A");
+            a=text.search(/\\x[0-9a-fA-F]{2}/);
+            while (a>=0) {
+                ch=unescape('%'+text.substr(a+2,2));
+                r= new RegExp("\\"+text.substr(a,4));
+                text=text.replace(r, ch);
+                a=text.search(/\\x[0-9a-fA-F]{2}/);
+            }
+        }
 
-    text = EnigConvertToUnicode(text, "utf-8");
-  }
-  return text;
+        text = EnigConvertToUnicode(text, "utf-8");
+
+   }  catch (ex) {  fireGPGDebug(ex,'misc.EnigConvertGpgToUnicode',true); }
+
+   return text;
 }
 
 /*
