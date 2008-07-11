@@ -61,7 +61,8 @@
     <button id="crypt-button" label="&crypt-button;" oncommand="crypt();"/>
     <button id="cryptandsign-button" label="&cryptandsign-button;" oncommand="cryptandsign();"/>
     <button id="dcrypt-button" label="&dcrypt-button;" oncommand="dcrypt();"/>
-    <button id="sign-button" label="&sign-button;" oncommand="sign();"/>
+    <button id="sign-button" label="&sign-clear-button;" oncommand="sign();"/>
+    <button id="signplain-button" label="&sign-button;" oncommand="signUnClear();"/>
     <button id="verify-button" label="&verify-button;" oncommand="verify();"/>
   </hbox>
 </dialog>

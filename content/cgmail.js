@@ -331,6 +331,10 @@ var cGmail = {
 			catch (e) { var b_sign = true; }
 			try {	var b_sign_s = prefs.getBoolPref("gmail_butons_sign_send");	}
 			catch (e) { var b_sign_s = true; }
+            try {	var b_psign = prefs.getBoolPref("gmail_butons_psign");	}
+            catch (e) { var b_psign = true; }
+			try {	var b_psign_s = prefs.getBoolPref("gmail_butons_psign_send");	}
+			catch (e) { var b_psign_s = true; }
 			try {	var b_crypt = prefs.getBoolPref("gmail_butons_crypt");	}
 			catch (e) { var b_crypt = true; }
 			try {	var b_crypt_s = prefs.getBoolPref("gmail_butons_crypt_send");	}
@@ -347,6 +351,8 @@ var cGmail = {
 			cGmail.nonosign = nonosign;
 			cGmail.b_sign = b_sign;
 			cGmail.b_sign_s = b_sign_s;
+            cGmail.b_psign = b_psign;
+			cGmail.b_psign_s = b_psign_s;
 			cGmail.b_crypt = b_crypt;
 			cGmail.b_crypt_s = b_crypt_s;
 			cGmail.b_signcrypt = b_signcrypt;
@@ -448,9 +454,13 @@ var cGmail = {
 		var i18n = document.getElementById("firegpg-strings");
 
 		if (cGmail.b_sign == true)
-			this.addBouton(i18n.getString("GMailS"),"sign",box,Ddocument,info1);
+			this.addBouton(i18n.getString("GMailCLS"),"sign",box,Ddocument,info1);
 		if (cGmail.b_sign_s == true)
-			this.addBouton(i18n.getString("GMailSS"),"sndsign",box,Ddocument,info1);
+			this.addBouton(i18n.getString("GMailCLSS"),"sndsign",box,Ddocument,info1);
+        if (cGmail.b_psign == true)
+			this.addBouton(i18n.getString("GMailS"),"psign",box,Ddocument,info1);
+		if (cGmail.b_psign_s == true)
+			this.addBouton(i18n.getString("GMailSS"),"sndpsign",box,Ddocument,info1);
 		if (cGmail.b_crypt == true)
 			this.addBouton(i18n.getString("GMailC"),"crypt",box,Ddocument,info1);
 		if (cGmail.b_crypt_s == true)
@@ -584,6 +594,31 @@ var cGmail = {
 				}
 
 			}
+            else if (target.id == "sndpsign" || target.id == "psign")
+			{
+
+				var mailContent = cGmail.getWriteMailContent(cGmail.lastDomToverify.document,info1);
+
+				var boutonBox = cGmail.lastDomToverify.document.getElementById('sb_' + info1).firstChild;
+
+
+				if (mailContent == "")
+					return;
+
+                var result = FireGPG.sign(false,gmailWrapping(mailContent),null,null,true);
+
+                if (result.result == RESULT_SUCCESS) {
+
+					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.signed);
+
+					if (target.id == "sndpsign") {
+						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
+						boutonBox = cGmail.lastDomToverify.document.getElementById('nc_' + info1).parentNode;
+						cGmail.sendEmail(boutonBox,cGmail.lastDomToverify.document);
+					}
+				}
+
+			}
 			else if (target.id == "sndcrypt" || target.id == "crypt")
 			{
 
@@ -613,6 +648,7 @@ var cGmail = {
 
 				}
 			}
+
 			else if (target.id == "sndsigncrypt" || target.id == "signcrypt")
 			{
 

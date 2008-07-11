@@ -48,3 +48,5 @@ başlatmak gerekir)">
 <!ENTITY firegpg-ask-for-private-label.text "Özel anahtarı herzaman sor">
 <!ENTITY inline-activated "Sayfalar içindeki PGP blokları için elden geçirmeyi aktif yap (tekrar başlatmak gerekir)">
 <!ENTITY gmail-disable-autosave-checkbox "Otomatik kaydeti engelle">
+<!ENTITY gmail-buton-csign-checkbox "Clear sign">
+<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">

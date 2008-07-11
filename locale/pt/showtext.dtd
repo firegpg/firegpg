@@ -5,3 +5,4 @@
 <!ENTITY open-button "Abrir">
 <!ENTITY save-button "Guardar">
 <!ENTITY cryptandsign-button "Assinar e Cifrar">
+<!ENTITY sign-clear-button "Clear sign">

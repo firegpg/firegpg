@@ -402,6 +402,17 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */, domain /* 
 }
 
 /*
+    Function: getsavedPassword
+    Return the saved password
+*/
+function getsavedPassword() {
+
+    return savedPassword;
+
+
+}
+
+/*
     Function: eraseSavedPassword
     This function erase the saved password (it's for exemple when a sign failled)
 */

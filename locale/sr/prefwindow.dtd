@@ -47,3 +47,5 @@
 <!ENTITY firegpg-ask-for-private-label.text "Uvek traži privatni ključ">
 <!ENTITY inline-activated "Aktiviraj upravljač za PGP blokove u stranicama (potreban restart)">
 <!ENTITY gmail-disable-autosave-checkbox "Isključi autosave">
+<!ENTITY gmail-buton-csign-checkbox "Clear sign">
+<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">

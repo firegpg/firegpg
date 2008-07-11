@@ -47,3 +47,5 @@
 <!ENTITY firegpg-ask-for-private-label.text "Toujours demander la clé privée">
 <!ENTITY inline-activated "Activer le système de détection dans le contenu des pages (redémarrage nécessaire)">
 <!ENTITY gmail-disable-autosave-checkbox "Désactiver la sauvegarde automatique">
+<!ENTITY gmail-buton-csign-checkbox "Signer en clair">
+<!ENTITY gmail-buton-csignsend-checkbox "Signer en clair et envoyer">

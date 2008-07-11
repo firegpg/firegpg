@@ -47,3 +47,5 @@
 <!ENTITY firegpg-ask-for-private-label.text "Demanar sempre per la clau privada">
 <!ENTITY inline-activated "Activa el controlador per a blocs GPG en les pàgines (es necessita reiniciar)">
 <!ENTITY gmail-disable-autosave-checkbox "Deshabilitar autoguardar">
+<!ENTITY gmail-buton-csign-checkbox "Clear sign">
+<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">

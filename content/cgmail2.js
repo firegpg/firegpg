@@ -194,9 +194,13 @@ var cGmail2 = {
                         spamLimite = spamLimite[0];
 
                         if (cGmail2.b_sign == true)
-                            this.addBouton(listeTest[i],doc,i18n.getString("GMailS"),"sign",spamLimite);
+                            this.addBouton(listeTest[i],doc,i18n.getString("GMailCLS"),"sign",spamLimite);
                         if (cGmail2.b_sign_s == true)
-                            this.addBouton(listeTest[i],doc,i18n.getString("GMailSS"),"sndsign",spamLimite);
+                            this.addBouton(listeTest[i],doc,i18n.getString("GMailCLSS"),"sndsign",spamLimite);
+                        if (cGmail2.b_psign == true)
+                            this.addBouton(listeTest[i],doc,i18n.getString("GMailS"),"psign",spamLimite);
+                        if (cGmail2.b_psign_s == true)
+                            this.addBouton(listeTest[i],doc,i18n.getString("GMailSS"),"sndpsign",spamLimite);
                         if (cGmail2.b_crypt == true)
                             this.addBouton(listeTest[i],doc,i18n.getString("GMailC"),"crypt",spamLimite);
                         if (cGmail2.b_crypt_s == true)
@@ -465,6 +469,25 @@ var cGmail2 = {
 					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.signed);
 
 					if (target.getAttribute('gpg_action') == "sndsign")
+						cGmail2.sendEmail(target.parentNode,this._doc);
+				}
+
+			}
+            else if (target.getAttribute('gpg_action') == "sndpsign" || target.getAttribute('gpg_action') == "psign")
+			{
+
+				var mailContent = cGmail2.getWriteMailContent(this._doc,target.parentNode);
+
+				if (mailContent == "")
+					return;
+
+				var result = FireGPG.sign(false,gmailWrapping(mailContent),null,null,true);
+
+                if (result.result == RESULT_SUCCESS) {
+
+					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.signed);
+
+					if (target.getAttribute('gpg_action') == "sndpsign")
 						cGmail2.sendEmail(target.parentNode,this._doc);
 				}
 
@@ -1126,6 +1149,10 @@ var cGmail2 = {
 			catch (e) { var b_sign = true; }
 			try {	var b_sign_s = prefs.getBoolPref("gmail_butons_sign_send");	}
 			catch (e) { var b_sign_s = true; }
+            try {	var b_psign = prefs.getBoolPref("gmail_butons_psign");	}
+            catch (e) { var b_psign = true; }
+			try {	var b_psign_s = prefs.getBoolPref("gmail_butons_psign_send");	}
+			catch (e) { var b_psign_s = true; }
 			try {	var b_crypt = prefs.getBoolPref("gmail_butons_crypt");	}
 			catch (e) { var b_crypt = true; }
 			try {	var b_crypt_s = prefs.getBoolPref("gmail_butons_crypt_send");	}
@@ -1143,6 +1170,8 @@ var cGmail2 = {
 			cGmail2.nonosign = nonosign;
 			cGmail2.b_sign = b_sign;
 			cGmail2.b_sign_s = b_sign_s;
+            cGmail2.b_psign = b_psign;
+			cGmail2.b_psign_s = b_psign_s;
 			cGmail2.b_crypt = b_crypt;
 			cGmail2.b_crypt_s = b_crypt_s;
 			cGmail2.b_signcrypt = b_signcrypt;

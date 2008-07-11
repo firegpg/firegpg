@@ -48,3 +48,5 @@ Websiten (Doppelklick zum Entfernen)">
 <!ENTITY firegpg-ask-for-private-label.text "Immer nach privatem Schlüssel fragen">
 <!ENTITY inline-activated "Aktiviere Handler für PGP blöcke in Seiten (Neustart benötigt)">
 <!ENTITY gmail-disable-autosave-checkbox "Automatisches Speichern abschalten">
+<!ENTITY gmail-buton-csign-checkbox "Clear sign">
+<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">

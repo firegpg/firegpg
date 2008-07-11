@@ -47,3 +47,5 @@
 <!ENTITY firegpg-ask-for-private-label.text "Mindig kérje a személyes kulcsot">
 <!ENTITY inline-activated "Az oldalak PGP tartalom kezelőjének aktiválása (újraindítás szükséges)">
 <!ENTITY gmail-disable-autosave-checkbox "Az automata mentés kikapcsolása">
+<!ENTITY gmail-buton-csign-checkbox "Clear sign">
+<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">

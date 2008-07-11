@@ -1057,7 +1057,7 @@ var FireGPG = {
             text - _Optional_, if not set try to use the selection. The text to decrypt.
             password - _Optional_, if not set ask the user. The password of the key used to encrypt the data.
     */
-	decrypt: function(silent, text, password) {
+	decrypt: function(silent, text, password) { try {
 		var returnObject = new GPGReturn();
 
         if (silent == undefined)
@@ -1117,8 +1117,11 @@ var FireGPG = {
 		text = text.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
 
 		// Needed for a decrypt
-		if (password == undefined || password == null)
-            password = getPrivateKeyPassword();
+		if (password == undefined || password == null) {
+                password = getsavedPassword();
+                if (password == null)
+                    password = "wrongPass";
+        }
 
 		if(password == null) {
 			returnObject.result = RESULT_CANCEL;
@@ -1131,6 +1134,17 @@ var FireGPG = {
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;
 
+        if(result.sdOut.indexOf("BAD_PASSPHRASE") != -1) {
+
+            password = getPrivateKeyPassword();
+
+            // We get the result
+            var result = this.GPGAccess.decrypt(text,password);
+
+            returnObject.sdOut = result.sdOut;
+            returnObject.output = result.output;
+
+        }
 
         if(result.sdOut.indexOf("BAD_PASSPHRASE") != -1) {
 
@@ -1144,7 +1158,7 @@ var FireGPG = {
 		}
 
 
-        if(result.sdOut.indexOf("DECRYPTION_OKAY") == -1)	{
+        if(result.sdOut.indexOf("DECRYPTION_OKAY") == -1 && result.sdOut.indexOf("PLAINTEXT") == -1)	{
 			if (!silent)
                 alert(i18n.getString("decryptFailed") + "\n" + result.sdOut);
 
@@ -1206,6 +1220,7 @@ var FireGPG = {
 
         returnObject.result = RESULT_SUCCESS;
         return returnObject;
+    } catch (e) { alert(e) }
 	},
 
 
@@ -1260,7 +1275,7 @@ var FireGPG = {
         var returnObject = new GPGReturn();
         returnObject.result = RESULT_SUCCESS;
         return returnObject;
-	},
+	}
 
 }
 

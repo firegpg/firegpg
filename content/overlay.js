@@ -104,7 +104,7 @@ var firegpg = {
 		if (action == ACTION_SIGN)
 			FireGPG.sign();
         else if (action == ACTION_PSIGN)
-			FireGPG.sign(undefined,undefined,undefined,undefined,undefined,true);
+			FireGPG.sign(undefined,undefined,undefined,undefined,true);
 		else if(action == ACTION_VERIF)
 			FireGPG.verify();
 		else if(action == ACTION_CRYPT)
@@ -119,9 +119,8 @@ var firegpg = {
 			FireGPG.kexport();
 		else if(action == ACTION_EDITEUR)
 			showEditor('');
-		else if(action == ACTION_OPTS) {
+		else if(action == ACTION_OPTS)
 			window.openDialog("chrome://firegpg/content/options.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
-		}
 		else if (action == ACTION_ERASE)
 			eraseSavedPassword();
 	},

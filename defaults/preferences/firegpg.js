@@ -1,5 +1,7 @@
 pref("extensions.firegpg.gmail_butons_sign", true);
 pref("extensions.firegpg.gmail_butons_sign_send", true);
+pref("extensions.firegpg.gmail_butons_psign", false);
+pref("extensions.firegpg.gmail_butons_psign_send", false);
 pref("extensions.firegpg.gmail_butons_crypt", true);
 pref("extensions.firegpg.gmail_butons_crypt_send", true);
 pref("extensions.firegpg.gmail_butons_sign_crypt", true);

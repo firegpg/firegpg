@@ -165,6 +165,8 @@
             <preference id="gmail-no-no-sign" name="extensions.firegpg.gmail_no_sign_off" type="bool"/>
             <preference id="gmail-buton-sign" name="extensions.firegpg.gmail_butons_sign" type="bool"/>
             <preference id="gmail-buton-signsend" name="extensions.firegpg.gmail_butons_sign_send" type="bool"/>
+            <preference id="gmail-buton-psign" name="extensions.firegpg.gmail_butons_psign" type="bool"/>
+            <preference id="gmail-buton-psignsend" name="extensions.firegpg.gmail_butons_psign_send" type="bool"/>
             <preference id="gmail-buton-crypt" name="extensions.firegpg.gmail_butons_crypt" type="bool"/>
             <preference id="gmail-buton-cryptsend" name="extensions.firegpg.gmail_butons_crypt_send" type="bool"/>
             <preference id="gmail-buton-signcrypt" name="extensions.firegpg.gmail_butons_sign_crypt" type="bool"/>
@@ -199,8 +201,14 @@
             <rows>
                 <row>
                     <checkbox id="gmail-buton-sign-checkbox" preference="gmail-buton-sign"
-                        label="&gmail-buton-sign-checkbox;"/>
+                        label="&gmail-buton-csign-checkbox;"/>
                     <checkbox id="gmail-no-no-signsend-checkbox" preference="gmail-buton-signsend"
+                        label="&gmail-buton-csignsend-checkbox;"/>
+                </row>
+                <row>
+                    <checkbox id="gmail-buton-psign-checkbox" preference="gmail-buton-psign"
+                        label="&gmail-buton-sign-checkbox;"/>
+                    <checkbox id="gmail-no-no-psignsend-checkbox" preference="gmail-buton-psignsend"
                         label="&gmail-buton-signsend-checkbox;"/>
                 </row>
                 <row>

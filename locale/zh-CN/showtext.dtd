@@ -5,3 +5,4 @@
 <!ENTITY open-button "打开">
 <!ENTITY save-button "保存">
 <!ENTITY cryptandsign-button "签名并加密">
+<!ENTITY sign-clear-button "Clear sign">
