@@ -40,10 +40,10 @@
 		obj = Components.classes[cid].createInstance();
 		obj = obj.QueryInterface(Components.interfaces.IFireGPGCall);
 	} catch (err) {
-		alert(err);
+		alert("E" + err);
     }
-	var res = obj.Call("C:\\Program Files\\GNU\\GnuPG\\gpg.exe"," C:\\Program Files\\GNU\\GnuPG\\gpg.exe --version","testtest\n");
-    alert(res);
+	var res = obj.Call("touch"," touch /tmp/coucou","testtest\n");
+    alert("R" + res);
 //
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */

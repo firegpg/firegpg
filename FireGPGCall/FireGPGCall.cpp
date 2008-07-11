@@ -7,8 +7,18 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <sys/socket.h>
-#include <sys/wait.h>
+#include "IPCProcess.h"
+
+NS_IMPL_ISUPPORTS1(FireGPGCall, IFireGPGCall)
+
+FireGPGCall::FireGPGCall() {
+  /* member initializers and constructor code */
+}
+
+FireGPGCall::~FireGPGCall() {
+  /* destructor code */
+}
+
 
 char** split(char* chaine,const char* delim,int vide) {
 
@@ -69,93 +79,21 @@ char** split(char* chaine,const char* delim,int vide) {
     return tab;
 }
 
-NS_IMPL_ISUPPORTS1(FireGPGCall, IFireGPGCall)
-
-FireGPGCall::FireGPGCall() {
-  /* member initializers and constructor code */
-}
-
-FireGPGCall::~FireGPGCall() {
-  /* destructor code */
-}
-
 /* long Add (in long a, in long b); */
 NS_IMETHODIMP FireGPGCall::Call(const char *path, const char *parameters, const char *sdin, char **_retval) {
 
-    char c[1];  /* declare a char array */
-    int n = 0;
+    //We call the process
+    char  *const *argv = split((char*)parameters," ",0);
 
-    char buffer[10240];
+    char *buffer = (char *)"213";
 
-    pid_t child;
-    int fd[2];
-    int rc;
+    PRFileDesc* std_in = false;
+    PRFileDesc* std_out = false;
+    PRFileDesc* std_err = false;
 
-    //We create a pair of socket (input and ouput)
-    rc = socketpair( AF_UNIX, SOCK_STREAM, 0, fd );
-    if ( rc < 0 ) {
-        perror("Cannot open socketpair");
-        exit(0);
-    }
+    PRProcess*  process = IPC_CreateProcessRedirectedNSPR(path, argv,false,false,std_in, std_out, std_err);
 
-    //We create a child of ourself
-    child = fork();
-    if (child < 0) {
-        perror("Cannot fork");
-        exit(0);
-    }
-
-    if (child == 0) { /* child - it uses fd[1] */
-        close (fd[0]);
-        if (fd[1] != STDIN_FILENO) { /*Redirect standard input to socketpair*/
-            if (dup2(fd[1], STDIN_FILENO) != STDIN_FILENO) {
-                perror("Cannot dup2 stdin");
-                exit(0);
-            }
-        }
-
-        if (fd[1] != STDOUT_FILENO) { /*Redirect standard output to socketpair*/
-            if (dup2(fd[1], STDOUT_FILENO) != STDOUT_FILENO) {
-                perror("Cannot dup2 stdout");
-                exit(0);
-            }
-        }
-
-        //We call the process
-        char  *const *argv = split((char*)parameters," ",0);
-
-        if (execvp(path, argv) < 0) {
-            perror("Cannot exec");
-            exit(0);
-        }
-
-        exit(0);
-    }
-
-    //We write data
-    write(fd[0], sdin, strlen(sdin));
-
-    //We wait for the end of the subprocess
-    int status = 0;
-    waitpid( child, &status, 0 );
-
-    fcntl(fd[0], F_SETFL, O_NONBLOCK | fcntl(fd[0], F_GETFL));
-
-    //We read byte by byte the output
-    while(1) {
-        read(fd[0],c,1);
-
-        if(c[0]!=-74 && n < 10240) {
-            buffer[n] = c[0];
-            n++;
-       }
-        else {  //If it's the end of the buffer is full
-            break;
-       }
-    }
-
-    //End of the string
-    buffer[n] = (char)'\0';
+    process = false;
 
     //We copy the ouput to the return variable
     * _retval = (char*) nsMemory::Alloc(PL_strlen(buffer) + 1);
@@ -163,10 +101,6 @@ NS_IMETHODIMP FireGPGCall::Call(const char *path, const char *parameters, const 
         return NS_ERROR_NULL_POINTER;
 
     PL_strcpy(*_retval, buffer);
-
-    //We close sockets
-    close(fd[0]);
-    close(fd[1]);
 
 	return NS_OK;
 }

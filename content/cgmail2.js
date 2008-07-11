@@ -84,7 +84,7 @@ var cGmail2 = {
 
             final_location = doc.location.href;
 
-            var regrex = new RegExp('^https?://mail.google.com/a/[a-zA-Z.-0-9]*');
+            var regrex = new RegExp('^https?://mail.google.com/a/[a-zA-Z.0-9-]*');
 
             final_location = final_location.replace(regrex, "http://mail.google.com/mail");
 
@@ -151,7 +151,6 @@ var cGmail2 = {
 						}
 
 
-
                         var firstPosition = contenuMail.indexOf("-----BEGIN PGP MESSAGE-----");
                         var lastPosition = contenuMail.indexOf("-----END PGP MESSAGE-----");
 
@@ -163,6 +162,7 @@ var cGmail2 = {
                             tmpListener = null;
                             tmpListener = new cGmail2.callBack(doc)
                             td.addEventListener('click',tmpListener,true);
+                            td.setAttribute("style","");
                         }
 
                         td.innerHTML = '<div class="X5Xvu" idlink=""><span class="" style="' + td.getAttribute("style") + '">' + td.innerHTML + '</span></div>';

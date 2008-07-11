@@ -194,6 +194,11 @@ function Witch_GPGAccess () {
 */
 function loadXpcom () {
 
+
+    updateXpcomState(XPCOM_STATE_NEVERTESTED);
+
+    return false;
+
     var prefs = Components.classes["@mozilla.org/preferences-service;1"].
                            getService(Components.interfaces.nsIPrefService);
     prefs = prefs.getBranch("extensions.firegpg.");
@@ -207,7 +212,7 @@ function loadXpcom () {
         updateXpcomState(XPCOM_STATE_DISABLED);
 		return false;
    }
-   
+
     try {
      	const cid = "@getfiregpg.org/XPCOM/FireGPGCall;1";
 		obj = Components.classes[cid].createInstance();
@@ -259,7 +264,7 @@ function updateXpcomState(newstate) {
         } catch (e) { fireGPGDebug(e,'cgpgaccess.updateXpcomState',true); }
 
 
-        var misc = getContent("http://getfiregpg.org/stable/statsxpcom.php?version=" + FIREGPG_VERSION + "&newstate=" + newstate + "&oldstate=" + oldstate + "&plateforme=" + escape(currentos));
+        //PING DISABLED var misc = getContent("http://getfiregpg.org/stable/statsxpcom.php?version=" + FIREGPG_VERSION + "&newstate=" + newstate + "&oldstate=" + oldstate + "&plateforme=" + escape(currentos));
 
     }
 

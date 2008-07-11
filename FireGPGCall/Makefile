@@ -11,7 +11,7 @@ GECKO_SDK_PATH = /opt/gecko-sdk
 # #include "mozilla-config.h" to each of your .cpp files.
 GECKO_CONFIG_INCLUDE = -include mozilla-config.h
 
-GECKO_DEFINES  = -DXPCOM_GLUE
+GECKO_DEFINES  = -DXPCOM_GLUE -D_IMPL_NS_COM_OFF
 
 GECKO_INCLUDES = -I $(GECKO_SDK_PATH)/include
 
