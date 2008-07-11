@@ -364,22 +364,27 @@ function getSavedPassword() {
     Parameters:
         useSavedPassword - _Optional_. Set this to false to disable the use of a saved password
         domain - _Optional_. The domain to pass to <getPassword>.
+        message - _Optional_. The message to ask the user.
 
 */
-function getPrivateKeyPassword(useSavedPassword /* default = true */, domain /* default = false*/) {
+function getPrivateKeyPassword(useSavedPassword /* default = true */, domain /* default = false*/, message /* default = false*/) {
 	/* the default value of the optional variable */
 	if(useSavedPassword == undefined)
 		useSavedPassword = true;
     if(domain == undefined)
 		domain = false;
 
+
 	/* return password if it's saved in savePassword */
 	if(useSavedPassword && savedPassword != null)
 		return savedPassword;
 
 	/* show the dialog ! */
-	var question = document.getElementById('firegpg-strings').
+	if (message == undefined)
+        var question = document.getElementById('firegpg-strings').
 	                        getString('passwordDialogEnterPrivateKey');
+    else
+        var question = message;
 
 	var result = getPassword(question,undefined,domain);
 

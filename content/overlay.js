@@ -109,6 +109,8 @@ var firegpg = {
 			FireGPG.verify();
 		else if(action == ACTION_CRYPT)
 			FireGPG.crypt();
+        else if(action == ACTION_SYMCRYPT)
+			FireGPG.crypt(undefined,undefined,undefined,undefined,undefined,undefined,true);
 		else if(action == ACTION_CRYPTSIGN)
 			FireGPG.cryptAndSign();
 		else if(action == ACTION_DECRYPT)

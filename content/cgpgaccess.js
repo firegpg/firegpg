@@ -389,6 +389,7 @@ var GPGAccessCallerUnixNoXpcom  =  function(parameters,charset)  {
 			this.getGPGCommand() + ' ' + tmpStdOut + parameters
 	);
 
+
     // We get the result
     var result = getFromFile(tmpStdOut,charset);
 

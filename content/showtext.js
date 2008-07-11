@@ -129,6 +129,20 @@ function crypt() {
 
 }
 
+/*
+    Function: symcrypt
+    Symetricaly encrypt the current data of the editor.
+*/
+function symcrypt() {
+
+    var result = FireGPG.crypt(false,getSelectedText(), undefined,  undefined, undefined,  undefined, true);
+
+    if (result.result == RESULT_SUCCESS)
+        setSeletedText(result.encrypted);
+
+}
+
+
 
 /*
     Function: cryptandsign
