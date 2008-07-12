@@ -584,12 +584,6 @@ var FireGPG = {
     */
 	crypt: function(silent, text, keyIdList, fromGpgAuth, binFileMode, autoSelect, symetrical, password) {
 
-        if (symetrical) {
-            alert("S!");
-            return false;
-        }
-
-
         var returnObject = new GPGReturn();
 
         if (silent == undefined)
@@ -649,7 +643,7 @@ var FireGPG = {
 
 
             if (password == undefined || password == null) {
-                password = getPrivateKeyPassword(false,false,i18n.getString("symetricalPass") + ":");
+                password = getPrivateKeyPassword(false,false,i18n.getString("symetricalPass") + ":", true);
             }
 
             if(password == null || password == "") {
@@ -660,7 +654,11 @@ var FireGPG = {
         }
 
 		// We get the result
-		var result = this.GPGAccess.crypt(text, keyIdList,fromGpgAuth,binFileMode,symetrical, password);
+        if (!symetrical)
+            var result = this.GPGAccess.crypt(text, keyIdList,fromGpgAuth,binFileMode);
+        else
+            var result = this.GPGAccess.symetric(text, password);
+
 
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;
@@ -1161,7 +1159,7 @@ var FireGPG = {
         if(result.sdOut.indexOf("BAD_PASSPHRASE") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1) {
 
             if (result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1)
-                password = getPrivateKeyPassword(false, false,i18n.getString("symetricalPass") + ":");
+                password = getPrivateKeyPassword(false, false,i18n.getString("symetricalPass") + ":", true);
             else
                 password = getPrivateKeyPassword();
 

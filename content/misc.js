@@ -298,8 +298,9 @@ function showEditor() {
         question - The text to show for the prompt.
         save_password - _Optional_. The default value for the save password checkbox. If not set, value set in the options by the user is used.
         domain - _Optional_. Say the password is asked form this page and disable the savepassword checkbox.
+        nosavecheckbox - _Optional_. Disable the save password feature
 */
-function getPassword(question, save_password, domain) {
+function getPassword(question, save_password, domain, nosavecheckbox) {
 	if(save_password == undefined) {
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 	                           getService(Components.interfaces.nsIPrefService);
@@ -315,9 +316,12 @@ function getPassword(question, save_password, domain) {
     if (domain == undefined)
         domain = false;
 
+     if (nosavecheckbox == undefined)
+        nosavecheckbox = false;
+
 	var params = {password: '',
 	              save_password: save_password,
-	              result: false, question: question, domain: domain};
+	              result: false, question: question, domain: domain, nosavecheckbox: nosavecheckbox};
 
 	var dlg = window.openDialog('chrome://firegpg/content/password.xul',
 	                            '', 'chrome, dialog, modal, resizable=yes', params);
@@ -365,14 +369,18 @@ function getSavedPassword() {
         useSavedPassword - _Optional_. Set this to false to disable the use of a saved password
         domain - _Optional_. The domain to pass to <getPassword>.
         message - _Optional_. The message to ask the user.
+        nosavecheckbox - _Optional_. Disable the save password feature
 
 */
-function getPrivateKeyPassword(useSavedPassword /* default = true */, domain /* default = false*/, message /* default = false*/) {
+function getPrivateKeyPassword(useSavedPassword /* default = true */, domain /* default = false*/, message /* default = false*/, nosavecheckbox) {
 	/* the default value of the optional variable */
 	if(useSavedPassword == undefined)
 		useSavedPassword = true;
     if(domain == undefined)
 		domain = false;
+
+    if (nosavecheckbox == undefined)
+        nosavecheckbox = false;
 
 
 	/* return password if it's saved in savePassword */
@@ -386,12 +394,12 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */, domain /* 
     else
         var question = message;
 
-	var result = getPassword(question,undefined,domain);
+	var result = getPassword(question,undefined,domain, nosavecheckbox);
 
     if(result == null)
 		return null;
 
-	if(result.save_password && domain == false) {
+	if(result.save_password && domain == false && nosavecheckbox != true) {
 		savedPassword = result.password;
 
 		try {

@@ -110,6 +110,7 @@ function Witch_GPGAccess () {
             GPGAccess.verify = GPGAccessUnixXpcom.verify;
             GPGAccess.listkey = GPGAccessUnixXpcom.listkey;
             GPGAccess.crypt = GPGAccessUnixXpcom.crypt;
+            GPGAccess.symetric = GPGAccessUnixXpcom.symetric;
             GPGAccess.cryptAndSign = GPGAccessUnixXpcom.cryptAndSign;
             GPGAccess.decrypt = GPGAccessUnixXpcom.decrypt;
             GPGAccess.selfTest = GPGAccessUnixXpcom.selfTest;
@@ -127,6 +128,7 @@ function Witch_GPGAccess () {
             GPGAccess.verify = GPGAccessWindowsXpcom.verify;
             GPGAccess.listkey = GPGAccessWindowsXpcom.listkey;
             GPGAccess.crypt = GPGAccessWindowsXpcom.crypt;
+            GPGAccess.symetric = GPGAccessWindowsXpcom.symetric;
             GPGAccess.cryptAndSign = GPGAccessWindowsXpcom.cryptAndSign;
             GPGAccess.decrypt = GPGAccessWindowsXpcom.decrypt;
             GPGAccess.selfTest = GPGAccessWindowsXpcom.selfTest;
@@ -151,6 +153,7 @@ function Witch_GPGAccess () {
             GPGAccess.verify = GPGAccessUnixNoXpcom.verify;
             GPGAccess.listkey = GPGAccessUnixNoXpcom.listkey;
             GPGAccess.crypt = GPGAccessUnixNoXpcom.crypt;
+            GPGAccess.symetric = GPGAccessUnixNoXpcom.symetric;
             GPGAccess.cryptAndSign = GPGAccessUnixNoXpcom.cryptAndSign;
             GPGAccess.decrypt = GPGAccessUnixNoXpcom.decrypt;
             GPGAccess.selfTest = GPGAccessUnixNoXpcom.selfTest;
@@ -168,6 +171,7 @@ function Witch_GPGAccess () {
             GPGAccess.verify = GPGAccessWindowsNoXpcom.verify;
             GPGAccess.listkey = GPGAccessWindowsNoXpcom.listkey;
             GPGAccess.crypt = GPGAccessWindowsNoXpcom.crypt;
+            GPGAccess.symetric = GPGAccessWindowsNoXpcom.symetric;
             GPGAccess.cryptAndSign = GPGAccessWindowsNoXpcom.cryptAndSign;
             GPGAccess.decrypt = GPGAccessWindowsNoXpcom.decrypt;
             GPGAccess.selfTest = GPGAccessWindowsNoXpcom.selfTest;
@@ -663,6 +667,24 @@ var GPGAccess = {
     },
 
     /*
+        Function: symetric
+        Symetricaly encrypt a text.
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
+
+        Parameters:
+            text - The data to encrypt
+            password - The password
+
+        Return:
+            A <GPGReturn> structure.
+
+
+    */
+    symetric: function(text, password) {
+        return false;
+    },
+
+    /*
         Function: cryptAndSign
         Encrypt and sign a text.
         This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
@@ -939,6 +961,45 @@ var GPGAccessWindowsNoXpcom = {
                     " < " + tmpPASS);
 
         } catch (e) {  fireGPGDebug(e,'cgpgaccess.cryptandsignWN',true);   }
+
+		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
+
+		// The crypted text
+		var crypttext = getFromFile(tmpOutput);
+		var result2 = new GPGReturn();
+		result2.output = crypttext;
+		result2.sdOut = result;
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpOutput);
+
+		return result2;
+    },
+
+    symetric: function(text, password) {
+        var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
+
+
+    	putIntoFile(tmpInput,text); // Temp
+
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		removeFile(tmpOutput);
+
+		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
+
+        try {
+
+            result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() +
+                    this.getGPGCommentArgument() +
+                    " --passphrase-fd 0" +
+                    " --output " + tmpOutput +
+                    " --symmetric " + tmpInput +
+                    " < " + tmpPASS);
+
+        } catch (e) {  fireGPGDebug(e,'cgpgaccess.symetric',true);   }
 
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
@@ -1257,6 +1318,8 @@ var GPGAccessWindowsXpcom = {
 
     runATest: GPGAccessWindowsNoXpcom.runATest,
 
+    symetric: function(text,password) { alert('XpCom should be disabled'); },
+
     tryToFoundTheRightCommand: GPGAccessWindowsNoXpcom.tryToFoundTheRightCommand,
 
 }
@@ -1357,6 +1420,45 @@ var GPGAccessUnixNoXpcom = {
                            " --encrypt " + tmpInput
                        );
         } catch (e) {  fireGPGDebug(e,'cgpgaccess.cryptandsignUN',true);   }
+
+		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
+
+		// The crypted text
+		var crypttext = getFromFile(tmpOutput);
+		var result2 = new GPGReturn();
+		result2.output = crypttext;
+		result2.sdOut = result;
+
+		// We delete tempory files
+		removeFile(tmpInput);
+		removeFile(tmpOutput);
+
+		return result2;
+    },
+
+    symetric: function(text, password) {
+        var tmpInput = getTmpFile();  // Data unsigned
+		var tmpOutput = getTmpFile(); // Data signed
+		var tmpPASS = getTmpPassFile(); // TEMPORY PASSWORD
+
+    	putIntoFile(tmpInput,text); // Temp
+
+		// The file already exist, but GPG don't work if he exist, so we del it.
+		removeFile(tmpOutput);
+
+		putIntoFile(tmpPASS, password); // DON'T MOVE THIS LINE !
+
+        try {
+
+           result = this.runGnupg(this.getBaseArugments() + this.getGPGTrustArgument()  +
+                           this.getGPGCommentArgument() +
+                       " --passphrase-file " + tmpPASS +
+                           " --output " + tmpOutput +
+                           " --symmetric " + tmpInput
+                        );
+
+
+        } catch (e) {  fireGPGDebug(e,'cgpgaccess.symetricUN',true);   }
 
 		removeFile(tmpPASS);  // DON'T MOVE THIS LINE !
 
@@ -1498,6 +1600,8 @@ var GPGAccessUnixXpcom = {
     kexport: GPGAccessUnixNoXpcom.kexport,
 
     runATest: GPGAccessUnixNoXpcom.runATest,
+
+    symetric: function(text,password) { alert('XpCom should be disabled'); },
 
     tryToFoundTheRightCommand: GPGAccessUnixNoXpcom.tryToFoundTheRightCommand,
 

@@ -63,7 +63,10 @@ function onLoad(win)
     {
         document.getElementById('save-password-checkbox').disabled = true;
         document.getElementById('save-password-checkbox').label = 'FireGPG\'s api called form ' + window.arguments[0].domain;
+    }
 
+    if (window.arguments[0].nosavecheckbox != false) {
+        document.getElementById('save-password-checkbox').style.display = 'none';
     }
 }
 
