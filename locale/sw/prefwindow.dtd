@@ -47,5 +47,5 @@
 <!ENTITY firegpg-ask-for-private-label.text "Fråga alltid efter den privata nyckeln">
 <!ENTITY inline-activated "Aktiverar hanteraren för PGP blocks i sidor (kräver omstart).">
 <!ENTITY gmail-disable-autosave-checkbox "Avaktivera autospara">
-<!ENTITY gmail-buton-csign-checkbox "Clear sign">
-<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
+<!ENTITY gmail-buton-csign-checkbox "Radera signatur">
+<!ENTITY gmail-buton-csignsend-checkbox "Radera signatur och skicka">

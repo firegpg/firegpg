@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "GMail-Unterstützung">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Privater Schlüssel:">
-<!ENTITY show-website-checkbox "Zeige FireGBG Website Adresse im GPG Kommentarfeld">
+<!ENTITY show-website-checkbox "Zeige FireGPG Webadresse im GPG Kommentarfeld">
 <!ENTITY change-gpg-path-button "Durchsuchen">
 <!ENTITY change-gpg-path-checkbox "Benutzerdefinierter Pfad zu GnuPG:">
 <!ENTITY result-always-in-new-window "Zeige die Ergebnisse von Verschlüsseln/Unterschreiben immer in einem neuen Fenster.">
@@ -46,7 +46,7 @@ Websiten (Doppelklick zum Entfernen)">
 <!ENTITY search-description "Filter:">
 <!ENTITY gmail-buton-use-select-checkbox "Zeige keine Buttons sondern eine Drop Down Liste">
 <!ENTITY firegpg-ask-for-private-label.text "Immer nach privatem Schlüssel fragen">
-<!ENTITY inline-activated "Aktiviere Handler für PGP blöcke in Seiten (Neustart benötigt)">
+<!ENTITY inline-activated "Aktiviere Handler für PGP-Blöcke in Seiten (Neustart benötigt)">
 <!ENTITY gmail-disable-autosave-checkbox "Automatisches Speichern abschalten">
-<!ENTITY gmail-buton-csign-checkbox "Clear sign">
-<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
+<!ENTITY gmail-buton-csign-checkbox "Klartextsignatur">
+<!ENTITY gmail-buton-csignsend-checkbox "Klartextsignatur und Senden">

@@ -5,4 +5,5 @@
 <!ENTITY open-button "파일 열기">
 <!ENTITY save-button "저장">
 <!ENTITY cryptandsign-button "서명하고 암호화">
-<!ENTITY sign-clear-button "Clear sign">
+<!ENTITY sign-clear-button "깨끗한 서명">
+<!ENTITY symcrypt-button "대칭키 암호화">

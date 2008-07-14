@@ -41,9 +41,9 @@ FireGPG installerades utan problem!">
 <!ENTITY firegpgContext.labelCryptSign "Signera och Kryptera">
 <!ENTITY firegpgMenu.labelCryptSign "Signera och Kryptera">
 <!ENTITY firegpgToolbar.labelCryptSign "Signera och Kryptera">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgContext.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgMenu.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgContext.labelClearSign "Clear sign">
-<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
-<!ENTITY firegpgMenu.labelClearSign "Clear sign">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symmetrisk kryptering">
+<!ENTITY firegpgContext.labelSymCrypt "Symmetrisk kryptering">
+<!ENTITY firegpgMenu.labelSymCrypt "Symmetrisk kryptering">
+<!ENTITY firegpgContext.labelClearSign "Radera signatur">
+<!ENTITY firegpgToolbar.labelClearSign "Radera signatur">
+<!ENTITY firegpgMenu.labelClearSign "Radera signatur">

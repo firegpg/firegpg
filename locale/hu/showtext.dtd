@@ -6,3 +6,4 @@
 <!ENTITY save-button "Mentés">
 <!ENTITY cryptandsign-button "Aláírás és titkosítás">
 <!ENTITY sign-clear-button "Clear sign">
+<!ENTITY symcrypt-button "Symetric encryption">

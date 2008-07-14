@@ -6,3 +6,4 @@
 <!ENTITY save-button "保存">
 <!ENTITY cryptandsign-button "签名并加密">
 <!ENTITY sign-clear-button "Clear sign">
+<!ENTITY symcrypt-button "Symetric encryption">

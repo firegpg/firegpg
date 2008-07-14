@@ -6,3 +6,4 @@
 <!ENTITY save-button "Sačuvaj">
 <!ENTITY cryptandsign-button "Potpiši i Šifruj">
 <!ENTITY sign-clear-button "Clear sign">
+<!ENTITY symcrypt-button "Symetric encryption">

@@ -5,4 +5,5 @@
 <!ENTITY open-button "Apri">
 <!ENTITY save-button "Salva">
 <!ENTITY cryptandsign-button "Firma e Cripta">
-<!ENTITY sign-clear-button "Clear sign">
+<!ENTITY sign-clear-button "Elimina la firma">
+<!ENTITY symcrypt-button "Criptazione simmetrica">

@@ -47,5 +47,5 @@
 <!ENTITY firegpg-ask-for-private-label.text "Chiedi sempre la chiave privata">
 <!ENTITY inline-activated "Attiva il gestore per i blocchi PGP (richiede il riavvio)">
 <!ENTITY gmail-disable-autosave-checkbox "Disabilita il salvataggio automatico">
-<!ENTITY gmail-buton-csign-checkbox "Clear sign">
-<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
+<!ENTITY gmail-buton-csign-checkbox "Elimina la firma">
+<!ENTITY gmail-buton-csignsend-checkbox "Elimina la firma ed invia">

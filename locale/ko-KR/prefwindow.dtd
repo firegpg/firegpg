@@ -47,5 +47,5 @@
 <!ENTITY firegpg-ask-for-private-label.text "항상 개인키를 물어봄">
 <!ENTITY inline-activated "문서 내의 PGP 블럭에 대한 핸들러 활성화 (재시작 필요)">
 <!ENTITY gmail-disable-autosave-checkbox "자동 저장 비활성화">
-<!ENTITY gmail-buton-csign-checkbox "Clear sign">
-<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
+<!ENTITY gmail-buton-csign-checkbox "깨끗한 서명">
+<!ENTITY gmail-buton-csignsend-checkbox "깨끗하게 서명하여 전송">

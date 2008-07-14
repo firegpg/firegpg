@@ -40,9 +40,9 @@
 <!ENTITY firegpgContext.labelCryptSign "Firmar y cifrar ">
 <!ENTITY firegpgMenu.labelCryptSign "Firmar y cifrar ">
 <!ENTITY firegpgToolbar.labelCryptSign "Firmar y cifrar">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgContext.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgMenu.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgContext.labelClearSign "Clear sign">
-<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
-<!ENTITY firegpgMenu.labelClearSign "Clear sign">
+<!ENTITY firegpgToolbar.labelSymCrypt "Cifrado simétrico">
+<!ENTITY firegpgContext.labelSymCrypt "Cifrado simétrico">
+<!ENTITY firegpgMenu.labelSymCrypt "Cifrado simétrico">
+<!ENTITY firegpgContext.labelClearSign "Borrar firma">
+<!ENTITY firegpgToolbar.labelClearSign "Borrar firma">
+<!ENTITY firegpgMenu.labelClearSign "Borrar firma">

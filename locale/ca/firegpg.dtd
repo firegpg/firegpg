@@ -40,9 +40,9 @@
 <!ENTITY firegpgContext.labelCryptSign "signar i Encriptar">
 <!ENTITY firegpgMenu.labelCryptSign "Signar i Encriptar">
 <!ENTITY firegpgToolbar.labelCryptSign "Signar i Encriptar">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgContext.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgMenu.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgContext.labelClearSign "Clear sign">
-<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
-<!ENTITY firegpgMenu.labelClearSign "Clear sign">
+<!ENTITY firegpgToolbar.labelSymCrypt "Encriptació simètrica">
+<!ENTITY firegpgContext.labelSymCrypt "Encriptació simètrica">
+<!ENTITY firegpgMenu.labelSymCrypt "Encriptació simètrica">
+<!ENTITY firegpgContext.labelClearSign "Neteja la signatura">
+<!ENTITY firegpgToolbar.labelClearSign "Neteja la signatura">
+<!ENTITY firegpgMenu.labelClearSign "Neteja la signatura">
