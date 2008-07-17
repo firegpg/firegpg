@@ -36,7 +36,7 @@ topsrcdir	= ../../..
 srcdir		= .
 VPATH		= .
 
-include $(DEPTH)/config/autoconf.mk
+#include $(DEPTH)/config/autoconf.mk
 
 XPI_MODULE	= ipc
 XPI_MODULE_VERS = 1.1.3
@@ -92,7 +92,7 @@ EXTRA_DSO_LDOPTS = \
 		$(NULL)
 endif
 
-include $(topsrcdir)/config/rules.mk
+#include $(topsrcdir)/config/rules.mk
 
 PLATFORM_STR = unknown
 

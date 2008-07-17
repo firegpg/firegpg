@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "IPCProcess.h"
 
 NS_IMPL_ISUPPORTS1(FireGPGCall, IFireGPGCall)
 
@@ -91,9 +90,10 @@ NS_IMETHODIMP FireGPGCall::Call(const char *path, const char *parameters, const 
     PRFileDesc* std_out = false;
     PRFileDesc* std_err = false;
 
-    PRProcess*  process = IPC_CreateProcessRedirectedNSPR(path, argv,false,false,std_in, std_out, std_err);
+    PRProcess *process;
 
-    process = false;
+    process = IPC_CreateProcessRedirected(path, argv,false,false,std_in, std_out, std_err);
+
 
     //We copy the ouput to the return variable
     * _retval = (char*) nsMemory::Alloc(PL_strlen(buffer) + 1);

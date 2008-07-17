@@ -1,0 +1,299 @@
+c++: /opt/xulrunner-1.9/lib/libxpcomglue_s.a : Aucun fichier ou dossier de ce type
+nsPipeTransport.cpp:43:31: erreur: nsEventQueueUtils.h : Aucun fichier ou dossier de ce type
+nsPipeTransport.cpp:50:27: erreur: nsIIPCService.h : Aucun fichier ou dossier de ce type
+Dans le fichier inclus à partir de nsPipeTransport.cpp:51:
+nsPipeTransport.h:39:30: erreur: nsIPipeTransport.h : Aucun fichier ou dossier de ce type
+nsPipeTransport.h:40:29: erreur: nsIPipeListener.h : Aucun fichier ou dossier de ce type
+nsPipeTransport.h:42:34: erreur: nsIEventQueueService.h : Aucun fichier ou dossier de ce type
+In file included from nsPipeTransport.cpp:51:
+nsPipeTransport.h:71: erreur: expected class-name before ‘,’ token
+nsPipeTransport.h:72: erreur: expected class-name before ‘,’ token
+nsPipeTransport.h:87: erreur: ‘NS_DECL_NSIPIPETRANSPORT’ does not name a type
+nsPipeTransport.h:160: erreur: ‘nsIPipeTransportPoller’ was not declared in this scope
+nsPipeTransport.h:160: erreur: patron de l'argument 1 est invalide
+nsPipeTransport.h:161: erreur: ‘nsIPipeListener’ was not declared in this scope
+nsPipeTransport.h:161: erreur: patron de l'argument 1 est invalide
+nsPipeTransport.h:162: erreur: ‘nsIPipeTransportHeaders’ was not declared in this scope
+nsPipeTransport.h:162: erreur: patron de l'argument 1 est invalide
+nsPipeTransport.h:173: erreur: expected class-name before ‘,’ token
+nsPipeTransport.h:178: erreur: ISO C++ forbids declaration of ‘NS_DECL_NSIPIPETRANSPORTPOLLER’ with no type
+nsPipeTransport.h:179: erreur: expected ‘;’ before ‘virtual’
+nsPipeTransport.h:187: erreur: ‘nsIPipeListener’ has not been declared
+nsPipeTransport.h:223: erreur: ‘nsIPipeTransportListener’ was not declared in this scope
+nsPipeTransport.h:223: erreur: patron de l'argument 1 est invalide
+nsPipeTransport.h:224: erreur: ‘nsIPipeListener’ was not declared in this scope
+nsPipeTransport.h:224: erreur: patron de l'argument 1 est invalide
+nsPipeTransport.h:228: erreur: expected class-name before ‘,’ token
+nsPipeTransport.h:233: erreur: ISO C++ forbids declaration of ‘NS_DECL_NSIPIPETRANSPORTWRITER’ with no type
+nsPipeTransport.h:234: erreur: expected ‘;’ before ‘virtual’
+nsPipeTransport.cpp: In constructor ‘nsPipeTransport::nsPipeTransport()’:
+nsPipeTransport.cpp:92: erreur: ‘LOAD_NORMAL’ was not declared in this scope
+nsPipeTransport.cpp:122: erreur: ‘GetCurrent’ is not a member of ‘nsIThread’
+nsPipeTransport.cpp: In destructor ‘virtual nsPipeTransport::~nsPipeTransport()’:
+nsPipeTransport.cpp:136: erreur: ‘GetCurrent’ is not a member of ‘nsIThread’
+nsPipeTransport.cpp: At global scope:
+nsPipeTransport.cpp:157: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsPipeTransport.cpp:157: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsPipeTransport.cpp: In member function ‘virtual nsresult nsPipeTransport::QueryInterface(const nsIID&, void**)’:
+nsPipeTransport.cpp:157: erreur: ‘nsIPipeTransport’ has not been declared
+nsPipeTransport.cpp:157: erreur: expected primary-expression before ‘int’
+nsPipeTransport.cpp:157: erreur: expected `}' before ‘int’
+nsPipeTransport.cpp:157: erreur: expected `}' before ‘int’
+nsPipeTransport.cpp:157: erreur: expected ‘,’ or ‘;’ before ‘int’
+nsPipeTransport.cpp:157: attention : unused variable ‘rv’
+nsPipeTransport.cpp:157: attention : unused variable ‘table’
+nsPipeTransport.cpp:157: attention : « return » manquant dans une fonction devant retourner une valeur
+nsPipeTransport.cpp: At global scope:
+nsPipeTransport.cpp:157: erreur: mélange de déclarations et de définitions de fonction est interdit
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘{’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘,’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘{’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘,’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘{’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘,’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘{’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘,’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘{’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘,’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘{’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘,’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘{’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘,’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘{’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘,’ token
+nsPipeTransport.cpp:157: erreur: expected unqualified-id before ‘{’ token
+nsPipeTransport.cpp:157: erreur: expected declaration before ‘}’ token
+Dans le fichier inclus à partir de nsPipeConsole.cpp:50:
+nsPipeConsole.h:39:28: erreur: nsIPipeConsole.h : Aucun fichier ou dossier de ce type
+In file included from nsPipeConsole.cpp:43:
+/usr/include/xulrunner-1.9/unstable/nsIThread.h:44: erreur: ‘PRThread’ has not been declared
+In file included from nsPipeConsole.cpp:50:
+nsPipeConsole.h:48: erreur: expected class-name before ‘,’ token
+nsPipeConsole.h:56: erreur: ‘NS_DECL_NSIPIPELISTENER’ does not name a type
+nsPipeConsole.cpp:69: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsPipeConsole.cpp:69: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsPipeConsole.cpp: In member function ‘virtual nsresult nsPipeConsole::QueryInterface(const nsIID&, void**)’:
+nsPipeConsole.cpp:69: erreur: invalid static_cast from type ‘nsPipeConsole*’ to type ‘nsIStreamListener*’
+nsPipeConsole.cpp:69: erreur: ‘nsIPipeListener’ has not been declared
+nsPipeConsole.cpp:69: erreur: expected primary-expression before ‘int’
+nsPipeConsole.cpp:69: erreur: expected `}' before ‘int’
+nsPipeConsole.cpp:69: erreur: expected `}' before ‘int’
+nsPipeConsole.cpp:69: erreur: expected ‘,’ or ‘;’ before ‘int’
+nsPipeConsole.cpp:69: attention : unused variable ‘rv’
+nsPipeConsole.cpp:69: attention : unused variable ‘table’
+nsPipeConsole.cpp:69: attention : « return » manquant dans une fonction devant retourner une valeur
+nsPipeConsole.cpp: At global scope:
+nsPipeConsole.cpp:69: erreur: mélange de déclarations et de définitions de fonction est interdit
+nsPipeConsole.cpp:69: erreur: expected unqualified-id before ‘{’ token
+nsPipeConsole.cpp:69: erreur: expected unqualified-id before ‘,’ token
+nsPipeConsole.cpp:69: erreur: expected unqualified-id before ‘{’ token
+nsPipeConsole.cpp:69: erreur: expected unqualified-id before ‘,’ token
+nsPipeConsole.cpp:69: erreur: expected unqualified-id before ‘{’ token
+nsPipeConsole.cpp:69: erreur: expected unqualified-id before ‘,’ token
+nsPipeConsole.cpp:69: erreur: expected unqualified-id before ‘{’ token
+nsPipeConsole.cpp:69: erreur: expected declaration before ‘}’ token
+Dans le fichier inclus à partir de nsPipeChannel.cpp:57:
+nsPipeChannel.h:38:28: erreur: nsIPipeChannel.h : Aucun fichier ou dossier de ce type
+nsPipeChannel.h:39:34: erreur: nsIEventQueueService.h : Aucun fichier ou dossier de ce type
+nsPipeChannel.h:40:30: erreur: nsIPipeTransport.h : Aucun fichier ou dossier de ce type
+In file included from nsPipeChannel.cpp:47:
+/usr/include/xulrunner-1.9/unstable/nsIThread.h:44: erreur: ‘PRThread’ has not been declared
+In file included from nsPipeChannel.cpp:57:
+nsPipeChannel.h:49: erreur: expected class-name before ‘,’ token
+nsPipeChannel.h:52: erreur: expected class-name before ‘{’ token
+nsPipeChannel.h:57: erreur: ISO C++ forbids declaration of ‘NS_DECL_NSIPIPECHANNEL’ with no type
+nsPipeChannel.h:58: erreur: expected ‘;’ before ‘virtual’
+nsPipeChannel.h:60: erreur: ‘NS_DECL_NSIPIPETRANSPORTHEADERS’ does not name a type
+nsPipeChannel.h:110: erreur: ‘nsIPipeTransport’ was not declared in this scope
+nsPipeChannel.h:110: erreur: patron de l'argument 1 est invalide
+nsPipeChannel.cpp:72: erreur: definition of implicitly-declared ‘nsPipeChannel::nsPipeChannel()’
+nsPipeChannel.cpp: In member function ‘nsresult nsPipeChannel::Finalize(PRBool)’:
+nsPipeChannel.cpp:133: erreur: ‘nsIPipeChannel’ was not declared in this scope
+nsPipeChannel.cpp:133: erreur: patron de l'argument 1 est invalide
+nsPipeChannel.cpp:133: erreur: invalid type in declaration before ‘;’ token
+nsPipeChannel.cpp:137: erreur: invalid conversion from ‘nsPipeChannel* const’ to ‘int’
+nsPipeChannel.cpp:141: erreur: base operand of ‘->’ is not a pointer
+nsPipeChannel.cpp: At global scope:
+nsPipeChannel.cpp:167: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsPipeChannel.cpp:167: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsPipeChannel.cpp: In member function ‘virtual nsresult nsPipeChannel::QueryInterface(const nsIID&, void**)’:
+nsPipeChannel.cpp:167: erreur: ‘nsIPipeChannel’ has not been declared
+nsPipeChannel.cpp:167: erreur: expected primary-expression before ‘int’
+nsPipeChannel.cpp:167: erreur: expected `}' before ‘int’
+nsPipeChannel.cpp:167: erreur: expected `}' before ‘int’
+nsPipeChannel.cpp:167: erreur: expected ‘,’ or ‘;’ before ‘int’
+nsPipeChannel.cpp:167: attention : unused variable ‘rv’
+nsPipeChannel.cpp:167: attention : unused variable ‘table’
+nsPipeChannel.cpp:167: attention : « return » manquant dans une fonction devant retourner une valeur
+nsPipeChannel.cpp: At global scope:
+nsPipeChannel.cpp:167: erreur: mélange de déclarations et de définitions de fonction est interdit
+nsPipeChannel.cpp:167: erreur: expected unqualified-id before ‘{’ token
+nsPipeChannel.cpp:167: erreur: expected unqualified-id before ‘,’ token
+nsPipeChannel.cpp:167: erreur: expected unqualified-id before ‘{’ token
+nsPipeChannel.cpp:167: erreur: expected unqualified-id before ‘,’ token
+nsPipeChannel.cpp:167: erreur: expected unqualified-id before ‘{’ token
+nsPipeChannel.cpp:167: erreur: expected unqualified-id before ‘,’ token
+nsPipeChannel.cpp:167: erreur: expected unqualified-id before ‘{’ token
+nsPipeChannel.cpp:167: erreur: expected unqualified-id before ‘,’ token
+nsPipeChannel.cpp:167: erreur: expected unqualified-id before ‘{’ token
+nsPipeChannel.cpp:167: erreur: expected unqualified-id before ‘,’ token
+nsPipeChannel.cpp:167: erreur: expected unqualified-id before ‘{’ token
+nsPipeChannel.cpp:167: erreur: expected declaration before ‘}’ token
+nsPipeFilterListener.cpp:43:26: erreur: nsFileStream.h : Aucun fichier ou dossier de ce type
+Dans le fichier inclus à partir de nsPipeFilterListener.cpp:51:
+nsPipeFilterListener.h:38:35: erreur: nsIPipeFilterListener.h : Aucun fichier ou dossier de ce type
+In file included from nsPipeFilterListener.cpp:45:
+/usr/include/xulrunner-1.9/unstable/nsIThread.h:44: erreur: ‘PRThread’ has not been declared
+In file included from nsPipeFilterListener.cpp:51:
+nsPipeFilterListener.h:52: erreur: expected class-name before ‘,’ token
+nsPipeFilterListener.h:59: erreur: ISO C++ forbids declaration of ‘NS_DECL_NSIPIPEFILTERLISTENER’ with no type
+nsPipeFilterListener.h:60: erreur: expected ‘;’ before ‘virtual’
+nsPipeFilterListener.cpp:72: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsPipeFilterListener.cpp:72: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsPipeFilterListener.cpp: In member function ‘virtual nsresult nsPipeFilterListener::QueryInterface(const nsIID&, void**)’:
+nsPipeFilterListener.cpp:72: erreur: ‘nsIPipeFilterListener’ has not been declared
+nsPipeFilterListener.cpp:72: erreur: expected primary-expression before ‘int’
+nsPipeFilterListener.cpp:72: erreur: expected `}' before ‘int’
+nsPipeFilterListener.cpp:72: erreur: expected `}' before ‘int’
+nsPipeFilterListener.cpp:72: erreur: expected ‘,’ or ‘;’ before ‘int’
+nsPipeFilterListener.cpp:72: attention : unused variable ‘rv’
+nsPipeFilterListener.cpp:72: attention : unused variable ‘table’
+nsPipeFilterListener.cpp:72: attention : « return » manquant dans une fonction devant retourner une valeur
+nsPipeFilterListener.cpp: At global scope:
+nsPipeFilterListener.cpp:72: erreur: mélange de déclarations et de définitions de fonction est interdit
+nsPipeFilterListener.cpp:72: erreur: expected unqualified-id before ‘{’ token
+nsPipeFilterListener.cpp:72: erreur: expected unqualified-id before ‘,’ token
+nsPipeFilterListener.cpp:72: erreur: expected unqualified-id before ‘{’ token
+nsPipeFilterListener.cpp:72: erreur: expected unqualified-id before ‘,’ token
+nsPipeFilterListener.cpp:72: erreur: expected unqualified-id before ‘{’ token
+nsPipeFilterListener.cpp:72: erreur: expected unqualified-id before ‘,’ token
+nsPipeFilterListener.cpp:72: erreur: expected unqualified-id before ‘{’ token
+nsPipeFilterListener.cpp:72: erreur: expected unqualified-id before ‘,’ token
+nsPipeFilterListener.cpp:72: erreur: expected unqualified-id before ‘{’ token
+nsPipeFilterListener.cpp:72: erreur: expected declaration before ‘}’ token
+nsIPCBuffer.cpp:47:38: erreur: nsSpecialSystemDirectory.h : Aucun fichier ou dossier de ce type
+Dans le fichier inclus à partir de nsIPCBuffer.cpp:51:
+nsIPCBuffer.h:38:26: erreur: nsIIPCBuffer.h : Aucun fichier ou dossier de ce type
+nsIPCBuffer.h:44:24: erreur: nsFileSpec.h : Aucun fichier ou dossier de ce type
+nsIPCBuffer.h:45:26: erreur: nsFileStream.h : Aucun fichier ou dossier de ce type
+In file included from nsIPCBuffer.cpp:43:
+/usr/include/xulrunner-1.9/unstable/nsIThread.h:44: erreur: ‘PRThread’ has not been declared
+In file included from nsIPCBuffer.cpp:51:
+nsIPCBuffer.h:48: erreur: expected class-name before ‘,’ token
+nsIPCBuffer.h:56: erreur: ‘NS_DECL_NSIPIPELISTENER’ does not name a type
+nsIPCBuffer.h:96: erreur: ISO C++ forbids declaration of ‘IPCFileDesc’ with no type
+nsIPCBuffer.h:96: erreur: expected ‘;’ before ‘*’ token
+nsIPCBuffer.h:97: erreur: ISO C++ forbids declaration of ‘IPCFileDesc’ with no type
+nsIPCBuffer.h:97: erreur: expected ‘;’ before ‘*’ token
+nsIPCBuffer.h:99: erreur: ISO C++ forbids declaration of ‘nsFileSpec’ with no type
+nsIPCBuffer.h:99: erreur: expected ‘;’ before ‘*’ token
+nsIPCBuffer.h:100: erreur: ISO C++ forbids declaration of ‘nsOutputFileStream’ with no type
+nsIPCBuffer.h:100: erreur: expected ‘;’ before ‘*’ token
+nsIPCBuffer.h:101: erreur: ISO C++ forbids declaration of ‘nsInputFileStream’ with no type
+nsIPCBuffer.h:101: erreur: expected ‘;’ before ‘*’ token
+nsIPCBuffer.cpp:70: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsIPCBuffer.cpp:70: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsIPCBuffer.cpp: In member function ‘virtual nsresult nsIPCBuffer::QueryInterface(const nsIID&, void**)’:
+nsIPCBuffer.cpp:70: erreur: invalid static_cast from type ‘nsIPCBuffer*’ to type ‘nsIStreamListener*’
+nsIPCBuffer.cpp:70: erreur: ‘nsIPipeListener’ has not been declared
+nsIPCBuffer.cpp:70: erreur: expected primary-expression before ‘int’
+nsIPCBuffer.cpp:70: erreur: expected `}' before ‘int’
+nsIPCBuffer.cpp:70: erreur: expected `}' before ‘int’
+nsIPCBuffer.cpp:70: erreur: expected ‘,’ or ‘;’ before ‘int’
+nsIPCBuffer.cpp:70: attention : unused variable ‘rv’
+nsIPCBuffer.cpp:70: attention : unused variable ‘table’
+nsIPCBuffer.cpp:70: attention : « return » manquant dans une fonction devant retourner une valeur
+nsIPCBuffer.cpp: At global scope:
+nsIPCBuffer.cpp:70: erreur: mélange de déclarations et de définitions de fonction est interdit
+nsIPCBuffer.cpp:70: erreur: expected unqualified-id before ‘{’ token
+nsIPCBuffer.cpp:70: erreur: expected unqualified-id before ‘,’ token
+nsIPCBuffer.cpp:70: erreur: expected unqualified-id before ‘{’ token
+nsIPCBuffer.cpp:70: erreur: expected unqualified-id before ‘,’ token
+nsIPCBuffer.cpp:70: erreur: expected unqualified-id before ‘{’ token
+nsIPCBuffer.cpp:70: erreur: expected unqualified-id before ‘,’ token
+nsIPCBuffer.cpp:70: erreur: expected unqualified-id before ‘{’ token
+nsIPCBuffer.cpp:70: erreur: expected unqualified-id before ‘,’ token
+nsIPCBuffer.cpp:70: erreur: expected unqualified-id before ‘{’ token
+nsIPCBuffer.cpp:70: erreur: expected declaration before ‘}’ token
+nsIPCService.cpp:47:37: erreur: nsIByteArrayInputStream.h : Aucun fichier ou dossier de ce type
+nsIPCService.cpp:55:28: erreur: nsIPipeConsole.h : Aucun fichier ou dossier de ce type
+nsIPCService.cpp:56:30: erreur: nsIPipeTransport.h : Aucun fichier ou dossier de ce type
+Dans le fichier inclus à partir de nsIPCService.cpp:57:
+nsIPCService.h:39:27: erreur: nsIIPCService.h : Aucun fichier ou dossier de ce type
+nsIPCService.cpp:59:25: erreur: nsIPCModule.h : Aucun fichier ou dossier de ce type
+Dans le fichier inclus à partir de nsIPCService.cpp:60:
+nsIPCBuffer.h:38:26: erreur: nsIIPCBuffer.h : Aucun fichier ou dossier de ce type
+nsIPCBuffer.h:44:24: erreur: nsFileSpec.h : Aucun fichier ou dossier de ce type
+nsIPCBuffer.h:45:26: erreur: nsFileStream.h : Aucun fichier ou dossier de ce type
+In file included from nsIPCService.cpp:57:
+nsIPCService.h:44: erreur: expected class-name before ‘,’ token
+nsIPCService.h:49: erreur: ISO C++ forbids declaration of ‘NS_DECL_NSIIPCSERVICE’ with no type
+nsIPCService.h:50: erreur: expected ‘;’ before ‘virtual’
+nsIPCService.h:70: erreur: ‘nsIPipeListener’ has not been declared
+nsIPCService.h:71: erreur: ‘nsIPipeTransport’ has not been declared
+nsIPCService.h:77: erreur: ‘nsIPipeConsole’ was not declared in this scope
+nsIPCService.h:77: erreur: patron de l'argument 1 est invalide
+nsIPCService.h:81: erreur: expected class-name before ‘{’ token
+nsIPCService.h:84: erreur: ‘NS_DECL_NSIIPCREQUEST’ does not name a type
+nsIPCService.h:96: erreur: ‘nsIPipeTransport’ was not declared in this scope
+nsIPCService.h:96: erreur: patron de l'argument 1 est invalide
+nsIPCService.h:97: erreur: ‘nsIPipeListener’ was not declared in this scope
+nsIPCService.h:97: erreur: patron de l'argument 1 est invalide
+nsIPCService.h:98: erreur: ‘nsIPipeListener’ was not declared in this scope
+nsIPCService.h:98: erreur: patron de l'argument 1 est invalide
+In file included from nsIPCService.cpp:60:
+nsIPCBuffer.h:48: erreur: expected class-name before ‘,’ token
+nsIPCBuffer.h:56: erreur: ‘NS_DECL_NSIPIPELISTENER’ does not name a type
+nsIPCBuffer.h:96: erreur: ISO C++ forbids declaration of ‘IPCFileDesc’ with no type
+nsIPCBuffer.h:96: erreur: expected ‘;’ before ‘*’ token
+nsIPCBuffer.h:97: erreur: ISO C++ forbids declaration of ‘IPCFileDesc’ with no type
+nsIPCBuffer.h:97: erreur: expected ‘;’ before ‘*’ token
+nsIPCBuffer.h:99: erreur: ISO C++ forbids declaration of ‘nsFileSpec’ with no type
+nsIPCBuffer.h:99: erreur: expected ‘;’ before ‘*’ token
+nsIPCBuffer.h:100: erreur: ISO C++ forbids declaration of ‘nsOutputFileStream’ with no type
+nsIPCBuffer.h:100: erreur: expected ‘;’ before ‘*’ token
+nsIPCBuffer.h:101: erreur: ISO C++ forbids declaration of ‘nsInputFileStream’ with no type
+nsIPCBuffer.h:101: erreur: expected ‘;’ before ‘*’ token
+nsIPCService.cpp:103: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsIPCService.cpp:103: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsIPCService.cpp: In member function ‘virtual nsresult nsIPCService::QueryInterface(const nsIID&, void**)’:
+nsIPCService.cpp:103: erreur: ‘nsIIPCService’ has not been declared
+nsIPCService.cpp:103: erreur: expected primary-expression before ‘int’
+nsIPCService.cpp:103: erreur: expected `}' before ‘int’
+nsIPCService.cpp:103: erreur: expected `}' before ‘int’
+nsIPCService.cpp:103: erreur: expected ‘,’ or ‘;’ before ‘int’
+nsIPCService.cpp:103: attention : unused variable ‘rv’
+nsIPCService.cpp:103: attention : unused variable ‘table’
+nsIPCService.cpp:103: attention : « return » manquant dans une fonction devant retourner une valeur
+nsIPCService.cpp: At global scope:
+nsIPCService.cpp:103: erreur: mélange de déclarations et de définitions de fonction est interdit
+nsIPCService.cpp:103: erreur: expected unqualified-id before ‘{’ token
+nsIPCService.cpp:103: erreur: expected unqualified-id before ‘,’ token
+nsIPCService.cpp:103: erreur: expected unqualified-id before ‘{’ token
+nsIPCService.cpp:103: erreur: expected unqualified-id before ‘,’ token
+nsIPCService.cpp:103: erreur: expected unqualified-id before ‘{’ token
+nsIPCService.cpp:103: erreur: expected declaration before ‘}’ token
+Dans le fichier inclus à partir de nsProcessInfo.cpp:37:
+nsProcessInfo.h:38:28: erreur: nsIProcessInfo.h : Aucun fichier ou dossier de ce type
+In file included from nsProcessInfo.cpp:37:
+nsProcessInfo.h:43: erreur: expected class-name before ‘{’ token
+nsProcessInfo.h:46: erreur: ‘NS_DECL_NSIPROCESSINFO’ does not name a type
+nsProcessInfo.cpp:41: erreur: definition of implicitly-declared ‘nsProcessInfo::nsProcessInfo()’
+nsProcessInfo.cpp:56: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsProcessInfo.cpp:56: erreur: expected constructor, destructor, or type conversion before ‘;’ token
+nsProcessInfo.cpp: In member function ‘virtual nsresult nsProcessInfo::QueryInterface(const nsIID&, void**)’:
+nsProcessInfo.cpp:56: erreur: ‘nsIProcessInfo’ has not been declared
+nsProcessInfo.cpp:56: erreur: expected primary-expression before ‘int’
+nsProcessInfo.cpp:56: erreur: expected `}' before ‘int’
+nsProcessInfo.cpp:56: erreur: expected `}' before ‘int’
+nsProcessInfo.cpp:56: erreur: expected ‘,’ or ‘;’ before ‘int’
+nsProcessInfo.cpp:56: attention : unused variable ‘rv’
+nsProcessInfo.cpp:56: attention : unused variable ‘table’
+nsProcessInfo.cpp:56: attention : « return » manquant dans une fonction devant retourner une valeur
+nsProcessInfo.cpp: At global scope:
+nsProcessInfo.cpp:56: erreur: mélange de déclarations et de définitions de fonction est interdit
+nsProcessInfo.cpp:56: erreur: expected unqualified-id before ‘{’ token
+nsProcessInfo.cpp:56: erreur: expected unqualified-id before ‘,’ token
+nsProcessInfo.cpp:56: erreur: expected unqualified-id before ‘{’ token
+nsProcessInfo.cpp:56: erreur: expected declaration before ‘}’ token
+make: *** [build] Erreur 1

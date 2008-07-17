@@ -35,7 +35,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-/*try {
+try {
      	const cid = "@getfiregpg.org/XPCOM/FireGPGCall;1";
 		obj = Components.classes[cid].createInstance();
 		obj = obj.QueryInterface(Components.interfaces.IFireGPGCall);
@@ -51,7 +51,7 @@ const FIREGPG_VERSION = '0.5.1';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
-const FIREGPG_STATUS = 'RELASE';
+const FIREGPG_STATUS = 'DEVEL';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */
