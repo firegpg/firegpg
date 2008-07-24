@@ -25,9 +25,12 @@ GECKO_INCLUDES = -I $(GECKO_SDK_PATH)/include \
 -I $(GECKO_SDK_PATH)/include/mimetype \
 -I $(GECKO_SDK_PATH)/include/xpconnect \
 -I /usr/include/xulrunner-1.9/unstable \
--I /usr/include/nspr/
-GECKO_LDFLAGS =  -L $(GECKO_SDK_PATH)/lib -lxpcomglue \
-                 -lnspr4      \
+-I /usr/include/nspr/ \
+-I ../public \
+-I ../build \
+-I ../bonus
+
+GECKO_LDFLAGS =  -lnspr4      \
                  -lplds4
 
 
