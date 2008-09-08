@@ -4,7 +4,7 @@
 		<title>Block context</title>
 		<link rel="stylesheet" type="text/css" href="block.css" />
 	</head>
-	<body>
+	<body id="firegpg-inline">
 		<div id="header"></div>
 		<pre id="output" style="display: none;"></pre>
 		<div id="message"></div>
