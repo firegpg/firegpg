@@ -47,5 +47,5 @@
 <!ENTITY firegpg-ask-for-private-label.text "總是請求私鑰">
 <!ENTITY inline-activated "處理頁面中的PGP區塊（需要重啟）">
 <!ENTITY gmail-disable-autosave-checkbox "禁用自動保存">
-<!ENTITY gmail-buton-csign-checkbox "Clear sign">
-<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
+<!ENTITY gmail-buton-csign-checkbox "成功簽署">
+<!ENTITY gmail-buton-csignsend-checkbox "成功簽署并發送">

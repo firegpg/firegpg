@@ -40,8 +40,10 @@ var Keyring = { };
    Constants: Tags of PGP's blocks
 
    Keyring.Tags.PgpBlockStart - Start of a PGP block
-   Keyring.Tags.KeyStart - Star of a PGP key
+   Keyring.Tags.KeyStart - Start of a PGP key
    Keyring.Tags.KeyEnd - End of a PGP key
+   Keyring.Tags.PrivateKeyStart - Start of a PGP private key
+   Keyring.Tags.PrivateKeyEnd - End of a PGP private key
    Keyring.Tags.SignedMessageStart - Start of a signed message
    Keyring.Tags.SignatureStart - Start of a sign
    Keyring.Tags.SignatureEnd - End of a sign
@@ -54,6 +56,8 @@ Keyring.Tags = {
     PgpBlockStart: "-----BEGIN PGP",
 	KeyStart: "-----BEGIN PGP PUBLIC KEY BLOCK-----",
 	KeyEnd: "-----END PGP PUBLIC KEY BLOCK-----",
+	PrivateKeyStart: "-----BEGIN PGP PRIVATE KEY BLOCK-----",
+	PrivateKeyEnd: "-----END PGP PRIVATE KEY BLOCK-----",
 	SignedMessageStart: "-----BEGIN PGP SIGNED MESSAGE-----",
 	SignatureStart: "-----BEGIN PGP SIGNATURE-----",
 	SignatureEnd: "-----END PGP SIGNATURE-----",
@@ -62,20 +66,22 @@ Keyring.Tags = {
 };
 
 /*
-   Constants: Types of blocs
+   Constants: Types of blocks
 
    Keyring.KEY_BLOCK - It's a key block
+   Keyring.PRIVATE_KEY_BLOCK - It's a private key block
    Keyring.SIGN_BLOCK    - It's a sign block
    Keyring.MESSAGE_BLOCK   - It's a message block
 */
 Keyring.KEY_BLOCK = 1;
-Keyring.SIGN_BLOCK = 2;
-Keyring.MESSAGE_BLOCK = 3;
+Keyring.PRIVATE_KEY_BLOCK = 2;
+Keyring.SIGN_BLOCK = 3;
+Keyring.MESSAGE_BLOCK = 4;
 
 
 /*
    Class: Keyring
-   This class a system to detect and manage pgp block found in pages
+   This class a system to detect and manage PGP block found in pages
 */
 
 /*
@@ -134,12 +140,18 @@ Keyring.HandleBlock = function(document, range, blockType) {
 				style.display = "block";
                 this.textContent = Keyring.i18n.getString("hide-original");
             }
+            frame.style.width = block.body.scrollWidth + "px";
 			frame.style.height = block.body.scrollHeight + "px";
 		}, false);
 		var actionHandler = function() {
 			switch(blockType) {
 				case Keyring.KEY_BLOCK:
 					Keyring.ImportKey(block.original.textContent, block);
+					break;
+				case Keyring.PRIVATE_KEY_BLOCK:
+					block.body.className = "failure";
+                    block.output.style.display = "block";
+                    block.output.textContent = Keyring.i18n.getString("private-key-block-message").replace(/\. /g, ".\n");
 					break;
 				case Keyring.SIGN_BLOCK:
 					Keyring.VerifySignature(block.original.textContent, block);
@@ -148,7 +160,9 @@ Keyring.HandleBlock = function(document, range, blockType) {
 					Keyring.DecryptMessage(block.original.textContent, block);
 					break;
 			}
+            frame.style.width = block.body.scrollWidth + "px";
 			frame.style.height = block.body.scrollHeight + "px";
+
 		};
 		block.action.addEventListener("click", actionHandler, false);
 
@@ -158,11 +172,15 @@ Keyring.HandleBlock = function(document, range, blockType) {
 				block.header.textContent = Keyring.i18n.getString("key-block");
 				block.action.textContent = Keyring.i18n.getString("import");
 				break;
+			case Keyring.PRIVATE_KEY_BLOCK:
+				block.body.className = "information";
+				block.header.textContent = Keyring.i18n.getString("private-key-block");
+				block.action.textContent = Keyring.i18n.getString("import");
+				break;
 			case Keyring.SIGN_BLOCK:
 				block.body.className = "caution";
 				block.header.textContent = Keyring.i18n.getString("signed-message")  + ", " + Keyring.i18n.getString("unverified");
 				block.action.textContent = Keyring.i18n.getString("verify");
-
 				// Extract the message without the header and signature
 				block.message.innerHTML = content.substring(content.indexOf("\n\n") + 2, content.indexOf(Keyring.Tags.SignatureStart)).replace(/</gi,"&lt;").replace(/>/gi,"&gt;").replace(/\n/gi,"<br />");
 				break;
@@ -172,6 +190,7 @@ Keyring.HandleBlock = function(document, range, blockType) {
 				block.action.textContent = Keyring.i18n.getString("decrypt");
 				break;
 		}
+        frame.style.width = block.body.scrollWidth + "px";
 		frame.style.height = block.body.scrollHeight + "px";
 	}, false);
 };
@@ -218,6 +237,11 @@ Keyring.HandlePage = function(document) {
 					idx = node.textContent.indexOf(Keyring.Tags.EncryptedMessageStart, baseIdx);
 					search = Keyring.Tags.EncryptedMessageEnd;
                     blockType = Keyring.MESSAGE_BLOCK;
+				}
+				if(idx == -1) {
+					idx = node.textContent.indexOf(Keyring.Tags.PrivateKeyStart, baseIdx);
+					blockType = Keyring.PRIVATE_KEY_BLOCK;
+					search = Keyring.Tags.PrivateKeyEnd;
 				}
 
 				if(idx == -1)

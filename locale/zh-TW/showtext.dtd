@@ -5,5 +5,5 @@
 <!ENTITY open-button "打開">
 <!ENTITY save-button "保存">
 <!ENTITY cryptandsign-button "簽名并加密">
-<!ENTITY sign-clear-button "Clear sign">
-<!ENTITY symcrypt-button "Symetric encryption">
+<!ENTITY sign-clear-button "成功簽署">
+<!ENTITY symcrypt-button "對稱加密">

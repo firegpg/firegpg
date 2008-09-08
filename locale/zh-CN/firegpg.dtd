@@ -40,9 +40,9 @@
 <!ENTITY firegpgContext.labelCryptSign "签名并加密">
 <!ENTITY firegpgMenu.labelCryptSign "签名并加密">
 <!ENTITY firegpgToolbar.labelCryptSign "签名并加密">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgContext.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgMenu.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgContext.labelClearSign "Clear sign">
-<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
-<!ENTITY firegpgMenu.labelClearSign "Clear sign">
+<!ENTITY firegpgToolbar.labelSymCrypt "对称加密">
+<!ENTITY firegpgContext.labelSymCrypt "对称加密">
+<!ENTITY firegpgMenu.labelSymCrypt "对称加密">
+<!ENTITY firegpgContext.labelClearSign "成功签署">
+<!ENTITY firegpgToolbar.labelClearSign "成功签署">
+<!ENTITY firegpgMenu.labelClearSign "成功签署">

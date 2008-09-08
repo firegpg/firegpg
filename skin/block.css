@@ -47,6 +47,7 @@ body.failure #output {
     white-space: pre-wrap;
 }
 
-#original {
+#output, #original {
 	white-space: pre-wrap;
+    overflow: auto;
 }
