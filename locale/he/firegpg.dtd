@@ -42,9 +42,9 @@ GnuPG !">
 <!ENTITY firegpgContext.labelCryptSign "חתום ושלח">
 <!ENTITY firegpgMenu.labelCryptSign "חתום ושלח">
 <!ENTITY firegpgToolbar.labelCryptSign "חתום והצפן">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgContext.labelSymCrypt "Symetric encryption">
-<!ENTITY firegpgMenu.labelSymCrypt "Symetric encryption">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
+<!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
+<!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
 <!ENTITY firegpgContext.labelClearSign "Clear sign">
 <!ENTITY firegpgToolbar.labelClearSign "Clear sign">
 <!ENTITY firegpgMenu.labelClearSign "Clear sign">

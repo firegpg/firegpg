@@ -6,4 +6,4 @@
 <!ENTITY save-button "Salvar">
 <!ENTITY cryptandsign-button "Assinar e Cifrar">
 <!ENTITY sign-clear-button "Clear sign">
-<!ENTITY symcrypt-button "Symetric encryption">
+<!ENTITY symcrypt-button "Symmetric encryption">

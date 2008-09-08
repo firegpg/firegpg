@@ -43,6 +43,6 @@
 <!ENTITY firegpgToolbar.labelSymCrypt "Cifrado simétrico">
 <!ENTITY firegpgContext.labelSymCrypt "Cifrado simétrico">
 <!ENTITY firegpgMenu.labelSymCrypt "Cifrado simétrico">
-<!ENTITY firegpgContext.labelClearSign "Borrar firma">
-<!ENTITY firegpgToolbar.labelClearSign "Borrar firma">
-<!ENTITY firegpgMenu.labelClearSign "Borrar firma">
+<!ENTITY firegpgContext.labelClearSign "Firmar en limpio">
+<!ENTITY firegpgToolbar.labelClearSign "Firmar en limpio">
+<!ENTITY firegpgMenu.labelClearSign "Firmar en limpio">
