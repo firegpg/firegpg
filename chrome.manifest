@@ -21,6 +21,8 @@ locale	firegpg	ru locale/ru/
 locale	firegpg	ar	locale/ar/
 locale	firegpg	hu locale/hu/
 locale	firegpg	no	locale/no/
+locale	firegpg	nb	locale/no/
+locale	firegpg	nb-NO	locale/no/
 skin	firegpg	classic/1.0	skin/
 overlay	chrome://browser/content/browser.xul	chrome://firegpg/content/firefoxOverlay.xul
 style	chrome://global/content/customizeToolbar.xul	chrome://firegpg/skin/overlay.css
