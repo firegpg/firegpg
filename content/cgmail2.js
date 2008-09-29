@@ -193,22 +193,26 @@ var cGmail2 = {
                         var spamLimite = listeTest[i].getElementsByTagName('span');
                         spamLimite = spamLimite[0];
 
+                        //Nouvelle version du lundi 29 septembre 2008
+                        if (listeTest[i].firstChild && listeTest[i].firstChild.getAttribute("class") == "c1I77d yCMBJb goog-container")
+                            var wheretoadd = listeTest[i].firstChild;
+
                         if (cGmail2.b_sign == true)
-                            this.addBouton(listeTest[i],doc,i18n.getString("GMailCLS"),"sign",spamLimite);
+                            this.addBouton(wheretoadd,doc,i18n.getString("GMailCLS"),"sign",spamLimite);
                         if (cGmail2.b_sign_s == true)
-                            this.addBouton(listeTest[i],doc,i18n.getString("GMailCLSS"),"sndsign",spamLimite);
+                            this.addBouton(wheretoadd,doc,i18n.getString("GMailCLSS"),"sndsign",spamLimite);
                         if (cGmail2.b_psign == true)
-                            this.addBouton(listeTest[i],doc,i18n.getString("GMailS"),"psign",spamLimite);
+                            this.addBouton(wheretoadd,doc,i18n.getString("GMailS"),"psign",spamLimite);
                         if (cGmail2.b_psign_s == true)
-                            this.addBouton(listeTest[i],doc,i18n.getString("GMailSS"),"sndpsign",spamLimite);
+                            this.addBouton(wheretoadd,doc,i18n.getString("GMailSS"),"sndpsign",spamLimite);
                         if (cGmail2.b_crypt == true)
-                            this.addBouton(listeTest[i],doc,i18n.getString("GMailC"),"crypt",spamLimite);
+                            this.addBouton(wheretoadd,doc,i18n.getString("GMailC"),"crypt",spamLimite);
                         if (cGmail2.b_crypt_s == true)
-                            this.addBouton(listeTest[i],doc,i18n.getString("GMailCS"),"sndcrypt",spamLimite);
+                            this.addBouton(wheretoadd,doc,i18n.getString("GMailCS"),"sndcrypt",spamLimite);
                         if (cGmail2.b_signcrypt == true)
-                            this.addBouton(listeTest[i],doc,i18n.getString("GMailSAC"),"signcrypt",spamLimite);
+                            this.addBouton(wheretoadd,doc,i18n.getString("GMailSAC"),"signcrypt",spamLimite);
                         if (cGmail2.b_signcrypt_s == true)
-                            this.addBouton(listeTest[i],doc,i18n.getString("GMailSACS"),"sndsigncrypt",spamLimite);
+                            this.addBouton(wheretoadd,doc,i18n.getString("GMailSACS"),"sndsigncrypt",spamLimite);
 
                         try {
 
@@ -224,6 +228,11 @@ var cGmail2 = {
 
 
                             var tablebox = listeTest[i].parentNode.getElementsByTagName('table');
+
+                            //Nouvelle version du lundi 29 septembre 2008
+                            if (tablebox.length == 0)
+                                tablebox = listeTest[i].parentNode.parentNode.getElementsByTagName('table');
+
                             tablebox = tablebox[0];
 
                             var boxwhereadd = tablebox.parentNode;
@@ -244,7 +253,15 @@ var cGmail2 = {
                         }
 
                         form =  listeTest[i].parentNode.getElementsByTagName('form');
+                        //Nouvelle version du lundi 29 septembre 2008
+                         if (form.length == 0) {
+
+                            divs = listeTest[i].parentNode.parentNode.getElementsByTagName('form');
+
+                         }
+
                         form = form[0];
+
 
 
                         var prefs = Components.classes["@mozilla.org/preferences-service;1"].
@@ -266,7 +283,7 @@ var cGmail2 = {
                         */
                         // Disable autosave and add appropriate notification
 
-                        if (disable_autosave)
+                        if (disable_autosave && form) // && form
                         {
 
                             String.prototype.startsWith = function(s)
@@ -910,6 +927,21 @@ var cGmail2 = {
 
         tmp = tmp.childNodes[1];
 
+        //29 septebmre 2008
+        if (!tmp) {
+
+             var tmp = boutonxboxnode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.childNodes[1];
+
+        }
+
         tmp = tmp.firstChild;
 
         tmp = tmp.childNodes[2];
@@ -940,6 +972,21 @@ var cGmail2 = {
         tmp = tmp.parentNode;
 
         tmp = tmp.childNodes[1];
+
+         //29 septebmre 2008
+        if (!tmp) {
+
+             var tmp = boutonxboxnode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.childNodes[1];
+
+        }
 
         tmp = tmp.firstChild;
 
@@ -972,6 +1019,21 @@ var cGmail2 = {
         tmp = tmp.parentNode;
 
         tmp = tmp.childNodes[1];
+
+         //29 septebmre 2008
+        if (!tmp) {
+
+             var tmp = boutonxboxnode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.childNodes[1];
+
+        }
 
         tmp = tmp.firstChild;
 
