@@ -637,7 +637,7 @@ var cGmail = {
 
 				if(result.result == RESULT_SUCCESS) {
 
-					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.crypted);
+					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.encrypted);
 
 					if (target.id == "sndcrypt")
 					{
@@ -668,7 +668,7 @@ var cGmail = {
 
 				if(result.result == RESULT_SUCCESS) {
 
-					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.crypted);
+					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.encrypted);
 
 					if (target.id == "sndsigncrypt")
 					{

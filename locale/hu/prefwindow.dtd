@@ -11,7 +11,7 @@
 <!ENTITY result-always-in-new-window "Mindig új ablakban jelenítse meg egy kódolás vagy egy aláírás eredményét.">
 <!ENTITY no-gpg-agent-checkbox "A GPG Agent kényszerített kikapcsolása (néhány hibát megszüntethet)">
 <!ENTITY ask-for-save-pass "Alapból kérdezzen rá a jelszó elmentésére.">
-<!ENTITY gmail-no-no-sign-checkbox "Ne mutassa, hogy \"Aláírás nem található a [...]\"">
+<!ENTITY gmail-no-no-sign-checkbox "Ne mutassa, hogy 'Aláírás nem található a [...]'">
 <!ENTITY gmail-need-a-restart "Ezen beállításokhoz újra kell indítani a böngészőt.">
 <!ENTITY gmail-buttons-label "A következő gombokat mutassa:">
 <!ENTITY gmail-buton-sign-checkbox "Aláírás">

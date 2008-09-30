@@ -355,9 +355,9 @@ Keyring.VerifySignature = function(content, block) {
 
 
 
-    if (resultTest.signresult ==RESULT_ERROR_UNKNOW) {
-        block.body.className = "failure";
-        block.header.textContent = i18n.getString("signed-message") + ", " +i18n.getString("verifFailedGeneral");
+    if (resultTest.signresult == RESULT_SUCCESS) {
+        block.body.className = "ok";
+        block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifSuccess") + " " + resultTest.signresulttext;
     }
     else if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
         block.body.className = "failure";
@@ -368,8 +368,8 @@ Keyring.VerifySignature = function(content, block) {
         block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifFailedUnknownKey") ;
     }
     else {
-        block.body.className = "ok";
-        block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifSuccess") + " " + resultTest.signresulttext;
+        block.body.className = "failure";
+        block.header.textContent = i18n.getString("signed-message") + ", " +i18n.getString("verifFailedGeneral");
     }
 
 };
