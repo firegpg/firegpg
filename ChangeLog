@@ -1,3 +1,6 @@
+2008-10-10 Maximilien Cuony
+    * Using ipc and removing old system in progress.
+
 2008-09-29 Maximilien Cuony
     * 0.5.2 packed, and uploaded to the server !
     * Fix a problem with hu locate

@@ -45,13 +45,16 @@ try {
 	var res = obj.Call("touch"," touch /tmp/coucou","testtest\n");
     alert("R" + res);
 //
+*/
+
+
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */
 const FIREGPG_VERSION = '0.5.2';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
-const FIREGPG_STATUS = 'RELASE';
+const FIREGPG_STATUS = 'DEVEL';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */
