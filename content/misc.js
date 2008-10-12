@@ -87,8 +87,6 @@ const NS_PROCESSUTIL_CONTRACTID = "@mozilla.org/process/util;1";
 */
 const TMP_DIRECTORY = "TmpD";
 const TMP_FILES = "fgpg_tmpFile";
-const TMP_RFILES = "fgpg_tmpFile.bat"; //.bat for windows, but don't affect linux
-const TMP_EFILES = "fgpg_tmpFile.exe"; //.exe for windows
 
 /*
    Constants: Write modes for files.
@@ -517,80 +515,6 @@ function getTmpFile(permission /* optional */, suffix_file)  {
 	return fileobj.path;
 }
 
-/*
-    Function: getTmpFileRunning
-    Get an unique temporary file name, who can be executed (scripts).
-    The path + filename is returned.
-*/
-function getTmpFileRunning() {
-	return getTmpFile(WRITE_PERMISSION_R);
-}
-
-/*
-    Function: getTmpFileExeRunning
-    Get an unique temporary file nam for executable files (.exe)
-    The path + filename is returned.
-*/
-function getTmpFileExeRunning() {
-
-	var fileobj = getTmpDir();
-
-	permission = WRITE_PERMISSION_R;
-
-	var fileName = TMP_EFILES;
-
-	fileobj.append(fileName);
-	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, permission);
-	fileobj.permissions = permission;
-	return fileobj.path;
-}
-
-
-/*
-    Function: getTmpPassFile
-    Get an unique, temporary file name, for password (so it's random).
-    The path + filename is returned.
-*/
-function getTmpPassFile() {
-	var fileobj = getTmpDir();
-	var fileName = Math.floor(Math.random() * 9999);
-	var aleatoire = Math.floor(Math.random() * 9);
-
-	switch(aleatoire) {
-		case 0: fileName = fileName + "sd2345asd1234"; break;
-		case 1: fileName = fileName + "asdfsad"; break;
-		case 2: fileName = fileName + "rtdfgjdgth45dfhdfgas"; break;
-		case 3: fileName = fileName + "ssdfsdfwe5jfgjkgh"; break;
-		case 4: fileName = fileName + "gfhjghjghjghjghjjd1234"; break;
-		case 5: fileName = fileName + "sertghjghjghjghj"; break;
-		case 6: fileName = fileName + "sdfgh456dgsdfg"; break;
-		case 7: fileName = fileName + "kbysgfjkdfghdfgh"; break;
-		case 8: fileName = fileName + "ertasmlsdfjhgf"; break;
-		case 9: fileName = fileName + "fhfghsdfhhdfgh4"; break;
-	}
-
-	fileName = fileName + Math.floor(Math.random() * 9999);
-
-	aleatoire = Math.floor(Math.random() * 9)
-	switch(aleatoire) {
-		case 0: fileName = fileName + "5hrfgh"; break;
-		case 1: fileName = fileName + "sfgd"; break;
-		case 2: fileName = fileName + "sdfsdf"; break;
-		case 3: fileName = fileName + "tzugbn"; break;
-		case 4: fileName = fileName + "sdfsdf"; break;
-		case 5: fileName = fileName + "nvbnvbn"; break;
-		case 6: fileName = fileName + "zuigdfg"; break;
-		case 7: fileName = fileName + "dfjfgfh"; break;
-		case 8: fileName = fileName + "ertertef"; break;
-		case 9: fileName = fileName + "fdfgdfgdfgdfgdfgrxdcbvndfg"; break;
-	}
-
-	fileName = fileName + Math.floor(Math.random() * 9999);
-	fileobj.append(fileName);
-	fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, WRITE_PERMISSION);
-
-	return fileobj.path;
-}
 
 /*
     Function: removeFile
@@ -781,24 +705,6 @@ function getContent(aURL){
 	return str;
 }
 
-/*
-    Function: runCommand
-    Run a command
-
-    Parameters:
-        command - The command to exectue
-        arg - The arguements for the command
-*/
-function runCommand(command, arg) {
-	var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
-	                      createInstance(Components.interfaces.nsILocalFile);
-	file.initWithPath(command);
-	var process = Components.classes[NS_PROCESSUTIL_CONTRACTID].
-	                         createInstance(Components.interfaces.nsIProcess);
-	process.init(file);
-	var args = arg.split(' ');
-	process.run(true, args, args.length);
-}
 
 /*
     Function: getContentXtttp
@@ -823,43 +729,6 @@ function getContentXHttp(url)
 	    contenu = p.responseText;
 	    return contenu;
 	}
-}
-
-/*
-    Function: runWinCommand
-    Run a command on windows (as a hidden dos box with hstart.exe)
-
-    Parameters:
-        command - The command to exectue
-        arg - The arguements for the command
-*/
-function runWinCommand(command, arg) {
-
-	var commandWindows = getTmpFileExeRunning();
-
-	var runner = getBinContent("chrome://firegpg/content/hstart.exe");
-	putIntoBinFile(commandWindows,runner);
-
-	var file = Components.classes[NS_LOCALEFILE_CONTRACTID].
-	                      createInstance(Components.interfaces.nsILocalFile);
-	file.initWithPath(commandWindows);
-
-	var process = Components.classes[NS_PROCESSUTIL_CONTRACTID].
-	                         createInstance(Components.interfaces.nsIProcess);
-	process.init(file);
-
-
-	arg = command + ' ' +  arg;
-
-	var reg = new RegExp("\"", "gi");
-	var args = arg.replace(reg, "\\\"");
-
-	args = ["/WAIT","/NOWINDOW","/WAITIDLE","/REALTIME" ,'cmd /c "' + args + '"'];
-
-	process.run(true, args, args.length);
-
-	removeFile(commandWindows);
-
 }
 
 
