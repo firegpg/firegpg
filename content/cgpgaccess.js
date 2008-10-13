@@ -99,43 +99,16 @@ var useGPGTrust = true;
 */
 function Witch_GPGAccess () {
 
-    //TODO : Better ???
-
     if (loadXpcom()) {
 
         if (GPGAccess.isUnix()) {
 
-            GPGAccess.runGnupg = GPGAccessCallerUnixXpcom;
 
-            GPGAccess.sign = GPGAccessUnixXpcom.sign;
-            GPGAccess.verify = GPGAccessUnixXpcom.verify;
-            GPGAccess.listkey = GPGAccessUnixXpcom.listkey;
-            GPGAccess.crypt = GPGAccessUnixXpcom.crypt;
-            GPGAccess.symetric = GPGAccessUnixXpcom.symetric;
-            GPGAccess.cryptAndSign = GPGAccessUnixXpcom.cryptAndSign;
-            GPGAccess.decrypt = GPGAccessUnixXpcom.decrypt;
-            GPGAccess.selfTest = GPGAccessUnixXpcom.selfTest;
-            GPGAccess.kimport = GPGAccessUnixXpcom.kimport;
-            GPGAccess.kexport = GPGAccessUnixXpcom.kexport;
-            GPGAccess.runATest = GPGAccessUnixXpcom.runATest;
             GPGAccess.tryToFoundTheRightCommand = GPGAccessUnixXpcom.tryToFoundTheRightCommand;
 
 
         } else {
 
-            GPGAccess.runGnupg = GPGAccessCallerWindowsXpcom;
-
-            GPGAccess.sign = GPGAccessWindowsXpcom.sign;
-            GPGAccess.verify = GPGAccessWindowsXpcom.verify;
-            GPGAccess.listkey = GPGAccessWindowsXpcom.listkey;
-            GPGAccess.crypt = GPGAccessWindowsXpcom.crypt;
-            GPGAccess.symetric = GPGAccessWindowsXpcom.symetric;
-            GPGAccess.cryptAndSign = GPGAccessWindowsXpcom.cryptAndSign;
-            GPGAccess.decrypt = GPGAccessWindowsXpcom.decrypt;
-            GPGAccess.selfTest = GPGAccessWindowsXpcom.selfTest;
-            GPGAccess.kimport = GPGAccessWindowsXpcom.kimport;
-            GPGAccess.kexport = GPGAccessWindowsXpcom.kexport;
-            GPGAccess.runATest = GPGAccessWindowsXpcom.runATest;
             GPGAccess.tryToFoundTheRightCommand = GPGAccessWindowsXpcom.tryToFoundTheRightCommand;
 
 
@@ -146,43 +119,10 @@ function Witch_GPGAccess () {
     } else {
 
 
-        if (GPGAccess.isUnix()) {
+        var i18n = document.getElementById("firegpg-strings");
 
-            GPGAccess.runGnupg = GPGAccessCallerUnixNoXpcom;
+        alert(i18n.getString('noipc'));
 
-            GPGAccess.sign = GPGAccessUnixNoXpcom.sign;
-            GPGAccess.verify = GPGAccessUnixNoXpcom.verify;
-            GPGAccess.listkey = GPGAccessUnixNoXpcom.listkey;
-            GPGAccess.crypt = GPGAccessUnixNoXpcom.crypt;
-            GPGAccess.symetric = GPGAccessUnixNoXpcom.symetric;
-            GPGAccess.cryptAndSign = GPGAccessUnixNoXpcom.cryptAndSign;
-            GPGAccess.decrypt = GPGAccessUnixNoXpcom.decrypt;
-            GPGAccess.selfTest = GPGAccessUnixNoXpcom.selfTest;
-            GPGAccess.kimport = GPGAccessUnixNoXpcom.kimport;
-            GPGAccess.kexport = GPGAccessUnixNoXpcom.kexport;
-            GPGAccess.runATest = GPGAccessUnixNoXpcom.runATest;
-            GPGAccess.tryToFoundTheRightCommand = GPGAccessUnixNoXpcom.tryToFoundTheRightCommand;
-
-
-        } else {
-
-            GPGAccess.runGnupg = GPGAccessCallerWindowsNoXpcom;
-
-            GPGAccess.sign = GPGAccessWindowsNoXpcom.sign;
-            GPGAccess.verify = GPGAccessWindowsNoXpcom.verify;
-            GPGAccess.listkey = GPGAccessWindowsNoXpcom.listkey;
-            GPGAccess.crypt = GPGAccessWindowsNoXpcom.crypt;
-            GPGAccess.symetric = GPGAccessWindowsNoXpcom.symetric;
-            GPGAccess.cryptAndSign = GPGAccessWindowsNoXpcom.cryptAndSign;
-            GPGAccess.decrypt = GPGAccessWindowsNoXpcom.decrypt;
-            GPGAccess.selfTest = GPGAccessWindowsNoXpcom.selfTest;
-            GPGAccess.kimport = GPGAccessWindowsNoXpcom.kimport;
-            GPGAccess.kexport = GPGAccessWindowsNoXpcom.kexport;
-            GPGAccess.runATest = GPGAccessWindowsNoXpcom.runATest;
-            GPGAccess.tryToFoundTheRightCommand = GPGAccessWindowsNoXpcom.tryToFoundTheRightCommand;
-
-
-        }
 
         return GPGAccess;
     }
@@ -199,238 +139,19 @@ function Witch_GPGAccess () {
 */
 function loadXpcom () {
 
-    var prefs = Components.classes["@mozilla.org/preferences-service;1"].
-                           getService(Components.interfaces.nsIPrefService);
-    prefs = prefs.getBranch("extensions.firegpg.");
-
-    var disabled = false;
-		try {
-			disabled = prefs.getBoolPref("disable_xpcom");
-		} catch (e) { }
-
-    if (disabled) {
-        updateXpcomState(XPCOM_STATE_DISABLED);
-		return false;
-   }
 
     try {
      	var ipcService = Components.classes["@mozilla.org/process/ipc-service;1"].getService();
         ipcService = ipcService.QueryInterface(Components.interfaces.nsIIPCService);
 	} catch (err) {
-        updateXpcomState(XPCOM_STATE_DONTWORK);
+
 		return false;
     }
 
     GPGAccess.ipcService = ipcService;
-    updateXpcomState(XPCOM_STATE_WORKS);
 
     return true;
 
-}
-
-/*
-    Function: updateXpcomState
-
-    This function compare the status of the usability of the xpcom.
-
-    If he change, she send an anonymous ping to have stats.
-
-    Parameters:
-        newstate - The status of the usability of the Xpcom.
-
-*/
-function updateXpcomState(newstate) {
-
-    var prefs = Components.classes["@mozilla.org/preferences-service;1"].
-		                       getService(Components.interfaces.nsIPrefService);
-		prefs = prefs.getBranch("extensions.firegpg.");
-	var oldstate  = XPCOM_STATE_NEVERTESTED;
-	try {
-		oldstate = prefs.getCharPref("xpcom_state");
-	} catch (e) { }
-
-    if (oldstate != newstate)
-    {
-        prefs.setCharPref("xpcom_state",newstate);
-
-        var xulRuntime = Components.classes["@mozilla.org/xre/app-info;1"]
-                           .getService(Components.interfaces.nsIXULRuntime);
-
-        currentos = xulRuntime.OS
-
-        try {
-		 currentos += "," + xulRuntime.XPCOMABI;
-        } catch (e) { fireGPGDebug(e,'cgpgaccess.updateXpcomState',true); }
-
-
-        //PING DISABLED var misc = getContent("http://getfiregpg.org/stable/statsxpcom.php?version=" + FIREGPG_VERSION + "&newstate=" + newstate + "&oldstate=" + oldstate + "&plateforme=" + escape(currentos));
-
-    }
-
-}
-
-
-/*
-    Function: GPGAccessCallerWindowsNoXpcom
-
-    This is the function to call gnupg on windows, when the xpcom is not available.
-
-    Parameters:
-        parameters - The parameters for gnupg.
-        charset - _Optional_. The charset to read the sdtIn (UTF-8 by default)
-
-    Return:
-        The sdOut of the execution
-
-    See Also:
-        <GPGAccessCallerWindowsXpcom>
-        <GPGAccessCallerUnixNoXpcom>
-        <GPGAccessCallerUnixXpcom>
-
-*/
-var GPGAccessCallerWindowsNoXpcom =  function(parameters,charset) {
-
-
-
-}
-
-/*
-    Function: GPGAccessCallerWindowsXpcom
-
-    This is the function to call gnupg on windows, when the xpcom is available.
-
-    Parameters:
-        parameters - The parameters for gnupg.
-        sdtIn - The data to send to gnupg on the sdIn
-        charset - _Optional_. The charset to read the sdtIn (utf-8 by default)
-
-    Return:
-        The sdOut of the execution
-
-    See Also:
-        <GPGAccessCallerWindowsNoXpcom>
-        <GPGAccessCallerUnixNoXpcom>
-        <GPGAccessCallerUnixXpcom>
-
-*/
-var GPGAccessCallerWindowsXpcom =  function(parameters, sdtIn,charset)  {
-
-    if (charset == undefined)
-        charset = "utf-8";
-
-    fireGPGDebug(this.getGPGCommand() + " " + this.getGPGCommand() + parameters + "[" + sdtIn + "]",'GPGAccessCallerWindowsXpcom');
-
-    gpgArgs = parameters.split(/ /gi);
-
-       try {
-
-        var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
-	                         createInstance(Components.interfaces.nsILocalFile);
-
-        fileobj.initWithPath( this.getGPGCommand());
-
-        this.ipcService.runPipe(fileobj, gpgArgs, gpgArgs.length, "", sdtIn, sdtIn.length, [], 0, outStrObj, outLenObj, errStrObj, errLenObj);
-
-
-        res = EnigConvertToUnicode(outStrObj.value, charset);
-
-        return res;
-    } catch  (e) {
-    }
-
-    return null;
-
-}
-
-/*
-    Function: GPGAccessCallerUnixNoXpcom
-
-    This is the function to call gnupg on linux and MacOS, when the xpcom is not available.
-
-    Parameters:
-        parameters - The parameters for gnupg.
-        charset - _Optional_. The charset to read the sdtIn (UTF-8 by default)
-
-    Return:
-        The sdOut of the execution
-
-    See Also:
-        <GPGAccessCallerWindowsNoXpcom>
-        <GPGAccessCallerWindowsXpcom>
-        <GPGAccessCallerUnixXpcom>
-
-*/
-var GPGAccessCallerUnixNoXpcom  =  function(parameters,charset)  {
-
-d
-}
-
-/*
-    Function: GPGAccessCallerUnixXpcom
-
-    This is the function to call gnupg on linux and MacOS, when the xpcom is available.
-
-    Parameters:
-        parameters - The parameters for gnupg.
-        sdtIn - The data to send to gnupg on the sdIn
-        charset - _Optional_. The charset to read the sdtIn (UTF-8 by default)
-
-    Return:
-        The sdOut of the execution
-
-    See Also:
-        <GPGAccessCallerWindowsNoXpcom>
-        <GPGAccessCallerWindowsXpcom>
-        <GPGAccessCallerUnixNoXpcom>
-
-*/
-var GPGAccessCallerUnixXpcom  =  function(parameters, sdtIn, charset)  {
-
-    if (charset == undefined)
-        charset = "utf-8";
-
-    if (sdtIn == undefined)
-        sdtIn = "";
-
-
-    var outStrObj = new Object();
-    var outLenObj = new Object();
-    var errStrObj = new Object();
-    var errLenObj = new Object();
-
-    fireGPGDebug(this.getGPGCommand() + " " + parameters + "[" + sdtIn + "]",'GPGAccessCallerUnixXpcom');
-
-    parameters = parameters.split(/ /gi);
-
-    gpgArgs = new Array();
-
-    for(i = 0; i < parameters.length; i++)
-        if(parameters[i] != "" && parameters[i] != null)
-            gpgArgs.push(parameters[i]);
-
-
-    try {
-
-        var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
-	                         createInstance(Components.interfaces.nsILocalFile);
-
-        fileobj.initWithPath( this.getGPGCommand());
-
-        this.ipcService.runPipe(fileobj, gpgArgs, gpgArgs.length, "", sdtIn, sdtIn.length, [], 0, outStrObj, outLenObj, errStrObj, errLenObj);
-
-    var retour = new Object();
-
-
-    retour.out = EnigConvertToUnicode(outStrObj.value, charset);
-    retour.err = EnigConvertToUnicode(errStrObj.value, charset);
-
-    return retour;
-
-    } catch  (e) {
-
-    }
-
-    return null;
 }
 
 
@@ -581,16 +302,68 @@ var GPGAccess = {
 
     /*
         Function: runGnupg
-        Execute gnupg. This function is overwrited with <GPGAccessCallerWindowsNoXpcom>,  <GPGAccessCallerWindowsNoXpcom>, <GPGAccessCallerUnixNoXpcom> or <GPGAccessCallerUnixXpcom>
+        Execute gnupg.
+
+        Parameters:
+        parameters - The parameters for gnupg.
+        sdtIn - The data to send to gnupg on the sdIn
+        charset - _Optional_. The charset to read the sdtIn (UTF-8 by default)
+
+        Return:
+            The sdOut (.out) and the sdErr (.err) of the execution
     */
-    runGnupg: function () {
-        return false;
+    runGnupg: function(parameters, sdtIn, charset)  {
+
+        if (charset == undefined)
+            charset = "utf-8";
+
+        if (sdtIn == undefined)
+            sdtIn = "";
+
+
+        var outStrObj = new Object();
+        var outLenObj = new Object();
+        var errStrObj = new Object();
+        var errLenObj = new Object();
+
+        fireGPGDebug(this.getGPGCommand() + " " + parameters + "[" + sdtIn + "]",'GPGAccessCallerUnixXpcom');
+
+        parameters = parameters.split(/ /gi);
+
+        gpgArgs = new Array();
+
+        for(i = 0; i < parameters.length; i++)
+            if(parameters[i] != "" && parameters[i] != null)
+                gpgArgs.push(parameters[i]);
+
+
+        try {
+
+            var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
+                                 createInstance(Components.interfaces.nsILocalFile);
+
+            fileobj.initWithPath( this.getGPGCommand());
+
+            this.ipcService.runPipe(fileobj, gpgArgs, gpgArgs.length, "", sdtIn, sdtIn.length, [], 0, outStrObj, outLenObj, errStrObj, errLenObj);
+
+        var retour = new Object();
+
+
+        retour.out = EnigConvertToUnicode(outStrObj.value, charset);
+        retour.err = EnigConvertToUnicode(errStrObj.value, charset);
+
+        return retour;
+
+        } catch  (e) {
+
+        }
+
+        return null;
     },
 
     /*
         Function: sign
         Sign a text.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
 
         Parameters:
             text - The data to sign
@@ -603,249 +376,6 @@ var GPGAccess = {
 
 
     */
-    sign: function (text, password, keyID, notClear) {
-        return false;
-    },
-
-    /*
-        Function: verify
-        Verify a text.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
-
-        Parameters:
-            text - A text with the GnuPG data to test.
-
-        Return:
-            A <GPGReturn> structure.
-
-
-    */
-    verify: function(text) {
-        return false;
-    },
-
-    /*
-        Function: listkey
-        List  keys.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
-
-        Parameters:
-            onlyPrivate - Boolean, set to true if only a private key list is wanted.
-
-        Return:
-            A <GPGReturn> structure.
-
-
-    */
-    listkey: function(onlyPrivate) {
-        return false;
-    },
-
-    /*
-        Function: crypt
-        Encrypt a text.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
-
-        Parameters:
-            text - The data to encrypt
-            keyIdList - A key list of recipients
-            fromGpgAuth - _Optional_. Set this to true if called form GpgAuth
-            binFileMode - _Optional_. Set this to true if data is binary (no text)
-
-        Return:
-            A <GPGReturn> structure.
-
-
-    */
-    crypt: function(text, keyIdList, fromGpgAuth, binFileMode) {
-        return false;
-    },
-
-    /*
-        Function: symetric
-        Symetricaly encrypt a text.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
-
-        Parameters:
-            text - The data to encrypt
-            password - The password
-
-        Return:
-            A <GPGReturn> structure.
-
-
-    */
-    symetric: function(text, password) {
-        return false;
-    },
-
-    /*
-        Function: cryptAndSign
-        Encrypt and sign a text.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
-
-        Parameters:
-            text - The data to encrypt
-            keyIdList - A key list of recipients
-            fromGpgAuth -  Set this to true if called form GpgAuth
-            password - The password of the private key
-            keyID - The ID of the private key to use.
-            binFileMode - _Optional_. Set this to true if data is binary (no text)
-
-
-        Return:
-            A <GPGReturn> structure.
-
-
-    */
-    cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode) {
-        return false;
-    },
-
-    /*
-        Function: decrypt
-        Decrypt a text.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
-
-        Parameters:
-            text - The data to decrypt
-            password - The password of the private key
-
-        Return:
-            A <GPGReturn> structure.
-
-    */
-    decrypt: function(text,password) {
-        return false;
-    },
-
-    /*
-        Function: selfTest
-        Return true if we're able to call GnuPG.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
-
-    */
-    selfTest: function() {
-        return false;
-    },
-
-    /*
-        Function: kimport
-        Import a key.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
-
-        Parameters:
-            text - A text with the GnuPG data to import.
-
-        Return:
-            A <GPGReturn> structure.
-
-    */
-    kimport: function(text) {
-        return false;
-    },
-
-    /*
-        Function: kexport
-        Export a key.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
-
-        Parameters:
-            key - The key id to export.
-
-        Return:
-            A <GPGReturn> structure.
-
-    */
-    kexport: function(key) {
-        return false;
-    },
-
-    /*
-        Function: runATest
-        Test if we are currently able to run the a command.
-
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
-
-        Parameters:
-            option - The option to test.
-
-        Return:
-            A <GPGReturn> structure.
-
-    */
-    runATest: function(option) {
-        return false;
-    },
-
-    /*
-        Function: tryToFoundTheRightCommand
-        Do some test to be able to find a working GnuPG executable.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsNoXpcom>,  <GPGAccessWindowsNoXpcom>, <GPGAccessUnixNoXpcom> or <GPGAccessUnixXpcom>
-
-    */
-    tryToFoundTheRightCommand: function () {
-        return false;
-    }
-
-}
-
-/*
-    Class: GPGAccessWindowsNoXpcom
-
-    This class has function for building command lines for GnuPG actions on windows, when the xpcom is not available.
-
-    *Please refer to functions marked as overwrited by this class in <GPGAccess> for the descriptions of this class's functions.*
-
-    See Also:
-        <GPGAccessWindowsXpcom>
-        <GPGAccessUnixNoXpcom>
-        <GPGAccessUnixXpcom>
-
-*/
-var GPGAccessWindowsNoXpcom = {
-
-    sign: function (text, password, keyID, notClear) {    },
-
-    verify: function(text) {    },
-
-    listkey: function(onlyPrivate) {    },
-
-    crypt: function(text, keyIdList, fromGpgAuth, binFileMode) {    },
-
-    cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode) {    },
-
-    symetric: function(text, password) {    },
-
-    decrypt: function(text,password) {    },
-
-    selfTest: function() {    },
-
-    kimport: function(text) {    },
-
-    kexport: function(key) {    },
-
-    runATest: function(option) {    },
-
-    tryToFoundTheRightCommand: function () {    }
-
-}
-
-/*
-    Class: GPGAccessWindowsXpcom
-
-    This class has function for building command lines for GnuPG actions on windows, when the xpcom is available.
-
-    *Please refer to functions marked as overwrited by this class in <GPGAccess> for the descriptions of this class's functions.*
-
-    See Also:
-        <GPGAccessWindowsNoXpcom>
-        <GPGAccessUnixNoXpcom>
-        <GPGAccessUnixXpcom>
-
-*/
-var GPGAccessWindowsXpcom = {
-
     sign: function (text, password, keyID, notClear) {
 
 			result = this.runGnupg(this.getBaseArugments() +
@@ -863,6 +393,18 @@ var GPGAccessWindowsXpcom = {
 		return result2;
     },
 
+    /*
+        Function: verify
+        Verify a text.
+
+        Parameters:
+            text - A text with the GnuPG data to test.
+
+        Return:
+            A <GPGReturn> structure.
+
+
+    */
     verify: function(text) {
 
 		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() + " --verify", text);
@@ -874,6 +416,18 @@ var GPGAccessWindowsXpcom = {
 		return result2;
     },
 
+    /*
+        Function: listkey
+        List  keys.
+
+        Parameters:
+            onlyPrivate - Boolean, set to true if only a private key list is wanted.
+
+        Return:
+            A <GPGReturn> structure.
+
+
+    */
     listkey: function(onlyPrivate) {
 		var mode = "--list-keys";
 
@@ -889,6 +443,21 @@ var GPGAccessWindowsXpcom = {
 		return result2;
     },
 
+    /*
+        Function: crypt
+        Encrypt a text.
+
+        Parameters:
+            text - The data to encrypt
+            keyIdList - A key list of recipients
+            fromGpgAuth - _Optional_. Set this to true if called form GpgAuth
+            binFileMode - _Optional_. Set this to true if data is binary (no text)
+
+        Return:
+            A <GPGReturn> structure.
+
+
+    */
     crypt: function(text, keyIdList, fromGpgAuth, binFileMode) {
 
 		if (fromGpgAuth == null)
@@ -917,6 +486,53 @@ var GPGAccessWindowsXpcom = {
 		return result2;
     },
 
+    /*
+        Function: symetric
+        Symetricaly encrypt a text.
+
+        Parameters:
+            text - The data to encrypt
+            password - The password
+
+        Return:
+            A <GPGReturn> structure.
+
+
+    */
+    symetric: function(text, password) {
+
+            result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() +
+                    this.getGPGCommentArgument() +
+                    " --passphrase-fd 0" +
+                    " --output -" +
+                    " --symmetric ",
+                    password + "\n" + text);
+
+		var result2 = new GPGReturn();
+		result2.output = result.out;
+		result2.sdOut = result.err;
+
+		return result2;
+    },
+
+    /*
+        Function: cryptAndSign
+        Encrypt and sign a text.
+
+        Parameters:
+            text - The data to encrypt
+            keyIdList - A key list of recipients
+            fromGpgAuth -  Set this to true if called form GpgAuth
+            password - The password of the private key
+            keyID - The ID of the private key to use.
+            binFileMode - _Optional_. Set this to true if data is binary (no text)
+
+
+        Return:
+            A <GPGReturn> structure.
+
+
+    */
     cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode) {
 
 
@@ -949,6 +565,18 @@ var GPGAccessWindowsXpcom = {
 		return result2;
     },
 
+    /*
+        Function: decrypt
+        Decrypt a text.
+
+        Parameters:
+            text - The data to decrypt
+            password - The password of the private key
+
+        Return:
+            A <GPGReturn> structure.
+
+    */
     decrypt: function(text,password) {
 
 			result = this.runGnupg(this.getBaseArugments() +
@@ -965,6 +593,11 @@ var GPGAccessWindowsXpcom = {
 		return result2;
     },
 
+    /*
+        Function: selfTest
+        Return true if we're able to call GnuPG.
+
+    */
     selfTest: function() {
         //One test is ok, if the command dosen't change, it's should works..
 
@@ -977,6 +610,17 @@ var GPGAccessWindowsXpcom = {
 		return true;
     },
 
+    /*
+        Function: kimport
+        Import a key.
+
+        Parameters:
+            text - A text with the GnuPG data to import.
+
+        Return:
+            A <GPGReturn> structure.
+
+    */
     kimport: function(text) {
 
 		result = this.runGnupg(this.getBaseArugments()  + " --import " , text);
@@ -988,6 +632,17 @@ var GPGAccessWindowsXpcom = {
 		return result2;
     },
 
+    /*
+        Function: kexport
+        Export a key.
+
+        Parameters:
+            key - The key id to export.
+
+        Return:
+            A <GPGReturn> structure.
+
+    */
     kexport: function(key) {
 		result = this.runGnupg(this.getBaseArugments()  + " --export " + key);
 
@@ -998,6 +653,18 @@ var GPGAccessWindowsXpcom = {
 		return result2;
     },
 
+    /*
+        Function: runATest
+        Test if we are currently able to run the a command.
+
+
+        Parameters:
+            option - The option to test.
+
+        Return:
+            A <GPGReturn> structure.
+
+    */
     runATest: function(option) {
 		result = this.runGnupg(this.getGPGBonusCommand() + " --status-fd 2 " + option + " --version");
 
@@ -1007,21 +674,32 @@ var GPGAccessWindowsXpcom = {
 		return true;
     },
 
-    symetric: function(text, password) {
+    /*
+        Function: tryToFoundTheRightCommand
+        Do some test to be able to find a working GnuPG executable.
+        This function is overwrited by the coresponding function of  <GPGAccessWindowsXpcom> or <GPGAccessUnixXpcom>
 
-            result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() +
-                    this.getGPGCommentArgument() +
-                    " --passphrase-fd 0" +
-                    " --output -" +
-                    " --symmetric ",
-                    password + "\n" + text);
+    */
+    tryToFoundTheRightCommand: function () {
+        return false;
+    }
 
-		var result2 = new GPGReturn();
-		result2.output = result.out;
-		result2.sdOut = result.err;
+}
 
-		return result2;
-    },
+
+/*
+    Class: GPGAccessWindowsXpcom
+
+    This class has function for building command lines for GnuPG actions on windows, when the xpcom is available.
+
+    *Please refer to functions marked as overwrited by this class in <GPGAccess> for the descriptions of this class's functions.*
+
+    See Also:
+        <GPGAccessUnixXpcom>
+
+*/
+var GPGAccessWindowsXpcom = {
+
 
     tryToFoundTheRightCommand: function () {
         //Two choises : 1) The user want to set the path himself, so we use this.
@@ -1092,82 +770,19 @@ var GPGAccessWindowsXpcom = {
 }
 
 /*
-    Class: GPGAccessUnixNoXpcom
-
-    This class has function for building command lines for GnuPG actions on linux and MacOS, when the xpcom is not available.
-
-    *Please refer to functions marked as overwrited by this class in <GPGAccess> for the descriptions of this class's functions.*
-
-    See Also:
-        <GPGAccessWindowsNoXpcom>
-        <GPGAccessWindowsXpcom>
-        <GPGAccessUnixXpcom>
-
-*/
-var GPGAccessUnixNoXpcom = {
-
-    sign: function (text, password, keyID, notClear) {    },
-
-    verify: function(text) {    },
-
-    listkey: function(onlyPrivate) {    },
-
-    crypt: function(text, keyIdList, fromGpgAuth, binFileMode) {    },
-
-    cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode) {    },
-
-    symetric: function(text, password) {    },
-
-    decrypt: function(text,password) {    },
-
-    selfTest: function() {    },
-
-    kimport: function(text) {    },
-
-    kexport: function(key) {    },
-
-    runATest: function(option) {    },
-
-    tryToFoundTheRightCommand: function () {    }
-
-}
-
-/*
     Class: GPGAccessUnixXpcom
 
-    This class has function for building command lines for GnuPG actions on linux and MacOS, when the xpcom is available.
+    This class has function for building command lines for GnuPG actions on linux, when the xpcom is available.
 
     *Please refer to functions marked as overwrited by this class in <GPGAccess> for the descriptions of this class's functions.*
 
     See Also:
-        <GPGAccessWindowsNoXpcom>
         <GPGAccessWindowsXpcom>
-        <GPGAccessUnixNoXpcom>
 
 */
 var GPGAccessUnixXpcom = {
 
-    sign: GPGAccessWindowsXpcom.sign,
 
-    verify: GPGAccessWindowsXpcom.verify,
-
-    listkey: GPGAccessWindowsXpcom.listkey,
-
-    crypt: GPGAccessWindowsXpcom.crypt,
-
-    cryptAndSign: GPGAccessWindowsXpcom.cryptAndSign,
-
-    decrypt: GPGAccessWindowsXpcom.decrypt,
-
-    selfTest: GPGAccessWindowsXpcom.selfTest,
-
-    kimport: GPGAccessWindowsXpcom.kimport,
-
-    kexport: GPGAccessWindowsXpcom.kexport,
-
-    runATest: GPGAccessWindowsXpcom.runATest,
-
-    symetric: GPGAccessWindowsXpcom.symetric,
 
     tryToFoundTheRightCommand: function () {
         //Year, on linux no test, because it's a good Os.
