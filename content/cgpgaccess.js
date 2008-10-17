@@ -604,7 +604,7 @@ var GPGAccess = {
 		result = this.runGnupg(this.getBaseArugments()  + " --version");
 
 		// If the work Foundation is present, we can think that gpg is present ("... Copyright (C) 2006 Free Software Foundation, Inc. ...")
-		if (!result.out || result.out.indexOf("Foundation") == -1)
+		if (!result || !result.out || result.out.indexOf("Foundation") == -1)
 			return false;
 
 		return true;
@@ -668,7 +668,7 @@ var GPGAccess = {
     runATest: function(option) {
 		result = this.runGnupg(this.getGPGBonusCommand() + " --status-fd 2 " + option + " --version");
 
-		if(!result.out || result.out.indexOf("Foundation") == "-1")
+		if(!result || !result.out || result.out.indexOf("Foundation") == "-1")
 			return false;
 
 		return true;
