@@ -30,8 +30,8 @@
 <!ENTITY key-id "아이디">
 <!ENTITY key-create "생성됨">
 <!ENTITY key-expire "만료">
-<!ENTITY pane4.title "Gpg">
-<!ENTITY gpg-add-options "Add arguements to gpg's commande line : (Warning ! Can break FireGPG ! Have a look at doc.)">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "gpg의 명령행에 인수를 넣으십시오: (경고! FireGPG를 고장낼 수 있습니다. 문서를 참조하셔요.)">
 <!ENTITY gmail-buton-signcrypt-checkbox "서명하고 암호화">
 <!ENTITY gmail-buton-signcryptsend-checkbox "서명하고 암호화해서 전송">
 <!ENTITY firegpg-version-label.text "현재 FireGPG 버전:">
@@ -47,5 +47,5 @@
 <!ENTITY firegpg-ask-for-private-label.text "항상 개인키를 물어봄">
 <!ENTITY inline-activated "문서 내의 PGP 블럭에 대한 핸들러 활성화 (재시작 필요)">
 <!ENTITY gmail-disable-autosave-checkbox "자동 저장 비활성화">
-<!ENTITY gmail-buton-csign-checkbox "깨끗한 서명">
-<!ENTITY gmail-buton-csignsend-checkbox "깨끗하게 서명하여 전송">
+<!ENTITY gmail-buton-csign-checkbox "가독형 서명">
+<!ENTITY gmail-buton-csignsend-checkbox "가독형으로 서명하여 전송">

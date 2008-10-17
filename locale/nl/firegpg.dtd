@@ -40,9 +40,9 @@
 <!ENTITY firegpgContext.labelCryptSign "Onderteken en Versleutel">
 <!ENTITY firegpgMenu.labelCryptSign "Onderteken en Versleutel">
 <!ENTITY firegpgToolbar.labelCryptSign "Onderteken en Versleutel">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelClearSign "Clear sign">
-<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
-<!ENTITY firegpgMenu.labelClearSign "Clear sign">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symmetrische versleuteling">
+<!ENTITY firegpgContext.labelSymCrypt "Symmetrische versleuteling">
+<!ENTITY firegpgMenu.labelSymCrypt "Symmetrische versleuteling">
+<!ENTITY firegpgContext.labelClearSign "Leesbaar ondertekenen">
+<!ENTITY firegpgToolbar.labelClearSign "Leesbaar ondertekenen">
+<!ENTITY firegpgMenu.labelClearSign "Leesbaar ondertekenen">

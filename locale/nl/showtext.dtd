@@ -5,5 +5,5 @@
 <!ENTITY open-button "Open">
 <!ENTITY save-button "Opslaan">
 <!ENTITY cryptandsign-button "Onderteken en versleutel">
-<!ENTITY sign-clear-button "Clear sign">
-<!ENTITY symcrypt-button "Symmetric encryption">
+<!ENTITY sign-clear-button "Leesbaar ondertekenen">
+<!ENTITY symcrypt-button "Symmetrische versleuteling">
