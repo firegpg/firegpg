@@ -139,7 +139,6 @@ function Witch_GPGAccess () {
 */
 function loadXpcom () {
 
-
     try {
      	var ipcService = Components.classes["@mozilla.org/process/ipc-service;1"].getService();
         ipcService = ipcService.QueryInterface(Components.interfaces.nsIIPCService);
@@ -328,13 +327,13 @@ var GPGAccess = {
 
         fireGPGDebug(this.getGPGCommand() + " " + parameters + "[" + sdtIn + "]",'GPGAccessCallerUnixXpcom');
 
-        parameters = parameters.split(/ /gi);
+        parametersS = parameters.split(/ /gi);
 
         gpgArgs = new Array();
 
-        for(i = 0; i < parameters.length; i++)
-            if(parameters[i] != "" && parameters[i] != null)
-                gpgArgs.push(parameters[i]);
+        for(i = 0; i < parametersS.length; i++)
+            if(parametersS[i] != "" && parametersS[i] != null)
+                gpgArgs.push(parametersS[i]);
 
 
         try {
@@ -344,15 +343,82 @@ var GPGAccess = {
 
             fileobj.initWithPath( this.getGPGCommand());
 
+        } catch  (e) {
+
+        }
+
+        try {
             this.ipcService.runPipe(fileobj, gpgArgs, gpgArgs.length, "", sdtIn, sdtIn.length, [], 0, outStrObj, outLenObj, errStrObj, errLenObj);
+        }
+        catch (e) {
 
-        var retour = new Object();
+            if (!this.ipcService) //Pas de lib IPC
+                return null;
+
+            //Lib IPC mais ancienne version.
+
+            var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                getService(Components.interfaces.nsIPrefService);
+
+            prefs = prefs.getBranch("extensions.firegpg.");
+
+            var i18n = document.getElementById("firegpg-strings");
+
+            try {
+                var warning_user = prefs.getBoolPref("fireftp_already_warning",false);
+            } catch (e) {
+                warning_user = false;
+            }
+
+             try {
+                var try_to_use_old_system = prefs.getBoolPref("fireftp_try_to_use_old_system",false);
+            } catch (e) {
+                try_to_use_old_system = false;
+            }
+
+            if (!warning_user) {
+
+                try_to_use_old_system = confirm(i18n.getString('fireftp_warning'));
 
 
-        retour.out = EnigConvertToUnicode(outStrObj.value, charset);
-        retour.err = EnigConvertToUnicode(errStrObj.value, charset);
+            }
 
-        return retour;
+
+            if (try_to_use_old_system) {
+
+                try {
+                   /// FireFTP version but it's crash some times firefox
+                   this.ipcService.execPipe(this.getGPGCommand() + " " + parameters, false,  "", sdtIn, sdtIn.length, [], 0, outStrObj, outLenObj, errStrObj, errLenObj);
+                } catch (e) {
+                }
+
+                //If we're here, it's didn't crash
+                if (!warning_user)
+                    alert(i18n.getString('fireftp_pass'));
+
+                prefs.setBoolPref("fireftp_already_warning",true);
+                prefs.setBoolPref("fireftp_try_to_use_old_system",true);
+
+            } else {
+
+                prefs.setBoolPref("fireftp_already_warning",true);
+
+
+            }
+
+
+
+        }
+
+        try {
+
+            var retour = new Object();
+
+
+            retour.out = EnigConvertToUnicode(outStrObj.value, charset);
+            retour.err = EnigConvertToUnicode(errStrObj.value, charset);
+
+            return retour;
 
         } catch  (e) {
 
@@ -603,6 +669,9 @@ var GPGAccess = {
 
 		result = this.runGnupg(this.getBaseArugments()  + " --version");
 
+        try {
+          //  alert(result.out);
+        } catch (e) { }
 		// If the work Foundation is present, we can think that gpg is present ("... Copyright (C) 2006 Free Software Foundation, Inc. ...")
 		if (!result || !result.out || result.out.indexOf("Foundation") == -1)
 			return false;
@@ -647,7 +716,7 @@ var GPGAccess = {
 		result = this.runGnupg(this.getBaseArugments()  + " --export " + key);
 
         var result2 = new GPGReturn();
-		result2.sdOut = result;
+		result2.sdOut = result.out;
 
 		// We return result
 		return result2;
@@ -667,6 +736,7 @@ var GPGAccess = {
     */
     runATest: function(option) {
 		result = this.runGnupg(this.getGPGBonusCommand() + " --status-fd 2 " + option + " --version");
+
 
 		if(!result || !result.out || result.out.indexOf("Foundation") == "-1")
 			return false;

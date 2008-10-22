@@ -199,7 +199,7 @@ var cGmail = {
                             td.setAttribute("style","color: red;");
                             td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("keyNotFound") + ")"; //"La première signature de ce mail est incorrect !";
                         }
-						else {
+						else if (resultTest.signresulttext != null) {
 
 							td.setAttribute("style","color: green;");
 							td.innerHTML = i18n.getString("GMailSOK") + " " + htmlEncode(resultTest.signresulttext); //"La première signature de ce mail est de testtest (testtest)

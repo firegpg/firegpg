@@ -49,3 +49,5 @@
 <!ENTITY gmail-disable-autosave-checkbox "자동 저장 비활성화">
 <!ENTITY gmail-buton-csign-checkbox "가독형 서명">
 <!ENTITY gmail-buton-csignsend-checkbox "가독형으로 서명하여 전송">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">

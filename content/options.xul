@@ -52,6 +52,9 @@
             <preference id="hide-expired-pref" name="extensions.firegpg.hide_expired" type="bool"/>
             <preference id="inline-activated-pref" name="extensions.firegpg.activate_inline" type="bool"/>
 
+            <preference id="hide-fireftp-message-pref" name="extensions.firegpg.fireftp_already_warning" type="bool"/>
+            <preference id="use-fireftp-workaround-pref" name="extensions.firegpg.fireftp_try_to_use_old_system" type="bool"/>
+
 
 
         </preferences>
@@ -82,6 +85,9 @@
 
 
         <checkbox  id="updates-checkbox" preference="no-updates" label="&turn-off-updates;" onclick="showWarnings()"/>
+
+        <checkbox  id="hide-fireftp-message" preference="hide-fireftp-message-pref" label="&hide-fireftp-message;"/>
+        <checkbox  id="use-fireftp-workaround" preference="use-fireftp-workaround-pref" label="&use-fireftp-workaround;"/>
 
 
         <!-- list of private keys -->

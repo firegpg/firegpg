@@ -50,3 +50,5 @@ Websiten (Doppelklick zum Entfernen)">
 <!ENTITY gmail-disable-autosave-checkbox "Automatisches Speichern abschalten">
 <!ENTITY gmail-buton-csign-checkbox "Klartextsignatur">
 <!ENTITY gmail-buton-csignsend-checkbox "Klartextsignatur und Senden">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">

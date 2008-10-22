@@ -50,3 +50,5 @@ başlatmak gerekir)">
 <!ENTITY gmail-disable-autosave-checkbox "Otomatik kaydeti engelle">
 <!ENTITY gmail-buton-csign-checkbox "Clear sign">
 <!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">

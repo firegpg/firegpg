@@ -49,3 +49,5 @@
 <!ENTITY gmail-disable-autosave-checkbox "Automatisch opslaan afzetten">
 <!ENTITY gmail-buton-csign-checkbox "Leesbaar ondertekenen">
 <!ENTITY gmail-buton-csignsend-checkbox "Leesbaar ondertekenen en versturen">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">

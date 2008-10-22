@@ -49,3 +49,5 @@
 <!ENTITY gmail-disable-autosave-checkbox "Avaktivera autospara">
 <!ENTITY gmail-buton-csign-checkbox "Radera signatur">
 <!ENTITY gmail-buton-csignsend-checkbox "Radera signatur och skicka">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">

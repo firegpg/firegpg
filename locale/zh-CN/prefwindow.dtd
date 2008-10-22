@@ -49,3 +49,5 @@
 <!ENTITY gmail-disable-autosave-checkbox "禁用自动保存">
 <!ENTITY gmail-buton-csign-checkbox "成功签署">
 <!ENTITY gmail-buton-csignsend-checkbox "成功签署并发送">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">

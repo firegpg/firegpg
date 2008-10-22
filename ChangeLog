@@ -1,3 +1,11 @@
+2008-10-22 Maximilien Cuony
+    * FS#138
+    * Moving ipc to rights folders
+    * FS#137
+    * FS#135 (almost)
+    * Adding x86_64 libs
+
+
 2008-10-17 Maximilien Cuony
     * 0.6.1 packed, and uploaded to the server !
     * 0.6 packed, and uploaded to the server !

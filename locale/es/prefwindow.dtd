@@ -49,3 +49,5 @@
 <!ENTITY gmail-disable-autosave-checkbox "Desactivar autoguardado">
 <!ENTITY gmail-buton-csign-checkbox "Firmar en limpio">
 <!ENTITY gmail-buton-csignsend-checkbox "Firmar en limpio y enviar">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
