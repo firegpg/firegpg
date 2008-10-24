@@ -121,7 +121,7 @@ function Witch_GPGAccess () {
 
         var i18n = document.getElementById("firegpg-strings");
 
-        alert(i18n.getString('noipc'));
+        alert(i18n.getString('noipc2'));
 
 
         return GPGAccess;
