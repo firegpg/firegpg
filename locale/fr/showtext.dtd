@@ -1,9 +1,0 @@
-<!ENTITY crypt-button "Chiffrer">
-<!ENTITY dcrypt-button "Déchiffrer">
-<!ENTITY sign-button "Signer">
-<!ENTITY verify-button "Vérifier">
-<!ENTITY open-button "Ouvrir">
-<!ENTITY save-button "Sauver">
-<!ENTITY cryptandsign-button "Chiffrer et signer">
-<!ENTITY sign-clear-button "Signer en clair">
-<!ENTITY symcrypt-button "Chiffrement symétrique">

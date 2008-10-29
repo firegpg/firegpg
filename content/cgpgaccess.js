@@ -319,7 +319,7 @@ var GPGAccess = {
         if (sdtIn == undefined)
             sdtIn = "";
 
-		
+
 		sdtIn = EnigConvertFromUnicode(sdtIn, charset);
 
         var outStrObj = new Object();
@@ -723,6 +723,46 @@ var GPGAccess = {
 		// We return result
 		return result2;
     },
+
+    refrechFromServer: function(server) {
+
+        result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server + " --refresh-keys");
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.err;
+
+		// We return result
+		return result2;
+
+    },
+
+    sendKeyToServer: function(key, server) {
+
+        result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server + " --send-keys "+ key);
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.err;
+
+		// We return result
+		return result2;
+
+    },
+
+
+    retriveKeyFromServer: function(key, server) {
+
+        result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server + " --recv-keys "+ key);
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.err;
+
+		// We return result
+		return result2;
+
+    },
+
+
+
 
     /*
         Function: runATest

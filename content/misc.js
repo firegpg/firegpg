@@ -54,7 +54,7 @@ const FIREGPG_VERSION = '0.6.2';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
-const FIREGPG_STATUS = 'DEVEL'; 
+const FIREGPG_STATUS = 'DEVEL';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */
@@ -784,11 +784,17 @@ function testIfSomethingsIsNew() {
 
     } else {
 
+        //DESACTIVED FOR ADDON.MOZILLA.ORG /*
+
+
+
 		//Try to find an update, if it's needed.
 		var noUpdates = false;
 		try {
 			noUpdates = prefs.getBoolPref("no_updates");
 		} catch (e) { }
+
+
 
 		if (!noUpdates)
 		{
@@ -830,7 +836,9 @@ function testIfSomethingsIsNew() {
 					}
 				}
 			}
+
 		}
+        //*/
 	}
 }
 
@@ -1101,6 +1109,35 @@ function CreateTreeItemKey(key, document, forceId) {
 
     return item;
 
+
+}
+
+function getKeyServer() {
+
+    var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+	                           getService(Components.interfaces.nsIPrefService);
+
+		prefs = prefs.getBranch("extensions.firegpg.");
+		try {
+			keyserver = prefs.getCharPref("keyserver");
+		} catch (e) {
+			keyserver = "";
+		}
+
+        if (keyserver == "") {
+            keyserver = "subkeys.pgp.net";
+            prefs.setCharPref("keyserver", "subkeys.pgp.net");
+            }
+
+        return keyserver;
+
+
+}
+
+function showSearchBox(autoSearch) {
+
+
+    window.openDialog("chrome://firegpg/content/searchkey.xul", "searchBox", "chrome,centerscreen").focus();
 
 }
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

@@ -37,27 +37,5 @@
 function onLoad(win)
 {
 
-    updateButtons();
 
-}
-
-
-function updateButtons() {
-
-    document.getElementById('exportfile-button').disabled = true;
-    document.getElementById('exportserver-button').disabled = true;
-    document.getElementById('changetrust-button').disabled = true;
-    document.getElementById('sign-button').disabled = true;
-    document.getElementById('revokesign-button').disabled = true;
-    document.getElementById('revoke-button').disabled = true;
-
-
-}
-
-function refrech() {
-    FireGPG.refreshKeysFromServer();
-}
-
-function importserver() {
-    showSearchBox();
 }

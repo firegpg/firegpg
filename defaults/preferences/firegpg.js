@@ -22,3 +22,4 @@ pref("extensions.firegpg.enable_gpgapi", true);
 pref("extensions.firegpg.gmail_butons_use_select", false);
 pref("extensions.firegpg.activate_inline", true);
 pref("extensions.firegpg.gmail_disable_autosave", false);
+pref("extensions.firegpg.keyserver", "subkeys.pgp.net");

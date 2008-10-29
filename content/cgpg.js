@@ -363,10 +363,10 @@ var FireGPG = {
 
 			try {
                 infos = list[i].split(":");
-				
+
 				if (infos[1] == 'r') //Revoquée
 					continue;
-				
+
                 //4: key id. 9 = key name. 5: creation date, 6: expire date
                 if(infos[0] == "pub" || infos[0] == "sec" || infos[0] == "uid" ) {
 
@@ -1033,11 +1033,11 @@ var FireGPG = {
 		} else {
 			// If he work, we get informations of the Key
 			var infos = result.sdOut;
-			
+
             infos2 = infos.substring(0,infos.indexOf("SIG_ID") + 7);
 
 			infos2 = result.sdOut.replace(infos2, "");
-			
+
 			infos2 = infos2.substring(0,infos2.indexOf("GNUPG") - 2);
 
             infos2 = infos2.split(" ");
@@ -1310,9 +1310,145 @@ var FireGPG = {
         var returnObject = new GPGReturn();
         returnObject.result = RESULT_SUCCESS;
         return returnObject;
-	}
+	},
+
+    searchKeyInServer: function(search) {
+
+        //gpg --with-colons --quiet --no-tty --no-verbose --status-fd 2 --armor --batch --search-keys cuony
+
+    },
+
+    retriveKeyFromServer: function(keyId, silent) {
+
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+        //Boite d'attente
+        var wait_box = window.open("chrome://firegpg/content/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
+        wait_box.focus();
+        //Boite pour attendre la boite d'attente
+        var wait_box2 = window.open("chrome://firegpg/content/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
+
+        // We get the result
+        try {
+		var result = this.GPGAccess.retriveKeyFromServer(keyId,getKeyServer());
+        } catch (e) { } //To be sure to close the wait_box
+
+        wait_box.close();
+
+
+        if (result.sdOut.indexOf('IMPORT_OK') > 0) {
+
+            if (!silent)
+                alert(document.getElementById('firegpg-strings').
+                getString('keyRecived'));
+
+            var returnObject = new GPGReturn();
+            returnObject.sdOut = result.sdOut;
+            returnObject.result = RESULT_SUCCESS;
+            return returnObject;
+
+        } else {
+
+            if (!silent)
+                alert(document.getElementById('firegpg-strings').
+                getString('keyFetchError'));
+
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
+
+
+    },
+
+    sendKeyToServer: function(keyId, silent) {
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+        //Boite d'attente
+        var wait_box = window.open("chrome://firegpg/content/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
+        wait_box.focus();
+        //Boite pour attendre la boite d'attente
+        var wait_box2 = window.open("chrome://firegpg/content/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
+
+        // We get the result
+        try {
+		var result = this.GPGAccess.sendKeyToServer(keyId,getKeyServer());
+        } catch (e) { } //To be sure to close the wait_box
+
+        wait_box.close();
+
+
+        if (result.sdOut) {
+
+            if (!silent)
+                alert(result.sdOut);
+
+            var returnObject = new GPGReturn();
+            returnObject.sdOut = result.sdOut;
+            returnObject.result = RESULT_SUCCESS;
+            return returnObject;
+
+        } else {
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
+
+
+    },
+
+    refreshKeysFromServer: function(silent) {
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+        //Boite d'attente
+        var wait_box = window.open("chrome://firegpg/content/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
+        wait_box.focus();
+        //Boite pour attendre la boite d'attente
+        var wait_box2 = window.open("chrome://firegpg/content/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
+
+
+
+        // We get the result
+        try {
+		var result = this.GPGAccess.refrechFromServer(getKeyServer());
+        } catch (e) { } //To be sure to close the wait_box
+
+        wait_box.close();
+
+
+        if (result.sdOut) {
+
+            If(!silent)
+                alert(document.getElementById('firegpg-strings').
+                getString('keySync'));
+
+            var returnObject = new GPGReturn();
+            returnObject.sdOut = result.sdOut;
+            returnObject.result = RESULT_SUCCESS;
+            return returnObject;
+
+        } else {
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
+
+    }
 
 }
+var okWait;
 
 // We load the good class for the OS
 FireGPG.GPGAccess = Witch_GPGAccess();

@@ -196,6 +196,12 @@ var cGmail2 = {
                         //Nouvelle version du lundi 29 septembre 2008
                         if (listeTest[i].firstChild && listeTest[i].firstChild.getAttribute("class") == "c1I77d yCMBJb goog-container")
                             var wheretoadd = listeTest[i].firstChild;
+                        else if (listeTest[i].firstChild && listeTest[i].firstChild.getAttribute("class") == "c1I77d yCMBJb") { //Version du 29 octobre 2008
+                            var wheretoadd = listeTest[i].firstChild.firstChild;
+                            if (wheretoadd.getAttribute("class") != "Q4uFlf goog-container")
+                                wheretoadd = listeTest[i].firstChild.childNodes[1];
+                        }
+
 
                         if (cGmail2.b_sign == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailCLS"),"sign",spamLimite);
@@ -942,9 +948,45 @@ var cGmail2 = {
 
         }
 
+        if (!tmp) { //Version du 29 octobre 2008 - BOUTONS DU BAS
+
+            var tmp = boutonxboxnode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+           tmp = tmp.childNodes[1];
+
+        }
+
         tmp = tmp.firstChild;
 
         tmp = tmp.childNodes[2];
+
+        if (!tmp) { //Version du 29 octobre 2008
+
+            var tmp = boutonxboxnode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.childNodes[1];
+
+            tmp = tmp.firstChild;
+
+            tmp = tmp.childNodes[2];
+
+        }
 
         tmp = tmp.childNodes[1];
 
@@ -976,7 +1018,7 @@ var cGmail2 = {
          //29 septebmre 2008
         if (!tmp) {
 
-             var tmp = boutonxboxnode;
+            var tmp = boutonxboxnode;
 
             tmp = tmp.parentNode;
 
@@ -988,9 +1030,45 @@ var cGmail2 = {
 
         }
 
+        if (!tmp) { //Version du 29 octobre 2008 - BOUTONS DU BAS
+
+            var tmp = boutonxboxnode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+           tmp = tmp.childNodes[1];
+
+        }
+
         tmp = tmp.firstChild;
 
         tmp = tmp.childNodes[2];
+
+        if (!tmp) { //Version du 29 octobre 2008 - BOUTONS DU HAUT
+
+            var tmp = boutonxboxnode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.childNodes[1];
+
+            tmp = tmp.firstChild;
+
+            tmp = tmp.childNodes[2];
+
+        }
 
         tmp = tmp.childNodes[1];
 
@@ -1032,6 +1110,23 @@ var cGmail2 = {
             tmp = tmp.parentNode;
 
             tmp = tmp.childNodes[1];
+
+        }
+
+         if (!tmp) { //Version du 29 octobre 2008 - BOUTONS DU HAUT
+
+            var tmp = boutonxboxnode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.childNodes[1];
+
 
         }
 

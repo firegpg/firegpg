@@ -36,9 +36,9 @@
   - ***** END LICENSE BLOCK ***** -->
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<!DOCTYPE prefwindow SYSTEM "chrome://firegpg/locale/keymanager.dtd">
-<dialog id="key-dialog" title="&keymanager;" orient="vertical" autostretch="always"
-        onload="onLoad(this); sizeToContent(); this.innerHeight = this.innerHeight + 500;"
+<!DOCTYPE prefwindow SYSTEM "chrome://firegpg/locale/searchkey.dtd">
+<dialog id="searchkey-dialog" title="&keyimporter;" orient="vertical" autostretch="always"
+        onload="onLoad(this); sizeToContent(); this.innerHeight = this.innerHeight + 500; "
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" buttons="accept">
 
 
@@ -58,45 +58,18 @@
                 <treecol  label="&key-create;" syle="width: 100px" flex="0"  persist="width,hidden"/>
                 <splitter class="tree-splitter"/>
 
-                <treecol  label="&key-expire;" syle="width: 100px" flex="0" persist="width,hidden"/>
-                <splitter class="tree-splitter"/>
-
-                <treecol  label="&key-trust;" syle="width: 100px" flex="0" persist="width,hidden"/>
-                <splitter class="tree-splitter"/>
-
-                <treecol  label="&key-status;" syle="width: 100px" flex="0" persist="width,hidden"/>
-                <splitter class="tree-splitter"/>
-
             </treecols>
 
             <treechildren id="private-listbox-child" properties=""/>
 
         </tree>
 
-
-		<!-- commandes -->
-
+        <label  id="search-textbox-label"  value="&search-description;"/>
         <hbox>
-
-            <button id="new-button" label="&new-button;" oncommand="new();"/>
-            <button id="changetrust-button" label="&changetrust-button;" oncommand="changetrust();"/>
-            <button id="sign-button" label="&sign-button;" oncommand="sign();"/>
-            <button id="revokesign-button" label="&revokesign-button;" oncommand="revokesign();"/>
-            <button id="revoke-button" label="&revoke-button;" oncommand="revoke();"/>
+            <textbox id="search-textbox" style="width: 750px;" />
+            <button id="search-button" label="&search-button;" oncommand="search();"/>            <button id="import-button" label="&import-button;" oncommand="import();"/>
 
         </hbox>
-
-        <hbox>
-
-            <button id="exportfile-button" label="&exportfile-button;" oncommand="exportfile();"/>
-            <button id="importfile-button" label="&importfile-button;" oncommand="importfile();"/>
-            <button id="exportserver-button" label="&exportserver-button;" oncommand="exportserver();"/>
-            <button id="importserver-button" label="&importserver-button;" oncommand="importserver();"/>
-            <button id="refrech-button" label="&refrech;" oncommand="refrech();"/>
-
-         </hbox>
-
-
 
 
     </vbox>
@@ -108,7 +81,7 @@
     <script src="misc.js"/>
     <script src="cgpgaccess.js"/>
     <script src="cgpg.js"/>
-    <script src="keymanager.js"/>
+    <script src="searchkey.js"/>
 
 </dialog>
 
