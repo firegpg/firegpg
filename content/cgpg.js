@@ -363,6 +363,10 @@ var FireGPG = {
 
 			try {
                 infos = list[i].split(":");
+				
+				if (infos[1] == 'r') //Revoquée
+					continue;
+				
                 //4: key id. 9 = key name. 5: creation date, 6: expire date
                 if(infos[0] == "pub" || infos[0] == "sec" || infos[0] == "uid" ) {
 
@@ -1029,11 +1033,11 @@ var FireGPG = {
 		} else {
 			// If he work, we get informations of the Key
 			var infos = result.sdOut;
-
+			
             infos2 = infos.substring(0,infos.indexOf("SIG_ID") + 7);
 
 			infos2 = result.sdOut.replace(infos2, "");
-
+			
 			infos2 = infos2.substring(0,infos2.indexOf("GNUPG") - 2);
 
             infos2 = infos2.split(" ");
@@ -1046,7 +1050,8 @@ var FireGPG = {
 
 			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
 			infos = result.sdOut.replace(infos, "");
-			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
+			infos = infos.replace("\r", "\n");
+			infos = infos.substring(0,infos.indexOf("\n"));
 
             var i18n = document.getElementById("firegpg-strings");
 

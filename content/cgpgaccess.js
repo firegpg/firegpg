@@ -319,6 +319,8 @@ var GPGAccess = {
         if (sdtIn == undefined)
             sdtIn = "";
 
+		
+		sdtIn = EnigConvertFromUnicode(sdtIn, charset);
 
         var outStrObj = new Object();
         var outLenObj = new Object();

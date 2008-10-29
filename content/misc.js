@@ -1027,6 +1027,35 @@ function EnigConvertToUnicode(text, charset) {
   }
 }
 
+/*
+    Function: EnigConvertFromUnicode
+
+    Convert the text, in unicode, into an string in the specified chaset.
+    This function is from Enigmail, same license as FireGPG.
+
+    Parameters:
+        text - The text to convert
+        charset - The charset of the text.
+*/
+function EnigConvertFromUnicode(text, charset) {
+  if (!text || !charset || (charset.toLowerCase() == "iso-8859-1"))
+    return text;
+
+  // Encode plaintext
+  try {
+    var unicodeConv = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"].getService(Components.interfaces.nsIScriptableUnicodeConverter);
+
+    unicodeConv.charset = charset;
+
+    return unicodeConv.ConvertFromUnicode(text);
+
+  } catch (ex) {
+    fireGPGDebug(ex,'misc.EnigConvertFromUnicode',true);
+    return text;
+  }
+}
+
+
 
 /*
   Function: CreateTreeItemKey

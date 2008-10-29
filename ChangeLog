@@ -1,4 +1,11 @@
-2008-10-22 Maximilien Cuony
+2008-10-29 Maximilien Cuony
+	* Fix size problems for windows in options (50% of FS#143)
+	* FS#144
+	* FS#145
+	* FS#149
+	* FS#136 50%
+	
+2008-10-24 Maximilien Cuony
     * 0.6.2 packed, and uploaded to the server !
     * Adding Darvin files
 
