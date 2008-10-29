@@ -1,0 +1,9 @@
+<!ENTITY crypt-button "ক্রিপ্ট">
+<!ENTITY dcrypt-button "Decrypt">
+<!ENTITY sign-button "Sign">
+<!ENTITY verify-button "Verify">
+<!ENTITY open-button "Open">
+<!ENTITY save-button "Save">
+<!ENTITY cryptandsign-button "Sign and crypt">
+<!ENTITY sign-clear-button "Clear sign">
+<!ENTITY symcrypt-button "Symmetric encryption">

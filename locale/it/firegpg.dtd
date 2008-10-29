@@ -1,0 +1,51 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "Firma">
+<!ENTITY firegpgContext.labelCrypt "Cripta">
+<!ENTITY firegpgContext.labelVerif "Controlla Firma">
+<!ENTITY firegpgContext.labelDecry "Decripta">
+<!ENTITY firegpgContext.labelOptions "Opzioni">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "Firma">
+<!ENTITY firegpgMenu.labelCrypt "Cripta">
+<!ENTITY firegpgMenu.labelVerif "Controlla Firma">
+<!ENTITY firegpgMenu.labelDecry "Decripta">
+<!ENTITY firegpgMenu.labelOptions "Opzioni">
+<!ENTITY firegpgToolbar.labelSign "Firma">
+<!ENTITY firegpgToolbar.labelCrypt "Cripta">
+<!ENTITY firegpgToolbar.labelVerif "Controlla Firma">
+<!ENTITY firegpgToolbar.labelDecry "Decripta">
+<!ENTITY firegpgToolbar.labelOptions "Opzioni">
+<!ENTITY firegpgMenu.labelErase "Cancella password salvata">
+<!ENTITY firegpgContext.labelErase "Cancella password salvata">
+<!ENTITY firegpgToolbar.labelErase "Cancella password salvata">
+<!ENTITY firegpgMenu.labelImport "Importa">
+<!ENTITY firegpgContext.labelImport "Importa">
+<!ENTITY firegpgToolbar.labelImport "Importa">
+<!ENTITY firegpgMenu.labelExport "Esporta">
+<!ENTITY firegpgContext.labelExport "Esporta">
+<!ENTITY firegpgToolbar.labelExport "Esporta">
+<!ENTITY firegpgPopInfo.labelBonjour "Benvenuti !<br />L'installazione di FireGPG è andata a buon fine !">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG: accesso a GnuPG avvenuto con successo !">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG: accesso a GnuPG fallito : controllare che GnuGPG sia installato e che la directory definita sia corretta. ">
+<!ENTITY firegpgPopInfo.labelKeyOk "Chiave privata selezionata con successo !">
+<!ENTITY firegpgPopInfo.labelKeyErr "Attenzione: selezionare una chiave privata tramite le opzioni ! ">
+<!ENTITY firegpgPopInfo.close "Esci">
+<!ENTITY firegpgPopInfo.options "Opzioni">
+<!ENTITY firegpgContext.labelEditeur "Apri Editor">
+<!ENTITY firegpgMenu.labelEditeur "Apri Editor">
+<!ENTITY firegpgToolbar.labelEditeur "Apri Editor">
+<!ENTITY firegpgContext.labelCryptSign "Firma e Cripta">
+<!ENTITY firegpgMenu.labelCryptSign "Firma e Cripta">
+<!ENTITY firegpgToolbar.labelCryptSign "Firma e Cripta">
+<!ENTITY firegpgToolbar.labelSymCrypt "Criptazione simmetrica">
+<!ENTITY firegpgContext.labelSymCrypt "Criptazione simmetrica">
+<!ENTITY firegpgMenu.labelSymCrypt "Criptazione simmetrica">
+<!ENTITY firegpgContext.labelClearSign "Firma">
+<!ENTITY firegpgToolbar.labelClearSign "Firma">
+<!ENTITY firegpgMenu.labelClearSign "Firma">
+<!ENTITY firegpgToolbar.labelManager "Key manager">
+<!ENTITY firegpgMenu.labelManager "Key manager">
+<!ENTITY firegpgContext.labelManager "Key manager">

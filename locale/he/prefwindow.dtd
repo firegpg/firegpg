@@ -1,0 +1,57 @@
+<!ENTITY prefwindow.title "העדפות">
+<!ENTITY pane1.title "כללי">
+<!ENTITY pane2.title "ג'ימייל">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "תמיכה בג'י מייל (GMail)">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "מפתח פרטי ברירת מחדל">
+<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
+<!ENTITY change-gpg-path-button "מגדיר מיקום ספריית 
+GPG">
+<!ENTITY change-gpg-path-checkbox "הגדר מיקום ספריית GPG : ">
+<!ENTITY result-always-in-new-window "תמיד פתח תוצאת הצפנה בחלון חדש">
+<!ENTITY no-gpg-agent-checkbox "סגור את GPG 
+בכח 
+(עלול לפתור שגיאות)">
+<!ENTITY ask-for-save-pass "בקש סיסמא כברירת מחדל">
+<!ENTITY gmail-no-no-sign-checkbox "אל תראה את 'מפתח לא נמצא ...'">
+<!ENTITY gmail-need-a-restart "על מנת להשתמש באפשרויות אלו, עלייך להפעיל מחדש את הדפדפן">
+<!ENTITY gmail-buttons-label "כפתורים שיופיעו :">
+<!ENTITY gmail-buton-sign-checkbox "חתום">
+<!ENTITY gmail-buton-signsend-checkbox "חתום ושלח">
+<!ENTITY gmail-buton-crypt-checkbox "הצפנה">
+<!ENTITY gmail-buton-cryptsend-checkbox "הצפן ושלח">
+<!ENTITY allvays-to-myself-checkbox "תמיד פענח בשליחה לעצמי">
+<!ENTITY enable-gpgauth-check.label "הפעל את gpgAuth">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "תמיד פענח הודעות משרת מאובטח">
+<!ENTITY global-allow-keyring-check.label "תמיד פענח הודעות משרת מאובטח">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "הגדרות לפי דומיין">
+<!ENTITY turn-off-updates "בטל עידכונים אוטומטים">
+<!ENTITY key-name "שם">
+<!ENTITY key-id "מזהה">
+<!ENTITY key-create "נוצר">
+<!ENTITY key-expire "פג תוקף">
+<!ENTITY pane4.title "Gpg">
+<!ENTITY gpg-add-options "הוסף ארגומנטים לשורת הפקודות של GPG : (זהירות - מומלץ להביט במסמכי ההתקנה)">
+<!ENTITY gmail-buton-signcrypt-checkbox "חתום והצפן">
+<!ENTITY gmail-buton-signcryptsend-checkbox "חתום, הצפן ושלח">
+<!ENTITY firegpg-version-label.text "גירסא נוכחית:">
+<!ENTITY hide-expired "הסתר מפתחות שפג תוקפם">
+<!ENTITY use-api "הפעל API לאתרי אינטרנט  
+דורש איתחול">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "רשימת אתרים מורשים (קליק ימיני להסרה(">
+<!ENTITY api-liste-domain.label "דומיין">
+<!ENTITY api-liste-keyauth.label "מפתח">
+<!ENTITY use-gpg-agent-checkbox "Active Gpg-agent (warning, can lead issues...)">
+<!ENTITY search-description "Filter :">
+<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">
+<!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
+<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
+<!ENTITY gmail-disable-autosave-checkbox "Disable auto save">
+<!ENTITY gmail-buton-csign-checkbox "Clear sign">
+<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">

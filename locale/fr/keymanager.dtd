@@ -1,0 +1,17 @@
+<!ENTITY key-status "Status">
+<!ENTITY key-trust "Confiance">
+<!ENTITY key-expire "Expiration">
+<!ENTITY key-create "Création">
+<!ENTITY key-id "Id">
+<!ENTITY key-name "Nom">
+<!ENTITY revoke-button "Révoquer la clé">
+<!ENTITY revokesign-button "Révoquer la signature">
+<!ENTITY sign-button "Signer la clé">
+<!ENTITY changetrust-button "Changer la confiance">
+<!ENTITY importserver-button "Importer depuis le serveur">
+<!ENTITY exportserver-button "Exporter vers le serveur">
+<!ENTITY importfile-button "Importer depuis un fichier">
+<!ENTITY exportfile-button "Exporter vers un fichier">
+<!ENTITY new-button "Nouvelle clé">
+<!ENTITY keymanager "Gestionnaire de clés">
+<!ENTITY refrech "Refresh keys from server">

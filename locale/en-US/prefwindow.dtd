@@ -1,0 +1,53 @@
+<!ENTITY prefwindow.title "FireGPG preferences">
+<!ENTITY pane1.title "General">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Gmail support">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Default private key :">
+<!ENTITY show-website-checkbox "Display FireGPG's website address in GnuPG comment field">
+<!ENTITY change-gpg-path-button "Browse">
+<!ENTITY change-gpg-path-checkbox "Specify the path of gpg :">
+<!ENTITY result-always-in-new-window "Always display result of encryption and/or signature in a new window.">
+<!ENTITY no-gpg-agent-checkbox "Force turning off GPG agent (can fix some issues)">
+<!ENTITY ask-for-save-pass "By default, ask to remember password">
+<!ENTITY gmail-no-no-sign-checkbox "Do not display 'No signature found [...]'">
+<!ENTITY gmail-need-a-restart "The browser must be restarted for these settings to take effect.">
+<!ENTITY gmail-buttons-label "Buttons to show :">
+<!ENTITY gmail-buton-sign-checkbox "Sign">
+<!ENTITY gmail-buton-signsend-checkbox "Sign and send">
+<!ENTITY gmail-buton-crypt-checkbox "Encrypt">
+<!ENTITY gmail-buton-cryptsend-checkbox "Encrypt and send">
+<!ENTITY allvays-to-myself-checkbox "Always encrypt to myself">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (browser must be restarted)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Per domain settings :">
+<!ENTITY turn-off-updates "Disable FireGPG automatic updates">
+<!ENTITY key-name "Name">
+<!ENTITY key-id "Id">
+<!ENTITY key-create "Created">
+<!ENTITY key-expire "Expires">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "Add arguments to the gpg command : (Be careful : FireGPG could stop working ! Read the documentation.)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Sign and encrypt">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Sign, encrypt and send">
+<!ENTITY firegpg-version-label.text "Current FireGPG version :">
+<!ENTITY hide-expired "Hide expired keys">
+<!ENTITY use-api "Enable FireGPG API for webpages (such as roundcube) (restart required)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "List of allowed sites (double click to remove)">
+<!ENTITY api-liste-domain.label "Domain">
+<!ENTITY api-liste-keyauth.label "Key">
+<!ENTITY use-gpg-agent-checkbox "Enable GPG-agent (warning, can lead to issues)">
+<!ENTITY search-description "Filter">
+<!ENTITY gmail-buton-use-select-checkbox "Display a list instead of buttons">
+<!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
+<!ENTITY inline-activated "Check for PGP blocks in pages (restart needed)">
+<!ENTITY gmail-disable-autosave-checkbox "Disable autosave feature">
+<!ENTITY gmail-buton-csign-checkbox "Clear sign">
+<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
