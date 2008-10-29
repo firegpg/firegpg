@@ -71,6 +71,7 @@
         <menuitem class="firegpg-menu-export menuitem-iconic" label="&firegpgMenu.labelExport;" oncommand="firegpg.onMenuItemCommand(event,'EXPORT')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-editeur menuitem-iconic" label="&firegpgMenu.labelEditeur;" oncommand="firegpg.onMenuItemCommand(event,'EDITEUR')"/>
+		<menuitem class="firegpg-menu-manager menuitem-iconic" label="&firegpgMenu.labelManager;" oncommand="firegpg.onMenuItemCommand(event,'MANAGER')"/>
         <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgMenu.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
         <menuitem style="display: none;" id="firegpg-menu-memo-menu" class="firegpg-menu-rease menuitem-iconic" label="&firegpgMenu.labelErase;" oncommand="firegpg.onMenuItemCommand(event,'ERASE')"/>
       </menupopup>
@@ -94,6 +95,7 @@
         <menuitem class="firegpg-menu-export menuitem-iconic" label="&firegpgContext.labelExport;" oncommand="firegpg.onMenuItemCommand(event,'EXPORT')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-editeur menuitem-iconic" label="&firegpgContext.labelEditeur;" oncommand="firegpg.onMenuItemCommand(event,'EDITEUR')"/>
+		<menuitem class="firegpg-menu-manager menuitem-iconic" label="&firegpgContext.labelManager;" oncommand="firegpg.onMenuItemCommand(event,'MANAGER')"/>
         <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgContext.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
         <menuitem style="display: none;" id="firegpg-menu-memo-pop" class="firegpg-menu-rease menuitem-iconic" label="&firegpgContext.labelErase;" oncommand="firegpg.onMenuItemCommand(event,'ERASE')"/>
       </menupopup>
@@ -116,6 +118,7 @@
         <menuitem class="firegpg-menu-export menuitem-iconic" label="&firegpgToolbar.labelExport;" oncommand="firegpg.onMenuItemCommand(event,'EXPORT')"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-editeur menuitem-iconic" label="&firegpgToolbar.labelEditeur;" oncommand="firegpg.onMenuItemCommand(event,'EDITEUR')"/>
+		<menuitem class="firegpg-menu-manager menuitem-iconic" label="&firegpgToolbar.labelManager;" oncommand="firegpg.onMenuItemCommand(event,'MANAGER')"/>
         <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgToolbar.labelOptions;" oncommand="firegpg.onMenuItemCommand(event,'OPTS')"/>
         <menuitem style="display: none;" id="firegpg-menu-memo-tool" class="firegpg-menu-rease menuitem-iconic" label="&firegpgToolbar.labelErase;" oncommand="firegpg.onMenuItemCommand(event,'ERASE')"/>
       </menupopup>

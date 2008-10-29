@@ -43,6 +43,10 @@
   list-style-image: url("chrome://firegpg/skin/editeur.png");
 }
 
+.firegpg-menu-manager {
+  list-style-image: url("chrome://firegpg/skin/manager.png");
+}
+
 .firegpg-menu {
 	list-style-image: url("chrome://firegpg/skin/firegpg.png");
 }

@@ -45,6 +45,7 @@
    ACTION_IMPORT - Import the current selected data
    ACTION_EXPORT - Show the dialog to export a key
    ACTION_EDITEUR - Show the editor windows
+   ACTION_MANAGER - Show the key manager windows
    ACTION_OPTS - Show the options windows
    ACTION_ERASE - Erase the current saved password.
 */
@@ -59,6 +60,7 @@ const ACTION_DECRYPT = 'DECRYPT';
 const ACTION_IMPORT = 'IMPORT';
 const ACTION_EXPORT = 'EXPORT';
 const ACTION_EDITEUR = 'EDITEUR';
+const ACTION_MANAGER = 'MANAGER';
 const ACTION_OPTS = 'OPTS';
 const ACTION_ERASE = 'ERASE';
 
@@ -121,6 +123,8 @@ var firegpg = {
 			FireGPG.kexport();
 		else if(action == ACTION_EDITEUR)
 			showEditor('');
+		else if(action == ACTION_MANAGER)
+			window.openDialog("chrome://firegpg/content/keymanager.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
 		else if(action == ACTION_OPTS)
 			window.openDialog("chrome://firegpg/content/options.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
 		else if (action == ACTION_ERASE)
