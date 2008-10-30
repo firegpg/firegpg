@@ -1112,6 +1112,70 @@ function CreateTreeItemKey(key, document, forceId) {
 
 }
 
+
+/*
+  Function: CreateTreeItemKey
+
+  Return a Treeitem for the key in parameter
+
+  Parameters:
+    key - The key
+    document - The current document.
+    forceId - If we have to force the id of the key
+*/
+function CreateTreeItemKey2(key, document, forceId) {
+    var  item  = document.createElement('treeitem');
+
+    var row = document.createElement('treerow');
+
+    var  child1 = document.createElement('treecell');
+    child1.setAttribute('label', key.keyName);
+    row.appendChild(child1);
+
+    var  child2 = document.createElement('treecell');
+    child2.setAttribute('label', key.keyId);
+    row.appendChild(child2);
+
+    var  child3 = document.createElement('treecell');
+    child3.setAttribute('label', key.keyDate);
+    row.appendChild(child3);
+
+    var  child4 = document.createElement('treecell');
+    child4.setAttribute('label', key.keyExpi);
+    row.appendChild(child4);
+	
+	var  child5 = document.createElement('treecell');
+    child5.setAttribute('label', key.keyTrust);
+    row.appendChild(child5);
+	
+	
+	/*
+	 *   1 = ne sais pas ou ne dirai pas
+  2 = je ne fais PAS confiance
+  3 = je crois marginalement
+  4 = je fais entièrement confiance
+  5 = je donne une confiance ultime
+  * */
+	var  child6 = document.createElement('treecell');
+    child6.setAttribute('label', 's');
+    row.appendChild(child6);
+
+    var id = key.keyId;
+
+    if (forceId != undefined)
+        id = forceId;
+
+    row.setAttribute('gpg-id', id);
+
+    item.appendChild(row);
+
+
+
+    return item;
+
+
+}
+
 function getKeyServer() {
 
     var prefs = Components.classes["@mozilla.org/preferences-service;1"].
@@ -1137,7 +1201,7 @@ function getKeyServer() {
 function showSearchBox(autoSearch) {
 
 
-    window.openDialog("chrome://firegpg/content/searchkey.xul", "searchBox", "chrome,centerscreen").focus();
+    window.openDialog("chrome://firegpg/content/searchkey.xul", "searchBox", "chrome,centerscreen", {autoSearch: autoSearch}).focus();
 
 }
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

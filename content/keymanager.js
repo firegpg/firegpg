@@ -34,30 +34,113 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+var curentlySelected = null;
+
 function onLoad(win)
 {
+	updateKeyList();
 
-    updateButtons();
+}
+function updateKeyList() {
+	
+	curentlySelected = null;
+	
+	keylistcall = FireGPG.listKeys(false,true);
 
+    if (keylistcall.result == RESULT_SUCCESS)
+        gpg_keys = keylistcall.keylist;
+    else
+        gpg_keys = new Array();
+
+	var listbox = document.getElementById('key-listbox-child');
+	
+	while (listbox.firstChild) {
+  		listbox.removeChild(listbox.firstChild);
+	}
+
+	
+
+    var current = 0;
+	for(var key in gpg_keys) {
+
+        if (gpg_keys[key].keyName) {
+			
+            current++;
+
+            item = CreateTreeItemKey2(gpg_keys[key], document);
+
+            if (gpg_keys[key].subKeys.length > 0) {
+
+                item.setAttribute("container", "true");
+                var subChildren=document.createElement("treechildren");
+
+                for(var skey in gpg_keys[key].subKeys) {
+
+                    if (gpg_keys[key].subKeys[skey].keyName) {
+
+                        var subItem = CreateTreeItemKey2( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
+
+                        subChildren.appendChild(subItem);
+                    }
+
+                    item.appendChild(subChildren);
+
+                }
+            }
+
+            listbox.appendChild(item);
+
+
+        }
+	}
+
+	curentlySelected = null;
+	updateButtons();	
+}
+
+function keySelected() {
+	
+	var listbox = document.getElementById('keys-listbox');
+	
+	if (listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id') != "")
+		var key_id = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id');
+	else 
+		var key_id = null;
+		
+	curentlySelected = key_id;
+	
+	
+	updateButtons();
 }
 
 
 function updateButtons() {
 
-    document.getElementById('exportfile-button').disabled = true;
-    document.getElementById('exportserver-button').disabled = true;
-    document.getElementById('changetrust-button').disabled = true;
-    document.getElementById('sign-button').disabled = true;
-    document.getElementById('revokesign-button').disabled = true;
-    document.getElementById('revoke-button').disabled = true;
+    document.getElementById('exportfile-button').disabled = (curentlySelected == null);
+    document.getElementById('exportserver-button').disabled = (curentlySelected == null);
+    document.getElementById('changetrust-button').disabled = (curentlySelected == null);
+    document.getElementById('sign-button').disabled = (curentlySelected == null);
+    document.getElementById('revokesign-button').disabled = (curentlySelected == null);
+    document.getElementById('revoke-button').disabled = (curentlySelected == null);
 
 
 }
 
 function refrech() {
-    FireGPG.refreshKeysFromServer();
+    
+	
+	
+	FireGPG.refreshKeysFromServer();
+	updateKeyList();
 }
 
 function importserver() {
-    showSearchBox();
+    showSearchBox((curentlySelected!= null ? "0x" + curentlySelected.substring(8) : "")	, true);
+	updateKeyList();
+
+}
+
+function exportserver() {
+	FireGPG.sendKeyToServer(curentlySelected);
+	updateKeyList();
 }

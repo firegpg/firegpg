@@ -60,14 +60,15 @@
 
             </treecols>
 
-            <treechildren id="private-listbox-child" properties=""/>
+            <treechildren id="keys-listbox-child" properties=""/>
 
         </tree>
 
         <label  id="search-textbox-label"  value="&search-description;"/>
         <hbox>
             <textbox id="search-textbox" style="width: 750px;" />
-            <button id="search-button" label="&search-button;" oncommand="search();"/>            <button id="import-button" label="&import-button;" oncommand="import();"/>
+            <button id="search-button" label="&search-button;" oncommand="rebuildList();"/>  
+            <button id="import-button" label="&import-button;" oncommand="importkeys();"/>
 
         </hbox>
 

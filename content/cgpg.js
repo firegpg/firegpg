@@ -126,6 +126,9 @@ function GPGReturn() {
         keyDate - The key's creation date
         keyId - The key's id
         subKeys - An array of <GPGKey> with the subkey of the key.
+		expired - True if the key is expired
+		revoked - True if the key is revoked
+		keyTrust - Trust of the key
 
 */
 function GPGKey() {
@@ -134,6 +137,9 @@ function GPGKey() {
     this.keyDate = null;
     this.keyId = null;
     this.subKeys = new Array();
+	this.expired = false;
+	this.revoked = false;
+	this.keyTrust = null;
 
 }
 
@@ -307,7 +313,7 @@ var FireGPG = {
             onlyPrivate - _Optional_, default to false. Set this to true to get only the private keys.
 
     */
-	listKeys: function(onlyPrivate) {
+	listKeys: function(onlyPrivate, allKeys) {
 
         var returnObject = new GPGReturn();
 
@@ -364,7 +370,7 @@ var FireGPG = {
 			try {
                 infos = list[i].split(":");
 
-				if (infos[1] == 'r') //Revoquée
+				if (infos[1] == 'r' && allKeys != true) //Revoquée
 					continue;
 
                 //4: key id. 9 = key name. 5: creation date, 6: expire date
@@ -375,11 +381,13 @@ var FireGPG = {
                         var keyId = infos[7];
                         var keyDate = "";
                         var keyExpi = "";
+						var keyTrust = "-";
 
                     } else {
                         var keyId = infos[4];
                         var keyDate = infos[5];
                         var keyExpi = infos[6];
+						var keyTrust = infos[8];
                     }
 
                     var keyName = infos[9].replace(/\\e3A/g, ":");
@@ -390,23 +398,38 @@ var FireGPG = {
                     theKey.keyExpi  = keyExpi;
                     theKey.keyId = keyId;
                     theKey.keyName = keyName;
+					theKey.keyTrust = keyTrust;
+					
+					if (infos[1] == 'r')
+						theKey.revoked = true;
+					else
+						theKey.revoked = false;	
+					
+						
+					var splited = keyExpi.split(new RegExp("-", "g"));
 
-                    if(check_expi)  {
+                    var tmp_date = new Date(splited[0],splited[1],splited[2]);
 
-                        var splited = keyExpi.split(new RegExp("-", "g"));
-
-                        var tmp_date = new Date(splited[0],splited[1],splited[2]);
+                    if(check_expi && allKeys != true)  {
 
                         if (isNaN(tmp_date.getTime()) || maintenant < tmp_date.getTime()) {
+							
+							theKey.expired = true;
 
-                        if (infos[0] == "uid")
-                            returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
-                        else
-                            returnObject.keylist.push(theKey);
+							if (infos[0] == "uid")
+								returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
+							else
+								returnObject.keylist.push(theKey);
 
                         }
 
                     }  else {
+						
+                        if (isNaN(tmp_date.getTime()) || maintenant < tmp_date.getTime())
+							theKey.expired = false;
+						else
+							theKey.expired = true;
+
 
                         if (infos[0] == "uid")
                             returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
@@ -1312,9 +1335,132 @@ var FireGPG = {
         return returnObject;
 	},
 
-    searchKeyInServer: function(search) {
+    searchKeyInServer: function(search, silent) {
 
-        //gpg --with-colons --quiet --no-tty --no-verbose --status-fd 2 --armor --batch --search-keys cuony
+		var returnObject = new GPGReturn();
+	
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+        //Boite d'attente
+        var wait_box = window.open("chrome://firegpg/content/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
+        wait_box.focus();
+        //Boite pour attendre la boite d'attente
+        var wait_box2 = window.open("chrome://firegpg/content/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
+
+        // We get the result
+        try {
+		var result = this.GPGAccess.searchKeyInServer(search,getKeyServer());
+        } catch (e) { } //To be sure to close the wait_box
+
+        wait_box.close();
+
+		// We get informations from GPG
+		result = EnigConvertGpgToUnicode(result.sdOut);
+
+        returnObject.sdOut = result;
+
+        returnObject.keylist = new Array();
+
+  		// Parsing
+		var reg = new RegExp("\r", "g");
+		var result = result.replace(reg,"\n");
+		var reg = new RegExp("\n\n", "g");
+		var result = result.replace(reg,"\n");
+
+		var reg = new RegExp("[\n]+", "g");
+		var list = result.split(reg);
+
+		// var reg2=new RegExp("[:]+", "g");
+
+
+		for (var i = 0; i < list.length; i++) {
+			var infos = new Array();
+
+			try {
+                infos = list[i].split(":");
+
+                //4: key id. 9 = key name. 5: creation date, 6: expire date
+                if(infos[0] == "pub" || infos[0] == "sec" || infos[0] == "uid" ) {
+
+                    if (infos[0] == "pub") {
+
+                        var keyId = infos[1];
+                        var keyDate = "";
+                        var keyExpi = "";
+						var keyName = "";
+
+                    } else {
+                        var keyId = returnObject.keylist[returnObject.keylist.length-1].keyId; //Id du papa
+                        var keyDate = infos[2];
+                        var keyExpi = infos[9];
+						var keyName = infos[1].replace(/\\e3A/g, ":");
+					
+                    	var tmp_date = new Date();
+						tmp_date.setTime(keyDate*1000);
+						
+						keyDate = tmp_date.getFullYear() + "-" + (tmp_date.getMonth()+1) + "-" + tmp_date.getDate();
+						
+                    }
+
+                    var theKey = new GPGKey();
+
+                    theKey.keyDate = keyDate;
+                    theKey.keyExpi  = keyExpi;
+                    theKey.keyId = keyId;
+                    theKey.keyName = keyName;
+
+						
+					if (infos[0] == "uid") {
+						returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
+						if (returnObject.keylist[returnObject.keylist.length-1].keyName == "") {
+							returnObject.keylist[returnObject.keylist.length-1].keyName = theKey.keyName;
+							returnObject.keylist[returnObject.keylist.length-1].keyDate = theKey.keyDate;
+							
+						}
+						
+					}
+					else
+						returnObject.keylist.push(theKey);
+								
+								
+                }
+			} catch (e) { fireGPGDebug(e,'cgpg.searchKeyInServer',true);  }
+		}
+
+        // Sorts keys
+        returnObject.keylist.sort(Sortage);
+
+        for (var i = 0; i < returnObject.keylist.length; i++)
+            returnObject.keylist[i].subKeys.sort(Sortage);
+
+        returnObject.result = RESULT_SUCCESS;
+
+		return returnObject;
+
+        /*if (result.sdOut.indexOf('IMPORT_OK') > 0) {
+
+            if (!silent)
+                alert(document.getElementById('firegpg-strings').
+                getString('keyRecived'));
+
+            var returnObject = new GPGReturn();
+            returnObject.sdOut = result.sdOut;
+            returnObject.result = RESULT_SUCCESS;
+            return returnObject;
+
+        } else {
+
+            if (!silent)
+                alert(document.getElementById('firegpg-strings').
+                getString('keyFetchError'));
+
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }*/
 
     },
 
@@ -1430,9 +1576,8 @@ var FireGPG = {
 
         if (result.sdOut) {
 
-            If(!silent)
-                alert(document.getElementById('firegpg-strings').
-                getString('keySync'));
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('keySync'));
 
             var returnObject = new GPGReturn();
             returnObject.sdOut = result.sdOut;

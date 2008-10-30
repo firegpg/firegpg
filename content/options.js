@@ -99,7 +99,7 @@ function onLoad(win) {
     if (GPGAccess.FireGPGCall != null)
         document.getElementById('firegpg-version-version').value +=  ' -  XpCom';
 
-   keylistcall = FireGPG.listKeys(true);
+    keylistcall = FireGPG.listKeys(true);
 
     if (keylistcall.result == RESULT_SUCCESS)
         gpg_keys = keylistcall.keylist;

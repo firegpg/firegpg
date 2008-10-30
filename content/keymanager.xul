@@ -45,7 +45,7 @@
    <vbox  flex="1" >
 
 		<!-- liste de clés -->
-		<tree id="keys-listbox" flex="1" hidecolumnpicker="false" onselect="">
+		<tree id="keys-listbox" flex="1" hidecolumnpicker="false" onselect="keySelected();">
 
             <treecols>
 
@@ -69,7 +69,7 @@
 
             </treecols>
 
-            <treechildren id="private-listbox-child" properties=""/>
+            <treechildren id="key-listbox-child" properties=""/>
 
         </tree>
 
