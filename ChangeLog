@@ -1,3 +1,7 @@
+2008-10-30 Maximilien Cuony
+	* FS#60
+	* Continue key manager, key import
+	
 2008-10-29 Maximilien Cuony
 	* Fix size problems for windows in options (50% of FS#143)
 	* FS#144

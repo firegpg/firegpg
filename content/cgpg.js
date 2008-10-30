@@ -1050,8 +1050,24 @@ var FireGPG = {
             if(result.sdOut.indexOf("BADSIG") != -1)
                 returnObject.result = RESULT_ERROR_BAD_SIGN;
 
-            if(result.sdOut.indexOf("NO_PUBKEY") != -1)
+            if(result.sdOut.indexOf("NO_PUBKEY") != -1) {
                 returnObject.result = RESULT_ERROR_NO_KEY;
+				
+				idOfMissingKey = result.sdOut.substring(result.sdOut.indexOf("NO_PUBKEY") + 10);
+				idOfMissingKey += "\n";
+				
+				idOfMissingKey = idOfMissingKey.substring(0,idOfMissingKey.indexOf("\n"));
+				
+				if (confirm('AUto feetch ?' + idOfMissingKey)) {
+					
+					FireGPG.retriveKeyFromServer(idOfMissingKey);
+					
+					
+					return this.layerverify(text,layer,division);
+					
+				}
+				
+			}
 
 		} else {
 			// If he work, we get informations of the Key
