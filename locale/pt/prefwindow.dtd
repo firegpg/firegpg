@@ -51,3 +51,4 @@
 <!ENTITY gmail-buton-csignsend-checkbox "Assinatura limpa e enviar">
 <!ENTITY hide-fireftp-message "Não mostrar mensagem de quando está instalada uma biblioteca IPC antiga.">
 <!ENTITY use-fireftp-workaround "Tentar aceder à biblioteca IPC com o API antigo.">
+<!ENTITY keyserver-message "Keyserver">

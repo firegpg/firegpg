@@ -1,7 +1,12 @@
+2008-11-02 Maximilien Cuony
+    * 0.6.3 packed, and uploaded to the server !
+    * Key manager (not finished but ready for a release)
+    * Translation of some elements
+
 2008-10-30 Maximilien Cuony
 	* FS#60
 	* Continue key manager, key import
-	
+
 2008-10-29 Maximilien Cuony
 	* Fix size problems for windows in options (50% of FS#143)
 	* FS#144

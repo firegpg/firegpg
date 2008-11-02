@@ -51,3 +51,4 @@
 <!ENTITY gmail-buton-csignsend-checkbox "Obriši potpis i pošalji">
 <!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
 <!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
+<!ENTITY keyserver-message "Keyserver">

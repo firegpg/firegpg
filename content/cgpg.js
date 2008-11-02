@@ -399,13 +399,13 @@ var FireGPG = {
                     theKey.keyId = keyId;
                     theKey.keyName = keyName;
 					theKey.keyTrust = keyTrust;
-					
+
 					if (infos[1] == 'r')
 						theKey.revoked = true;
 					else
-						theKey.revoked = false;	
-					
-						
+						theKey.revoked = false;
+
+
 					var splited = keyExpi.split(new RegExp("-", "g"));
 
                     var tmp_date = new Date(splited[0],splited[1],splited[2]);
@@ -413,7 +413,7 @@ var FireGPG = {
                     if(check_expi && allKeys != true)  {
 
                         if (isNaN(tmp_date.getTime()) || maintenant < tmp_date.getTime()) {
-							
+
 							theKey.expired = true;
 
 							if (infos[0] == "uid")
@@ -424,7 +424,7 @@ var FireGPG = {
                         }
 
                     }  else {
-						
+
                         if (isNaN(tmp_date.getTime()) || maintenant < tmp_date.getTime())
 							theKey.expired = false;
 						else
@@ -1052,21 +1052,21 @@ var FireGPG = {
 
             if(result.sdOut.indexOf("NO_PUBKEY") != -1) {
                 returnObject.result = RESULT_ERROR_NO_KEY;
-				
+
 				idOfMissingKey = result.sdOut.substring(result.sdOut.indexOf("NO_PUBKEY") + 10);
 				idOfMissingKey += "\n";
-				
+
 				idOfMissingKey = idOfMissingKey.substring(0,idOfMissingKey.indexOf("\n"));
-				
-				if (confirm('AUto feetch ?' + idOfMissingKey)) {
-					
+
+				if (confirm(document.getElementById('firegpg-strings').
+                getString('autoFeetch') + ' (' + idOfMissingKey + ')')) {
+
 					FireGPG.retriveKeyFromServer(idOfMissingKey);
-					
-					
+
 					return this.layerverify(text,layer,division);
-					
+
 				}
-				
+
 			}
 
 		} else {
@@ -1354,7 +1354,7 @@ var FireGPG = {
     searchKeyInServer: function(search, silent) {
 
 		var returnObject = new GPGReturn();
-	
+
         if (silent == undefined)
             silent = false;
 
@@ -1413,12 +1413,12 @@ var FireGPG = {
                         var keyDate = infos[2];
                         var keyExpi = infos[9];
 						var keyName = infos[1].replace(/\\e3A/g, ":");
-					
+
                     	var tmp_date = new Date();
 						tmp_date.setTime(keyDate*1000);
-						
+
 						keyDate = tmp_date.getFullYear() + "-" + (tmp_date.getMonth()+1) + "-" + tmp_date.getDate();
-						
+
                     }
 
                     var theKey = new GPGKey();
@@ -1428,20 +1428,20 @@ var FireGPG = {
                     theKey.keyId = keyId;
                     theKey.keyName = keyName;
 
-						
+
 					if (infos[0] == "uid") {
 						returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
 						if (returnObject.keylist[returnObject.keylist.length-1].keyName == "") {
 							returnObject.keylist[returnObject.keylist.length-1].keyName = theKey.keyName;
 							returnObject.keylist[returnObject.keylist.length-1].keyDate = theKey.keyDate;
-							
+
 						}
-						
+
 					}
 					else
 						returnObject.keylist.push(theKey);
-								
-								
+
+
                 }
 			} catch (e) { fireGPGDebug(e,'cgpg.searchKeyInServer',true);  }
 		}
@@ -1607,9 +1607,9 @@ var FireGPG = {
         }
 
     },
-	
+
 	changeTrust: function(silent, key, trustLevel) {
-		
+
 		//--command-fd 0 --edit-key KEYID trust
 	}
 

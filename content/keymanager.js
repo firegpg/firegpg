@@ -42,39 +42,50 @@ function onLoad(win)
 
 }
 function updateKeyList() {
-	
+
 	curentlySelected = null;
-	
+
 	keylistcall = FireGPG.listKeys(false,true);
-	
+
 	keylistcallpriv = FireGPG.listKeys(true,true);
 
     if (keylistcall.result == RESULT_SUCCESS)
         gpg_keys = keylistcall.keylist;
     else
         gpg_keys = new Array();
-		
+
 	if (keylistcallpriv.result == RESULT_SUCCESS)
         gpg_keys_priv = keylistcallpriv.keylist;
     else
         gpg_keys_priv = new Array();
 
 	var listbox = document.getElementById('key-listbox-child');
-	
+
 	while (listbox.firstChild) {
   		listbox.removeChild(listbox.firstChild);
 	}
 
-	
+
 
     var current = 0;
 	for(var key in gpg_keys) {
 
         if (gpg_keys[key].keyName) {
-			
+
+            haveAPrivateKey = false;
+            for(var key2 in gpg_keys_priv) {
+
+                if (gpg_keys_priv[key2].keyId == gpg_keys[key].keyId) {
+                    haveAPrivateKey = true;
+                    break;
+                }
+
+
+            }
+
             current++;
 
-            item = CreateTreeItemKey2(gpg_keys[key], document);
+            item = CreateTreeItemKey2(gpg_keys[key], document, undefined, haveAPrivateKey);
 
             if (gpg_keys[key].subKeys.length > 0) {
 
@@ -85,7 +96,7 @@ function updateKeyList() {
 
                     if (gpg_keys[key].subKeys[skey].keyName) {
 
-                        var subItem = CreateTreeItemKey2( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId, "color: red;");
+                        var subItem = CreateTreeItemKey2( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId,  haveAPrivateKey);
                         subChildren.appendChild(subItem);
                     }
 
@@ -101,21 +112,21 @@ function updateKeyList() {
 	}
 
 	curentlySelected = null;
-	updateButtons();	
+	updateButtons();
 }
 
 function keySelected() {
-	
+
 	var listbox = document.getElementById('keys-listbox');
-	
+
 	if (listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id') != "")
 		var key_id = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id');
-	else 
+	else
 		var key_id = null;
-		
+
 	curentlySelected = key_id;
-	
-	
+
+
 	updateButtons();
 }
 
@@ -130,12 +141,20 @@ function updateButtons() {
     document.getElementById('revoke-button').disabled = (curentlySelected == null);
 
 
+    //DEV MODE !
+    document.getElementById('new-button').disabled = true;
+    document.getElementById('changetrust-button').disabled =true;
+    document.getElementById('sign-button').disabled =true;
+    document.getElementById('revokesign-button').disabled =true;
+    document.getElementById('revoke-button').disabled =true;
+
+
 }
 
 function refrech() {
-    
-	
-	
+
+
+
 	FireGPG.refreshKeysFromServer();
 	updateKeyList();
 }
@@ -152,7 +171,7 @@ function exportserver() {
 }
 
 function exportfile() {
-	
+
 	var nsIFilePicker = Components.interfaces.nsIFilePicker;
     var fp = Components.classes["@mozilla.org/filepicker;1"]
         .createInstance(nsIFilePicker);
@@ -167,27 +186,29 @@ function exportfile() {
 
     var filePath = fp.file.path;
     var data = "";
-	
+
 	var result = FireGPG.kexport(true, [curentlySelected]);
-	
-	
+
+
 	if (result.result == RESULT_SUCCESS) {
-		
+
 		data = result.exported;
-	
+
 		//Need to remove the file before save
 		removeFile(filePath);
 		putIntoFile(filePath,data);
-		
-		alert('Done');
+
+		alert(document.getElementById('firegpg-strings').
+                getString('keyExported'));
 	} else {
-		
-		alert('Error');
-	}	
+
+		alert(document.getElementById('firegpg-strings').
+                getString('keyNotExported') + "\n\n" + result.sdOut);
+	}
 }
 
 function importfile() {
-	
+
 	var nsIFilePicker = Components.interfaces.nsIFilePicker;
     var fp = Components.classes["@mozilla.org/filepicker;1"]
           .createInstance(nsIFilePicker);
@@ -200,7 +221,7 @@ function importfile() {
 
     var filePath = fp.file.path;
     var data = getFromFile(filePath);
-	
+
 	FireGPG.kimport(false,data);
-	
+
 }

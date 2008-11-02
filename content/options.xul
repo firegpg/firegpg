@@ -139,6 +139,8 @@
             <preference id="specify-gpg-path-pref" name="extensions.firegpg.specify_gpg_path" type="bool"/>
             <preference id="gpg-add-options-pref" name="extensions.firegpg.gpg_user_options" type="string"/>
             <preference id="use-gpg-agent-pref" name="extensions.firegpg.use_gpg_agent" type="bool"/>
+            <preference id="keyserver-pref" name="extensions.firegpg.keyserver" type="string"/>
+
 
         </preferences>
 
@@ -159,6 +161,9 @@
                   control="gpg-path-textbox" oncommand="chooseGPGPath();"/>
         </hbox>
 
+
+        <label  id="keyserver-label" value="&keyserver-message;"/>
+        <textbox id="keyserver-textbox"  preference="keyserver-pref"/>
 
        <label  id="gmail-need-a-restart-label" value="* &gmail-need-a-restart;"/>
 

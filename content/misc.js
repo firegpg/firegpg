@@ -50,11 +50,11 @@ try {
 
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */
-const FIREGPG_VERSION = '0.6.2';
+const FIREGPG_VERSION = '0.6.3';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
-const FIREGPG_STATUS = 'DEVEL';
+const FIREGPG_STATUS = 'RELASE';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */
@@ -1123,32 +1123,43 @@ function CreateTreeItemKey(key, document, forceId) {
     document - The current document.
     forceId - If we have to force the id of the key
 */
-function CreateTreeItemKey2(key, document, forceId, style) {
+function CreateTreeItemKey2(key, document, forceId, privateKey) {
     var  item  = document.createElement('treeitem');
 
     var row = document.createElement('treerow');
 
+
     var  child1 = document.createElement('treecell');
     child1.setAttribute('label', key.keyName);
+    if (privateKey  == true)
+        child1.setAttribute('properties', 'privatekey');
     row.appendChild(child1);
 
     var  child2 = document.createElement('treecell');
     child2.setAttribute('label', key.keyId);
+    if (privateKey  == true)
+        child2.setAttribute('properties', 'privatekey');
     row.appendChild(child2);
 
     var  child3 = document.createElement('treecell');
     child3.setAttribute('label', key.keyDate);
+    if (privateKey  == true)
+        child3.setAttribute('properties', 'privatekey');
     row.appendChild(child3);
 
     var  child4 = document.createElement('treecell');
     child4.setAttribute('label', key.keyExpi);
+    if (privateKey  == true)
+        child4.setAttribute('properties', 'privatekey');
     row.appendChild(child4);
-	
+
 	var  child5 = document.createElement('treecell');
     child5.setAttribute('label', key.keyTrust);
+    if (privateKey == true)
+        child5.setAttribute('properties', 'privatekey');
     row.appendChild(child5);
-	
-	
+
+
 	/*
 	 *   1 = ne sais pas ou ne dirai pas
   2 = je ne fais PAS confiance
@@ -1158,9 +1169,10 @@ function CreateTreeItemKey2(key, document, forceId, style) {
   * */
 	var  child6 = document.createElement('treecell');
     child6.setAttribute('label', '-');
-	
-	child6.setAttribute('class', 'red');
-	
+    if (privateKey  == true)
+        child6.setAttribute('properties', 'privatekey');
+
+
     row.appendChild(child6);
 
     var id = key.keyId;
@@ -1169,10 +1181,9 @@ function CreateTreeItemKey2(key, document, forceId, style) {
         id = forceId;
 
     row.setAttribute('gpg-id', id);
-	
-	row.setAttribute('class', 'red');
-	item.setAttribute('class', 'red');
-	
+    row.setAttribute('properties', 'privatekey');
+
+
 
     item.appendChild(row);
 

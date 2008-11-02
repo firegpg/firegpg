@@ -51,3 +51,4 @@
 <!ENTITY gmail-buton-csignsend-checkbox "Signer en clair et envoyer">
 <!ENTITY hide-fireftp-message "Ne pas afficher de message apropos d'une ancienne librarie IPC installée.">
 <!ENTITY use-fireftp-workaround "Essayer d'accéder à la librarie IPC avec l'ancienne API.">
+<!ENTITY keyserver-message "Serveur de clé">

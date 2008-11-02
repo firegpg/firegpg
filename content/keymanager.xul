@@ -45,6 +45,8 @@
 
    <vbox  flex="1" >
 
+        <label class="red" >This interface is not finished and here only for tests !</label>
+
 		<!-- liste de clés -->
 		<tree id="keys-listbox" flex="1" hidecolumnpicker="false" onselect="keySelected();">
 
@@ -73,6 +75,8 @@
             <treechildren id="key-listbox-child" properties=""/>
 
         </tree>
+
+        <label class="red" >This interface is not finished and here only for tests !</label>
 
 
 		<!-- commandes -->
