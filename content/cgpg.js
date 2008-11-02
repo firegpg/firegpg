@@ -1606,7 +1606,12 @@ var FireGPG = {
             return returnObject;
         }
 
-    }
+    },
+	
+	changeTrust: function(silent, key, trustLevel) {
+		
+		//--command-fd 0 --edit-key KEYID trust
+	}
 
 }
 var okWait;

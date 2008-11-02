@@ -46,11 +46,18 @@ function updateKeyList() {
 	curentlySelected = null;
 	
 	keylistcall = FireGPG.listKeys(false,true);
+	
+	keylistcallpriv = FireGPG.listKeys(true,true);
 
     if (keylistcall.result == RESULT_SUCCESS)
         gpg_keys = keylistcall.keylist;
     else
         gpg_keys = new Array();
+		
+	if (keylistcallpriv.result == RESULT_SUCCESS)
+        gpg_keys_priv = keylistcallpriv.keylist;
+    else
+        gpg_keys_priv = new Array();
 
 	var listbox = document.getElementById('key-listbox-child');
 	
@@ -78,8 +85,7 @@ function updateKeyList() {
 
                     if (gpg_keys[key].subKeys[skey].keyName) {
 
-                        var subItem = CreateTreeItemKey2( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
-
+                        var subItem = CreateTreeItemKey2( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId, "color: red;");
                         subChildren.appendChild(subItem);
                     }
 
@@ -143,4 +149,58 @@ function importserver() {
 function exportserver() {
 	FireGPG.sendKeyToServer(curentlySelected);
 	updateKeyList();
+}
+
+function exportfile() {
+	
+	var nsIFilePicker = Components.interfaces.nsIFilePicker;
+    var fp = Components.classes["@mozilla.org/filepicker;1"]
+        .createInstance(nsIFilePicker);
+
+    fp.init(window, null, nsIFilePicker.modeSave);
+    fp.appendFilters(nsIFilePicker.filterText | nsIFilePicker.filterAll);
+
+    var a = fp.show();
+
+    if (a != nsIFilePicker.returnOK && a != nsIFilePicker.returnReplace) //L'utilisateur annule
+        return;
+
+    var filePath = fp.file.path;
+    var data = "";
+	
+	var result = FireGPG.kexport(true, [curentlySelected]);
+	
+	
+	if (result.result == RESULT_SUCCESS) {
+		
+		data = result.exported;
+	
+		//Need to remove the file before save
+		removeFile(filePath);
+		putIntoFile(filePath,data);
+		
+		alert('Done');
+	} else {
+		
+		alert('Error');
+	}	
+}
+
+function importfile() {
+	
+	var nsIFilePicker = Components.interfaces.nsIFilePicker;
+    var fp = Components.classes["@mozilla.org/filepicker;1"]
+          .createInstance(nsIFilePicker);
+
+    fp.init(window, null, nsIFilePicker.modeOpen);
+    fp.appendFilters(nsIFilePicker.filterText | nsIFilePicker.filterAll);
+
+    if (fp.show() != nsIFilePicker.returnOK) //L'utilisateur annule
+        return;
+
+    var filePath = fp.file.path;
+    var data = getFromFile(filePath);
+	
+	FireGPG.kimport(false,data);
+	
 }

@@ -36,6 +36,7 @@
   - ***** END LICENSE BLOCK ***** -->
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://firegpg/skin/keymanager.css" type="text/css"?>
 <!DOCTYPE prefwindow SYSTEM "chrome://firegpg/locale/keymanager.dtd">
 <dialog id="key-dialog" title="&keymanager;" orient="vertical" autostretch="always"
         onload="onLoad(this); sizeToContent(); this.innerHeight = this.innerHeight + 500;"

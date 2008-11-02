@@ -1123,7 +1123,7 @@ function CreateTreeItemKey(key, document, forceId) {
     document - The current document.
     forceId - If we have to force the id of the key
 */
-function CreateTreeItemKey2(key, document, forceId) {
+function CreateTreeItemKey2(key, document, forceId, style) {
     var  item  = document.createElement('treeitem');
 
     var row = document.createElement('treerow');
@@ -1157,7 +1157,10 @@ function CreateTreeItemKey2(key, document, forceId) {
   5 = je donne une confiance ultime
   * */
 	var  child6 = document.createElement('treecell');
-    child6.setAttribute('label', 's');
+    child6.setAttribute('label', '-');
+	
+	child6.setAttribute('class', 'red');
+	
     row.appendChild(child6);
 
     var id = key.keyId;
@@ -1166,6 +1169,10 @@ function CreateTreeItemKey2(key, document, forceId) {
         id = forceId;
 
     row.setAttribute('gpg-id', id);
+	
+	row.setAttribute('class', 'red');
+	item.setAttribute('class', 'red');
+	
 
     item.appendChild(row);
 
