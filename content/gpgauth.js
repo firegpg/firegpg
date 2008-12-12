@@ -324,7 +324,7 @@ var gpgAuth = {
 			return false;
 		}
 	},
-    test
+
 
     /*
     Function: generate_random_token
