@@ -54,7 +54,7 @@ const FIREGPG_VERSION = '0.6.3';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
-const FIREGPG_STATUS = 'RELASE';
+const FIREGPG_STATUS = 'DEVEL';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */
@@ -784,7 +784,7 @@ function testIfSomethingsIsNew() {
 
     } else {
 
-        //DESACTIVED FOR ADDON.MOZILLA.ORG /*
+        //DESACTIVED FOR ADDON.MOZILLA.ORG/*
 
 
 
