@@ -40,7 +40,7 @@
 
 
 var curentlySelected = null;
-
+var privateKey = false;
 function onLoad(win)
 {
 	updateKeyList();
@@ -124,8 +124,10 @@ function keySelected() {
 
 	var listbox = document.getElementById('keys-listbox');
 
-	if (listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id') != "")
+	if (listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id') != "") {
 		var key_id = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id');
+        privateKey = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-privatekey') == 'privatekey';
+    }
 	else
 		var key_id = null;
 
@@ -144,6 +146,7 @@ function updateButtons() {
     document.getElementById('sign-button').disabled = (curentlySelected == null);
     document.getElementById('revokesign-button').disabled = (curentlySelected == null);
     document.getElementById('revoke-button').disabled = (curentlySelected == null);
+    document.getElementById('password-button').disabled = (curentlySelected == null) || (privateKey == false);
 
 
 
@@ -229,5 +232,12 @@ function changeTrust(value) {
 
    FireGPG.changeTrust(false,curentlySelected,value);
     updateKeyList();
+
+}
+
+function password() {
+
+
+    FireGPG.changePassword(false,curentlySelected);
 
 }

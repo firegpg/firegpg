@@ -67,8 +67,8 @@
                 <treecol  label="&key-trust;" syle="width: 100px" flex="0" persist="width,hidden"/>
                 <splitter class="tree-splitter"/>
 
-                <treecol  label="&key-status;" syle="width: 100px" flex="0" persist="width,hidden"/>
-                <splitter class="tree-splitter"/>
+             <!--   <treecol  label="&key-status;" syle="width: 100px" flex="0" persist="width,hidden"/>
+                <splitter class="tree-splitter"/> -->
 
             </treecols>
 
@@ -93,8 +93,10 @@
                <menuitem label="&trustFull;" onclick="changeTrust(4);"/>
                <menuitem label="&trustUltimate;" onclick="changeTrust('5\ny');"/>
 
-      </menupopup>
+            </menupopup>
 
+
+            <button id="password-button" label="&password-button;" oncommand="password();"/>
 
             <button id="sign-button" label="&sign-button;" oncommand="sign();"/>
             <button id="revokesign-button" label="&revokesign-button;" oncommand="revokesign();"/>

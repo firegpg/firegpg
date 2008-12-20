@@ -789,6 +789,24 @@ var GPGAccess = {
 
     },
 
+    changePassword: function(key, oldpass, newpass){
+
+        result = this.runGnupg(this.getBaseArugments()  + " --no-batch --command-fd 0  --edit-key " + key + " passwd" ,  oldpass + "\n");
+
+        //Sécurité
+        if (result.err.indexOf("BAD_PASSPHRASE") <= 0) {
+            result = this.runGnupg(this.getBaseArugments()  + " --no-batch --command-fd 0  --edit-key " + key + " passwd" ,   oldpass + "\n" + newpass + "\nsave\ny\n");
+        }
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.err;
+
+
+		// We return result
+		return result2;
+
+    },
+
 
 
 

@@ -823,7 +823,7 @@ var FireGPG = {
 
             eraseSavedPassword();
             returnObject.messagetext = i18n.getString("cryptAndSignFailedPass");
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = RESULT_ERROR_PASSWORD;
             return returnObject;
 		}
 
@@ -1611,6 +1611,7 @@ var FireGPG = {
 	changeTrust: function(silent, key, trustLevel) {
 
 
+
         if (silent == undefined)
             silent = false;
 
@@ -1636,6 +1637,79 @@ var FireGPG = {
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
+
+		//
+	},
+
+
+    changePassword: function(silent, key, oldpass, newpass) {
+
+        var i18n = document.getElementById("firegpg-strings");
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+        if (oldpass == undefined) {
+
+            oldpass = getPrivateKeyPassword(false, false, i18n.getString("oldPassword"), true);
+
+            if(oldpass == null) {
+                returnObject.result = RESULT_CANCEL;
+                return returnObject;
+            }
+
+        }
+
+        if (newpass == undefined) {
+
+            newpass = getPrivateKeyPassword(false, false, i18n.getString("newPassword"), true);
+            newpass2 = getPrivateKeyPassword(false, false, i18n.getString("newPassword2"), false);
+
+            if(newpass == null) {
+                returnObject.result = RESULT_CANCEL;
+                return returnObject;
+            }
+
+            if(newpass != newpass2) {
+
+                 if (!silent)
+                    alert(i18n.getString("changeFailledPasswordDiff"));
+
+
+                returnObject.result = RESULT_CANCEL;
+                return returnObject;
+            }
+        }
+
+
+        // We get the result
+		var result = this.GPGAccess.changePassword(key,  oldpass, newpass);
+
+        if(result.sdOut.indexOf("BAD_PASSPHRASE") != -1) {
+
+            if (!silent)
+                alert(i18n.getString("changeFailledPassword"));
+
+            returnObject.messagetext = i18n.getString("changeFailledPassword");
+
+            eraseSavedPassword();
+
+            returnObject.result = RESULT_ERROR_PASSWORD;
+            return returnObject;
+		}
+
+        //On assume que c'est ok
+
+        if(!silent)
+            alert(document.getElementById('firegpg-strings').getString('passChanged'));
+
+        var returnObject = new GPGReturn();
+        returnObject.sdOut = result.sdOut;
+        returnObject.result = RESULT_SUCCESS;
+        return returnObject;
+
 
 		//
 	}

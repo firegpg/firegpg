@@ -1181,13 +1181,14 @@ function CreateTreeItemKey2(key, document, forceId, privateKey) {
   4 = je fais entièrement confiance
   5 = je donne une confiance ultime
   * */
-	var  child6 = document.createElement('treecell');
+	/*var  child6 = document.createElement('treecell');
     child6.setAttribute('label', '-');
+
     if (privateKey  == true)
         child6.setAttribute('properties', 'privatekey');
 
 
-    row.appendChild(child6);
+    row.appendChild(child6);*/
 
     var id = key.keyId;
 
@@ -1195,7 +1196,8 @@ function CreateTreeItemKey2(key, document, forceId, privateKey) {
         id = forceId;
 
     row.setAttribute('gpg-id', id);
-    row.setAttribute('properties', 'privatekey');
+    if (privateKey == true)
+        row.setAttribute('gpg-privatekey', 'privatekey');
 
 
 
