@@ -1,9 +1,0 @@
-<!ENTITY crypt-button "Krypter">
-<!ENTITY dcrypt-button "Dekrypter">
-<!ENTITY sign-button "Signer">
-<!ENTITY verify-button "Verifiser">
-<!ENTITY open-button "Åpne">
-<!ENTITY save-button "Lagre">
-<!ENTITY cryptandsign-button "Signer og krypter">
-<!ENTITY sign-clear-button "Clear sign">
-<!ENTITY symcrypt-button "Symmetric encryption">

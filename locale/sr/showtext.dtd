@@ -1,9 +1,0 @@
-<!ENTITY crypt-button "Šifruj">
-<!ENTITY dcrypt-button "Dešifruj">
-<!ENTITY sign-button "Potpiši">
-<!ENTITY verify-button "Verifikuj">
-<!ENTITY open-button "Otvori">
-<!ENTITY save-button "Sačuvaj">
-<!ENTITY cryptandsign-button "Potpiši i Šifruj">
-<!ENTITY sign-clear-button "Obriši potpis">
-<!ENTITY symcrypt-button "Simetrično šifrovanje">
