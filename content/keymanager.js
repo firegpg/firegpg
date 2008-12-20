@@ -34,6 +34,11 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+
+
+
+
+
 var curentlySelected = null;
 
 function onLoad(win)
@@ -141,13 +146,6 @@ function updateButtons() {
     document.getElementById('revoke-button').disabled = (curentlySelected == null);
 
 
-    //DEV MODE !
-    document.getElementById('new-button').disabled = true;
-    document.getElementById('changetrust-button').disabled =true;
-    document.getElementById('sign-button').disabled =true;
-    document.getElementById('revokesign-button').disabled =true;
-    document.getElementById('revoke-button').disabled =true;
-
 
 }
 
@@ -223,5 +221,13 @@ function importfile() {
     var data = getFromFile(filePath);
 
 	FireGPG.kimport(false,data);
+
+}
+
+function changeTrust(value) {
+
+
+   FireGPG.changeTrust(false,curentlySelected,value);
+    updateKeyList();
 
 }

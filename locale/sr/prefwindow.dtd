@@ -1,0 +1,54 @@
+<!ENTITY prefwindow.title "FireGPG podešavanja">
+<!ENTITY pane1.title "Generalno">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "GMail podrška">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Privatni ključ po defaultu:">
+<!ENTITY show-website-checkbox "Prikaži adresu FireGPG sajta u GPG polju za komentare">
+<!ENTITY change-gpg-path-button "Postavljam putanju GPG-a.">
+<!ENTITY change-gpg-path-checkbox "Manuelno zadaj putanju GPG-a:">
+<!ENTITY result-always-in-new-window "Uvek prikaži rezultat kodiranja ili potpisivanja u novom prozoru.">
+<!ENTITY no-gpg-agent-checkbox "Prisilno ugasi GPG-ov Agent (može da popravi neke greške)">
+<!ENTITY ask-for-save-pass "Po defaultu, traži da se lozinka sačuva.">
+<!ENTITY gmail-no-no-sign-checkbox "Ne prikazuj 'Potpis nije nađen [...]'">
+<!ENTITY gmail-need-a-restart "Ove opcije zahtevaju restarovanje pretraživača.">
+<!ENTITY gmail-buttons-label "Prikaži dugmad:">
+<!ENTITY gmail-buton-sign-checkbox "Potpiši">
+<!ENTITY gmail-buton-signsend-checkbox "Potpiši i Pošalji">
+<!ENTITY gmail-buton-crypt-checkbox "Šifruj">
+<!ENTITY gmail-buton-cryptsend-checkbox "Šifruj i Pošalji">
+<!ENTITY allvays-to-myself-checkbox "Uvek šifruj za mene.">
+<!ENTITY enable-gpgauth-check.label "Uključi gpgAuth (Zahteva restartovanje Firefoxa)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Uvek dešifruj poruke od Autentikovanih Servera">
+<!ENTITY global-allow-keyring-check.label "Uvek dešifruj poruke od Autentifikovanih Servera">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Podešavanja po domenu:">
+<!ENTITY turn-off-updates "Isključi FireGPG-ovo automatsko ažuriranje">
+<!ENTITY key-name "Ime">
+<!ENTITY key-id "Id">
+<!ENTITY key-create "Kreirano">
+<!ENTITY key-expire "Isticanje">
+<!ENTITY pane4.title "Gpg">
+<!ENTITY gpg-add-options "Dodaj argumente na GPG-ovu komandnu liniju: (Pažnja! Može da sruši FireGPG! Pogledaj dokumenta.)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Potpiši i Šifruj">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Potpiši, Šifruj i Pošalji">
+<!ENTITY firegpg-version-label.text "Trenutna verzija FireGPG-a:">
+<!ENTITY hide-expired "Sakrij ">
+<!ENTITY use-api "Aktivni FireGPG API za sajtove (kao Roundcube)(Restart potreban) ">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "Liste dozvoljenih sajtova (dupli-klik za brisanje)">
+<!ENTITY api-liste-domain.label "Domen">
+<!ENTITY api-liste-keyauth.label "Ključ">
+<!ENTITY use-gpg-agent-checkbox "Aktivni GPG-agent (može dovesti izlaske)">
+<!ENTITY search-description "Filter:">
+<!ENTITY gmail-buton-use-select-checkbox "Ne prikazuj dugmad nego drop-down listu.">
+<!ENTITY firegpg-ask-for-private-label.text "Uvek traži privatni ključ">
+<!ENTITY inline-activated "Aktiviraj upravljač za PGP blokove u stranicama (potreban restart)">
+<!ENTITY gmail-disable-autosave-checkbox "Isključi autosave">
+<!ENTITY gmail-buton-csign-checkbox "Obriši potpis">
+<!ENTITY gmail-buton-csignsend-checkbox "Obriši potpis i pošalji">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
+<!ENTITY keyserver-message "Keyserver">

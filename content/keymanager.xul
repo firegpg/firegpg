@@ -84,7 +84,18 @@
         <hbox>
 
             <button id="new-button" label="&new-button;" oncommand="new();"/>
-            <button id="changetrust-button" label="&changetrust-button;" oncommand="changetrust();"/>
+            <button id="changetrust-button" label="&changetrust-button;" oncommand="document.getElementById('trustMenu').openPopup(this);"/>
+
+            <menupopup id="trustMenu">
+                <menuitem label="&trustUnded;" onclick="changeTrust(1);"/>
+               <menuitem label="&trustDont;" onclick="changeTrust(2);"/>
+               <menuitem label="&trustMargi;" onclick="changeTrust(3);"/>
+               <menuitem label="&trustFull;" onclick="changeTrust(4);"/>
+               <menuitem label="&trustUltimate;" onclick="changeTrust('5\ny');"/>
+
+      </menupopup>
+
+
             <button id="sign-button" label="&sign-button;" oncommand="sign();"/>
             <button id="revokesign-button" label="&revokesign-button;" oncommand="revokesign();"/>
             <button id="revoke-button" label="&revoke-button;" oncommand="revoke();"/>

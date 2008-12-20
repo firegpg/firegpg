@@ -1610,7 +1610,34 @@ var FireGPG = {
 
 	changeTrust: function(silent, key, trustLevel) {
 
-		//--command-fd 0 --edit-key KEYID trust
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+
+        // We get the result
+		var result = this.GPGAccess.changeTrust(key, trustLevel);
+
+
+        if (result.sdOut) {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('trustChanged'));
+
+            var returnObject = new GPGReturn();
+            returnObject.sdOut = result.sdOut;
+            returnObject.result = RESULT_SUCCESS;
+            return returnObject;
+
+        } else {
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
+
+		//
 	}
 
 }

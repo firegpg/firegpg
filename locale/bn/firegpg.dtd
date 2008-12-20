@@ -1,0 +1,51 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "স্বাক্ষর করুন">
+<!ENTITY firegpgContext.labelCrypt "Crypt">
+<!ENTITY firegpgContext.labelVerif "Verify">
+<!ENTITY firegpgContext.labelDecry "Decrypt">
+<!ENTITY firegpgContext.labelOptions "Options">
+<!ENTITY firegpgMenu.label "ফায়ারজিপিজি">
+<!ENTITY firegpgMenu.labelSign "Sign">
+<!ENTITY firegpgMenu.labelCrypt "ক্রিপ্ট">
+<!ENTITY firegpgMenu.labelVerif "Verify">
+<!ENTITY firegpgMenu.labelDecry "Decrypt">
+<!ENTITY firegpgMenu.labelOptions "Options">
+<!ENTITY firegpgToolbar.labelSign "Sign">
+<!ENTITY firegpgToolbar.labelCrypt "Crypt">
+<!ENTITY firegpgToolbar.labelVerif "Verify">
+<!ENTITY firegpgToolbar.labelDecry "Decrypt">
+<!ENTITY firegpgToolbar.labelOptions "Options">
+<!ENTITY firegpgMenu.labelErase "Clear saved password">
+<!ENTITY firegpgContext.labelErase "সংরক্ষিত শব্দচাবী মুছে ফেলুন">
+<!ENTITY firegpgToolbar.labelErase "Clear saved password">
+<!ENTITY firegpgMenu.labelImport "Import">
+<!ENTITY firegpgContext.labelImport "Import">
+<!ENTITY firegpgToolbar.labelImport "Import">
+<!ENTITY firegpgMenu.labelExport "Export">
+<!ENTITY firegpgContext.labelExport "Export">
+<!ENTITY firegpgToolbar.labelExport "এক্সপোর্ট">
+<!ENTITY firegpgPopInfo.labelBonjour "Welcome !<br />FireGPG was installed correctly !">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG, GnuPG তে প্রবেশ করতে সক্ষম!">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG cannot access to GnuPG : did you installed it ? Its path is correct ?">
+<!ENTITY firegpgPopInfo.labelKeyOk "A private key is choosed !">
+<!ENTITY firegpgPopInfo.labelKeyErr "Warning: please choose a private key in the options!">
+<!ENTITY firegpgPopInfo.close "Close">
+<!ENTITY firegpgPopInfo.options "Options">
+<!ENTITY firegpgContext.labelEditeur "Open the editor">
+<!ENTITY firegpgMenu.labelEditeur "এডিটর খুলুন">
+<!ENTITY firegpgToolbar.labelEditeur "Open the editor">
+<!ENTITY firegpgContext.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgMenu.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgToolbar.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
+<!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
+<!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
+<!ENTITY firegpgContext.labelClearSign "Clear sign">
+<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
+<!ENTITY firegpgMenu.labelClearSign "Clear sign">
+<!ENTITY firegpgToolbar.labelManager "Key manager">
+<!ENTITY firegpgMenu.labelManager "Key manager">
+<!ENTITY firegpgContext.labelManager "Key manager">

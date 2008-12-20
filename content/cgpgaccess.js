@@ -776,6 +776,23 @@ var GPGAccess = {
     },
 
 
+    changeTrust: function(key, trustLevel){
+
+        result = this.runGnupg(this.getBaseArugments()  + " --command-fd 0 --edit-key " + key + " trust", trustLevel + "\n");
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.err;
+
+
+		// We return result
+		return result2;
+
+    },
+
+
+
+
+
 
     /*
         Function: runATest

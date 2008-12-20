@@ -1124,6 +1124,19 @@ function CreateTreeItemKey(key, document, forceId) {
     forceId - If we have to force the id of the key
 */
 function CreateTreeItemKey2(key, document, forceId, privateKey) {
+
+
+    var turstList = new Array();
+    turstList['-'] = 'trustUndef';
+    turstList['q'] = 'trustUndef';
+    turstList['n'] = 'trustDont';
+    turstList['m'] = 'trustMargi';
+    turstList['f'] = 'trustFull';
+    turstList['u'] = 'trustUltimate';
+    turstList['e'] = 'trustExpired';
+    turstList['r'] = 'trustRevoqued';
+
+
     var  item  = document.createElement('treeitem');
 
     var row = document.createElement('treerow');
@@ -1154,7 +1167,8 @@ function CreateTreeItemKey2(key, document, forceId, privateKey) {
     row.appendChild(child4);
 
 	var  child5 = document.createElement('treecell');
-    child5.setAttribute('label', key.keyTrust);
+    child5.setAttribute('label', document.getElementById('firegpg-strings').
+                getString(turstList[key.keyTrust]));
     if (privateKey == true)
         child5.setAttribute('properties', 'privatekey');
     row.appendChild(child5);

@@ -1,0 +1,54 @@
+<!ENTITY prefwindow.title "FireGPGs inställningar">
+<!ENTITY pane1.title "Generella inställningar">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Gmail support">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Förvald privat nyckel">
+<!ENTITY show-website-checkbox "Lägg till FireGPG websajt i GPGs kommentarfält.">
+<!ENTITY change-gpg-path-button "Konfigurera GPGs sökväg">
+<!ENTITY change-gpg-path-checkbox "Ange själv sökvägen till GPG:">
+<!ENTITY result-always-in-new-window "Visa alltid resultatet av en kryptering eller signering i ett nytt fönster.">
+<!ENTITY no-gpg-agent-checkbox "Tvinga GPGs Agent att avsluta (kan lösa vissa problem)">
+<!ENTITY ask-for-save-pass "Fråga alltid om lösenord skall sparas.">
+<!ENTITY gmail-no-no-sign-checkbox "Visa inte 'Ingen signatur funnen [...]'">
+<!ENTITY gmail-need-a-restart "Dessa inställningar kräver omstart av Firefox.">
+<!ENTITY gmail-buttons-label "Visa följande knappar:">
+<!ENTITY gmail-buton-sign-checkbox "Signera">
+<!ENTITY gmail-buton-signsend-checkbox "Signera och Skicka">
+<!ENTITY gmail-buton-crypt-checkbox "Kryptera">
+<!ENTITY gmail-buton-cryptsend-checkbox "Kryptera och Skicka">
+<!ENTITY allvays-to-myself-checkbox "Kryptera alltid till mig själv.">
+<!ENTITY enable-gpgauth-check.label "Aktivera gpgAuth (kräver omstart av Firefox)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Dekryptera alltid meddelanden från verifierade servrar">
+<!ENTITY global-allow-keyring-check.label "Dekryptera alltid meddelanden från Verifierade Servrar">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Inställning per domän:">
+<!ENTITY turn-off-updates "Deaktivera FireGPGs automatiska uppdateringar">
+<!ENTITY key-name "Namn">
+<!ENTITY key-id "ID">
+<!ENTITY key-create "Skapad">
+<!ENTITY key-expire "Utlöper">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "Lägg till parametrar till GPGs kommandolinje (Varning! Kan fp FireGPG att sluta fungera. Läs dokumentationen).">
+<!ENTITY gmail-buton-signcrypt-checkbox "Signera och Kryptera">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Signera, Kryptera och Skicka">
+<!ENTITY firegpg-version-label.text "FireGPG version:">
+<!ENTITY hide-expired "Dölj nycklar som utlöpt">
+<!ENTITY use-api "Aktivera FireGPGs API för websidor (som roundcube) (kräver omstart)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "Lista över tillåtna sajter (dubbelklicka för att ta bort)">
+<!ENTITY api-liste-domain.label "Domän">
+<!ENTITY api-liste-keyauth.label "Nyckel">
+<!ENTITY use-gpg-agent-checkbox "Aktivera GPG-agent (Varning: kan skapa problem)">
+<!ENTITY search-description "Filter:">
+<!ENTITY gmail-buton-use-select-checkbox "Visa inte knappar, visa en alternativlista istället.">
+<!ENTITY firegpg-ask-for-private-label.text "Fråga alltid efter den privata nyckeln">
+<!ENTITY inline-activated "Aktiverar hanteraren för PGP blocks i sidor (kräver omstart).">
+<!ENTITY gmail-disable-autosave-checkbox "Avaktivera autospara">
+<!ENTITY gmail-buton-csign-checkbox "Radera signatur">
+<!ENTITY gmail-buton-csignsend-checkbox "Radera signatur och skicka">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
+<!ENTITY keyserver-message "Keyserver">

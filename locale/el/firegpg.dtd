@@ -1,0 +1,52 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "Υπογραφή">
+<!ENTITY firegpgContext.labelCrypt "Κρυπτογράφηση">
+<!ENTITY firegpgContext.labelVerif "Επαλήθευση">
+<!ENTITY firegpgContext.labelDecry "Αποκρυπτογράφηση">
+<!ENTITY firegpgContext.labelOptions "Επιλογές">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "Υπογραφή">
+<!ENTITY firegpgMenu.labelCrypt "Κρυπτογράφηση">
+<!ENTITY firegpgMenu.labelVerif "Επαλήθευση">
+<!ENTITY firegpgMenu.labelDecry "Αποκρυπτογράφηση">
+<!ENTITY firegpgMenu.labelOptions "Επιλογές">
+<!ENTITY firegpgToolbar.labelSign "Υπογραφή">
+<!ENTITY firegpgToolbar.labelCrypt "Κρυπτογράφηση">
+<!ENTITY firegpgToolbar.labelVerif "Επαλήθευση">
+<!ENTITY firegpgToolbar.labelDecry "Αποκρυπτογράφηση">
+<!ENTITY firegpgToolbar.labelOptions "Επιλογές">
+<!ENTITY firegpgMenu.labelErase "Εκκαθάριση αποθηκευμένων κωδικών">
+<!ENTITY firegpgContext.labelErase "Εκκαθάριση αποθηκευμένων κωδικών">
+<!ENTITY firegpgToolbar.labelErase "Καθαρισμός αποθηκευμένου κωδικού">
+<!ENTITY firegpgMenu.labelImport "Εισαγωγή">
+<!ENTITY firegpgContext.labelImport "Εισαγωγή">
+<!ENTITY firegpgToolbar.labelImport "Εισαγωγή">
+<!ENTITY firegpgMenu.labelExport "Εξαγωγή">
+<!ENTITY firegpgContext.labelExport "Εξαγωγή">
+<!ENTITY firegpgToolbar.labelExport "Εξαγωγή">
+<!ENTITY firegpgPopInfo.labelBonjour "Καλώς ήρθατε !
+Το FireGPG εγκαταστάθηκε επιτυχώς !">
+<!ENTITY firegpgPopInfo.labelAccessOk "Το FireGPG μπορεί να προσπελάσει το GnuPG !">
+<!ENTITY firegpgPopInfo.labelAccessErr "Το FireGPG δεν ήταν δυνατό να επικοινωνήσει με το GnuPG : το έχετε εγκαταστήσει; Είναι σωστά ορισμένη η διαδρομή;">
+<!ENTITY firegpgPopInfo.labelKeyOk "Το κρυφό κλειδί επιλέχθηκε ! ">
+<!ENTITY firegpgPopInfo.labelKeyErr "Προσοχή: παρακαλώ επιλέξτε ένα κρυφό κλειδί στις επιλογές!">
+<!ENTITY firegpgPopInfo.close "Κλείσιμο">
+<!ENTITY firegpgPopInfo.options "Επιλογές">
+<!ENTITY firegpgContext.labelEditeur "Άνοιγμα κειμενογράφου">
+<!ENTITY firegpgMenu.labelEditeur "Άνοιγμα του κειμενογράφου">
+<!ENTITY firegpgToolbar.labelEditeur "Άνοιγμα του κειμενογράφου">
+<!ENTITY firegpgContext.labelCryptSign "Υπογραφή και Κρυπτογράφηση">
+<!ENTITY firegpgMenu.labelCryptSign "Υπογραφή και Κρυπτογράφηση">
+<!ENTITY firegpgToolbar.labelCryptSign "Υπογραφή και Κρυπτογράφηση">
+<!ENTITY firegpgToolbar.labelSymCrypt "Συμμετρική κρυπτογράφηση">
+<!ENTITY firegpgContext.labelSymCrypt "Συμμετρική κρυπτογράφηση">
+<!ENTITY firegpgMenu.labelSymCrypt "Συμμετρική κρυπτογράφηση">
+<!ENTITY firegpgContext.labelClearSign "Απλή υπογραφή">
+<!ENTITY firegpgToolbar.labelClearSign "Απλή υπογραφή">
+<!ENTITY firegpgMenu.labelClearSign "Απλή υπογραφή">
+<!ENTITY firegpgToolbar.labelManager "Διαχειριστής κλειδιών">
+<!ENTITY firegpgMenu.labelManager "Διαχειριστής κλειδιών">
+<!ENTITY firegpgContext.labelManager "Διαχειριστής Κλειδιών">

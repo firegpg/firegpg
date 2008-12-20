@@ -1,0 +1,55 @@
+<!ENTITY prefwindow.title "FireGPG tercihler">
+<!ENTITY pane1.title "Genel">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "GMail desteği">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Varsayılan özel anahtar:">
+<!ENTITY show-website-checkbox "GPG açıklama alanında FireGPG websitesi adresini göster">
+<!ENTITY change-gpg-path-button "GPG ayarlarının yolu">
+<!ENTITY change-gpg-path-checkbox "GPG yolunu elle belirle:">
+<!ENTITY result-always-in-new-window "Her bir şifreleme veya imzalama sonuçunu her zaman yeni bir pencerede göster.">
+<!ENTITY no-gpg-agent-checkbox "GPG gereçini kapanmaya zorla (bazı hatalar düzelebilir)">
+<!ENTITY ask-for-save-pass "Varsayılan, parolayı kaydetmek için sor.">
+<!ENTITY gmail-no-no-sign-checkbox "Gösterme 'İmza bulunamadı [...]'">
+<!ENTITY gmail-need-a-restart "Bu seçenek tarayıcının yeniden başalamasını gerektirir.">
+<!ENTITY gmail-buttons-label "Göster düğmeler :">
+<!ENTITY gmail-buton-sign-checkbox "İmza">
+<!ENTITY gmail-buton-signsend-checkbox "İmza ve Gönder">
+<!ENTITY gmail-buton-crypt-checkbox "Şifre">
+<!ENTITY gmail-buton-cryptsend-checkbox "Şifre ve Gönder">
+<!ENTITY allvays-to-myself-checkbox "Her zaman şifrele.">
+<!ENTITY enable-gpgauth-check.label "gpgAuth kullan (Firefox yeniden başlatmak gerekir)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Her zaman yetkili sunuculardan mesajı çöz.">
+<!ENTITY global-allow-keyring-check.label "Herzaman yetkili sunuculardan mesajı çöz">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Her-alan ayarları:">
+<!ENTITY turn-off-updates "FireBPB otomatik güncellemeleri kullanma">
+<!ENTITY key-name "İsim">
+<!ENTITY key-id "Kimlik">
+<!ENTITY key-create "Yapildi">
+<!ENTITY key-expire "Sona Erme">
+<!ENTITY pane4.title "Gpg">
+<!ENTITY gpg-add-options "Add arguements to gpg's commande line : (Warning ! Can break FireGPG ! Have a look at doc.)">
+<!ENTITY gmail-buton-signcrypt-checkbox "İmza ve Şifre">
+<!ENTITY gmail-buton-signcryptsend-checkbox "İmza, Şifrele ve Gönder">
+<!ENTITY firegpg-version-label.text "Geçerli FireGPG Sürümü:">
+<!ENTITY hide-expired "Süresi biten anahtarı gizle">
+<!ENTITY use-api "Web sayfaları için FireGPG apisini aktif yap (tekrar 
+başlatmak gerekir)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "İzin verilen siteler(kaldırmak için çift-tıkla)">
+<!ENTITY api-liste-domain.label "Alan">
+<!ENTITY api-liste-keyauth.label "Anahtar">
+<!ENTITY use-gpg-agent-checkbox "Ggp-ajan aktif yap (uyarı, sorunlar başlayabilir...)">
+<!ENTITY search-description "Filtre :">
+<!ENTITY gmail-buton-use-select-checkbox "Aşağı çekilen listeyse düğmeleri gösterme.">
+<!ENTITY firegpg-ask-for-private-label.text "Özel anahtarı herzaman sor">
+<!ENTITY inline-activated "Sayfalar içindeki PGP blokları için elden geçirmeyi aktif yap (tekrar başlatmak gerekir)">
+<!ENTITY gmail-disable-autosave-checkbox "Otomatik kaydeti engelle">
+<!ENTITY gmail-buton-csign-checkbox "Clear sign">
+<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
+<!ENTITY keyserver-message "Keyserver">

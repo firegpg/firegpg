@@ -1,0 +1,22 @@
+<!ENTITY key-status "Κατάσταση">
+<!ENTITY key-trust "Εμπιστοσύνη">
+<!ENTITY key-expire "Λήξη">
+<!ENTITY key-create "Δημιουργήθηκε">
+<!ENTITY key-id "Id">
+<!ENTITY key-name "Όνομα">
+<!ENTITY revoke-button "Ανάκληση κλειδιού">
+<!ENTITY revokesign-button "Κατάργηση υπογραφής">
+<!ENTITY sign-button "Υπογραφή κλειδιού">
+<!ENTITY changetrust-button "Αλλαγή εμπιστοσύνης">
+<!ENTITY importserver-button "Εισαγωγή από τον εξυπηρετητή">
+<!ENTITY exportserver-button "Εξαγωγή στον εξυπηρετητή">
+<!ENTITY importfile-button "Εισαγωγή από αρχείο">
+<!ENTITY exportfile-button "Εξαγωγή σε αρχείο">
+<!ENTITY new-button "Νέο κλειδί">
+<!ENTITY keymanager "Διαχειριστής κλειδιών">
+<!ENTITY refrech "Ανανέωση κλειδιών από τον εξυπηρετητή">
+<!ENTITY trustUnded "Remove information about trusting">
+<!ENTITY trustDont "I don't trust this key">
+<!ENTITY trustMargi "I marginaly trust this key">
+<!ENTITY trustFull "I fully trust this key">
+<!ENTITY trustUltimate "Trust this key ultimatly (!)">
