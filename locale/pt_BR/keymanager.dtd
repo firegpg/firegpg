@@ -21,3 +21,4 @@
 <!ENTITY trustFull "I fully trust this key">
 <!ENTITY trustUltimate "Trust this key ultimatly (!)">
 <!ENTITY password-button "Change password">
+<!ENTITY del-button "Delete">

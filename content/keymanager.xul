@@ -83,7 +83,7 @@
 
         <hbox>
 
-            <button id="new-button" label="&new-button;" oncommand="new();"/>
+            <button id="new-button" label="&new-button;" oncommand="newKey();"/>
             <button id="changetrust-button" label="&changetrust-button;" oncommand="document.getElementById('trustMenu').openPopup(this);"/>
 
             <menupopup id="trustMenu">
@@ -101,6 +101,7 @@
             <button id="sign-button" label="&sign-button;" oncommand="sign();"/>
             <button id="revokesign-button" label="&revokesign-button;" oncommand="revokesign();"/>
             <button id="revoke-button" label="&revoke-button;" oncommand="revoke();"/>
+            <button id="del-button" label="&del-button;" oncommand="deleteKey();"/>
 
         </hbox>
 

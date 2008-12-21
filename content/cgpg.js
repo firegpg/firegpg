@@ -140,6 +140,7 @@ function GPGKey() {
 	this.expired = false;
 	this.revoked = false;
 	this.keyTrust = null;
+    this.fingerPrint = null;
 
 }
 
@@ -372,6 +373,10 @@ var FireGPG = {
 
 				if (infos[1] == 'r' && allKeys != true) //Revoquée
 					continue;
+
+                if (infos[0] == "fpr") { //Fingerprint
+                    returnObject.keylist[returnObject.keylist.length-1].fingerPrint = infos[9];
+                }
 
                 //4: key id. 9 = key name. 5: creation date, 6: expire date
                 if(infos[0] == "pub" || infos[0] == "sec" || infos[0] == "uid" ) {
@@ -1559,6 +1564,11 @@ var FireGPG = {
             return returnObject;
 
         } else {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('unknow-error'));
+
+
             var returnObject = new GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
@@ -1633,6 +1643,12 @@ var FireGPG = {
             return returnObject;
 
         } else {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('unknow-error'));
+
+
+
             var returnObject = new GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
@@ -1656,6 +1672,7 @@ var FireGPG = {
             oldpass = getPrivateKeyPassword(false, false, i18n.getString("oldPassword"), true);
 
             if(oldpass == null) {
+                var returnObject = new GPGReturn();
                 returnObject.result = RESULT_CANCEL;
                 return returnObject;
             }
@@ -1668,6 +1685,7 @@ var FireGPG = {
             newpass2 = getPrivateKeyPassword(false, false, i18n.getString("newPassword2"), false);
 
             if(newpass == null) {
+                var returnObject = new GPGReturn();
                 returnObject.result = RESULT_CANCEL;
                 return returnObject;
             }
@@ -1677,7 +1695,7 @@ var FireGPG = {
                  if (!silent)
                     alert(i18n.getString("changeFailledPasswordDiff"));
 
-
+                var returnObject = new GPGReturn();
                 returnObject.result = RESULT_CANCEL;
                 return returnObject;
             }
@@ -1712,6 +1730,109 @@ var FireGPG = {
 
 
 		//
+	},
+
+    generateKey: function(silent, name, email, comment, password1, password2, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype) {
+
+        var i18n = document.getElementById("firegpg-strings");
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+         if (name == "") {
+            if(!silent)
+                alert(i18n.getString("need-name"));
+
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
+
+        if (email == "") {
+            if(!silent)
+                alert(i18n.getString("need-email"));
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
+
+        if (password1 == "") {
+            if(!silent)
+                alert(i18n.getString("need-password"));
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
+
+        if (password1 != password2) {
+            if(!silent)
+                alert(i18n.getString("changeFailledPasswordDiff"));
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
+
+        if (!keyneverexpire) {
+
+            if (keyexpirevalue <= 0) {
+                if(!silent)
+                    alert(i18n.getString("need-expire-date"));
+                var returnObject = new GPGReturn();
+                returnObject.result = RESULT_ERROR_UNKNOW;
+                return returnObject;
+
+            }
+
+        }
+
+        var result = this.GPGAccess.genereateKey(name, email, comment, password1, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype);
+
+        if (result.sdOut.indexOf("KEY_CREATED") != -1) {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('keygenerated'));
+
+            var returnObject = new GPGReturn();
+            returnObject.sdOut = result.sdOut;
+            returnObject.result = RESULT_SUCCESS;
+            return returnObject;
+
+        } else {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('unknow-error'));
+
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
+
+    },
+
+    deleteKey: function(silent, key) {
+
+
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+
+        // We get the result
+		var result = this.GPGAccess.deleteKey(key);
+
+        //Assume it's worked (no error message)
+        if(!silent)
+            alert(document.getElementById('firegpg-strings').getString('key-deleted'));
+
+        var returnObject = new GPGReturn();
+        returnObject.sdOut = result.sdOut;
+        returnObject.result = RESULT_SUCCESS;
+        return returnObject;
+
 	}
 
 }

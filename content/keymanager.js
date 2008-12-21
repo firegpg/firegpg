@@ -41,6 +41,7 @@
 
 var curentlySelected = null;
 var privateKey = false;
+var curentlySelectedFingerPrint = null;
 function onLoad(win)
 {
 	updateKeyList();
@@ -125,15 +126,14 @@ function keySelected() {
 	var listbox = document.getElementById('keys-listbox');
 
 	if (listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id') != "") {
-		var key_id = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id');
+		curentlySelected = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id');
         privateKey = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-privatekey') == 'privatekey';
+        curentlySelectedFingerPrint = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-fingerprint');
     }
-	else
-		var key_id = null;
-
-	curentlySelected = key_id;
-
-
+	else {
+		curentlySelected = null;
+        curentlySelectedFingerPrint = null;
+    }
 	updateButtons();
 }
 
@@ -146,6 +146,7 @@ function updateButtons() {
     document.getElementById('sign-button').disabled = (curentlySelected == null);
     document.getElementById('revokesign-button').disabled = (curentlySelected == null);
     document.getElementById('revoke-button').disabled = (curentlySelected == null);
+    document.getElementById('del-button').disabled = (curentlySelected == null);
     document.getElementById('password-button').disabled = (curentlySelected == null) || (privateKey == false);
 
 
@@ -239,5 +240,22 @@ function password() {
 
 
     FireGPG.changePassword(false,curentlySelected);
+
+}
+
+function newKey() {
+    window.openDialog("chrome://firegpg/content/newkey.xul", "newkey", "chrome, centerscreen, toolbar, modal").focus();
+    updateKeyList();
+
+}
+
+function deleteKey() {
+
+    if (confirm(document.getElementById('firegpg-strings').                getString('sure-delete-key'))) {
+
+        FireGPG.deleteKey(false,curentlySelectedFingerPrint);
+
+        updateKeyList();
+    }
 
 }

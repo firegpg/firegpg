@@ -1196,6 +1196,9 @@ function CreateTreeItemKey2(key, document, forceId, privateKey) {
         id = forceId;
 
     row.setAttribute('gpg-id', id);
+
+    row.setAttribute('gpg-fingerprint', key.fingerPrint);
+
     if (privateKey == true)
         row.setAttribute('gpg-privatekey', 'privatekey');
 

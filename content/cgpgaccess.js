@@ -502,7 +502,7 @@ var GPGAccess = {
 		if (onlyPrivate == true)
 			mode = "--list-secret-keys";
 
-		result = this.runGnupg(this.getBaseArugments() + " --with-colons " + mode,"","ISO-8859-1");
+		result = this.runGnupg(this.getBaseArugments() + " --fingerprint --with-colons " + mode,"","ISO-8859-1");
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.out;
@@ -807,10 +807,70 @@ var GPGAccess = {
 
     },
 
+    genereateKey: function(name, email, comment, password, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype){
 
 
+        if (keyneverexpire)
+            expire = 0;
+        else {
+
+            expire = keyexpirevalue + "" + keyexpiretype;
+
+        }
+
+        if (keytype == "DSA") {
+
+        data = "Key-Type: DSA\n"+
+                "Key-Length: " + keylength + "\n"+
+                "Subkey-Type: ELG-E\n"+
+                "Subkey-Length: " + keylength + "\n";
+
+        } else {
+
+            data = "Key-Type: RSA\n"+
+                "Key-Length: " + keylength + "\n"+
+                "Subkey-Type: RSA\n"+
+                "Subkey-Length: " + keylength + "\n";
 
 
+        }
+
+        if (comment != "")
+            data += "Name-Comment: " + comment + "\n";
+
+        data +=  "Name-Real: " + name + "\n"+
+
+                "Name-Email: " + email + "\n"+
+                "Expire-Date: " + expire + "\n"+
+                "Passphrase: " + password + "\n" +
+
+                "%commit";
+
+
+        result = this.runGnupg(this.getBaseArugments()  + " --gen-key", data + "\n");
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.err;
+
+
+		// We return result
+		return result2;
+
+    },
+
+
+    deleteKey: function(key){
+
+        result = this.runGnupg(this.getBaseArugments()  + " --delete-secret-and-public-key " + key);
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.err;
+
+
+		// We return result
+		return result2;
+
+    },
 
     /*
         Function: runATest
