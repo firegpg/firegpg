@@ -1,4 +1,8 @@
-2008-12-20 Maximilien Cuony
+2008-12-22 Maximilien Cuony
+    * Keys list are sorted
+    * Revoke keys
+
+2008-12-21 Maximilien Cuony
     * Delete and gen keys
     * Fx 3.1 support
     * FS#72

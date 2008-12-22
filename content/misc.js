@@ -1144,34 +1144,46 @@ function CreateTreeItemKey2(key, document, forceId, privateKey) {
 
     var  child1 = document.createElement('treecell');
     child1.setAttribute('label', key.keyName);
-    if (privateKey  == true)
-        child1.setAttribute('properties', 'privatekey');
+    child1 = setSkinForKey(key, child1, privateKey);
     row.appendChild(child1);
 
     var  child2 = document.createElement('treecell');
     child2.setAttribute('label', key.keyId);
-    if (privateKey  == true)
-        child2.setAttribute('properties', 'privatekey');
+    child2 = setSkinForKey(key, child2, privateKey);
     row.appendChild(child2);
 
     var  child3 = document.createElement('treecell');
     child3.setAttribute('label', key.keyDate);
-    if (privateKey  == true)
-        child3.setAttribute('properties', 'privatekey');
+    child3 = setSkinForKey(key, child3, privateKey);
     row.appendChild(child3);
 
     var  child4 = document.createElement('treecell');
     child4.setAttribute('label', key.keyExpi);
-    if (privateKey  == true)
-        child4.setAttribute('properties', 'privatekey');
+    child4 = setSkinForKey(key, child4, privateKey);
     row.appendChild(child4);
+
+
 
 	var  child5 = document.createElement('treecell');
     child5.setAttribute('label', document.getElementById('firegpg-strings').
                 getString(turstList[key.keyTrust]));
-    if (privateKey == true)
-        child5.setAttribute('properties', 'privatekey');
+
+    child5 = setSkinForKey(key, child5, privateKey);
+
+    if (key.revoked) {
+
+        child5.setAttribute('label', document.getElementById('firegpg-strings').
+                getString(turstList['r']));
+
+
+    }
+
+
+
+
     row.appendChild(child5);
+
+
 
 
 	/*
@@ -1202,7 +1214,8 @@ function CreateTreeItemKey2(key, document, forceId, privateKey) {
     if (privateKey == true)
         row.setAttribute('gpg-privatekey', 'privatekey');
 
-
+    if (key.revoked)
+        row.setAttribute('gpg-revokedkey', 'revokedkey');
 
     item.appendChild(row);
 
@@ -1210,6 +1223,21 @@ function CreateTreeItemKey2(key, document, forceId, privateKey) {
 
     return item;
 
+
+}
+
+function setSkinForKey(key, child, privateKey) {
+
+    if (privateKey  == true)
+        child.setAttribute('properties', 'privatekey');
+
+    if (key.revoked)
+        child.setAttribute('properties', 'revokedkey');
+
+    if (key.revoked && privateKey)
+        child.setAttribute('properties', 'revokedprivatekey');
+
+    return child;
 
 }
 

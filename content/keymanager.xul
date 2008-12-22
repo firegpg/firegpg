@@ -99,8 +99,20 @@
             <button id="password-button" label="&password-button;" oncommand="password();"/>
 
             <button id="sign-button" label="&sign-button;" oncommand="sign();"/>
-            <button id="revokesign-button" label="&revokesign-button;" oncommand="revokesign();"/>
-            <button id="revoke-button" label="&revoke-button;" oncommand="revoke();"/>
+            <button id="revoke-button" label="&revoke-button;" oncommand="document.getElementById('revokeMenu').openPopup(this);"/>
+            <!---   0 = Aucune raison spécifiée
+  1 = La clé a été compromise
+  2 = La clé a été remplacée
+  3 = La clé n'est plus utilisée
+-->
+            <menupopup id="revokeMenu">
+                <menuitem label="&revokeNoRaison;" onclick="revoke(0);"/>
+               <menuitem label="&revokeComprimse;" onclick="revoke(1);"/>
+               <menuitem label="&revokeRemplaced;" onclick="revoke(2);"/>
+               <menuitem label="&revokeNotUsed;" onclick="revoke(3);"/>
+            </menupopup>
+
+
             <button id="del-button" label="&del-button;" oncommand="deleteKey();"/>
 
         </hbox>

@@ -873,6 +873,51 @@ var GPGAccess = {
 
     },
 
+    deleteUid: function(key, uid) {
+
+        //uid         sélectionner le nom d'utilisateur N
+        // deluid
+
+
+    },
+
+    revoqueUid: function(key, uid, password) {
+
+        //uid         sélectionner le nom d'utilisateur N
+        // revuid
+
+
+    },
+
+    addUid: function(key, name, email, comment, password) {
+
+
+    },
+
+    signKey: function(key, keyForSign, uid, password) {
+
+
+    },
+
+    revoqueSign: function (key, uid, password) {
+
+
+    },
+
+    revokeKey: function (key, password, raison) {
+
+        result = this.runGnupg(this.getBaseArugments()  + " --no-batch --command-fd 0 --edit-key " + key + " revkey", "y\n" + raison + "\n\ny\n" + password + "\nsave\ny");
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.err;
+
+
+		// We return result
+		return result2;
+
+
+    },
+
     /*
         Function: runATest
         Test if we are currently able to run the a command.

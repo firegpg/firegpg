@@ -157,6 +157,11 @@ function GPGKey() {
 */
 function Sortage(a,b) {
 
+    var x = a.keyName.toLowerCase();
+    var y = b.keyName.toLowerCase();
+    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+
+
     infosA = (a.keyName + " ").toLowerCase();
     infosB = (b.keyName + " ").toLowerCase();
 
@@ -446,10 +451,10 @@ var FireGPG = {
 		}
 
         // Sorts keys
-        returnObject.keylist.sort(Sortage);
+        returnObject.keylist = returnObject.keylist.sort(Sortage);
 
         for (var i = 0; i < returnObject.keylist.length; i++)
-            returnObject.keylist[i].subKeys.sort(Sortage);
+            returnObject.keylist[i].subKeys = returnObject.keylist[i].subKeys.sort(Sortage);
 
         returnObject.result = RESULT_SUCCESS;
 
@@ -1843,7 +1848,49 @@ var FireGPG = {
         returnObject.result = RESULT_SUCCESS;
         return returnObject;
 
-	}
+	},
+
+    revokeKey: function (silent, key, raison, password) {
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+        if (password == undefined || password == null) {
+            password = getPrivateKeyPassword(false);
+        }
+
+		if(password == null) {
+			returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+        // We get the result
+		var result = this.GPGAccess.revokeKey(key, password, raison);
+
+        if (result.sdOut.indexOf("GOOD_PASSPHRASE") != -1) {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('keyrevoked'));
+
+            var returnObject = new GPGReturn();
+            returnObject.sdOut = result.sdOut;
+            returnObject.result = RESULT_SUCCESS;
+            return returnObject;
+
+        } else {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('changeFailledPassword'));
+
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
+
+
+    }
 
 }
 var okWait;

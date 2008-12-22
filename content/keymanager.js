@@ -42,6 +42,7 @@
 var curentlySelected = null;
 var privateKey = false;
 var curentlySelectedFingerPrint = null;
+var revoked = false;
 function onLoad(win)
 {
 	updateKeyList();
@@ -128,11 +129,14 @@ function keySelected() {
 	if (listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id') != "") {
 		curentlySelected = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id');
         privateKey = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-privatekey') == 'privatekey';
+        revoked = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-revokedkey') == 'revokedkey';
         curentlySelectedFingerPrint = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-fingerprint');
     }
 	else {
 		curentlySelected = null;
         curentlySelectedFingerPrint = null;
+        privateKey = null;
+        revoked = null;
     }
 	updateButtons();
 }
@@ -142,11 +146,10 @@ function updateButtons() {
 
     document.getElementById('exportfile-button').disabled = (curentlySelected == null);
     document.getElementById('exportserver-button').disabled = (curentlySelected == null);
-    document.getElementById('changetrust-button').disabled = (curentlySelected == null);
+    document.getElementById('changetrust-button').disabled = (curentlySelected == null) || (revoked);
     document.getElementById('sign-button').disabled = (curentlySelected == null);
-    document.getElementById('revokesign-button').disabled = (curentlySelected == null);
-    document.getElementById('revoke-button').disabled = (curentlySelected == null);
-    document.getElementById('del-button').disabled = (curentlySelected == null);
+    document.getElementById('revoke-button').disabled = (curentlySelected == null) || (revoked) || (!privateKey);
+    document.getElementById('del-button').disabled = (curentlySelected == null) || (curentlySelectedFingerPrint == '' ); //&& privateKey == false);
     document.getElementById('password-button').disabled = (curentlySelected == null) || (privateKey == false);
 
 
@@ -251,11 +254,37 @@ function newKey() {
 
 function deleteKey() {
 
-    if (confirm(document.getElementById('firegpg-strings').                getString('sure-delete-key'))) {
+    if (curentlySelectedFingerPrint != '') {
 
-        FireGPG.deleteKey(false,curentlySelectedFingerPrint);
+        if (confirm(document.getElementById('firegpg-strings').getString('sure-delete-key'))) {
+
+            FireGPG.deleteKey(false,curentlySelectedFingerPrint);
+
+            updateKeyList();
+        }
+
+    } else {
+
+       /* if (confirm(document.getElementById('firegpg-strings').getString('sure-delete-key'))) {
+
+            FireGPG.deleteKey(false,curentlySelectedFingerPrint);
+
+            updateKeyList();
+        } */
+
+    }
+
+}
+
+
+function revoke(raison) {
+
+    if (confirm(document.getElementById('firegpg-strings').getString('sure-revoke-key'))) {
+
+        FireGPG.revokeKey(false,curentlySelected, raison);
 
         updateKeyList();
     }
+
 
 }
