@@ -40,9 +40,11 @@
 
 
 var curentlySelected = null;
+var curentlySelectedR = null;
 var privateKey = false;
 var curentlySelectedFingerPrint = null;
 var revoked = false;
+var subkey = false;
 function onLoad(win)
 {
 	updateKeyList();
@@ -103,7 +105,7 @@ function updateKeyList() {
 
                     if (gpg_keys[key].subKeys[skey].keyName) {
 
-                        var subItem = CreateTreeItemKey2( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId,  haveAPrivateKey);
+                        var subItem = CreateTreeItemKey2( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId,  haveAPrivateKey, true);
                         subChildren.appendChild(subItem);
                     }
 
@@ -128,7 +130,9 @@ function keySelected() {
 
 	if (listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id') != "") {
 		curentlySelected = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id');
+        curentlySelectedR = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-rid');
         privateKey = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-privatekey') == 'privatekey';
+        subkey = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-subkey') == 'subkey';
         revoked = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-revokedkey') == 'revokedkey';
         curentlySelectedFingerPrint = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-fingerprint');
     }
@@ -146,12 +150,15 @@ function updateButtons() {
 
     document.getElementById('exportfile-button').disabled = (curentlySelected == null);
     document.getElementById('exportserver-button').disabled = (curentlySelected == null);
-    document.getElementById('changetrust-button').disabled = (curentlySelected == null) || (revoked);
+    document.getElementById('changetrust-button').disabled = (curentlySelected == null) || (revoked) || subkey;
     document.getElementById('sign-button').disabled = (curentlySelected == null);
-    document.getElementById('revoke-button').disabled = (curentlySelected == null) || (revoked) || (!privateKey);
-    document.getElementById('del-button').disabled = (curentlySelected == null) || (curentlySelectedFingerPrint == '' ); //&& privateKey == false);
+    document.getElementById('revoke-button').disabled = (curentlySelected == null) || (revoked) || (!privateKey) || subkey;
+    document.getElementById('del-button').disabled = (curentlySelected == null) || (curentlySelectedFingerPrint == '' ) || subkey; //&& privateKey == false);
     document.getElementById('password-button').disabled = (curentlySelected == null) || (privateKey == false);
-
+    document.getElementById('userid-button').disabled = (curentlySelected == null) || (privateKey == false);
+    document.getElementById('userid-add-button').disabled = subkey;
+    document.getElementById('userid-del-button').disabled = !subkey;
+    document.getElementById('userid-revoque-button').disabled = !subkey || revoked;
 
 
 }
@@ -282,6 +289,33 @@ function revoke(raison) {
     if (confirm(document.getElementById('firegpg-strings').getString('sure-revoke-key'))) {
 
         FireGPG.revokeKey(false,curentlySelected, raison);
+
+        updateKeyList();
+    }
+}
+
+function addUid() {
+    FireGPG.addUid(false, curentlySelected);
+    updateKeyList();
+}
+
+function delUid() {
+
+    if (confirm(document.getElementById('firegpg-strings').getString('sure-delete-uid'))) {
+
+        FireGPG.delUid(false,curentlySelected, curentlySelectedR);
+
+        updateKeyList();
+    }
+
+}
+
+function revokeUid() {
+
+
+     if (confirm(document.getElementById('firegpg-strings').getString('sure-revoke-uid'))) {
+
+        FireGPG.revokeUid(false,curentlySelected, curentlySelectedR);
 
         updateKeyList();
     }

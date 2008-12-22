@@ -1882,12 +1882,154 @@ var FireGPG = {
         } else {
 
             if(!silent)
-                alert(document.getElementById('firegpg-strings').getString('changeFailledPassword'));
+                alert(document.getElementById('firegpg-strings').getString('keynotrevokedpassword'));
 
             var returnObject = new GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
+
+
+    },
+
+    addUid: function (silent, key, name, email, comment, password) {
+
+        if (silent == undefined)
+            silent = false;
+
+
+        if (name == undefined || name == null) {
+//
+            name = prompt(document.getElementById('firegpg-strings').getString('entername'));
+        }
+
+        if(name == null || name.length < 5) {
+
+            if (!silent)
+                alert(document.getElementById('firegpg-strings').getString('nameTooShort'));
+
+			returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+        if (email == undefined || email == null) {
+            email = prompt(document.getElementById('firegpg-strings').getString('enteremail'));
+        }
+
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+        if(email == null || !filter.test(email)) {
+
+            if (!silent)
+                alert(document.getElementById('firegpg-strings').getString('wrongEmail'));
+
+			returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+        if (comment == undefined || comment == null) {
+            comment = prompt(document.getElementById('firegpg-strings').getString('entercomment'));
+        }
+
+
+         this.initGPGACCESS();
+
+        if (password == undefined || password == null) {
+            password = getPrivateKeyPassword(false);
+        }
+
+		if(password == null) {
+			returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+        var result = this.GPGAccess.addUid(key, name, email, comment, password);
+
+        if (result.sdOut.indexOf("GOOD_PASSPHRASE") != -1) {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('uidadded'));
+
+            var returnObject = new GPGReturn();
+            returnObject.sdOut = result.sdOut;
+            returnObject.result = RESULT_SUCCESS;
+            return returnObject;
+
+        } else {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('uidnotadded'));
+
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
+    },
+
+    revokeUid: function (silent, key, uid, password) {
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+        if (password == undefined || password == null) {
+            password = getPrivateKeyPassword(false);
+        }
+
+		if(password == null) {
+			returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+        // We get the result
+		var result = this.GPGAccess.revokeUid(key, uid, password, 4);
+
+        if (result.sdOut.indexOf("GOOD_PASSPHRASE") != -1) {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('uidrevoked'));
+
+            var returnObject = new GPGReturn();
+            returnObject.sdOut = result.sdOut;
+            returnObject.result = RESULT_SUCCESS;
+            return returnObject;
+
+        } else {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('uidnotrevokedpassword'));
+
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
+
+
+    },
+
+
+    delUid: function (silent, key, uid) {
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+
+        // We get the result
+		var result = this.GPGAccess.delUid(key, uid);
+
+        //Assume it's worked
+        if(!silent)
+            alert(document.getElementById('firegpg-strings').getString('uiddeleted'));
+
+        var returnObject = new GPGReturn();
+        returnObject.sdOut = result.sdOut;
+        returnObject.result = RESULT_SUCCESS;
+        return returnObject;
+
+
 
 
     }

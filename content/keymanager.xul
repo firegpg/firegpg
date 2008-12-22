@@ -45,8 +45,6 @@
 
    <vbox  flex="1" >
 
-        <label class="red" >This interface is not finished and here only for tests !</label>
-
 		<!-- liste de clés -->
 		<tree id="keys-listbox" flex="1" hidecolumnpicker="false" onselect="keySelected();">
 
@@ -76,8 +74,6 @@
 
         </tree>
 
-        <label class="red" >This interface is not finished and here only for tests !</label>
-
 
 		<!-- commandes -->
 
@@ -99,6 +95,13 @@
             <button id="password-button" label="&password-button;" oncommand="password();"/>
 
             <button id="sign-button" label="&sign-button;" oncommand="sign();"/>
+            <button id="userid-button" label="&userid-button;" oncommand="document.getElementById('userIdMenu').openPopup(this);"/>
+            <menupopup id="userIdMenu">
+                <menuitem id="userid-add-button" label="&add;" onclick="addUid(0);"/>
+               <menuitem id="userid-del-button" label="&delete;" onclick="delUid();"/>
+               <menuitem id="userid-revoque-button" label="&revoke;" onclick="revokeUid();"/>
+            </menupopup>
+
             <button id="revoke-button" label="&revoke-button;" oncommand="document.getElementById('revokeMenu').openPopup(this);"/>
             <!---   0 = Aucune raison spécifiée
   1 = La clé a été compromise

@@ -49,3 +49,4 @@
 <!ENTITY firegpgToolbar.labelManager "Gerenciador de chaves">
 <!ENTITY firegpgMenu.labelManager "Gerenciador de chaves">
 <!ENTITY firegpgContext.labelManager "Gerenciador de chaves">
+<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">

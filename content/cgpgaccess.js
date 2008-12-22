@@ -873,24 +873,52 @@ var GPGAccess = {
 
     },
 
-    deleteUid: function(key, uid) {
+    delUid: function(key, uid) {
 
         //uid         sélectionner le nom d'utilisateur N
         // deluid
 
+        result = this.runGnupg(this.getBaseArugments()  + " --command-fd 0 --edit-key " + key + "", "uid " + uid + "\ndeluid\ny\nsave\ny");
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.err;
+
+
+		// We return result
+		return result2;
+
 
     },
 
-    revoqueUid: function(key, uid, password) {
+    revokeUid: function(key, uid, password, raison ) {
 
         //uid         sélectionner le nom d'utilisateur N
         // revuid
+
+
+        result = this.runGnupg(this.getBaseArugments()  + " --no-batch --command-fd 0 --edit-key " + key + "", "uid " + uid + "\nrevuid\ny\n" + raison + "\n\ny\n" + password + "\nsave\ny");
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.err;
+
+
+		// We return result
+		return result2;
 
 
     },
 
     addUid: function(key, name, email, comment, password) {
 
+
+        result = this.runGnupg(this.getBaseArugments()  + " --no-batch --command-fd 0 --edit-key " + key + " adduid", name + "\n" + email + "\n" +  comment + "\n" + password + "\nsave\ny");
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.err;
+
+
+		// We return result
+		return result2;
 
     },
 

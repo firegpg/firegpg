@@ -1,6 +1,7 @@
 2008-12-22 Maximilien Cuony
     * Keys list are sorted
     * Revoke keys
+    * Manage users ids
 
 2008-12-21 Maximilien Cuony
     * Delete and gen keys

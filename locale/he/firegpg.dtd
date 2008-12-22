@@ -51,3 +51,4 @@ GnuPG !">
 <!ENTITY firegpgToolbar.labelManager "Key manager">
 <!ENTITY firegpgMenu.labelManager "Key manager">
 <!ENTITY firegpgContext.labelManager "Key manager">
+<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">

@@ -1123,7 +1123,7 @@ function CreateTreeItemKey(key, document, forceId) {
     document - The current document.
     forceId - If we have to force the id of the key
 */
-function CreateTreeItemKey2(key, document, forceId, privateKey) {
+function CreateTreeItemKey2(key, document, forceId, privateKey, subkey) {
 
 
     var turstList = new Array();
@@ -1208,6 +1208,7 @@ function CreateTreeItemKey2(key, document, forceId, privateKey) {
         id = forceId;
 
     row.setAttribute('gpg-id', id);
+    row.setAttribute('gpg-rid',  key.keyId);
 
     row.setAttribute('gpg-fingerprint', key.fingerPrint);
 
@@ -1216,6 +1217,9 @@ function CreateTreeItemKey2(key, document, forceId, privateKey) {
 
     if (key.revoked)
         row.setAttribute('gpg-revokedkey', 'revokedkey');
+
+    if (subkey)
+        row.setAttribute('gpg-subkey', 'subkey');
 
     item.appendChild(row);
 
