@@ -140,6 +140,7 @@
             <preference id="gpg-add-options-pref" name="extensions.firegpg.gpg_user_options" type="string"/>
             <preference id="use-gpg-agent-pref" name="extensions.firegpg.use_gpg_agent" type="bool"/>
             <preference id="keyserver-pref" name="extensions.firegpg.keyserver" type="string"/>
+            <preference id="symmetricalgo-pref" name="extensions.firegpg.symmetric_algo" type="string"/>
 
 
         </preferences>
@@ -164,6 +165,11 @@
 
         <label  id="keyserver-label" value="&keyserver-message;"/>
         <textbox id="keyserver-textbox"  preference="keyserver-pref"/>
+
+
+        <label value="&symmetric-algo;" />
+        <label value="3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH" />
+        <textbox id="symmetricalgo-textbox"  preference="symmetricalgo-pref"/>
 
        <label  id="gmail-need-a-restart-label" value="* &gmail-need-a-restart;"/>
 

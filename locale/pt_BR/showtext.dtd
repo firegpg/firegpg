@@ -7,3 +7,4 @@
 <!ENTITY cryptandsign-button "Assinar e Cifrar">
 <!ENTITY sign-clear-button "Assinar">
 <!ENTITY symcrypt-button "Criptografia simétrica">
+<!ENTITY closeandcopy-button "Copy in clipboard and close">

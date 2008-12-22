@@ -7,3 +7,4 @@
 <!ENTITY cryptandsign-button "Signera och kryptera.">
 <!ENTITY sign-clear-button "Radera signatur">
 <!ENTITY symcrypt-button "Symmetrisk kryptering">
+<!ENTITY closeandcopy-button "Copy in clipboard and close">

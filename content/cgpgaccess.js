@@ -567,12 +567,13 @@ var GPGAccess = {
 
 
     */
-    symetric: function(text, password) {
+    symetric: function(text, password, algo) {
 
             result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() +
                     this.getGPGCommentArgument() +
                     " --passphrase-fd 0" +
                     " --output -" +
+                    (algo != "" ? " --cipher-algo " + trim(algo) : "") +
                     " --symmetric ",
                     password + "\n" + text);
 

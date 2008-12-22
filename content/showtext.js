@@ -247,4 +247,15 @@ function setSeletedText(text)
                 txtbox.value = text;
 }
 
+function closeandcopy() {
+
+
+    const gClipboardHelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"] .getService(Components.interfaces.nsIClipboardHelper);
+
+    gClipboardHelper.copyString(document.getElementById('text').value);
+
+    close();
+
+}
+
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

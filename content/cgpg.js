@@ -683,13 +683,23 @@ var FireGPG = {
                 return returnObject;
             }
 
+            var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+	                           getService(Components.interfaces.nsIPrefService);
+
+            prefs = prefs.getBranch("extensions.firegpg.");
+            try {
+                algo = prefs.getCharPref("symmetric_algo");
+            } catch (e) {
+                algo = "";
+            }
+
         }
 
 		// We get the result
         if (!symetrical)
             var result = this.GPGAccess.crypt(text, keyIdList,fromGpgAuth,binFileMode);
         else
-            var result = this.GPGAccess.symetric(text, password);
+            var result = this.GPGAccess.symetric(text, password, algo);
 
 
         returnObject.sdOut = result.sdOut;

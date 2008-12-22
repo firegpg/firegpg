@@ -7,3 +7,4 @@
 <!ENTITY cryptandsign-button "Potpiši i Šifruj">
 <!ENTITY sign-clear-button "Obriši potpis">
 <!ENTITY symcrypt-button "Simetrično šifrovanje">
+<!ENTITY closeandcopy-button "Copy in clipboard and close">

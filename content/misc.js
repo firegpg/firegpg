@@ -1215,7 +1215,7 @@ function CreateTreeItemKey2(key, document, forceId, privateKey) {
 
 function getKeyServer() {
 
-    var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+        var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 	                           getService(Components.interfaces.nsIPrefService);
 
 		prefs = prefs.getBranch("extensions.firegpg.");

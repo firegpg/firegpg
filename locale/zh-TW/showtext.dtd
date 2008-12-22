@@ -7,3 +7,4 @@
 <!ENTITY cryptandsign-button "簽名并加密">
 <!ENTITY sign-clear-button "成功簽署">
 <!ENTITY symcrypt-button "對稱加密">
+<!ENTITY closeandcopy-button "Copy in clipboard and close">

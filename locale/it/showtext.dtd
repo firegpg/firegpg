@@ -7,3 +7,4 @@
 <!ENTITY cryptandsign-button "Firma e Cripta">
 <!ENTITY sign-clear-button "Firma">
 <!ENTITY symcrypt-button "Criptazione simmetrica">
+<!ENTITY closeandcopy-button "Copy in clipboard and close">

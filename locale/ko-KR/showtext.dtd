@@ -7,3 +7,4 @@
 <!ENTITY cryptandsign-button "서명하고 암호화">
 <!ENTITY sign-clear-button "가독형 서명">
 <!ENTITY symcrypt-button "대칭키 암호화">
+<!ENTITY closeandcopy-button "Copy in clipboard and close">

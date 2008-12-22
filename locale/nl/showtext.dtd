@@ -7,3 +7,4 @@
 <!ENTITY cryptandsign-button "Onderteken en versleutel">
 <!ENTITY sign-clear-button "Leesbaar ondertekenen">
 <!ENTITY symcrypt-button "Symmetrische versleuteling">
+<!ENTITY closeandcopy-button "Copy in clipboard and close">
