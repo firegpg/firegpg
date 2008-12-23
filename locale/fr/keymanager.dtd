@@ -14,18 +14,18 @@
 <!ENTITY new-button "Nouvelle clé">
 <!ENTITY keymanager "Gestionnaire de clés">
 <!ENTITY refrech "Rafraichir les clés depuis le serveur">
-<!ENTITY trustUnded "Remove information about trusting">
-<!ENTITY trustDont "I don't trust this key">
-<!ENTITY trustMargi "I marginaly trust this key">
-<!ENTITY trustFull "I fully trust this key">
-<!ENTITY trustUltimate "Trust this key ultimatly (!)">
-<!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
-<!ENTITY revokeNoRaison "No reason specified">
-<!ENTITY revokeComprimse "Key has been compromised">
-<!ENTITY revokeRemplaced "Key is superseded">
-<!ENTITY revokeNotUsed "Key is no longer used">
-<!ENTITY userid-button "User id">
-<!ENTITY add "Add">
-<!ENTITY delete "Delete">
-<!ENTITY revoke "Revoke">
+<!ENTITY trustUnded "Supprimer les informations sur la confiance">
+<!ENTITY trustDont "Je ne fait pas confiance à cette clé">
+<!ENTITY trustMargi "Je fait marginalement confiance à cette clé">
+<!ENTITY trustFull "Je fait complètement confiance a cette clé">
+<!ENTITY trustUltimate "Faire confiance de manière ultime à cette clé (!)">
+<!ENTITY password-button "Changer le mot de passe">
+<!ENTITY del-button "Supprimer">
+<!ENTITY revokeNoRaison "Pas de raison spécifiée">
+<!ENTITY revokeComprimse "La clé à été compromise">
+<!ENTITY revokeRemplaced "La clé à été remplacée">
+<!ENTITY revokeNotUsed "La clé n'est plus utilisée">
+<!ENTITY userid-button "Identité">
+<!ENTITY add "Ajouter">
+<!ENTITY delete "Supprimer">
+<!ENTITY revoke "Révoquer">

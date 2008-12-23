@@ -52,4 +52,4 @@
 <!ENTITY hide-fireftp-message "Ne pas afficher de message apropos d'une ancienne librarie IPC installée.">
 <!ENTITY use-fireftp-workaround "Essayer d'accéder à la librarie IPC avec l'ancienne API.">
 <!ENTITY keyserver-message "Serveur de clé">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use gpg --version to have the list of usable algorithms, in most of case you have this choices : ">
+<!ENTITY symmetric-algo "Algorithme utilisé pour le chiffrement symétrique. Laisser blanc pour le défaut. Utilisez gpg --version pour avoir la liste des algorithmes utilisables, dans la plupart des cas vous avez ces choix :">
