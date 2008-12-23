@@ -1141,7 +1141,6 @@ function CreateTreeItemKey2(key, document, forceId, privateKey, subkey) {
 
     var row = document.createElement('treerow');
 
-
     var  child1 = document.createElement('treecell');
     child1.setAttribute('label', key.keyName);
     child1 = setSkinForKey(key, child1, privateKey);
@@ -1162,8 +1161,6 @@ function CreateTreeItemKey2(key, document, forceId, privateKey, subkey) {
     child4 = setSkinForKey(key, child4, privateKey);
     row.appendChild(child4);
 
-
-
 	var  child5 = document.createElement('treecell');
     child5.setAttribute('label', document.getElementById('firegpg-strings').
                 getString(turstList[key.keyTrust]));
@@ -1171,36 +1168,12 @@ function CreateTreeItemKey2(key, document, forceId, privateKey, subkey) {
     child5 = setSkinForKey(key, child5, privateKey);
 
     if (key.revoked) {
-
         child5.setAttribute('label', document.getElementById('firegpg-strings').
                 getString(turstList['r']));
-
-
     }
-
-
-
 
     row.appendChild(child5);
 
-
-
-
-	/*
-	 *   1 = ne sais pas ou ne dirai pas
-  2 = je ne fais PAS confiance
-  3 = je crois marginalement
-  4 = je fais entièrement confiance
-  5 = je donne une confiance ultime
-  * */
-	/*var  child6 = document.createElement('treecell');
-    child6.setAttribute('label', '-');
-
-    if (privateKey  == true)
-        child6.setAttribute('properties', 'privatekey');
-
-
-    row.appendChild(child6);*/
 
     var id = key.keyId;
 
@@ -1221,6 +1194,7 @@ function CreateTreeItemKey2(key, document, forceId, privateKey, subkey) {
     if (subkey)
         row.setAttribute('gpg-subkey', 'subkey');
 
+
     item.appendChild(row);
 
 
@@ -1240,6 +1214,65 @@ function setSkinForKey(key, child, privateKey) {
 
     if (key.revoked && privateKey)
         child.setAttribute('properties', 'revokedprivatekey');
+
+    return child;
+
+}
+
+
+function CreateTreeItemKey3(key, document, mainKey, sign, havePrivate) {
+
+    var  item  = document.createElement('treeitem');
+
+    var row = document.createElement('treerow');
+
+    var  child1 = document.createElement('treecell');
+    child1.setAttribute('label', key.keyName);
+    child1 = setSkinForKey2(key, child1, mainKey, sign, havePrivate);
+    row.appendChild(child1);
+
+    var  child2 = document.createElement('treecell');
+    child2.setAttribute('label', key.keyId);
+    child2 = setSkinForKey2(key, child2, mainKey, sign, havePrivate);
+    row.appendChild(child2);
+
+    var  child3 = document.createElement('treecell');
+    child3.setAttribute('label', key.keyDate);
+    child3 = setSkinForKey2(key, child3, mainKey, sign, havePrivate);
+    row.appendChild(child3);
+
+
+
+    var id = key.keyId;
+
+
+    row.setAttribute('gpg-id', id);
+
+    if (sign && havePrivate)
+        row.setAttribute('gpg-haveprivate', 'haveprivate');
+
+    item.appendChild(row);
+
+
+
+    return item;
+
+
+}
+
+function setSkinForKey2(key, child, mainKey, sign, havePrivate) {
+
+    if (mainKey  == true)
+        child.setAttribute('properties', 'mainkey');
+
+    if (mainKey == false && sign == false)
+        child.setAttribute('properties', 'subkey');
+
+    if (sign == true)
+        child.setAttribute('properties', 'sign');
+
+    if (sign && havePrivate)
+        child.setAttribute('properties', 'signwithprivatekey');
 
     return child;
 
@@ -1273,4 +1306,41 @@ function showSearchBox(autoSearch) {
     window.openDialog("chrome://firegpg/content/searchkey.xul", "searchBox", "chrome,centerscreen", {autoSearch: autoSearch}).focus();
 
 }
+
+
+/**
+* Function : dump()
+* Arguments: The data - array,hash(associative array),object
+*    The level - OPTIONAL
+* Returns  : The textual representation of the array.
+* This function was inspired by the print_r function of PHP.
+* This will accept some data as the argument and return a
+* text that will be a more readable version of the
+* array/hash/object that is given.
+*/
+function dumper(arr,level) {
+var dumped_text = "";
+if(!level) level = 0;
+
+//The padding given at the beginning of the line.
+var level_padding = "";
+for(var j=0;j<level+1;j++) level_padding += "    ";
+
+if(typeof(arr) == 'object') { //Array/Hashes/Objects
+ for(var item in arr) {
+  var value = arr[item];
+
+  if(typeof(value) == 'object') { //If it is an array,
+   dumped_text += level_padding + "'" + item + "' ...\n";
+   dumped_text += dumper(value,level+1);
+  } else {
+   dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
+  }
+ }
+} else { //Stings/Chars/Numbers etc.
+ dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+}
+return dumped_text;
+}
+
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

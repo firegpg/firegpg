@@ -103,11 +103,6 @@
             </menupopup>
 
             <button id="revoke-button" label="&revoke-button;" oncommand="document.getElementById('revokeMenu').openPopup(this);"/>
-            <!---   0 = Aucune raison spécifiée
-  1 = La clé a été compromise
-  2 = La clé a été remplacée
-  3 = La clé n'est plus utilisée
--->
             <menupopup id="revokeMenu">
                 <menuitem label="&revokeNoRaison;" onclick="revoke(0);"/>
                <menuitem label="&revokeComprimse;" onclick="revoke(1);"/>

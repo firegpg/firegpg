@@ -34,3 +34,65 @@
   - the terms of any one of the MPL, the GPL or the LGPL.
   -
   - ***** END LICENSE BLOCK ***** -->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://firegpg/skin/signmanager.css" type="text/css"?>
+<!DOCTYPE prefwindow SYSTEM "chrome://firegpg/locale/signmanager.dtd">
+<dialog id="key-dialog" title="&signmanager;" orient="vertical" autostretch="always"
+        onload="onLoad(this); sizeToContent(); this.innerHeight = this.innerHeight + 500; this.innerWidth = this.innerWidth + 500;"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" buttons="accept">
+
+
+   <vbox  flex="1" >
+
+		<!-- liste de clés -->
+		<tree id="keys-listbox" flex="1" hidecolumnpicker="false" onselect="keySelected();">
+
+            <treecols>
+
+                <treecol primary="true" flex="1"  label="&key-name;" persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+                <treecol name="id" label="&key-id;" syle="width: 100px" flex="0" persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+                <treecol  label="&key-create;" syle="width: 100px" flex="0"  persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+                <!--<treecol  label="&key-trust;" syle="width: 100px" flex="0" persist="width,hidden"/>
+                <splitter class="tree-splitter"/>-->
+
+             <!--   <treecol  label="&key-status;" syle="width: 100px" flex="0" persist="width,hidden"/>
+                <splitter class="tree-splitter"/> -->
+
+            </treecols>
+
+            <treechildren id="key-listbox-child" properties=""/>
+
+        </tree>
+
+
+		<!-- commandes -->
+
+        <hbox>
+
+            <button id="sign-button" label="&sign-button;" oncommand="sign();"/>
+            <button id="revoke-button" label="&revoke-button;" oncommand="revoke();"/>
+            <button id="del-button" label="&del-button;" oncommand="deleteKey();"/>
+
+        </hbox>
+
+
+
+    </vbox>
+
+   <stringbundleset id="stringbundleset">
+        <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
+    </stringbundleset>
+
+    <script src="misc.js"/>
+    <script src="cgpgaccess.js"/>
+    <script src="cgpg.js"/>
+    <script src="signmanager.js"/>
+
+</dialog>

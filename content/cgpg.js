@@ -123,7 +123,7 @@ function GPGReturn() {
 
         keyName - The key's name
         keyExpi - The key's expire date
-        keyDate - The key's creation date
+        keyDate - The key's creation date (ou de la signature)
         keyId - The key's id
         subKeys - An array of <GPGKey> with the subkey of the key.
 		expired - True if the key is expired
@@ -137,6 +137,7 @@ function GPGKey() {
     this.keyDate = null;
     this.keyId = null;
     this.subKeys = new Array();
+    this.signs = new Array();
 	this.expired = false;
 	this.revoked = false;
 	this.keyTrust = null;
@@ -309,6 +310,12 @@ var FireGPG = {
 
     },
 
+    listSigns: function(key) {
+
+        return this.listKeys(false,true,key);
+
+    },
+
     /*
         Function: listKeys
         Who return a list of key in the keyring
@@ -319,7 +326,7 @@ var FireGPG = {
             onlyPrivate - _Optional_, default to false. Set this to true to get only the private keys.
 
     */
-	listKeys: function(onlyPrivate, allKeys) {
+	listKeys: function(onlyPrivate, allKeys, onlySignOfThisKey) {
 
         var returnObject = new GPGReturn();
 
@@ -336,7 +343,11 @@ var FireGPG = {
 
 		var infos;
 
-        var result = this.GPGAccess.listkey(onlyPrivate);
+
+        if (onlySignOfThisKey == undefined)
+            var result = this.GPGAccess.listkey(onlyPrivate);
+        else
+            var result = this.GPGAccess.listsigns(onlySignOfThisKey);
 
 		// We get informations from GPG
 		result = EnigConvertGpgToUnicode(result.sdOut);
@@ -383,8 +394,16 @@ var FireGPG = {
                     returnObject.keylist[returnObject.keylist.length-1].fingerPrint = infos[9];
                 }
 
+                if (infos[0] != "sig")
+                    lastObjectIsSignable = false;
+
+                if (infos[0] == "pub" || infos[0] == "uid") {
+                    lastObjectIsSignable = true;
+                    lastObjectType = infos[0];
+                }
+
                 //4: key id. 9 = key name. 5: creation date, 6: expire date
-                if(infos[0] == "pub" || infos[0] == "sec" || infos[0] == "uid" ) {
+                if(infos[0] == "pub" || infos[0] == "sec" || infos[0] == "uid" || (infos[0] == "sig" && lastObjectIsSignable && infos[4] != returnObject.keylist[returnObject.keylist.length-1].keyId) ) {
 
                     if (infos[0] == "uid") {
 
@@ -399,6 +418,9 @@ var FireGPG = {
                         var keyExpi = infos[6];
 						var keyTrust = infos[8];
                     }
+
+                    if (infos[0] == "sig")
+                        keyTrust = infos[10];
 
                     var keyName = infos[9].replace(/\\e3A/g, ":");
 
@@ -420,7 +442,7 @@ var FireGPG = {
 
                     var tmp_date = new Date(splited[0],splited[1],splited[2]);
 
-                    if(check_expi && allKeys != true)  {
+                    if(check_expi && allKeys != true && infos[0] != "sig")  {
 
                         if (isNaN(tmp_date.getTime()) || maintenant < tmp_date.getTime()) {
 
@@ -443,6 +465,10 @@ var FireGPG = {
 
                         if (infos[0] == "uid")
                             returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
+                        else if (infos[0] == "sig" && lastObjectType == "pub")
+                            returnObject.keylist[returnObject.keylist.length-1].signs.push(theKey);
+                        else if (infos[0] == "sig" && lastObjectType == "uid" )
+                            returnObject.keylist[returnObject.keylist.length-1].subKeys[returnObject.keylist[returnObject.keylist.length-1].subKeys.length-1].signs.push(theKey); //On push la sign dans la dernier subkey de la dernière key. Et vous ça va la vie ?
                         else
                             returnObject.keylist.push(theKey);
                     }
@@ -1884,6 +1910,8 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('keynotrevokedpassword'));
 
+            eraseSavedPassword();
+
             var returnObject = new GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
@@ -1960,6 +1988,8 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('uidnotadded'));
 
+            eraseSavedPassword();
+
             var returnObject = new GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
@@ -2000,6 +2030,8 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('uidnotrevokedpassword'));
 
+            eraseSavedPassword();
+
             var returnObject = new GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
@@ -2030,6 +2062,74 @@ var FireGPG = {
         return returnObject;
 
 
+
+
+    },
+
+    signKey: function(silent, key, keyForSign, password) {
+
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+        // Needed for a sign
+		if (keyForSign == undefined || keyForSign == null) {
+            keyForSign = getSelfKey();
+        }
+
+        if(keyForSign == null) {
+            returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+		if (password == undefined || password == null) {
+            password = getPrivateKeyPassword();
+        }
+
+		if(password == null) {
+			returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+
+        // We get the result
+		var result = this.GPGAccess.signKey(key, keyForSign, password);
+
+        ///
+        if (result.sdOut.indexOf("ALREADY_SIGNED") != -1) {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('erroralreadysigned'));
+
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+
+
+        }
+        else if (result.sdOut.indexOf("GOOD_PASSPHRASE") != -1) {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('okkeysigned'));
+
+            var returnObject = new GPGReturn();
+            returnObject.sdOut = result.sdOut;
+            returnObject.result = RESULT_SUCCESS;
+            return returnObject;
+
+        } else {
+
+            if(!silent)
+                alert(document.getElementById('firegpg-strings').getString('errorkeynosignedpassword'));
+
+            eraseSavedPassword();
+
+            var returnObject = new GPGReturn();
+            returnObject.result = RESULT_ERROR_UNKNOW;
+            return returnObject;
+        }
 
 
     }

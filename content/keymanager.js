@@ -322,3 +322,7 @@ function revokeUid() {
 
 
 }
+
+function sign() {
+    window.openDialog("chrome://firegpg/content/signmanager.xul", "newkey", "chrome, centerscreen, toolbar, modal", {keyid :  curentlySelected }).focus();
+}

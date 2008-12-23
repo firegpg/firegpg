@@ -512,6 +512,26 @@ var GPGAccess = {
     },
 
     /*
+        Function: listSigns
+        List  signs.
+
+        Return:
+            A <GPGReturn> structure.
+
+
+    */
+    listsigns: function(key) {
+
+		result = this.runGnupg(this.getBaseArugments() + " --with-colons --list-sigs " + key,"","ISO-8859-1");
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.out;
+
+        // We return result
+		return result2;
+    },
+
+    /*
         Function: crypt
         Encrypt a text.
 
@@ -922,8 +942,16 @@ var GPGAccess = {
 
     },
 
-    signKey: function(key, keyForSign, uid, password) {
+    signKey: function(key, keyForSign, password) {
 
+        result = this.runGnupg(this.getBaseArugments()  + " --no-batch --default-key " + keyForSign + " --command-fd 0 --sign-key " + key , "y\n" + password + "\n");
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.err;
+
+
+		// We return result
+		return result2;
 
     },
 

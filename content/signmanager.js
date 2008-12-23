@@ -34,4 +34,165 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+var keyId;
+var myPrivateKeys = new Array();
+var curentlySelected = null;
 
+function onLoad(win) {
+
+    keyId = window.arguments[0].keyid;
+
+    var privateKeys = FireGPG.listKeys(true);
+
+    privateKeys = privateKeys.keylist;
+
+    for(var key in privateKeys) {
+
+        myPrivateKeys[privateKeys[key].keyId] = privateKeys[key].keyId;
+
+    }
+
+    updateKeyList();
+
+}
+
+function updateKeyList() {
+
+    curentlySelected = null;
+
+	keylistcall = FireGPG.listSigns(keyId);
+
+    gpg_keys = keylistcall.keylist;
+
+	var listbox = document.getElementById('key-listbox-child');
+
+	while (listbox.firstChild) {
+  		listbox.removeChild(listbox.firstChild);
+	}
+
+
+
+    var current = 0;
+	for(var key in gpg_keys) {
+
+        if (gpg_keys[key].keyName) {
+
+            current++;
+
+            item = CreateTreeItemKey3(gpg_keys[key], document, true, false);
+
+            if (gpg_keys[key].signs.length > 0) {
+
+                item.setAttribute("container", "true");
+                item.setAttribute("open", "true");
+                var subChildren=document.createElement("treechildren");
+
+                for(var skey in gpg_keys[key].signs) {
+
+                    if (gpg_keys[key].signs[skey].keyName) {
+
+                        var subItem = CreateTreeItemKey3( gpg_keys[key].signs[skey] ,document,  true, true, myPrivateKeys[gpg_keys[key].signs[skey].keyId]);
+                        subChildren.appendChild(subItem);
+                    }
+
+                    item.appendChild(subChildren);
+
+                }
+            }
+
+            listbox.appendChild(item);
+
+            //Subkeys
+            if (gpg_keys[key].subKeys.length > 0) {
+
+                for(var skey in gpg_keys[key].subKeys) {
+
+                    if (gpg_keys[key].subKeys[skey].keyName) {
+
+                        var item = CreateTreeItemKey3( gpg_keys[key].subKeys[skey] ,document, false, false);
+
+                        if (gpg_keys[key].subKeys[skey].signs.length > 0) {
+
+                            item.setAttribute("container", "true");
+                            item.setAttribute("open", "true");
+                            var subChildren=document.createElement("treechildren");
+
+                            for(var skey2 in gpg_keys[key].subKeys[skey].signs) {
+
+                                if (gpg_keys[key].subKeys[skey].signs[skey2].keyName) {
+
+                                    var subItem = CreateTreeItemKey3(gpg_keys[key].subKeys[skey].signs[skey2] ,document,  false, true, myPrivateKeys[gpg_keys[key].subKeys[skey].signs[skey2].keyId]);
+                                    subChildren.appendChild(subItem);
+                                }
+
+                                item.appendChild(subChildren);
+
+                            }
+                        }
+
+                    listbox.appendChild(item);
+
+
+                    }
+                }
+
+
+            }
+
+
+        }
+	}
+
+	curentlySelected = null;
+	updateButtons();
+
+}
+
+function keySelected() {
+
+	var listbox = document.getElementById('keys-listbox');
+
+    curentlySelected = null;
+	if (listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id') != "")
+        if ( listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-haveprivate') == 'haveprivate')
+            curentlySelected = listbox.view.getItemAtIndex(listbox.currentIndex).firstChild.getAttribute('gpg-id');
+
+
+
+
+	updateButtons();
+}
+
+
+function updateButtons() {
+
+
+    document.getElementById('revoke-button').disabled = true;//(curentlySelected == null);
+    document.getElementById('del-button').disabled = true;//(curentlySelected == null);
+
+
+}
+
+function sign() {
+
+    var keys = FireGPG.listKeys();
+
+    keys = keys.keylist;
+
+    fingerPrint = null;
+
+    for(var key in keys) {
+
+       if (keys[key].keyId == keyId) {
+            fingerPrint = keys[key].fingerPrint;
+            break;
+       }
+
+    }
+
+    if (fingerPrint != null && confirm(document.getElementById('firegpg-strings').getString('confirmsign') + " " + fingerPrint))
+        FireGPG.signKey(false, keyId);
+
+    updateKeyList();
+
+}

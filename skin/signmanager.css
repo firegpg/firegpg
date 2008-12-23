@@ -1,0 +1,24 @@
+treechildren::-moz-tree-cell-text(mainkey)
+{
+  font-weight:bold;
+
+}
+
+treechildren::-moz-tree-cell-text(subkey)
+{
+  font-weight:bold;
+  color: #777777;
+}
+
+treechildren::-moz-tree-cell-text(sign)
+{
+  font-style: italic;
+  color: #000000;
+}
+
+treechildren::-moz-tree-cell-text(signwithprivatekey)
+{
+  text-decoration: underline;
+  font-style: italic;
+  color: #000000;
+}
