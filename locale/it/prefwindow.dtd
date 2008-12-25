@@ -31,7 +31,7 @@
 <!ENTITY key-create "Creata">
 <!ENTITY key-expire "Scaduta">
 <!ENTITY pane4.title "Gpg">
-<!ENTITY gpg-add-options "Add arguements to gpg's commande line : (Warning ! Can break FireGPG ! Have a look at doc.)">
+<!ENTITY gpg-add-options "Argomenti aggiuntivi via linea di comando per GPG: (Attenzione! Può causare crash di FireGPG! Leggere la documentazione)">
 <!ENTITY gmail-buton-signcrypt-checkbox "Firma e Cripta">
 <!ENTITY gmail-buton-signcryptsend-checkbox "Firma, Cripta e Invia">
 <!ENTITY firegpg-version-label.text "Versione attuale di FireGPG:">
@@ -52,4 +52,4 @@
 <!ENTITY hide-fireftp-message "Non mostrare gli avvisi relativi alle vecchie librerie IPC installate">
 <!ENTITY use-fireftp-workaround "Prova ad usare le vecchie API per accedere alle librerie IPC">
 <!ENTITY keyserver-message "Server delle chiavi">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use gpg --version to have the list of usable algorithms, in most of case you have this choices : ">
+<!ENTITY symmetric-algo "Algoritmo usato per la crittazione simmetrica. Lasciare vuoto per usare quello predefinito. Usare gpg --version per una lista degli algoritmi disponibili. Nella maggior parte dei casi le scelte disponibili sono:">

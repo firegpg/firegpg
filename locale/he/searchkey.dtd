@@ -1,8 +1,8 @@
-<!ENTITY keyimporter "Import key from server">
-<!ENTITY close-button "Close">
-<!ENTITY import-button "Import selected keys">
-<!ENTITY search-button "Search">
-<!ENTITY search-description "Search for :">
-<!ENTITY key-create "Created">
-<!ENTITY key-id "Id">
-<!ENTITY key-name "Name">
+<!ENTITY keyimporter "ייבא מפתח משרת">
+<!ENTITY close-button "סגור">
+<!ENTITY import-button "ייבא מפתחות">
+<!ENTITY search-button "חפש">
+<!ENTITY search-description "חפש :">
+<!ENTITY key-create "נוצר">
+<!ENTITY key-id "זיהוי">
+<!ENTITY key-name "שם">

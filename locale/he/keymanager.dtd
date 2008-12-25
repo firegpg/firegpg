@@ -1,31 +1,32 @@
-<!ENTITY key-status "Status">
-<!ENTITY key-trust "Trust">
-<!ENTITY key-expire "Expire">
-<!ENTITY key-create "Created">
-<!ENTITY key-id "Id">
-<!ENTITY key-name "Name">
-<!ENTITY revoke-button "Revoke key">
-<!ENTITY sign-button "Signatures">
-<!ENTITY changetrust-button "Change trust">
-<!ENTITY importserver-button "Import from server">
-<!ENTITY exportserver-button "Export to server">
-<!ENTITY importfile-button "Import from file">
-<!ENTITY exportfile-button "Export to file">
-<!ENTITY new-button "New key">
-<!ENTITY keymanager "Key manager">
-<!ENTITY refrech "Refresh keys from server">
-<!ENTITY trustUnded "Remove information about trusting">
-<!ENTITY trustDont "I don't trust this key">
-<!ENTITY trustMargi "I marginaly trust this key">
-<!ENTITY trustFull "I fully trust this key">
-<!ENTITY trustUltimate "Trust this key ultimatly (!)">
-<!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
-<!ENTITY revokeNoRaison "No reason specified">
-<!ENTITY revokeComprimse "Key has been compromised">
-<!ENTITY revokeRemplaced "Key is superseded">
-<!ENTITY revokeNotUsed "Key is no longer used">
-<!ENTITY userid-button "User id">
-<!ENTITY add "Add">
-<!ENTITY delete "Delete">
-<!ENTITY revoke "Revoke">
+<!ENTITY key-status "סטטוס">
+<!ENTITY key-trust "תן אמון">
+<!ENTITY key-expire "פג תוקף">
+<!ENTITY key-create "נוצר">
+<!ENTITY key-id "זיהוי">
+<!ENTITY key-name "שם">
+<!ENTITY revoke-button "בטל מפתח">
+<!ENTITY sign-button "חתימות">
+<!ENTITY changetrust-button "שנה אמון">
+<!ENTITY importserver-button "ייבא משרת">
+<!ENTITY exportserver-button "ייצא לשרת">
+<!ENTITY importfile-button "ייבא מקובץ">
+<!ENTITY exportfile-button "ייצא לקובץ">
+<!ENTITY new-button "מפתח חדש">
+<!ENTITY keymanager "מנהל מפתחות">
+<!ENTITY refrech "רענן מפתחות מהשרת">
+<!ENTITY trustUnded "הסר מידע לגבי אמון">
+<!ENTITY trustDont "אינני בוטח במפתח זה">
+<!ENTITY trustMargi "אינני סומך על מפתח זה בוודאות">
+<!ENTITY trustFull "אני סומך על מפתח זה לחלוטין">
+<!ENTITY trustUltimate "בטח במפתח זה לחלוטין 
+(!)">
+<!ENTITY password-button "שנה סיסמה">
+<!ENTITY del-button "מחק">
+<!ENTITY revokeNoRaison "ללא סיבה">
+<!ENTITY revokeComprimse "המפתח שלך לא בטוח  ">
+<!ENTITY revokeRemplaced "מפתח הוחלף">
+<!ENTITY revokeNotUsed "מפתח לא בשימוש ">
+<!ENTITY userid-button "שם מתשמש">
+<!ENTITY add "הוסף">
+<!ENTITY delete "מחק">
+<!ENTITY revoke "בטל">

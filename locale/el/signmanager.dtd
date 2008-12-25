@@ -1,7 +1,7 @@
 <!ENTITY signmanager "Sign manager">
-<!ENTITY key-name "Name">
+<!ENTITY key-name "Όνομα">
 <!ENTITY key-id "Key ID">
-<!ENTITY key-create "Date (sign or creation)">
+<!ENTITY key-create "Ημερομηνία (υπογραφής ή δημιουργίας)">
 <!ENTITY sign-button "Sign this key">
 <!ENTITY revoke-button "Revoke this sign">
-<!ENTITY del-button "Delete this sign">
+<!ENTITY del-button "Διαγραφή αυτής της υπογραφής">

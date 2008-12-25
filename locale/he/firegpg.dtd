@@ -42,13 +42,13 @@ GnuPG !">
 <!ENTITY firegpgContext.labelCryptSign "חתום ושלח">
 <!ENTITY firegpgMenu.labelCryptSign "חתום ושלח">
 <!ENTITY firegpgToolbar.labelCryptSign "חתום והצפן">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelClearSign "Clear sign">
-<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
-<!ENTITY firegpgMenu.labelClearSign "Clear sign">
-<!ENTITY firegpgToolbar.labelManager "Key manager">
-<!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY firegpgContext.labelManager "Key manager">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">
+<!ENTITY firegpgToolbar.labelSymCrypt "הצפנה סימטרית">
+<!ENTITY firegpgContext.labelSymCrypt "הצפנה סימטרית">
+<!ENTITY firegpgMenu.labelSymCrypt "הצפנה סימטרית">
+<!ENTITY firegpgContext.labelClearSign "נקה חתימה">
+<!ENTITY firegpgToolbar.labelClearSign "נקה חתימה">
+<!ENTITY firegpgMenu.labelClearSign "נקה חתימה">
+<!ENTITY firegpgToolbar.labelManager "מנהל מפתחות">
+<!ENTITY firegpgMenu.labelManager "מנהל מפתחות">
+<!ENTITY firegpgContext.labelManager "מנהל מפתחות">
+<!ENTITY keynotrevokedpassword "שגיאה, מפתח לא בוטל, האם טעית בסיסמה? ">

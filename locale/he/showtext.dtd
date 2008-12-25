@@ -5,6 +5,6 @@
 <!ENTITY open-button "פתח">
 <!ENTITY save-button "שמור">
 <!ENTITY cryptandsign-button "חתום והצפן">
-<!ENTITY sign-clear-button "Clear sign">
-<!ENTITY symcrypt-button "Symmetric encryption">
-<!ENTITY closeandcopy-button "Copy in clipboard and close">
+<!ENTITY sign-clear-button "נקה חתימה">
+<!ENTITY symcrypt-button "הצפנה סימטרית">
+<!ENTITY closeandcopy-button "העתק ללוח ושמור">

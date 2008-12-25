@@ -5,7 +5,7 @@
 <!ENTITY key-id "ID">
 <!ENTITY key-name "Nome">
 <!ENTITY revoke-button "Revogar chave">
-<!ENTITY sign-button "Signatures">
+<!ENTITY sign-button "Assinaturas">
 <!ENTITY changetrust-button "Mudar confiança">
 <!ENTITY importserver-button "Importar do servidor">
 <!ENTITY exportserver-button "Exportar para o servidor">
@@ -14,18 +14,18 @@
 <!ENTITY new-button "Nova chave">
 <!ENTITY keymanager "Gestor de chaves">
 <!ENTITY refrech "Refrescar chaves do servidor">
-<!ENTITY trustUnded "Remove information about trusting">
-<!ENTITY trustDont "I don't trust this key">
-<!ENTITY trustMargi "I marginaly trust this key">
-<!ENTITY trustFull "I fully trust this key">
-<!ENTITY trustUltimate "Trust this key ultimatly (!)">
-<!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
-<!ENTITY revokeNoRaison "No reason specified">
-<!ENTITY revokeComprimse "Key has been compromised">
-<!ENTITY revokeRemplaced "Key is superseded">
-<!ENTITY revokeNotUsed "Key is no longer used">
-<!ENTITY userid-button "User id">
-<!ENTITY add "Add">
-<!ENTITY delete "Delete">
-<!ENTITY revoke "Revoke">
+<!ENTITY trustUnded "Remover informação sobre confiança">
+<!ENTITY trustDont "Não confio nesta chave">
+<!ENTITY trustMargi "Confio marginalmente nesta chave">
+<!ENTITY trustFull "Eu confio completamente nesta chave">
+<!ENTITY trustUltimate "Confiar nesta chave plenamente (!)">
+<!ENTITY password-button "Mudar senha">
+<!ENTITY del-button "Eliminar">
+<!ENTITY revokeNoRaison "Nenhuma razão especificada">
+<!ENTITY revokeComprimse "A chave foi comprometida">
+<!ENTITY revokeRemplaced "A chave foi anulada">
+<!ENTITY revokeNotUsed "A chave já não é usada">
+<!ENTITY userid-button "ID do utilizador">
+<!ENTITY add "Adicionar">
+<!ENTITY delete "Eliminar">
+<!ENTITY revoke "Revogar">
