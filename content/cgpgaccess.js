@@ -86,6 +86,12 @@ const comment = "http://getfiregpg.org";
 var useGPGTrust = true;
 
 
+var file = Components.classes["@mozilla.org/file/directory_service;1"].
+              getService(Components.interfaces.nsIProperties).
+              get("CurProcD", Components.interfaces.nsIFile);
+var FGPGFireFoxCurrentFolder = file.path;
+
+
 
 /*
     Function: Witch_GPGAccess
@@ -203,6 +209,8 @@ var GPGAccess = {
         if (arguement == '')
             return "";
 
+        arguement = arguement.replace(/\{\$FXFolder\}/, FGPGFireFoxCurrentFolder);
+
         //We remove double-spaces
         var reg=new RegExp("  ", "gi");
         arguement = arguement.replace(reg," "); // TODO: It's UGLY !
@@ -288,7 +296,8 @@ var GPGAccess = {
         Return the command to execute GnuPG
     */
 	getGPGCommand: function () {
-		return this.GpgCommand;
+
+		return this.GpgCommand.replace(/\{\$FXFolder\}/, FGPGFireFoxCurrentFolder);
 	},
 
     /*
@@ -789,7 +798,6 @@ var GPGAccess = {
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.out;
-
 
 		// We return result
 		return result2;

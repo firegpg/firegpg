@@ -321,7 +321,10 @@ var cGmail = {
 		}
 
 		if (usegmail == true) {
-			document.getElementById("appcontent").addEventListener("DOMContentLoaded", cGmail.listenerLoad, false);
+			if (document.getElementById("appcontent"))
+                document.getElementById("appcontent").addEventListener("DOMContentLoaded", cGmail.listenerLoad, false);
+            else
+                document.getElementById("browser_content").addEventListener("DOMContentLoaded", cGmail.listenerLoad, false);
 			window.addEventListener("unload", function() {cGmail.listenerUnload()}, false);
 
 

@@ -15,6 +15,8 @@ locale	firegpg nl	locale/nl/
 locale	firegpg ca	locale/ca/
 locale	firegpg ko-KR	locale/ko-KR/
 locale	firegpg sr	locale/sr/
+locale	firegpg sw	locale/sw/
+locale	firegpg sv locale/sw/
 locale	firegpg he	locale/he/
 locale	firegpg bn	locale/bn/
 locale	firegpg	ru locale/ru/
@@ -25,4 +27,5 @@ locale	firegpg	nb	locale/no/
 locale	firegpg	nb-NO	locale/no/
 skin	firegpg	classic/1.0	skin/
 overlay	chrome://browser/content/browser.xul	chrome://firegpg/content/firefoxOverlay.xul
+overlay	chrome://webrunner/content/webrunner.xul	chrome://firegpg/content/prismeOverlay.xul
 style	chrome://global/content/customizeToolbar.xul	chrome://firegpg/skin/overlay.css

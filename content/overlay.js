@@ -76,7 +76,7 @@ var firegpg = {
     */
     onLoad: function() {
 
-		cGmail.initSystem();
+        cGmail.initSystem();
         cGmail2.initSystem();
         Keyring.initSystem();
 		//APIListener.init();

@@ -36,50 +36,50 @@
 
 function onLoad(win)
 {
-	
+
 	if (window.arguments[0].autoSearch)
 		document.getElementById('search-textbox').value = window.arguments[0].autoSearch;
-	
+
 	rebuildList();
 
 }
 function importkeys() {
-	
+
 	var selection = new Array();
-	
+
 	var start = new Object();
 	var end = new Object();
-	
+
 	tree = document.getElementById('keys-listbox');
-	
+
 	var numRanges = tree.view.selection.getRangeCount();
 
 	for (var t = 0; t < numRanges; t++){
 	  tree.view.selection.getRangeAt(t,start,end);
 	  for (var v = start.value; v <= end.value; v++){
-		  
+
 		selection[tree.view.getItemAtIndex(v).firstChild.getAttribute("gpg-id")] = tree.view.getItemAtIndex(v).firstChild.getAttribute("gpg-id");
 	  }
 	}
-	
+
 	keysToImport = "";
 	for (id in selection) {
 		keysToImport += id + " ";
 	}
-	
+
 	FireGPG.retriveKeyFromServer(keysToImport);
 
-	
+
 }
 
 
 function rebuildList() {
-	
+
 	var search = document.getElementById('search-textbox').value;
-	
+
 	if (trim(search) == "")
 		return;
-	
+
 	keylistcall = FireGPG.searchKeyInServer(search);
 
     if (keylistcall.result == RESULT_SUCCESS)
@@ -88,21 +88,21 @@ function rebuildList() {
         gpg_keys = new Array();
 
 	var listbox = document.getElementById('keys-listbox-child');
-	
+
 	while (listbox.firstChild) {
   		listbox.removeChild(listbox.firstChild);
 	}
 
-	
 
+    try {
     var current = 0;
 	for(var key in gpg_keys) {
 
         if (gpg_keys[key].keyName) {
-			
+
             current++;
 
-            item = CreateTreeItemKey2(gpg_keys[key], document);
+            item = CreateTreeItemKey(gpg_keys[key], document);
 
             if (gpg_keys[key].subKeys.length > 0) {
 
@@ -128,5 +128,7 @@ function rebuildList() {
 
         }
 	}
-	
+
+    } catch (e) { alert(e); }
+
 }

@@ -458,7 +458,11 @@ Keyring.initSystem = function() {
         return;
 
     try {
-        document.getElementById("appcontent").addEventListener("DOMContentLoaded", Keyring.onPageLoad, false);
+        if (document.getElementById("appcontent"))
+            document.getElementById("appcontent").addEventListener("DOMContentLoaded", Keyring.onPageLoad, false);
+        else
+            document.getElementById("browser_content").addEventListener("DOMContentLoaded", Keyring.onPageLoad, false);
+            
     } catch (e) {  fireGPGDebug(e,'keyring.initSystem',true);  }
 
     Keyring.i18n = document.getElementById("firegpg-strings");

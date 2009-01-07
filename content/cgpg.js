@@ -1422,6 +1422,7 @@ var FireGPG = {
 		// We get informations from GPG
 		result = EnigConvertGpgToUnicode(result.sdOut);
 
+
         returnObject.sdOut = result;
 
         returnObject.keylist = new Array();
@@ -1493,10 +1494,10 @@ var FireGPG = {
 		}
 
         // Sorts keys
-        returnObject.keylist.sort(Sortage);
+        returnObject.keylist = returnObject.keylist.sort(Sortage);
 
         for (var i = 0; i < returnObject.keylist.length; i++)
-            returnObject.keylist[i].subKeys.sort(Sortage);
+            returnObject.keylist[i].subKeys = returnObject.keylist[i].subKeys.sort(Sortage);
 
         returnObject.result = RESULT_SUCCESS;
 
