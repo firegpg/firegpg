@@ -102,7 +102,7 @@
     </menu>
   </popup>
 
-  <toolbarpalette id="FireGPGBrowserToolbarPalette">
+  <!--<toolbarpalette id="FireGPGBrowserToolbarPalette">
     <menu id="toolbar-firegpg" class="menu-iconic firegpg-menu" label="&firegpgToolbar.label;" src="chrome://firegpg/skin/firegpg.png">
       <menupopup id="firegpg-toolbar-popup">
         <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgToolbar.labelClearSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
@@ -123,7 +123,7 @@
         <menuitem style="display: none;" id="firegpg-menu-memo-tool" class="firegpg-menu-rease menuitem-iconic" label="&firegpgToolbar.labelErase;" oncommand="firegpg.onMenuItemCommand(event,'ERASE')"/>
       </menupopup>
     </menu>
-  </toolbarpalette>
+  </toolbarpalette>-->
 
 
     <!-- <window id="main-window">

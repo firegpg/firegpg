@@ -1564,7 +1564,7 @@ var FireGPG = {
 
             if (!silent)
                 alert(document.getElementById('firegpg-strings').
-                getString('keyFetchError'));
+                getString('keyFetchError') + '\n' + result.sdOut + '\n' + result.sdErr);
 
             var returnObject = new GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;

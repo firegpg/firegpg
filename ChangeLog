@@ -1,7 +1,10 @@
 2009-01-07 Maximilien Cuony
     * Adding {$FXFolder} keyword for gnupg path and gnupg commands (for Fx portable)
     * FS#169
-    
+    * FS#154
+    * FS#176
+    * FS#7 (toolbar button removed)
+
 2009-01-06 Maximilien Cuony
     * Translate.getfiregpg.org working
     * Adding missin Swedish locate
