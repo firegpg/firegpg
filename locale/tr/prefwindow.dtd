@@ -36,8 +36,7 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "İmza, Şifrele ve Gönder">
 <!ENTITY firegpg-version-label.text "Geçerli FireGPG Sürümü:">
 <!ENTITY hide-expired "Süresi biten anahtarı gizle">
-<!ENTITY use-api "Web sayfaları için FireGPG apisini aktif yap (tekrar 
-başlatmak gerekir)">
+<!ENTITY use-api "Web sayfaları için FireGPG apisini aktif yap (tekrar başlatmak gerekir)">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-access.label "İzin verilen siteler(kaldırmak için çift-tıkla)">
 <!ENTITY api-liste-domain.label "Alan">

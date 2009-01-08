@@ -1,17 +1,17 @@
-<!ENTITY newkey "FireGPG - new key">
-<!ENTITY warningaboutgeneeration "Warning ! Key generation can take a lot of time, and will freeze Firefox. Do something else while key is generated, to create more entropy.">
-<!ENTITY name-message "Name">
+<!ENTITY newkey "FireGPG - ny nyckel">
+<!ENTITY warningaboutgeneeration "Varning! Nyckelgenerering kan ta lång tid och kommer att frysa Firefox temporärt. Gör något annat medan nyckeln skapas (för input till slumpgeneratorn).">
+<!ENTITY name-message "Namn">
 <!ENTITY email-message "Email">
-<!ENTITY comment-message "Comment">
-<!ENTITY password1-message "Password">
-<!ENTITY password2-message "Repeat password">
-<!ENTITY keyneverexpire "The key never expire">
-<!ENTITY keyexpire-message "Key expire in">
-<!ENTITY expire-year "years">
-<!ENTITY expire-month "months">
-<!ENTITY expire-days "days">
-<!ENTITY advancedoptions "Advanced options">
-<!ENTITY keylenght-message "Key length">
-<!ENTITY keytype-message "Key type">
-<!ENTITY generate-button "Generate key">
-<!ENTITY cancel-button "Cancel">
+<!ENTITY comment-message "Kommentar">
+<!ENTITY password1-message "Lösenord">
+<!ENTITY password2-message "Upprepa lösenord">
+<!ENTITY keyneverexpire "Nyckeln har inget utlöpsdatum.">
+<!ENTITY keyexpire-message "Nyckel utlöper i">
+<!ENTITY expire-year "år">
+<!ENTITY expire-month "månader">
+<!ENTITY expire-days "dagar">
+<!ENTITY advancedoptions "Avancerade inställningar">
+<!ENTITY keylenght-message "nyckellängd">
+<!ENTITY keytype-message "Nyckeltyp">
+<!ENTITY generate-button "Generera nyckel">
+<!ENTITY cancel-button "Avbryt">

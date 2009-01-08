@@ -27,8 +27,7 @@
 <!ENTITY firegpgMenu.labelExport "صدّر">
 <!ENTITY firegpgContext.labelExport "صدّر">
 <!ENTITY firegpgToolbar.labelExport "صدّر">
-<!ENTITY firegpgPopInfo.labelBonjour "مرحبا!
-لقد تم تثبيت FireGPG بنجاح.">
+<!ENTITY firegpgPopInfo.labelBonjour "مرحبا!لقد تم تثبيت FireGPG بنجاح.">
 <!ENTITY firegpgPopInfo.labelAccessOk "بوسع FireGPG النفاذ إلى GnuPG.">
 <!ENTITY firegpgPopInfo.labelAccessErr "تعذّر على FireGPG النفاذ إلى GnuPG؛ هل هو مثبت؟ هل مساره مضبوط؟">
 <!ENTITY firegpgPopInfo.labelKeyOk "اخترت مفتاحا سريا!">
@@ -47,7 +46,7 @@
 <!ENTITY firegpgContext.labelClearSign "Clear sign">
 <!ENTITY firegpgToolbar.labelClearSign "Clear sign">
 <!ENTITY firegpgMenu.labelClearSign "Clear sign">
+<!ENTITY firegpgContext.labelManager "Key manager">
 <!ENTITY firegpgToolbar.labelManager "Key manager">
 <!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY firegpgContext.labelManager "Key manager">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">

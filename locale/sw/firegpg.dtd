@@ -27,8 +27,7 @@
 <!ENTITY firegpgMenu.labelExport "Exportera">
 <!ENTITY firegpgContext.labelExport "Exportera">
 <!ENTITY firegpgToolbar.labelExport "Exportera">
-<!ENTITY firegpgPopInfo.labelBonjour "Välkommen!
-FireGPG installerades utan problem!">
+<!ENTITY firegpgPopInfo.labelBonjour "Välkommen!FireGPG installerades utan problem!">
 <!ENTITY firegpgPopInfo.labelAccessOk "FireGPG kan ansluta till GnuGPG!">
 <!ENTITY firegpgPopInfo.labelAccessErr "FireGPG kan inte ansluta till GnuPG. Har du installerat GnuPG? (Ingår ej i FireGPG.) Är sökvägen korrekt?">
 <!ENTITY firegpgPopInfo.labelKeyOk "En privat nyckel är vald!">
@@ -47,7 +46,7 @@ FireGPG installerades utan problem!">
 <!ENTITY firegpgContext.labelClearSign "Radera signatur">
 <!ENTITY firegpgToolbar.labelClearSign "Radera signatur">
 <!ENTITY firegpgMenu.labelClearSign "Radera signatur">
-<!ENTITY firegpgToolbar.labelManager "Key manager">
-<!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY firegpgContext.labelManager "Key manager">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">
+<!ENTITY firegpgContext.labelManager "Nyckelhanterare">
+<!ENTITY firegpgToolbar.labelManager "Nyckelhanterare">
+<!ENTITY firegpgMenu.labelManager "Nyckelhanterare">
+<!ENTITY keynotrevokedpassword "Fel, nyckel ej annullerad. Inkorrekt lösenord?">

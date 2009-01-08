@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "دعم جيميل">
 <!ENTITY gmail-enabled-checkbox.accesskey "ج">
 <!ENTITY private-keys-label.text "المفتاح السري المبدئي:">
-<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
+<!ENTITY show-website-checkbox "Display FireGPG's website address in GnuPG comment field">
 <!ENTITY change-gpg-path-button "Setting GPG's path">
 <!ENTITY change-gpg-path-checkbox "حدد مسار GPG:">
 <!ENTITY result-always-in-new-window "دوما أظهر نتيجة التعمية أو التوقيع في نافذة جديدة.">
@@ -43,10 +43,10 @@
 <!ENTITY api-liste-keyauth.label "مفتاح">
 <!ENTITY use-gpg-agent-checkbox "فعّل gpg-agent (تحذير: قد يسبب مشاكلا)">
 <!ENTITY search-description "مرشّح:">
-<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">
+<!ENTITY gmail-buton-use-select-checkbox "Display a list instead of buttons">
 <!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
-<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
-<!ENTITY gmail-disable-autosave-checkbox "Disable auto save">
+<!ENTITY inline-activated "Check for PGP blocks in pages (restart needed)">
+<!ENTITY gmail-disable-autosave-checkbox "Disable autosave feature">
 <!ENTITY gmail-buton-csign-checkbox "Clear sign">
 <!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
 <!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">

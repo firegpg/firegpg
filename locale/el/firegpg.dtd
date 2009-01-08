@@ -27,8 +27,7 @@
 <!ENTITY firegpgMenu.labelExport "Εξαγωγή">
 <!ENTITY firegpgContext.labelExport "Εξαγωγή">
 <!ENTITY firegpgToolbar.labelExport "Εξαγωγή">
-<!ENTITY firegpgPopInfo.labelBonjour "Καλώς ήρθατε !
-Το FireGPG εγκαταστάθηκε επιτυχώς !">
+<!ENTITY firegpgPopInfo.labelBonjour "Καλώς ήρθατε !Το FireGPG εγκαταστάθηκε επιτυχώς !">
 <!ENTITY firegpgPopInfo.labelAccessOk "Το FireGPG μπορεί να προσπελάσει το GnuPG !">
 <!ENTITY firegpgPopInfo.labelAccessErr "Το FireGPG δεν ήταν δυνατό να επικοινωνήσει με το GnuPG : το έχετε εγκαταστήσει; Είναι σωστά ορισμένη η διαδρομή;">
 <!ENTITY firegpgPopInfo.labelKeyOk "Το κρυφό κλειδί επιλέχθηκε ! ">
@@ -47,7 +46,7 @@
 <!ENTITY firegpgContext.labelClearSign "Απλή υπογραφή">
 <!ENTITY firegpgToolbar.labelClearSign "Απλή υπογραφή">
 <!ENTITY firegpgMenu.labelClearSign "Απλή υπογραφή">
+<!ENTITY firegpgContext.labelManager "Διαχειριστής Κλειδιών">
 <!ENTITY firegpgToolbar.labelManager "Διαχειριστής κλειδιών">
 <!ENTITY firegpgMenu.labelManager "Διαχειριστής κλειδιών">
-<!ENTITY firegpgContext.labelManager "Διαχειριστής Κλειδιών">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">
+<!ENTITY keynotrevokedpassword "Σφάλμα: το κλειδί δεν ανακλήθηκε. Μήπως δώσατε λάθος κωδικό ;">

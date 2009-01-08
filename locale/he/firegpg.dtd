@@ -27,10 +27,8 @@
 <!ENTITY firegpgMenu.labelExport "יצוא">
 <!ENTITY firegpgContext.labelExport "יצוא">
 <!ENTITY firegpgToolbar.labelExport "יצוא ">
-<!ENTITY firegpgPopInfo.labelBonjour "ברוך הבא!
- FireGPG הותקן בהצלחה !">
-<!ENTITY firegpgPopInfo.labelAccessOk "לא הייתה אפשרות גישה ל 
-GnuPG !">
+<!ENTITY firegpgPopInfo.labelBonjour "ברוך הבא! FireGPG הותקן בהצלחה !">
+<!ENTITY firegpgPopInfo.labelAccessOk "לא הייתה אפשרות גישה ל GnuPG !">
 <!ENTITY firegpgPopInfo.labelAccessErr "FireGPG לא יכול לגשת ל GnuPG: האם התוכנה מותקנת ?">
 <!ENTITY firegpgPopInfo.labelKeyOk "מפתח פרטי נבחר בהצלחה !">
 <!ENTITY firegpgPopInfo.labelKeyErr "אזהרה: בחר בבקשה מפתח פרטי באפשרויות!">
@@ -48,7 +46,7 @@ GnuPG !">
 <!ENTITY firegpgContext.labelClearSign "נקה חתימה">
 <!ENTITY firegpgToolbar.labelClearSign "נקה חתימה">
 <!ENTITY firegpgMenu.labelClearSign "נקה חתימה">
+<!ENTITY firegpgContext.labelManager "מנהל מפתחות">
 <!ENTITY firegpgToolbar.labelManager "מנהל מפתחות">
 <!ENTITY firegpgMenu.labelManager "מנהל מפתחות">
-<!ENTITY firegpgContext.labelManager "מנהל מפתחות">
 <!ENTITY keynotrevokedpassword "שגיאה, מפתח לא בוטל, האם טעית בסיסמה? ">

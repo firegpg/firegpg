@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "Поддержка GMail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Закрытый ключ по умолчанию:">
-<!ENTITY show-website-checkbox "Display FireGPG website address in GPG comment field">
+<!ENTITY show-website-checkbox "Display FireGPG's website address in GnuPG comment field">
 <!ENTITY change-gpg-path-button "Установка пути к GPG">
 <!ENTITY change-gpg-path-checkbox "Укажите путь к GPG:">
 <!ENTITY result-always-in-new-window "Всегда показывать результат шифрования или подпись в новом окне.">
@@ -43,10 +43,10 @@
 <!ENTITY api-liste-keyauth.label "Ключ">
 <!ENTITY use-gpg-agent-checkbox "Включить GPG-agent (может вызвать ошибки)">
 <!ENTITY search-description "Фильтр:">
-<!ENTITY gmail-buton-use-select-checkbox "Don't show buttons but a drop down list.">
+<!ENTITY gmail-buton-use-select-checkbox "Display a list instead of buttons">
 <!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
-<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
-<!ENTITY gmail-disable-autosave-checkbox "Disable auto save">
+<!ENTITY inline-activated "Check for PGP blocks in pages (restart needed)">
+<!ENTITY gmail-disable-autosave-checkbox "Disable autosave feature">
 <!ENTITY gmail-buton-csign-checkbox "Clear sign">
 <!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
 <!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">

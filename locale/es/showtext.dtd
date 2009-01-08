@@ -7,4 +7,4 @@
 <!ENTITY cryptandsign-button "Firmar y cifrar ">
 <!ENTITY sign-clear-button "Firmar en limpio">
 <!ENTITY symcrypt-button "Cifrado simétrico">
-<!ENTITY closeandcopy-button "Copy in clipboard and close">
+<!ENTITY closeandcopy-button "Copia en portapapeles y cierra">

@@ -28,10 +28,10 @@
 <!ENTITY firegpgContext.labelExport "Exporter">
 <!ENTITY firegpgToolbar.labelExport "Exporter">
 <!ENTITY firegpgPopInfo.labelBonjour "Velkommen !FireGPG installasjonen var vellykket.">
-<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG kan kjøre gpg.">
-<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG kan ikke kjøre gpg. Sjekk at gpg er installert eller velg sti manuellt under instillinger.">
-<!ENTITY firegpgPopInfo.labelKeyOk "En privat nøkkel er valgt">
-<!ENTITY firegpgPopInfo.labelKeyErr "Advarsel: Du må velge en privat nøkkel under instillinger">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG kan kjï¿½re gpg.">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG kan ikke kjï¿½re gpg. Sjekk at gpg er installert eller velg sti manuellt under instillinger.">
+<!ENTITY firegpgPopInfo.labelKeyOk "En privat nï¿½kkel er valgt">
+<!ENTITY firegpgPopInfo.labelKeyErr "Advarsel: Du mï¿½ velge en privat nï¿½kkel under instillinger">
 <!ENTITY firegpgPopInfo.close "Lukk">
 <!ENTITY firegpgPopInfo.options "Instillinger">
 <!ENTITY firegpgContext.labelEditeur "Teksbehandler">
@@ -46,7 +46,7 @@
 <!ENTITY firegpgContext.labelClearSign "Clear sign">
 <!ENTITY firegpgToolbar.labelClearSign "Clear sign">
 <!ENTITY firegpgMenu.labelClearSign "Clear sign">
+<!ENTITY firegpgContext.labelManager "Key manager">
 <!ENTITY firegpgToolbar.labelManager "Key manager">
 <!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY firegpgContext.labelManager "Key manager">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">

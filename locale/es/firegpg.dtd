@@ -46,7 +46,7 @@
 <!ENTITY firegpgContext.labelClearSign "Firmar en limpio">
 <!ENTITY firegpgToolbar.labelClearSign "Firmar en limpio">
 <!ENTITY firegpgMenu.labelClearSign "Firmar en limpio">
-<!ENTITY firegpgToolbar.labelManager "Key manager">
-<!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY firegpgContext.labelManager "Key manager">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">
+<!ENTITY firegpgContext.labelManager "Administrador de claves">
+<!ENTITY firegpgToolbar.labelManager "Administrador de claves">
+<!ENTITY firegpgMenu.labelManager "Administrador de claves">
+<!ENTITY keynotrevokedpassword "Error: clave no revocada. Contraseña errónea?">

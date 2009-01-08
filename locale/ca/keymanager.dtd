@@ -1,31 +1,31 @@
 <!ENTITY key-status "Status">
 <!ENTITY key-trust "Trust">
-<!ENTITY key-expire "Expire">
-<!ENTITY key-create "Created">
-<!ENTITY key-id "Id">
-<!ENTITY key-name "Name">
+<!ENTITY key-expire "Expirar">
+<!ENTITY key-create "Creada">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Nom">
 <!ENTITY revoke-button "Revoke key">
 <!ENTITY sign-button "Signatures">
-<!ENTITY changetrust-button "Change trust">
+<!ENTITY changetrust-button "Confiança canviada">
 <!ENTITY importserver-button "Import from server">
 <!ENTITY exportserver-button "Export to server">
-<!ENTITY importfile-button "Import from file">
-<!ENTITY exportfile-button "Export to file">
-<!ENTITY new-button "New key">
-<!ENTITY keymanager "Key manager">
+<!ENTITY importfile-button "Importar des de arxiu">
+<!ENTITY exportfile-button "Exporta a fitxer">
+<!ENTITY new-button "Nova clau">
+<!ENTITY keymanager "Administrador de claus">
 <!ENTITY refrech "Refresh keys from server">
-<!ENTITY trustUnded "Remove information about trusting">
+<!ENTITY trustUnded "Eliminar informació sobre confiança">
 <!ENTITY trustDont "I don't trust this key">
 <!ENTITY trustMargi "I marginaly trust this key">
 <!ENTITY trustFull "I fully trust this key">
-<!ENTITY trustUltimate "Trust this key ultimatly (!)">
+<!ENTITY trustUltimate "Confiar en aquesta clau com a última instància (!)">
 <!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
+<!ENTITY del-button "Esborrar">
 <!ENTITY revokeNoRaison "No reason specified">
-<!ENTITY revokeComprimse "Key has been compromised">
-<!ENTITY revokeRemplaced "Key is superseded">
-<!ENTITY revokeNotUsed "Key is no longer used">
-<!ENTITY userid-button "User id">
-<!ENTITY add "Add">
+<!ENTITY revokeComprimse "La clau ha estat compromesa">
+<!ENTITY revokeRemplaced "Clau substituïda">
+<!ENTITY revokeNotUsed "Clau ja no s'utilitza">
+<!ENTITY userid-button "User ID">
+<!ENTITY add "Afegir">
 <!ENTITY delete "Delete">
-<!ENTITY revoke "Revoke">
+<!ENTITY revoke "Revocar">

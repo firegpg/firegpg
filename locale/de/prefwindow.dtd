@@ -38,8 +38,7 @@
 <!ENTITY hide-expired "Abgelaufene Schlüssel verstecken">
 <!ENTITY use-api "FireGPG-APIs für Webseiten (wie roundcube) aktivieren (Neustart erforderlich)">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "Liste der erlaubten
-Websiten (Doppelklick zum Entfernen)">
+<!ENTITY api-liste-access.label "Liste der erlaubtenWebsiten (Doppelklick zum Entfernen)">
 <!ENTITY api-liste-domain.label "Domain">
 <!ENTITY api-liste-keyauth.label "Schlüssel">
 <!ENTITY use-gpg-agent-checkbox "GPG-Agent aktivieren (Achtung, kann Probleme verursachen)">

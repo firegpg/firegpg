@@ -4,7 +4,7 @@
 <!ENTITY pane3.title "gpgAuth">
 <!ENTITY gmail-enabled-checkbox.label "Integración con Gmail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
-<!ENTITY private-keys-label.text "Clave personal por defecto">
+<!ENTITY private-keys-label.text "Clave privada por defecto:">
 <!ENTITY show-website-checkbox "Mostrar la dirección de la página web de FireGPG en el campo de comentarios">
 <!ENTITY change-gpg-path-button "Configuración de la ruta de GPG">
 <!ENTITY change-gpg-path-checkbox "Especificar manualmente la ruta de GPG:">
@@ -35,21 +35,21 @@
 <!ENTITY gmail-buton-signcrypt-checkbox "Firmar y cifrar ">
 <!ENTITY gmail-buton-signcryptsend-checkbox "Firmar, cifrar y enviar ">
 <!ENTITY firegpg-version-label.text "Versión actual de FireGPG:">
-<!ENTITY hide-expired "Ocultar las llaves caducadas.">
+<!ENTITY hide-expired "Ocultar las claves caducadas.">
 <!ENTITY use-api "Activar el API de FireGPG para páginas web (como rouncube) (necesita reiniciar)">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-access.label "Lista de sitios permitidos (doble click para eliminar)">
 <!ENTITY api-liste-domain.label "dominio">
-<!ENTITY api-liste-keyauth.label "Llave">
+<!ENTITY api-liste-keyauth.label "Clave">
 <!ENTITY use-gpg-agent-checkbox "Activar el Agente-GPG (precaución, puede tener problemas...)">
 <!ENTITY search-description "Filtrar:">
 <!ENTITY gmail-buton-use-select-checkbox "Mostrar una lista desplegable en vez de botones.">
-<!ENTITY firegpg-ask-for-private-label.text "Preguntar siempre por la llave privada">
+<!ENTITY firegpg-ask-for-private-label.text "Preguntar siempre por la clave privada">
 <!ENTITY inline-activated "Activar el handler para bloques PgP en páginas (necesita reiniciar)">
 <!ENTITY gmail-disable-autosave-checkbox "Desactivar autoguardado">
 <!ENTITY gmail-buton-csign-checkbox "Firmar en limpio">
 <!ENTITY gmail-buton-csignsend-checkbox "Firmar en limpio y enviar">
-<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
-<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
+<!ENTITY hide-fireftp-message "No mostrar mensaje acerca de libreria IPC antigüa instalada">
+<!ENTITY use-fireftp-workaround "Intenta acceder a IPC con la antigüa API">
 <!ENTITY keyserver-message "Keyserver">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use gpg --version to have the list of usable algorithms, in most of case you have this choices : ">
+<!ENTITY symmetric-algo "Algoritmo usado para la encriptación simetrica. Deja en blanco para seleccionar la opción por defecto. Usa gpg --version para ver la lista de algoritmos que se pueden utlizar; en la mayoria de los casos tienes estas opciones:">

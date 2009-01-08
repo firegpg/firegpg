@@ -18,8 +18,7 @@
 <!ENTITY trustDont "אינני בוטח במפתח זה">
 <!ENTITY trustMargi "אינני סומך על מפתח זה בוודאות">
 <!ENTITY trustFull "אני סומך על מפתח זה לחלוטין">
-<!ENTITY trustUltimate "בטח במפתח זה לחלוטין 
-(!)">
+<!ENTITY trustUltimate "בטח במפתח זה לחלוטין (!)">
 <!ENTITY password-button "שנה סיסמה">
 <!ENTITY del-button "מחק">
 <!ENTITY revokeNoRaison "ללא סיבה">

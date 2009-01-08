@@ -27,26 +27,26 @@
 <!ENTITY firegpgMenu.labelExport "Eksportuj">
 <!ENTITY firegpgContext.labelExport "Eksportuj">
 <!ENTITY firegpgToolbar.labelExport "Eksportuj">
-<!ENTITY firegpgPopInfo.labelBonjour "Welcome !<br />FireGPG was installed correctly !">
-<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG can access to GnuPG !">
-<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG cannot access to GnuPG : did you installed it ? Its path is correct ?">
-<!ENTITY firegpgPopInfo.labelKeyOk "A private key is choosed !">
-<!ENTITY firegpgPopInfo.labelKeyErr "Warning: please choose a private key in the options!">
+<!ENTITY firegpgPopInfo.labelBonjour "Welcome !FireGPG installation was successful.">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG can access gpg.">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG can't access the gpg executable. Make sure it is installed, or specify the path manually in the preferences.">
+<!ENTITY firegpgPopInfo.labelKeyOk "A private key is selected.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Warning : please choose a private key in the preferences.">
 <!ENTITY firegpgPopInfo.close "Close">
 <!ENTITY firegpgPopInfo.options "Opcje">
 <!ENTITY firegpgContext.labelEditeur "Otwórz edytor">
 <!ENTITY firegpgMenu.labelEditeur "Otwórz edytor">
 <!ENTITY firegpgToolbar.labelEditeur "Otwórz edytor">
-<!ENTITY firegpgContext.labelCryptSign "Sign and Crypt">
-<!ENTITY firegpgMenu.labelCryptSign "Sign and Crypt">
-<!ENTITY firegpgToolbar.labelCryptSign "Sign and Crypt">
+<!ENTITY firegpgContext.labelCryptSign "Sign and encrypt">
+<!ENTITY firegpgMenu.labelCryptSign "Sign and encrypt">
+<!ENTITY firegpgToolbar.labelCryptSign "Sign and encryptEnc">
 <!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
 <!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
 <!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
 <!ENTITY firegpgContext.labelClearSign "Clear sign">
 <!ENTITY firegpgToolbar.labelClearSign "Clear sign">
 <!ENTITY firegpgMenu.labelClearSign "Clear sign">
+<!ENTITY firegpgContext.labelManager "Key manager">
 <!ENTITY firegpgToolbar.labelManager "Key manager">
 <!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY firegpgContext.labelManager "Key manager">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">

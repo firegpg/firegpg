@@ -27,8 +27,7 @@
 <!ENTITY firegpgMenu.labelExport "Eksportuj">
 <!ENTITY firegpgContext.labelExport "Eksportuj">
 <!ENTITY firegpgToolbar.labelExport "Eksportuj">
-<!ENTITY firegpgPopInfo.labelBonjour "Dobro došao!
-FireGPG je instaliran!">
+<!ENTITY firegpgPopInfo.labelBonjour "Dobro došao!FireGPG je instaliran!">
 <!ENTITY firegpgPopInfo.labelAccessOk "FireGPG ima pristup GnuPG-u!">
 <!ENTITY firegpgPopInfo.labelAccessErr "FireGPG ne može pristupiti GnuPG-u: da li je instaliran ? Da li je putanja tačna ?">
 <!ENTITY firegpgPopInfo.labelKeyOk "Privatni ključ je izabran!">
@@ -47,7 +46,7 @@ FireGPG je instaliran!">
 <!ENTITY firegpgContext.labelClearSign "Obriši potpis">
 <!ENTITY firegpgToolbar.labelClearSign "Obriši potpis">
 <!ENTITY firegpgMenu.labelClearSign "Obriši potpis">
+<!ENTITY firegpgContext.labelManager "Key manager">
 <!ENTITY firegpgToolbar.labelManager "Key manager">
 <!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY firegpgContext.labelManager "Key manager">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">

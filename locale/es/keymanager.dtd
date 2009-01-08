@@ -1,31 +1,31 @@
-<!ENTITY key-status "Status">
-<!ENTITY key-trust "Trust">
-<!ENTITY key-expire "Expire">
-<!ENTITY key-create "Created">
-<!ENTITY key-id "Id">
-<!ENTITY key-name "Name">
-<!ENTITY revoke-button "Revoke key">
-<!ENTITY sign-button "Signatures">
-<!ENTITY changetrust-button "Change trust">
-<!ENTITY importserver-button "Import from server">
-<!ENTITY exportserver-button "Export to server">
-<!ENTITY importfile-button "Import from file">
-<!ENTITY exportfile-button "Export to file">
-<!ENTITY new-button "New key">
-<!ENTITY keymanager "Key manager">
-<!ENTITY refrech "Refresh keys from server">
-<!ENTITY trustUnded "Remove information about trusting">
-<!ENTITY trustDont "I don't trust this key">
-<!ENTITY trustMargi "I marginaly trust this key">
-<!ENTITY trustFull "I fully trust this key">
-<!ENTITY trustUltimate "Trust this key ultimatly (!)">
-<!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
-<!ENTITY revokeNoRaison "No reason specified">
-<!ENTITY revokeComprimse "Key has been compromised">
-<!ENTITY revokeRemplaced "Key is superseded">
-<!ENTITY revokeNotUsed "Key is no longer used">
-<!ENTITY userid-button "User id">
-<!ENTITY add "Add">
-<!ENTITY delete "Delete">
-<!ENTITY revoke "Revoke">
+<!ENTITY key-status "Estado">
+<!ENTITY key-trust "Confianza">
+<!ENTITY key-expire "Expirar">
+<!ENTITY key-create "Creada">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Nombre">
+<!ENTITY revoke-button "Revocar clave">
+<!ENTITY sign-button "Firmas">
+<!ENTITY changetrust-button "Cambiar confianza">
+<!ENTITY importserver-button "Importar desde servidor">
+<!ENTITY exportserver-button "Exportar al servidor">
+<!ENTITY importfile-button "Importar desde fichero">
+<!ENTITY exportfile-button "Exportar a fichero">
+<!ENTITY new-button "Nueva clave">
+<!ENTITY keymanager "Administrador de claves">
+<!ENTITY refrech "Actualizar claves del servidor de claves">
+<!ENTITY trustUnded "Borrar información sobre la confianza">
+<!ENTITY trustDont "No confío en esta llave">
+<!ENTITY trustMargi "Confio en esta clave marginalmente">
+<!ENTITY trustFull "Confio absolutamente en esta clave">
+<!ENTITY trustUltimate "Confio en esta clave absolutamente!">
+<!ENTITY password-button "Cambio de contraseña">
+<!ENTITY del-button "Borrar">
+<!ENTITY revokeNoRaison "Razón no especificada">
+<!ENTITY revokeComprimse "La clave se ha expuesto al peligro">
+<!ENTITY revokeRemplaced "Clave reemplazada">
+<!ENTITY revokeNotUsed "Clave no utilizada">
+<!ENTITY userid-button "ID de usuario">
+<!ENTITY add "Añadir">
+<!ENTITY delete "Borrar">
+<!ENTITY revoke "Revocar">

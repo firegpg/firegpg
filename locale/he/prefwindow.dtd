@@ -5,16 +5,11 @@
 <!ENTITY gmail-enabled-checkbox.label "תמיכה בג'י מייל (GMail)">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "מפתח פרטי ברירת מחדל">
-<!ENTITY show-website-checkbox "הצג כתבות האתר של 
-FireGPG
-בשורת ההערות">
-<!ENTITY change-gpg-path-button "מגדיר מיקום ספריית 
-GPG">
+<!ENTITY show-website-checkbox "הצג כתבות האתר של FireGPGבשורת ההערות">
+<!ENTITY change-gpg-path-button "מגדיר מיקום ספריית GPG">
 <!ENTITY change-gpg-path-checkbox "הגדר מיקום ספריית GPG : ">
 <!ENTITY result-always-in-new-window "תמיד פתח תוצאת הצפנה בחלון חדש">
-<!ENTITY no-gpg-agent-checkbox "סגור את GPG 
-בכח 
-(עלול לפתור שגיאות)">
+<!ENTITY no-gpg-agent-checkbox "סגור את GPG בכח (עלול לפתור שגיאות)">
 <!ENTITY ask-for-save-pass "בקש סיסמא כברירת מחדל">
 <!ENTITY gmail-no-no-sign-checkbox "אל תראה את 'מפתח לא נמצא ...'">
 <!ENTITY gmail-need-a-restart "על מנת להשתמש באפשרויות אלו, עלייך להפעיל מחדש את הדפדפן">
@@ -41,26 +36,20 @@ GPG">
 <!ENTITY gmail-buton-signcryptsend-checkbox "חתום, הצפן ושלח">
 <!ENTITY firegpg-version-label.text "גירסא נוכחית:">
 <!ENTITY hide-expired "הסתר מפתחות שפג תוקפם">
-<!ENTITY use-api "הפעל API לאתרי אינטרנט  
-דורש איתחול">
+<!ENTITY use-api "הפעל API לאתרי אינטרנט  דורש איתחול">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-access.label "רשימת אתרים מורשים (קליק ימיני להסרה(">
 <!ENTITY api-liste-domain.label "דומיין">
 <!ENTITY api-liste-keyauth.label "מפתח">
-<!ENTITY use-gpg-agent-checkbox "Active Gpg-agent (warning, can lead issues...)">
+<!ENTITY use-gpg-agent-checkbox "Enable GPG-agent (warning, can lead to issues)">
 <!ENTITY search-description "פילטר:">
 <!ENTITY gmail-buton-use-select-checkbox "אל תראה לחצנים אלא רשימה נגללת">
 <!ENTITY firegpg-ask-for-private-label.text "תמיד בקש מפתח פרטי">
-<!ENTITY inline-activated "Activate the handler for PGP blocks in pages (restart needed)">
+<!ENTITY inline-activated "Check for PGP blocks in pages (restart needed)">
 <!ENTITY gmail-disable-autosave-checkbox "בטל שמירה אוטומטית">
 <!ENTITY gmail-buton-csign-checkbox "נקה חתימה">
 <!ENTITY gmail-buton-csignsend-checkbox "נקה חתימה ושלח">
-<!ENTITY hide-fireftp-message "אל תראה הודעה לגבי ספררית IPC 
-ישנה ">
-<!ENTITY use-fireftp-workaround "נסיון להיכנס לספריית 
-IPC
-עם API 
-ישן">
+<!ENTITY hide-fireftp-message "אל תראה הודעה לגבי ספררית IPC ישנה ">
+<!ENTITY use-fireftp-workaround "נסיון להיכנס לספריית IPCעם API ישן">
 <!ENTITY keyserver-message "שרת מפתחות">
-<!ENTITY symmetric-algo "אלגוריתם המשמש להצפנה סימטרית, השאר ריק על מנת להשתמש בברירת המחדל. ניתן להשתמש ב- gpg --version
-על מנת לקבל רשימה של אלג' אפשריים לשימוש בדרך כלל :">
+<!ENTITY symmetric-algo "אלגוריתם המשמש להצפנה סימטרית, השאר ריק על מנת להשתמש בברירת המחדל. ניתן להשתמש ב- gpg --versionעל מנת לקבל רשימה של אלג' אפשריים לשימוש בדרך כלל :">

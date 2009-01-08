@@ -1,31 +1,31 @@
 <!ENTITY key-status "Status">
-<!ENTITY key-trust "Trust">
-<!ENTITY key-expire "Expire">
-<!ENTITY key-create "Created">
-<!ENTITY key-id "Id">
-<!ENTITY key-name "Name">
-<!ENTITY revoke-button "Revoke key">
-<!ENTITY sign-button "Signatures">
-<!ENTITY changetrust-button "Change trust">
-<!ENTITY importserver-button "Import from server">
-<!ENTITY exportserver-button "Export to server">
-<!ENTITY importfile-button "Import from file">
-<!ENTITY exportfile-button "Export to file">
-<!ENTITY new-button "New key">
-<!ENTITY keymanager "Key manager">
-<!ENTITY refrech "Refresh keys from server">
-<!ENTITY trustUnded "Remove information about trusting">
-<!ENTITY trustDont "I don't trust this key">
-<!ENTITY trustMargi "I marginaly trust this key">
-<!ENTITY trustFull "I fully trust this key">
-<!ENTITY trustUltimate "Trust this key ultimatly (!)">
-<!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
-<!ENTITY revokeNoRaison "No reason specified">
-<!ENTITY revokeComprimse "Key has been compromised">
-<!ENTITY revokeRemplaced "Key is superseded">
-<!ENTITY revokeNotUsed "Key is no longer used">
-<!ENTITY userid-button "User id">
-<!ENTITY add "Add">
-<!ENTITY delete "Delete">
-<!ENTITY revoke "Revoke">
+<!ENTITY key-trust "Pålitlighet">
+<!ENTITY key-expire "Utlöper">
+<!ENTITY key-create "Skapad">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Namn">
+<!ENTITY revoke-button "Återkalla nyckel">
+<!ENTITY sign-button "Signaturer">
+<!ENTITY changetrust-button "Ändra pålitlighet">
+<!ENTITY importserver-button "Importera från server">
+<!ENTITY exportserver-button "Exportera till server">
+<!ENTITY importfile-button "Importera från fil">
+<!ENTITY exportfile-button "Exportera till fil">
+<!ENTITY new-button "Ny nyckel">
+<!ENTITY keymanager "Nyckelhanterare">
+<!ENTITY refrech "Uppdatera nycklar från server">
+<!ENTITY trustUnded "Ta bort information om pålitlighet">
+<!ENTITY trustDont "Jag litar ej på denna nyckel">
+<!ENTITY trustMargi "Jag litar nätt och jämnt på denna nyckel">
+<!ENTITY trustFull "Jag litar fullt på denna nyckel">
+<!ENTITY trustUltimate "Lita totalt på denna nyckel!">
+<!ENTITY password-button "Byt lösenord">
+<!ENTITY del-button "Ta bort">
+<!ENTITY revokeNoRaison "Ingen orsak angiven">
+<!ENTITY revokeComprimse "Nyckeln är komprometterad">
+<!ENTITY revokeRemplaced "Nyckel har blivit ersatt">
+<!ENTITY revokeNotUsed "Nyckel används ej längre">
+<!ENTITY userid-button "AnvändarID">
+<!ENTITY add "Lägg till">
+<!ENTITY delete "Ta bort">
+<!ENTITY revoke "Annullera">

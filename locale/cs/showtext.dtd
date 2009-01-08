@@ -1,4 +1,4 @@
-<!ENTITY crypt-button "ক্রিপ্ট">
+<!ENTITY crypt-button "Encrypt">
 <!ENTITY dcrypt-button "Decrypt">
 <!ENTITY sign-button "Sign">
 <!ENTITY verify-button "Verify">

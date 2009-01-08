@@ -1,8 +1,8 @@
 <!ENTITY keyimporter "Import key from server">
-<!ENTITY close-button "Close">
-<!ENTITY import-button "Import selected keys">
-<!ENTITY search-button "Search">
-<!ENTITY search-description "Search for :">
-<!ENTITY key-create "Created">
+<!ENTITY close-button "Tancar">
+<!ENTITY import-button "Importar les claus seleccionades">
+<!ENTITY search-button "Cercar">
+<!ENTITY search-description "Cercar:">
+<!ENTITY key-create "Creada">
 <!ENTITY key-id "Id">
-<!ENTITY key-name "Name">
+<!ENTITY key-name "Nom">
