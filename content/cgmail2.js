@@ -114,13 +114,20 @@ var cGmail2 = {
                         if (boutonbox == "")
                             break;
 
-                        var contenuMail = this.getMailContent(listeTest[i],doc);
+                       // var contenuMail = this.getMailContent(listeTest[i],doc);
 
+                        var mimeContentOf  = this.getMimeMailContens(listeTest[i],doc);
 
                         var td = doc.createElement("td");
 
+                        var mime = FireGPGMime.extractSignedData(mimeContentOf).replace(/\r/gi, '');
 
-                        var resultTest = FireGPG.verify(true,contenuMail);
+                        if (mime != '')
+                            var resultTest = FireGPG.verify(true,mime);
+                        else {
+                            var mime2 = FireGPGMime.extractSignature(mimeContentOf).replace(/\r/gi, '');
+                            var resultTest = FireGPG.verify(true,mime2);
+                        }
 
 						// For I18N
 						var i18n = document.getElementById("firegpg-strings");
@@ -150,8 +157,55 @@ var cGmail2 = {
 							td.innerHTML = i18n.getString("GMailSOK") + " " + htmlEncode(resultTest.signresulttext); //"La première signature de ce mail est de testtest (testtest)
 						}
 
+                        var encrypted = FireGPGMime.extractEncryptedData(mimeContentOf).replace(/\r/gi, '');
 
-                        var firstPosition = contenuMail.indexOf("-----BEGIN PGP MESSAGE-----");
+                        if (encrypted != null && encrypted != '') {
+
+                            var result = FireGPG.decrypt(false,encrypted);
+
+                            if (result.result == RESULT_SUCCESS) {
+                                data = FireGPGMime.parseDecrypted(result.decrypted); //For reviewers, a washDecryptedForInsertion is applied too in parseDecrypted ;)
+
+                                this.setMailContent(listeTest[i],doc,data);
+
+                                td.setAttribute("style","color: blue;");
+                                td.innerHTML = i18n.getString("GMailMailWasDecrypted");
+                            } else  {
+
+                                td.setAttribute("style","color: red;");
+                                td.innerHTML = i18n.getString("GMailMailWasNotDecrypted");
+                            }
+
+
+                        } else {
+
+                            var encrypted = FireGPGMime.extractEncrypted(mimeContentOf).replace(/\r/gi, '');
+
+                            if (encrypted != null && encrypted != '') {
+
+                                var result = FireGPG.decrypt(false,encrypted);
+
+                                if (result.result == RESULT_SUCCESS) {
+                                    data = FireGPGMime.washDecryptedForInsertion(result.decrypted);
+
+                                    this.setMailContent(listeTest[i],doc,data);
+
+                                    td.setAttribute("style","color: blue;");
+                                    td.innerHTML = i18n.getString("GMailMailWasDecrypted");
+                                } else  {
+
+                                    td.setAttribute("style","color: red;");
+                                    td.innerHTML = i18n.getString("GMailMailWasNotDecrypted");
+                                }
+
+                            }
+
+
+
+                        }
+
+
+                        /*var firstPosition = contenuMail.indexOf("-----BEGIN PGP MESSAGE-----");
                         var lastPosition = contenuMail.indexOf("-----END PGP MESSAGE-----");
 
                         if (firstPosition != -1 && lastPosition != -1) {
@@ -163,7 +217,7 @@ var cGmail2 = {
                             tmpListener = new cGmail2.callBack(doc)
                             td.addEventListener('click',tmpListener,true);
                             td.setAttribute("style","");
-                        }
+                        }*/
 
                         td.innerHTML = '<div class="X5Xvu" idlink=""><span class="" style="' + td.getAttribute("style") + '">' + td.innerHTML + '</span></div>';
 
@@ -381,32 +435,7 @@ var cGmail2 = {
         }
     },
 
-    /*
-        Function: clickOnDock
-        This function is called when the user click on the page. She will call <checkDoc> 5s later.
 
-        Parameters:
-            docid - The document 's id of the click.
-    */
-    clickOnDock: function(docid) {
-
-        this._docid = docid;
-
-        //
-        this.handleEvent = function(event) {
-
-            if (cGmail2.docOccuped[this._docid] == undefined || cGmail2.docOccuped[this._docid] == false)
-            {
-
-                setTimeout("cGmail2.checkDoc("+this._docid+")", 5000);
-                cGmail2.docOccuped[this._docid] = true;
-            }
-
-
-        }
-
-
-    },
 
     /*
         Function: callBack
@@ -420,7 +449,6 @@ var cGmail2 = {
         this._doc = doc;
 
 		this.handleEvent = function(event) { // Function in the function for handle... events.
-
 			var i18n = document.getElementById("firegpg-strings");
 
             if (event.target.nodeName == "SELECT")
@@ -1271,6 +1299,20 @@ var cGmail2 = {
 
 	},
 
+        /*
+        Function: setMailContent
+        Set the content of a mail, need the div object with the mail
+
+        Parameters:
+            i - The mail node
+            doc - The document of the page.
+            data - The html of the mail
+    */
+	setMailContent: function(i,doc,data) {
+		i.innerHTML = data;
+
+	},
+
     /*//On détruit tous les documents.
     listenerUnload: function () {
 
@@ -1302,7 +1344,6 @@ var cGmail2 = {
             else
                 document.getElementById("browser_content").addEventListener("DOMContentLoaded", cGmail2.pageLoaded, false);
 			//window.addEventListener("unload", function() {cGmail2.listenerUnload()}, false);
-
 
 			try {	var nonosign = prefs.getBoolPref("gmail_no_sign_off");	}
 			catch (e) { var nonosign = false; }
@@ -1340,9 +1381,9 @@ var cGmail2 = {
             cGmail2.b_use_select_s = b_use_select_s;
 
 
-
 		}
 	},
+
 
     /*
         Function: pageLoaded
@@ -1355,11 +1396,39 @@ var cGmail2 = {
 
         var doc = aEvent.originalTarget;
 
+
+
         final_location = doc.location.href;
 
         var regrex = new RegExp('^https?://mail.google.com/a/[a-zA-Z-.0-9]*');
 
         final_location = final_location.replace(regrex, "http://mail.google.com/mail");
+
+        //Find IK
+        if (final_location.indexOf("http://mail.google.com/mail/?ui=2&ik=") == 0 || final_location.indexOf("https://mail.google.com/mail/?ui=2&ik=") == 0) {
+
+            var tmp_string = final_location.substring(final_location.indexOf("&ik=") + 4, final_location.length);
+            var ik = tmp_string.substring(0, tmp_string.indexOf('&'));
+
+            cGmail2.baseUrl = doc.location.href.substring(0, doc.location.href.indexOf("?ui=2"));
+            cGmail2.ik = ik;
+
+        }
+
+        //Add windowopen rewriter
+        if (final_location.indexOf("http://mail.google.com/mail/") == 0 || final_location.indexOf("https://mail.google.com/mail/") == 0) {
+
+           sr = doc.createElement('script');
+        sr.innerHTML = "var windowopen_ = window.open; window.open = function (a,b,c) {  if (document.getElementById('canvas_frame') && document.getElementById('canvas_frame').contentDocument && document.getElementById('canvas_frame').contentDocument.body && document.getElementById('canvas_frame').contentDocument.body.getAttribute('firegpg').indexOf('#FIREGPGCAPTURE') != -1) { document.getElementById('canvas_frame').contentDocument.body.setAttribute('firegpg',a); return new Window();  } else { return windowopen_(a,b,c); }};"
+        doc.body.appendChild(sr);
+
+        }
+
+
+
+
+
+        //http://mail.google.com/mail/?ui=2&ik=8e7a8837c3&
 
         if (final_location.indexOf(GMAIL_MAIN_DOC_URL) == 0 || final_location .indexOf(GMAIL_MAIN_DOC_URL2) == 0) {
 
@@ -1388,21 +1457,155 @@ var cGmail2 = {
 
             };
 
+
+
+
             cGmail2.current = cGmail2.current + 1;
 
             cGmail2.doc[cGmail2.current] = doc;
 
-            var tmpListener = new Object;
+            /*var tmpListener = new Object;
             tmpListener = null;
             tmpListener = new cGmail2.clickOnDock(cGmail2.current)
-            doc.addEventListener('mousedown',tmpListener,true);
+            doc.addEventListener('mousedown',tmpListener,true);*/
+
+            var tmpListener = new Object;
+            tmpListener = null;
+            tmpListener = new cGmail2.whenNodeIsInsered(cGmail2.current)
+            doc.addEventListener('DOMNodeInserted',tmpListener,true);
+
+
 
             //setTimeout("cGmail2.checkDoc("+cGmail2.current+")", 5000);
 
         }
 
-    }
+    },
+
+        /*
+        Function: clickOnDock
+        This function is called when the user click on the page. She will call <checkDoc> 5s later.
+
+        Parameters:
+            docid - The document 's id of the click.
+    */
+    clickOnDock: function(docid) {
+
+        this._docid = docid;
+
+        //
+        this.handleEvent = function(event) {
+
+            if (cGmail2.docOccuped[this._docid] == undefined || cGmail2.docOccuped[this._docid] == false)
+            {
+
+                setTimeout("cGmail2.checkDoc("+this._docid+")", 5000);
+                cGmail2.docOccuped[this._docid] = true;
+            }
+
+
+        }
+
+
+    },
+
+    whenNodeIsInsered: function(docid) {
+
+        this._docid = docid;
+
+        //
+        this.handleEvent = function(event) {
+
+           // fireGPGDebug(event.target.className);
+
+            if ((event.target.className == "HprMsc" || event.target.className == "y4Wv6d" || event.target.className == "XoqCub") && (cGmail2.docOccuped[this._docid] == undefined || cGmail2.docOccuped[this._docid] == false)) //load old mail | compose | Mail widnow
+            {
+
+                setTimeout("cGmail2.checkDoc("+this._docid+")", 0);
+                 cGmail2.docOccuped[this._docid] = true;
+
+            }
+
+
+        }
+
+
+    },
+
+     /*
+        Function: getMimeMailContens
+        Return the mime source of a mail
+
+        Parameters:
+            id - The mail's id
+    */
+	getMimeMailContens: function(id,doc) {
+
+    var elements = id.parentNode.getElementsByTagName("img");
+
+                        actionbox = "";
+
+                        //On cherche la boite avec les boutons
+                        for (var j = 0; j < elements.length; j++) {
+                            if (elements[j].getAttribute("class") == "S1nudd") {
+                                actionbox = elements[j].parentNode;
+                                break;
+                            }
+                        }
+
+    //There is ugly hack. It's the most ugly hack ever.
+        var evt = doc.createEvent("MouseEvents");
+         evt.initMouseEvent("click", true, true, window,
+           0, 0, 0, 0, 0, false, false, false, false, 0, null);
+       var a = actionbox.dispatchEvent(evt);
+
+       //On choppe le bouton en question
+       //CHILDREN OF zWKgkf
+       // act="32"
+
+    papa = doc.getElementsByClassName('zWKgkf');
+    papa = papa[0];
+
+     for (var j = 0; j < papa.childNodes.length; j++) {
+                            if (papa.childNodes[j].getAttribute("act") == "32") {
+                                detailsElement = papa.childNodes[j];
+                                break;
+                            }
+                        }
+
+    doc.body.setAttribute('firegpg',"#FIREGPGCAPTURE");
+
+    var evt3 = doc.createEvent("MouseEvents");
+     evt3.initMouseEvent("mouseup", true, true, window,
+       0, 0, 0, 0, 0, false, false, false, false, 0, null);
+     detailsElement.dispatchEvent(evt3);
+
+   url = doc.body.getAttribute('firegpg');
+
+    doc.body.setAttribute('firegpg',"");
+
+
+		if (this.messageCache == null || this.messageCache[url] == null)
+		{
+			var mailData = getContentXHttp(cGmail2.baseUrl + url );
+
+			if (this.messageCache == null)
+				this.messageCache = { };
+
+			this.messageCache[url ] = mailData;
+
+			return mailData;
+		}
+		else
+		{
+			return this.messageCache[url ];
+		}
+
+
+	}
 
 };
+
+
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

@@ -50,6 +50,7 @@
   <script src="api.js"/>
   <script src="new_api.js"/>
   <script type="application/x-javascript" src="keyring.js"/>
+  <script src="mime.js" />
   <stringbundleset id="stringbundleset">
     <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
   </stringbundleset>

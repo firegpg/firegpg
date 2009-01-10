@@ -1,6 +1,6 @@
 <!ENTITY keyimporter "Import key from server">
-<!ENTITY close-button "Close">
-<!ENTITY import-button "Import selected keys">
+<!ENTITY close-button "Schließen">
+<!ENTITY import-button "Selektierte Schlüssel importieren">
 <!ENTITY search-button "Search">
 <!ENTITY search-description "Search for :">
 <!ENTITY key-create "Created">

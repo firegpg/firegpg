@@ -46,7 +46,7 @@
 <!ENTITY firegpgContext.labelClearSign "Klartextsignatur">
 <!ENTITY firegpgToolbar.labelClearSign "Klartextsignatur">
 <!ENTITY firegpgMenu.labelClearSign "Klartextsignatur">
-<!ENTITY firegpgToolbar.labelManager "Key manager">
-<!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY firegpgContext.labelManager "Key manager">
+<!ENTITY firegpgContext.labelManager "Schlüsselmanager">
+<!ENTITY firegpgToolbar.labelManager "Schlüsselmanager">
+<!ENTITY firegpgMenu.labelManager "Schlüsselmanager">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">

@@ -1,3 +1,9 @@
+2009-01-10 Maximilien Cuony
+    * Base of using openpgp/mine mails
+    * Instantaneous check for cGmail2
+    * Finished checking sign in openpgp/mime and inline (problem with enigmail/iso wating on enigmail devs)
+    * New decryption system working !
+
 2009-01-07 Maximilien Cuony
     * Adding {$FXFolder} keyword for gnupg path and gnupg commands (for Fx portable)
     * FS#169

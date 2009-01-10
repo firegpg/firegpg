@@ -49,7 +49,7 @@
 <!ENTITY gmail-disable-autosave-checkbox "Automatisches Speichern abschalten">
 <!ENTITY gmail-buton-csign-checkbox "Klartextsignatur">
 <!ENTITY gmail-buton-csignsend-checkbox "Klartextsignatur und Senden">
-<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY hide-fireftp-message "Zeige keine Nachrichten über alte installierte IPC Bibliotheken.">
 <!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
 <!ENTITY keyserver-message "Keyserver">
 <!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use gpg --version to have the list of usable algorithms, in most of case you have this choices : ">
