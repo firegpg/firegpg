@@ -913,7 +913,7 @@ var FireGPG = {
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
             text - _Optional_, if not set try to use the selection. The text to verify
     */
-	verify: function(silent, text) {
+	verify: function(silent, text, charset) {
 
         var returnObject = new GPGReturn();
 
@@ -946,7 +946,7 @@ var FireGPG = {
 			return returnObject;
 		}
 
-		var results = this.layers(text,0);
+		var results = this.layers(text,0, charset);
 
         returnObject.signsresults = results;
 
@@ -1011,7 +1011,7 @@ var FireGPG = {
             layer - The current layer
             resultss - _Optional_. The current array who should be returned.
     */
-    layers: function(text,layer, resultss) {
+    layers: function(text,layer, charset, resultss) {
         var newline = new RegExp("\r","gi");
         text = text.replace(newline,"\n");
         text="\n" + text;
@@ -1051,7 +1051,7 @@ var FireGPG = {
                 if( firstPosition!=-1 && lastPosition!=-1) {
                         division++;
                         var divisiontxt=text.substring(firstPosition,lastPosition+endtxt.length+1);
-                        var tmpverifyresult = this.layerverify(divisiontxt,layer,division);
+                        var tmpverifyresult = this.layerverify(divisiontxt,layer,division, charset);
                         divisiontxt = divisiontxt.replace(begin,"");
                         divisiontxt = divisiontxt.replace(end,"");
                         divisiontxt = divisiontxt.replace(layerbegin,begintxt);
@@ -1060,7 +1060,7 @@ var FireGPG = {
 
                         resultss[resultss.length] = tmpverifyresult;
 
-                        resultss = this.layers(divisiontxt,layer+1, resultss);
+                        resultss = this.layers(divisiontxt,layer+1, charset, resultss);
                        //resultss = resultss.concat(subverif);
 
                         text=text.substring(lastPosition+endtxt.length);
@@ -1080,11 +1080,11 @@ var FireGPG = {
             layer - The current layer
             division - The current layer level
     */
-    layerverify: function(text,layer,division) {
+    layerverify: function(text,layer,division, charset) {
         var returnObject = new GPGReturn();
 
         // We get the result
-		var result = this.GPGAccess.verify(text);
+		var result = this.GPGAccess.verify(text, charset);
 
         returnObject.sdOut = result.sdOut;
 
@@ -1135,7 +1135,7 @@ var FireGPG = {
 
 			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
 			infos = result.sdOut.replace(infos, "");
-			infos = infos.replace("\r", "\n");
+            infos = infos.replace("\r", "\n");
 			infos = infos.substring(0,infos.indexOf("\n"));
 
             var i18n = document.getElementById("firegpg-strings");
@@ -1310,7 +1310,7 @@ var FireGPG = {
 			var infos = result.sdOut;
 			infos = infos.substring(0,infos.indexOf("GOODSIG") + 8);
 			infos = result.sdOut.replace(infos, "");
-			infos = infos.substring(0,infos.indexOf("GNUPG") - 2);
+			infos = infos.substring(0,infos.indexOf("\n"));
 
             infos = infos.split(" ");
             infos2 = "";

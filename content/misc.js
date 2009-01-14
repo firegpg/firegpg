@@ -658,7 +658,7 @@ function putIntoBinFile(filename, data) {
     Parameters:
         aURL - The location of the file.
 */
-function getBinContent(aURL) {
+function getBinContent(aURL, maxData) {
 	var ioService = Components.classes["@mozilla.org/network/io-service;1"].
 	                           getService(Components.interfaces.nsIIOService);
 
@@ -676,7 +676,19 @@ function getBinContent(aURL) {
 			.createInstance(Components.interfaces.nsIBinaryInputStream);
 	bstream.setInputStream(input);
 
-	var bytes = bstream.readBytes(bstream.available());
+	//var bytes = bstream.readBytes(bstream.available());
+    var bytes = "";
+
+    while (bstream.available() != 0) {
+
+        if (maxData != undefined && (bytes.length + bstream.available()) > maxData) {
+            bstream.close();istream.close();
+            return "{MAX}";
+        }
+        bytes += bstream.readBytes(bstream.available());
+
+    }
+
 
 	return bytes;
 }
@@ -1530,5 +1542,6 @@ var Base64 = {
     }
 
 }
+
 
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

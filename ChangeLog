@@ -1,3 +1,10 @@
+2009-01-14 Maximilien Cuony
+    * Better html check
+    * Decrypt mime content
+    * Better signs checks
+    * Fixed a problem with sign mail encrypted text (too information about user)
+    * Big mails
+
 2009-01-10 Maximilien Cuony
     * Base of using openpgp/mine mails
     * Instantaneous check for cGmail2

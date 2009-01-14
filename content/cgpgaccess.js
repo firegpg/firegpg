@@ -482,9 +482,9 @@ var GPGAccess = {
 
 
     */
-    verify: function(text) {
+    verify: function(text, charset) {
 
-		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() + " --verify", text);
+		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() + " --verify", text, charset);
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.err;

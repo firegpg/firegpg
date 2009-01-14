@@ -47,12 +47,11 @@ FireGPGMime = {
 
         message = convertCRLFToStandarts(message);
 
+
         headers = this.getHeaders(message);
 
-
-        if (!headers["Content-Type"] || headers["Content-Type"].indexOf('"application/pgp-signature"') == false)
+        if (!headers["Content-Type"] || headers["Content-Type"].indexOf('"application/pgp-signature"') == -1)
             return '';
-
         hash = this.findHash(message, headers);
 
         if (hash == '') {
@@ -73,6 +72,7 @@ FireGPGMime = {
             fireGPGDebug('find signed block faillure', 'FireGPGMime.extractSignedData',true);
             return '';
         }
+
 
         signature = this.findSignaturePart(message, blockId);
 
@@ -106,26 +106,58 @@ FireGPGMime = {
         var reg = /\r\nContent\-Transfer\-Encoding: ([a-zA-Z0-9\-]*)\r\n/;
         result = reg.exec(restrainon);
 
+        if (result && result[1] != "")
+        {
+
+            switch(result[1]) {
+                case "quoted-printable":
+                    firstSign = this.convertFromQP(firstSign);
+                    break;
+
+                case "8bit":
+                    break;
+
+                case "base64":
+                    firstSign = this.convertFromB64(firstSign);
+                    break;
+
+            }
+        }
+
+        retour = new Object();
+        retour.text = firstSign;
+
+        //On trouve le charset
+        restrainon = message.substring(0, firstSignPos);
+        restrainon = restrainon.substring(restrainon.lastIndexOf("\r\nContent-Type:"), restrainon.length);
+        restrainon = "\r\n" + restrainon + "\r\n";
+
+        var reg = /\r\nContent\-Type: ([a-zA-Z0-9\-;\/= ]*)\r\n/;
+        result = reg.exec(restrainon);
+
         if (!result || result[1] == "")
-            return firstSign;
+            retour.chaset = "UTF-8";
+        else {
 
-        switch(result[1]) {
-            case "quoted-printable":
-                firstSign = this.convertFromQP(firstSign);
-                break;
+            interestingHeader=result[1]+" ";
 
-            case "8bit":
-                break;
+          var reg1 = /charset="([^( |;)]*)"( |;)/;
+            result = reg1.exec(interestingHeader);
+            if (result && result[1] != "")
+                retour.chaset = result[1];
+            else {
 
-            case "base64":
-                firstSign = this.convertFromB64(firstSign);
-                break;
-
+                var reg2 = /charset=([^( |;)]*)( |;)/;
+                result = reg2.exec(interestingHeader);
+                if (result && result[1] != "")
+                    retour.chaset = result[1];
+                else
+                    retour.chaset = "UTF-8";
+            }
         }
 
 
-
-        return firstSign;
+        return retour;
 
 
     },
@@ -138,7 +170,7 @@ FireGPGMime = {
         headers = this.getHeaders(message);
 
 
-        if (!headers["Content-Type"] || headers["Content-Type"].indexOf('"application/pgp-encrypted"') == false)
+        if (!headers["Content-Type"] || headers["Content-Type"].indexOf('"application/pgp-encrypted"') == -1)
             return '';
 
 
@@ -164,10 +196,21 @@ FireGPGMime = {
     //ENCRYPTED INLINE
     extractEncrypted: function(message) {
 
+
+
         message = convertCRLFToStandarts(message);
+
+        //If messsage is send is html...
+
+        message = message.replace(/<br( |\/)?>\r/gi, "\r");
+        message = message.replace(/<br( |\/)?>\n/gi, "\n");
+        message = message.replace(/<br( |\/)?>/gi, "\r\n");
 
         //On choppe la possition de la première signature
         dataMessagePos = message.indexOf("\r\n-----BEGIN PGP MESSAGE-----");
+
+        if (dataMessagePos == -1)
+            return '';
 
         //On choppe la première signature :
         dataMessage = message.substring(dataMessagePos, message.indexOf("\r\n-----END PGP MESSAGE-----") + ("\r\n-----END PGP MESSAGE-----").length);
@@ -197,17 +240,26 @@ FireGPGMime = {
 
         }
 
-
-
         return dataMessage;
 
 
     },
 
-
-
     //Format the mail (decode dependig of the encoding, add <br />, add links)
     parseDecrypted: function(message) {
+
+        retour = this.demime(message);
+
+        retour.message = this.washDecryptedForInsertion(retour.message)
+
+        return retour;
+
+    },
+
+    //select good mime part
+    demime: function(message) {
+
+        retour = new Object;
 
         message = convertCRLFToStandarts(message);
 
@@ -216,31 +268,69 @@ FireGPGMime = {
 
         headers = this.getHeaders(message);
 
-        message = message.substring(message.indexOf("\r\n\r\n") + 4, message.length); //EndOfHeaders
+        if (headers['Content-Type'] && headers['Content-Type'].indexOf('multipart') != -1) {
 
-        switch(headers["Content-Transfer-Encoding"]) {
-            case "quoted-printable":
-                message = this.convertFromQP(message);
-                break;
+            if (headers['Content-Type'].indexOf('application/pgp-signature') != -1) { //ZOMGLOL, mail is signed too !
+                retour.signData = this.extractSignedData(message);
+            }
 
-            case "8bit":
-                break;
+            blockid = this.findBlockId(message,headers);
 
-            case "base64":
-                message = this.convertFromB64(message);
-                break;
+            blockseparator = "--" + blockid;
 
+            //remove header block
+            message = message.substring(message.indexOf(blockseparator + "\r\n") + (blockseparator + "\r\n").length, message.lastIndexOf(blockseparator + "\r\n"));
+
+            while(message[0] == "\r" && message[1] == "\n")
+                message = message.substring(2, message.length);
+
+            headers = this.getHeaders(message);
+
+            message = message.substring(message.indexOf("\r\n\r\n") + 4, message.length); //EndOfHeaders
+
+            switch(headers["Content-Transfer-Encoding"]) {
+                case "quoted-printable":
+                    message = this.convertFromQP(message);
+                    break;
+
+                case "8bit":
+                    break;
+
+                case "base64":
+                    message = this.convertFromB64(message);
+                    break;
+
+            }
+
+        } else {
+            //remove header block
+            if (message.indexOf("\r\n\r\n")  != -1)
+                message = message.substring(message.indexOf("\r\n\r\n") + 4, message.length); //EndOfHeaders
         }
 
-        return this.washDecryptedForInsertion(message);
+        if (headers['Content-Type'] && headers['Content-Type'].indexOf("text/html") != -1)
+            message = this.deHtmlListe(message);
 
+        retour.message = message;
+
+        return retour;
+
+    },
+
+    deHtmlListe: function(message) {
+
+        message = message.replace(/(\n|\r)/gi, "");
+        message = message.replace(/<br( |\/)?>/gi, "\r\n");
+        message = message.replace(/<\/?[^>]+(>|$)/g, "");
+
+        return message;
     },
 
     washDecryptedForInsertion: function(message) {
 
-        message = message.replace(/<\/?[^>]+(>|$)/g, ""); //Remove html
-        message = message.replace(/</gi, ""); // Security
-        message = message.replace(/>/gi, "");
+
+        message = message.replace(/</gi, "&lt;"); // Security
+        message = message.replace(/>/gi, "&gt;");
         message = message.replace(/\r\n/gi, "<br />");
         message = message.replace(/\r/gi, "<br />");
         message = message.replace(/\n/gi, "<br />");

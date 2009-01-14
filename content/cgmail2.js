@@ -122,11 +122,13 @@ var cGmail2 = {
 
                         var mime = FireGPGMime.extractSignedData(mimeContentOf).replace(/\r/gi, '');
 
+
                         if (mime != '')
                             var resultTest = FireGPG.verify(true,mime);
                         else {
-                            var mime2 = FireGPGMime.extractSignature(mimeContentOf).replace(/\r/gi, '');
-                            var resultTest = FireGPG.verify(true,mime2);
+                            var mime2 = FireGPGMime.extractSignature(mimeContentOf);
+
+                            var resultTest = FireGPG.verify(true,mime2.text.replace(/\r/gi, ''), mime2.chaset);
                         }
 
 						// For I18N
@@ -159,17 +161,53 @@ var cGmail2 = {
 
                         var encrypted = FireGPGMime.extractEncryptedData(mimeContentOf).replace(/\r/gi, '');
 
-                        if (encrypted != null && encrypted != '') {
+                        var firstPosition = encrypted.indexOf("-----BEGIN PGP MESSAGE-----");
+                        var lastPosition = encrypted.indexOf("-----END PGP MESSAGE-----");
+
+                        if (encrypted != null && encrypted != '' && firstPosition != -1 && lastPosition != -1) {
 
                             var result = FireGPG.decrypt(false,encrypted);
 
                             if (result.result == RESULT_SUCCESS) {
                                 data = FireGPGMime.parseDecrypted(result.decrypted); //For reviewers, a washDecryptedForInsertion is applied too in parseDecrypted ;)
 
-                                this.setMailContent(listeTest[i],doc,data);
+                                this.setMailContent(listeTest[i],doc,data.message);
 
                                 td.setAttribute("style","color: blue;");
                                 td.innerHTML = i18n.getString("GMailMailWasDecrypted");
+
+                                if (result.signresulttext != null &&  result.signresulttext != "")
+                                        td.innerHTML += " " + i18n.getString("GMailSOK") + " " + htmlEncode(result.signresulttext)
+                                else if (data.signData ) {
+
+                                    var resultTest = FireGPG.verify(true,data.signData.replace(/\r/gi, ''));
+
+                                    if (resultTest.result == RESULT_ERROR_NO_GPG_DATA) {
+                                        if (cGmail2.nonosign != true)
+                                        {
+                                            td.setAttribute("style","color: orange;");
+                                            td.innerHTML += " " + i18n.getString("GMailNoS");
+                                        }
+                                    }
+                                    else if (resultTest.signresult ==RESULT_ERROR_UNKNOW) {
+                                        td.setAttribute("style","color: red;");
+                                        td.innerHTML += " " + i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
+                                    }
+                                    else if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
+                                        td.setAttribute("style","color: red;");
+                                        td.innerHTML += " " + i18n.getString("GMailSErr") + " (" + i18n.getString("falseSign") + ")"; //"La première signature de ce mail est incorrect !";
+                                    }
+                                    else if (resultTest.signresult == RESULT_ERROR_NO_KEY) {
+                                        td.setAttribute("style","color: red;");
+                                        td.innerHTML += " " + i18n.getString("GMailSErr") + " (" + i18n.getString("keyNotFound") + ")"; //"La première signature de ce mail est incorrect !";
+                                    }
+                                    else if (resultTest.signresulttext != null){
+
+                                        td.setAttribute("style","color: green;");
+                                        td.innerHTML += " " + i18n.getString("GMailSOK") + " " + htmlEncode(resultTest.signresulttext); //"La première signature de ce mail est de testtest (testtest)
+                                    }
+
+                                }
                             } else  {
 
                                 td.setAttribute("style","color: red;");
@@ -181,17 +219,27 @@ var cGmail2 = {
 
                             var encrypted = FireGPGMime.extractEncrypted(mimeContentOf).replace(/\r/gi, '');
 
-                            if (encrypted != null && encrypted != '') {
+                            var firstPosition = encrypted.indexOf("-----BEGIN PGP MESSAGE-----");
+                            var lastPosition = encrypted.indexOf("-----END PGP MESSAGE-----");
+
+                            if (encrypted != null && encrypted != '' && firstPosition != -1 && lastPosition != -1) {
 
                                 var result = FireGPG.decrypt(false,encrypted);
 
                                 if (result.result == RESULT_SUCCESS) {
-                                    data = FireGPGMime.washDecryptedForInsertion(result.decrypted);
+
+                                    data = FireGPGMime.washDecryptedForInsertion(FireGPGMime.demime(result.decrypted).message.replace(/\r/gi, ''));
 
                                     this.setMailContent(listeTest[i],doc,data);
 
                                     td.setAttribute("style","color: blue;");
                                     td.innerHTML = i18n.getString("GMailMailWasDecrypted");
+
+
+                                    if (result.signresulttext != null &&  result.signresulttext != "")
+                                        td.innerHTML += " " + i18n.getString("GMailSOK") + " " + htmlEncode(result.signresulttext)
+
+
                                 } else  {
 
                                     td.setAttribute("style","color: red;");
@@ -1587,7 +1635,24 @@ var cGmail2 = {
 
 		if (this.messageCache == null || this.messageCache[url] == null)
 		{
-			var mailData = getContentXHttp(cGmail2.baseUrl + url );
+
+            //getContentXHttp
+            data = getBinContent(cGmail2.baseUrl + url , 500*1024); // 500 kb
+
+            if (data == "{MAX}") {
+
+                var i18n = document.getElementById("firegpg-strings");
+
+				if (confirm(i18n.getString("GmailBigMail")))
+                    data = getBinContent(cGmail2.baseUrl + url );
+                else
+                    return '';
+
+            }
+
+
+			var mailData = EnigConvertToUnicode(data , 'UTF-8');
+            // getContentXHttp(cGmail2.baseUrl + url);
 
 			if (this.messageCache == null)
 				this.messageCache = { };
