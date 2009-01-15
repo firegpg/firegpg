@@ -1,3 +1,6 @@
+2009-01-15 Maximilien Cuony
+    * Trying to fix FS#176
+    
 2009-01-14 Maximilien Cuony
     * Better html check
     * Decrypt mime content
@@ -20,7 +23,7 @@
 
 2009-01-06 Maximilien Cuony
     * Translate.getfiregpg.org working
-    * Adding missin Swedish locate
+    * Adding missing Swedish locate
     * Install page XHTML strict
 
 2009-01-05 Maximilien Cuony

@@ -1535,6 +1535,10 @@ var FireGPG = {
 
         this.initGPGACCESS();
 
+        keyId = trim(keyId);
+        keyId = keyId.replace(/\r/gi, "");
+        keyId = keyId.replace(/\n/gi, "");
+
         //Boite d'attente
         var wait_box = window.open("chrome://firegpg/content/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
         wait_box.focus();
