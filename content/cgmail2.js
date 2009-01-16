@@ -41,6 +41,17 @@ const GMAIL_MAIN_DOC_URL = "http://mail.google.com/mail/?ui=2&view=bsp&ver=";
  The url of the mail document for gmail and https. */
 const GMAIL_MAIN_DOC_URL2 = "https://mail.google.com/mail/?ui=2&view=bsp&ver=";
 
+
+//Pictures
+const IMG_SIGN_ON = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAN1wAADdcBQiibeAAAAAd0SU1FB9kBDxIAOdxBIbcAAAI+SURBVDjLxZO7TxRhFMV/M/PN7EPYhS02yytggo+ERAgxERsNhYnGzsQojaHT3r9F0cTaUjs6NUQLBRKDi4I8FEwkLMgO+5rdeX3XAoVYiZWnP797cu69Bv8gqZ+0QTqIdRpl1VHGvnV884CJwQgwicVtoB/ku/H4ycOnURgP/Q1g21Fw4+r0RjbbNmaq4ayO35UkXp9S2UzHxK2bE4QNl82FVwD0D49jn+hERBCRgwTiIX7pvGUGYF/BlO327d3ENfV7wuL0AyjPICIsfPvAmev3qdVqlMtlCoUCGxurDPT1kEnPomQKkRTFpXOjh4DN4kvGLuSJ/JC38y/ouXyXYrGIiBDHMVtbu1SrvXTlbfp6HcQcoVwp5hRAaWedPXFYfL+E1lAKswSRy+joKEEQICLkcjm01hiGgRcksW0b4SMKYHb+OSt6ma+VffxWRF3S5OeeMX7pHkqpwy5EBK31H90ogFODF1lbm8OtlEhloDORpbdnhDAMaTabhwbbtkkkEkRRhGVZR4BCfojJO4+o1VwQAItEIolpmliWRVtbG7s/dlDKotGo47U8CvkuAEwA3/eJoxhE0WyGuO4+nucRBAHVahXDMKg3agRhQBAGVKsVtNZHCRzHwTAMcrnc0eX9it3e3g7A6cGzhx0AKHWwQOV5jdXXb2ZOaa3BOP5ffF5ZptVqflG+3xpbWv5kh2FolEo7dnmv7Lium6zXG0nf95MiguM4QTqd9jPZTCvX2eF393QHqVRKZ7KZkP+unzPGLX8Jr7F8AAAAAElFTkSuQmCC";
+const IMG_SIGN_OFF = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAAXNSR0IArs4c6QAAAAJiS0dEAP+Hj8y/AAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH2QEPEgAMivLllAAAAR9JREFUKM+l0bGKE1EAheHvztxJskGNptDAIlZrI4JstZ2djyCWgg9lYS/4CmJpoaVEkGVFUmxWAppd4mySmYlzLbI2ks7T/j/nFCfYme+Fm20/L/OLfCfOwiPPs2fumYZXr5sH/wpF/XgyOOoOqlnzMrxJTy2N8VBfktBayOy5NHsX4a255NQTv8yNTIx0/MbXwww+23fbWGns1NSZY2dauXIYmdn4pLXWOFRLhlrhai7jo9LUxE8fBFEUFbIrIXLfiQv03NVYSZJC10a+FUZeWICuTO6aH6JLK3e2E5UNVs4t1RaCUqOx0G4bOoIhSJLrOJD+QnF58v6g3X2IY+tvsTr6UjRhVsw7572yV/WSTt2vbqxvVfv1Xjto/Hf+AOxbcNBvGvbRAAAAAElFTkSuQmCC";
+
+const IMG_ENCRYPT_ON = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB9kBDxIAMKWdmRMAAAJ7SURBVDjLfZJNSFRRFMd/zvfo6Dj4ManJBEmCUggqQ5BQkLV3KUTrWrhqCIRwE7aZnW6CICjCRatcWNDKjdYiNPA7lCFNZ4Zx3jjP9+687xbTjFOSZ3XuPf//71zOuXX8E9PTbyNtbeGHra3Nj5qa6q8ByLKaymalmVyu+Hpy8oFUq3fXHqamXrWEw6FEPN7/bGioNxqLtdPV1UJ3d3tzIOC7nU7n3fH4/dXFxXlxDpBIzLjq6wNjIyM3pnp7uxt2d/eN5eW1wtZWSlVVxd3Tc9nv83mup1LpH8PDo2tLSx8dAE8FoOtGQzQaGY/FouHNzT1tYeHLG1XVngPKykrdU0kqPB4Y6AtHo83j+fzJB0AGcFUAQmgev993xe93s76+l8lkpJfJ5MTPZHLiWIhScnv74EDXBT6f54oQWrVxFaAoKoahI4Qgk8mfmKa5WqnNziaysqxomlZC13UURa3OrUq6eWkzhOj0Cmkfr5n1TA7OdU4O9leFc78kr3WaxlXKeO92f4+8AwmgDmA12TfqDdYnrMjVkVBjKHAiFUQkIK/XbuhYhPqbmsNB9VQpeQp7y4ZQXww82fjsAchK3IuP3Rpt6sgBx4AThOBQLSCGBeTBcQLFnY47X9/vfgPKgKOcjaXuQDHHheEAksDakDjKhc5mcJhzMAoq+LQLzA4US3BwgiE5HOacM0C+6GAVNfCKvw2VrpYNig7HKhgWVslFvlgDcBxANcCvgasObAdMu2w0bdAtKBlg2GBYoLur/OoaMewySf8jMmwwrbLZtM/MpgU65/+BcIJnoiqgBla5N22EcJ8D7Mx/kuUGr78R2ym/xIH/5YrukoEdgN/duVvodorv0QAAAABJRU5ErkJggg%3D%3D";
+const IMG_ENCRYPT_OFF = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAAXNSR0IArs4c6QAAAAJiS0dEAP+Hj8y/AAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH2QEPEgAotvEBRQAAAWNJREFUKM9dkL0vQ2EUxn/Ve/uhpQRpUiFNJCIRCyIdSBiwGy1mg1FYRExETEwm/gUDSxeLj4EwkEiFIJZSafXm9u29fd++hlsVfU5OTnKe33Ce46OmrfauhY7F1n6wXj73cgereW/v98ZGR2x5bG0k3kuCnrbQZNafuj0VdWClqXlufL0/8ly5LDyUSv6+YGDo9XHs7kxDE4Abic/3xh6co8Or4ZuBk91zuzsWn3cjUAOEEUgGuc9m97fftr/ETubdxUwKow7YVBB8fMtbgN0Py3FwsQEwALqjZbOANFKJFAAvpo1jJtvJgw/2psPLrRPRUEGE7r1MYjAWtsvWhdhcShtQmJmd7kRDmFHq0qG3qeNr0gbkKGHxXxqLJ3LeDTmKBBpsm0+sX6CITbBmgKZKmW8UDkUP0DgIfGgUCoXERSKR6N+YEo1CIlG1ligqf3+oNpgShaJcBzJpy2zRNJZrkYEf32ylTIie9OMAAAAASUVORK5CYII%3D";
+
+const IMG_INLINE_ON = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9kBDxIDEyzXu6IAAAJDSURBVDjLXZK9S1thFIef9354ufEak5qQpoFq24QSGqXg5FKodCxd/Q9CCYKDIDh26No6SiY7lOImpV3qYkGw6tA/QBAFSYg0QWL0er/ydnjVfJzl5ZwDz/md33uEnJx8STw+hWVNYppPsKwi8JRO5xFh2EXT/tLtfqJW2xXn5/8YCiGnpyWLizAyAokEWBaYJgQBHB+D68LJCdTrR+zsfBSt1pd+gMHERIN8PkO7rSqeJ/E8gWXBzAx0OjA1Be12gVTqg9zY2BG+f9oDQAPIsLUFl5fgeQLXhYUFKBZhfx9aLZiflxQKCSwrju/TDzjH88BxQNdVVdPU22xCOg2lEgghME0b04wNrgCX+D6kUnBxMQgJQ8hkVC4lwAhBYA0CoqgLKJl3PgCcnSkzR0dV7vtgGHdD+wBhGCElzM1xv9v1Nd8rFd6trSlAtwuepxQNhYZhmICaNj4OzSZvKhV+AWxuwvY2HB2pbwUIQ20QoOsP7rODA14tL/MHcIFve3v41SocHqrpUvYMvgdAHCFUlskQ71tyFNChZ2wYgqZ1BwFRNAYoibkcP1ZWKN02nwH6mGoTBMoHXY+GTXSQUjVdF0oldstl1qtVXiwtQTKp3Nc0CAKJpg0BgiCGrkMspk44imB2lvflsjoixwEpJSBw3Rs872YQUK9/ZXU1QTb7kGz2MbadxbZjpNO9AzJNgeNAo3Hz+eoqfWvPFYAA+A3mBcR0cHSI+xArQKpoGHlyuTzJZAnbfk6tFv08PX39Fk7uFPwH1YnXP5gXXzcAAAAASUVORK5CYII%3D";
+const IMG_INLINE_OFF = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9kBDxICJI1xL+wAAAKASURBVDjLXZA9TyNXGEbP/RjGjD9ZgzO2LJyFjVdBK0FPRYXEH6BGQhQpKPgHKdKGhj9A4YIOiZKWmjRIKUKDqXYVQDYsHmbmvncLsLXmbR/dc5/nqOPj47UwDH+dmZnpKKU+Wmt/B5ayLGs550Rr/Y9z7u/hcHixu7v7P+9OnZyc+PX1dYIgIAxDgiDAGINzjru7O7Is4+HhgeFw+N/19fVfe3t7xz8DdBRFXxcWFgjDEIAsy3ySJAC0Wi3iOGZpaYmVlZXfVldX/zw6Our8DLBKqa/AL1dXV7y8vJDnucrznLW1NeI4pt/v8/z8zPLysp+fn68ZYypTAO/9N+cchUIBrfXrLqXw3vP4+EixWCSOY7TWyhgza4yJ3jd4dM4RRRFaa5RSr9u0xntPuVzGe4+IAMyISDgFkLdkNBoxGo0mwWAwwFpLEAQAOOfGUDslUUSciNDpdOh2u3S7XTqdDoeHhxPguMHbX1NntdaB9x5jDNZa7u/v2draotFocHl5SbPZZG5ujkrl1Z2I6KkGSqkP4939fp/NzU1ubm5I05TT01MuLi64vb1FRPDeTxxNAEBlbL1arRKGIcYYAIIgmIgdz9BaT+3Q3vuyUgoRoVwu0+v1iOMYgHq9zuzsLOPcOYdSyr2XWBqHaZrSarXo9XosLi6yvb3NxsYG7XYbpRTOOf8eYEUkehPoRUSJCO12m4ODA4rFIoVCARHxgErTNMnzPJkCDAaD3tnZWa1Wq8WlUmkxDMOmtTYqlUqT6sYYVSgUeHp6Ss7PzxeAIvAdwO7s7Pyxv78fJEkSKaVKSqmKiET1en2+2Wx+qlarn6Io+mKt/TwYDFyj0fh3/BjgB9asH6HipiinAAAAAElFTkSuQmCC";
+
 /*
    Class: cGmail2
    This is the main class to manage gmail's function with the new interface.
@@ -72,9 +83,7 @@ var cGmail2 = {
         Parameters:
             id - The document 's id of the click.
     */
-    checkDoc: function(id) {
-
-
+    checkDoc: function(id, retry) {
 
         var i18n = document.getElementById("firegpg-strings");
 
@@ -117,6 +126,16 @@ var cGmail2 = {
                        // var contenuMail = this.getMailContent(listeTest[i],doc);
 
                         var mimeContentOf  = this.getMimeMailContens(listeTest[i],doc);
+
+                        if (mimeContentOf == "{ERROR,WAIT}" && retry == undefined && retry != true) {
+
+                            listeTest[i].removeAttribute("gpg");
+
+                            setTimeout("cGmail2.checkDoc("+id+", true)", 500);
+                            cGmail2.docOccuped[id] = true;
+                            return;
+
+                        }
 
                         var td = doc.createElement("td");
 
@@ -305,7 +324,7 @@ var cGmail2 = {
                         }
 
 
-                        if (cGmail2.b_sign == true)
+                        /*if (cGmail2.b_sign == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailCLS"),"sign",spamLimite);
                         if (cGmail2.b_sign_s == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailCLSS"),"sndsign",spamLimite);
@@ -320,8 +339,12 @@ var cGmail2 = {
                         if (cGmail2.b_signcrypt == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailSAC"),"signcrypt",spamLimite);
                         if (cGmail2.b_signcrypt_s == true)
-                            this.addBouton(wheretoadd,doc,i18n.getString("GMailSACS"),"sndsigncrypt",spamLimite);
+                            this.addBouton(wheretoadd,doc,i18n.getString("GMailSACS"),"sndsigncrypt",spamLimite);*/
 
+
+
+
+                        //Listeners
                         try {
 
                             var tmpListener = new Object;
@@ -331,9 +354,14 @@ var cGmail2 = {
 
                         } catch (e) {  fireGPGDebug(e,'cgmail2.checkDoc',true);  }
 
-                        //Add the button 'Attach and chiffred a file'
+                        //Rajouter une propriété sur le button send pour le repérer
+                        var children = listeTest[i].getElementsByTagName('button');
+                        children[0].setAttribute("gpg_action", "send_button");
+
+
                         if (listeTest[i].getAttribute('class').indexOf('LlWyA') != -1) {
 
+                            //Add the button 'Attach and chiffred a file'
 
                             var tablebox = listeTest[i].parentNode.getElementsByTagName('table');
 
@@ -357,6 +385,48 @@ var cGmail2 = {
                             tmpListener = null;
                             tmpListener = new cGmail2.callBack(doc)
                             span.addEventListener('click',tmpListener,false);
+
+
+                            //Rajout des trucs à FireGPG
+                            var firegpgactions = doc.createElement("tr");
+
+
+                            var title = doc.createElement("td");
+                            var checkboxes = doc.createElement("td");
+
+                            title.setAttribute('class', 'sXkcDf');
+                            title.innerHTML = 'FireGPG:';
+
+                            randId = genreate_api_key();
+                            checkboxes.setAttribute('class', 'J14TS');
+                            checkboxes.setAttribute('style', 'font-size: 12px;');
+                            checkboxes.innerHTML =  '<img id="'+randId+'a" src="'+IMG_SIGN_OFF+'" alt="'+IMG_SIGN_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-sign">&nbsp;<span class="MRoIub" onclick="document.getElementById(\''+randId+'a\').onclick();">' + i18n.getString("GMailS") + '</span>&nbsp;|&nbsp;' +
+                            '<img id="'+randId+'b" src="'+IMG_ENCRYPT_OFF+'" alt="'+IMG_ENCRYPT_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-encrypt" >&nbsp;<span class="MRoIub" onclick="document.getElementById(\''+randId+'b\').onclick();">' + i18n.getString("GMailC") + '</span>&nbsp;|&nbsp;' +
+                            '<img id="'+randId+'c" src="'+IMG_INLINE_OFF+'" alt="'+IMG_INLINE_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-inline" >&nbsp;<span class="MRoIub" onclick="document.getElementById(\''+randId+'c\').onclick();">' + i18n.getString("GmailI") + '</span>';
+
+                            if (cGmail2.default_sign)
+                                checkboxes.innerHTML += '<script>document.getElementById(\''+randId+'a\').onclick();</script>';
+
+                            if (cGmail2.default_encrypt)
+                                checkboxes.innerHTML += '<script>document.getElementById(\''+randId+'b\').onclick();</script>';
+
+                            if (cGmail2.default_inline)
+                                checkboxes.innerHTML += '<script>document.getElementById(\''+randId+'c\').onclick();</script>';
+
+                            firegpgactions.appendChild(title);
+                            firegpgactions.appendChild(checkboxes);
+
+                            fileattachimage = tablebox.getElementsByClassName('msHBT','img');
+
+                            filesattachbox = fileattachimage[0].parentNode.parentNode;
+
+                            try {
+                                tablebox.firstChild.insertBefore(firegpgactions,filesattachbox);
+                            } catch (e) {   fireGPGDebug(e,'cgmail2.checkDoc(insert checkboxes)',true); }
+
+
+
+
 
                         }
 
@@ -499,7 +569,7 @@ var cGmail2 = {
 		this.handleEvent = function(event) { // Function in the function for handle... events.
 			var i18n = document.getElementById("firegpg-strings");
 
-            if (event.target.nodeName == "SELECT")
+           /* if (event.target.nodeName == "SELECT")
                 return;
 
             try {
@@ -513,16 +583,16 @@ var cGmail2 = {
                     target.setAttribute('gpg_action', tmpval);
 
                     target.value = "FireGPG";
-                } else {
+                } else { */
 
                     target = event.target;
 
-                }
+        /*        }
 
-            } catch (e)  { fireGPGDebug(e,'cgmail2.callBack',true);  }
+            } catch (e)  { fireGPGDebug(e,'cgmail2.callBack',true);  } /*
 
 
-            //If the user want to decrypt the mail (can use normal attibutes)
+           /* //If the user want to decrypt the mail (can use normal attibutes)
 			if (target.innerHTML == i18n.getString("GMailD")) {
 
                 var tmpNode = target;
@@ -649,7 +719,7 @@ var cGmail2 = {
 
 				}
 			}
-            else if (target.getAttribute('gpg_action') == "add_crypted" || target.getAttribute('gpg_action') == "add_crypted_and_sign")
+            else */ if (target.getAttribute('gpg_action') == "add_crypted" || target.getAttribute('gpg_action') == "add_crypted_and_sign")
 			{
 
                 //Ok, so the user want to crypt a file.
@@ -667,7 +737,7 @@ var cGmail2 = {
 
                 var filePath = fp.file.path;
 
-                var data = getBinContent("file://" + filePath);
+                var data = EnigConvertToUnicode(getBinContent("file://" + filePath), 'UTF-8');
 
                 var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,target.parentNode.parentNode.parentNode);
 
@@ -746,7 +816,96 @@ var cGmail2 = {
                         }
                     }
 				}
-			}
+			} else  if (target.getAttribute('gpg_action') == "send_button") {
+
+                stopTheEvent = false;
+
+                buttonsboxes = target.parentNode.parentNode.parentNode.parentNode.parentNode;
+
+                tmpimage = buttonsboxes.getElementsByClassName('firegpg-sign', 'img');
+                sign = tmpimage[0].title == 'On';
+
+                tmpimage = buttonsboxes.getElementsByClassName('firegpg-encrypt', 'img');
+                encrypt = tmpimage[0].title == 'On';
+
+                tmpimage = buttonsboxes.getElementsByClassName('firegpg-inline', 'img');
+                inline = tmpimage[0].title == 'On';
+
+
+
+                if (inline) {
+
+                    var mailContent = cGmail2.getWriteMailContent(this._doc,target.parentNode, true);
+
+                    var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,target.parentNode);
+
+                    if (mailContent == "")
+                        stopTheEvent = true;
+                    else {
+
+                        if (sign && encrypt) {
+
+                            var result = FireGPG.cryptAndSign(false, mailContent, null ,false,null, null, false, whoWillGotTheMail);
+
+                            // If the sign failled
+                            if(result.result == RESULT_ERROR_UNKNOW) {
+                                // We alert the user
+                                alert(i18n.getString("cryptAndSignFailed"));
+                                stopTheEvent = true;
+                            }
+                            else if(result.result == RESULT_ERROR_PASSWORD) {
+                                // We alert the user
+                                alert(i18n.getString("cryptAndSignFailedPass"));
+                                stopTheEvent = true;
+                            }
+                            else {
+
+                                cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
+
+                            }
+
+
+                        } else if (sign) {
+
+                            var result = FireGPG.sign(false,gmailWrapping(mailContent));
+
+                            if (result.result == RESULT_SUCCESS) {
+
+                                cGmail2.setWriteMailContent(this._doc,target.parentNode,result.signed);
+
+                            } else {
+
+                                stopTheEvent = true;
+                            }
+
+                        } else if (encrypt) {
+
+                            var result = FireGPG.crypt(false,mailContent,null, false, false,whoWillGotTheMail);
+
+                            if(result.result == RESULT_SUCCESS) {
+                                cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
+                            }  else {
+                                stopTheEvent = true;
+                            }
+
+
+                        }
+                    }
+
+                } else { //TODO !
+
+                    alert("S:" + sign + " E:" + encrypt + " I:" + inline);
+
+                    stopTheEvent = true;
+
+                }
+
+
+
+
+                if (stopTheEvent)
+                    event.stopPropagation();
+            }
 		};
 	},
 
@@ -755,13 +914,15 @@ var cGmail2 = {
         This function create a html button at the end of a node
         OR append a opton value on the select (who is created), if the user request for this.
 
+        (DEPECIATED)
+
         Parameters:
             box - The node where the button is added.
             doc - The page's document (of the node)
             label - The label of the button
             action- The action of the button (for the callback)
             spamLimite -  The node before when we create the button.
-    */
+    *//*
     addBouton: function(box,doc,label,action,spamLimite) {
 
         if ( ! this.b_use_select_s) {
@@ -824,7 +985,7 @@ var cGmail2 = {
             select.add(option,null);
 
         }
-	},
+	},*/
 
     /*
         Function: sendEmail
@@ -856,112 +1017,132 @@ var cGmail2 = {
             dDocument- The html document
             boutonxboxnode - The note with the buttons of the mails
     */
-    getWriteMailContent: function(dDocument,boutonxboxnode)
+    getWriteMailContent: function(dDocument,boutonxboxnode, betterTextOnly)
 	{
 
-			if (cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe")
-            {
+        if (betterTextOnly && cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe") {
 
-                var iframe = cGmail2.getTheIframe(dDocument,boutonxboxnode);
+            var i18n = document.getElementById("firegpg-strings");
 
+            if (confirm(i18n.getString("betterToUsePlainText"))) {
 
-                //First, we look for a selection
-                try { var select = iframe.contentWindow.getSelection(); }
-                catch (e) { var select = ""; }
+                whereSeacrch =boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode;
 
-                //Autodetect
-                if (select.toString() == "")
-                {
-                    try { var select = iframe.contentWindow.document.body.innerHTML; }
-					catch (e) { var select = ""; }
+                children = whereSeacrch.getElementsByClassName('g7q0he', 'span');
 
-					if ( select != "")
-					{
-
-						var indexOfQuote = select.indexOf('<div class="gmail_quote">');
-
-                        contenuMail = Selection.wash(select.substring(0,indexOfQuote));
-
-                        if (indexOfQuote == -1 || TrimAndWash(contenuMail) == "")
-						{
-                            indexOfQuote = select.length;
-                            contenuMail = Selection.wash(select.substring(0,indexOfQuote));
-
-                        }
-
-						this.composeIndexOfQuote  = indexOfQuote;
-					}
-                }
-                else
-                {
-                    value = select.getRangeAt(0);
-
-
-                    var documentFragment = value.cloneContents();
-
-                    var s = new XMLSerializer();
-                    var d = documentFragment;
-                    var str = s.serializeToString(d);
-
-                    contenuMail = Selection.wash(str);
-
-                }
-
-
-            } else {
-
-                var textarea = cGmail2.getTheTextarea(dDocument,boutonxboxnode);
-
-                var select2 = "";
-				//Mode plain text
-
-                //Selection
                 try {
-					select2 = textarea.value;
-					select2 = select2.substring(textarea.selectionStart,textarea.selectionEnd);
-				} catch (e) { }
-
-
-                //Autodetect
-                if (select2 == "")
-				{
-                    select2 = textarea.value;
-
-                    var indexOfQuote = select2.indexOf("\n> ");
-                    select2 = select2.substring(0,indexOfQuote);
-
-                    indexOfQuote = select2.lastIndexOf("\n");
-
-                    var contentu = select2.substring(0,indexOfQuote);
-
-                    if (indexOfQuote == -1 || TrimAndWash(contentu) == "")
-                    {
-                        select2 = textarea.value;
-                        indexOfQuote = select2.length;
-
-                        var contentu = select2.substring(0,indexOfQuote);
-                    }
-
-                    textarea.selectionStart = 0;
-                    textarea.selectionEnd = indexOfQuote;
-
-                    contenuMail = Selection.wash(contentu);
-                }
-                else
-				{
-
-					contenuMail = Selection.wash(select2);
-				}
-
+                    var evt = dDocument.createEvent("MouseEvents");
+                        evt.initEvent("click", true, true);
+                        children[0].dispatchEvent(evt);
+               } catch (e) { fireGPGDebug(e,'cgmail2.getWriteMailContent(settoplaintext)',true);  }
 
             }
 
-            //Remove stranges A0
-            var reg=new RegExp(unescape('%A0'), "gi");
-            contenuMail = contenuMail.replace(reg," ");
+        }
+
+        if (cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe")
+        {
+
+            var iframe = cGmail2.getTheIframe(dDocument,boutonxboxnode);
 
 
-			return contenuMail;
+            //First, we look for a selection
+            try { var select = iframe.contentWindow.getSelection(); }
+            catch (e) { var select = ""; }
+
+            //Autodetect
+            if (select.toString() == "")
+            {
+                try { var select = iframe.contentWindow.document.body.innerHTML; }
+                catch (e) { var select = ""; }
+
+                if ( select != "")
+                {
+
+                    var indexOfQuote = select.indexOf('<div class="gmail_quote">');
+
+                    contenuMail = Selection.wash(select.substring(0,indexOfQuote));
+
+                    if (indexOfQuote == -1 || TrimAndWash(contenuMail) == "")
+                    {
+                        indexOfQuote = select.length;
+                        contenuMail = Selection.wash(select.substring(0,indexOfQuote));
+
+                    }
+
+                    this.composeIndexOfQuote  = indexOfQuote;
+                }
+            }
+            else
+            {
+                value = select.getRangeAt(0);
+
+
+                var documentFragment = value.cloneContents();
+
+                var s = new XMLSerializer();
+                var d = documentFragment;
+                var str = s.serializeToString(d);
+
+                contenuMail = Selection.wash(str);
+
+            }
+
+
+        } else {
+
+            var textarea = cGmail2.getTheTextarea(dDocument,boutonxboxnode);
+
+            var select2 = "";
+            //Mode plain text
+
+            //Selection
+            try {
+                select2 = textarea.value;
+                select2 = select2.substring(textarea.selectionStart,textarea.selectionEnd);
+            } catch (e) { }
+
+
+            //Autodetect
+            if (select2 == "")
+            {
+                select2 = textarea.value;
+
+                var indexOfQuote = select2.indexOf("\n> ");
+                select2 = select2.substring(0,indexOfQuote);
+
+                indexOfQuote = select2.lastIndexOf("\n");
+
+                var contentu = select2.substring(0,indexOfQuote);
+
+                if (indexOfQuote == -1 || TrimAndWash(contentu) == "")
+                {
+                    select2 = textarea.value;
+                    indexOfQuote = select2.length;
+
+                    var contentu = select2.substring(0,indexOfQuote);
+                }
+
+                textarea.selectionStart = 0;
+                textarea.selectionEnd = indexOfQuote;
+
+                contenuMail = Selection.wash(contentu);
+            }
+            else
+            {
+
+                contenuMail = Selection.wash(select2);
+            }
+
+
+        }
+
+        //Remove stranges A0
+        var reg=new RegExp(unescape('%A0'), "gi");
+        contenuMail = contenuMail.replace(reg," ");
+
+
+        return contenuMail;
 	},
 
     /*
@@ -1393,7 +1574,7 @@ var cGmail2 = {
                 document.getElementById("browser_content").addEventListener("DOMContentLoaded", cGmail2.pageLoaded, false);
 			//window.addEventListener("unload", function() {cGmail2.listenerUnload()}, false);
 
-			try {	var nonosign = prefs.getBoolPref("gmail_no_sign_off");	}
+		/*	try {	var nonosign = prefs.getBoolPref("gmail_no_sign_off");	}
 			catch (e) { var nonosign = false; }
 			try {	var b_sign = prefs.getBoolPref("gmail_butons_sign");	}
 			catch (e) { var b_sign = true; }
@@ -1426,7 +1607,20 @@ var cGmail2 = {
 			cGmail2.b_crypt_s = b_crypt_s;
 			cGmail2.b_signcrypt = b_signcrypt;
 			cGmail2.b_signcrypt_s = b_signcrypt_s;
-            cGmail2.b_use_select_s = b_use_select_s;
+            cGmail2.b_use_select_s = b_use_select_s; */
+
+            try {	var default_sign = prefs.getBoolPref("gmail_select_by_default_sign");	}
+			catch (e) { var default_sign = false; }
+
+            try {	var default_encrypt = prefs.getBoolPref("gmail_select_by_default_encrypt");	}
+			catch (e) { var default_encrypt = false; }
+
+            try {	var default_inline = prefs.getBoolPref("gmail_select_by_default_inline");	}
+			catch (e) { var default_inline = false; }
+
+            cGmail2.default_sign = default_sign;
+			cGmail2.default_encrypt = default_encrypt;
+			cGmail2.default_inline = default_inline;
 
 
 		}
@@ -1452,14 +1646,22 @@ var cGmail2 = {
 
         final_location = final_location.replace(regrex, "http://mail.google.com/mail");
 
+
+
         //Find IK
         if (final_location.indexOf("http://mail.google.com/mail/?ui=2&ik=") == 0 || final_location.indexOf("https://mail.google.com/mail/?ui=2&ik=") == 0) {
 
             var tmp_string = final_location.substring(final_location.indexOf("&ik=") + 4, final_location.length);
             var ik = tmp_string.substring(0, tmp_string.indexOf('&'));
 
-            cGmail2.baseUrl = doc.location.href.substring(0, doc.location.href.indexOf("?ui=2"));
             cGmail2.ik = ik;
+
+        }
+
+        //Fing base url
+        if (cGmail2.baseUrl == undefined && (final_location.indexOf("http://mail.google.com/mail/?ui=2") == 0 || final_location.indexOf("https://mail.google.com/mail/?ui=2") == 0)) {
+
+            cGmail2.baseUrl = doc.location.href.substring(0, doc.location.href.indexOf("?ui=2"));
 
         }
 
@@ -1467,8 +1669,10 @@ var cGmail2 = {
         if (final_location.indexOf("http://mail.google.com/mail/") == 0 || final_location.indexOf("https://mail.google.com/mail/") == 0) {
 
            sr = doc.createElement('script');
-        sr.innerHTML = "var windowopen_ = window.open; window.open = function (a,b,c) {  if (document.getElementById('canvas_frame') && document.getElementById('canvas_frame').contentDocument && document.getElementById('canvas_frame').contentDocument.body && document.getElementById('canvas_frame').contentDocument.body.getAttribute('firegpg').indexOf('#FIREGPGCAPTURE') != -1) { document.getElementById('canvas_frame').contentDocument.body.setAttribute('firegpg',a); return new Window();  } else { return windowopen_(a,b,c); }};"
-        doc.body.appendChild(sr);
+            sr.innerHTML = "var windowopen_ = window.open; window.open = function (a,b,c) {  if (document.getElementById('canvas_frame') && document.getElementById('canvas_frame').contentDocument && document.getElementById('canvas_frame').contentDocument.body && document.getElementById('canvas_frame').contentDocument.body.getAttribute('firegpg').indexOf('#FIREGPGCAPTURE') != -1) { document.getElementById('canvas_frame').contentDocument.body.setAttribute('firegpg',a); return new Window();  } else { return windowopen_(a,b,c); }};"
+            doc.body.appendChild(sr);
+
+
 
         }
 
@@ -1564,7 +1768,7 @@ var cGmail2 = {
         //
         this.handleEvent = function(event) {
 
-           // fireGPGDebug(event.target.className);
+          // fireGPGDebug(event.target.className);
 
             if ((event.target.className == "HprMsc" || event.target.className == "y4Wv6d" || event.target.className == "XoqCub") && (cGmail2.docOccuped[this._docid] == undefined || cGmail2.docOccuped[this._docid] == false)) //load old mail | compose | Mail widnow
             {
@@ -1589,55 +1793,68 @@ var cGmail2 = {
     */
 	getMimeMailContens: function(id,doc) {
 
-    var elements = id.parentNode.getElementsByTagName("img");
 
-                        actionbox = "";
+        var elements = id.parentNode.getElementsByTagName("img");
 
-                        //On cherche la boite avec les boutons
-                        for (var j = 0; j < elements.length; j++) {
-                            if (elements[j].getAttribute("class") == "S1nudd") {
-                                actionbox = elements[j].parentNode;
-                                break;
-                            }
-                        }
+        actionbox = "";
 
-    //There is ugly hack. It's the most ugly hack ever.
+        //On cherche la boite avec les boutons
+        for (var j = 0; j < elements.length; j++) {
+            if (elements[j].getAttribute("class") == "S1nudd") {
+                actionbox = elements[j].parentNode;
+                break;
+            }
+        }
+
+         //There is ugly hack. It's the most ugly hack ever.
         var evt = doc.createEvent("MouseEvents");
          evt.initMouseEvent("click", true, true, window,
            0, 0, 0, 0, 0, false, false, false, false, 0, null);
-       var a = actionbox.dispatchEvent(evt);
+
+        var a = actionbox.dispatchEvent(evt);
 
        //On choppe le bouton en question
        //CHILDREN OF zWKgkf
        // act="32"
 
-    papa = doc.getElementsByClassName('zWKgkf');
-    papa = papa[0];
+        papa = doc.getElementsByClassName('zWKgkf');
+        papa = papa[0];
 
-     for (var j = 0; j < papa.childNodes.length; j++) {
-                            if (papa.childNodes[j].getAttribute("act") == "32") {
-                                detailsElement = papa.childNodes[j];
-                                break;
-                            }
-                        }
+        for (var j = 0; j < papa.childNodes.length; j++) {
+            if (papa.childNodes[j].getAttribute("act") == "32") {
+                detailsElement = papa.childNodes[j];
+                break;
+            }
+        }
 
-    doc.body.setAttribute('firegpg',"#FIREGPGCAPTURE");
+        doc.body.setAttribute('firegpg',"#FIREGPGCAPTURE");
 
-    var evt3 = doc.createEvent("MouseEvents");
-     evt3.initMouseEvent("mouseup", true, true, window,
-       0, 0, 0, 0, 0, false, false, false, false, 0, null);
-     detailsElement.dispatchEvent(evt3);
+        var evt3 = doc.createEvent("MouseEvents");
+         evt3.initMouseEvent("mouseup", true, true, window,
+           0, 0, 0, 0, 0, false, false, false, false, 0, null);
+         detailsElement.dispatchEvent(evt3);
 
-   url = doc.body.getAttribute('firegpg');
+        url = doc.body.getAttribute('firegpg');
 
-    doc.body.setAttribute('firegpg',"");
+        if (url == "#FIREGPGCAPTURE" ) {
+            //Close popup
+             var evt4 = doc.createEvent("MouseEvents");
+            evt4.initMouseEvent("mousedown", true, true, window,
+             0, 0, 0, 0, 0, false, false, false, false, 0, null);
+             actionbox.dispatchEvent(evt4);
+
+
+            return "{ERROR,WAIT}";
+
+        }
+
+        doc.body.setAttribute('firegpg',"");
 
 
 		if (this.messageCache == null || this.messageCache[url] == null)
 		{
-
             //getContentXHttp
-            data = getBinContent(cGmail2.baseUrl + url , 500*1024); // 500 kb
+            data = getBinContent(cGmail2.baseUrl + url , 5000*1024);
 
             if (data == "{MAX}") {
 
@@ -1657,7 +1874,7 @@ var cGmail2 = {
 			if (this.messageCache == null)
 				this.messageCache = { };
 
-			this.messageCache[url ] = mailData;
+			//this.messageCache[url ] = mailData;
 
 			return mailData;
 		}
@@ -1666,8 +1883,7 @@ var cGmail2 = {
 			return this.messageCache[url ];
 		}
 
-
-	}
+    }
 
 };
 

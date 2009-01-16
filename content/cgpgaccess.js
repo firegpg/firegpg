@@ -572,7 +572,7 @@ var GPGAccess = {
 				" " + keyIdListArgument +
 				this.getGPGCommentArgument() +
 				" --output -" +
-				" --encrypt", text);
+				" --encrypt", text, (binFileMode ? 'iso-8859-1' : undefined));
 
 		// The crypted text
 
@@ -653,7 +653,7 @@ var GPGAccess = {
                     " --sign" +
                     " --output -" +
                     " --encrypt ",
-                    password + "\n" + text);
+                    password + "\n" + text, (binFileMode ? 'iso-8859-1' : undefined));
 
 		// The crypted text
 		var result2 = new GPGReturn();

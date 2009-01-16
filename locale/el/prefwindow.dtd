@@ -53,3 +53,7 @@
 <!ENTITY use-fireftp-workaround "Δοκίμασε να ανοίξεις το IPC με το παλιό API.">
 <!ENTITY keyserver-message "Εξυπηρετητής κλειδιών">
 <!ENTITY symmetric-algo "Αλγόριθμος για χρήση σε συμμετρική κρυπτογράφηση. Αφήστε το κενό για να χρησιμοποιηθεί ο προεπιλεγμένος. Με την εντολή gpg --version μπορείτε να δείτε μία λίστα με τους διαθέσιμους αλγόριθμους, συνήθως έχετε αυτές τις επιλογές :">
+<!ENTITY gmail-new-interface "New gmail interface">
+<!ENTITY gmail-select-by-default-label "Selected by default :">
+<!ENTITY gmail-buton-inline-checkbox "Inline">
+<!ENTITY gmail-old-interface "Old gmail interface">

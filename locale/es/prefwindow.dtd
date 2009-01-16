@@ -53,3 +53,7 @@
 <!ENTITY use-fireftp-workaround "Intenta acceder a IPC con la antigüa API">
 <!ENTITY keyserver-message "Keyserver">
 <!ENTITY symmetric-algo "Algoritmo usado para la encriptación simetrica. Deja en blanco para seleccionar la opción por defecto. Usa gpg --version para ver la lista de algoritmos que se pueden utlizar; en la mayoria de los casos tienes estas opciones:">
+<!ENTITY gmail-new-interface "Nueva interfaz gmail">
+<!ENTITY gmail-select-by-default-label "Seleccionado por defecto">
+<!ENTITY gmail-buton-inline-checkbox "Inline">
+<!ENTITY gmail-old-interface "Antigüa interfaz Gmail">

@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "暗号化">
+<!ENTITY dcrypt-button "復号">
+<!ENTITY sign-button "この鍵に署名する">
+<!ENTITY verify-button "検証">
+<!ENTITY open-button "開く">
+<!ENTITY save-button "保存">
+<!ENTITY cryptandsign-button "署名と暗号化">
+<!ENTITY sign-clear-button "クリア署名">
+<!ENTITY symcrypt-button "対称暗号化">
+<!ENTITY closeandcopy-button "クリップボードにコピーして閉じる">

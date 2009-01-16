@@ -53,3 +53,7 @@
 <!ENTITY use-fireftp-workaround "נסיון להיכנס לספריית IPCעם API ישן">
 <!ENTITY keyserver-message "שרת מפתחות">
 <!ENTITY symmetric-algo "אלגוריתם המשמש להצפנה סימטרית, השאר ריק על מנת להשתמש בברירת המחדל. ניתן להשתמש ב- gpg --versionעל מנת לקבל רשימה של אלג' אפשריים לשימוש בדרך כלל :">
+<!ENTITY gmail-new-interface "New gmail interface">
+<!ENTITY gmail-select-by-default-label "Selected by default :">
+<!ENTITY gmail-buton-inline-checkbox "Inline">
+<!ENTITY gmail-old-interface "Old gmail interface">

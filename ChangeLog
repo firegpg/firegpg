@@ -1,6 +1,12 @@
 2009-01-15 Maximilien Cuony
-    * Trying to fix FS#176
-    
+    * Inline sign/crypt done
+    * Fix bug with previous/next button
+
+2009-01-15 Maximilien Cuony
+    * Trying to fix FS#176 {fixed}
+    * FS#177 - Improve gmail interface
+    * fix problem with binary files attached in gmail
+
 2009-01-14 Maximilien Cuony
     * Better html check
     * Decrypt mime content

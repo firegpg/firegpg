@@ -1086,7 +1086,11 @@ var FireGPG = {
         // We get the result
 		var result = this.GPGAccess.verify(text, charset);
 
+        if ( charset && charset.toLowerCase() == "iso-8859-1")
+            result.sdOut = EnigConvertToUnicode(result.sdOut, 'UTF-8');
+
         returnObject.sdOut = result.sdOut;
+
 
 		// If check failled
 		if(result.sdOut.indexOf("GOODSIG") == "-1") {

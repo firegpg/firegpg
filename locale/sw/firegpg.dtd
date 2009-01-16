@@ -27,7 +27,7 @@
 <!ENTITY firegpgMenu.labelExport "Exportera">
 <!ENTITY firegpgContext.labelExport "Exportera">
 <!ENTITY firegpgToolbar.labelExport "Exportera">
-<!ENTITY firegpgPopInfo.labelBonjour "Välkommen!Installation av FireGPG lyckades.">
+<!ENTITY firegpgPopInfo.labelBonjour "Välkommen! Installationen av FireGPG lyckades.">
 <!ENTITY firegpgPopInfo.labelAccessOk "FireGPG har åtkomst till GPG.">
 <!ENTITY firegpgPopInfo.labelAccessErr "FireGPG kan inte komma åt GPG. Kontrollera att det är installerat, eller ange sökvägen manuellt under 'Inställningar'.">
 <!ENTITY firegpgPopInfo.labelKeyOk "En privat nyckel är vald.">

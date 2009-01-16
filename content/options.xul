@@ -191,6 +191,10 @@
             <preference id="gmail-buton-use-select" name="extensions.firegpg.gmail_butons_use_select" type="bool"/>
             <preference id="gmail-disable-autosave" name="extensions.firegpg.gmail_disable_autosave" type="bool"/>
 
+            <preference id="gmail-select-by-default-sign" name="extensions.firegpg.gmail_select_by_default_sign" type="bool"/>
+            <preference id="gmail-select-by-default-encrypt" name="extensions.firegpg.gmail_select_by_default_encrypt" type="bool"/>
+            <preference id="gmail-select-by-default-inline" name="extensions.firegpg.gmail_select_by_default_inline" type="bool"/>
+
         </preferences>
 
         <label  id="gmail-need-a-restart-label" value="&gmail-need-a-restart;"/>
@@ -206,45 +210,69 @@
         <checkbox id="gmail-no-no-sign-checkbox" preference="gmail-no-no-sign"
               label="&gmail-no-no-sign-checkbox;"/>
 
-        <label  id="gmail-buttons-label" value="&gmail-buttons-label;"/>
+        <groupbox flex="1">
+            <caption label="&gmail-new-interface;" />
+
+            <label  id="gmail-sbuttons-label" value="&gmail-select-by-default-label;"/>
+
+            <checkbox id="gmail-select-by-default-sign-checkbox" preference="gmail-select-by-default-sign"
+                            label="&gmail-buton-sign-checkbox;"/>
+
+            <checkbox id="gmail-select-by-default-encrypt-checkbox" preference="gmail-select-by-default-encrypt"
+                            label="&gmail-buton-crypt-checkbox;"/>
 
 
-        <grid flex="1">
-            <columns>
-                <column flex="1"/>
-                <column flex="1"/>
-            </columns>
+            <checkbox id="gmail-select-by-default-inline-checkbox" preference="gmail-select-by-default-inline"
+                            label="&gmail-buton-inline-checkbox;"/>
 
-            <rows>
-                <row>
-                    <checkbox id="gmail-buton-sign-checkbox" preference="gmail-buton-sign"
-                        label="&gmail-buton-csign-checkbox;"/>
-                    <checkbox id="gmail-no-no-signsend-checkbox" preference="gmail-buton-signsend"
-                        label="&gmail-buton-csignsend-checkbox;"/>
-                </row>
-                <row>
-                    <checkbox id="gmail-buton-psign-checkbox" preference="gmail-buton-psign"
-                        label="&gmail-buton-sign-checkbox;"/>
-                    <checkbox id="gmail-no-no-psignsend-checkbox" preference="gmail-buton-psignsend"
-                        label="&gmail-buton-signsend-checkbox;"/>
-                </row>
-                <row>
-                    <checkbox id="gmail-buton-crypt-checkbox" preference="gmail-buton-crypt"
-                        label="&gmail-buton-crypt-checkbox;"/>
-                    <checkbox id="gmail-no-no-cryptsend-checkbox" preference="gmail-buton-cryptsend"
-                        label="&gmail-buton-cryptsend-checkbox;"/>
-                </row>
-                 <row>
-                    <checkbox id="gmail-buton-signcrypt-checkbox" preference="gmail-buton-signcrypt"
-                        label="&gmail-buton-signcrypt-checkbox;"/>
-                    <checkbox id="gmail-no-no-signcryptsend-checkbox" preference="gmail-buton-signcryptsend"
-                        label="&gmail-buton-signcryptsend-checkbox;"/>
-                </row>
-            </rows>
-        </grid>
+        </groupbox>
 
-        <checkbox id="gmail-buton-use-select-checkbox" preference="gmail-buton-use-select"
-              label="&gmail-buton-use-select-checkbox;"/>
+
+        <groupbox flex="1">
+            <caption label="&gmail-old-interface;" />
+
+
+            <label  id="gmail-buttons-label" value="&gmail-buttons-label;"/>
+
+
+            <grid flex="1">
+                <columns>
+                    <column flex="1"/>
+                    <column flex="1"/>
+                </columns>
+
+                <rows>
+                    <row>
+                        <checkbox id="gmail-buton-sign-checkbox" preference="gmail-buton-sign"
+                            label="&gmail-buton-csign-checkbox;"/>
+                        <checkbox id="gmail-no-no-signsend-checkbox" preference="gmail-buton-signsend"
+                            label="&gmail-buton-csignsend-checkbox;"/>
+                    </row>
+                    <row>
+                        <checkbox id="gmail-buton-psign-checkbox" preference="gmail-buton-psign"
+                            label="&gmail-buton-sign-checkbox;"/>
+                        <checkbox id="gmail-no-no-psignsend-checkbox" preference="gmail-buton-psignsend"
+                            label="&gmail-buton-signsend-checkbox;"/>
+                    </row>
+                    <row>
+                        <checkbox id="gmail-buton-crypt-checkbox" preference="gmail-buton-crypt"
+                            label="&gmail-buton-crypt-checkbox;"/>
+                        <checkbox id="gmail-no-no-cryptsend-checkbox" preference="gmail-buton-cryptsend"
+                            label="&gmail-buton-cryptsend-checkbox;"/>
+                    </row>
+                     <row>
+                        <checkbox id="gmail-buton-signcrypt-checkbox" preference="gmail-buton-signcrypt"
+                            label="&gmail-buton-signcrypt-checkbox;"/>
+                        <checkbox id="gmail-no-no-signcryptsend-checkbox" preference="gmail-buton-signcryptsend"
+                            label="&gmail-buton-signcryptsend-checkbox;"/>
+                    </row>
+                </rows>
+            </grid>
+
+            <checkbox id="gmail-buton-use-select-checkbox" preference="gmail-buton-use-select"
+                  label="&gmail-buton-use-select-checkbox;"/>
+
+        </groupbox>
     </prefpane>
 
     <!-- Gpg api -->
