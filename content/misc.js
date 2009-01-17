@@ -52,6 +52,8 @@ try {
   The current version of FireGPG */
 const FIREGPG_VERSION = '0.6.4';
 
+const FIREGPG_VERSION_A = '064';
+
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
 const FIREGPG_STATUS = 'DEVEL';

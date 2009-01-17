@@ -23,3 +23,8 @@ pref("extensions.firegpg.gmail_butons_use_select", false);
 pref("extensions.firegpg.activate_inline", true);
 pref("extensions.firegpg.gmail_disable_autosave", false);
 pref("extensions.firegpg.keyserver", "subkeys.pgp.net");
+pref("extensions.firegpg.gmail_never_use_google_com_password", false);
+pref("extensions.firegpg.gmail_use_ssl", true);
+pref("extensions.firegpg.gmail_port", "465");
+pref("extensions.firegpg.gmail_host", "smtp.gmail.com");
+pref("extensions.firegpg.gmail_username", "");

@@ -53,7 +53,13 @@
 <!ENTITY use-fireftp-workaround "Essayer d'accéder à la librarie IPC avec l'ancienne API.">
 <!ENTITY keyserver-message "Serveur de clé">
 <!ENTITY symmetric-algo "Algorithme utilisé pour le chiffrement symétrique. Laisser blanc pour le défaut. Utilisez gpg --version pour avoir la liste des algorithmes utilisables, dans la plupart des cas vous avez ces choix :">
-<!ENTITY gmail-new-interface "New gmail interface">
-<!ENTITY gmail-select-by-default-label "Selected by default :">
+<!ENTITY gmail-new-interface "Nouvelle interface de gmail">
+<!ENTITY gmail-select-by-default-label "Sélectionné par défaut :">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
-<!ENTITY gmail-old-interface "Old gmail interface">
+<!ENTITY gmail-old-interface "Ancienne interface de gmail">
+<!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
+<!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
+<!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
+<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
+<!ENTITY gmail-smtp-port "Port (465) :">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">

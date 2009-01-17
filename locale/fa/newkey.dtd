@@ -1,17 +1,17 @@
-<!ENTITY newkey "FireGPG - new key">
+<!ENTITY newkey "FireGPG - کلید جدید">
 <!ENTITY warningaboutgeneeration "Warning ! Key generation can take a lot of time, and will freeze Firefox. Do something else while key is generated, to create more entropy.">
-<!ENTITY name-message "Name">
-<!ENTITY email-message "Email">
-<!ENTITY comment-message "Comment">
+<!ENTITY name-message "نام">
+<!ENTITY email-message "ایمیل">
+<!ENTITY comment-message "توضیح">
 <!ENTITY password1-message "Password">
 <!ENTITY password2-message "Repeat password">
-<!ENTITY keyneverexpire "The key never expire">
-<!ENTITY keyexpire-message "Key expire in">
-<!ENTITY expire-year "years">
-<!ENTITY expire-month "months">
-<!ENTITY expire-days "days">
-<!ENTITY advancedoptions "Advanced options">
-<!ENTITY keylenght-message "Key length">
-<!ENTITY keytype-message "Key type">
-<!ENTITY generate-button "Generate key">
-<!ENTITY cancel-button "Cancel">
+<!ENTITY keyneverexpire "کلید هرگز منقضی نمی‌شود">
+<!ENTITY keyexpire-message "کلید منقضی می‌شود در">
+<!ENTITY expire-year "سال">
+<!ENTITY expire-month "ماه">
+<!ENTITY expire-days "روز">
+<!ENTITY advancedoptions "گزینه‌های پیشرفته">
+<!ENTITY keylenght-message "طول کلید">
+<!ENTITY keytype-message "نوع کلید">
+<!ENTITY generate-button "تولید کلید">
+<!ENTITY cancel-button "انصراف">

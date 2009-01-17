@@ -1,10 +1,10 @@
-<!ENTITY crypt-button "Encrypt">
-<!ENTITY dcrypt-button "Decrypt">
+<!ENTITY crypt-button "رمزگذاری">
+<!ENTITY dcrypt-button "رمزگشایی">
 <!ENTITY sign-button "Sign">
-<!ENTITY verify-button "Verify">
+<!ENTITY verify-button "راست‌آزمایی">
 <!ENTITY open-button "Open">
 <!ENTITY save-button "Save">
-<!ENTITY cryptandsign-button "Sign and encrypt">
+<!ENTITY cryptandsign-button "امضا و رمزگذاری">
 <!ENTITY sign-clear-button "Clear sign">
 <!ENTITY symcrypt-button "Symmetric encryption">
-<!ENTITY closeandcopy-button "Copy in clipboard and close">
+<!ENTITY closeandcopy-button "در کلیپ‌برد کپی کن و ببند">

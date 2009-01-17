@@ -50,6 +50,7 @@
   <script src="api.js"/>
   <script src="new_api.js"/>
   <script src="prisme.js"/>
+  <script src="mime.js" />
   <script type="application/x-javascript" src="keyring.js"/>
 
 </overlay>

@@ -2,51 +2,51 @@
 <!ENTITY firegpgToolbar.label "FireGPG">
 <!ENTITY firegpgToolbar.tooltip "FireGPG">
 <!ENTITY firegpgContext.label "FireGPG">
-<!ENTITY firegpgContext.labelSign "Sign">
-<!ENTITY firegpgContext.labelCrypt "Encrypt">
-<!ENTITY firegpgContext.labelVerif "Verify">
-<!ENTITY firegpgContext.labelDecry "Decrypt">
-<!ENTITY firegpgContext.labelOptions "Options">
+<!ENTITY firegpgContext.labelSign "امضا">
+<!ENTITY firegpgContext.labelCrypt "رمزگذاری">
+<!ENTITY firegpgContext.labelVerif "احراز">
+<!ENTITY firegpgContext.labelDecry "بازگشایی">
+<!ENTITY firegpgContext.labelOptions "گزینه‌ها">
 <!ENTITY firegpgMenu.label "FireGPG">
-<!ENTITY firegpgMenu.labelSign "Sign">
-<!ENTITY firegpgMenu.labelCrypt "Encrypt">
-<!ENTITY firegpgMenu.labelVerif "Verify">
-<!ENTITY firegpgMenu.labelDecry "Decrypt">
-<!ENTITY firegpgMenu.labelOptions "Options">
-<!ENTITY firegpgToolbar.labelSign "Sign">
-<!ENTITY firegpgToolbar.labelCrypt "Encrypt">
-<!ENTITY firegpgToolbar.labelVerif "Verify">
-<!ENTITY firegpgToolbar.labelDecry "Decrypt">
-<!ENTITY firegpgToolbar.labelOptions "Options">
-<!ENTITY firegpgMenu.labelErase "Clear saved password">
-<!ENTITY firegpgContext.labelErase "Clear saved password">
-<!ENTITY firegpgToolbar.labelErase "Clear saved password">
-<!ENTITY firegpgMenu.labelImport "Import">
-<!ENTITY firegpgContext.labelImport "Import">
-<!ENTITY firegpgToolbar.labelImport "Import">
-<!ENTITY firegpgMenu.labelExport "Export">
-<!ENTITY firegpgContext.labelExport "Export">
-<!ENTITY firegpgToolbar.labelExport "Export">
-<!ENTITY firegpgPopInfo.labelBonjour "Welcome !FireGPG installation was successful.">
-<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG can access gpg.">
-<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG can't access the gpg executable. Make sure it is installed, or specify the path manually in the preferences.">
-<!ENTITY firegpgPopInfo.labelKeyOk "A private key is selected.">
-<!ENTITY firegpgPopInfo.labelKeyErr "Warning : please choose a private key in the preferences.">
-<!ENTITY firegpgPopInfo.close "Close">
-<!ENTITY firegpgPopInfo.options "Options">
-<!ENTITY firegpgContext.labelEditeur "Text editor">
-<!ENTITY firegpgMenu.labelEditeur "Text editor">
-<!ENTITY firegpgToolbar.labelEditeur "Text editor">
-<!ENTITY firegpgContext.labelCryptSign "Sign and encrypt">
-<!ENTITY firegpgMenu.labelCryptSign "Sign and encrypt">
-<!ENTITY firegpgToolbar.labelCryptSign "Sign and encryptEnc">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelClearSign "Clear sign">
-<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
-<!ENTITY firegpgMenu.labelClearSign "Clear sign">
-<!ENTITY firegpgContext.labelManager "Key manager">
-<!ENTITY firegpgToolbar.labelManager "Key manager">
-<!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">
+<!ENTITY firegpgMenu.labelSign "امضا">
+<!ENTITY firegpgMenu.labelCrypt "رمزگذاری">
+<!ENTITY firegpgMenu.labelVerif "احراز">
+<!ENTITY firegpgMenu.labelDecry "رمزگشایی">
+<!ENTITY firegpgMenu.labelOptions "گزینه‌ها">
+<!ENTITY firegpgToolbar.labelSign "امضا">
+<!ENTITY firegpgToolbar.labelCrypt "رمزگذاری">
+<!ENTITY firegpgToolbar.labelVerif "احراز">
+<!ENTITY firegpgToolbar.labelDecry "رمزگشایی">
+<!ENTITY firegpgToolbar.labelOptions "گزینه‌ها">
+<!ENTITY firegpgMenu.labelErase "حذف رمز‌های عبور ذخیره شده">
+<!ENTITY firegpgContext.labelErase "رمزعبورهای ذخیره شده را پاک کن">
+<!ENTITY firegpgToolbar.labelErase "حذف رمز‌های عبور ذخیره شده">
+<!ENTITY firegpgMenu.labelImport "وارد کردن">
+<!ENTITY firegpgContext.labelImport "وارد کردن">
+<!ENTITY firegpgToolbar.labelImport "وارد کردن">
+<!ENTITY firegpgMenu.labelExport "انتقال">
+<!ENTITY firegpgContext.labelExport "انتقال">
+<!ENTITY firegpgToolbar.labelExport "انتقال">
+<!ENTITY firegpgPopInfo.labelBonjour "با موفقیت نصب شد FireGPG! خوش آمدید ">
+<!ENTITY firegpgPopInfo.labelAccessOk "دسترسی داشته باشد gpg می‌تواند به FireGPG">
+<!ENTITY firegpgPopInfo.labelAccessErr "دسترسی داشته باشد. مطمئن شوید که نصب است و یا مسیر آن را در قسمت تنظیمات مشخص کنید gpg نمی‌تواند به فایل اجرایی FireGPG">
+<!ENTITY firegpgPopInfo.labelKeyOk "یک کلید خصوصی انتخاب شده است">
+<!ENTITY firegpgPopInfo.labelKeyErr "هشدار: لطفاً یک کلید خصوصی در تنظیمات انتخاب کنید">
+<!ENTITY firegpgPopInfo.close "بستن">
+<!ENTITY firegpgPopInfo.options "گزینه‌ها">
+<!ENTITY firegpgContext.labelEditeur "ویرایشگر متن">
+<!ENTITY firegpgMenu.labelEditeur "ویرایشگر متن">
+<!ENTITY firegpgToolbar.labelEditeur "ویرایشگر متن">
+<!ENTITY firegpgContext.labelCryptSign "امضا و رمزگذاری">
+<!ENTITY firegpgMenu.labelCryptSign "امضا و رمزگذاری">
+<!ENTITY firegpgToolbar.labelCryptSign "امضا و رمزگذاری">
+<!ENTITY firegpgToolbar.labelSymCrypt "رمزنگاری متقارن">
+<!ENTITY firegpgContext.labelSymCrypt "رمزگذاری متقارن">
+<!ENTITY firegpgMenu.labelSymCrypt "رمزنگاری متقارن">
+<!ENTITY firegpgContext.labelClearSign "امضا را حذف کن">
+<!ENTITY firegpgToolbar.labelClearSign "حذف امضا">
+<!ENTITY firegpgMenu.labelClearSign "حذف امضا">
+<!ENTITY firegpgContext.labelManager "مدیر کلید">
+<!ENTITY firegpgToolbar.labelManager "مدیر کلید">
+<!ENTITY firegpgMenu.labelManager "مدیر کلید">
+<!ENTITY keynotrevokedpassword "خطا، کلید ابطال نشد، پسورد اشتباهی؟">

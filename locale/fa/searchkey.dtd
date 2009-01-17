@@ -1,8 +1,8 @@
-<!ENTITY keyimporter "Import key from server">
-<!ENTITY close-button "Close">
-<!ENTITY import-button "Import selected keys">
+<!ENTITY keyimporter "وارد کردن کلید از سرور">
+<!ENTITY close-button "بستن">
+<!ENTITY import-button "وارد کردن کلیدهای انتخابی">
 <!ENTITY search-button "Search">
 <!ENTITY search-description "Search for :">
-<!ENTITY key-create "Created">
-<!ENTITY key-id "Id">
-<!ENTITY key-name "Name">
+<!ENTITY key-create "تولید شده">
+<!ENTITY key-id "مشخصه">
+<!ENTITY key-name "نام">

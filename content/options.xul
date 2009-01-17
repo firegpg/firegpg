@@ -195,6 +195,12 @@
             <preference id="gmail-select-by-default-encrypt" name="extensions.firegpg.gmail_select_by_default_encrypt" type="bool"/>
             <preference id="gmail-select-by-default-inline" name="extensions.firegpg.gmail_select_by_default_inline" type="bool"/>
 
+            <preference id="gmail-smtp-google-com" name="extensions.firegpg.gmail_never_use_google_com_password" type="bool"/>
+            <preference id="gmail-smtp-use-ssl" name="extensions.firegpg.gmail_use_ssl" type="bool"/>
+            <preference id="gmail-smtp-port" name="extensions.firegpg.gmail_port" type="string"/>
+            <preference id="gmail-smtp-host" name="extensions.firegpg.gmail_host" type="string"/>
+            <preference id="gmail-smtp-username" name="extensions.firegpg.gmail_username" type="string"/>
+
         </preferences>
 
         <label  id="gmail-need-a-restart-label" value="&gmail-need-a-restart;"/>
@@ -224,6 +230,26 @@
 
             <checkbox id="gmail-select-by-default-inline-checkbox" preference="gmail-select-by-default-inline"
                             label="&gmail-buton-inline-checkbox;"/>
+
+
+            <label  id="gmail-smtp-options-label" value="&gmail-smtp-options-label;"/>
+
+            <label  id="gmail-smtp-host-label" value="&gmail-smtp-host;"/>
+            <textbox id="gmail-smtp-host-textbox"  preference="gmail-smtp-host"/>
+
+            <label  id="gmail-smtp-port-label" value="&gmail-smtp-port;"/>
+            <textbox id="gmail-smtp-port-textbox"  preference="gmail-smtp-port"/>
+
+            <label  id="gmail-smtp-username-label" value="&gmail-smtp-username;"/>
+            <textbox id="gmail-smtp-username-textbox"  preference="gmail-smtp-username"/>
+
+
+             <checkbox id="gmail-smtp-use-ssl-checkbox" preference="gmail-smtp-use-ssl"
+                            label="&gmail-smtp-use-ssl-checkbox;"/>
+
+            <checkbox id="gmail-smtp-google-com-checkbox" preference="gmail-smtp-google-com"
+                            label="&gmail-smtp-google-com;"/>
+
 
         </groupbox>
 

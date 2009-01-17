@@ -137,15 +137,18 @@ var cGmail2 = {
 
                         }
 
+                        listeTest[i].setAttribute("firegpg-mail-id", FireGPGMimeDecoder.getMailId(mimeContentOf));
+
                         var td = doc.createElement("td");
 
-                        var mime = FireGPGMime.extractSignedData(mimeContentOf).replace(/\r/gi, '');
+                        var mime = FireGPGMimeDecoder.extractSignedData(mimeContentOf).replace(/\r/gi, '');
+
 
 
                         if (mime != '')
                             var resultTest = FireGPG.verify(true,mime);
                         else {
-                            var mime2 = FireGPGMime.extractSignature(mimeContentOf);
+                            var mime2 = FireGPGMimeDecoder.extractSignature(mimeContentOf);
 
                             var resultTest = FireGPG.verify(true,mime2.text.replace(/\r/gi, ''), mime2.chaset);
                         }
@@ -178,7 +181,7 @@ var cGmail2 = {
 							td.innerHTML = i18n.getString("GMailSOK") + " " + htmlEncode(resultTest.signresulttext); //"La première signature de ce mail est de testtest (testtest)
 						}
 
-                        var encrypted = FireGPGMime.extractEncryptedData(mimeContentOf).replace(/\r/gi, '');
+                        var encrypted = FireGPGMimeDecoder.extractEncryptedData(mimeContentOf).replace(/\r/gi, '');
 
                         var firstPosition = encrypted.indexOf("-----BEGIN PGP MESSAGE-----");
                         var lastPosition = encrypted.indexOf("-----END PGP MESSAGE-----");
@@ -188,7 +191,7 @@ var cGmail2 = {
                             var result = FireGPG.decrypt(false,encrypted);
 
                             if (result.result == RESULT_SUCCESS) {
-                                data = FireGPGMime.parseDecrypted(result.decrypted); //For reviewers, a washDecryptedForInsertion is applied too in parseDecrypted ;)
+                                data = FireGPGMimeDecoder.parseDecrypted(result.decrypted); //For reviewers, a washDecryptedForInsertion is applied too in parseDecrypted ;)
 
                                 this.setMailContent(listeTest[i],doc,data.message);
 
@@ -236,7 +239,7 @@ var cGmail2 = {
 
                         } else {
 
-                            var encrypted = FireGPGMime.extractEncrypted(mimeContentOf).replace(/\r/gi, '');
+                            var encrypted = FireGPGMimeDecoder.extractEncrypted(mimeContentOf).replace(/\r/gi, '');
 
                             var firstPosition = encrypted.indexOf("-----BEGIN PGP MESSAGE-----");
                             var lastPosition = encrypted.indexOf("-----END PGP MESSAGE-----");
@@ -247,7 +250,7 @@ var cGmail2 = {
 
                                 if (result.result == RESULT_SUCCESS) {
 
-                                    data = FireGPGMime.washDecryptedForInsertion(FireGPGMime.demime(result.decrypted).message.replace(/\r/gi, ''));
+                                    data = FireGPGMimeDecoder.washDecryptedForInsertion(FireGPGMimeDecoder.demime(result.decrypted).message.replace(/\r/gi, ''));
 
                                     this.setMailContent(listeTest[i],doc,data);
 
@@ -361,6 +364,9 @@ var cGmail2 = {
 
                         if (listeTest[i].getAttribute('class').indexOf('LlWyA') != -1) {
 
+                            children[0].setAttribute("gpg_action", "send_button2");
+
+
                             //Add the button 'Attach and chiffred a file'
 
                             var tablebox = listeTest[i].parentNode.getElementsByTagName('table');
@@ -434,12 +440,51 @@ var cGmail2 = {
                         //Nouvelle version du lundi 29 septembre 2008
                          if (form.length == 0) {
 
-                            divs = listeTest[i].parentNode.parentNode.getElementsByTagName('form');
+                            form = listeTest[i].parentNode.parentNode.getElementsByTagName('form');
 
                          }
 
                         form = form[0];
 
+
+                        if (this.useremail == null) {
+                            try {
+
+                                var topwinjs = form.ownerDocument.defaultView.parent.wrappedJSObject;
+                                if (("USER_EMAIL" in topwinjs) && typeof(topwinjs.USER_EMAIL) == "string")
+                                {
+                                    this.useremail = topwinjs.USER_EMAIL;
+                                }
+                                else if (("GLOBALS" in topwinjs) && typeof(topwinjs.GLOBALS[10]) == "string" &&
+                                 (/@(g|google)mail.com$/i).test(topwinjs.GLOBALS[10]))
+                                {
+                                    // gmail_fe_509_p10
+                                    this.useremail = topwinjs.GLOBALS[10];
+                                }
+                                else if (typeof(topwinjs.globals) == "object" && typeof(topwinjs.globals.USER_EMAIL) == "string")
+                                {
+                                    this.useremail = topwinjs.globals.USER_EMAIL;
+                                } else {
+
+                                    this.useremail = form.ownerDocument.evaluate(".//div[@class='nQ6QTe']//b[contains(text(), '@')]",
+																		form.ownerDocument.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE,
+																		null).singleNodeValue.textContent;
+
+                                }
+
+
+                            } catch (e) { }
+
+
+                        }
+
+                        form.setAttribute("firegpg-mail-id", "");
+
+                        findHere = form.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+                        elements = findHere.getElementsByClassName('ArwC7c', 'div');
+                        if (elements[0]) {
+                            form.setAttribute("firegpg-mail-id", elements[0].getAttribute("firegpg-mail-id"));
+                        }
 
 
                         var prefs = Components.classes["@mozilla.org/preferences-service;1"].
@@ -494,16 +539,16 @@ var cGmail2 = {
                                     }
                                     return true;
                                 }
-                                const badpattern1 = ["$q$_P$", "$q$_P$", "$q$_P$", "$q$_P$", "$q$_P$", "$CNp$"];
-                                const badpattern2 = ["$q$_P$xVa", "$q$_P$t_a$", "$q$_P$OP$", "$q$_P$yUa$", "$q$_P$BXa$"];
+                                const badpattern1 = ["$mnb", "$knb", "$Zmb", "$1lb", "$Fjb", "$Ejb"];
+                                const badpattern2 = ["$EUa", "$CUa", "$fUa", "$jTa", "$xRa"];
                                 const badpattern3 = ["$R$_P$", "$R$_P$", "$R$_P$", "$R$_P$Lfb$", "$R$_P$xib$", "$Ouc$"];
                                 const badpattern4 = ["$Y$_P$", "$Y$_P$", "$Y$_P$", "$Y$_P$Uib$", "$Y$_P$Glb$"]; // then $rga$, $e$, $a$__protected__$
                                 const badpattern5 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$ZBa$", "$Z$_P$nGb$"];
+                                const badpattern6 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$", "$T_$_P$YHa$"];
+                                const badpattern7 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$ptb$", "$E0$_P$BJa$"];
+                                const badpattern8 = ["$Y$q$zVa$", "$Y$q$hsc$", "$Y$q$rq$", "$Y$q$RCb$", "$QZ$q$uPa$"];
 
-                                //Our *seem* to be better [the_glu]
-                                const badpattern6 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$", "$_P$"];
-
-                                if (stackMatch(badpattern6, getValue.caller) || stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
+                                if (stackMatch(badpattern8, getValue.caller) || stackMatch(badpattern7, getValue.caller) || stackMatch(badpattern6, getValue.caller) || stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
                                 {
                                     function AutosaveWreckingBall() {};
                                     AutosaveWreckingBall.prototype.value = "Wrecked";
@@ -519,12 +564,12 @@ var cGmail2 = {
                             } // end getValue
 
                            function setValue(s)
-		{
-			this.__proto__.__lookupSetter__("value").call(this,s);
-		}
+                            {
+                                this.__proto__.__lookupSetter__("value").call(this,s);
+                            }
 
-		form.ownerDocument.defaultView.setTimeout(getValue.toString() + "\ndocument.getElementById('" + subj.id + "').__defineGetter__('value', getValue);\n" +
-		setValue.toString() + "\ndocument.getElementById('" + subj.id + "').__defineSetter__('value', setValue);\n",1);
+                            form.ownerDocument.defaultView.setTimeout(getValue.toString() + "\ndocument.getElementById('" + subj.id + "').__defineGetter__('value', getValue);\n" +
+                            setValue.toString() + "\ndocument.getElementById('" + subj.id + "').__defineSetter__('value', setValue);\n",1);
 
 
                             // message about autosave disabled
@@ -533,12 +578,14 @@ var cGmail2 = {
                                                                             XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
                             for (var o=0;o<spanAS.snapshotLength;o++)
                             {
-                                // HARDCODED: Autosave disabled.
                                 spanAS.snapshotItem(o).innerHTML = i18n.getString("autosave-disabled");
                             }
 
 
                      } // end if autosave disabled
+
+
+
 
                         //End of code of Gmail S/MIME.
 
@@ -586,6 +633,10 @@ var cGmail2 = {
                 } else { */
 
                     target = event.target;
+
+
+
+
 
         /*        }
 
@@ -816,7 +867,7 @@ var cGmail2 = {
                         }
                     }
 				}
-			} else  if (target.getAttribute('gpg_action') == "send_button") {
+			} else  if (target.getAttribute('gpg_action') == "send_button" || target.getAttribute('gpg_action') == "send_button2") {
 
                 stopTheEvent = false;
 
@@ -892,9 +943,138 @@ var cGmail2 = {
                         }
                     }
 
-                } else { //TODO !
+                } else {
 
-                    alert("S:" + sign + " E:" + encrypt + " I:" + inline);
+                    if (target.getAttribute('gpg_action') == "send_button2")
+                        buttonsboxes = target.parentNode.parentNode;
+                    else
+                        buttonsboxes = target.parentNode;
+
+                    //alert("S:" + sign + " E:" + encrypt + " I:" + inline);
+
+                    form =  buttonsboxes.parentNode.parentNode.parentNode.getElementsByTagName('form');
+                     f = form[0];
+
+                     cGmail2.setProgressMessage(f, i18n.getString("GmailCreatingMail"));
+
+                    prefs = new Object();
+
+                    var children = buttonsboxes.getElementsByTagName('button');
+
+                    a = new FireGPGGmailMimeSender(f, children[2], i18n);
+
+
+                    var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                        getService(Components.interfaces.nsIPrefService);
+
+                    prefs = prefs.getBranch("extensions.firegpg.");
+                    try {
+                        var username = prefs.getCharPref("gmail_username");
+                    } catch (e) {
+                        username = "";
+                    }
+
+
+                    if (username == "")
+                        a.smtpUsername = cGmail2.useremail;
+                    else
+                        a.smtpUsername = username;
+
+
+                    try {
+                        var host = prefs.getCharPref("gmail_host");
+                    } catch (e) {
+                        host = "smtp.gmail.com";
+                    }
+
+                    a.smtpServer = host;
+
+
+                    try {
+                        var port = prefs.getCharPref("gmail_port");
+                    } catch (e) {
+                        port = 465;
+                    }
+
+
+                    a.smtpPort = port;
+
+                    try {
+                        var use_ssl = prefs.getBoolPref("gmail_use_ssl",true);
+                    } catch (e) {
+                        use_ssl = true;
+                    }
+
+                    if (use_ssl)
+                        a.smtpSocketTypes = new Array("ssl");
+
+                    fireGPGDebug(a.smtpUsername, 'dbug-username');
+                    fireGPGDebug(host, 'dbug-host');
+                    fireGPGDebug(port, 'dbug-port');
+                    fireGPGDebug(use_ssl, 'dbug-use_ssl');
+
+
+                    from = cGmail2.getMailSender(this._doc,buttonsboxes);
+                    if (from == "" || from == null)
+                        from = cGmail2.useremail;
+
+                    to = cGmail2.getToCcBccMail(this._doc,buttonsboxes, true);
+                    cc= cGmail2.getToCcBccMail(this._doc,buttonsboxes, false, true);
+                    bcc = cGmail2.getToCcBccMail(this._doc,buttonsboxes,  false, false, true);
+
+                    subject = cGmail2.getMailSubject(this._doc,buttonsboxes);
+
+
+                    //Attachements
+
+                    var attachments = new Array(), attlink;
+                    // iterate over all Gmail form elements
+                    //	var attachNumber = 0;
+                    for (var i=0;i<f.elements.length;i++)
+                    {
+                        var elem = f.elements[i];
+                        if (elem.type == "button" || elem.name == null ||
+                            elem.name.length == 0)
+                            continue;
+
+                        if (elem.type == "file")
+                        {
+                            // Add files to multipart encoder
+                            if (elem.value != null && elem.value.length) {
+                                attachments.push(elem.value);
+                            }
+                        }
+                        else if (elem.type == "checkbox" && elem.name == "attach" && elem.checked && elem.nextSibling && (attlink = elem.nextSibling.nextSibling) && (attlink instanceof HTMLAnchorElement))
+                        {
+                            // this is an already-attached file, and the user wants it.
+                            var ioService=Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+                            var channel=ioService.newChannel(attlink.href,null,null);
+                            attachments.push(channel);
+                        }
+                    } // end for
+
+                    var mailContent = cGmail2.getWriteMailContentForDirectSend(this._doc,target.parentNode);
+
+                    var inreplyTo = f.getAttribute("firegpg-mail-id");
+
+                    resulta = false;
+
+if (encrypt) {
+                   resulta = a.ourSubmit(from, to, cc, bcc, subject,
+                    inreplyTo, "", mailContent, false, attachments, prefs);
+}
+
+                    //DBUG
+                    fireGPGDebug(from, 'dbug-from');
+                    fireGPGDebug(to, 'dbug-to');
+                    fireGPGDebug(cc, 'dbug-cc');
+                    fireGPGDebug(bcc, 'dbug-bcc');
+                    fireGPGDebug(subject, 'dbug-subject');
+
+                   if (!resulta)
+                    cGmail2.setProgressMessage(f, i18n.getString("GmailErrorMail"));
+                   else
+                    cGmail2.setProgressMessage(f, i18n.getString("GmailSendingMail"));
 
                     stopTheEvent = true;
 
@@ -1061,12 +1241,16 @@ var cGmail2 = {
 
                     var indexOfQuote = select.indexOf('<div class="gmail_quote">');
 
-                    contenuMail = Selection.wash(select.substring(0,indexOfQuote));
+                    contenuMail = select.substring(0,indexOfQuote);
+                        if (!forMime)
+                        contenuMail =     Selection.wash(contenuMail);
 
                     if (indexOfQuote == -1 || TrimAndWash(contenuMail) == "")
                     {
                         indexOfQuote = select.length;
-                        contenuMail = Selection.wash(select.substring(0,indexOfQuote));
+                        contenuMail = select.substring(0,indexOfQuote);
+                        if (!forMime)
+                        contenuMail =     Selection.wash(contenuMail);
 
                     }
 
@@ -1143,6 +1327,49 @@ var cGmail2 = {
 
 
         return contenuMail;
+	},
+
+
+    /*
+        Function: getWriteMailContentForDirectSend
+        Return the content of a mail in composition (his selection if something is selected)
+
+        Parameters:
+            dDocument- The html document
+            boutonxboxnode - The note with the buttons of the mails
+    */
+    getWriteMailContentForDirectSend: function(dDocument,boutonxboxnode)
+	{
+
+
+
+        if (cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe")
+        {
+
+            var iframe = cGmail2.getTheIframe(dDocument,boutonxboxnode);
+
+            texte = iframe.contentWindow.document.body.innerHTML;
+
+            var reg=new RegExp("<script[^>]*>[^<]*</script[^>]*>", "gi"); //Élimination des scripts
+            texte = texte.replace(reg,"\n");
+
+            var reg=new RegExp("<script[^>]*>[^<]*</script>", "gi"); //Élimination des scripts
+            texte = texte.replace(reg,"\n");
+
+            var reg=new RegExp("<script>[^<]*</script>", "gi"); //Élimination des scripts
+            texte = texte.replace(reg,"\n");
+
+            return texte;
+
+
+        } else {
+
+            var textarea = cGmail2.getTheTextarea(dDocument,boutonxboxnode);
+
+            return textarea.value.replace(/</gi, "&lt;").replace(/>/gi,"&gt;").replace(/\r\n/gi, "\n").replace(/\r/gi, "\n").replace(/\n/gi, "<br />");
+
+
+        }
 	},
 
     /*
@@ -1345,7 +1572,7 @@ var cGmail2 = {
             dDocument- The html document
             boutonxboxnode - The note with the buttons of the mails
     */
-	getToCcBccMail: function(dDocument,boutonxboxnode) {
+	getToCcBccMail: function(dDocument,boutonxboxnode, onlyto, onlycc, onlybcc) {
 		var forWho = "";
 		var tmpFor = "";
 
@@ -1400,6 +1627,17 @@ var cGmail2 = {
 
                 forWho = forWho + " " + textareas[j].value;
 
+                if (onlyto && textareas[j].getAttribute("name") == "to")
+                    return  textareas[j].value;
+
+                if (onlycc && textareas[j].getAttribute("name") == "cc")
+                    return  textareas[j].value;
+
+                if (onlybcc && textareas[j].getAttribute("name") == "bcc")
+                    return  textareas[j].value;
+
+
+
             }
         }
 
@@ -1421,6 +1659,138 @@ var cGmail2 = {
 
 		return returnList;
 	},
+
+    /*
+    */
+
+    getMailSender: function(dDocument,boutonxboxnode) {
+
+        var tmp = boutonxboxnode;
+
+        tmp = tmp.parentNode;
+
+        tmp = tmp.childNodes[1];
+
+         //29 septebmre 2008
+        if (!tmp) {
+
+             var tmp = boutonxboxnode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.childNodes[1];
+
+        }
+
+         if (!tmp) { //Version du 29 octobre 2008 - BOUTONS DU HAUT
+
+            var tmp = boutonxboxnode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.childNodes[1];
+
+
+        }
+
+        tmp = tmp.firstChild;
+
+
+
+        var selects = tmp .getElementsByTagName("select");
+
+
+        //On cherche la boite avec les boutons
+        for (var j = 0; j < selects.length; j++) {
+            if (selects[j].getAttribute("name") == "from") {
+
+                return selects[j].value;
+
+            }
+        }
+
+        return "";
+
+
+
+
+
+    },
+
+        getMailSubject: function(dDocument,boutonxboxnode) {
+
+        var tmp = boutonxboxnode;
+
+        tmp = tmp.parentNode;
+
+        tmp = tmp.childNodes[1];
+
+         //29 septebmre 2008
+        if (!tmp) {
+
+             var tmp = boutonxboxnode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.childNodes[1];
+
+        }
+
+         if (!tmp) { //Version du 29 octobre 2008 - BOUTONS DU HAUT
+
+            var tmp = boutonxboxnode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.parentNode;
+
+            tmp = tmp.childNodes[1];
+
+
+        }
+
+        tmp = tmp.firstChild;
+
+
+
+        var inputs  = tmp .getElementsByTagName("input");
+
+
+        //On cherche la boite avec les boutons
+        for (var j = 0; j < inputs.length; j++) {
+            if (inputs[j].getAttribute("name") == "subject") {
+
+                return inputs[j].value;
+
+            }
+        }
+
+        return "";
+
+
+
+
+
+    },
+
 
     /*
         Function: setWriteMailContent
@@ -1883,7 +2253,69 @@ var cGmail2 = {
 			return this.messageCache[url ];
 		}
 
-    }
+    },
+
+
+    setProgressMessage: function(form, text)
+{
+	try
+	{
+		// already closed (this also means that local variables like jsdump are probably unavailable)
+		if (!form.ownerDocument.defaultView) return;
+		// all that's needed is the form...we can go from there
+		var t = form.ownerDocument.defaultView.top;
+		var d = t.document;
+		const F = XPathResult.FIRST_ORDERED_NODE_TYPE;
+
+		var jH = d.evaluate("div[contains(@class, 'jHZvnc')]", d.body, null, F, null).singleNodeValue;
+		// used to have div[@class='jHZvnc'] but should be div[contains(@class, 'jHZvnc')], so moved around
+		var IY	= d.evaluate(".//div[@class='IY0d9c']", jH, null, F, null).singleNodeValue;
+		var wT	= d.evaluate("div/div[contains(@class,'wTsMFb')]", IY, null, F, null).singleNodeValue;
+		if (!wT) wT = d.evaluate("div/div[contains(@class,'QShok')]", IY, null, F, null).singleNodeValue;
+		if (text == null)
+		{
+			wT.parentNode.style.display = "none";
+			return;
+		}
+
+		wT.parentNode.style.display = "";
+		stUtil.removeClassName(jH, "WBnLQb");
+
+		// <div class="IY0d9c"><div class="XoqCub EGSDee" style="width: 66px;"><div class="SsbSQb L4XNt"><span class="hdgibf">Loading...</span></div></div><div class="XoqCub EGSDee" style="width: 0px;"/></div>
+		var hd	= d.evaluate(".//span[@class='hdgibf']", wT, null, F, null).singleNodeValue;
+		if (!hd)
+		{
+			// does not exist yet; this is the first time.
+			var EGSDee = d.evaluate(".//div[@class='IY0d9c']/div[contains(@class, 'EGSDee') and position()=1]", wT, null, F, null).singleNodeValue;
+			hd = d.createElement("span");
+			hd.className = "hdgibf";
+			var SsbSQb_L4XNt = d.createElement("div");
+			SsbSQb_L4XNt.className = "SsbSQb L4XNt";
+			SsbSQb_L4XNt.appendChild(hd);
+			EGSDee.appendChild(SsbSQb_L4XNt);
+		}
+		hd.innerHTML = text;
+		wT.parentNode.style.display = ""; // need to enable to get the right sizes
+		var ow = hd.offsetWidth; // original width
+		var u;	// temporary variable
+		ow += 2;
+		(u = hd.parentNode.parentNode).style.width = ow + "px";
+		u.parentNode.parentNode.style.width = ow + "px";
+
+		ow += 8;
+		var owp = ow + "px";
+		wT.parentNode.style.width = owp;
+		wT.style.width = owp;
+		wT.firstChild.style.width = owp;
+
+		// now deal with equidistant sizing
+		wT.parentNode.previousSibling.style.width = wT.parentNode.nextSibling.style.width = Math.floor((IY.parentNode.offsetWidth - ow)/2).toString() + "px";
+	}
+	catch (e)
+	{
+		fireGPGDebug(e, "cGmail2.setProgressMessage", true);
+	}
+} // end setProgressMessage
 
 };
 

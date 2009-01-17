@@ -1,18 +1,18 @@
-<!ENTITY key-status "Status">
-<!ENTITY key-trust "Trust">
-<!ENTITY key-expire "Expire">
-<!ENTITY key-create "Created">
-<!ENTITY key-id "Id">
-<!ENTITY key-name "Name">
+<!ENTITY key-status "وضعیت">
+<!ENTITY key-trust "اعتبار">
+<!ENTITY key-expire "انقضا">
+<!ENTITY key-create "تولید شده">
+<!ENTITY key-id "مشخصه">
+<!ENTITY key-name "نام">
 <!ENTITY revoke-button "Revoke key">
 <!ENTITY sign-button "Signatures">
-<!ENTITY changetrust-button "Change trust">
-<!ENTITY importserver-button "Import from server">
-<!ENTITY exportserver-button "Export to server">
-<!ENTITY importfile-button "Import from file">
-<!ENTITY exportfile-button "Export to file">
-<!ENTITY new-button "New key">
-<!ENTITY keymanager "Key manager">
+<!ENTITY changetrust-button "تغییر اعتبار">
+<!ENTITY importserver-button "وارد کردن از سرور">
+<!ENTITY exportserver-button "انتقال به سرور">
+<!ENTITY importfile-button "وارد کردن از فایل">
+<!ENTITY exportfile-button "انتقال به فایل">
+<!ENTITY new-button "کلید جدید">
+<!ENTITY keymanager "مدیر کلید">
 <!ENTITY refrech "Refresh keys from server">
 <!ENTITY trustUnded "Remove information about trusting">
 <!ENTITY trustDont "I don't trust this key">
@@ -20,12 +20,12 @@
 <!ENTITY trustFull "I fully trust this key">
 <!ENTITY trustUltimate "Trust this key ultimatly (!)">
 <!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
+<!ENTITY del-button "حذف">
 <!ENTITY revokeNoRaison "No reason specified">
 <!ENTITY revokeComprimse "Key has been compromised">
 <!ENTITY revokeRemplaced "Key is superseded">
 <!ENTITY revokeNotUsed "Key is no longer used">
 <!ENTITY userid-button "User id">
-<!ENTITY add "afzoodan">
-<!ENTITY delete "Delete">
+<!ENTITY add "افزودن">
+<!ENTITY delete "حذف">
 <!ENTITY revoke "Revoke">
