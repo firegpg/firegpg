@@ -546,7 +546,9 @@ var cGmail2 = {
                                 const badpattern5 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$ZBa$", "$Z$_P$nGb$"];
                                 const badpattern6 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$", "$T_$_P$YHa$"];
                                 const badpattern7 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$ptb$", "$E0$_P$BJa$"];
-                                const badpattern8 = ["$Y$q$zVa$", "$Y$q$hsc$", "$Y$q$rq$", "$Y$q$RCb$", "$QZ$q$uPa$"];
+                                const badpattern8 = ["$abb", "$9ab", "$Jab", "$L$a", "$u8a"];  //     $t8a
+
+
 
                                 if (stackMatch(badpattern8, getValue.caller) || stackMatch(badpattern7, getValue.caller) || stackMatch(badpattern6, getValue.caller) || stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
                                 {
@@ -558,6 +560,12 @@ var cGmail2 = {
                                 else
                                 {
                                     // debugger; // keep this around for later usage when needing to adjust badpatterns
+                                    dump(getValue.caller.name + " " +
+				getValue.caller.caller.name + " " +
+				getValue.caller.caller.caller.name + " " +
+				getValue.caller.caller.caller.caller.name + " " +
+				getValue.caller.caller.caller.caller.caller.name + " " +
+				getValue.caller.caller.caller.caller.caller.caller.name + "\n\n");
                                 }
                                 // finally, if nothing matches:
                                 return this.__proto__.__lookupGetter__("value").apply(this);
@@ -573,7 +581,7 @@ var cGmail2 = {
 
 
                             // message about autosave disabled
-                            var spanAS = form.ownerDocument.evaluate(".//div[contains(@class,'c1I77d')]/span[@class='x1Kcd']",
+                            var spanAS = form.ownerDocument.evaluate(".//div[contains(@class,'c1I77d')]//span[@class='x1Kcd']",
                                                                             form.parentNode.parentNode, null,
                                                                             XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
                             for (var o=0;o<spanAS.snapshotLength;o++)
@@ -882,6 +890,9 @@ var cGmail2 = {
                 tmpimage = buttonsboxes.getElementsByClassName('firegpg-inline', 'img');
                 inline = tmpimage[0].title == 'On';
 
+                if (!sign & !encrypt)
+                    return;
+
 
 
                 if (inline) {
@@ -957,7 +968,7 @@ var cGmail2 = {
 
                      cGmail2.setProgressMessage(f, i18n.getString("GmailCreatingMail"));
 
-                    prefs = new Object();
+
 
                     var children = buttonsboxes.getElementsByTagName('button');
 
@@ -1057,12 +1068,17 @@ var cGmail2 = {
 
                     var inreplyTo = f.getAttribute("firegpg-mail-id");
 
+
+                     prefs = new Object();
+
+                    prefs.sign = sign;
+                    prefs.encrypt = encrypt;
+
                     resulta = false;
 
-if (encrypt) {
                    resulta = a.ourSubmit(from, to, cc, bcc, subject,
                     inreplyTo, "", mailContent, false, attachments, prefs);
-}
+
 
                     //DBUG
                     fireGPGDebug(from, 'dbug-from');

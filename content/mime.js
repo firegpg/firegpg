@@ -61,6 +61,7 @@ FireGPGMimeDecoder = {
 
         headers = this.getHeaders(message);
 
+
         if (!headers["Content-Type"] || headers["Content-Type"].indexOf('"application/pgp-signature"') == -1)
             return '';
         hash = this.findHash(message, headers);
@@ -317,7 +318,27 @@ FireGPGMimeDecoder = {
             //remove header block
             if (message.indexOf("\r\n\r\n")  != -1)
                 message = message.substring(message.indexOf("\r\n\r\n") + 4, message.length); //EndOfHeaders
+
+
+             switch(headers["Content-Transfer-Encoding"]) {
+                case "quoted-printable":
+                    message = this.convertFromQP(message);
+                    break;
+
+                case "8bit":
+                    break;
+
+                case "base64":
+                    message = this.convertFromB64(message);
+                    break;
+
+            }
+
+
         }
+
+
+
 
         if (headers['Content-Type'] && headers['Content-Type'].indexOf("text/html") != -1)
             message = this.deHtmlListe(message);
@@ -644,7 +665,7 @@ FireGPGMimeEncoder.prototype =
 		this.addStringToStream(str);
 	},
 
-	addBase64String: function(str,contentType,disposition)
+	addBase64String: function(str,contentType,disposition, prefs)
 	{
 		var uChars = false;
 		// NOTE: the str must be canonicalized from LF to CRLF
@@ -674,7 +695,7 @@ FireGPGMimeEncoder.prototype =
 		// sadly, it is not efficient) compare
 		// decodeURIComponent(escape(
 		//		unescape(encodeURIComponent("TEXT"))))
-		for (var i = 0; i < str.length; i++)
+		/*for (var i = 0; i < str.length; i++)
 		{
 			if (str.charCodeAt(i) > 0xFF)
 			{
@@ -689,7 +710,12 @@ FireGPGMimeEncoder.prototype =
 				// the identity transformation 0x80-0xFF
 				uChars = "ISO-8859-1";
 			}
-		}
+		}*/
+
+        //FireGPG: Force utf8
+        str = unescape(encodeURIComponent(str));
+		uChars = "UTF-8";
+
 
 		var part="";
 		if (this.multiPart)
@@ -716,6 +742,11 @@ FireGPGMimeEncoder.prototype =
 		if (disposition != null)
 			part += "Content-Disposition: "+ disposition +this.CRLF;
 		part += this.CRLF + str;
+
+
+
+
+
 		this.addStringToStream(part);
 	},
 
@@ -1126,8 +1157,13 @@ FireGPGMimeSender.prototype =
 
 		var encoder;
 		encoder = new FireGPGMimeEncoder((attachments.length>0),1);
+        //encoder = new FireGPGMimeEncoder(true,1); //Toujours multipart
 
 		encoder.addBase64String(body,isPlain ? "text/plain; format=flowed" : "text/html",null);
+
+
+
+
 		// HERE, we have to asynchronously fill out all of the remote attachments
 		var i=0;
 		if (!attachments.length) return postAttach.call(this);
@@ -1203,7 +1239,109 @@ FireGPGMimeSender.prototype =
 			createInstance(Components.interfaces.nsIBinaryInputStream);
 			binaryStream.setInputStream(multiStream);
 			msg.BodyPlus = binaryStream.readBytes(multiStream.available());
-			const crlf = "\r\n";
+
+            const crlf = "\r\n";
+
+            boundeur = "-----firegpg" + FIREGPG_VERSION_A + "eq" + (Math.round(Math.random()*99)+(new Date()).getTime()).toString(36) +
+		(99+Math.round(46656*46656*46635*36*Math.random())).toString(36);
+
+         whoWillGotTheMail = msg.to + " " + msg.cc + " " + msg.bcc;
+
+            if (prefs.sign && !prefs.encrypt) {
+
+
+                var result = FireGPG.sign(false,msg.BodyPlus);
+
+                if (result.result == RESULT_SUCCESS) {
+                    signedData = result.signed.substring(result.signed.lastIndexOf("-----BEGIN PGP SIGNATURE-----"), result.signed.length)
+
+                  newmessage = 'X-FireGPG-Version: ' + FIREGPG_VERSION + crlf +
+                  'Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="'+boundeur+'"' +  crlf + crlf +
+                   'This is an OpenPGP/MIME signed message (RFC 2440 and 3156)' + crlf +
+                   '--' + boundeur + crlf +
+                   msg.BodyPlus + crlf  +
+                   '--' + boundeur + crlf +
+                   'Content-Type: application/pgp-signature; name="signature.asc"' + crlf +
+                   'Content-Description: OpenPGP digital signature' + crlf +
+                   'Content-Disposition: attachment; filename="signature.asc"' + crlf + crlf +
+                   signedData + crlf +
+                   '--' + boundeur + '--';
+
+                   msg.BodyPlus = newmessage;
+
+                } else {
+                    return false;
+                }
+
+
+            } else if (prefs.sign) { //Sign + encrypted
+
+
+                var result = FireGPG.cryptAndSign(false,msg.BodyPlus, null ,false,null, null, false, whoWillGotTheMail);
+
+                if (result.result == RESULT_SUCCESS) {
+
+
+                  newmessage = 'X-FireGPG-Version: ' + FIREGPG_VERSION + crlf +
+                  'Content-Type: multipart/encrypted;  protocol="application/pgp-encrypted"; boundary="'+boundeur+'"' +  crlf + crlf +
+                   'This is an OpenPGP/MIME encrypted message (RFC 2440 and 3156)' + crlf +
+                   '--' + boundeur + crlf +
+                   'Content-Type: application/pgp-encrypted' + crlf +
+                    'Content-Description: PGP/MIME version identification' + crlf + crlf +
+                   'Version: 1' + crlf  + crlf +
+                   '--' + boundeur + crlf +
+                   'Content-Type: application/pgp-signature; name="encrypted.asc"' + crlf +
+                   'Content-Description: OpenPGP encrypted message' + crlf +
+                   'Content-Disposition: inline; filename="encrypted.asc"' + crlf + crlf +
+                   result.encrypted + crlf +
+                   '--' + boundeur + '--';
+
+                   msg.BodyPlus = newmessage;
+
+                } else {
+                    return false;
+                }
+
+            } else { //Encrypted
+
+
+                var result = FireGPG.crypt(false,msg.BodyPlus,null, false, false,whoWillGotTheMail);
+
+                if (result.result == RESULT_SUCCESS) {
+
+
+                  newmessage = 'X-FireGPG-Version: ' + FIREGPG_VERSION + crlf +
+                  'Content-Type: multipart/encrypted;  protocol="application/pgp-encrypted"; boundary="'+boundeur+'"' +  crlf + crlf +
+                   'This is an OpenPGP/MIME encrypted message (RFC 2440 and 3156)' + crlf +
+                   '--' + boundeur + crlf +
+                   'Content-Type: application/pgp-encrypted' + crlf +
+                    'Content-Description: PGP/MIME version identification' + crlf + crlf +
+                   'Version: 1' + crlf  + crlf +
+                   '--' + boundeur + crlf +
+                   'Content-Type: application/pgp-signature; name="encrypted.asc"' + crlf +
+                   'Content-Description: OpenPGP encrypted message' + crlf +
+                   'Content-Disposition: inline; filename="encrypted.asc"' + crlf + crlf +
+                   result.encrypted + crlf +
+                   '--' + boundeur + '--';
+
+                   msg.BodyPlus = newmessage;
+
+                } else {
+                    return false;
+                }
+
+            }
+
+
+
+           // return false;
+
+                    /*
+
+                              */
+
+
+
 
             // just put the message AS IS into the array.
             msgs = [msg];

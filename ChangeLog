@@ -1,7 +1,10 @@
+2009-01-18 Maximilien Cuony
+    * Openpgp/mime support is... done FS#80
+
 2009-01-17 Maximilien Cuony
-    * Autosave should be disabled again
+    * Autosave should be disabled again FS#108
     * Sending mail by smtp done !
-    
+
 2009-01-15 Maximilien Cuony
     * Inline sign/crypt done
     * Fix bug with previous/next button
