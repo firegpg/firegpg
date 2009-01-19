@@ -57,9 +57,9 @@
 <!ENTITY gmail-select-by-default-label "Sélectionné par défaut :">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
 <!ENTITY gmail-old-interface "Ancienne interface de gmail">
-<!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
-<!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
-<!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
-<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
+<!ENTITY gmail-smtp-options-label "Options SMTP (openpgp/mime mails)">
+<!ENTITY gmail-smtp-google-com "Ne jamais essayer d\'utiliser le mot de passe sauvegardé pour google.com">
+<!ENTITY gmail-smtp-username "Nom d\'utilisateur (laisser blanc pour le nom d\'utilisateur qui est loggé): ">
+<!ENTITY gmail-smtp-host "Serveur (smtp.gmail.com) :">
 <!ENTITY gmail-smtp-port "Port (465) :">
-<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Utiliser SSL :">

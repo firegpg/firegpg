@@ -5,6 +5,6 @@
 <!ENTITY open-button "Aç">
 <!ENTITY save-button "Kaydet">
 <!ENTITY cryptandsign-button "İmza ve şifre">
-<!ENTITY sign-clear-button "Clear sign">
+<!ENTITY sign-clear-button "Clearsign">
 <!ENTITY symcrypt-button "Symmetric encryption">
 <!ENTITY closeandcopy-button "Copy in clipboard and close">

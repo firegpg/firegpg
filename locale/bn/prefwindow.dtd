@@ -47,8 +47,8 @@
 <!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">
 <!ENTITY inline-activated "Check for PGP blocks in pages (restart needed)">
 <!ENTITY gmail-disable-autosave-checkbox "Disable autosave feature">
-<!ENTITY gmail-buton-csign-checkbox "Clear sign">
-<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
+<!ENTITY gmail-buton-csign-checkbox "Clearsign">
+<!ENTITY gmail-buton-csignsend-checkbox "Clearsign and send">
 <!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
 <!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
 <!ENTITY keyserver-message "Keyserver">

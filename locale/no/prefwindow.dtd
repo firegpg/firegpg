@@ -47,8 +47,8 @@
 <!ENTITY firegpg-ask-for-private-label.text "Alltid sp�r etter privat n�kkel">
 <!ENTITY inline-activated "Sjekk for PGP blokker i nettsider (omstart p�krevd)">
 <!ENTITY gmail-disable-autosave-checkbox "Sl� av autolagring">
-<!ENTITY gmail-buton-csign-checkbox "Clear sign">
-<!ENTITY gmail-buton-csignsend-checkbox "Clear sign and send">
+<!ENTITY gmail-buton-csign-checkbox "Clearsign">
+<!ENTITY gmail-buton-csignsend-checkbox "Clearsign and send">
 <!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
 <!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
 <!ENTITY keyserver-message "Keyserver">

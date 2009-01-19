@@ -50,13 +50,13 @@ try {
 
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */
-const FIREGPG_VERSION = '0.6.4';
+const FIREGPG_VERSION = '0.7';
 
-const FIREGPG_VERSION_A = '064';
+const FIREGPG_VERSION_A = '07';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
-const FIREGPG_STATUS = 'DEVEL';
+const FIREGPG_STATUS = 'RELASE';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */

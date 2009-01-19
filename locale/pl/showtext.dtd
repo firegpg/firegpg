@@ -5,6 +5,6 @@
 <!ENTITY open-button "Otwórz">
 <!ENTITY save-button "Zapisz">
 <!ENTITY cryptandsign-button "Sign and encrypt">
-<!ENTITY sign-clear-button "Clear sign">
+<!ENTITY sign-clear-button "Clearsign">
 <!ENTITY symcrypt-button "Symmetric encryption">
 <!ENTITY closeandcopy-button "Copy in clipboard and close">

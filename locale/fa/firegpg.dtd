@@ -1,13 +1,13 @@
-<!ENTITY firegpg.label "FireGPG">
-<!ENTITY firegpgToolbar.label "FireGPG">
-<!ENTITY firegpgToolbar.tooltip "FireGPG">
-<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpg.label "فایرجی‌پی‌جی">
+<!ENTITY firegpgToolbar.label "فایرجی‌پی‌جی">
+<!ENTITY firegpgToolbar.tooltip "فایرجی‌پی‌جی">
+<!ENTITY firegpgContext.label "فایرجی‌پی‌جی">
 <!ENTITY firegpgContext.labelSign "امضا">
 <!ENTITY firegpgContext.labelCrypt "رمزگذاری">
 <!ENTITY firegpgContext.labelVerif "احراز">
 <!ENTITY firegpgContext.labelDecry "بازگشایی">
 <!ENTITY firegpgContext.labelOptions "گزینه‌ها">
-<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.label "فایرجی‌پی‌جی">
 <!ENTITY firegpgMenu.labelSign "امضا">
 <!ENTITY firegpgMenu.labelCrypt "رمزگذاری">
 <!ENTITY firegpgMenu.labelVerif "احراز">
@@ -27,8 +27,8 @@
 <!ENTITY firegpgMenu.labelExport "انتقال">
 <!ENTITY firegpgContext.labelExport "انتقال">
 <!ENTITY firegpgToolbar.labelExport "انتقال">
-<!ENTITY firegpgPopInfo.labelBonjour "با موفقیت نصب شد FireGPG! خوش آمدید ">
-<!ENTITY firegpgPopInfo.labelAccessOk "دسترسی داشته باشد gpg می‌تواند به FireGPG">
+<!ENTITY firegpgPopInfo.labelBonjour "خوش آمدید! فایرجی‌پی‌جی با موفقیت نصب شد">
+<!ENTITY firegpgPopInfo.labelAccessOk "فایرجی‌پی‌جی می‌تواند به جی‌پی‌جی دسترسی داشته باشد">
 <!ENTITY firegpgPopInfo.labelAccessErr "دسترسی داشته باشد. مطمئن شوید که نصب است و یا مسیر آن را در قسمت تنظیمات مشخص کنید gpg نمی‌تواند به فایل اجرایی FireGPG">
 <!ENTITY firegpgPopInfo.labelKeyOk "یک کلید خصوصی انتخاب شده است">
 <!ENTITY firegpgPopInfo.labelKeyErr "هشدار: لطفاً یک کلید خصوصی در تنظیمات انتخاب کنید">

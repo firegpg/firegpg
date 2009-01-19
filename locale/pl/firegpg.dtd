@@ -43,9 +43,9 @@
 <!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
 <!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
 <!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelClearSign "Clear sign">
-<!ENTITY firegpgToolbar.labelClearSign "Clear sign">
-<!ENTITY firegpgMenu.labelClearSign "Clear sign">
+<!ENTITY firegpgContext.labelClearSign "Clearsign">
+<!ENTITY firegpgToolbar.labelClearSign "Clearsign">
+<!ENTITY firegpgMenu.labelClearSign "Clearsign">
 <!ENTITY firegpgContext.labelManager "Key manager">
 <!ENTITY firegpgToolbar.labelManager "Key manager">
 <!ENTITY firegpgMenu.labelManager "Key manager">

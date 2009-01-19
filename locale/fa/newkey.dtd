@@ -1,10 +1,10 @@
-<!ENTITY newkey "FireGPG - کلید جدید">
-<!ENTITY warningaboutgeneeration "Warning ! Key generation can take a lot of time, and will freeze Firefox. Do something else while key is generated, to create more entropy.">
+<!ENTITY newkey "فایرجی‌پی‌جی - کلید جدید">
+<!ENTITY warningaboutgeneeration "هشدار! تولید کلید ممکن است زمان زیادی طول بکشد، و فایرفاکس را قفل کند. کار دیگری انجام دهید تا آنتروپی بیشتری ایجاد شده و کلید تولید شود.">
 <!ENTITY name-message "نام">
 <!ENTITY email-message "ایمیل">
 <!ENTITY comment-message "توضیح">
-<!ENTITY password1-message "Password">
-<!ENTITY password2-message "Repeat password">
+<!ENTITY password1-message "رمزعبور">
+<!ENTITY password2-message "تکرار رمزعبور">
 <!ENTITY keyneverexpire "کلید هرگز منقضی نمی‌شود">
 <!ENTITY keyexpire-message "کلید منقضی می‌شود در">
 <!ENTITY expire-year "سال">

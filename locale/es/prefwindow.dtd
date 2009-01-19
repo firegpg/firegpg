@@ -55,11 +55,11 @@
 <!ENTITY symmetric-algo "Algoritmo usado para la encriptación simetrica. Deja en blanco para seleccionar la opción por defecto. Usa gpg --version para ver la lista de algoritmos que se pueden utlizar; en la mayoria de los casos tienes estas opciones:">
 <!ENTITY gmail-new-interface "Nueva interfaz gmail">
 <!ENTITY gmail-select-by-default-label "Seleccionado por defecto">
-<!ENTITY gmail-buton-inline-checkbox "Inline">
+<!ENTITY gmail-buton-inline-checkbox "en línea ">
 <!ENTITY gmail-old-interface "Antigüa interfaz Gmail">
-<!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
-<!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
-<!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
-<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
-<!ENTITY gmail-smtp-port "Port (465) :">
-<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
+<!ENTITY gmail-smtp-options-label "Opciones de SMTP (openpgp/correos MIME)">
+<!ENTITY gmail-smtp-google-com "Nunca usa la contraseña de google.com guardada">
+<!ENTITY gmail-smtp-username "Usuario (dejar en blanco para usar el usuario de la cuenta activa):">
+<!ENTITY gmail-smtp-host "Servidor (smtp.gmail.com):">
+<!ENTITY gmail-smtp-port "Puerto (465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Usa SSL :">

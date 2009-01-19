@@ -53,13 +53,13 @@
 <!ENTITY use-fireftp-workaround "Försök att använda IPC med det gamla API:t.">
 <!ENTITY keyserver-message "Nyckelserver">
 <!ENTITY symmetric-algo "Algoritm för symmetrisk kryptering. Lämna blankt för standarinställning. Använd gpg --version för att se en lista över tillgängliga algoritmer. I de flesta fall har du följande alternativ:">
-<!ENTITY gmail-new-interface "New gmail interface">
-<!ENTITY gmail-select-by-default-label "Selected by default :">
+<!ENTITY gmail-new-interface "Nya Gmail-gränssnittet">
+<!ENTITY gmail-select-by-default-label "Valt som standard:">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
-<!ENTITY gmail-old-interface "Old gmail interface">
-<!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
-<!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
-<!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
-<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
-<!ENTITY gmail-smtp-port "Port (465) :">
-<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
+<!ENTITY gmail-old-interface "Gamla Gmail-gränssnittet">
+<!ENTITY gmail-smtp-options-label "SMTP-alternativ (openpgp/mime-mejl)">
+<!ENTITY gmail-smtp-google-com "Försök aldrig använda sparat lösenord för google.com">
+<!ENTITY gmail-smtp-username "Användarnamn (lämna blankt för att använda aktivt konto):">
+<!ENTITY gmail-smtp-host "Värd (smtp.gmail.com):">
+<!ENTITY gmail-smtp-port "Port (465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Använd SSL:">
