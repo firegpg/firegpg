@@ -560,12 +560,12 @@ var cGmail2 = {
                                 else
                                 {
                                     // debugger; // keep this around for later usage when needing to adjust badpatterns
-                                    dump(getValue.caller.name + " " +
+                                /*    dump(getValue.caller.name + " " +
 				getValue.caller.caller.name + " " +
 				getValue.caller.caller.caller.name + " " +
 				getValue.caller.caller.caller.caller.name + " " +
 				getValue.caller.caller.caller.caller.caller.name + " " +
-				getValue.caller.caller.caller.caller.caller.caller.name + "\n\n");
+				getValue.caller.caller.caller.caller.caller.caller.name + "\n\n");*/
                                 }
                                 // finally, if nothing matches:
                                 return this.__proto__.__lookupGetter__("value").apply(this);
