@@ -383,7 +383,6 @@ var FireGPG = {
 
 		for (var i = 0; i < list.length; i++) {
 			var infos = new Array();
-
 			try {
                 infos = list[i].split(":");
 
@@ -437,7 +436,6 @@ var FireGPG = {
 					else
 						theKey.revoked = false;
 
-
 					var splited = keyExpi.split(new RegExp("-", "g"));
 
                     var tmp_date = new Date(splited[0],splited[1],splited[2]);
@@ -448,8 +446,11 @@ var FireGPG = {
 
 							theKey.expired = true;
 
-							if (infos[0] == "uid")
+							if (infos[0] == "uid") {
 								returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
+                                if (returnObject.keylist[returnObject.keylist.length-1].keyName == "") //GPG2 !
+                                    returnObject.keylist[returnObject.keylist.length-1].keyName = keyName;
+                            }
 							else
 								returnObject.keylist.push(theKey);
 
@@ -462,9 +463,11 @@ var FireGPG = {
 						else
 							theKey.expired = true;
 
-
-                        if (infos[0] == "uid")
+                        if (infos[0] == "uid") {
                             returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
+                            if (returnObject.keylist[returnObject.keylist.length-1].keyName == "") //GPG2 !
+                                returnObject.keylist[returnObject.keylist.length-1].keyName = keyName;
+                        }
                         else if (infos[0] == "sig" && lastObjectType == "pub")
                             returnObject.keylist[returnObject.keylist.length-1].signs.push(theKey);
                         else if (infos[0] == "sig" && lastObjectType == "uid" )
@@ -478,7 +481,6 @@ var FireGPG = {
 
         // Sorts keys
         returnObject.keylist = returnObject.keylist.sort(Sortage);
-
         for (var i = 0; i < returnObject.keylist.length; i++)
             returnObject.keylist[i].subKeys = returnObject.keylist[i].subKeys.sort(Sortage);
 
