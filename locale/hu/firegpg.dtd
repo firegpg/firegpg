@@ -40,13 +40,13 @@
 <!ENTITY firegpgContext.labelCryptSign "Bejelentkezés és titkosítás">
 <!ENTITY firegpgMenu.labelCryptSign "Aláírás és titkosítás">
 <!ENTITY firegpgToolbar.labelCryptSign "Aláírás és titkosítás">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
+<!ENTITY firegpgToolbar.labelSymCrypt "Szimmetrikus titkosítás">
+<!ENTITY firegpgContext.labelSymCrypt "Szimmetrikus titkosítás">
+<!ENTITY firegpgMenu.labelSymCrypt "Szimmetrikus titkosítás">
 <!ENTITY firegpgContext.labelClearSign "Clearsign">
 <!ENTITY firegpgToolbar.labelClearSign "Clearsign">
 <!ENTITY firegpgMenu.labelClearSign "Clearsign">
-<!ENTITY firegpgContext.labelManager "Key manager">
-<!ENTITY firegpgToolbar.labelManager "Key manager">
-<!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">
+<!ENTITY firegpgContext.labelManager "Kulcskezelő">
+<!ENTITY firegpgToolbar.labelManager "Kulcskezelő">
+<!ENTITY firegpgMenu.labelManager "Kulcskezelő">
+<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">

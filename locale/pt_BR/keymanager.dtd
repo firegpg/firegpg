@@ -5,7 +5,7 @@
 <!ENTITY key-id "Id">
 <!ENTITY key-name "Nome">
 <!ENTITY revoke-button "Revogar chave">
-<!ENTITY sign-button "Signatures">
+<!ENTITY sign-button "Assinaturas">
 <!ENTITY changetrust-button "Alterar confiabilidade">
 <!ENTITY importserver-button "Importar a partir do servidor">
 <!ENTITY exportserver-button "Exportar para o servidor">
@@ -17,15 +17,15 @@
 <!ENTITY trustUnded "Remove information about trusting">
 <!ENTITY trustDont "I don't trust this key">
 <!ENTITY trustMargi "I marginaly trust this key">
-<!ENTITY trustFull "I fully trust this key">
-<!ENTITY trustUltimate "Trust this key ultimatly (!)">
+<!ENTITY trustFull "Eu confio plenamente nessa chave">
+<!ENTITY trustUltimate "Trust this key ultimately (!)">
 <!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
-<!ENTITY revokeNoRaison "No reason specified">
-<!ENTITY revokeComprimse "Key has been compromised">
+<!ENTITY del-button "Excuir">
+<!ENTITY revokeNoRaison "Sem razão especificada">
+<!ENTITY revokeComprimse "A chave foi comprometida">
 <!ENTITY revokeRemplaced "Key is superseded">
-<!ENTITY revokeNotUsed "Key is no longer used">
-<!ENTITY userid-button "User id">
-<!ENTITY add "Add">
+<!ENTITY revokeNotUsed "A chave não é mais usada">
+<!ENTITY userid-button "ID de usuário">
+<!ENTITY add "Adicionar">
 <!ENTITY delete "Delete">
-<!ENTITY revoke "Revoke">
+<!ENTITY revoke "Revogar">

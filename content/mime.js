@@ -104,16 +104,22 @@ FireGPGMimeDecoder = {
 
         message = convertCRLFToStandarts(message);
 
+        message = message.replace(/<br( |\/)?>\r/gi, "\r");
+        message = message.replace(/<br( |\/)?>\n/gi, "\n");
+        message = message.replace(/<br( |\/)?>/gi, "\r\n");
+
         //On choppe la possition de la première signature
         firstSignPos = message.indexOf("\r\n-----BEGIN PGP SIGNED MESSAGE-----");
 
-        //On choppe la première signature :
-        firstSign = message.substring(firstSignPos, message.indexOf("\r\n-----END PGP SIGNATURE-----") + ("\r\n-----END PGP SIGNATURE-----").length);
+        if (firstSignPos == -1)
+            firstSignPos = message.indexOf("\r\n\r\n"); //Le mail peut être base64encodé et dans ce cas la signature est pas visible tout de suite...
 
-        //On trouve l'encodage de la chose (l'avant dernier Content-Transfer-Encoding: avant notre signature)
+
+         //On trouve l'encodage de la chose (l'avant dernier Content-Transfer-Encoding: avant notre signature)
         restrainon = message.substring(0, firstSignPos);
         restrainon = restrainon.substring(restrainon.lastIndexOf("\r\nContent-Transfer-Encoding:"), restrainon.length);
         restrainon = "\r\n" + restrainon + "\r\n";
+
 
         var reg = /\r\nContent\-Transfer\-Encoding: ([a-zA-Z0-9\-]*)\r\n/;
         result = reg.exec(restrainon);
@@ -123,18 +129,26 @@ FireGPGMimeDecoder = {
 
             switch(result[1]) {
                 case "quoted-printable":
-                    firstSign = this.convertFromQP(firstSign);
+                    message = message.substring(0, firstSignPos) + "\r\n\r\n" + convertCRLFToStandarts(this.convertFromQP(message.substring(firstSignPos , message.length)));
                     break;
 
                 case "8bit":
                     break;
 
                 case "base64":
-                    firstSign = this.convertFromB64(firstSign);
+                    message = message.substring(0, firstSignPos) + "\r\n\r\n" + convertCRLFToStandarts(this.convertFromB64(message.substring(firstSignPos, message.length)));
                     break;
 
             }
         }
+
+
+        firstSignPos = message.indexOf("\r\n-----BEGIN PGP SIGNED MESSAGE-----");
+
+        //On choppe la première signature :
+        firstSign = message.substring(firstSignPos, message.indexOf("\r\n-----END PGP SIGNATURE-----") + ("\r\n-----END PGP SIGNATURE-----").length);
+
+
 
         retour = new Object();
         retour.text = firstSign;
@@ -221,36 +235,49 @@ FireGPGMimeDecoder = {
         //On choppe la possition de la première signature
         dataMessagePos = message.indexOf("\r\n-----BEGIN PGP MESSAGE-----");
 
+
+        if (dataMessagePos == -1)
+            dataMessagePos = message.indexOf("\r\n\r\n"); //Le mail peut être base64encodé et dans ce cas la signature est pas visible tout de suite...
+
+         //On trouve l'encodage de la chose (l'avant dernier Content-Transfer-Encoding: avant notre signature)
+        restrainon = message.substring(0, dataMessagePos);
+        restrainon = restrainon.substring(restrainon.lastIndexOf("\r\nContent-Transfer-Encoding:"), restrainon.length);
+        restrainon = "\r\n" + restrainon + "\r\n";
+
+
+        var reg = /\r\nContent\-Transfer\-Encoding: ([a-zA-Z0-9\-]*)\r\n/;
+        result = reg.exec(restrainon);
+
+        if (result && result[1] != "")
+        {
+
+            switch(result[1]) {
+                case "quoted-printable":
+                    message = message.substring(0, dataMessagePos) + "\r\n\r\n" + convertCRLFToStandarts(this.convertFromQP(message.substring(dataMessagePos, message.length)));
+                    break;
+
+                case "8bit":
+                    break;
+
+                case "base64":
+                    message = message.substring(0, dataMessagePos) + "\r\n\r\n" + convertCRLFToStandarts(this.convertFromB64(message.substring(dataMessagePos, message.length)));
+                    break;
+
+            }
+        }
+
+     //   fireGPGDebug(message, 1);
+
+
+        dataMessagePos = message.indexOf("\r\n-----BEGIN PGP MESSAGE-----");
+
         if (dataMessagePos == -1)
             return '';
 
         //On choppe la première signature :
         dataMessage = message.substring(dataMessagePos, message.indexOf("\r\n-----END PGP MESSAGE-----") + ("\r\n-----END PGP MESSAGE-----").length);
 
-        //On trouve l'encodage de la chose (l'avant dernier Content-Transfer-Encoding: avant notre truc signà)
-        restrainon = message.substring(0, dataMessagePos);
-        restrainon = restrainon.substring(restrainon.lastIndexOf("\r\nContent-Transfer-Encoding:"), restrainon.length);
-        restrainon = "\r\n" + restrainon + "\r\n";
-
-        var reg = /\r\nContent\-Transfer\-Encoding: ([a-zA-Z0-9\-]*)\r\n/;
-        result = reg.exec(restrainon);
-
-        if (!result || result[1] == "")
-            return dataMessage;
-
-        switch(result[1]) {
-            case "quoted-printable":
-                dataMessage = this.convertFromQP(dataMessage);
-                break;
-
-            case "8bit":
-                break;
-
-            case "base64":
-                dataMessage = this.convertFromB64(dataMessage);
-                break;
-
-        }
+//fireGPGDebug(dataMessage, 2);
 
         return dataMessage;
 
@@ -2082,7 +2109,7 @@ FireGPGGmailMimeSender.prototype.ourSent = function(msgs, err, prefs)
 				}
 				else
 				{
-					fireGPGDebut ("Internal error while sending mail...", "Gmail-mime-send-oursend", true);
+					fireGPGDebug ("Internal error while sending mail...", "Gmail-mime-send-oursend", true);
 				}
 
 

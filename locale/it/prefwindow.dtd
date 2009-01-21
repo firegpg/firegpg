@@ -53,13 +53,16 @@
 <!ENTITY use-fireftp-workaround "Prova ad usare le vecchie API per accedere alle librerie IPC">
 <!ENTITY keyserver-message "Server delle chiavi">
 <!ENTITY symmetric-algo "Algoritmo usato per la crittazione simmetrica. Lasciare vuoto per usare quello predefinito. Usare gpg --version per una lista degli algoritmi disponibili. Nella maggior parte dei casi le scelte disponibili sono:">
-<!ENTITY gmail-new-interface "New gmail interface">
-<!ENTITY gmail-select-by-default-label "Selected by default :">
-<!ENTITY gmail-buton-inline-checkbox "Inline">
-<!ENTITY gmail-old-interface "Old gmail interface">
-<!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
-<!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
-<!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
-<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
-<!ENTITY gmail-smtp-port "Port (465) :">
-<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
+<!ENTITY gmail-new-interface "Nuova interfaccia di Gmail">
+<!ENTITY gmail-select-by-default-label "Impostazione predefinita:">
+<!ENTITY gmail-buton-inline-checkbox "In linea">
+<!ENTITY gmail-old-interface "Vecchia interfaccia di Gmail">
+<!ENTITY gmail-smtp-options-label "Opzioni SMTP (openpgp/mime messaggi)">
+<!ENTITY gmail-smtp-google-com "Non tentare di utilizzare la password memorizzata di google.com">
+<!ENTITY gmail-smtp-username "Nome utente (lasciare in bianco per utilizzare il nome utente dell'account connesso):">
+<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) :">
+<!ENTITY gmail-smtp-port "Porta (465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Utilizza SSL:">
+<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
+<!ENTITY gmail-disable-auto-decryption "Disable auto-decryption">
+<!ENTITY gmail-force-from "Force from value :">

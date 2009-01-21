@@ -2,7 +2,7 @@
 <!ENTITY key-trust "Trust">
 <!ENTITY key-expire "Expire">
 <!ENTITY key-create "Created">
-<!ENTITY key-id "Id">
+<!ENTITY key-id "ID">
 <!ENTITY key-name "Name">
 <!ENTITY revoke-button "Revoke key">
 <!ENTITY sign-button "Signatures">
@@ -18,14 +18,14 @@
 <!ENTITY trustDont "I don't trust this key">
 <!ENTITY trustMargi "I marginaly trust this key">
 <!ENTITY trustFull "I fully trust this key">
-<!ENTITY trustUltimate "Trust this key ultimatly (!)">
+<!ENTITY trustUltimate "Trust this key ultimately (!)">
 <!ENTITY password-button "Change password">
 <!ENTITY del-button "Delete">
 <!ENTITY revokeNoRaison "No reason specified">
 <!ENTITY revokeComprimse "Key has been compromised">
 <!ENTITY revokeRemplaced "Key is superseded">
 <!ENTITY revokeNotUsed "Key is no longer used">
-<!ENTITY userid-button "User id">
+<!ENTITY userid-button "User ID">
 <!ENTITY add "Ny">
 <!ENTITY delete "Delete">
 <!ENTITY revoke "Revoke">

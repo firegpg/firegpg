@@ -224,6 +224,9 @@ Keyring.HandlePage = function(document) {
                 if (node.parentNode.nodeName == 'TEXTAREA')
                     break;
 
+                if (node.parentNode.nodeName == 'PRE')
+                    break;
+
                 baseIdx = idx;
 				idx = node.textContent.indexOf(Keyring.Tags.KeyStart, baseIdx);
                 blockType = Keyring.KEY_BLOCK;
@@ -462,7 +465,7 @@ Keyring.initSystem = function() {
             document.getElementById("appcontent").addEventListener("DOMContentLoaded", Keyring.onPageLoad, false);
         else
             document.getElementById("browser_content").addEventListener("DOMContentLoaded", Keyring.onPageLoad, false);
-            
+
     } catch (e) {  fireGPGDebug(e,'keyring.initSystem',true);  }
 
     Keyring.i18n = document.getElementById("firegpg-strings");

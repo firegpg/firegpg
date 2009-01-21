@@ -52,7 +52,7 @@
 <!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
 <!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
 <!ENTITY keyserver-message "Servidor de claus">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use gpg --version to have the list of usable algorithms, in most of case you have this choices : ">
+<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use gpg --version to have the list of usable algorithms, in most of case you have this choices:">
 <!ENTITY gmail-new-interface "New gmail interface">
 <!ENTITY gmail-select-by-default-label "Selected by default :">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
@@ -63,3 +63,6 @@
 <!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
 <!ENTITY gmail-smtp-port "Port (465) :">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
+<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
+<!ENTITY gmail-disable-auto-decryption "Disable auto-decryption">
+<!ENTITY gmail-force-from "Force from value :">

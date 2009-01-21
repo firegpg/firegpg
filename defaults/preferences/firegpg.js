@@ -28,3 +28,6 @@ pref("extensions.firegpg.gmail_use_ssl", true);
 pref("extensions.firegpg.gmail_port", "465");
 pref("extensions.firegpg.gmail_host", "smtp.gmail.com");
 pref("extensions.firegpg.gmail_username", "");
+pref("extensions.firegpg.gmail_disable_detection_of_reply_for_signs", false);
+pref("extensions.firegpg.gmail_disable_auto_decryption", false);
+pref("extensions.firegpg.gmail_force_from", "");

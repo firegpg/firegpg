@@ -46,7 +46,7 @@
 <!ENTITY firegpgContext.labelClearSign "成功签署">
 <!ENTITY firegpgToolbar.labelClearSign "成功签署">
 <!ENTITY firegpgMenu.labelClearSign "成功签署">
+<!ENTITY firegpgContext.labelManager "Key manager">
 <!ENTITY firegpgToolbar.labelManager "Key manager">
 <!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY firegpgContext.labelManager "Key manager">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">
+<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">

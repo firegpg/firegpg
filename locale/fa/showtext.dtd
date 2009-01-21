@@ -1,7 +1,7 @@
 <!ENTITY crypt-button "رمزگذاری">
 <!ENTITY dcrypt-button "رمزگشایی">
 <!ENTITY sign-button "امضا">
-<!ENTITY verify-button "راست‌آزمایی">
+<!ENTITY verify-button "احراز">
 <!ENTITY open-button "باز کردن">
 <!ENTITY save-button "ذخیره">
 <!ENTITY cryptandsign-button "امضا و رمزگذاری">

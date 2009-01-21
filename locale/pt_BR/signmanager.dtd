@@ -2,6 +2,6 @@
 <!ENTITY key-name "Name">
 <!ENTITY key-id "Key ID">
 <!ENTITY key-create "Date (sign or creation)">
-<!ENTITY sign-button "Sign this key">
-<!ENTITY revoke-button "Revoke this sign">
-<!ENTITY del-button "Delete this sign">
+<!ENTITY sign-button "Assine essa chave">
+<!ENTITY revoke-button "Revogar essa assinatura">
+<!ENTITY del-button "Excluir esta chave">

@@ -201,6 +201,10 @@
             <preference id="gmail-smtp-host" name="extensions.firegpg.gmail_host" type="string"/>
             <preference id="gmail-smtp-username" name="extensions.firegpg.gmail_username" type="string"/>
 
+            <preference id="gmail-disable-sign-detection" name="extensions.firegpg.gmail_disable_detection_of_reply_for_signs" type="bool"/>
+            <preference id="gmail-disable-auto-decryption" name="extensions.firegpg.gmail_disable_auto_decryption" type="bool"/>
+            <preference id="gmail-force-from" name="extensions.firegpg.gmail_force_from" type="string"/>
+
         </preferences>
 
         <label  id="gmail-need-a-restart-label" value="&gmail-need-a-restart;"/>
@@ -218,6 +222,13 @@
 
         <groupbox flex="1">
             <caption label="&gmail-new-interface;" />
+
+            <checkbox id="gmail-disable-sign-detection-checkbox" preference="gmail-disable-sign-detection"
+                            label="&gmail-disable-sign-detection;"/>
+
+            <checkbox id="gmail-disable-auto-decryption-checkbox" preference="gmail-disable-auto-decryption"
+                            label="&gmail-disable-auto-decryption;"/>
+
 
             <label  id="gmail-sbuttons-label" value="&gmail-select-by-default-label;"/>
 
@@ -242,6 +253,9 @@
 
             <label  id="gmail-smtp-username-label" value="&gmail-smtp-username;"/>
             <textbox id="gmail-smtp-username-textbox"  preference="gmail-smtp-username"/>
+
+            <label  id=" gmail-force-from-label" value="&gmail-force-from;"/>
+            <textbox id="gmail-force-from-textbox"  preference="gmail-force-from"/>
 
 
              <checkbox id="gmail-smtp-use-ssl-checkbox" preference="gmail-smtp-use-ssl"

@@ -27,11 +27,11 @@
 <!ENTITY firegpgMenu.labelExport "Export">
 <!ENTITY firegpgContext.labelExport "Export">
 <!ENTITY firegpgToolbar.labelExport "Export">
-<!ENTITY firegpgPopInfo.labelBonjour "Welcome !FireGPG installation was successful.">
+<!ENTITY firegpgPopInfo.labelBonjour "Welcome! FireGPG installation was successful.">
 <!ENTITY firegpgPopInfo.labelAccessOk "FireGPG can access gpg.">
 <!ENTITY firegpgPopInfo.labelAccessErr "FireGPG can't access the gpg executable. Make sure it is installed, or specify the path manually in the preferences.">
 <!ENTITY firegpgPopInfo.labelKeyOk "A private key is selected.">
-<!ENTITY firegpgPopInfo.labelKeyErr "Warning : please choose a private key in the preferences.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Warning: please choose a private key in the preferences.">
 <!ENTITY firegpgPopInfo.close "Close">
 <!ENTITY firegpgPopInfo.options "Options">
 <!ENTITY firegpgContext.labelEditeur "Text editor">
@@ -39,7 +39,7 @@
 <!ENTITY firegpgToolbar.labelEditeur "Text editor">
 <!ENTITY firegpgContext.labelCryptSign "Sign and encrypt">
 <!ENTITY firegpgMenu.labelCryptSign "Sign and encrypt">
-<!ENTITY firegpgToolbar.labelCryptSign "Sign and encryptEnc">
+<!ENTITY firegpgToolbar.labelCryptSign "Sign and encrypt">
 <!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
 <!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
 <!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
@@ -49,4 +49,4 @@
 <!ENTITY firegpgContext.labelManager "Key manager">
 <!ENTITY firegpgToolbar.labelManager "Key manager">
 <!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">
+<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
