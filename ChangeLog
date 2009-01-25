@@ -1,5 +1,6 @@
 2009-01-25 Maximilien Cuony
-    * Version 0.7.1b fix a problem with mail send in plain text (< and > are converted)
+    * 0.7.2 packed, and uploaded to the server !
+    * Version 0.7.2 fix a problem with mail send in plain text (< and > are converted)
     * 0.7.1 packed, and uploaded to the server !
     * Danish added
 
