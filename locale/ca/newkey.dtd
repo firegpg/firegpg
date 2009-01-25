@@ -1,5 +1,5 @@
 <!ENTITY newkey "FireGPG - new key">
-<!ENTITY warningaboutgeneeration "Warning! Key generation can take a lot of time, and will freeze Firefox. Do something else while key is generated, to create more entropy.">
+<!ENTITY warningaboutgeneeration "Warning! Key generation can take a lot of time, and will freeze Firefox. Do something else while key is generated to create more entropy.">
 <!ENTITY name-message "Name">
 <!ENTITY email-message "Email">
 <!ENTITY comment-message "Comentari">
@@ -8,10 +8,10 @@
 <!ENTITY keyneverexpire "The key never expires">
 <!ENTITY keyexpire-message "Key expires in">
 <!ENTITY expire-year "anys">
-<!ENTITY expire-month "months">
+<!ENTITY expire-month "mesos">
 <!ENTITY expire-days "dies">
 <!ENTITY advancedoptions "Opcions avançades">
 <!ENTITY keylenght-message "Key length">
 <!ENTITY keytype-message "Tipus de clau">
 <!ENTITY generate-button "Genera clau">
-<!ENTITY cancel-button "Cancel">
+<!ENTITY cancel-button "Cancel·la">

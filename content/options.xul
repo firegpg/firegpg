@@ -149,6 +149,9 @@
 
 
         <label  id="gpg-add-options-label" value="&gpg-add-options;"/>
+
+        <label  id="gpg-special-path-values" value="&gpg-special-path-values;"/>
+
         <textbox id="gpg-add-options-textbox"  preference="gpg-add-options-pref"/>
 
 
@@ -205,6 +208,8 @@
             <preference id="gmail-disable-auto-decryption" name="extensions.firegpg.gmail_disable_auto_decryption" type="bool"/>
             <preference id="gmail-force-from" name="extensions.firegpg.gmail_force_from" type="string"/>
 
+            <preference id="gmail-decrypt-when-reply" name="extensions.firegpg.gmail_decrypt_when_reply" type="bool"/>
+
         </preferences>
 
         <label  id="gmail-need-a-restart-label" value="&gmail-need-a-restart;"/>
@@ -228,6 +233,9 @@
 
             <checkbox id="gmail-disable-auto-decryption-checkbox" preference="gmail-disable-auto-decryption"
                             label="&gmail-disable-auto-decryption;"/>
+
+            <checkbox id="gmail-decrypt-when-reply-checkbox" preference="gmail-decrypt-when-reply"
+                            label="&decrypt-when-reply;"/>
 
 
             <label  id="gmail-sbuttons-label" value="&gmail-select-by-default-label;"/>

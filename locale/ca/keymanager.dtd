@@ -8,7 +8,7 @@
 <!ENTITY sign-button "Signatures">
 <!ENTITY changetrust-button "Confiança canviada">
 <!ENTITY importserver-button "Import from server">
-<!ENTITY exportserver-button "Export to server">
+<!ENTITY exportserver-button "Exportar al servidor">
 <!ENTITY importfile-button "Importar des de arxiu">
 <!ENTITY exportfile-button "Exporta a fitxer">
 <!ENTITY new-button "Nova clau">
@@ -16,7 +16,7 @@
 <!ENTITY refrech "Refresh keys from server">
 <!ENTITY trustUnded "Eliminar informació sobre confiança">
 <!ENTITY trustDont "I don't trust this key">
-<!ENTITY trustMargi "I marginaly trust this key">
+<!ENTITY trustMargi "I marginally trust this key">
 <!ENTITY trustFull "I fully trust this key">
 <!ENTITY trustUltimate "Confiar en aquesta clau com a última instància (!)">
 <!ENTITY password-button "Change password">
@@ -27,5 +27,5 @@
 <!ENTITY revokeNotUsed "Clau ja no s'utilitza">
 <!ENTITY userid-button "User ID">
 <!ENTITY add "Afegir">
-<!ENTITY delete "Delete">
+<!ENTITY delete "Eliminar">
 <!ENTITY revoke "Revocar">

@@ -28,6 +28,7 @@ locale	firegpg	nb-NO	locale/no/
 locale	firegpg	cs	locale/cs/
 locale	firegpg	fa	locale/fa/
 locale	firegpg	ja	locale/ja/
+locale	firegpg	da	locale/da/
 skin	firegpg	classic/1.0	skin/
 overlay	chrome://browser/content/browser.xul	chrome://firegpg/content/firefoxOverlay.xul
 overlay	chrome://webrunner/content/webrunner.xul	chrome://firegpg/content/prismeOverlay.xul

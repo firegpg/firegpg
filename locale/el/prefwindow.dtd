@@ -53,10 +53,10 @@
 <!ENTITY use-fireftp-workaround "Δοκίμασε να ανοίξεις το IPC με το παλιό API.">
 <!ENTITY keyserver-message "Εξυπηρετητής κλειδιών">
 <!ENTITY symmetric-algo "Αλγόριθμος για χρήση σε συμμετρική κρυπτογράφηση. Αφήστε το κενό για να χρησιμοποιηθεί ο προεπιλεγμένος. Με την εντολή gpg --version μπορείτε να δείτε μία λίστα με τους διαθέσιμους αλγόριθμους, συνήθως έχετε αυτές τις επιλογές :">
-<!ENTITY gmail-new-interface "New gmail interface">
+<!ENTITY gmail-new-interface "New Gmail interface">
 <!ENTITY gmail-select-by-default-label "Selected by default :">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
-<!ENTITY gmail-old-interface "Old gmail interface">
+<!ENTITY gmail-old-interface "Old Gmail interface">
 <!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
 <!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
 <!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
@@ -64,5 +64,7 @@
 <!ENTITY gmail-smtp-port "Port (465) :">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
 <!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
-<!ENTITY gmail-disable-auto-decryption "Disable auto-decryption">
+<!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
 <!ENTITY gmail-force-from "Force from value :">
+<!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
+<!ENTITY decrypt-when-reply "Decrypt content when reply">

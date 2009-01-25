@@ -7,4 +7,4 @@
 <!ENTITY cryptandsign-button "Signar i Encriptar">
 <!ENTITY sign-clear-button "Neteja la signatura">
 <!ENTITY symcrypt-button "Encriptació simètrica">
-<!ENTITY closeandcopy-button "Copy in clipboard and close">
+<!ENTITY closeandcopy-button "Copiar al porta-retalls">

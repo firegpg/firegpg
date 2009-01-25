@@ -343,7 +343,8 @@ FireGPGMimeDecoder = {
 
         } else {
             //remove header block
-            if (message.indexOf("\r\n\r\n")  != -1)
+
+            if ((headers['Content-Type'] != undefined || headers['Content-Disposition'] != undefined || headers['Content-Transfer-Encoding'] != undefined) && message.indexOf("\r\n\r\n")  != -1)
                 message = message.substring(message.indexOf("\r\n\r\n") + 4, message.length); //EndOfHeaders
 
 
@@ -416,6 +417,9 @@ FireGPGMimeDecoder = {
             if (message[i][0] == " " || message[i][0] == "\t") {
                 headers[currentHeader] += trim(message[i]);
             } else {
+
+                /*if (message[i].indexOf(":") == -1) //Erreur, on arrêtte
+                    return headers;*/
 
                 currentHeader = message[i].substring(0, message[i].indexOf(":"));
                 headers[currentHeader] = trim(message[i].substring(message[i].indexOf(":") + 1 , message[i].length));
@@ -1272,12 +1276,14 @@ FireGPGMimeSender.prototype =
             boundeur = "-----firegpg" + FIREGPG_VERSION_A + "eq" + (Math.round(Math.random()*99)+(new Date()).getTime()).toString(36) +
 		(99+Math.round(46656*46656*46635*36*Math.random())).toString(36);
 
-         whoWillGotTheMail = msg.to + " " + msg.cc + " " + msg.bcc;
+           // msg.BodyPlus += crlf;
+
+         whoWillGotTheMail = prefs.whoWillGotTheMail;
 
             if (prefs.sign && !prefs.encrypt) {
 
 
-                var result = FireGPG.sign(false,msg.BodyPlus);
+                var result = FireGPG.sign(false,msg.BodyPlus + crlf);
 
                 if (result.result == RESULT_SUCCESS) {
                     signedData = result.signed.substring(result.signed.lastIndexOf("-----BEGIN PGP SIGNATURE-----"), result.signed.length)
@@ -1317,7 +1323,7 @@ FireGPGMimeSender.prototype =
                     'Content-Description: PGP/MIME version identification' + crlf + crlf +
                    'Version: 1' + crlf  + crlf +
                    '--' + boundeur + crlf +
-                   'Content-Type: application/pgp-signature; name="encrypted.asc"' + crlf +
+                   'Content-Type: application/octet-stream; name="encrypted.asc"' + crlf +
                    'Content-Description: OpenPGP encrypted message' + crlf +
                    'Content-Disposition: inline; filename="encrypted.asc"' + crlf + crlf +
                    result.encrypted + crlf +
@@ -1345,7 +1351,7 @@ FireGPGMimeSender.prototype =
                     'Content-Description: PGP/MIME version identification' + crlf + crlf +
                    'Version: 1' + crlf  + crlf +
                    '--' + boundeur + crlf +
-                   'Content-Type: application/pgp-signature; name="encrypted.asc"' + crlf +
+                   'Content-Type: application/octet-stream; name="encrypted.asc"' + crlf +
                    'Content-Description: OpenPGP encrypted message' + crlf +
                    'Content-Disposition: inline; filename="encrypted.asc"' + crlf + crlf +
                    result.encrypted + crlf +
@@ -2158,7 +2164,7 @@ FireGPGGmailMimeSender.prototype.ourSent = function(msgs, err, prefs)
                         this.removeEventListener("DOMAttrModified", changeStatusMessage, false);
                         // set the bottom of the message stack, as appropriate
                         var msgs = this.ownerDocument.evaluate(".//div[contains(@class, 'diLZtc')]//table/tr/td[contains(@class, 'eWTfhb')]//div[contains(@class, 'aWL81')]/div[position()=2]", this.ownerDocument.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-                        if (!msgs) messageTd.innerHTML = this.i18n.getString("MessageSend");
+                        if (!msgs) messageTd.innerHTML = cGmail2.i18n.getString("MessageSend");
                         else
                         {
 //							jsdump("Doing tha alternative");
@@ -2169,7 +2175,7 @@ FireGPGGmailMimeSender.prototype.ourSent = function(msgs, err, prefs)
                             newmsgdiv.setAttribute("style", "");
                             msgs.appendChild(newmsgdiv);
                             newmsgdiv.innerHTML = '<div class="n38jzf" style=""><table cellspacing="0" cellpadding="0" class="cyVRte"><tbody><tr><td class="EGPikb" style="background-position: 0px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/><td class="Ptde9b"/><td class="EGPikb" style="background-position: -4px 0px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/></tr><tr><td class="Ptde9b"/><td class="m14Grb">' +
-this.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><tr><td class="EGPikb" style="background-position: 0px -4px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/><td class="Ptde9b"/><td class="EGPikb" style="background-position: -4px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/></tr></tbody></table></div>';
+cGmail2.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><tr><td class="EGPikb" style="background-position: 0px -4px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/><td class="Ptde9b"/><td class="EGPikb" style="background-position: -4px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/></tr></tbody></table></div>';
 
                             function removeNote(e)
                             {
@@ -2185,6 +2191,7 @@ this.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><tr><td clas
             // 0.3.2: removed: div[@class='fgrX7c']//div[@class='IY0d9c']/div[contains(@class, 'EGSDee')]/
             var sD = d.evaluate(".//div/div[@class='n38jzf' and table/@class='cyVRte']", d.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 //				printAncestors("statusDiv", sD);
+            cGmail2.i18n = this.i18n;
             sD.addEventListener("DOMAttrModified", changeStatusMessage, false);
 //				sD.addEventListener("DOMNodeInserted", function (e) {printAncestors("Inserted! ", e.target); }, false);
 //				sD.addEventListener("DOMNodeRemoved", function (e) {printAncestors("Removed! ", e.target); }, false);

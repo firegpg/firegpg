@@ -24,10 +24,10 @@
 <!ENTITY global-allow-keyring-pref.label "Nachrichten von authentifizierten Servern immer entschlüsseln">
 <!ENTITY global-allow-keyring-check.label "Nachrichten von authentifizierten Servern immer entschlüsseln">
 <!ENTITY global-allow-keyring-check.accesskey "A">
-<!ENTITY per-domain-preferences.label "Domain-spezifische Einstellungen">
-<!ENTITY turn-off-updates "Automatische Updates von FireGPG deaktivieren">
+<!ENTITY per-domain-preferences.label "Domänen-spezifische Einstellungen">
+<!ENTITY turn-off-updates "Automatische Aktualisierungen von FireGPG deaktivieren">
 <!ENTITY key-name "Name">
-<!ENTITY key-id "Id">
+<!ENTITY key-id "ID">
 <!ENTITY key-create "Erstellt">
 <!ENTITY key-expire "Ablaufdatum">
 <!ENTITY pane4.title "GPG">
@@ -41,18 +41,18 @@
 <!ENTITY api-liste-access.label "Liste der erlaubtenWebsiten (Doppelklick zum Entfernen)">
 <!ENTITY api-liste-domain.label "Domain">
 <!ENTITY api-liste-keyauth.label "Schlüssel">
-<!ENTITY use-gpg-agent-checkbox "GPG-Agent aktivieren (Achtung, kann Probleme verursachen)">
-<!ENTITY search-description "Filter:">
+<!ENTITY use-gpg-agent-checkbox "GPG-Agent aktivieren (Vorsicht, dies kann Probleme verursachen)">
+<!ENTITY search-description "Filter">
 <!ENTITY gmail-buton-use-select-checkbox "Zeige keine Buttons sondern eine Drop Down Liste">
 <!ENTITY firegpg-ask-for-private-label.text "Immer nach privatem Schlüssel fragen">
 <!ENTITY inline-activated "Aktiviere Handler für PGP-Blöcke in Seiten (Neustart benötigt)">
 <!ENTITY gmail-disable-autosave-checkbox "Automatisches Speichern abschalten">
 <!ENTITY gmail-buton-csign-checkbox "Klartextsignatur">
 <!ENTITY gmail-buton-csignsend-checkbox "Klartextsignatur und Senden">
-<!ENTITY hide-fireftp-message "Zeige keine Nachrichten über alte installierte IPC Bibliotheken.">
-<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
+<!ENTITY hide-fireftp-message "Zeige keine Nachrichten über installierte alte IPC Bibliotheken.">
+<!ENTITY use-fireftp-workaround "Versuche mit der alten API auf IPC zuzugreifen.">
 <!ENTITY keyserver-message "Schlüsselserver">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use gpg --version to have the list of usable algorithms, in most of case you have this choices:">
+<!ENTITY symmetric-algo "Algorithmus für die symmetrische Verschlüsselung. Standardmäßig leer lassen. Eine Liste der unterstützten Algorithmen kann mit &quot;gpg --version&quot; ausgegeben werden, in den meisten Fällen können diese verwendet werden:">
 <!ENTITY gmail-new-interface "Neues gmail Interface">
 <!ENTITY gmail-select-by-default-label "Standardmäßig ausgewählt:">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
@@ -63,6 +63,8 @@
 <!ENTITY gmail-smtp-host "Host (smtp.gmail.com):">
 <!ENTITY gmail-smtp-port "Port (465):">
 <!ENTITY gmail-smtp-use-ssl-checkbox "SSL benutzen">
-<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
-<!ENTITY gmail-disable-auto-decryption "Disable auto-decryption">
-<!ENTITY gmail-force-from "Force from value :">
+<!ENTITY gmail-disable-sign-detection "Deaktiviere Antworterkennung für Inline-Signatur (und Verschlüsselung) (immer die ganze Emailnachricht verwenden)">
+<!ENTITY gmail-disable-auto-decryption "Altes Entschlüsselungsverhalten">
+<!ENTITY gmail-force-from "Erzwingen von Wert:">
+<!ENTITY gpg-special-path-values "Um den Firefox-Ordner oder ein Leerzeichen in einem Argument zu haben, nutze {$FxFolder] bzw. {$SPACE}">
+<!ENTITY decrypt-when-reply "Inhalt beim Antworten entschlüsseln">

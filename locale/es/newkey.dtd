@@ -1,17 +1,17 @@
-<!ENTITY newkey "FireGPG - nueva clave">
-<!ENTITY warningaboutgeneeration "Atención! La generación de claves puede tardar bastante tiempo y paralizar el Firefox. Es aconsejable hacer algo (copiar archivos de una carpeta a otra mover el ratón...) para crear más entropía.">
+<!ENTITY newkey "FireGPG - nueva llave">
+<!ENTITY warningaboutgeneeration "Aviso! La generación de llaves puede tardar bastante tiempo y paralizar Firefox. Haga otra cosa mientras que la llave es generada para crear más entropía.">
 <!ENTITY name-message "Nombre">
-<!ENTITY email-message "Email">
+<!ENTITY email-message "Correo Electrónico">
 <!ENTITY comment-message "Comentario">
 <!ENTITY password1-message "Contraseña">
-<!ENTITY password2-message "Repite contraseña">
-<!ENTITY keyneverexpire "Esta clave nunca caduca">
-<!ENTITY keyexpire-message "La clave caduca en">
+<!ENTITY password2-message "Repita la contraseña">
+<!ENTITY keyneverexpire "Esta llave nunca expira">
+<!ENTITY keyexpire-message "La llave expira en">
 <!ENTITY expire-year "años">
 <!ENTITY expire-month "meses">
 <!ENTITY expire-days "días">
 <!ENTITY advancedoptions "Opciones avanzadas ">
-<!ENTITY keylenght-message "Longitud de clave">
-<!ENTITY keytype-message "Tipo de clave">
-<!ENTITY generate-button "Generar clave">
+<!ENTITY keylenght-message "Longitud de llave">
+<!ENTITY keytype-message "Tipo de llave">
+<!ENTITY generate-button "Generar Llave">
 <!ENTITY cancel-button "Cancelar">

@@ -63,6 +63,8 @@
 <!ENTITY gmail-smtp-host "میزبان (smtp.gmail.com)">
 <!ENTITY gmail-smtp-port "(درگاه (۴۶۵">
 <!ENTITY gmail-smtp-use-ssl-checkbox "استفاده از اس‌اس‌ال:">
-<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
-<!ENTITY gmail-disable-auto-decryption "Disable auto-decryption">
-<!ENTITY gmail-force-from "Force from value :">
+<!ENTITY gmail-disable-sign-detection "یافتن جوای را از امضای در خط غیرفعال کن (و رمزگذاری) (همیشه از همه ایمیل استفاده کن)ا">
+<!ENTITY gmail-disable-auto-decryption "حالت قدیمی برای رمزگشایی">
+<!ENTITY gmail-force-from "اجبار توسط مقدار:">
+<!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
+<!ENTITY decrypt-when-reply "رمزگشایی محتوا هنگام پاسخ‌دهی">

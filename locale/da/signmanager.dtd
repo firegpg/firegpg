@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Underskriftshåndtering">
+<!ENTITY key-name "Navn">
+<!ENTITY key-id "Nøgle-ID">
+<!ENTITY key-create "Dato (underskrift eller oprettelse)">
+<!ENTITY sign-button "Underskriv denne nøgle">
+<!ENTITY revoke-button "Inddrag denne underskrift">
+<!ENTITY del-button "Slet denne underskrift">

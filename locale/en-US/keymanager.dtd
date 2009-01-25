@@ -16,7 +16,7 @@
 <!ENTITY refrech "Refresh keys from server">
 <!ENTITY trustUnded "Remove information about trusting">
 <!ENTITY trustDont "I don't trust this key">
-<!ENTITY trustMargi "I marginaly trust this key">
+<!ENTITY trustMargi "I marginally trust this key">
 <!ENTITY trustFull "I fully trust this key">
 <!ENTITY trustUltimate "Trust this key ultimately (!)">
 <!ENTITY password-button "Change password">

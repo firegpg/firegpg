@@ -31,3 +31,4 @@ pref("extensions.firegpg.gmail_username", "");
 pref("extensions.firegpg.gmail_disable_detection_of_reply_for_signs", false);
 pref("extensions.firegpg.gmail_disable_auto_decryption", false);
 pref("extensions.firegpg.gmail_force_from", "");
+pref("extensions.firegpg.gmail_decrypt_when_reply", false);

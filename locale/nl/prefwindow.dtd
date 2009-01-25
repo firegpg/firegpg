@@ -52,17 +52,19 @@
 <!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
 <!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
 <!ENTITY keyserver-message "Keyserver">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use gpg --version to have the list of usable algorithms, in most of case you have this choices:">
-<!ENTITY gmail-new-interface "New gmail interface">
+<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms, in most of case you have this choices:">
+<!ENTITY gmail-new-interface "Nieuwe Gmail-interface">
 <!ENTITY gmail-select-by-default-label "Selected by default :">
-<!ENTITY gmail-buton-inline-checkbox "Inline">
-<!ENTITY gmail-old-interface "Old gmail interface">
-<!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
+<!ENTITY gmail-buton-inline-checkbox "Binnensregels">
+<!ENTITY gmail-old-interface "Oude Gmail-interface">
+<!ENTITY gmail-smtp-options-label "SMTP-opties (opengpg/mime-mails)">
 <!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
 <!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
-<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
-<!ENTITY gmail-smtp-port "Port (465) :">
-<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
-<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
-<!ENTITY gmail-disable-auto-decryption "Disable auto-decryption">
-<!ENTITY gmail-force-from "Force from value :">
+<!ENTITY gmail-smtp-host "Host (smtp.gmail.com)">
+<!ENTITY gmail-smtp-port "Poort (465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Gebruik SSL:">
+<!ENTITY gmail-disable-sign-detection "Zet antwoordherkenning uit voor binnensregelige ondertekening (en versleuteling) (gebruik altijd het volledige bericht)">
+<!ENTITY gmail-disable-auto-decryption "Oud gedrag voor ontsleuteling">
+<!ENTITY gmail-force-from "Van-waarde forceren:">
+<!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
+<!ENTITY decrypt-when-reply "Ontsleutel inhoud bij antwoord">

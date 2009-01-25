@@ -29,7 +29,7 @@
 <!ENTITY firegpgToolbar.labelExport "Exportieren">
 <!ENTITY firegpgPopInfo.labelBonjour "Willkommen!<br />FireGPG wurde erfolgreich installiert!">
 <!ENTITY firegpgPopInfo.labelAccessOk "FireGPG hat GnuPG auf Ihrem System gefunden!">
-<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG konnte GnuPG nicht finden! Wenn es korrekt installiert wurde, muss der Pfad in den Optionen angepasst werden!">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG konnte das GnuPG-Programm nicht finden! Wenn es korrekt installiert wurde, muss der Pfad in den Optionen angepasst werden!">
 <!ENTITY firegpgPopInfo.labelKeyOk "Der private Schlüssel wurde korrekt eingestellt!">
 <!ENTITY firegpgPopInfo.labelKeyErr "Achtung: In den Optionen ist kein privater Schlüssel eingestellt!">
 <!ENTITY firegpgPopInfo.close "Schließen">

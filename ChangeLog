@@ -1,4 +1,24 @@
-2009-01-19 Maximilien Cuony
+2009-01-25 Maximilien Cuony
+    * 0.7.1 packed, and uploaded to the server !
+    * Danish added
+
+2009-01-24 Maximilien Cuony
+    * FS#214
+    * New comment
+    * FS#213
+    * Fix a problem with firegpg message after sending a mail
+    * Fix a problem when opening link in new windows widhout sending a mail
+    * FS#183
+    * FS#200
+    * FS#186
+    * FS#210
+
+2009-01-22 Maximilien Cuony
+    * FS#208
+    * FS#206
+    * FS#207
+
+2009-01-21 Maximilien Cuony
     * FS#201
     * FS#202
     * FS#198

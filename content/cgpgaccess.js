@@ -76,7 +76,7 @@ const XPCOM_STATE_DISABLED = 3;
 
 /* Constant: comment
   The firegpg's comment to add to gnupg texts. */
-const comment = "http://getfiregpg.org";
+const comment = "Use{$SPACE}GnuPG{$SPACE}with{$SPACE}Firefox{$SPACE}:{$SPACE}http://getfiregpg.org{$SPACE}(Version:{$SPACE}" + FIREGPG_VERSION + ")";
 
 
 /*
@@ -344,7 +344,7 @@ var GPGAccess = {
 
         for(i = 0; i < parametersS.length; i++)
             if(parametersS[i] != "" && parametersS[i] != null)
-                gpgArgs.push(parametersS[i]);
+                gpgArgs.push(parametersS[i].replace(/\{\$SPACE\}/gi, ' '));
 
 
         try {

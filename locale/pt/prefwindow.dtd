@@ -55,7 +55,7 @@
 <!ENTITY symmetric-algo "Algoritmo usado para cifra simétrica. Deixe em branco para usar o pré-definido. Use gpg --version para obter uma lista de algoritmos disponíveis. Geralmente tem as seguintes opções:">
 <!ENTITY gmail-new-interface "Nova interface gmail">
 <!ENTITY gmail-select-by-default-label "Seleccionado por omissão:">
-<!ENTITY gmail-buton-inline-checkbox "Em linha">
+<!ENTITY gmail-buton-inline-checkbox "Embutido">
 <!ENTITY gmail-old-interface "Interface gmail antiga">
 <!ENTITY gmail-smtp-options-label "Opções SMTP (emails openpgp/mime)">
 <!ENTITY gmail-smtp-google-com "Nunca tentar utilizar a senha memorizada pelo google.com">
@@ -63,6 +63,8 @@
 <!ENTITY gmail-smtp-host "Servidor (smtp.gmail.com)">
 <!ENTITY gmail-smtp-port "Porto (465):">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Usar SSL:">
-<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
-<!ENTITY gmail-disable-auto-decryption "Disable auto-decryption">
-<!ENTITY gmail-force-from "Force from value :">
+<!ENTITY gmail-disable-sign-detection "Desactivar detecção de resposta para assinaturas (e cifragens) embutidas (usar sempre toda a mensagem)">
+<!ENTITY gmail-disable-auto-decryption "Comportamento antigo para decifragem">
+<!ENTITY gmail-force-from "Forçar o valor De:">
+<!ENTITY gpg-special-path-values "Usar {$FxFolder} para ter a pastar do Firefox e {$SPACE} para ter espaço dentro de um argumento">
+<!ENTITY decrypt-when-reply "Decriptar conteúdo quando responder">

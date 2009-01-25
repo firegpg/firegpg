@@ -1,10 +1,10 @@
-<!ENTITY crypt-button "Cifrar">
-<!ENTITY dcrypt-button "Descifrar">
+<!ENTITY crypt-button "Encriptar">
+<!ENTITY dcrypt-button "Desencriptar">
 <!ENTITY sign-button "Firmar">
 <!ENTITY verify-button "Verificar">
 <!ENTITY open-button "Abrir">
 <!ENTITY save-button "Guardar">
-<!ENTITY cryptandsign-button "Firmar y cifrar ">
-<!ENTITY sign-clear-button "Firmar en limpio">
-<!ENTITY symcrypt-button "Cifrado simétrico">
-<!ENTITY closeandcopy-button "Copia en portapapeles y cierra">
+<!ENTITY cryptandsign-button "Firmar y encriptar">
+<!ENTITY sign-clear-button "Firmar en claro">
+<!ENTITY symcrypt-button "Encripción Simétrica">
+<!ENTITY closeandcopy-button "Copiar al portapapeles y cerrar">

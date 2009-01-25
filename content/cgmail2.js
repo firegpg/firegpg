@@ -52,6 +52,8 @@ const IMG_ENCRYPT_OFF = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQC
 const IMG_INLINE_ON = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9kBDxIDEyzXu6IAAAJDSURBVDjLXZK9S1thFIef9354ufEak5qQpoFq24QSGqXg5FKodCxd/Q9CCYKDIDh26No6SiY7lOImpV3qYkGw6tA/QBAFSYg0QWL0er/ydnjVfJzl5ZwDz/md33uEnJx8STw+hWVNYppPsKwi8JRO5xFh2EXT/tLtfqJW2xXn5/8YCiGnpyWLizAyAokEWBaYJgQBHB+D68LJCdTrR+zsfBSt1pd+gMHERIN8PkO7rSqeJ/E8gWXBzAx0OjA1Be12gVTqg9zY2BG+f9oDQAPIsLUFl5fgeQLXhYUFKBZhfx9aLZiflxQKCSwrju/TDzjH88BxQNdVVdPU22xCOg2lEgghME0b04wNrgCX+D6kUnBxMQgJQ8hkVC4lwAhBYA0CoqgLKJl3PgCcnSkzR0dV7vtgGHdD+wBhGCElzM1xv9v1Nd8rFd6trSlAtwuepxQNhYZhmICaNj4OzSZvKhV+AWxuwvY2HB2pbwUIQ20QoOsP7rODA14tL/MHcIFve3v41SocHqrpUvYMvgdAHCFUlskQ71tyFNChZ2wYgqZ1BwFRNAYoibkcP1ZWKN02nwH6mGoTBMoHXY+GTXSQUjVdF0oldstl1qtVXiwtQTKp3Nc0CAKJpg0BgiCGrkMspk44imB2lvflsjoixwEpJSBw3Rs872YQUK9/ZXU1QTb7kGz2MbadxbZjpNO9AzJNgeNAo3Hz+eoqfWvPFYAA+A3mBcR0cHSI+xArQKpoGHlyuTzJZAnbfk6tFv08PX39Fk7uFPwH1YnXP5gXXzcAAAAASUVORK5CYII%3D";
 const IMG_INLINE_OFF = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9kBFQowNr4pT+YAAAJrSURBVDjLXZG9ThtBFEbP/KxnWdssjsFaW5YtgeSCBnqKiAqJF6BGIpQUvAgNFR2FeySkNLQUqZAi8QKYJkUArSG22d2ZSUHWipn205z73XPF5eVlYoyJK5VKLIRoaK1XgZU8z+vWWi+l/GWt/TEejx+Pjo4mfHo6DMNvOzs7BEGAMYYgCFBKYa3l6emJPM97Ly8vvfF4/HxxcXF7fHz883+AjKLoz9raGsYYAPI8ZzabAdDpdEiShPX1dTY3N79sbW19PT8/jxcaCCHegOr9/T3v7+8URUFRFGxvb5MkCaPRiMlkwsbGBqurq6FSyiwAvPcTay1hGCKlBEAIgfee19dXqtUqSZIgpUQppZVSwecG79ZaoihCSokQ4mM3KfHeU6/X8d7jnANQzjm1AHDOeYDpdMp0Op0HaZqitSYIPgZaa0uoXJDonPPOOfr9PoPBgMFgQL/f5+zsbA4sG/xrsXhGKaX03qOUQmvN8/Mz+/v7tFot7u7uaLfbNBoNlpeXAXDOiYUGQoilcu/RaMTe3h4PDw9kWcbV1RW3t7c8Pj7inMN7P3c0BwCmtB7HMcYYlPrwFATBXGy5hpTSLwC89xUhBM456vU6w+GQJEkAaDabLC0tUebWWoQQ/rPEShlmWUan02E4HNLr9Tg4OGB3d5dut4sQogS4z2cMSoGl6W63y+npKdVqlTAM5/azLCuKoigWAGma3l9fX5uVlZVarVaLjTE1rXVQq9Xm1ZVShGHI29tbcXNzUwUCIAfQh4eH309OTuRsNguEEBUhhHHOBc1mM2q32404jr9EUdTSWjfTNHWtVut3+RngLwdWF4aAJ/0ZAAAAAElFTkSuQmCC";
 
+const IMG_ENCRYPTED = IMG_ENCRYPT_ON;
+const IMG_ENCRYPTED2 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAN1wAADdcBQiibeAAAAAd0SU1FB9gFCxQBOXBpjnYAAAIFSURBVDjLzZHPS9NxGMdfn8++Op2hWaNE58LZKRNKI1MLRKZ06NahGYs6dO/SLaiTdFDoj8hDh04FefDHpLnAQ1oYUWFB6tRDsFmXre8+z9NhMqZ2rwceHngenhfP837Dvw7zt+bo6MAJ53RMDfWVpkilCJTU8SqdXvp4CBCPX44psmqMCRlTPVZUQVURkXJ1esc7CFD1H9lATcgag7Fm70yDoqiW0xiDqmKNXjsE8GqCV7u7z1EsFPj67TPGWIwBFKQCEEQUh3wIVC8PDfVdirRF7p2KdjA+PkEkEmVrO8uvn7vYwB6oSjaLPDAA/f399YODF58kxpKJnvO9TdW/iwip1BzpxRSrq+8oFguICCKyWywEwhagpeV4sq6ufqC350LTfuEgm92k+VgziRu3uDl2m9raIKoKSmphYaHkJZOJ+7FY55l4fOToQT0mJh8zOzuN7FlojS1/oAowA2Cnpp5NZrObnxYzr/ctz8/PMj39At/3y7aJ4MThnMOJoOrPAAQAVlbeZ0SK4VCo4UpX11kAGhqOkMksspvPlT1XUKlY+X1+bulhBQAQDjeeXF55e31jY53W1gjRaJTh4RF83+FciVw+R6lUKkOE5+vrWy/3edLXd7rxtx98ao0Z9Dyvtj0a9TpinTbS1m7rgkGTy+fM2toX3d7Zcbn8j7tv0stT/BfxB+vd+QMX9EoXAAAAAElFTkSuQmCC";
 /*
    Class: cGmail2
    This is the main class to manage gmail's function with the new interface.
@@ -214,6 +216,9 @@ var cGmail2 = {
 
                                     this.setMailContent(listeTest[i],doc,data.message);
 
+                                    if (cGmail2.decryptOnReply)
+                                        listeTest[i].setAttribute("firegpg-decrypted-data", data.message);
+
                                     td.setAttribute("style","color: blue;");
                                     td.innerHTML = i18n.getString("GMailMailWasDecrypted");
 
@@ -287,6 +292,8 @@ var cGmail2 = {
                                         data = FireGPGMimeDecoder.washDecryptedForInsertion(FireGPGMimeDecoder.demime(result.decrypted).message.replace(/\r/gi, ''));
 
                                         this.setMailContent(listeTest[i],doc,data);
+                                        if (cGmail2.decryptOnReply)
+                                            listeTest[i].setAttribute("firegpg-decrypted-data", data);
 
                                         td.setAttribute("style","color: blue;");
                                         td.innerHTML = i18n.getString("GMailMailWasDecrypted");
@@ -466,9 +473,52 @@ var cGmail2 = {
                                 tablebox.firstChild.insertBefore(firegpgactions,filesattachbox);
                             } catch (e) {   fireGPGDebug(e,'cgmail2.checkDoc(insert checkboxes)',true); }
 
+                            if (cGmail2.decryptOnReply) {
+
+                                form =  listeTest[i].parentNode.getElementsByTagName('form');
+                                //Nouvelle version du lundi 29 septembre 2008
+                                if (form.length == 0) {
+
+                                   form = listeTest[i].parentNode.parentNode.getElementsByTagName('form');
+
+                                }
+
+                               form = form[0];
+
+                                findHere = form.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+                                elements = findHere.getElementsByClassName('ArwC7c', 'div');
+                                if (elements[0] && elements[0].hasAttribute("firegpg-decrypted-data") ) {
+                                    data = elements[0].getAttribute("firegpg-decrypted-data");
 
 
+                                    if (cGmail2.iframeOrTextarea(doc,wheretoadd) == "iframe") {
 
+                                        var iframe = cGmail2.getTheIframe(doc,wheretoadd);
+
+                                        baseData = iframe.contentWindow.document.body.innerHTML;
+
+                                        before = baseData.substring(0,baseData.indexOf("-----BEGIN PGP MESSAGE-----"));
+
+                                        after = baseData.substring(baseData.indexOf("-----END PGP MESSAGE-----") + "-----END PGP MESSAGE-----".length, baseData.length);
+
+                                        iframe.contentWindow.document.body.innerHTML = before + data + after;
+
+                                    } else {
+
+                                        var textarea = cGmail2.getTheTextarea(doc,wheretoadd);
+
+                                        baseData = textarea.value;
+
+                                        before = baseData.substring(0,baseData.indexOf("-----BEGIN PGP MESSAGE-----"));
+
+                                        after = baseData.substring(baseData.indexOf("-----END PGP MESSAGE-----") + "-----END PGP MESSAGE-----".length, baseData.length);
+
+                                        textarea.value = before + data.replace(/<br \/>/gi, "\n> ") + after;
+
+                                    }
+                                }
+
+                            }
 
                         }
 
@@ -483,36 +533,11 @@ var cGmail2 = {
                         form = form[0];
 
 
-                        if (this.useremail == null) {
-                            try {
-
-                                var topwinjs = form.ownerDocument.defaultView.parent.wrappedJSObject;
-                                if (("USER_EMAIL" in topwinjs) && typeof(topwinjs.USER_EMAIL) == "string")
-                                {
-                                    this.useremail = topwinjs.USER_EMAIL;
-                                }
-                                else if (("GLOBALS" in topwinjs) && typeof(topwinjs.GLOBALS[10]) == "string" &&
-                                 (/@(g|google)mail.com$/i).test(topwinjs.GLOBALS[10]))
-                                {
-                                    // gmail_fe_509_p10
-                                    this.useremail = topwinjs.GLOBALS[10];
-                                }
-                                else if (typeof(topwinjs.globals) == "object" && typeof(topwinjs.globals.USER_EMAIL) == "string")
-                                {
-                                    this.useremail = topwinjs.globals.USER_EMAIL;
-                                } else {
-
-                                    this.useremail = form.ownerDocument.evaluate(".//div[@class='nQ6QTe']//b[contains(text(), '@')]",
-																		form.ownerDocument.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE,
-																		null).singleNodeValue.textContent;
-
-                                }
+                       // if (this.useremail == null) {
 
 
-                            } catch (e) { }
 
-
-                        }
+                      //  }
 
                         form.setAttribute("firegpg-mail-id", "");
 
@@ -913,13 +938,18 @@ var cGmail2 = {
                 if (!sign & !encrypt)
                     return;
 
+                if (target.getAttribute('gpg_action') == "send_button2")
+                        buttonsboxes = target.parentNode.parentNode;
+                    else
+                        buttonsboxes = target.parentNode;
 
+                var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,buttonsboxes, false, false, false);
 
                 if (inline) {
 
                     var mailContent = cGmail2.getWriteMailContent(this._doc,target.parentNode, true);
 
-                    var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,target.parentNode);
+
 
                     if (mailContent == "")
                         stopTheEvent = true;
@@ -940,10 +970,12 @@ var cGmail2 = {
                                 alert(i18n.getString("cryptAndSignFailedPass"));
                                 stopTheEvent = true;
                             }
-                            else {
+                            else if(result.result == RESULT_SUCCESS)  {
 
                                 cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
 
+                            } else {
+                                stopTheEvent = true;
                             }
 
 
@@ -976,11 +1008,6 @@ var cGmail2 = {
 
                 } else {
 
-                    if (target.getAttribute('gpg_action') == "send_button2")
-                        buttonsboxes = target.parentNode.parentNode;
-                    else
-                        buttonsboxes = target.parentNode;
-
                     //alert("S:" + sign + " E:" + encrypt + " I:" + inline);
 
                     form =  buttonsboxes.parentNode.parentNode.parentNode.parentNode.getElementsByTagName('form');
@@ -1006,8 +1033,43 @@ var cGmail2 = {
                     }
 
 
-                    if (username == "")
-                        a.smtpUsername = cGmail2.useremail;
+                    if (username == "") {
+
+                             try {
+
+                                var topwinjs = f.ownerDocument.defaultView.parent.wrappedJSObject;
+                                if (("USER_EMAIL" in topwinjs) && typeof(topwinjs.USER_EMAIL) == "string")
+                                {
+                                    this.useremail = topwinjs.USER_EMAIL;
+                                }
+                                else if (("GLOBALS" in topwinjs) && typeof(topwinjs.GLOBALS[10]) == "string" &&
+                                 (/@(g|google)mail.com$/i).test(topwinjs.GLOBALS[10]))
+                                {
+                                    // gmail_fe_509_p10
+                                    this.useremail = topwinjs.GLOBALS[10];
+                                }
+                                else if (typeof(topwinjs.globals) == "object" && typeof(topwinjs.globals.USER_EMAIL) == "string")
+                                {
+                                    this.useremail = topwinjs.globals.USER_EMAIL;
+                                } else {
+
+                                    this.useremail = f.ownerDocument.evaluate(".//div[@class='nQ6QTe']//b[contains(text(), '@')]",
+																		form.ownerDocument.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE,
+																		null).singleNodeValue.textContent;
+
+                                }
+
+
+                            } catch (e) { fireGPGDebug(e, 'finding smtp username', true);}
+
+
+
+
+
+                            a.smtpUsername = this.useremail;
+
+                    }
+
                     else
                         a.smtpUsername = username;
 
@@ -1105,11 +1167,12 @@ var cGmail2 = {
 
                     prefs.sign = sign;
                     prefs.encrypt = encrypt;
+                    prefs.whoWillGotTheMail = whoWillGotTheMail;
 
                     resulta = false;
 
                    resulta = a.ourSubmit(from, to, cc, bcc, subject,
-                    inreplyTo, "", mailContent, false, attachments, prefs);
+                    inreplyTo, "", mailContent, cGmail2.iframeOrTextarea(this._doc, buttonsboxes) == "textarea", attachments, prefs);
 
 
                     //DBUG
@@ -1245,7 +1308,7 @@ var cGmail2 = {
             dDocument- The html document
             boutonxboxnode - The note with the buttons of the mails
     */
-    getWriteMailContent: function(dDocument,boutonxboxnode, betterTextOnly)
+    getWriteMailContent: function(dDocument,boutonxboxnode, betterTextOnly, forMime)
 	{
 
         if (betterTextOnly && cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe") {
@@ -1437,7 +1500,7 @@ var cGmail2 = {
 
             var textarea = cGmail2.getTheTextarea(dDocument,boutonxboxnode);
 
-            return textarea.value.replace(/</gi, "&lt;").replace(/>/gi,"&gt;").replace(/\r\n/gi, "\n").replace(/\r/gi, "\n").replace(/\n/gi, "<br />");
+            return textarea.value.replace(/</gi, "&lt;").replace(/>/gi,"&gt;").replace(/\r\n/gi, "\n").replace(/\r/gi, "\n").replace(/\n/gi, "\r\n");
 
 
         }
@@ -1989,7 +2052,15 @@ var cGmail2 = {
             data - The html of the mail
     */
 	setMailContent: function(i,doc,data) {
-		i.innerHTML = data;
+		baseData = i.innerHTML;
+
+        before = baseData.substring(0,baseData.indexOf("-----BEGIN PGP MESSAGE-----"));
+
+        after = baseData.substring(baseData.indexOf("-----END PGP MESSAGE-----") + "-----END PGP MESSAGE-----".length, baseData.length);
+
+        img = "<img src=\""+IMG_ENCRYPTED+"\" alt=\"" +IMG_ENCRYPTED2+"\" onmouseout=\"a = this.alt; this.alt=this.src; this.src=a; this.title = ''; \" onmouseover=\"if (this.title == '') { a = this.alt; this.alt=this.src; this.src=a; this.title = 'FireGPG'; }\">";
+
+        i.innerHTML = before + img + "<br /><br />" + data + "<br /><br />" + img  +  after;
 
 	},
 
@@ -2084,6 +2155,9 @@ var cGmail2 = {
 			catch (e) { var noAutoReplyDetect = false; }
             cGmail2.noAutoReplyDetect = noAutoReplyDetect;
 
+            try {	var decryptOnReply = prefs.getBoolPref("gmail_decrypt_when_reply");	}
+			catch (e) { var decryptOnReply = false; }
+            cGmail2.decryptOnReply = decryptOnReply;
 
 
 
@@ -2133,7 +2207,7 @@ var cGmail2 = {
         if (final_location.indexOf("http://mail.google.com/mail/") == 0 || final_location.indexOf("https://mail.google.com/mail/") == 0) {
 
            sr = doc.createElement('script');
-            sr.innerHTML = "var windowopen_ = window.open; window.open = function (a,b,c) {  if (document.getElementById('canvas_frame') && document.getElementById('canvas_frame').contentDocument && document.getElementById('canvas_frame').contentDocument.body && document.getElementById('canvas_frame').contentDocument.body.getAttribute('firegpg').indexOf('#FIREGPGCAPTURE') != -1) { document.getElementById('canvas_frame').contentDocument.body.setAttribute('firegpg',a); return new Window();  } else { return windowopen_(a,b,c); }};"
+            sr.innerHTML = "var windowopen_ = window.open; window.open = function (a,b,c) {  if (document.getElementById('canvas_frame') && document.getElementById('canvas_frame').contentDocument && document.getElementById('canvas_frame').contentDocument.body && document.getElementById('canvas_frame').contentDocument.body.getAttribute('firegpg') != null &&document.getElementById('canvas_frame').contentDocument.body.getAttribute('firegpg').indexOf('#FIREGPGCAPTURE') != -1) { document.getElementById('canvas_frame').contentDocument.body.setAttribute('firegpg',a); return new Window();  } else { return windowopen_(a,b,c); }};"
             doc.body.appendChild(sr);
 
 

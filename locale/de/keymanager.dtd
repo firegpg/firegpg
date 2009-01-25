@@ -1,8 +1,8 @@
 <!ENTITY key-status "Status">
 <!ENTITY key-trust "Vertrauen">
-<!ENTITY key-expire "verfallen">
+<!ENTITY key-expire "Verfallen">
 <!ENTITY key-create "Erstellt">
-<!ENTITY key-id "Id">
+<!ENTITY key-id "ID">
 <!ENTITY key-name "Name">
 <!ENTITY revoke-button "Schlüssel widerufen">
 <!ENTITY sign-button "Signaturen">
@@ -14,7 +14,7 @@
 <!ENTITY new-button "Neuer Schlüssel">
 <!ENTITY keymanager "Schlüssel Verwaltung">
 <!ENTITY refrech "Schlüssel vom Server aktualisieren">
-<!ENTITY trustUnded "Remove information about trusting">
+<!ENTITY trustUnded "Entferne Vertrauens-Informationen">
 <!ENTITY trustDont "Ich habe kein Vertrauen zu diesem Schlüssel">
 <!ENTITY trustMargi "Ich habe teilweises Vertrauen zu diesem Schlüssel">
 <!ENTITY trustFull "Ich habe volles Vertrauen zu diesem Schlüssel">
@@ -25,7 +25,7 @@
 <!ENTITY revokeComprimse "Schlüssel wurde kompromittiert.">
 <!ENTITY revokeRemplaced "Schlüssel wurde ersetzt.">
 <!ENTITY revokeNotUsed "Dieser Schlüssel wird nicht mehr verwendet.">
-<!ENTITY userid-button "User ID">
+<!ENTITY userid-button "Benutzer-ID">
 <!ENTITY add "Hinzufügen">
 <!ENTITY delete "Löschen">
 <!ENTITY revoke "Widerrufen">
