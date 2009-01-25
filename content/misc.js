@@ -50,9 +50,9 @@ try {
 
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */
-const FIREGPG_VERSION = '0.7.1';
+const FIREGPG_VERSION = '0.7.1b';
 
-const FIREGPG_VERSION_A = '071';
+const FIREGPG_VERSION_A = '071b';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
@@ -798,7 +798,7 @@ function testIfSomethingsIsNew() {
 
     } else {
 
-        //DESACTIVED FOR ADDON.MOZILLA.ORG        /*
+        //DESACTIVED FOR ADDON.MOZILLA.ORG/*
 
 
 

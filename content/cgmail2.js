@@ -1500,7 +1500,7 @@ var cGmail2 = {
 
             var textarea = cGmail2.getTheTextarea(dDocument,boutonxboxnode);
 
-            return textarea.value.replace(/</gi, "&lt;").replace(/>/gi,"&gt;").replace(/\r\n/gi, "\n").replace(/\r/gi, "\n").replace(/\n/gi, "\r\n");
+            return textarea.value.replace(/\r\n/gi, "\n").replace(/\r/gi, "\n").replace(/\n/gi, "\r\n");
 
 
         }
