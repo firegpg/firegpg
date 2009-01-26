@@ -1,3 +1,6 @@
+2009-01-26 Maximilien Cuony
+    * Fix a problem with form value, thanks to 	Mateusz Baszczyk for his help
+
 2009-01-25 Maximilien Cuony
     * 0.7.2 packed, and uploaded to the server !
     * Version 0.7.2 fix a problem with mail send in plain text (< and > are converted)

@@ -1112,15 +1112,25 @@ var cGmail2 = {
                     if (from == "" || from == null)
                         from = cGmail2.useremail;
 
+
+
                     try {
                         var forcefrom = prefs.getCharPref("gmail_force_from");
                     } catch (e) {
                         forcefrom = "";
                     }
 
-                    if (forcefrom != "" && forcefrom != null)
+                    if (forcefrom != "" && forcefrom != null && forcefrom != undefined)
                         from = forcefrom;
 
+                    if (from == undefined) //Zomg problem !
+                        from = a.smtpUsername
+
+                    if (from == undefined || from == "") {
+                        alert('This shouldn\'t happend, but I\'m unable to find a from value. Please set one on options');
+                        event.stopPropagation();
+                        return;
+                    }
 
 
                     to = cGmail2.getToCcBccMail(this._doc,buttonsboxes, true);

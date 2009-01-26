@@ -1090,6 +1090,7 @@ FireGPGMimeSender.prototype =
 	ourSubmit : function ourSubmit(from, to, cc, bcc, subject,
 	 inreplyto, references, body, isPlain, attachments, prefs)
 	{
+            fireGPGDebug("Parameters recevied : from: " + from +  " to:" +  to +  " cc:" +  cc +  " bcc:" +  bcc +  " subject:" +  subject +  " inreplyto:" +  inreplyto +  " isPlain:" + isPlain + " Sign ?" + prefs.sign + " Encrypt ?" +  prefs.encrypt, 'ourSubmit',  false);
 		// first do generic From and To. If it fails here, then give
 		// up. (But see advanced options to do, below. This code may
 		// need to be moved back down.)	 now we need mailFrom and
@@ -1099,6 +1100,7 @@ FireGPGMimeSender.prototype =
 
 		var msgs = null;	// this will be an Array
 
+        fireGPGDebug("Calling convertAddressLineToArray - parameters : from", 'ourSubmit',  false);
 		var af = convertAddressLineToArray(from);
 		if (af.length != 1) return false;
 		msg.mailFrom = af[0];
@@ -1107,8 +1109,15 @@ FireGPGMimeSender.prototype =
 		// try to send a message to yourself, Gmail SMTP will actually
 		// save the first copy of the message. Not the last one or
 		// whatever.
+        fireGPGDebug("Calling convertAddressLineToArray - parameters : to", 'ourSubmit',  false);
+        a = convertAddressLineToArray(to);
+        fireGPGDebug("Calling convertAddressLineToArray - parameters : cc", 'ourSubmit',  false);
+        a = convertAddressLineToArray(cc);
+        fireGPGDebug("Calling convertAddressLineToArray - parameters : bcc", 'ourSubmit',  false);
+        a = convertAddressLineToArray(bcc);
+        fireGPGDebug("Calling convertAddressLineToArray - parameters : to-cc-bcc", 'ourSubmit',  false);
 
-		msg.rcptTo =
+        msg.rcptTo =
 		convertAddressLineToArray(to).concat(
 		 convertAddressLineToArray(cc),
 		 convertAddressLineToArray(bcc));
@@ -1274,7 +1283,7 @@ FireGPGMimeSender.prototype =
             const crlf = "\r\n";
 
             boundeur = "-----firegpg" + FIREGPG_VERSION_A + "eq" + (Math.round(Math.random()*99)+(new Date()).getTime()).toString(36) +
-		(99+Math.round(46656*46656*46635*36*Math.random())).toString(36);
+                (99+Math.round(46656*46656*46635*36*Math.random())).toString(36);
 
            // msg.BodyPlus += crlf;
 
@@ -2245,6 +2254,11 @@ function convertAddressLineToArray(line)
 		g = g.replace( /^\s+/g, "" ); // leading
 		return g.replace( /\s+$/g, "" ); // trailing
 	}
+
+    if (line == undefined) {
+        fireGPGDebug("Undefined line in convertAddressLineToArray, return '' anyways", 'convertAddressLineToArray',  true);
+        return "";
+        }
 
 	var a = new Array();
 	//var j = 0;
