@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+  -   Version: MPL 1.1/GPL 2.0/LGPL 2.1
+  -
+  - The contents of this file are subject to the Mozilla Public License Version
+  - 1.1 (the "License"); you may not use this file except in compliance with
+  - the License. You may obtain a copy of the License at
+  - http://www.mozilla.org/MPL/
+  -
+  - Software distributed under the License is distributed on an "AS IS" basis,
+  - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+  - for the specific language governing rights and limitations under the
+  - License.
+  -
+  - The Original Code is FireGPG.
+  -
+  - The Initial Developer of the Original Code is
+  - FireGPG Team.
+  - Portions created by the Initial Developer are Copyright (C) 2007
+  - the Initial Developer. All Rights Reserved.
+  -
+  - Contributor(s):
+  -
+  - Alternatively, the contents of this file may be used under the terms of
+  - either the GNU General Public License Version 2 or later (the "GPL"), or
+  - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+  - in which case the provisions of the GPL or the LGPL are applicable instead
+  - of those above. If you wish to allow use of your version of this file only
+  - under the terms of either the GPL or the LGPL, and not to allow others to
+  - use your version of this file under the terms of the MPL, indicate your
+  - decision by deleting the provisions above and replace them with the notice
+  - and other provisions required by the GPL or the LGPL. If you do not delete
+  - the provisions above, a recipient may use your version of this file under
+  - the terms of any one of the MPL, the GPL or the LGPL.
+  -
+  - ***** END LICENSE BLOCK ***** -->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE prefwindow SYSTEM "chrome://firegpg/locale/prefwindow.dtd">
+<prefwindow id="optionsforefiregpg" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;" onload="onLoad(this); sizeToContent(); this.innerHeight = this.innerHeight + 100;">
+
+    <prefpane id="paneMisc" label="&pane1.title;" flex="1" image="chrome://firegpg/skin/opt-misc.png">
+        <!-- preferences -->
+        <preferences>
+            <preference id="default-private-key-pref" name="extensions.firegpg.default_private_key" type="string"/>
+            <preference id="no-gpg-agent-pref" name="extensions.firegpg.no_gpg_agent" type="bool"/>
+            <preference id="show-web-site-pref" name="extensions.firegpg.show_website" type="bool"/>
+            <preference id="result-always-in-new-window-pref" name="extensions.firegpg.result_always_in_new_window" type="bool"/>
+            <preference id="ask-for-save-pass-pref" name="extensions.firegpg.default_memory" type="bool"/>
+            <preference id="allvays-to-myself-pref" name="extensions.firegpg.allvays_to_myself" type="bool"/>
+            <preference id="no-updates" name="extensions.firegpg.no_updates" type="bool"/>
+            <preference id="hide-expired-pref" name="extensions.firegpg.hide_expired" type="bool"/>
+            <preference id="inline-activated-pref" name="extensions.firegpg.activate_inline" type="bool"/>
+
+            <preference id="hide-fireftp-message-pref" name="extensions.firegpg.fireftp_already_warning" type="bool"/>
+            <preference id="use-fireftp-workaround-pref" name="extensions.firegpg.fireftp_try_to_use_old_system" type="bool"/>
+
+
+
+        </preferences>
+
+
+
+        <hbox>
+            <label  id="firegpg-version-label" value="&firegpg-version-label.text;"/>
+
+            <label  id="firegpg-version-version" value=""/>
+        </hbox>
+
+        <!-- Always sign or verify in a new window -->
+        <checkbox  id="result-always-in-new-window" preference="result-always-in-new-window-pref"  label="&result-always-in-new-window;"/>
+
+        <!-- Ask for pass ? -->
+        <checkbox  id="ask-for-save-pass" preference="ask-for-save-pass-pref" label="&ask-for-save-pass;"/>
+
+        <!-- show web site -->
+        <checkbox  id="show-website-checkbox" preference="show-web-site-pref" checked="true" label="&show-website-checkbox;"/>
+
+        <checkbox  id="allvays-to-myself-checkbox" preference="allvays-to-myself-pref" label="&allvays-to-myself-checkbox;"/>
+
+        <!-- hide expired keys -->
+        <checkbox  id="hide-expired" preference="hide-expired-pref" label="&hide-expired;"/>
+
+        <checkbox  id="inline-activated" preference="inline-activated-pref" label="&inline-activated;"/>
+
+
+        <checkbox  id="updates-checkbox" preference="no-updates" label="&turn-off-updates;" onclick="showWarnings()"/>
+
+        <checkbox  id="hide-fireftp-message" preference="hide-fireftp-message-pref" label="&hide-fireftp-message;"/>
+        <checkbox  id="use-fireftp-workaround" preference="use-fireftp-workaround-pref" label="&use-fireftp-workaround;"/>
+
+
+        <!-- list of private keys -->
+        <label  id="private-keys-label" value="&private-keys-label.text;"/>
+<!--        <listbox id="" rows="4" >
+            <listhead>
+                <listheader label="&key-name;"></listheader>
+                <listheader label="&key-id;"></listheader>
+                <listheader label="&key-create;"></listheader>
+                <listheader label="&key-expire;"></listheader>
+            </listhead>
+        </listbox> -->
+
+        <!-- hidden label -->
+        <label  id="firegpg-ask-for-private-label" value="&firegpg-ask-for-private-label.text;" style="display: none;"/>
+
+
+        <tree id="private-keys-listbox" flex="1" hidecolumnpicker="false" onselect="privateKeySelected(this)">
+
+            <treecols>
+
+                <treecol primary="true" flex="1"  label="&key-name;" persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+                <treecol name="id" label="&key-id;" syle="width: 100px" flex="0" persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+                <treecol  label="&key-create;" syle="width: 100px" flex="0"  persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+                <treecol  label="&key-expire;" syle="width: 100px" flex="0" persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+            </treecols>
+
+            <treechildren id="private-keys-listbox-child" properties=""/>
+
+        </tree>
+
+    </prefpane>
+
+
+
+    <prefpane id="paneGpg" label="&pane4.title;" flex="1" image="chrome://firegpg/skin/opt-gpg.png">
+        <!-- preferences -->
+        <preferences>
+
+            <preference id="gpg-path-pref" name="extensions.firegpg.gpg_path" type="string"/>
+            <preference id="specify-gpg-path-pref" name="extensions.firegpg.specify_gpg_path" type="bool"/>
+            <preference id="gpg-add-options-pref" name="extensions.firegpg.gpg_user_options" type="string"/>
+            <preference id="use-gpg-agent-pref" name="extensions.firegpg.use_gpg_agent" type="bool"/>
+            <preference id="keyserver-pref" name="extensions.firegpg.keyserver" type="string"/>
+            <preference id="symmetricalgo-pref" name="extensions.firegpg.symmetric_algo" type="string"/>
+
+
+        </preferences>
+
+        <checkbox  id="use-gpg-agent-checkbox" preference="use-gpg-agent-pref" label="&use-gpg-agent-checkbox;"/>
+
+
+        <label  id="gpg-add-options-label" value="&gpg-add-options;"/>
+
+        <label  id="gpg-special-path-values" value="&gpg-special-path-values;"/>
+
+        <textbox id="gpg-add-options-textbox"  preference="gpg-add-options-pref"/>
+
+
+        <!-- specify the gpg path -->
+        <checkbox id="change-gpg-path-checkbox" checked="true" preference="specify-gpg-path-pref"
+                  label="&change-gpg-path-checkbox; *" control="gpg-path-textbox"
+                  oncommand="onChangeGPGPathCheckbox(this, true);"/>
+        <hbox>
+            <textbox id="gpg-path-textbox"  preference="gpg-path-pref"/>
+            <button id="change-gpg-path-button" label="&change-gpg-path-button; *"
+                  control="gpg-path-textbox" oncommand="chooseGPGPath();"/>
+        </hbox>
+
+
+        <label  id="keyserver-label" value="&keyserver-message;"/>
+        <textbox id="keyserver-textbox"  preference="keyserver-pref"/>
+
+
+        <label value="&symmetric-algo;" />
+        <label value="3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH" />
+        <textbox id="symmetricalgo-textbox"  preference="symmetricalgo-pref"/>
+
+       <label  id="gmail-need-a-restart-label" value="* &gmail-need-a-restart;"/>
+
+    </prefpane>
+
+
+    <prefpane id="paneGmail" label="&pane2.title;" flex="1" image="chrome://firegpg/skin/opt-gmail.png">
+        <preferences>
+            <preference id="gmail-enabled-pref" name="extensions.firegpg.gmail_enabled" type="bool"/>
+            <preference id="gmail-no-no-sign" name="extensions.firegpg.gmail_no_sign_off" type="bool"/>
+            <preference id="gmail-buton-sign" name="extensions.firegpg.gmail_butons_sign" type="bool"/>
+            <preference id="gmail-buton-signsend" name="extensions.firegpg.gmail_butons_sign_send" type="bool"/>
+            <preference id="gmail-buton-psign" name="extensions.firegpg.gmail_butons_psign" type="bool"/>
+            <preference id="gmail-buton-psignsend" name="extensions.firegpg.gmail_butons_psign_send" type="bool"/>
+            <preference id="gmail-buton-crypt" name="extensions.firegpg.gmail_butons_crypt" type="bool"/>
+            <preference id="gmail-buton-cryptsend" name="extensions.firegpg.gmail_butons_crypt_send" type="bool"/>
+            <preference id="gmail-buton-signcrypt" name="extensions.firegpg.gmail_butons_sign_crypt" type="bool"/>
+            <preference id="gmail-buton-signcryptsend" name="extensions.firegpg.gmail_butons_sign_crypt_send" type="bool"/>
+            <preference id="gmail-buton-use-select" name="extensions.firegpg.gmail_butons_use_select" type="bool"/>
+            <preference id="gmail-disable-autosave" name="extensions.firegpg.gmail_disable_autosave" type="bool"/>
+
+            <preference id="gmail-select-by-default-sign" name="extensions.firegpg.gmail_select_by_default_sign" type="bool"/>
+            <preference id="gmail-select-by-default-encrypt" name="extensions.firegpg.gmail_select_by_default_encrypt" type="bool"/>
+            <preference id="gmail-select-by-default-inline" name="extensions.firegpg.gmail_select_by_default_inline" type="bool"/>
+
+            <preference id="gmail-smtp-google-com" name="extensions.firegpg.gmail_never_use_google_com_password" type="bool"/>
+            <preference id="gmail-smtp-use-ssl" name="extensions.firegpg.gmail_use_ssl" type="bool"/>
+            <preference id="gmail-smtp-port" name="extensions.firegpg.gmail_port" type="string"/>
+            <preference id="gmail-smtp-host" name="extensions.firegpg.gmail_host" type="string"/>
+            <preference id="gmail-smtp-username" name="extensions.firegpg.gmail_username" type="string"/>
+
+            <preference id="gmail-disable-sign-detection" name="extensions.firegpg.gmail_disable_detection_of_reply_for_signs" type="bool"/>
+            <preference id="gmail-disable-auto-decryption" name="extensions.firegpg.gmail_disable_auto_decryption" type="bool"/>
+            <preference id="gmail-force-from" name="extensions.firegpg.gmail_force_from" type="string"/>
+
+            <preference id="gmail-decrypt-when-reply" name="extensions.firegpg.gmail_decrypt_when_reply" type="bool"/>
+
+        </preferences>
+
+        <label  id="gmail-need-a-restart-label" value="&gmail-need-a-restart;"/>
+
+         <!-- gmail enabled ? -->
+        <checkbox id="gmail-enabled-checkbox" preference="gmail-enabled-pref"
+              label="&gmail-enabled-checkbox.label;"
+              accesskey="&gmail-enabled-checkbox.accesskey;"/>
+
+    <checkbox id="gmail-disable-autosave-checkbox" preference="gmail-disable-autosave"
+              label="&gmail-disable-autosave-checkbox;"/>
+
+        <checkbox id="gmail-no-no-sign-checkbox" preference="gmail-no-no-sign"
+              label="&gmail-no-no-sign-checkbox;"/>
+
+        <groupbox flex="1">
+            <caption label="&gmail-new-interface;" />
+
+            <checkbox id="gmail-disable-sign-detection-checkbox" preference="gmail-disable-sign-detection"
+                            label="&gmail-disable-sign-detection;"/>
+
+            <checkbox id="gmail-disable-auto-decryption-checkbox" preference="gmail-disable-auto-decryption"
+                            label="&gmail-disable-auto-decryption;"/>
+
+            <checkbox id="gmail-decrypt-when-reply-checkbox" preference="gmail-decrypt-when-reply"
+                            label="&decrypt-when-reply;"/>
+
+
+            <label  id="gmail-sbuttons-label" value="&gmail-select-by-default-label;"/>
+
+            <checkbox id="gmail-select-by-default-sign-checkbox" preference="gmail-select-by-default-sign"
+                            label="&gmail-buton-sign-checkbox;"/>
+
+            <checkbox id="gmail-select-by-default-encrypt-checkbox" preference="gmail-select-by-default-encrypt"
+                            label="&gmail-buton-crypt-checkbox;"/>
+
+
+            <checkbox id="gmail-select-by-default-inline-checkbox" preference="gmail-select-by-default-inline"
+                            label="&gmail-buton-inline-checkbox;"/>
+
+
+            <label  id="gmail-smtp-options-label" value="&gmail-smtp-options-label;"/>
+
+            <label  id="gmail-smtp-host-label" value="&gmail-smtp-host;"/>
+            <textbox id="gmail-smtp-host-textbox"  preference="gmail-smtp-host"/>
+
+            <label  id="gmail-smtp-port-label" value="&gmail-smtp-port;"/>
+            <textbox id="gmail-smtp-port-textbox"  preference="gmail-smtp-port"/>
+
+            <label  id="gmail-smtp-username-label" value="&gmail-smtp-username;"/>
+            <textbox id="gmail-smtp-username-textbox"  preference="gmail-smtp-username"/>
+
+            <label  id=" gmail-force-from-label" value="&gmail-force-from;"/>
+            <textbox id="gmail-force-from-textbox"  preference="gmail-force-from"/>
+
+
+             <checkbox id="gmail-smtp-use-ssl-checkbox" preference="gmail-smtp-use-ssl"
+                            label="&gmail-smtp-use-ssl-checkbox;"/>
+
+            <checkbox id="gmail-smtp-google-com-checkbox" preference="gmail-smtp-google-com"
+                            label="&gmail-smtp-google-com;"/>
+
+
+        </groupbox>
+
+
+        <groupbox flex="1">
+            <caption label="&gmail-old-interface;" />
+
+
+            <label  id="gmail-buttons-label" value="&gmail-buttons-label;"/>
+
+
+            <grid flex="1">
+                <columns>
+                    <column flex="1"/>
+                    <column flex="1"/>
+                </columns>
+
+                <rows>
+                    <row>
+                        <checkbox id="gmail-buton-sign-checkbox" preference="gmail-buton-sign"
+                            label="&gmail-buton-csign-checkbox;"/>
+                        <checkbox id="gmail-no-no-signsend-checkbox" preference="gmail-buton-signsend"
+                            label="&gmail-buton-csignsend-checkbox;"/>
+                    </row>
+                    <row>
+                        <checkbox id="gmail-buton-psign-checkbox" preference="gmail-buton-psign"
+                            label="&gmail-buton-sign-checkbox;"/>
+                        <checkbox id="gmail-no-no-psignsend-checkbox" preference="gmail-buton-psignsend"
+                            label="&gmail-buton-signsend-checkbox;"/>
+                    </row>
+                    <row>
+                        <checkbox id="gmail-buton-crypt-checkbox" preference="gmail-buton-crypt"
+                            label="&gmail-buton-crypt-checkbox;"/>
+                        <checkbox id="gmail-no-no-cryptsend-checkbox" preference="gmail-buton-cryptsend"
+                            label="&gmail-buton-cryptsend-checkbox;"/>
+                    </row>
+                     <row>
+                        <checkbox id="gmail-buton-signcrypt-checkbox" preference="gmail-buton-signcrypt"
+                            label="&gmail-buton-signcrypt-checkbox;"/>
+                        <checkbox id="gmail-no-no-signcryptsend-checkbox" preference="gmail-buton-signcryptsend"
+                            label="&gmail-buton-signcryptsend-checkbox;"/>
+                    </row>
+                </rows>
+            </grid>
+
+            <checkbox id="gmail-buton-use-select-checkbox" preference="gmail-buton-use-select"
+                  label="&gmail-buton-use-select-checkbox;"/>
+
+        </groupbox>
+    </prefpane>
+
+    <!-- Gpg api -->
+
+    <prefpane id="pane4" label="&paneapi.title;" flex="1" image="chrome://firegpg/skin/opt-gpgapi.png">
+		<preferences id="preferences_gpgapi">
+			<preference id="use-api-pref" name="extensions.firegpg.enable_gpgapi" type="bool"/>
+		</preferences>
+
+		<checkbox  id="use-api" preference="use-api-pref" label="&use-api;"/>
+
+
+        <label control="api_domain_list">&api-liste-access.label;</label>
+		<vbox>
+			<listbox id="api_domain_list" rows="15">
+				<listhead>
+					<listheader label="&api-liste-domain.label;"/>
+					<listheader label="&api-liste-keyauth.label;"/>
+				</listhead>
+				<listcols>
+					<listcol flex="1"/>
+					<listcol flex="1"/>
+				</listcols>
+			</listbox>
+		</vbox>
+	</prefpane>
+    <!-- end of gpg api -->
+
+
+    <!-- Gpg auth -->
+
+    <prefpane id="pane3" label="&pane3.title;" flex="1" image="chrome://firegpg/skin/opt-gpgauth.png">
+		<preferences id="preferences_gpgauth">
+			<preference id="enable-gpgauth-pref" name="extensions.firegpg.gpgauth.global.enable_gpgauth" type="bool"/>
+			<preference id="global-allow-keyring-pref" name="extensions.firegpg.gpgauth.global.allow_keyring" type="bool"/>
+		</preferences>
+		<checkbox id="enable-gpgauth-check" preference="enable-gpgauth-pref" oncommand="alert( 'You must restart Firefox for this setting to take effect' );" label="&enable-gpgauth-check.label;" accesskey="&enable-gpgauth-check.accesskey;"/>
+		<checkbox id="global-allow-keyring-check" preference="global-allow-keyring-pref" label="&global-allow-keyring-check.label;" accesskey="&global-allow-keyring-check.accesskey;"/>
+		<label control="domain_list">&per-domain-preferences.label;</label>
+		<vbox>
+			<listbox id="domain_list" rows="4">
+				<listhead>
+					<listheader label="Domain"/>
+					<listheader label="Event"/>
+					<listheader label="Enabled"/>
+				</listhead>
+				<listcols>
+					<listcol flex="1"/>
+					<listcol flex="1"/>
+					<listcol flex="1"/>
+				</listcols>
+			</listbox>
+		</vbox>
+	</prefpane>
+    <!-- end of gpg auth -->
+
+    <stringbundleset id="stringbundleset">
+        <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
+    </stringbundleset>
+
+
+    <script src="misc.js"/>
+    <script src="cgpgaccess.js"/>
+    <script src="cgpg.js"/>
+    <script src="api.js"/>
+    <script src="options.js"/>
+    <script src="gpgauth_options.js"/>
+
+</prefwindow>
+
+<!-- vim:ai:et:sw=2:ts=2:sts=2:tw=0:fenc=utf-8
+ -->
