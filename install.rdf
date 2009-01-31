@@ -16,8 +16,8 @@
                    em:creator="FireGPG Team"
                    em:homepageURL="http://www.getfiregpg.org/"
                    em:updateURL="http://www.getfiregpg.org/stable/update.rdf"
-                   em:aboutURL="chrome://firegpg/content/about.xul"
-                   em:optionsURL="chrome://firegpg/content/options.xul"
+                   em:aboutURL="chrome://firegpg/content/Dialogs/about.xul"
+                   em:optionsURL="chrome://firegpg/content/Dialogs/options.xul"
                    em:iconURL="chrome://firegpg/content/firegpg.png"
                    em:updateKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC39KBStycIN2Bk8KyCnMOGs0yi6k7fVpQjG7g7xJy/yPqBBXXYZ2E5zqCy/lLynnuWGqAhWrb4b1/i7U9Qt2uojwKoNELqb7nx219Hv753OH5jLFUwZ5GMjIJ9DxEhfjg7UG9pN2l6XZqXQqJMXz9oJf6bWZBegw0auEx1EzLzZQIDAQAB">
     <em:targetApplication RDF:resource="rdf:#$g5s0x"/>

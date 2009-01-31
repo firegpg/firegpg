@@ -34,25 +34,25 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-var Keyring = { };
+var FireGPGInline = { };
 
 /*
    Constants: Tags of PGP's blocks
 
-   Keyring.Tags.PgpBlockStart - Start of a PGP block
-   Keyring.Tags.KeyStart - Start of a PGP key
-   Keyring.Tags.KeyEnd - End of a PGP key
-   Keyring.Tags.PrivateKeyStart - Start of a PGP private key
-   Keyring.Tags.PrivateKeyEnd - End of a PGP private key
-   Keyring.Tags.SignedMessageStart - Start of a signed message
-   Keyring.Tags.SignatureStart - Start of a sign
-   Keyring.Tags.SignatureEnd - End of a sign
-   Keyring.Tags.EncryptedMessageStart - Start of an encrypted message
-   Keyring.Tags.EncryptedMessageEnd - End of an encrypted message
+   FireGPGInline.Tags.PgpBlockStart - Start of a PGP block
+   FireGPGInline.Tags.KeyStart - Start of a PGP key
+   FireGPGInline.Tags.KeyEnd - End of a PGP key
+   FireGPGInline.Tags.PrivateKeyStart - Start of a PGP private key
+   FireGPGInline.Tags.PrivateKeyEnd - End of a PGP private key
+   FireGPGInline.Tags.SignedMessageStart - Start of a signed message
+   FireGPGInline.Tags.SignatureStart - Start of a sign
+   FireGPGInline.Tags.SignatureEnd - End of a sign
+   FireGPGInline.Tags.EncryptedMessageStart - Start of an encrypted message
+   FireGPGInline.Tags.EncryptedMessageEnd - End of an encrypted message
 
 
 */
-Keyring.Tags = {
+FireGPGInline.Tags = {
     PgpBlockStart: "-----BEGIN PGP",
 	KeyStart: "-----BEGIN PGP PUBLIC KEY BLOCK-----",
 	KeyEnd: "-----END PGP PUBLIC KEY BLOCK-----",
@@ -68,19 +68,19 @@ Keyring.Tags = {
 /*
    Constants: Types of blocks
 
-   Keyring.KEY_BLOCK - It's a key block
-   Keyring.PRIVATE_KEY_BLOCK - It's a private key block
-   Keyring.SIGN_BLOCK    - It's a sign block
-   Keyring.MESSAGE_BLOCK   - It's a message block
+   FireGPGInline.KEY_BLOCK - It's a key block
+   FireGPGInline.PRIVATE_KEY_BLOCK - It's a private key block
+   FireGPGInline.SIGN_BLOCK    - It's a sign block
+   FireGPGInline.MESSAGE_BLOCK   - It's a message block
 */
-Keyring.KEY_BLOCK = 1;
-Keyring.PRIVATE_KEY_BLOCK = 2;
-Keyring.SIGN_BLOCK = 3;
-Keyring.MESSAGE_BLOCK = 4;
+FireGPGInline.KEY_BLOCK = 1;
+FireGPGInline.PRIVATE_KEY_BLOCK = 2;
+FireGPGInline.SIGN_BLOCK = 3;
+FireGPGInline.MESSAGE_BLOCK = 4;
 
 
 /*
-   Class: Keyring
+   Class: FireGPGInline
    This class a system to detect and manage PGP block found in pages
 */
 
@@ -93,7 +93,7 @@ Keyring.MESSAGE_BLOCK = 4;
         range - A range with the PGP  block selected
         blockType - The type of block, see <Types of blocs>
 */
-Keyring.HandleBlock = function(document, range, blockType) {
+FireGPGInline.HandleBlock = function(document, range, blockType) {
 
     var i18n = document.getElementById("firegpg-strings");
 
@@ -126,7 +126,7 @@ Keyring.HandleBlock = function(document, range, blockType) {
 			original: frame.contentDocument.getElementById("original")
 		}
 
-        frame.contentDocument.getElementById("toggle-original").textContent = Keyring.i18n.getString("show-original")
+        frame.contentDocument.getElementById("toggle-original").textContent = FireGPGInline.i18n.getString("show-original")
 
 		// Universal set up
 		block.original.textContent = content;
@@ -134,30 +134,30 @@ Keyring.HandleBlock = function(document, range, blockType) {
 			var style = block.original.style;
 			if(style.display == "block") {
 				style.display = "none";
-                this.textContent = Keyring.i18n.getString("show-original");
+                this.textContent = FireGPGInline.i18n.getString("show-original");
             }
 			else {
 				style.display = "block";
-                this.textContent = Keyring.i18n.getString("hide-original");
+                this.textContent = FireGPGInline.i18n.getString("hide-original");
             }
             frame.style.width = block.body.scrollWidth + "px";
 			frame.style.height = block.body.scrollHeight + "px";
 		}, false);
 		var actionHandler = function() {
 			switch(blockType) {
-				case Keyring.KEY_BLOCK:
-					Keyring.ImportKey(block.original.textContent, block);
+				case FireGPGInline.KEY_BLOCK:
+					FireGPGInline.ImportKey(block.original.textContent, block);
 					break;
-				case Keyring.PRIVATE_KEY_BLOCK:
+				case FireGPGInline.PRIVATE_KEY_BLOCK:
 					block.body.className = "failure";
                     block.output.style.display = "block";
-                    block.output.textContent = Keyring.i18n.getString("private-key-block-message").replace(/\. /g, ".\n");
+                    block.output.textContent = FireGPGInline.i18n.getString("private-key-block-message").replace(/\. /g, ".\n");
 					break;
-				case Keyring.SIGN_BLOCK:
-					Keyring.VerifySignature(block.original.textContent, block);
+				case FireGPGInline.SIGN_BLOCK:
+					FireGPGInline.VerifySignature(block.original.textContent, block);
 					break;
-				case Keyring.MESSAGE_BLOCK:
-					Keyring.DecryptMessage(block.original.textContent, block);
+				case FireGPGInline.MESSAGE_BLOCK:
+					FireGPGInline.DecryptMessage(block.original.textContent, block);
 					break;
 			}
             frame.style.width = block.body.scrollWidth + "px";
@@ -167,27 +167,27 @@ Keyring.HandleBlock = function(document, range, blockType) {
 		block.action.addEventListener("click", actionHandler, false);
 
 		switch(blockType) {
-			case Keyring.KEY_BLOCK:
+			case FireGPGInline.KEY_BLOCK:
 				block.body.className = "information";
-				block.header.textContent = Keyring.i18n.getString("key-block");
-				block.action.textContent = Keyring.i18n.getString("import");
+				block.header.textContent = FireGPGInline.i18n.getString("key-block");
+				block.action.textContent = FireGPGInline.i18n.getString("import");
 				break;
-			case Keyring.PRIVATE_KEY_BLOCK:
+			case FireGPGInline.PRIVATE_KEY_BLOCK:
 				block.body.className = "information";
-				block.header.textContent = Keyring.i18n.getString("private-key-block");
-				block.action.textContent = Keyring.i18n.getString("import");
+				block.header.textContent = FireGPGInline.i18n.getString("private-key-block");
+				block.action.textContent = FireGPGInline.i18n.getString("import");
 				break;
-			case Keyring.SIGN_BLOCK:
+			case FireGPGInline.SIGN_BLOCK:
 				block.body.className = "caution";
-				block.header.textContent = Keyring.i18n.getString("signed-message")  + ", " + Keyring.i18n.getString("unverified");
-				block.action.textContent = Keyring.i18n.getString("verify");
+				block.header.textContent = FireGPGInline.i18n.getString("signed-message")  + ", " + FireGPGInline.i18n.getString("unverified");
+				block.action.textContent = FireGPGInline.i18n.getString("verify");
 				// Extract the message without the header and signature
-				block.message.innerHTML = content.substring(content.indexOf("\n\n") + 2, content.indexOf(Keyring.Tags.SignatureStart)).replace(/</gi,"&lt;").replace(/>/gi,"&gt;").replace(/\n/gi,"<br />");
+				block.message.innerHTML = content.substring(content.indexOf("\n\n") + 2, content.indexOf(FireGPGInline.Tags.SignatureStart)).replace(/</gi,"&lt;").replace(/>/gi,"&gt;").replace(/\n/gi,"<br />");
 				break;
-			case Keyring.MESSAGE_BLOCK:
+			case FireGPGInline.MESSAGE_BLOCK:
 				block.body.className = "caution";
-				block.header.textContent = Keyring.i18n.getString("encrypted-message") ;
-				block.action.textContent = Keyring.i18n.getString("decrypt");
+				block.header.textContent = FireGPGInline.i18n.getString("encrypted-message") ;
+				block.action.textContent = FireGPGInline.i18n.getString("decrypt");
 				break;
 		}
         frame.style.width = block.body.scrollWidth + "px";
@@ -203,7 +203,7 @@ Keyring.HandleBlock = function(document, range, blockType) {
         document - The current document
 
 */
-Keyring.HandlePage = function(document) {
+FireGPGInline.HandlePage = function(document) {
 
 	var filter = function(node) {
 		return NodeFilter.FILTER_ACCEPT;
@@ -218,33 +218,33 @@ Keyring.HandlePage = function(document) {
 		while(true) {
 			if(!haveStart) {
 
-                if (node.textContent.indexOf(Keyring.Tags.PgpBlockStart, idx) == -1)
+                if (node.textContent.indexOf(FireGPGInline.Tags.PgpBlockStart, idx) == -1)
                     break;
 
-                if (node.parentNode.nodeName == 'TEXTAREA')
+                if (node.parentNode && node.parentNode.nodeName == 'TEXTAREA')
                     break;
 
-                if (node.parentNode.nodeName == 'PRE')
+                if (node.parentNode && node.parentNode.nodeName == 'PRE')
                     break;
 
                 baseIdx = idx;
-				idx = node.textContent.indexOf(Keyring.Tags.KeyStart, baseIdx);
-                blockType = Keyring.KEY_BLOCK;
-				search = Keyring.Tags.KeyEnd;
+				idx = node.textContent.indexOf(FireGPGInline.Tags.KeyStart, baseIdx);
+                blockType = FireGPGInline.KEY_BLOCK;
+				search = FireGPGInline.Tags.KeyEnd;
 				if(idx == -1) {
-					idx = node.textContent.indexOf(Keyring.Tags.SignedMessageStart, baseIdx);
-					search = Keyring.Tags.SignatureEnd;
-                    blockType = Keyring.SIGN_BLOCK;
+					idx = node.textContent.indexOf(FireGPGInline.Tags.SignedMessageStart, baseIdx);
+					search = FireGPGInline.Tags.SignatureEnd;
+                    blockType = FireGPGInline.SIGN_BLOCK;
 				}
 				if(idx == -1) {
-					idx = node.textContent.indexOf(Keyring.Tags.EncryptedMessageStart, baseIdx);
-					search = Keyring.Tags.EncryptedMessageEnd;
-                    blockType = Keyring.MESSAGE_BLOCK;
+					idx = node.textContent.indexOf(FireGPGInline.Tags.EncryptedMessageStart, baseIdx);
+					search = FireGPGInline.Tags.EncryptedMessageEnd;
+                    blockType = FireGPGInline.MESSAGE_BLOCK;
 				}
 				if(idx == -1) {
-					idx = node.textContent.indexOf(Keyring.Tags.PrivateKeyStart, baseIdx);
-					blockType = Keyring.PRIVATE_KEY_BLOCK;
-					search = Keyring.Tags.PrivateKeyEnd;
+					idx = node.textContent.indexOf(FireGPGInline.Tags.PrivateKeyStart, baseIdx);
+					blockType = FireGPGInline.PRIVATE_KEY_BLOCK;
+					search = FireGPGInline.Tags.PrivateKeyEnd;
 				}
 
 				if(idx == -1)
@@ -270,7 +270,7 @@ Keyring.HandlePage = function(document) {
 
                 haveStart = false;
 				range.setEnd(node, idx + search.length);
-				Keyring.HandleBlock(document, range, blockType);
+				FireGPGInline.HandleBlock(document, range, blockType);
 				range.detach();
 				idx =0; //+= search.length;
 			}
@@ -290,22 +290,22 @@ Keyring.HandlePage = function(document) {
         node - The node where we works
 
 */
-Keyring.ignoreInners = function(idx, end,node) {
+FireGPGInline.ignoreInners = function(idx, end,node) {
 
         if  (end == -1)
             return -1;
 
 
         baseIdx = idx;
-        idx = node.indexOf(Keyring.Tags.KeyStart, baseIdx);
-        search = Keyring.Tags.KeyEnd;
+        idx = node.indexOf(FireGPGInline.Tags.KeyStart, baseIdx);
+        search = FireGPGInline.Tags.KeyEnd;
         if(idx == -1) {
-            idx = node.indexOf(Keyring.Tags.SignedMessageStart, baseIdx);
-            search = Keyring.Tags.SignatureEnd;
+            idx = node.indexOf(FireGPGInline.Tags.SignedMessageStart, baseIdx);
+            search = FireGPGInline.Tags.SignatureEnd;
         }
         if(idx == -1) {
-            idx = node.indexOf(Keyring.Tags.EncryptedMessageStart, baseIdx);
-            search = Keyring.Tags.EncryptedMessageEnd;
+            idx = node.indexOf(FireGPGInline.Tags.EncryptedMessageStart, baseIdx);
+            search = FireGPGInline.Tags.EncryptedMessageEnd;
         }
 
         if(idx == -1 || idx > end)
@@ -327,7 +327,7 @@ Keyring.ignoreInners = function(idx, end,node) {
         block - The block who contain the iframe
 
 */
-Keyring.ImportKey = function(content, block) {
+FireGPGInline.ImportKey = function(content, block) {
 
     result = FireGPG.kimport(true,content);
 
@@ -350,7 +350,7 @@ Keyring.ImportKey = function(content, block) {
         block - The block who contain the iframe
 
 */
-Keyring.VerifySignature = function(content, block) {
+FireGPGInline.VerifySignature = function(content, block) {
 
     var i18n = document.getElementById("firegpg-strings");
 
@@ -386,7 +386,7 @@ Keyring.VerifySignature = function(content, block) {
         block - The block who contain the iframe
 
 */
-Keyring.DecryptMessage = function(content, block) {
+FireGPGInline.DecryptMessage = function(content, block) {
 
     var i18n = document.getElementById("firegpg-strings");
 
@@ -423,7 +423,7 @@ Keyring.DecryptMessage = function(content, block) {
         aEvent - The event of the loading
 
 */
-Keyring.onPageLoad = function(aEvent) {
+FireGPGInline.onPageLoad = function(aEvent) {
     var doc = aEvent.originalTarget;
     if(doc.nodeName != "#document")
         return;
@@ -435,7 +435,7 @@ Keyring.onPageLoad = function(aEvent) {
     if (doc.location.href.indexOf("mail.google.com") != -1)
         return;
 
-    Keyring.HandlePage(doc);
+    FireGPGInline.HandlePage(doc);
 
 
 };
@@ -445,7 +445,7 @@ Keyring.onPageLoad = function(aEvent) {
     This function is called by FireGPG when a new Firefox's windows is created.
 
 */
-Keyring.initSystem = function() {
+FireGPGInline.initSystem = function() {
 
     var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 	                           getService(Components.interfaces.nsIPrefService);
@@ -462,11 +462,11 @@ Keyring.initSystem = function() {
 
     try {
         if (document.getElementById("appcontent"))
-            document.getElementById("appcontent").addEventListener("DOMContentLoaded", Keyring.onPageLoad, false);
+            document.getElementById("appcontent").addEventListener("DOMContentLoaded", FireGPGInline.onPageLoad, false);
         else
-            document.getElementById("browser_content").addEventListener("DOMContentLoaded", Keyring.onPageLoad, false);
+            document.getElementById("browser_content").addEventListener("DOMContentLoaded", FireGPGInline.onPageLoad, false);
 
     } catch (e) {  fireGPGDebug(e,'keyring.initSystem',true);  }
 
-    Keyring.i18n = document.getElementById("firegpg-strings");
+    FireGPGInline.i18n = document.getElementById("firegpg-strings");
 };
