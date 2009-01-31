@@ -51,6 +51,10 @@
   <script src="../Api/new_api.js"/>
   <script src="prisme.js"/>
   <script src="../Mime/mime.js" />
+  <script src="../Mime/decoder.js" />
+  <script src="../Mime/encoder.js" />
+  <script src="../Mime/sender.js" />
+  <script src="../Mime/gmailSender.js" />
   <script src="inline.js"/>
 
 </overlay>

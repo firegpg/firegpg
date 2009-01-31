@@ -50,6 +50,10 @@
   <script src="./Api/new_api.js"/>
   <script src="inline.js"/>
   <script src="../Mime/mime.js" />
+  <script src="../Mime/decoder.js" />
+  <script src="../Mime/encoder.js" />
+  <script src="../Mime/sender.js" />
+  <script src="../Mime/gmailSender.js" />
   <stringbundleset id="stringbundleset">
     <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
   </stringbundleset>

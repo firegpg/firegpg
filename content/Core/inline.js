@@ -223,9 +223,15 @@ FireGPGInline.HandlePage = function(document) {
 
                 if (node.parentNode && node.parentNode.nodeName == 'TEXTAREA')
                     break;
-
                 if (node.parentNode && node.parentNode.nodeName == 'PRE')
-                    break;
+
+                if (node.parentNode && node.parentNode.nodeName == 'PRE' && node.parentNode.parentNode && node.parentNode.parentNode.parentNode  && typeof node.parentNode.parentNode.parentNode.getAttribute == 'function' && node.parentNode.parentNode.parentNode.getAttribute('id') == 'storeArea') {
+                    //Hum, it's seem we're on a TidyWiki...
+
+                    var topwinjs = node.ownerDocument.defaultView.parent.wrappedJSObject;
+                    if ("version" in topwinjs && topwinjs.version.title == "TiddlyWiki")
+                        break; //We are, so we stop
+                }
 
                 baseIdx = idx;
 				idx = node.textContent.indexOf(FireGPGInline.Tags.KeyStart, baseIdx);

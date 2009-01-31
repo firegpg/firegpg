@@ -1,4 +1,6 @@
 2009-01-31 Maximilien Cuony
+    * Splitting mime functions
+    * FS#222
     * Keyring -> inline (FireGPGInline)
     * Reorganisation of FireGPG structure in progress.
     * Fixed the about windows
