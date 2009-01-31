@@ -47,7 +47,6 @@ try {
 //
 */
 
-alert('DEVEL VERSION');
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */
 const FIREGPG_VERSION = '0.7.2';
@@ -172,7 +171,7 @@ function choosePublicKey(preSelect)
 	params.preSelect = preSelect;
 
 
-	var dlg = window.openDialog('chrome://firegpg/content/list.xul',
+	var dlg = window.openDialog('chrome://firegpg/content/Dialogs/list.xul',
 	                            '', 'chrome, dialog, modal, resizable=yes',
 	                            params);
 	dlg.focus();
@@ -229,7 +228,7 @@ function choosePrivateKey()
     else
         return;
 
-	var dlg = window.openDialog('chrome://firegpg/content/list.xul',
+	var dlg = window.openDialog('chrome://firegpg/content/Dialogs/list.xul',
 	                            '', 'chrome, dialog, modal, resizable=yes',
 	                            params);
 	dlg.focus();
@@ -270,7 +269,7 @@ function showText(text, description, title, doShowButtons, validSign) {
 		params.validSign = null;
 
 	/* open the dialog */
-	window.openDialog('chrome://firegpg/content/showtext.xul',
+	window.openDialog('chrome://firegpg/content/Dialogs/showtext.xul',
 	                  '', 'chrome, dialog, resizable=yes',
 	                  params).focus();
 }
@@ -326,7 +325,7 @@ function getPassword(question, save_password, domain, nosavecheckbox) {
 	              save_password: save_password,
 	              result: false, question: question, domain: domain, nosavecheckbox: nosavecheckbox};
 
-	var dlg = window.openDialog('chrome://firegpg/content/password.xul',
+	var dlg = window.openDialog('chrome://firegpg/content/Dialogs/password.xul',
 	                            '', 'chrome, dialog, modal, resizable=yes', params);
 	dlg.focus();
 

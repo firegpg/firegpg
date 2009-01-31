@@ -43,7 +43,7 @@
 	onload="onLoad();"
 	buttons="cancel, accept"
 	persist="screenX screenY width height">
-<script type="application/x-javascript" src="chrome://firegpg/content/gpgauth_dialog.js"/>
+<script type="application/x-javascript" src="gpgauth_dialog.js"/>
 	<box id="gpgauthDialog-Box" class="gpgauthDialog-Box">
 		<hbox class="gpgauthDialog-ImageBox" align="center" pack="center">
 			<image id="gpgauthDialog-icon" style="height: 32px; width: 32px;"/>

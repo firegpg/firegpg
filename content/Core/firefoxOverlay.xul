@@ -37,20 +37,19 @@
 
 <?xml-stylesheet href="chrome://firegpg/skin/overlay.css" type="text/css"?>
 <!DOCTYPE overlay SYSTEM "chrome://firegpg/locale/firegpg.dtd">
-<overlay id="firegpg-overlay"
-         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<overlay id="firegpg-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script src="overlay.js"/>
   <script src="misc.js"/>
   <script src="cgpgaccess.js"/>
   <script src="cgpg.js"/>
-  <script src="cgmail.js"/>
-  <script src="cgmail2.js"/>
+  <script src="../Webmails/Gmail/cgmail.js"/>
+  <script src="../Webmails/Gmail/cgmail2.js"/>
   <script src="cselect.js"/>
-  <script src="gpgauth.js"/>
-  <script src="api.js"/>
-  <script src="new_api.js"/>
-  <script type="application/x-javascript" src="keyring.js"/>
-  <script src="mime.js" />
+  <script src="../GpgAuth/gpgauth.js"/>
+  <script src="../Api/api.js"/>
+  <script src="./Api/new_api.js"/>
+  <script src="keyring.js"/>
+  <script src="../Mime/mime.js" />
   <stringbundleset id="stringbundleset">
     <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
   </stringbundleset>

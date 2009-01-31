@@ -47,9 +47,9 @@
   </stringbundleset>
 
   <script src="showtext.js"/>
-  <script src="misc.js"/>
-  <script src="cgpgaccess.js"/>
-  <script src="cgpg.js"/>
+  <script src="../Core/misc.js"/>
+  <script src="../Core/cgpgaccess.js"/>
+  <script src="../Core/cgpg.js"/>
 
   <description control="text" id="description" value="default description"/>
   <textbox id="text" multiline="true" rows="25" cols="80" flex="1"/>

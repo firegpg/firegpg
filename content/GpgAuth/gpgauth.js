@@ -363,7 +363,7 @@ var gpgAuth = {
         icon = ""; //? no png
 
 		var params = { pin: { icon: icon, dialog_title: title, dialog_message: error_message, dialog_details: details, checkbox_text: check_text}, pout: false };
-		window.openDialog( "chrome://firegpg/content/gpgauth_dialog.xul", "gpgauthDialog", "chrome, dialog, modal, centerscreen", params ).focus();
+		window.openDialog( "chrome://firegpg/content/GpgAuth/gpgauth_dialog.xul", "gpgauthDialog", "chrome, dialog, modal, centerscreen", params ).focus();
 		return params.pout;
 	}
 

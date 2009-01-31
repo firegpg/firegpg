@@ -67,7 +67,7 @@
         <label  id="search-textbox-label"  value="&search-description;"/>
         <hbox>
             <textbox id="search-textbox" style="width: 750px;" />
-            <button id="search-button" label="&search-button;" oncommand="rebuildList();"/>  
+            <button id="search-button" label="&search-button;" oncommand="rebuildList();"/>
             <button id="import-button" label="&import-button;" oncommand="importkeys();"/>
 
         </hbox>
@@ -79,9 +79,9 @@
         <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
     </stringbundleset>
 
-    <script src="misc.js"/>
-    <script src="cgpgaccess.js"/>
-    <script src="cgpg.js"/>
+    <script src="../../Core/misc.js"/>
+    <script src="../../Core/cgpgaccess.js"/>
+    <script src="../../Core/cgpg.js"/>
     <script src="searchkey.js"/>
 
 </dialog>

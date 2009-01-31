@@ -43,15 +43,15 @@
   <script src="misc.js"/>
   <script src="cgpgaccess.js"/>
   <script src="cgpg.js"/>
-  <script src="cgmail.js"/>
-  <script src="cgmail2.js"/>
+  <script src="../Webmails/Gmail/cgmail.js"/>
+  <script src="../Webmails/Gmail/cgmail2.js"/>
   <script src="cselect.js"/>
-  <script src="gpgauth.js"/>
-  <script src="api.js"/>
-  <script src="new_api.js"/>
+  <script src="../GpgAtuh/gpgauth.js"/>
+  <script src="../Api/api.js"/>
+  <script src="../Api/new_api.js"/>
   <script src="prisme.js"/>
-  <script src="mime.js" />
-  <script type="application/x-javascript" src="keyring.js"/>
+  <script src="../Mime/mime.js" />
+  <script src="keyring.js"/>
 
 </overlay>
 

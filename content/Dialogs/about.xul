@@ -42,12 +42,12 @@
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <groupbox align="center" orient="horizontal">
     <text value="FireGPG" style="font-weight: bold; font-size: x-large;"/>
-    <text value="&version; 0.1"/>
-    <separator class="thin"/>
+    <!--<text value="&version; 0.1"/>-->
+    <separator class="thin"/><br /><br />
 
     <text value="&createdBy;" style="font-weight: bold;"/>
-    <text value="FireGPG Team"/>
-    <separator class="thin"/>
+    <text value="Maximilien Cuony and Achraf Cherti"/>
+    <separator class="thin"/><br /><br />
 
     <text value="&homepage;" style="font-weight: bold;"/>
     <text value="http://getfiregpg.org/"

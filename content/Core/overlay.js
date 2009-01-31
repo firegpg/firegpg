@@ -124,9 +124,9 @@ var firegpg = {
 		else if(action == ACTION_EDITEUR)
 			showEditor('');
 		else if(action == ACTION_MANAGER)
-			window.openDialog("chrome://firegpg/content/keymanager.xul", "keyManager", "chrome, centerscreen, toolbar").focus();
+			window.openDialog("chrome://firegpg/content/Dialogs/Keymanager/keymanager.xul", "keyManager", "chrome, centerscreen, toolbar").focus();
 		else if(action == ACTION_OPTS)
-			window.openDialog("chrome://firegpg/content/options.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
+			window.openDialog("chrome://firegpg/content/Dialogs/options.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
 		else if (action == ACTION_ERASE)
 			eraseSavedPassword();
 	},

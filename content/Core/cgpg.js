@@ -1413,10 +1413,10 @@ var FireGPG = {
         this.initGPGACCESS();
 
         //Boite d'attente
-        var wait_box = window.open("chrome://firegpg/content/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
+        var wait_box = window.open("chrome://firegpg/content/Dialogs/Keymanager/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
         wait_box.focus();
         //Boite pour attendre la boite d'attente
-        var wait_box2 = window.open("chrome://firegpg/content/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
+        var wait_box2 = window.open("chrome://firegpg/content/Dialogs/Keymanager/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
 
         // We get the result
         try {
@@ -1546,10 +1546,10 @@ var FireGPG = {
         keyId = keyId.replace(/\n/gi, "");
 
         //Boite d'attente
-        var wait_box = window.open("chrome://firegpg/content/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
+        var wait_box = window.open("chrome://firegpg/content/Dialogs/Keymanager/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
         wait_box.focus();
         //Boite pour attendre la boite d'attente
-        var wait_box2 = window.open("chrome://firegpg/content/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
+        var wait_box2 = window.open("chrome://firegpg/content/Dialogs/Keymanager/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
 
         // We get the result
         try {
@@ -1592,10 +1592,10 @@ var FireGPG = {
         this.initGPGACCESS();
 
         //Boite d'attente
-        var wait_box = window.open("chrome://firegpg/content/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
+        var wait_box = window.open("chrome://firegpg/content/Dialogs/Keymanager/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
         wait_box.focus();
         //Boite pour attendre la boite d'attente
-        var wait_box2 = window.open("chrome://firegpg/content/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
+        var wait_box2 = window.open("chrome://firegpg/content/Dialogs/Keymanager/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
 
         // We get the result
         try {
@@ -1637,10 +1637,10 @@ var FireGPG = {
         this.initGPGACCESS();
 
         //Boite d'attente
-        var wait_box = window.open("chrome://firegpg/content/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
+        var wait_box = window.open("chrome://firegpg/content/Dialogs/Keymanager/wait.xul", "waitBox", "chrome,centerscreen,resizable=0,minimizable=0,popup");
         wait_box.focus();
         //Boite pour attendre la boite d'attente
-        var wait_box2 = window.open("chrome://firegpg/content/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
+        var wait_box2 = window.open("chrome://firegpg/content/Dialogs/Keymanager/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
 
 
 

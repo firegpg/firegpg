@@ -382,12 +382,12 @@
     </stringbundleset>
 
 
-    <script src="misc.js"/>
-    <script src="cgpgaccess.js"/>
-    <script src="cgpg.js"/>
-    <script src="api.js"/>
+    <script src="../Core/misc.js"/>
+    <script src="../Core/cgpgaccess.js"/>
+    <script src="../Core/cgpg.js"/>
+    <script src="../Api/api.js"/>
     <script src="options.js"/>
-    <script src="gpgauth_options.js"/>
+    <script src="../GpgAuth/gpgauth_options.js"/>
 
 </prefwindow>
 

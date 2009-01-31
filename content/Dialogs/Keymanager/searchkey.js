@@ -129,6 +129,6 @@ function rebuildList() {
         }
 	}
 
-    } catch (e) { alert(e); }
+    } catch (e) { fireGPGDebug(e,'seachkey-rebuildlist', true); }
 
 }

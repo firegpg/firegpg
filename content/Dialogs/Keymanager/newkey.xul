@@ -136,9 +136,9 @@
         <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
     </stringbundleset>
 
-    <script src="misc.js"/>
-    <script src="cgpgaccess.js"/>
-    <script src="cgpg.js"/>
+    <script src="../../Core/misc.js"/>
+    <script src="../../Core/cgpgaccess.js"/>
+    <script src="../../Core/cgpg.js"/>
     <script src="newkey.js"/>
 
 </dialog>

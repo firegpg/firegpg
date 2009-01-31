@@ -109,14 +109,11 @@ function Witch_GPGAccess () {
 
         if (GPGAccess.isUnix()) {
 
-
             GPGAccess.tryToFoundTheRightCommand = GPGAccessUnixXpcom.tryToFoundTheRightCommand;
-
 
         } else {
 
             GPGAccess.tryToFoundTheRightCommand = GPGAccessWindowsXpcom.tryToFoundTheRightCommand;
-
 
         }
 
@@ -124,11 +121,8 @@ function Witch_GPGAccess () {
 
     } else {
 
-
         var i18n = document.getElementById("firegpg-strings");
-
         alert(i18n.getString('noipc2'));
-
 
         return GPGAccess;
     }
@@ -185,12 +179,12 @@ var GPGAccess = {
    },
 
     /*
-        Function: getRunningCommand
+        DEPRECIATED Function: getRunningCommand
         Return the content of a script to execute GnuPG. For no-xpcom classes.
-    */
+    *//*
     getRunningCommand: function () {
         return getContent("chrome://firegpg/content/run" + (this.isUnix() ? '.sh' : '.bat'));
-    },
+    },*/
 
 
     /*

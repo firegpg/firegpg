@@ -254,7 +254,7 @@ function password() {
 }
 
 function newKey() {
-    window.openDialog("chrome://firegpg/content/newkey.xul", "newkey", "chrome, centerscreen, toolbar, modal").focus();
+    window.openDialog("chrome://firegpg/content/Dialogs/Keymanager/newkey.xul", "newkey", "chrome, centerscreen, toolbar, modal").focus();
     updateKeyList();
 
 }
@@ -324,5 +324,5 @@ function revokeUid() {
 }
 
 function sign() {
-    window.openDialog("chrome://firegpg/content/signmanager.xul", "newkey", "chrome, centerscreen, toolbar, modal", {keyid :  curentlySelected }).focus();
+    window.openDialog("chrome://firegpg/content/Dialogs/Keymanager/signmanager.xul", "newkey", "chrome, centerscreen, toolbar, modal", {keyid :  curentlySelected }).focus();
 }
