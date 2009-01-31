@@ -47,7 +47,7 @@ try {
 //
 */
 
-
+alert('DEVEL VERSION');
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */
 const FIREGPG_VERSION = '0.7.2';

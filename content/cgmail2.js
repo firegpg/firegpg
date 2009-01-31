@@ -2341,6 +2341,7 @@ var cGmail2 = {
     */
 	getMimeMailContens: function(id,doc) {
 
+        fireGPGDebug('Starting get content', 'getMimeMailContens');
 
         var elements = id.parentNode.getElementsByTagName("img");
 
@@ -2354,12 +2355,16 @@ var cGmail2 = {
             }
         }
 
+        fireGPGDebug('Actionbox is ' + actionbox, 'getMimeMailContens');
+
          //There is ugly hack. It's the most ugly hack ever.
         var evt = doc.createEvent("MouseEvents");
          evt.initMouseEvent("click", true, true, window,
            0, 0, 0, 0, 0, false, false, false, false, 0, null);
 
         var a = actionbox.dispatchEvent(evt);
+
+        fireGPGDebug('Event dispatech (click) is ' + a, 'getMimeMailContens');
 
        //On choppe le bouton en question
        //CHILDREN OF zWKgkf
@@ -2368,12 +2373,16 @@ var cGmail2 = {
         papa = doc.getElementsByClassName('zWKgkf');
         papa = papa[0];
 
+        fireGPGDebug('Papa is ' + papa, 'getMimeMailContens');
+
         for (var j = 0; j < papa.childNodes.length; j++) {
             if (papa.childNodes[j].getAttribute("act") == "32") {
                 detailsElement = papa.childNodes[j];
                 break;
             }
         }
+
+        fireGPGDebug('detailsElement is ' + detailsElement, 'getMimeMailContens');
 
         doc.body.setAttribute('firegpg',"#FIREGPGCAPTURE");
 
@@ -2384,6 +2393,8 @@ var cGmail2 = {
 
         url = doc.body.getAttribute('firegpg');
 
+        fireGPGDebug('Url get is ' + url, 'getMimeMailContens');
+
         if (url == "#FIREGPGCAPTURE" ) {
             //Close popup
              var evt4 = doc.createEvent("MouseEvents");
@@ -2391,18 +2402,21 @@ var cGmail2 = {
              0, 0, 0, 0, 0, false, false, false, false, 0, null);
              actionbox.dispatchEvent(evt4);
 
-
+            fireGPGDebug('Waiting mode', 'getMimeMailContens');
             return "{ERROR,WAIT}";
 
         }
 
         doc.body.setAttribute('firegpg',"");
 
+        fireGPGDebug('baseUrl is ' + cGmail2.baseUrl, 'getMimeMailContens');
 
 		if (this.messageCache == null || this.messageCache[url] == null)
 		{
             //getContentXHttp
             data = getBinContent(cGmail2.baseUrl + url , 5000*1024);
+
+            fireGPGDebug('data1 is ' + data, 'getMimeMailContens');
 
             if (data == "{MAX}") {
 
@@ -2413,10 +2427,16 @@ var cGmail2 = {
                 else
                     return '';
 
+                fireGPGDebug('data2 is ' + data, 'getMimeMailContens');
+
             }
+
+            fireGPGDebug('finaldata is ' + data, 'getMimeMailContens');
 
 
 			var mailData = EnigConvertToUnicode(data , 'UTF-8');
+
+            fireGPGDebug('mailData is ' + mailData, 'getMimeMailContens');
             // getContentXHttp(cGmail2.baseUrl + url);
 
 			if (this.messageCache == null)
