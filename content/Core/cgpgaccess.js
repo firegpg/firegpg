@@ -203,7 +203,7 @@ var GPGAccess = {
         if (arguement == '')
             return "";
 
-        arguement = arguement.replace(/\{\$FXFolder\}/, FGPGFireFoxCurrentFolder);
+        arguement = arguement.replace(/\{\$FXFolder\}/gi, FGPGFireFoxCurrentFolder);
 
         //We remove double-spaces
         var reg=new RegExp("  ", "gi");
@@ -291,7 +291,7 @@ var GPGAccess = {
     */
 	getGPGCommand: function () {
 
-		return this.GpgCommand.replace(/\{\$FXFolder\}/, FGPGFireFoxCurrentFolder);
+		return this.GpgCommand.replace(/\{\$FXFolder\}/gi, FGPGFireFoxCurrentFolder);
 	},
 
     /*

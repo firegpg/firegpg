@@ -112,6 +112,8 @@ var savedPassword = null; /* the private key password */
  */
 var oldKeyID = '';
 
+var updateAvailable = false;
+
 /*
     Function: fireGPGDebug
 
@@ -811,51 +813,77 @@ function testIfSomethingsIsNew() {
 
 		if (!noUpdates)
 		{
-			var Stamp = new Date();
-			var nbMs = Stamp.getTime();
 
-			var lastUpdate = 0;
+            if (updateAvailable) {
+                if (document.getElementById('firegpg-statusbar-update'))
+                    document.getElementById('firegpg-statusbar-update').style.display = '';
 
-			try {
-				lastUpdate = parseInt(prefs.getCharPref("lastUpdateCheck"));
-			} catch (e) { }
+            } else {
+                var Stamp = new Date();
+                var nbMs = Stamp.getTime();
 
-			//Not A Number
-			if (isNaN(lastUpdate))
-				lastUpdate = 0;
-			//One day
-			if (lastUpdate < (nbMs  - (24 * 60 * 60 * 1000)))
-			{
+                var lastUpdate = 0;
 
-				prefs.setCharPref("lastUpdateCheck",nbMs);
+                try {
+                    lastUpdate = parseInt(prefs.getCharPref("lastUpdateCheck"));
+                } catch (e) { }
 
-				//Get the last version
-				var updateData = getContent("http://getfiregpg.org/stable/update.rdf");
+                //Not A Number
+                if (isNaN(lastUpdate))
+                    lastUpdate = 0;
+                //One day
+                if (lastUpdate < (nbMs  - (24 * 60 * 60 * 1000)))
+                {
 
-				var toDetect = "NS1:version=\"" + versionAct + "\"";
+                    prefs.setCharPref("lastUpdateCheck",nbMs);
 
-				if (updateData.indexOf('ec8030f7-c20a-464f-9b0e-13a3a9e97384') != -1 && updateData.indexOf(toDetect) == -1  )
-				{
+                    //Get the last version
+                    var updateData = getContent("http://getfiregpg.org/stable/update.rdf");
 
-					var newVersion = "A new version of FireGPG is available, would you like to update now?";
-					try {
+                    var toDetect = "NS1:version=\"" + versionAct + "\"";
 
-						newVersion = i18n.getString('newVersionAlert');
-					} catch (e) { }
+                    if (updateData.indexOf('ec8030f7-c20a-464f-9b0e-13a3a9e97384') != -1 && updateData.indexOf(toDetect) == -1  )
+                    {
+                        if (document.getElementById('firegpg-statusbar-update') != null) {
+                            document.getElementById('firegpg-statusbar-update').style.display = '';
+                            updateAvailable = true;
+                        } else {
+                            showUpdateDialog();
+                        }
 
-					if (confirm(newVersion))
-					{
-						openUILink("http://getfiregpg.org/stable/firegpg.xpi");
-					}
-				}
-			}
+                    }
+                }
+            }
 
 		}
         //*/
 	}
 }
 
+function showUpdateDialog() {
 
+    var i18n = document.getElementById("firegpg-strings");
+
+    var newVersion = "A new version of FireGPG is available, would you like to update now?";
+
+    try {
+
+        newVersion = i18n.getString('newVersionAlert');
+    } catch (e) { }
+
+    if (confirm(newVersion))
+    {
+        openUILink("http://getfiregpg.org/stable/firegpg.xpi");
+
+    }
+
+    updateAvailable = false;
+
+    if (document.getElementById('firegpg-statusbar-update') != null)
+        document.getElementById('firegpg-statusbar-update').style.display = 'none';
+
+
+}
 /*
     Function: htmlEncode
     Encode special chars (&, <, > et ") to they html values.

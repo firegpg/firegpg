@@ -63,6 +63,7 @@ const ACTION_EDITEUR = 'EDITEUR';
 const ACTION_MANAGER = 'MANAGER';
 const ACTION_OPTS = 'OPTS';
 const ACTION_ERASE = 'ERASE';
+const ACTION_UPDATE = 'UPDATE';
 
  /*
   * Class: firegpg
@@ -129,6 +130,8 @@ var firegpg = {
 			window.openDialog("chrome://firegpg/content/Dialogs/options.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
 		else if (action == ACTION_ERASE)
 			eraseSavedPassword();
+        else if(action == ACTION_UPDATE)
+			showUpdateDialog();
 	},
 
     /*

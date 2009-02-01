@@ -1,4 +1,12 @@
+2009-02-01 Maximilien Cuony
+    * FS#225
+    * FS#224
+    * FS#219
+    * FS#226
+    * FS#221
+
 2009-01-31 Maximilien Cuony
+    * FS#228
     * Splitting mime functions
     * FS#222
     * Keyring -> inline (FireGPGInline)

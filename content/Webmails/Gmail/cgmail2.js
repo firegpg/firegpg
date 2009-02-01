@@ -154,6 +154,18 @@ var cGmail2 = {
                             var mime2 = FireGPGMimeDecoder.extractSignature(mimeContentOf);
 
                             var resultTest = FireGPG.verify(true,mime2.text.replace(/\r/gi, ''), mime2.chaset);
+
+                            if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
+                                fireGPGDebug("Try again widhout charset", "Nonmime sign verif");
+                                var resultTest = FireGPG.verify(true,mime2.text.replace(/\r/gi, ''));
+
+                            }
+
+                            if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
+                                fireGPGDebug("Try again utf8 decoded", "Nonmime sign verif");
+                                var resultTest = FireGPG.verify(true,UTF8.decode(mime2.text.replace(/\r/gi, '')), mime2.chaset);
+
+                            }
                         }
 
 						// For I18N
@@ -1033,41 +1045,35 @@ var cGmail2 = {
                     }
 
 
+                    try {
+
+                       var topwinjs = f.ownerDocument.defaultView.parent.wrappedJSObject;
+                       if (("USER_EMAIL" in topwinjs) && typeof(topwinjs.USER_EMAIL) == "string")
+                       {
+                           cGmail2.useremail = topwinjs.USER_EMAIL;
+                       }
+                       else if (("GLOBALS" in topwinjs) && typeof(topwinjs.GLOBALS[10]) == "string" &&
+                        (/@(g|google)mail.com$/i).test(topwinjs.GLOBALS[10]))
+                       {
+                           // gmail_fe_509_p10
+                           cGmail2.useremail = topwinjs.GLOBALS[10];
+                       }
+                       else if (typeof(topwinjs.globals) == "object" && typeof(topwinjs.globals.USER_EMAIL) == "string")
+                       {
+                           cGmail2.useremail = topwinjs.globals.USER_EMAIL;
+                       } else {
+
+                           cGmail2.useremail = f.ownerDocument.evaluate(".//div[@class='nQ6QTe']//b[contains(text(), '@')]",
+                                                               f.ownerDocument.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE,
+                                                               null).singleNodeValue.textContent;
+
+                       }
+
+                   } catch (e) { fireGPGDebug(e, 'finding smtp username', true);}
+
+
                     if (username == "") {
-
-                             try {
-
-                                var topwinjs = f.ownerDocument.defaultView.parent.wrappedJSObject;
-                                if (("USER_EMAIL" in topwinjs) && typeof(topwinjs.USER_EMAIL) == "string")
-                                {
-                                    this.useremail = topwinjs.USER_EMAIL;
-                                }
-                                else if (("GLOBALS" in topwinjs) && typeof(topwinjs.GLOBALS[10]) == "string" &&
-                                 (/@(g|google)mail.com$/i).test(topwinjs.GLOBALS[10]))
-                                {
-                                    // gmail_fe_509_p10
-                                    this.useremail = topwinjs.GLOBALS[10];
-                                }
-                                else if (typeof(topwinjs.globals) == "object" && typeof(topwinjs.globals.USER_EMAIL) == "string")
-                                {
-                                    this.useremail = topwinjs.globals.USER_EMAIL;
-                                } else {
-
-                                    this.useremail = f.ownerDocument.evaluate(".//div[@class='nQ6QTe']//b[contains(text(), '@')]",
-																		form.ownerDocument.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE,
-																		null).singleNodeValue.textContent;
-
-                                }
-
-
-                            } catch (e) { fireGPGDebug(e, 'finding smtp username', true);}
-
-
-
-
-
-                            a.smtpUsername = this.useremail;
-
+                         a.smtpUsername = cGmail2.useremail;
                     }
 
                     else
@@ -2357,12 +2363,16 @@ var cGmail2 = {
 
         fireGPGDebug('Actionbox is ' + actionbox, 'getMimeMailContens');
 
-         //There is ugly hack. It's the most ugly hack ever.
+
+
+         //This is a ugly hack.
         var evt = doc.createEvent("MouseEvents");
          evt.initMouseEvent("click", true, true, window,
            0, 0, 0, 0, 0, false, false, false, false, 0, null);
 
+        var scollage = doc.documentElement.scrollTop;
         var a = actionbox.dispatchEvent(evt);
+        doc.documentElement.scrollTop = scollage;
 
         fireGPGDebug('Event dispatech (click) is ' + a, 'getMimeMailContens');
 
@@ -2389,7 +2399,10 @@ var cGmail2 = {
         var evt3 = doc.createEvent("MouseEvents");
          evt3.initMouseEvent("mouseup", true, true, window,
            0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+         var scollage = doc.documentElement.scrollTop;
          detailsElement.dispatchEvent(evt3);
+         doc.documentElement.scrollTop = scollage;
 
         url = doc.body.getAttribute('firegpg');
 
@@ -2400,7 +2413,10 @@ var cGmail2 = {
              var evt4 = doc.createEvent("MouseEvents");
             evt4.initMouseEvent("mousedown", true, true, window,
              0, 0, 0, 0, 0, false, false, false, false, 0, null);
-             actionbox.dispatchEvent(evt4);
+
+            var scollage = doc.documentElement.scrollTop;
+            actionbox.dispatchEvent(evt4);
+            doc.documentElement.scrollTop = scollage;
 
             fireGPGDebug('Waiting mode', 'getMimeMailContens');
             return "{ERROR,WAIT}";

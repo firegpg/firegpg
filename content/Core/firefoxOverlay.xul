@@ -130,22 +130,29 @@
   </toolbarpalette>-->
 
 
-    <!-- <window id="main-window">
+    <!-- <vbox id="browser-bottombox">
 
-          <box id="firegpg-infos">
+          <box id="firegpg-popup" insertbefore="status-bar">
              <vbox >
                   <label id="firegpg-bonjour" value="&firegpgPopInfo.labelBonjour;" />
                   <label id="firegpg-access-ok" value="&firegpgPopInfo.labelAccessOk;"/>
-          <label id="firegpg-access-err" value="&firegpgPopInfo.labelAccessErr;" />
-          <label id="firegpg-key-ok" value="&firegpgPopInfo.labelKeyOk;"/>
-          <label id="firegpg-key-err" value="&firegpgPopInfo.labelKeyErr;"/>
-          <label class="link" onclick="firegpg.options();" value="&firegpgPopInfo.options;" />&nbsp;
+                <label id="firegpg-access-err" value="&firegpgPopInfo.labelAccessErr;" />
+                <label id="firegpg-key-ok" value="&firegpgPopInfo.labelKeyOk;"/>
+                <label id="firegpg-key-err" value="&firegpgPopInfo.labelKeyErr;"/>
                   <label class="link" onclick="firegpg.closepopup();" value="&firegpgPopInfo.close;" />
           </vbox>
           </box>
 
 
-    </window> -->
+    </vbox>-->
+
+    <statusbar id="status-bar">
+        <statusbarpanel id="firegpg-statusbar-update"  onclick="firegpg.onMenuItemCommand(null,'UPDATE');" style="display: none;">
+            <img src="chrome://firegpg/skin/firegpg.png" class="statusbarpanel-iconic"/>
+            <label value="An update of FireGPG is available" />
+        </statusbarpanel>
+      </statusbar>
+
 
 </overlay>
 

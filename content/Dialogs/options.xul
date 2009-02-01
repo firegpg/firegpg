@@ -226,99 +226,107 @@
               label="&gmail-no-no-sign-checkbox;"/>
 
         <groupbox flex="1">
-            <caption label="&gmail-new-interface;" />
+            <caption>
+                <button  label="&gmail-new-interface;" onclick="e = document.getElementById('gmailNewInterface'); if (e.style.display=='none') {e.style.display=''; }  else { e.style.display='none';} sizeToContent();"/>
+            </caption>
 
-            <checkbox id="gmail-disable-sign-detection-checkbox" preference="gmail-disable-sign-detection"
-                            label="&gmail-disable-sign-detection;"/>
+            <vbox id="gmailNewInterface">
 
-            <checkbox id="gmail-disable-auto-decryption-checkbox" preference="gmail-disable-auto-decryption"
-                            label="&gmail-disable-auto-decryption;"/>
+                <checkbox id="gmail-disable-sign-detection-checkbox" preference="gmail-disable-sign-detection"
+                                label="&gmail-disable-sign-detection;"/>
 
-            <checkbox id="gmail-decrypt-when-reply-checkbox" preference="gmail-decrypt-when-reply"
-                            label="&decrypt-when-reply;"/>
+                <checkbox id="gmail-disable-auto-decryption-checkbox" preference="gmail-disable-auto-decryption"
+                                label="&gmail-disable-auto-decryption;"/>
 
-
-            <label  id="gmail-sbuttons-label" value="&gmail-select-by-default-label;"/>
-
-            <checkbox id="gmail-select-by-default-sign-checkbox" preference="gmail-select-by-default-sign"
-                            label="&gmail-buton-sign-checkbox;"/>
-
-            <checkbox id="gmail-select-by-default-encrypt-checkbox" preference="gmail-select-by-default-encrypt"
-                            label="&gmail-buton-crypt-checkbox;"/>
+                <checkbox id="gmail-decrypt-when-reply-checkbox" preference="gmail-decrypt-when-reply"
+                                label="&decrypt-when-reply;"/>
 
 
-            <checkbox id="gmail-select-by-default-inline-checkbox" preference="gmail-select-by-default-inline"
-                            label="&gmail-buton-inline-checkbox;"/>
+                <label  id="gmail-sbuttons-label" value="&gmail-select-by-default-label;"/>
+
+                <checkbox id="gmail-select-by-default-sign-checkbox" preference="gmail-select-by-default-sign"
+                                label="&gmail-buton-sign-checkbox;"/>
+
+                <checkbox id="gmail-select-by-default-encrypt-checkbox" preference="gmail-select-by-default-encrypt"
+                                label="&gmail-buton-crypt-checkbox;"/>
 
 
-            <label  id="gmail-smtp-options-label" value="&gmail-smtp-options-label;"/>
-
-            <label  id="gmail-smtp-host-label" value="&gmail-smtp-host;"/>
-            <textbox id="gmail-smtp-host-textbox"  preference="gmail-smtp-host"/>
-
-            <label  id="gmail-smtp-port-label" value="&gmail-smtp-port;"/>
-            <textbox id="gmail-smtp-port-textbox"  preference="gmail-smtp-port"/>
-
-            <label  id="gmail-smtp-username-label" value="&gmail-smtp-username;"/>
-            <textbox id="gmail-smtp-username-textbox"  preference="gmail-smtp-username"/>
-
-            <label  id=" gmail-force-from-label" value="&gmail-force-from;"/>
-            <textbox id="gmail-force-from-textbox"  preference="gmail-force-from"/>
+                <checkbox id="gmail-select-by-default-inline-checkbox" preference="gmail-select-by-default-inline"
+                                label="&gmail-buton-inline-checkbox;"/>
 
 
-             <checkbox id="gmail-smtp-use-ssl-checkbox" preference="gmail-smtp-use-ssl"
-                            label="&gmail-smtp-use-ssl-checkbox;"/>
+                <label  id="gmail-smtp-options-label" value="&gmail-smtp-options-label;" style="text-decoration: underline;"/>
 
-            <checkbox id="gmail-smtp-google-com-checkbox" preference="gmail-smtp-google-com"
-                            label="&gmail-smtp-google-com;"/>
+                <label  id="gmail-smtp-host-label" value="&gmail-smtp-host;"/>
+                <textbox id="gmail-smtp-host-textbox"  preference="gmail-smtp-host"/>
 
+                <label  id="gmail-smtp-port-label" value="&gmail-smtp-port;"/>
+                <textbox id="gmail-smtp-port-textbox"  preference="gmail-smtp-port"/>
+
+                <label  id="gmail-smtp-username-label" value="&gmail-smtp-username;"/>
+                <textbox id="gmail-smtp-username-textbox"  preference="gmail-smtp-username"/>
+
+                <label  id=" gmail-force-from-label" value="&gmail-force-from;"/>
+                <textbox id="gmail-force-from-textbox"  preference="gmail-force-from"/>
+
+
+                 <checkbox id="gmail-smtp-use-ssl-checkbox" preference="gmail-smtp-use-ssl"
+                                label="&gmail-smtp-use-ssl-checkbox;"/>
+
+                <checkbox id="gmail-smtp-google-com-checkbox" preference="gmail-smtp-google-com"
+                                label="&gmail-smtp-google-com;"/>
+
+            </vbox>
 
         </groupbox>
 
-
         <groupbox flex="1">
-            <caption label="&gmail-old-interface;" />
+            <caption>
+                <button label="&gmail-old-interface;" onclick="e = document.getElementById('gmailOldInterface'); if (e.style.display=='none') {e.style.display=''; }  else { e.style.display='none';} sizeToContent();"/>
+            </caption>
 
+            <vbox id="gmailOldInterface" style="display: none;">
 
-            <label  id="gmail-buttons-label" value="&gmail-buttons-label;"/>
+                <label  id="gmail-buttons-label" value="&gmail-buttons-label;"/>
 
+                <grid flex="1">
+                    <columns>
+                        <column flex="1"/>
+                        <column flex="1"/>
+                    </columns>
 
-            <grid flex="1">
-                <columns>
-                    <column flex="1"/>
-                    <column flex="1"/>
-                </columns>
+                    <rows>
+                        <row>
+                            <checkbox id="gmail-buton-sign-checkbox" preference="gmail-buton-sign"
+                                label="&gmail-buton-csign-checkbox;"/>
+                            <checkbox id="gmail-no-no-signsend-checkbox" preference="gmail-buton-signsend"
+                                label="&gmail-buton-csignsend-checkbox;"/>
+                        </row>
+                        <row>
+                            <checkbox id="gmail-buton-psign-checkbox" preference="gmail-buton-psign"
+                                label="&gmail-buton-sign-checkbox;"/>
+                            <checkbox id="gmail-no-no-psignsend-checkbox" preference="gmail-buton-psignsend"
+                                label="&gmail-buton-signsend-checkbox;"/>
+                        </row>
+                        <row>
+                            <checkbox id="gmail-buton-crypt-checkbox" preference="gmail-buton-crypt"
+                                label="&gmail-buton-crypt-checkbox;"/>
+                            <checkbox id="gmail-no-no-cryptsend-checkbox" preference="gmail-buton-cryptsend"
+                                label="&gmail-buton-cryptsend-checkbox;"/>
+                        </row>
+                         <row>
+                            <checkbox id="gmail-buton-signcrypt-checkbox" preference="gmail-buton-signcrypt"
+                                label="&gmail-buton-signcrypt-checkbox;"/>
+                            <checkbox id="gmail-no-no-signcryptsend-checkbox" preference="gmail-buton-signcryptsend"
+                                label="&gmail-buton-signcryptsend-checkbox;"/>
+                        </row>
+                    </rows>
+                </grid>
 
-                <rows>
-                    <row>
-                        <checkbox id="gmail-buton-sign-checkbox" preference="gmail-buton-sign"
-                            label="&gmail-buton-csign-checkbox;"/>
-                        <checkbox id="gmail-no-no-signsend-checkbox" preference="gmail-buton-signsend"
-                            label="&gmail-buton-csignsend-checkbox;"/>
-                    </row>
-                    <row>
-                        <checkbox id="gmail-buton-psign-checkbox" preference="gmail-buton-psign"
-                            label="&gmail-buton-sign-checkbox;"/>
-                        <checkbox id="gmail-no-no-psignsend-checkbox" preference="gmail-buton-psignsend"
-                            label="&gmail-buton-signsend-checkbox;"/>
-                    </row>
-                    <row>
-                        <checkbox id="gmail-buton-crypt-checkbox" preference="gmail-buton-crypt"
-                            label="&gmail-buton-crypt-checkbox;"/>
-                        <checkbox id="gmail-no-no-cryptsend-checkbox" preference="gmail-buton-cryptsend"
-                            label="&gmail-buton-cryptsend-checkbox;"/>
-                    </row>
-                     <row>
-                        <checkbox id="gmail-buton-signcrypt-checkbox" preference="gmail-buton-signcrypt"
-                            label="&gmail-buton-signcrypt-checkbox;"/>
-                        <checkbox id="gmail-no-no-signcryptsend-checkbox" preference="gmail-buton-signcryptsend"
-                            label="&gmail-buton-signcryptsend-checkbox;"/>
-                    </row>
-                </rows>
-            </grid>
+                <checkbox id="gmail-buton-use-select-checkbox" preference="gmail-buton-use-select"
+                      label="&gmail-buton-use-select-checkbox;"/>
 
-            <checkbox id="gmail-buton-use-select-checkbox" preference="gmail-buton-use-select"
-                  label="&gmail-buton-use-select-checkbox;"/>
+            </vbox>
 
         </groupbox>
     </prefpane>

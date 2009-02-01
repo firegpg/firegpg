@@ -64,20 +64,18 @@
 }
 
 
-#firegpg-infos {
-	width: 700px;
-	position:fixed;
-	bottom:30px;
-	right:10px;
+#firegpg-popup {
+	width: 100%;
+	top: 0px;
 	background-color: #ffd7b4;
 	background-position: 4px 4px;
 	padding:15px 8px 7px 8px;
 	border: 1px solid #ff8921;
 	opacity: 0.80;
-	z-index: 999;
+	text-align: left;
 }
 
-#firegpg-infos hbox {
+#firegpg-popup hbox {
 	width: 100%;
 }
 
@@ -86,4 +84,10 @@ label.link {
 	padding: 0px;
 	text-align: center;
 	text-decoration: underline;
+}
+
+#firegpg-statusbar-update label {
+    background-color: red;
+    color: white;
+
 }
