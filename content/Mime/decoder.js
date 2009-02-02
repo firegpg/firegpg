@@ -494,13 +494,12 @@ FireGPGMimeDecoder = {
         var reg1 = /micalg="([a-zA-Z0-9\-]*)"( |;)/;
         result = reg1.exec(interestingHeader);
         if (result && result[1] != "")
-            return hash[result[1]];
+            return hash[result[1].toLowerCase()];
 
         var reg2 = /micalg=([a-zA-Z0-9\-]*)( |;)/;
         result = reg2.exec(interestingHeader);
         if (result && result[1] != "")
-            return hash[result[1]];
-
+            return hash[result[1].toLowerCase()];
         return '';
 
     },
