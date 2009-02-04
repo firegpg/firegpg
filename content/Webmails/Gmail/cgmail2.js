@@ -400,6 +400,9 @@ var cGmail2 = {
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailSACS"),"sndsigncrypt",spamLimite);*/
 
 
+                        //Rajouter une propriété sur le button send pour le repérer
+                        var children = listeTest[i].getElementsByClassName('goog-imageless-button-content');
+                        children[0].firstChild.setAttribute("gpg_action", "send_button");
 
 
                         //Listeners
@@ -408,18 +411,15 @@ var cGmail2 = {
                             var tmpListener = new Object;
                             tmpListener = null;
                             tmpListener = new cGmail2.callBack(doc)
-                            listeTest[i].addEventListener('click',tmpListener,true);
+                            listeTest[i].addEventListener('mouseup',tmpListener,true);
 
                         } catch (e) {  fireGPGDebug(e,'cgmail2.checkDoc',true);  }
 
-                        //Rajouter une propriété sur le button send pour le repérer
-                        var children = listeTest[i].getElementsByTagName('button');
-                        children[0].setAttribute("gpg_action", "send_button");
 
 
                         if (listeTest[i].getAttribute('class').indexOf('LlWyA') != -1) {
 
-                            children[0].setAttribute("gpg_action", "send_button2");
+                            children[0].firstChild.setAttribute("gpg_action", "send_button2");
 
 
                             //Add the button 'Attach and chiffred a file'
@@ -715,10 +715,6 @@ var cGmail2 = {
 
                     target = event.target;
 
-
-
-
-
         /*        }
 
             } catch (e)  { fireGPGDebug(e,'cgmail2.callBack',true);  } */
@@ -933,10 +929,9 @@ var cGmail2 = {
                     }
 				}
 			} else  if (target.getAttribute('gpg_action') == "send_button" || target.getAttribute('gpg_action') == "send_button2") {
-
                 stopTheEvent = false;
 
-                buttonsboxes = target.parentNode.parentNode.parentNode.parentNode.parentNode;
+                buttonsboxes = target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
 
                 tmpimage = buttonsboxes.getElementsByClassName('firegpg-sign', 'img');
                 sign = tmpimage[0].title == 'On';
@@ -1022,14 +1017,14 @@ var cGmail2 = {
 
                     //alert("S:" + sign + " E:" + encrypt + " I:" + inline);
 
-                    form =  buttonsboxes.parentNode.parentNode.parentNode.parentNode.getElementsByTagName('form');
+                    form =  buttonsboxes.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByTagName('form');
                      f = form[0];
 
                      cGmail2.setProgressMessage(f, i18n.getString("GmailCreatingMail"));
 
 
 
-                    var children = buttonsboxes.getElementsByTagName('button');
+                    var children = buttonsboxes.parentNode.parentNode.parentNode.parentNode.getElementsByClassName('goog-imageless-button-content');
 
                     a = new FireGPGGmailMimeSender(f, children[2], i18n);
 
@@ -1133,8 +1128,8 @@ var cGmail2 = {
                         from = a.smtpUsername
 
                     if (from == undefined || from == "") {
-                        alert('This shouldn\'t happend, but I\'m unable to find a from value. Please set one on options');
                         event.stopPropagation();
+                        alert('This shouldn\'t happend, but I\'m unable to find a from value. Please set one on options');
                         return;
                     }
 
@@ -1301,7 +1296,7 @@ var cGmail2 = {
         Parameters:
             nodeForScan - The node with the send button
             dDocument - The document of the page
-    */
+    *//*DEPRECIATED
 	sendEmail: function(nodeForScan, dDocument)
 	{
 
@@ -1314,7 +1309,7 @@ var cGmail2 = {
 					children[0].dispatchEvent(evt);
 			 } catch (e) { fireGPGDebug(e,'cgmail2.sendEmail',true);  }
 
-	},
+	},*/
 
     /*
         Function: getWriteMailContent
@@ -1333,7 +1328,7 @@ var cGmail2 = {
 
             if (confirm(i18n.getString("betterToUsePlainText"))) {
 
-                whereSeacrch =boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode;
+                whereSeacrch =boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
 
                 children = whereSeacrch.getElementsByClassName('g7q0he', 'span');
 
@@ -1561,7 +1556,15 @@ var cGmail2 = {
     */
     getTheIframe: function(dDocument,boutonxboxnode) {
 
-        var tmp = boutonxboxnode;
+
+
+        var i = dDocument.evaluate(".//td[contains(@class, 'opUkHb')]//iframe", boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
+        fireGPGDebug(i, 'iframefound');
+
+        return i;
+
+        /*var tmp = boutonxboxnode;
 
         tmp = tmp.parentNode;
 
@@ -1628,7 +1631,7 @@ var cGmail2 = {
 
         tmp = tmp[0];
 
-        return tmp;
+        return tmp;*/
 
 
     },
@@ -1643,7 +1646,13 @@ var cGmail2 = {
     */
     getTheTextarea: function(dDocument,boutonxboxnode) {
 
-        var tmp = boutonxboxnode;
+        var i = dDocument.evaluate(".//td[contains(@class, 'opUkHb')]//textarea", boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
+        fireGPGDebug(i, 'textareadfound');
+
+        return i;
+
+        /*var tmp = boutonxboxnode;
 
         tmp = tmp.parentNode;
 
@@ -1710,7 +1719,7 @@ var cGmail2 = {
 
         tmp = tmp[0];
 
-        return tmp;
+        return tmp; */
 
     },
 
@@ -1728,7 +1737,7 @@ var cGmail2 = {
 
         var tmp = boutonxboxnode;
 
-        tmp = tmp.parentNode;
+      /*  tmp = tmp.parentNode;
 
         tmp = tmp.childNodes[1];
 
@@ -1764,8 +1773,9 @@ var cGmail2 = {
 
         }
 
-        tmp = tmp.firstChild;
+        tmp = tmp.firstChild; */
 
+         var tmp = dDocument.evaluate(".//table[contains(@class, 'wHcYVb')]/tbody", tmp.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
 
         var textareas = tmp .getElementsByTagName("textarea");
@@ -1817,45 +1827,7 @@ var cGmail2 = {
 
         var tmp = boutonxboxnode;
 
-        tmp = tmp.parentNode;
-
-        tmp = tmp.childNodes[1];
-
-         //29 septebmre 2008
-        if (!tmp) {
-
-             var tmp = boutonxboxnode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.childNodes[1];
-
-        }
-
-         if (!tmp) { //Version du 29 octobre 2008 - BOUTONS DU HAUT
-
-            var tmp = boutonxboxnode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.childNodes[1];
-
-
-        }
-
-        tmp = tmp.firstChild;
-
-
+        var tmp = dDocument.evaluate(".//table[contains(@class, 'wHcYVb')]/tbody", tmp.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
         var selects = tmp .getElementsByTagName("select");
 
@@ -1888,45 +1860,7 @@ var cGmail2 = {
 
         var tmp = boutonxboxnode;
 
-        tmp = tmp.parentNode;
-
-        tmp = tmp.childNodes[1];
-
-         //29 septebmre 2008
-        if (!tmp) {
-
-             var tmp = boutonxboxnode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.childNodes[1];
-
-        }
-
-         if (!tmp) { //Version du 29 octobre 2008 - BOUTONS DU HAUT
-
-            var tmp = boutonxboxnode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.childNodes[1];
-
-
-        }
-
-        tmp = tmp.firstChild;
-
-
+        var tmp = dDocument.evaluate(".//table[contains(@class, 'wHcYVb')]/tbody", tmp.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
         var inputs  = tmp .getElementsByTagName("input");
 

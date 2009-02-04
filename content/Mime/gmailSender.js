@@ -436,7 +436,7 @@ cGmail2.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><tr><td c
 //				sD.addEventListener("DOMNodeRemoved", function (e) {printAncestors("Removed! ", e.target); }, false);
 
             var discardevent=d.createEvent("MouseEvents");
-            discardevent.initMouseEvent("click", true, true, d.defaultView, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+            discardevent.initMouseEvent("mouseup", true, true, d.defaultView, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
             var discardcanceled = this.discardButton.dispatchEvent(discardevent);
 
 

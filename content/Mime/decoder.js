@@ -64,6 +64,7 @@ FireGPGMimeDecoder = {
 
         if (!headers["Content-Type"] || headers["Content-Type"].indexOf('"application/pgp-signature"') == -1)
             return '';
+        
         hash = this.findHash(message, headers);
 
         if (hash == '') {
