@@ -1,31 +1,31 @@
-<!ENTITY key-status "Status">
-<!ENTITY key-trust "Trust">
+<!ENTITY key-status "狀態">
+<!ENTITY key-trust "信任度">
 <!ENTITY key-expire "Expire">
 <!ENTITY key-create "Created">
 <!ENTITY key-id "ID">
 <!ENTITY key-name "Name">
-<!ENTITY revoke-button "Revoke key">
-<!ENTITY sign-button "Signatures">
-<!ENTITY changetrust-button "Change trust">
-<!ENTITY importserver-button "Import from server">
-<!ENTITY exportserver-button "Export to server">
-<!ENTITY importfile-button "Import from file">
-<!ENTITY exportfile-button "Export to file">
+<!ENTITY revoke-button "撤銷金鑰">
+<!ENTITY sign-button "簽章">
+<!ENTITY changetrust-button "改變信任度">
+<!ENTITY importserver-button "從伺服器匯入">
+<!ENTITY exportserver-button "匯出到伺服器">
+<!ENTITY importfile-button "從檔案匯入">
+<!ENTITY exportfile-button "匯出到檔案">
 <!ENTITY new-button "New key">
 <!ENTITY keymanager "Key manager">
-<!ENTITY refrech "Refresh keys from server">
-<!ENTITY trustUnded "Remove information about trusting">
-<!ENTITY trustDont "I don't trust this key">
-<!ENTITY trustMargi "I marginally trust this key">
-<!ENTITY trustFull "I fully trust this key">
-<!ENTITY trustUltimate "Trust this key ultimately (!)">
+<!ENTITY refrech "從伺服器更新金鑰">
+<!ENTITY trustUnded "移除關於信任度的資訊">
+<!ENTITY trustDont "我不信任此金鑰 ">
+<!ENTITY trustMargi "我勉強信任此金鑰">
+<!ENTITY trustFull "我完全信任此金鑰">
+<!ENTITY trustUltimate "徹底信任此金鑰 (!)">
 <!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
+<!ENTITY del-button "刪除">
 <!ENTITY revokeNoRaison "No reason specified">
-<!ENTITY revokeComprimse "Key has been compromised">
-<!ENTITY revokeRemplaced "Key is superseded">
-<!ENTITY revokeNotUsed "Key is no longer used">
-<!ENTITY userid-button "User ID">
-<!ENTITY add "Add">
-<!ENTITY delete "Delete">
-<!ENTITY revoke "Revoke">
+<!ENTITY revokeComprimse "金鑰已經被洩漏了">
+<!ENTITY revokeRemplaced "金鑰被代換了">
+<!ENTITY revokeNotUsed "金鑰不再被使用了">
+<!ENTITY userid-button "使用者 ID">
+<!ENTITY add "新增">
+<!ENTITY delete "刪除">
+<!ENTITY revoke "撤銷">

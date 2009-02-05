@@ -53,18 +53,23 @@
 <!ENTITY use-fireftp-workaround "Δοκίμασε να ανοίξεις το IPC με το παλιό API.">
 <!ENTITY keyserver-message "Εξυπηρετητής κλειδιών">
 <!ENTITY symmetric-algo "Αλγόριθμος για χρήση σε συμμετρική κρυπτογράφηση. Αφήστε το κενό για να χρησιμοποιηθεί ο προεπιλεγμένος. Με την εντολή gpg --version μπορείτε να δείτε μία λίστα με τους διαθέσιμους αλγόριθμους, συνήθως έχετε αυτές τις επιλογές :">
-<!ENTITY gmail-new-interface "New Gmail interface">
-<!ENTITY gmail-select-by-default-label "Selected by default :">
-<!ENTITY gmail-buton-inline-checkbox "Inline">
-<!ENTITY gmail-old-interface "Old Gmail interface">
-<!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
-<!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
-<!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
+<!ENTITY gmail-new-interface "Νέο παρουσιαστικό Gmail">
+<!ENTITY gmail-select-by-default-label "Προεπιλογή:">
+<!ENTITY gmail-buton-inline-checkbox "Μέσα στο κείμενο">
+<!ENTITY gmail-old-interface "Παλαιό παρουσιαστικό Gmail">
+<!ENTITY gmail-smtp-options-label "Επιλογές SMTP (openpgp/mime mails)">
+<!ENTITY gmail-smtp-google-com "Μην επιχειρήσεις ποτέ να χρησιμοποιήσεις τον αποθηκευμένο κωδικό για το google.com ">
+<!ENTITY gmail-smtp-username "Όνομα Χρήστη (αφήστε το κενό για χρήση του ονόματος του συνδεδεμένου λογαριασμού):">
 <!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
 <!ENTITY gmail-smtp-port "Port (465) :">
-<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Χρήση SSL:">
 <!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
 <!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
-<!ENTITY gmail-force-from "Force from value :">
+<!ENTITY gmail-force-from "Εξαναγκασμός από τιμή:">
 <!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
-<!ENTITY decrypt-when-reply "Decrypt content when reply">
+<!ENTITY decrypt-when-reply "Αποκωδικοποίηση του περιεχομένου κατά την απάντηση">
+<!ENTITY gmail-buton-attachements-checkbox "Attachements">
+<!ENTITY autorwap-liste-action.label "Action">
+<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY paneautowrap.title "Autowrap">

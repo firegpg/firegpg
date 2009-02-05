@@ -2,10 +2,10 @@
 <!ENTITY key-trust "信頼度">
 <!ENTITY key-expire "Expire">
 <!ENTITY key-create "Created">
-<!ENTITY key-id "Id">
-<!ENTITY key-name "Name">
-<!ENTITY revoke-button "この鍵を破棄する">
-<!ENTITY sign-button "Signatures">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "">
+<!ENTITY revoke-button "鍵を破棄する">
+<!ENTITY sign-button "署名">
 <!ENTITY changetrust-button "信頼度を変更">
 <!ENTITY importserver-button "サーバーから併合">
 <!ENTITY exportserver-button "サーバーへ書き出し">

@@ -236,6 +236,8 @@ function importfile() {
 
 	FireGPG.kimport(false,data);
 
+    updateKeyList();
+
 }
 
 function changeTrust(value) {

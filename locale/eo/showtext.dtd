@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Ĉifri">
+<!ENTITY dcrypt-button "Malĉifri">
+<!ENTITY sign-button "Sign">
+<!ENTITY verify-button "Kontroli">
+<!ENTITY open-button "Open">
+<!ENTITY save-button "Save">
+<!ENTITY cryptandsign-button "Subskribi kaj ĉifri">
+<!ENTITY sign-clear-button "Clearsign">
+<!ENTITY symcrypt-button "Symmetric encryption">
+<!ENTITY closeandcopy-button "Kopii al tranĉtabulo kaj fermi">

@@ -222,6 +222,11 @@ var FireGPG = {
         if (text == undefined || text == null) {
             var autoSetMode = true;
             text = Selection.get();
+
+
+            //Vu que c'est peut etre un webmail, on passe dans l'autowrap
+            text = FireGPGAutoWrap.checkAndWrap(text);
+
         }
 
         if (text == "") {

@@ -1,6 +1,6 @@
-<!ENTITY keyimporter " Importar llave del servidor">
+<!ENTITY keyimporter "Importar clave del servidor">
 <!ENTITY close-button "Cerrar">
-<!ENTITY import-button "Importar llaves seleccionadas">
+<!ENTITY import-button "Importar claves seleccionadas">
 <!ENTITY search-button "Buscar">
 <!ENTITY search-description "Buscar:">
 <!ENTITY key-create "Creada">

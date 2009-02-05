@@ -4,5 +4,5 @@
 <!ENTITY search-button "検索">
 <!ENTITY search-description "Search for :">
 <!ENTITY key-create "Created">
-<!ENTITY key-id "Id">
-<!ENTITY key-name "Name">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "名前">

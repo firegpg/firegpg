@@ -68,3 +68,8 @@
 <!ENTITY gmail-force-from "Erzwingen von Wert:">
 <!ENTITY gpg-special-path-values "Um den Firefox-Ordner oder ein Leerzeichen in einem Argument zu haben, nutze {$FxFolder] bzw. {$SPACE}">
 <!ENTITY decrypt-when-reply "Inhalt beim Antworten entschlüsseln">
+<!ENTITY gmail-buton-attachements-checkbox "Attachements">
+<!ENTITY autorwap-liste-action.label "Action">
+<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY paneautowrap.title "Autowrap">

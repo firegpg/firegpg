@@ -11,7 +11,7 @@
 <!ENTITY expire-month "meses">
 <!ENTITY expire-days "dias">
 <!ENTITY advancedoptions "Opções avançadas">
-<!ENTITY keylenght-message "Key length">
+<!ENTITY keylenght-message "Comprimento da chave">
 <!ENTITY keytype-message "Tipo de chave">
 <!ENTITY generate-button "Gerar chave">
 <!ENTITY cancel-button "Cancelar">

@@ -67,4 +67,9 @@
 <!ENTITY gmail-disable-auto-decryption "Comportamento antigo para decifragem">
 <!ENTITY gmail-force-from "Forçar o valor De:">
 <!ENTITY gpg-special-path-values "Usar {$FxFolder} para ter a pastar do Firefox e {$SPACE} para ter espaço dentro de um argumento">
-<!ENTITY decrypt-when-reply "Decriptar conteúdo quando responder">
+<!ENTITY decrypt-when-reply "Decifrar conteúdo quando responder">
+<!ENTITY gmail-buton-attachements-checkbox "Attachements">
+<!ENTITY autorwap-liste-action.label "Action">
+<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY paneautowrap.title "Autowrap">

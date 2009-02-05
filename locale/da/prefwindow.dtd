@@ -68,3 +68,8 @@
 <!ENTITY gmail-force-from "Tving fra værdi:">
 <!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
 <!ENTITY decrypt-when-reply "Afkryptér indhold ved svar">
+<!ENTITY gmail-buton-attachements-checkbox "Attachements">
+<!ENTITY autorwap-liste-action.label "Action">
+<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY paneautowrap.title "Autowrap">

@@ -1,5 +1,9 @@
 2009-02-05 Maximilien Cuony
     * Gmail working again
+    * FS#217
+    * FS#229
+    * Refresh keylist when importing a file
+    * FS#230
 
 2009-02-02 Maximilien Cuony
     * Fix problem with mails sended by claws mail, kmail, Mutt

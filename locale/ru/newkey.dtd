@@ -7,9 +7,9 @@
 <!ENTITY password2-message "Repeat password">
 <!ENTITY keyneverexpire "The key never expires">
 <!ENTITY keyexpire-message "Key expires in">
-<!ENTITY expire-year "years">
-<!ENTITY expire-month "months">
-<!ENTITY expire-days "days">
+<!ENTITY expire-year "лет">
+<!ENTITY expire-month "месяцев">
+<!ENTITY expire-days "дней">
 <!ENTITY advancedoptions "Дополнительные настройки">
 <!ENTITY keylenght-message "Key length">
 <!ENTITY keytype-message "Key type">

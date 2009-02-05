@@ -27,7 +27,7 @@
 <!ENTITY per-domain-preferences.label "ドメインごとの設定:">
 <!ENTITY turn-off-updates "FireGPGの自動更新を無効にする。">
 <!ENTITY key-name "名前">
-<!ENTITY key-id "Key ID">
+<!ENTITY key-id "ID">
 <!ENTITY key-create "日付 (署名または作成)">
 <!ENTITY key-expire "有効期限">
 <!ENTITY pane4.title "GPG">
@@ -53,18 +53,23 @@
 <!ENTITY use-fireftp-workaround "IPCに古いAPIでのアクセスを試みる。">
 <!ENTITY keyserver-message "鍵サーバー">
 <!ENTITY symmetric-algo "対称暗号可に用いるアルゴリズム。デフォルトは空白。gpg --version で利用可能なアルゴリズムが表示されます。多くの場合、以下の選択があります: ">
-<!ENTITY gmail-new-interface "New Gmail interface">
+<!ENTITY gmail-new-interface "新しいGmailインターフェース">
 <!ENTITY gmail-select-by-default-label "Selected by default :">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
-<!ENTITY gmail-old-interface "Old Gmail interface">
-<!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
+<!ENTITY gmail-old-interface "古いGmailインターフェース">
+<!ENTITY gmail-smtp-options-label "SMTPオプション (openpgp/MIMEメール)">
 <!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
-<!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
-<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
-<!ENTITY gmail-smtp-port "Port (465) :">
-<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
+<!ENTITY gmail-smtp-username "ユーザー名 (ログインアカウントのユーザー名を使用する場合は空白): ">
+<!ENTITY gmail-smtp-host "ホスト (smtp.gmail.com): ">
+<!ENTITY gmail-smtp-port "ポート (465): ">
+<!ENTITY gmail-smtp-use-ssl-checkbox "SSLを使用する:">
 <!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
 <!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
 <!ENTITY gmail-force-from "Force from value :">
 <!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
 <!ENTITY decrypt-when-reply "Decrypt content when reply">
+<!ENTITY gmail-buton-attachements-checkbox "Attachements">
+<!ENTITY autorwap-liste-action.label "Action">
+<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY paneautowrap.title "Autowrap">

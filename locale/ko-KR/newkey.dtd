@@ -10,8 +10,8 @@
 <!ENTITY expire-year "years">
 <!ENTITY expire-month "months">
 <!ENTITY expire-days "days">
-<!ENTITY advancedoptions "Advanced options">
+<!ENTITY advancedoptions "고급 옵션">
 <!ENTITY keylenght-message "Key length">
 <!ENTITY keytype-message "Key type">
 <!ENTITY generate-button "Generate key">
-<!ENTITY cancel-button "Cancel">
+<!ENTITY cancel-button "취소">

@@ -27,26 +27,26 @@
 <!ENTITY firegpgMenu.labelExport "导出">
 <!ENTITY firegpgContext.labelExport "导出">
 <!ENTITY firegpgToolbar.labelExport "导出">
-<!ENTITY firegpgPopInfo.labelBonjour "Bienvenue !<br />FireGPG à été installé correctement !">
-<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG parviens à accéder à GnuPG !">
-<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG ne parviens pas à accéder à GnuPG : L'avez vous installé ? Son chemin est-il correctement défini ?">
-<!ENTITY firegpgPopInfo.labelKeyOk "Une clé privée à corrctement été définie !">
-<!ENTITY firegpgPopInfo.labelKeyErr "注意：veuillez définir une clé privée dans les options !">
-<!ENTITY firegpgPopInfo.close "Fermer">
+<!ENTITY firegpgPopInfo.labelBonjour "欢迎！FireGPG 安装成功！">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG 可访问 gpg。">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG 无法访问 gpg 可执行文件。请检查是否有安装该软件，或者在首选项里手工指定路径。">
+<!ENTITY firegpgPopInfo.labelKeyOk "已选择私钥。">
+<!ENTITY firegpgPopInfo.labelKeyErr "警告：请在首选项里选择一个私钥。">
+<!ENTITY firegpgPopInfo.close "关闭">
 <!ENTITY firegpgPopInfo.options "选项">
-<!ENTITY firegpgContext.labelEditeur "打开编辑器">
-<!ENTITY firegpgMenu.labelEditeur "打开编辑器">
-<!ENTITY firegpgToolbar.labelEditeur "打开编辑器">
+<!ENTITY firegpgContext.labelEditeur "文本编辑器">
+<!ENTITY firegpgMenu.labelEditeur "文本编辑器">
+<!ENTITY firegpgToolbar.labelEditeur "文本编辑器">
 <!ENTITY firegpgContext.labelCryptSign "签名并加密">
 <!ENTITY firegpgMenu.labelCryptSign "签名并加密">
 <!ENTITY firegpgToolbar.labelCryptSign "签名并加密">
 <!ENTITY firegpgToolbar.labelSymCrypt "对称加密">
 <!ENTITY firegpgContext.labelSymCrypt "对称加密">
 <!ENTITY firegpgMenu.labelSymCrypt "对称加密">
-<!ENTITY firegpgContext.labelClearSign "成功签署">
-<!ENTITY firegpgToolbar.labelClearSign "成功签署">
-<!ENTITY firegpgMenu.labelClearSign "成功签署">
-<!ENTITY firegpgContext.labelManager "Key manager">
-<!ENTITY firegpgToolbar.labelManager "Key manager">
-<!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
+<!ENTITY firegpgContext.labelClearSign "明文签名">
+<!ENTITY firegpgToolbar.labelClearSign "明文签名">
+<!ENTITY firegpgMenu.labelClearSign "明文签名">
+<!ENTITY firegpgContext.labelManager "密钥管理器">
+<!ENTITY firegpgToolbar.labelManager "密钥管理器">
+<!ENTITY firegpgMenu.labelManager "密钥管理器">
+<!ENTITY keynotrevokedpassword "错误，密钥未被吊销。密码有错？">

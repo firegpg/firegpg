@@ -171,9 +171,11 @@ function onLoad(win) {
 	getIgnored_servers( document.getElementById('domain_list') );
 
 
-    listbox = document.getElementById('api_domain_list');
+
 
     // Load gpgapi list :
+
+    listbox = document.getElementById('api_domain_list');
 
     access = gpgApi.getAccessList();
 
@@ -197,7 +199,56 @@ function onLoad(win) {
 
     }
 
+    //Load autowrap actions
+    actions = FireGPGAutoWrap.getActionList();
+
+    listbox = document.getElementById('autowrap_list');
+
+    for (var domain in actions) {
+
+        var  item   = document.createElement('listitem');
+
+        item.setAttribute('autoWrap-domain',domain);
+
+        var  child1 = document.createElement('listcell');
+        child1.setAttribute('label', domain);
+        item.appendChild(child1);
+
+        var  child2 = document.createElement('listcell');
+        if(actions[domain] == "W")
+            message = document.getElementById('firegpg-strings').getString('autowrap-warp');
+        else
+            message = document.getElementById('firegpg-strings').getString('autowrap-ignore');
+        child2.setAttribute('label', message);
+        item.appendChild(child2);
+
+        listbox.appendChild(item);
+
+        item.setAttribute('ondblclick','autoWrapRemoveMySelf(this);');
+
+    }
+
 }
+
+/*
+    Function: autoWrapRemoveMySelf
+    Remove an auto action for autowrap
+*/
+function autoWrapRemoveMySelf(item) {
+
+    listbox = document.getElementById('autowrap_list');
+
+    actions = FireGPGAutoWrap.getActionList();
+
+    delete(actions[item.getAttribute('autoWrap-domain')]);
+
+    FireGPGAutoWrap.setActionList(actions);
+
+    listbox.removeChild(item);
+
+
+}
+
 
 /*
     Function: apiRemoveMySelf

@@ -197,6 +197,8 @@
             <preference id="gmail-select-by-default-sign" name="extensions.firegpg.gmail_select_by_default_sign" type="bool"/>
             <preference id="gmail-select-by-default-encrypt" name="extensions.firegpg.gmail_select_by_default_encrypt" type="bool"/>
             <preference id="gmail-select-by-default-inline" name="extensions.firegpg.gmail_select_by_default_inline" type="bool"/>
+            <preference id="gmail-select-by-default-attachements" name="extensions.firegpg.gmail_select_by_default_attachements" type="bool"/>
+
 
             <preference id="gmail-smtp-google-com" name="extensions.firegpg.gmail_never_use_google_com_password" type="bool"/>
             <preference id="gmail-smtp-use-ssl" name="extensions.firegpg.gmail_use_ssl" type="bool"/>
@@ -253,6 +255,11 @@
 
                 <checkbox id="gmail-select-by-default-inline-checkbox" preference="gmail-select-by-default-inline"
                                 label="&gmail-buton-inline-checkbox;"/>
+
+                <checkbox id="gmail-select-by-default-attachements-checkbox" preference="gmail-select-by-default-attachements"
+                                label="&gmail-buton-attachements-checkbox;"/>
+
+
 
 
                 <label  id="gmail-smtp-options-label" value="&gmail-smtp-options-label;" style="text-decoration: underline;"/>
@@ -358,6 +365,28 @@
     <!-- end of gpg api -->
 
 
+    <!-- Autowrap -->
+
+    <prefpane id="pane5" label="&paneautowrap.title;" flex="1" image="chrome://firegpg/skin/opt-autowrap.png">
+
+
+        <label control="autowrap_list">&autowrap_list.label;</label>
+		<vbox>
+			<listbox id="autowrap_list" rows="15">
+				<listhead>
+					<listheader label="&autorwap-liste-domain.label;"/>
+					<listheader label="&autorwap-liste-action.label;"/>
+				</listhead>
+				<listcols>
+					<listcol flex="1"/>
+					<listcol flex="1"/>
+				</listcols>
+			</listbox>
+		</vbox>
+	</prefpane>
+    <!-- end of Autowrap -->
+
+
     <!-- Gpg auth -->
 
     <prefpane id="pane3" label="&pane3.title;" flex="1" image="chrome://firegpg/skin/opt-gpgauth.png">
@@ -396,6 +425,7 @@
     <script src="../Api/api.js"/>
     <script src="options.js"/>
     <script src="../GpgAuth/gpgauth_options.js"/>
+    <script src="../Webmails/autowrap.js"/>
 
 </prefwindow>
 

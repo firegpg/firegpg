@@ -52,6 +52,9 @@ const IMG_ENCRYPT_OFF = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQC
 const IMG_INLINE_ON = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9kBDxIDEyzXu6IAAAJDSURBVDjLXZK9S1thFIef9354ufEak5qQpoFq24QSGqXg5FKodCxd/Q9CCYKDIDh26No6SiY7lOImpV3qYkGw6tA/QBAFSYg0QWL0er/ydnjVfJzl5ZwDz/md33uEnJx8STw+hWVNYppPsKwi8JRO5xFh2EXT/tLtfqJW2xXn5/8YCiGnpyWLizAyAokEWBaYJgQBHB+D68LJCdTrR+zsfBSt1pd+gMHERIN8PkO7rSqeJ/E8gWXBzAx0OjA1Be12gVTqg9zY2BG+f9oDQAPIsLUFl5fgeQLXhYUFKBZhfx9aLZiflxQKCSwrju/TDzjH88BxQNdVVdPU22xCOg2lEgghME0b04wNrgCX+D6kUnBxMQgJQ8hkVC4lwAhBYA0CoqgLKJl3PgCcnSkzR0dV7vtgGHdD+wBhGCElzM1xv9v1Nd8rFd6trSlAtwuepxQNhYZhmICaNj4OzSZvKhV+AWxuwvY2HB2pbwUIQ20QoOsP7rODA14tL/MHcIFve3v41SocHqrpUvYMvgdAHCFUlskQ71tyFNChZ2wYgqZ1BwFRNAYoibkcP1ZWKN02nwH6mGoTBMoHXY+GTXSQUjVdF0oldstl1qtVXiwtQTKp3Nc0CAKJpg0BgiCGrkMspk44imB2lvflsjoixwEpJSBw3Rs872YQUK9/ZXU1QTb7kGz2MbadxbZjpNO9AzJNgeNAo3Hz+eoqfWvPFYAA+A3mBcR0cHSI+xArQKpoGHlyuTzJZAnbfk6tFv08PX39Fk7uFPwH1YnXP5gXXzcAAAAASUVORK5CYII%3D";
 const IMG_INLINE_OFF = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9kBFQowNr4pT+YAAAJrSURBVDjLXZG9ThtBFEbP/KxnWdssjsFaW5YtgeSCBnqKiAqJF6BGIpQUvAgNFR2FeySkNLQUqZAi8QKYJkUArSG22d2ZSUHWipn205z73XPF5eVlYoyJK5VKLIRoaK1XgZU8z+vWWi+l/GWt/TEejx+Pjo4mfHo6DMNvOzs7BEGAMYYgCFBKYa3l6emJPM97Ly8vvfF4/HxxcXF7fHz883+AjKLoz9raGsYYAPI8ZzabAdDpdEiShPX1dTY3N79sbW19PT8/jxcaCCHegOr9/T3v7+8URUFRFGxvb5MkCaPRiMlkwsbGBqurq6FSyiwAvPcTay1hGCKlBEAIgfee19dXqtUqSZIgpUQppZVSwecG79ZaoihCSokQ4mM3KfHeU6/X8d7jnANQzjm1AHDOeYDpdMp0Op0HaZqitSYIPgZaa0uoXJDonPPOOfr9PoPBgMFgQL/f5+zsbA4sG/xrsXhGKaX03qOUQmvN8/Mz+/v7tFot7u7uaLfbNBoNlpeXAXDOiYUGQoilcu/RaMTe3h4PDw9kWcbV1RW3t7c8Pj7inMN7P3c0BwCmtB7HMcYYlPrwFATBXGy5hpTSLwC89xUhBM456vU6w+GQJEkAaDabLC0tUebWWoQQ/rPEShlmWUan02E4HNLr9Tg4OGB3d5dut4sQogS4z2cMSoGl6W63y+npKdVqlTAM5/azLCuKoigWAGma3l9fX5uVlZVarVaLjTE1rXVQq9Xm1ZVShGHI29tbcXNzUwUCIAfQh4eH309OTuRsNguEEBUhhHHOBc1mM2q32404jr9EUdTSWjfTNHWtVut3+RngLwdWF4aAJ/0ZAAAAAElFTkSuQmCC";
 
+const IMG_ATTACHEMENTS_ON = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9kCBQkqCNqaO4AAAAMmSURBVDjLfZNdaFtlHMaf93zk5JzTsNjEtKW1VdnoxqYTqzJHwU8wFh25Eb2QsV6IV9VrFZFQClYRpLY2ksa2idBetBeGqdBZECmio3MT7Fa7wGzjsnw1TdOT057kfc/fKxGd7nf//Hgungf4FzMzMwCA4eFhZXJy8ngsFjs+Pj6uAEAqlcIdGRsbAwCMjo7el06nr5XLZZ7NZvnc3NxaIpHoBYDp6ek7S5LJ5Iurq6sOEVG5WCC7bhER0YUL3x6kUqnIf4b+qhaPx5OFQoEO6rv0buI7d+DtL+nch0sUnf3BJSLKZrMUi8W+AIDZ2dm/BSMjI56FhYV4pbJNl6/ecPuGFt2PvtqkS7/btHT5Ft2s7NN7yZ/cA6fhlkolmp+f/3xiYkIDADY1NRXw+Xznw+HwqVv5Ar322TX29JOncTQk4Z1Pz2MzV0ZnsAWL0QjkZg0nj92PSqWC5eXlFdu2z8jhcPhEJBKJlktFejPxC3ug71Hsc4Yfr2TQ5Bx7chBN2YfYNxtoVSyc6GqBR9MoEAj0rK+vLyoKc11VIriyl+mH2pDfcdAdZFB4DV9Hn0PR4uDchUuEFrYP3TCwZ1nMsixIkuQqU1d0pG+uQFFU3NPZjqXftuHXDmFtaxevfrCMc8/24pWnDsOu29izHHh1HflCAfV6HZIkQXr+qISt3DYe7O3GgQDy5Rp2LAdnX3gMxVoD/cfuQqWyAy4EDMMAEUEIAc45AEDqaXHw8eun8P3PGaz8mkezUcfFjRJu/FHEW2fuRXO/BiEEarUaZFm+bQKS7XA8fCSEl/u70dejo1Vz0X/ERD5fxBMnuxAM3g3TNGEYBqrV6u0CxhiawsVAXzu2Kzt46fEOrG1sIf7GaWiaBiEEGo0GVFWFbduwLOsfAgWAxDlHd2c7Phl6Bo8MLSAdHaBgoJW5rgshBIQQJIRgbW1tcBwHjDEwxgAALJlMdjiO8z6ADlVmvs0qU7v8khIMtJp+v9/w+Xy6ruter9ereTweSVVVZDIZVKtVnsvlHmL/d6rBwUEjFAqZpmnquq5ruq5riqKojDGJMcZkWd71eDzX/wQIV3ntsohEcwAAAABJRU5ErkJggg%3D%3D";
+const IMG_ATTACHEMENTS_OFF = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAAXNSR0IArs4c6QAAAAJiS0dEAP+Hj8y/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH2QIFCSoiASHyVgAAAY9JREFUKM9l0cFLVFEYxuHfd+65M3PveEWd0RIxqEWNRmEpLYJAtMWAlC3cBBmUm6BCiP6DimwnblzYKkQQN1G5y12bIJQWkujCgsSJGa82zkxq53raaGP0rV5entX7CUfuiUqnBVN4sF/tpBpf1Lfdvpz6xYdCZWqo8B94lWm/2enkSeLz3uSmB7/8AyYGrnfUMGlXpJ7j9q58Z/bzvZkD8Mw5c62na92O0ifnCTnJa3uLoszNb7y5b+SlHwxmW3N2TLppZow1GnmOoZ2QuW+VSSfbdKM3b8flIr9ZwCAo3hLjBHGbqlta1GIVSmoJaSRihG0MFoVPSUooqz+yiqaFRRJ85SlZrlKmhMcPyijUOdbIYMizTT8/OUtIhI8lwgC6lodMUWaPJeIMsIOmQsPf+dQup+nmFB4ZclwgTRKfrSoQIi4RcoVlHhMnYg+XCqVDgBhaeMQswzZFQJKEVRzDIgigg+K7BQIn3uN8UqtuXSzQnk7omLhsUtxXRo6++47bFEu6nuNprUREnJ2hjT8qVH2tuwQkmgAAAABJRU5ErkJggg%3D%3D";
+
 const IMG_ENCRYPTED = IMG_ENCRYPT_ON;
 const IMG_ENCRYPTED2 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAN1wAADdcBQiibeAAAAAd0SU1FB9gFCxQBOXBpjnYAAAIFSURBVDjLzZHPS9NxGMdfn8++Op2hWaNE58LZKRNKI1MLRKZ06NahGYs6dO/SLaiTdFDoj8hDh04FefDHpLnAQ1oYUWFB6tRDsFmXre8+z9NhMqZ2rwceHngenhfP837Dvw7zt+bo6MAJ53RMDfWVpkilCJTU8SqdXvp4CBCPX44psmqMCRlTPVZUQVURkXJ1esc7CFD1H9lATcgag7Fm70yDoqiW0xiDqmKNXjsE8GqCV7u7z1EsFPj67TPGWIwBFKQCEEQUh3wIVC8PDfVdirRF7p2KdjA+PkEkEmVrO8uvn7vYwB6oSjaLPDAA/f399YODF58kxpKJnvO9TdW/iwip1BzpxRSrq+8oFguICCKyWywEwhagpeV4sq6ufqC350LTfuEgm92k+VgziRu3uDl2m9raIKoKSmphYaHkJZOJ+7FY55l4fOToQT0mJh8zOzuN7FlojS1/oAowA2Cnpp5NZrObnxYzr/ctz8/PMj39At/3y7aJ4MThnMOJoOrPAAQAVlbeZ0SK4VCo4UpX11kAGhqOkMksspvPlT1XUKlY+X1+bulhBQAQDjeeXF55e31jY53W1gjRaJTh4RF83+FciVw+R6lUKkOE5+vrWy/3edLXd7rxtx98ao0Z9Dyvtj0a9TpinTbS1m7rgkGTy+fM2toX3d7Zcbn8j7tv0stT/BfxB+vd+QMX9EoXAAAAAElFTkSuQmCC";
 /*
@@ -302,7 +305,6 @@ var cGmail2 = {
                                     if (result.result == RESULT_SUCCESS) {
 
                                         data = FireGPGMimeDecoder.washDecryptedForInsertion(FireGPGMimeDecoder.demime(result.decrypted).message.replace(/\r/gi, ''));
-
                                         this.setMailContent(listeTest[i],doc,data);
                                         if (cGmail2.decryptOnReply)
                                             listeTest[i].setAttribute("firegpg-decrypted-data", data);
@@ -463,7 +465,8 @@ var cGmail2 = {
                             checkboxes.setAttribute('style', 'font-size: 12px;');
                             checkboxes.innerHTML =  '<img id="'+randId+'a" src="'+IMG_SIGN_OFF+'" alt="'+IMG_SIGN_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-sign">&nbsp;<span class="MRoIub" onclick="document.getElementById(\''+randId+'a\').onclick();">' + i18n.getString("GMailS") + '</span>&nbsp;|&nbsp;' +
                             '<img id="'+randId+'b" src="'+IMG_ENCRYPT_OFF+'" alt="'+IMG_ENCRYPT_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-encrypt" >&nbsp;<span class="MRoIub" onclick="document.getElementById(\''+randId+'b\').onclick();">' + i18n.getString("GMailC") + '</span>&nbsp;|&nbsp;' +
-                            '<img id="'+randId+'c" src="'+IMG_INLINE_OFF+'" alt="'+IMG_INLINE_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-inline" >&nbsp;<span class="MRoIub" onclick="document.getElementById(\''+randId+'c\').onclick();">' + i18n.getString("GmailI") + '</span>';
+                            '<img id="'+randId+'c" src="'+IMG_INLINE_OFF+'" alt="'+IMG_INLINE_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\'); if (this.title==\'Off\') { document.getElementById(\''+randId+'att\').style.display = \'\'; } else { document.getElementById(\''+randId+'att\').style.display = \'none\'; }" title="Off" class="firegpg-inline" >&nbsp;<span class="MRoIub" onclick="document.getElementById(\''+randId+'c\').onclick();">' + i18n.getString("GmailI") + '</span>' +
+                            '<span id="'+randId+'att">&nbsp;|&nbsp;<img id="'+randId+'d" src="'+IMG_ATTACHEMENTS_OFF+'" alt="'+IMG_ATTACHEMENTS_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-attachements" >&nbsp;<span class="MRoIub" onclick="document.getElementById(\''+randId+'d\').onclick();">' + i18n.getString("GmailA") + '</span></span>';
 
                             if (cGmail2.default_sign)
                                 checkboxes.innerHTML += '<script>document.getElementById(\''+randId+'a\').onclick();</script>';
@@ -473,6 +476,9 @@ var cGmail2 = {
 
                             if (cGmail2.default_inline)
                                 checkboxes.innerHTML += '<script>document.getElementById(\''+randId+'c\').onclick();</script>';
+
+                            if (cGmail2.default_attachements)
+                                checkboxes.innerHTML += '<script>document.getElementById(\''+randId+'d\').onclick();</script>';
 
                             firegpgactions.appendChild(title);
                             firegpgactions.appendChild(checkboxes);
@@ -942,6 +948,9 @@ var cGmail2 = {
                 tmpimage = buttonsboxes.getElementsByClassName('firegpg-inline', 'img');
                 inline = tmpimage[0].title == 'On';
 
+                tmpimage = buttonsboxes.getElementsByClassName('firegpg-attachements', 'img');
+                attachements = tmpimage[0].title == 'On';
+
                 if (!sign & !encrypt)
                     return;
 
@@ -1024,7 +1033,7 @@ var cGmail2 = {
 
 
 
-                    var children = buttonsboxes.parentNode.parentNode.parentNode.parentNode.getElementsByClassName('goog-imageless-button-content');
+                    var children = buttonsboxes.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByClassName('goog-imageless-button-content');
 
                     a = new FireGPGGmailMimeSender(f, children[2], i18n);
 
@@ -1178,6 +1187,7 @@ var cGmail2 = {
 
                     prefs.sign = sign;
                     prefs.encrypt = encrypt;
+                    prefs.attachements = attachements;
                     prefs.whoWillGotTheMail = whoWillGotTheMail;
 
                     resulta = false;
@@ -2010,6 +2020,9 @@ var cGmail2 = {
 
         img = "<img src=\""+IMG_ENCRYPTED+"\" alt=\"" +IMG_ENCRYPTED2+"\" onmouseout=\"a = this.alt; this.alt=this.src; this.src=a; this.title = ''; \" onmouseover=\"if (this.title == '') { a = this.alt; this.alt=this.src; this.src=a; this.title = 'FireGPG'; }\">";
 
+        data = data.replace(/<br \/>/gi, '<br/>');
+        data = data.replace(/ /gi, '&nbsp;');
+
         i.innerHTML = before + img + "<br /><br />" + data + "<br /><br />" + img  +  after;
 
 	},
@@ -2092,9 +2105,13 @@ var cGmail2 = {
             try {	var default_inline = prefs.getBoolPref("gmail_select_by_default_inline");	}
 			catch (e) { var default_inline = false; }
 
+            try {	var default_attachements = prefs.getBoolPref("gmail_select_by_default_attachements");	}
+			catch (e) { var default_attachements = false; }
+
             cGmail2.default_sign = default_sign;
 			cGmail2.default_encrypt = default_encrypt;
 			cGmail2.default_inline = default_inline;
+            cGmail2.default_attachements = default_attachements;
 
 
             try {	var noAutoDecrypt = prefs.getBoolPref("gmail_disable_auto_decryption");	}

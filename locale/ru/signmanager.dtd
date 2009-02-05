@@ -4,4 +4,4 @@
 <!ENTITY key-create "Date (sign or creation)">
 <!ENTITY sign-button "Sign this key">
 <!ENTITY revoke-button "Revoke this sign">
-<!ENTITY del-button "Delete this sign">
+<!ENTITY del-button "Удалить эту подпись">

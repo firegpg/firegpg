@@ -45,6 +45,7 @@
   <script src="cgpg.js"/>
   <script src="../Webmails/Gmail/cgmail.js"/>
   <script src="../Webmails/Gmail/cgmail2.js"/>
+  <script src="../Webmails/autowrap.js"/>
   <script src="cselect.js"/>
   <script src="../GpgAtuh/gpgauth.js"/>
   <script src="../Api/api.js"/>

@@ -2,51 +2,51 @@
 <!ENTITY firegpgToolbar.label "FireGPG">
 <!ENTITY firegpgToolbar.tooltip "FireGPG">
 <!ENTITY firegpgContext.label "FireGPG">
-<!ENTITY firegpgContext.labelSign "Sign">
-<!ENTITY firegpgContext.labelCrypt "Encrypt">
-<!ENTITY firegpgContext.labelVerif "Verify">
-<!ENTITY firegpgContext.labelDecry "Decrypt">
-<!ENTITY firegpgContext.labelOptions "Options">
+<!ENTITY firegpgContext.labelSign "Podepsat">
+<!ENTITY firegpgContext.labelCrypt "Zašifrovat">
+<!ENTITY firegpgContext.labelVerif "Ověřit">
+<!ENTITY firegpgContext.labelDecry "Dešifrovat">
+<!ENTITY firegpgContext.labelOptions "Možnosti">
 <!ENTITY firegpgMenu.label "FireGPG">
-<!ENTITY firegpgMenu.labelSign "Sign">
-<!ENTITY firegpgMenu.labelCrypt "Encrypt">
-<!ENTITY firegpgMenu.labelVerif "Verify">
-<!ENTITY firegpgMenu.labelDecry "Decrypt">
-<!ENTITY firegpgMenu.labelOptions "Options">
-<!ENTITY firegpgToolbar.labelSign "Sign">
-<!ENTITY firegpgToolbar.labelCrypt "Encrypt">
-<!ENTITY firegpgToolbar.labelVerif "Verify">
-<!ENTITY firegpgToolbar.labelDecry "Decrypt">
-<!ENTITY firegpgToolbar.labelOptions "Options">
-<!ENTITY firegpgMenu.labelErase "Clear saved password">
-<!ENTITY firegpgContext.labelErase "Clear saved password">
-<!ENTITY firegpgToolbar.labelErase "Clear saved password">
-<!ENTITY firegpgMenu.labelImport "Import">
-<!ENTITY firegpgContext.labelImport "Import">
-<!ENTITY firegpgToolbar.labelImport "Import">
-<!ENTITY firegpgMenu.labelExport "Export">
-<!ENTITY firegpgContext.labelExport "Export">
-<!ENTITY firegpgToolbar.labelExport "Export">
-<!ENTITY firegpgPopInfo.labelBonjour "Welcome! FireGPG installation was successful.">
-<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG can access gpg.">
-<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG can't access the gpg executable. Make sure it is installed, or specify the path manually in the preferences.">
-<!ENTITY firegpgPopInfo.labelKeyOk "A private key is selected.">
-<!ENTITY firegpgPopInfo.labelKeyErr "Warning: please choose a private key in the preferences.">
-<!ENTITY firegpgPopInfo.close "Close">
-<!ENTITY firegpgPopInfo.options "Options">
-<!ENTITY firegpgContext.labelEditeur "Text editor">
-<!ENTITY firegpgMenu.labelEditeur "Text editor">
-<!ENTITY firegpgToolbar.labelEditeur "Text editor">
-<!ENTITY firegpgContext.labelCryptSign "Sign and encrypt">
-<!ENTITY firegpgMenu.labelCryptSign "Sign and encrypt">
-<!ENTITY firegpgToolbar.labelCryptSign "Sign and encrypt">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelClearSign "Clearsign">
-<!ENTITY firegpgToolbar.labelClearSign "Clearsign">
-<!ENTITY firegpgMenu.labelClearSign "Clearsign">
-<!ENTITY firegpgContext.labelManager "Key manager">
-<!ENTITY firegpgToolbar.labelManager "Key manager">
-<!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
+<!ENTITY firegpgMenu.labelSign "Podepsat">
+<!ENTITY firegpgMenu.labelCrypt "Zašifrovat">
+<!ENTITY firegpgMenu.labelVerif "Ověřit">
+<!ENTITY firegpgMenu.labelDecry "Dešifrovat">
+<!ENTITY firegpgMenu.labelOptions "Možnosti">
+<!ENTITY firegpgToolbar.labelSign "Podepsat">
+<!ENTITY firegpgToolbar.labelCrypt "Zašifrovat">
+<!ENTITY firegpgToolbar.labelVerif "Ověřit">
+<!ENTITY firegpgToolbar.labelDecry "Dešifrovat">
+<!ENTITY firegpgToolbar.labelOptions "Možnosti">
+<!ENTITY firegpgMenu.labelErase "Smazat uložené heslo">
+<!ENTITY firegpgContext.labelErase "Smazat uložené heslo">
+<!ENTITY firegpgToolbar.labelErase "Smazat uložené heslo">
+<!ENTITY firegpgMenu.labelImport "Importovat">
+<!ENTITY firegpgContext.labelImport "Importovat">
+<!ENTITY firegpgToolbar.labelImport "Importovat">
+<!ENTITY firegpgMenu.labelExport "Exportovat">
+<!ENTITY firegpgContext.labelExport "Exportovat">
+<!ENTITY firegpgToolbar.labelExport "Exportovat">
+<!ENTITY firegpgPopInfo.labelBonjour "Vítejte! Instalace FireGPG proběhla v pořádku.">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG nalezlo gpg a může ho používat.">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG nemůže najít program gpg. Zkontrolujte, že je nainstalovaný, nebo zvolte ručně cestu v nastavení.">
+<!ENTITY firegpgPopInfo.labelKeyOk "Tajný klíč zvolen.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Pozor: prosím vyberte tajný klíč v nastavení.">
+<!ENTITY firegpgPopInfo.close "Zavřít">
+<!ENTITY firegpgPopInfo.options "Možnosti">
+<!ENTITY firegpgContext.labelEditeur "Textový editor">
+<!ENTITY firegpgMenu.labelEditeur "Textový editor">
+<!ENTITY firegpgToolbar.labelEditeur "Textový editor">
+<!ENTITY firegpgContext.labelCryptSign "Podepsat a zašifrovat">
+<!ENTITY firegpgMenu.labelCryptSign "Podepsat a zašifrovat">
+<!ENTITY firegpgToolbar.labelCryptSign "Podepst a zašifrovat">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symetrické šifrování">
+<!ENTITY firegpgContext.labelSymCrypt "Symetrické šifrování">
+<!ENTITY firegpgMenu.labelSymCrypt "Symetrické šifrování">
+<!ENTITY firegpgContext.labelClearSign "Podepsat">
+<!ENTITY firegpgToolbar.labelClearSign "Podepsat">
+<!ENTITY firegpgMenu.labelClearSign "Podepsat">
+<!ENTITY firegpgContext.labelManager "Správce klíčů">
+<!ENTITY firegpgToolbar.labelManager "Správce klíčů">
+<!ENTITY firegpgMenu.labelManager "Správce klíčů">
+<!ENTITY keynotrevokedpassword "Chyba, klíč neodvolán. Špatné heslo?">

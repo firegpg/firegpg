@@ -4,11 +4,11 @@
 <!ENTITY pane3.title "gpgAuth">
 <!ENTITY gmail-enabled-checkbox.label "Integración con Gmail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
-<!ENTITY private-keys-label.text "Llave privada por defecto:">
+<!ENTITY private-keys-label.text "Clave privada por defecto:">
 <!ENTITY show-website-checkbox "Mostrar la dirección de la página web de FireGPG en el campo de comentarios">
 <!ENTITY change-gpg-path-button "Buscar">
 <!ENTITY change-gpg-path-checkbox "Especificar la ruta del ejecutable gpg:">
-<!ENTITY result-always-in-new-window "Mostrar siempre el resultado de una encripción o de una firma en una ventana nueva">
+<!ENTITY result-always-in-new-window "Mostrar siempre el resultado del descifrado y/o la firma en una nueva ventana.">
 <!ENTITY no-gpg-agent-checkbox "Forzar apagar el agente: gpg-agent (puede solucionar algunos problemas)">
 <!ENTITY ask-for-save-pass "Por omisión, preguntar si se guarda la contraseña">
 <!ENTITY gmail-no-no-sign-checkbox "No mostrar 'No se encontraron firmas [...]'">
@@ -16,13 +16,13 @@
 <!ENTITY gmail-buttons-label "Botones a mostrar:">
 <!ENTITY gmail-buton-sign-checkbox "Firmar">
 <!ENTITY gmail-buton-signsend-checkbox "Firmar y enviar">
-<!ENTITY gmail-buton-crypt-checkbox "Encriptar">
-<!ENTITY gmail-buton-cryptsend-checkbox "Encriptar y enviar">
-<!ENTITY allvays-to-myself-checkbox "Encriptar siempre a mi mismo.">
+<!ENTITY gmail-buton-crypt-checkbox "Cifrar">
+<!ENTITY gmail-buton-cryptsend-checkbox "Cifrar y enviar">
+<!ENTITY allvays-to-myself-checkbox "Cifrar siempre con mi propia clave">
 <!ENTITY enable-gpgauth-check.label " Activar gpgAuth (se requiere reiniciar el navegador) ">
 <!ENTITY enable-gpgauth-check.accesskey "E">
-<!ENTITY global-allow-keyring-pref.label "Siempre desencriptar mensajes de Servidores Autenticados">
-<!ENTITY global-allow-keyring-check.label "Siempre desencriptar mensajes de Servidores Autenticados">
+<!ENTITY global-allow-keyring-pref.label "Siempre descifrar mensajes de Servidores Autenticados">
+<!ENTITY global-allow-keyring-check.label "Siempre descifrar mensajes de Servidores Autenticados">
 <!ENTITY global-allow-keyring-check.accesskey "A">
 <!ENTITY per-domain-preferences.label "Configuraciones por dominio: ">
 <!ENTITY turn-off-updates "Desactivar las actualizaciones automáticas de FireGPG">
@@ -32,27 +32,27 @@
 <!ENTITY key-expire "Expira">
 <!ENTITY pane4.title "GPG">
 <!ENTITY gpg-add-options "Agregar argumentos al comando gpg: (Cuidado: Puede causar que FireGPG deje de funcionar! Lea la documentación.)">
-<!ENTITY gmail-buton-signcrypt-checkbox "Firmar y encriptar">
-<!ENTITY gmail-buton-signcryptsend-checkbox "Firmar, encriptar y enviar">
+<!ENTITY gmail-buton-signcrypt-checkbox "Firmar y cifrar">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Firmar, cifrar y enviar">
 <!ENTITY firegpg-version-label.text "Versión actual de FireGPG:">
-<!ENTITY hide-expired "Ocultar las llaves expiradas">
+<!ENTITY hide-expired "Ocultar claves expiradas">
 <!ENTITY use-api "Activar el API de FireGPG para páginas web (tales como roundcube) (necesita reiniciar)">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-access.label " Lista de sitios permitidos (doble clic para eliminar)">
 <!ENTITY api-liste-domain.label "Dominio">
-<!ENTITY api-liste-keyauth.label "Llave">
+<!ENTITY api-liste-keyauth.label "Clave">
 <!ENTITY use-gpg-agent-checkbox "Activar gpg-agent (precaución: puede provocar problemas)">
 <!ENTITY search-description "Filtrar">
 <!ENTITY gmail-buton-use-select-checkbox "Mostrar una lista desplegable en vez de botones.">
-<!ENTITY firegpg-ask-for-private-label.text "Preguntar siempre por la llave privada">
+<!ENTITY firegpg-ask-for-private-label.text "Preguntar siempre la clave privada">
 <!ENTITY inline-activated "Detectar bloques PGP en páginas web (necesita reiniciar)">
 <!ENTITY gmail-disable-autosave-checkbox "Desactivar autoguardado">
 <!ENTITY gmail-buton-csign-checkbox "Firmar en claro">
 <!ENTITY gmail-buton-csignsend-checkbox "Firmar en claro y enviar">
 <!ENTITY hide-fireftp-message "No mostrar el mensaje acerca de la librería IPC antigua instalada">
 <!ENTITY use-fireftp-workaround "Tratar acceder al IPC con el API antiguo">
-<!ENTITY keyserver-message "Servidor de llaves">
-<!ENTITY symmetric-algo "Algoritmo usado para la encripción simétrica. Déjelo en blanco para el valor por defecto. Use 'gpg --version' para obtener la lista de algoritmos utilizables, en la mayoría de los casos usted tiene estas opciones:">
+<!ENTITY keyserver-message "Servidor de claves">
+<!ENTITY symmetric-algo "Algoritmo usado para el cifrado simétrico. Déjelo en blanco para el valor por defecto. Use 'gpg --version' para obtener la lista de algoritmos utilizables, en la mayoría de los casos usted tiene estas opciones:">
 <!ENTITY gmail-new-interface "Nueva interfaz Gmail">
 <!ENTITY gmail-select-by-default-label "Seleccionado por defecto:">
 <!ENTITY gmail-buton-inline-checkbox "en línea ">
@@ -63,8 +63,13 @@
 <!ENTITY gmail-smtp-host "Servidor (smtp.gmail.com):">
 <!ENTITY gmail-smtp-port "Puerto (465):">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Usar SSL :">
-<!ENTITY gmail-disable-sign-detection "Desactivar la detección de respuestas de firmas incrustadas (y encripción) (usar siempre el correo completo)">
-<!ENTITY gmail-disable-auto-decryption "Comportamiento antiguo del desencriptado">
+<!ENTITY gmail-disable-sign-detection "Desactivar la detección de respuestas para firmas en línea (y cifrado)(usar siempre el correo completo)">
+<!ENTITY gmail-disable-auto-decryption "Comportamiento antiguo para el descifrado">
 <!ENTITY gmail-force-from "Forzar del valor:">
 <!ENTITY gpg-special-path-values "Use {$FxFolder} para obtener el directorio de Firefox y {$SPACE} para obtener un espacio dentro de un argumento">
-<!ENTITY decrypt-when-reply "Desencriptar contenido cuando conteste">
+<!ENTITY decrypt-when-reply "Descifrar contenido al contestar">
+<!ENTITY gmail-buton-attachements-checkbox "Attachements">
+<!ENTITY autorwap-liste-action.label "Action">
+<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY paneautowrap.title "Autowrap">

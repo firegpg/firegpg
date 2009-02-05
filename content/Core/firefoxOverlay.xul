@@ -44,6 +44,7 @@
   <script src="cgpg.js"/>
   <script src="../Webmails/Gmail/cgmail.js"/>
   <script src="../Webmails/Gmail/cgmail2.js"/>
+  <script src="../Webmails/autowrap.js"/>
   <script src="cselect.js"/>
   <script src="../GpgAuth/gpgauth.js"/>
   <script src="../Api/api.js"/>
@@ -54,6 +55,7 @@
   <script src="../Mime/encoder.js" />
   <script src="../Mime/sender.js" />
   <script src="../Mime/gmailSender.js" />
+
   <stringbundleset id="stringbundleset">
     <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
   </stringbundleset>

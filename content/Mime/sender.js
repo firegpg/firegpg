@@ -224,9 +224,6 @@ FireGPGMimeSender.prototype =
 
 		encoder.addBase64String(body,isPlain ? "text/plain; format=flowed" : "text/html",null);
 
-
-
-
 		// HERE, we have to asynchronously fill out all of the remote attachments
 		var i=0;
 		if (!attachments.length) return postAttach.call(this);
@@ -308,14 +305,37 @@ FireGPGMimeSender.prototype =
             boundeur = "-----firegpg" + FIREGPG_VERSION_A + "eq" + (Math.round(Math.random()*99)+(new Date()).getTime()).toString(36) +
                 (99+Math.round(46656*46656*46635*36*Math.random())).toString(36);
 
-           // msg.BodyPlus += crlf;
+            // msg.BodyPlus += crlf;
 
-         whoWillGotTheMail = prefs.whoWillGotTheMail;
+            whoWillGotTheMail = prefs.whoWillGotTheMail;
+
+            if (prefs.attachements || attachments.length <= 0) {
+                stringToWork = msg.BodyPlus;
+                bonus = "";
+                prebonus = "";
+
+            } else {
+
+                dataDeBase = msg.BodyPlus;
+                bondeurDuContenu = encoder.boundaryString;
+                bondeurString = '--' + bondeurDuContenu + crlf;
+
+
+
+                startOfContent = dataDeBase.indexOf(bondeurString) + bondeurString.length;
+                endOfContent = dataDeBase.indexOf(bondeurString, dataDeBase.indexOf(bondeurString) + 1) ;
+
+                stringToWork = dataDeBase.substring(startOfContent, endOfContent);
+                bonus = dataDeBase.substring(endOfContent, dataDeBase.length);
+                prebonus = dataDeBase.substring(0, startOfContent);
+
+
+
+            }
 
             if (prefs.sign && !prefs.encrypt) {
 
-
-                var result = FireGPG.sign(false,msg.BodyPlus + crlf);
+                var result = FireGPG.sign(false,stringToWork+ crlf);
 
                 if (result.result == RESULT_SUCCESS) {
                     signedData = result.signed.substring(result.signed.lastIndexOf("-----BEGIN PGP SIGNATURE-----"), result.signed.length)
@@ -324,7 +344,7 @@ FireGPGMimeSender.prototype =
                   'Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="'+boundeur+'"' +  crlf + crlf +
                    'This is an OpenPGP/MIME signed message (RFC 2440 and 3156)' + crlf +
                    '--' + boundeur + crlf +
-                   msg.BodyPlus + crlf  +
+                   stringToWork + crlf  +
                    '--' + boundeur + crlf +
                    'Content-Type: application/pgp-signature; name="signature.asc"' + crlf +
                    'Content-Description: OpenPGP digital signature' + crlf +
@@ -332,7 +352,7 @@ FireGPGMimeSender.prototype =
                    signedData + crlf +
                    '--' + boundeur + '--';
 
-                   msg.BodyPlus = newmessage;
+                   msg.BodyPlus = prebonus  + newmessage + crlf + bonus;
 
                 } else {
                     return false;
@@ -342,7 +362,7 @@ FireGPGMimeSender.prototype =
             } else if (prefs.sign) { //Sign + encrypted
 
 
-                var result = FireGPG.cryptAndSign(false,msg.BodyPlus, null ,false,null, null, false, whoWillGotTheMail);
+                var result = FireGPG.cryptAndSign(false,stringToWork, null ,false,null, null, false, whoWillGotTheMail);
 
                 if (result.result == RESULT_SUCCESS) {
 
@@ -361,7 +381,7 @@ FireGPGMimeSender.prototype =
                    result.encrypted + crlf +
                    '--' + boundeur + '--';
 
-                   msg.BodyPlus = newmessage;
+                   msg.BodyPlus = prebonus  + newmessage + crlf + bonus;
 
                 } else {
                     return false;
@@ -370,7 +390,7 @@ FireGPGMimeSender.prototype =
             } else { //Encrypted
 
 
-                var result = FireGPG.crypt(false,msg.BodyPlus,null, false, false,whoWillGotTheMail);
+                var result = FireGPG.crypt(false,stringToWork,null, false, false,whoWillGotTheMail);
 
                 if (result.result == RESULT_SUCCESS) {
 
@@ -389,7 +409,7 @@ FireGPGMimeSender.prototype =
                    result.encrypted + crlf +
                    '--' + boundeur + '--';
 
-                   msg.BodyPlus = newmessage;
+                   msg.BodyPlus = prebonus + newmessage + crlf + bonus;
 
                 } else {
                     return false;

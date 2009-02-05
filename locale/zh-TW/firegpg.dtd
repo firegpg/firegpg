@@ -21,32 +21,32 @@
 <!ENTITY firegpgMenu.labelErase "清除已存密碼">
 <!ENTITY firegpgContext.labelErase "清除已存密碼">
 <!ENTITY firegpgToolbar.labelErase "清除已存密碼">
-<!ENTITY firegpgMenu.labelImport "導入">
-<!ENTITY firegpgContext.labelImport "導入">
-<!ENTITY firegpgToolbar.labelImport "導入">
-<!ENTITY firegpgMenu.labelExport "導出">
-<!ENTITY firegpgContext.labelExport "導出">
-<!ENTITY firegpgToolbar.labelExport "導出">
-<!ENTITY firegpgPopInfo.labelBonjour "Bienvenue !<br />FireGPG à été installé correctement !">
-<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG parviens à accéder à GnuPG !">
-<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG ne parviens pas à accéder à GnuPG : L'avez vous installé ? Son chemin est-il correctement défini ?">
-<!ENTITY firegpgPopInfo.labelKeyOk "Une clé privée à corrctement été définie !">
-<!ENTITY firegpgPopInfo.labelKeyErr "註意：veuillez définir une clé privée dans les options !">
-<!ENTITY firegpgPopInfo.close "Fermer">
+<!ENTITY firegpgMenu.labelImport "匯入">
+<!ENTITY firegpgContext.labelImport "匯入">
+<!ENTITY firegpgToolbar.labelImport "匯入">
+<!ENTITY firegpgMenu.labelExport "匯出">
+<!ENTITY firegpgContext.labelExport "匯出">
+<!ENTITY firegpgToolbar.labelExport "匯出">
+<!ENTITY firegpgPopInfo.labelBonjour "歡迎！FireGPG 安裝成功！">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG 可存取 gpg。">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG 無法存取 gpg 可執行檔。請檢查是否有安裝該軟體，或者偏好設定裡手動指定路徑。">
+<!ENTITY firegpgPopInfo.labelKeyOk "已選擇私鑰。">
+<!ENTITY firegpgPopInfo.labelKeyErr "警告：請在偏好設定裡選擇一個私鑰。">
+<!ENTITY firegpgPopInfo.close "關閉">
 <!ENTITY firegpgPopInfo.options "選項">
-<!ENTITY firegpgContext.labelEditeur "打開編輯器">
-<!ENTITY firegpgMenu.labelEditeur "打開編輯器">
-<!ENTITY firegpgToolbar.labelEditeur "打開編輯器">
-<!ENTITY firegpgContext.labelCryptSign "簽名并加密">
-<!ENTITY firegpgMenu.labelCryptSign "簽名并加密">
-<!ENTITY firegpgToolbar.labelCryptSign "簽名并加密">
+<!ENTITY firegpgContext.labelEditeur "文字編輯器">
+<!ENTITY firegpgMenu.labelEditeur "文字編輯器">
+<!ENTITY firegpgToolbar.labelEditeur "文字編輯器">
+<!ENTITY firegpgContext.labelCryptSign "簽署並加密">
+<!ENTITY firegpgMenu.labelCryptSign "簽署並加密">
+<!ENTITY firegpgToolbar.labelCryptSign "簽署並加密">
 <!ENTITY firegpgToolbar.labelSymCrypt "對稱加密">
 <!ENTITY firegpgContext.labelSymCrypt "對稱加密">
 <!ENTITY firegpgMenu.labelSymCrypt "對稱加密">
-<!ENTITY firegpgContext.labelClearSign "成功簽署">
-<!ENTITY firegpgToolbar.labelClearSign "成功簽署">
-<!ENTITY firegpgMenu.labelClearSign "成功簽署">
+<!ENTITY firegpgContext.labelClearSign "明文簽章">
+<!ENTITY firegpgToolbar.labelClearSign "明文簽章">
+<!ENTITY firegpgMenu.labelClearSign "明文簽章">
 <!ENTITY firegpgContext.labelManager "Key manager">
-<!ENTITY firegpgToolbar.labelManager "Key manager">
-<!ENTITY firegpgMenu.labelManager "Key manager">
+<!ENTITY firegpgToolbar.labelManager "金鑰管理程式">
+<!ENTITY firegpgMenu.labelManager "金鑰管理程式">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">

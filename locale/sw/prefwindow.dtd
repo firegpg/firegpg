@@ -66,5 +66,10 @@
 <!ENTITY gmail-disable-sign-detection "Inaktivera svarsupptäckt för inline-signering (och kryptering) (använd alltid hela emailet)">
 <!ENTITY gmail-disable-auto-decryption "Gammalt beteende för dekryptering">
 <!ENTITY gmail-force-from "Tvinga från värde :">
-<!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
-<!ENTITY decrypt-when-reply "Decrypt content when reply">
+<!ENTITY gpg-special-path-values "Använd {$FxFolder} för attha Firefoxs mapp och {$SPACE} för att ha ett mellanslag i ett argument">
+<!ENTITY decrypt-when-reply "Dekryptera innehåll vid svar">
+<!ENTITY gmail-buton-attachements-checkbox "Attachements">
+<!ENTITY autorwap-liste-action.label "Action">
+<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY paneautowrap.title "Autowrap">
