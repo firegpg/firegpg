@@ -234,7 +234,7 @@ function importfile() {
     var filePath = fp.file.path;
     var data = getFromFile(filePath);
 
-	FireGPG.kimport(false,data);
+	FireGPG.kimport(false,data, true);
 
     updateKeyList();
 

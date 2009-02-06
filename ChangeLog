@@ -1,4 +1,8 @@
 2009-02-05 Maximilien Cuony
+    * Allow importing private key with the keymananger
+    * New mime decoder
+
+2009-02-05 Maximilien Cuony
     * Gmail working again
     * FS#217
     * FS#229

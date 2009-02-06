@@ -504,12 +504,15 @@ var FireGPG = {
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
             text - _Optional_, if not set try to use the selection. The text to import
     */
-	kimport: function(silent, text) {
+	kimport: function(silent, text, passSecurity) {
 
         var returnObject = new GPGReturn();
 
         if (silent == undefined)
             silent = false;
+
+        if (passSecurity == undefined)
+            passSecurity = false;
 
         this.initGPGACCESS();
         var i18n = document.getElementById("firegpg-strings");
@@ -539,7 +542,7 @@ var FireGPG = {
 		var firstPosition = text.indexOf("-----BEGIN PGP PUBLIC KEY BLOCK-----");
 		var lastPosition = text.indexOf("-----END PGP PUBLIC KEY BLOCK-----");
 
-		if (firstPosition == -1 || lastPosition == -1) {
+		if ((firstPosition == -1 || lastPosition == -1)  && !passSecurity) {
 			if (!silent)
                 alert(i18n.getString("noGPGData"));
 
@@ -548,7 +551,8 @@ var FireGPG = {
             return returnObject;
 		}
 
-        text = text.substring(firstPosition,lastPosition + ("-----END PGP PUBLIC KEY BLOCK-----").length);
+        if (!passSecurity)
+            text = text.substring(firstPosition,lastPosition + ("-----END PGP PUBLIC KEY BLOCK-----").length);
 
 		// We get the result
 		var result = this.GPGAccess.kimport(text);
