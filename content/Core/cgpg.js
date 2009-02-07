@@ -924,7 +924,7 @@ var FireGPG = {
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
             text - _Optional_, if not set try to use the selection. The text to verify
     */
-	verify: function(silent, text, charset) {
+	verify: function(silent, text, charset, signData) {
 
         var returnObject = new GPGReturn();
 
@@ -1184,11 +1184,14 @@ var FireGPG = {
             text - _Optional_, if not set try to use the selection. The text to decrypt.
             password - _Optional_, if not set ask the user. The password of the key used to encrypt the data.
     */
-	decrypt: function(silent, text, password) { try {
+	decrypt: function(silent, text, password, binFileEncoded) { try {
 		var returnObject = new GPGReturn();
 
         if (silent == undefined)
             silent = false;
+
+        if (binFileEncoded === undefined)
+            binFileEncoded = false;
 
         this.initGPGACCESS();
         var i18n = document.getElementById("firegpg-strings");
@@ -1232,7 +1235,7 @@ var FireGPG = {
 		reg=new RegExp("FIREGPGTRALALAENDHIHAN", "gi"); // We don't have to detect disabled balises
 		text = text.replace(reg, "-----END PGP MESSAGE-----");
 
-		if (firstPosition == -1 || lastPosition == -1) {
+		if ((firstPosition == -1 || lastPosition == -1) && !binFileEncoded) {
 			if (!silent)
                 alert(i18n.getString("noGPGData"));
 
@@ -1241,7 +1244,8 @@ var FireGPG = {
             return returnObject;
 		}
 
-		text = text.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
+        if (!binFileEncoded)
+            text = text.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
 
 		// Needed for a decrypt
 		if (password == undefined || password == null) {
@@ -1256,7 +1260,7 @@ var FireGPG = {
         }
 
 		// We get the result
-		var result = this.GPGAccess.decrypt(text,password);
+		var result = this.GPGAccess.decrypt(text,password,binFileEncoded);
 
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;

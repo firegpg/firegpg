@@ -49,27 +49,27 @@
 <!ENTITY gmail-disable-autosave-checkbox "Disable autosave feature">
 <!ENTITY gmail-buton-csign-checkbox "Clearsign">
 <!ENTITY gmail-buton-csignsend-checkbox "Clearsign and send">
-<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY hide-fireftp-message "Не показывать предупреждение о старой версии библиотеки IPC.">
 <!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
-<!ENTITY keyserver-message "Keyserver">
+<!ENTITY keyserver-message "Сервер ключей">
 <!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms, in most of case you have this choices:">
-<!ENTITY gmail-new-interface "New Gmail interface">
+<!ENTITY gmail-new-interface "Новый интерфейс Gmail">
 <!ENTITY gmail-select-by-default-label "Selected by default :">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
-<!ENTITY gmail-old-interface "Old Gmail interface">
-<!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
+<!ENTITY gmail-old-interface "Старый интерфейс Gmail">
+<!ENTITY gmail-smtp-options-label "Параметры SMTP (для писем openpgp/mime)">
 <!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
 <!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
-<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
-<!ENTITY gmail-smtp-port "Port (465) :">
-<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
+<!ENTITY gmail-smtp-host "Сервер (smtp.gmail.com):">
+<!ENTITY gmail-smtp-port "Порт (465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Использовать SSL:">
 <!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
 <!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
 <!ENTITY gmail-force-from "Force from value :">
 <!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
 <!ENTITY decrypt-when-reply "Расшифровать содержимое при ответе">
-<!ENTITY gmail-buton-attachements-checkbox "Attachements">
-<!ENTITY autorwap-liste-action.label "Action">
-<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY gmail-buton-attachements-checkbox "Вложения">
+<!ENTITY autorwap-liste-action.label "Действие">
+<!ENTITY autorwap-liste-domain.label "Веб-почта">
 <!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
 <!ENTITY paneautowrap.title "Autowrap">

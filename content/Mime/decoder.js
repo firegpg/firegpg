@@ -69,11 +69,16 @@ FireGPGMimeDecoder.prototype = {
         part.texte = texte;
         part.headers = this.parseHeaders(texte);
         part.body = this.removeHeaders(texte, part.headers);
-        part.clearBody = this.clearBody(part.body, part.headers);
+
         part.openpgpmimesigned = (part.headers["CONTENT-TYPE"] != undefined && part.headers["CONTENT-TYPE"].indexOf('"application/pgp-signature"') != -1 );
         part.openpgpmimeencrypted = (part.headers["CONTENT-TYPE"] != undefined && part.headers["CONTENT-TYPE"].indexOf('"application/pgp-encrypted"') != -1 );
         part.multipart = (part.headers["CONTENT-TYPE"] != undefined && part.headers["CONTENT-TYPE"].indexOf('multipart') != -1 );
         part.attachement = (part.headers["CONTENT-DISPOSITION"] != undefined && (part.headers["CONTENT-DISPOSITION"].indexOf('inline') != -1 || part.headers["CONTENT-DISPOSITION"].indexOf('attachment') != -1 ));
+        if (part.attachement) {
+            part.filename = this.extractFilename(part.headers['CONTENT-DISPOSITION']);
+            part.clearBinBody = this.clearBinBody(part.body, part.headers);
+        } else
+            part.clearBody = this.clearBody(part.body, part.headers);
         part.charset = this.extractCharset(part.headers["CONTENT-TYPE"]);
 
         if (part.multipart) {
@@ -160,6 +165,28 @@ FireGPGMimeDecoder.prototype = {
 
                 case "base64":
                     return convertCRLFToStandarts(this.convertFromB64(body));
+                    break;
+
+            }
+        }
+
+        return body;
+    },
+
+    clearBinBody: function(body, headers) {
+
+        if (headers['CONTENT-TRANSFER-ENCODING']) {
+
+            switch(headers['CONTENT-TRANSFER-ENCODING']) {
+                case "quoted-printable":
+                    return  this.convertFromQP(body,true);
+                    break;
+
+                case "8bit":
+                    break;
+
+                case "base64":
+                    return this.convertFromB64(body,true);
                     break;
 
             }
@@ -290,9 +317,9 @@ FireGPGMimeDecoder.prototype = {
 
     },
 
-    convertFromB64: function(texte) {
+    convertFromB64: function(texte,bMode) {
 
-        return Base64.decode(texte);
+        return Base64.decode(texte,bMode);
 
     },
 
@@ -412,6 +439,25 @@ FireGPGMimeDecoder.prototype = {
 
     },
 
+    extractFilename: function(header) {
+
+        header += ";";
+
+        var reg1 = /filename="([^( |;)]*)"( |;)/;
+        result = reg1.exec(header);
+        if (result && result[1] != "")
+            return result[1];
+
+        var reg2 = /filename=([^( |;)]*)( |;)/;
+        result = reg2.exec(header);
+        if (result && result[1] != "")
+            return result[1];
+
+        return '';
+
+
+    },
+
     extractCharset: function(header) {
 
 
@@ -464,6 +510,8 @@ FireGPGMimeDecoder.prototype = {
 
            if (minedecrypt.completeSignOrDecrypt)
                 retour.completeSignOrDecrypt = true;
+            else
+                retour.specialmimepart = minedecrypt.specialmimepart;
 
             retour.decryptresult = minedecrypt.decryptresult;
             retour.decryptDataToInsert = minedecrypt.decryptDataToInsert;
@@ -471,18 +519,20 @@ FireGPGMimeDecoder.prototype = {
 
         mimesign = this.MimeSign();
 
-        if (mimesign.signedData) {
+        if (mimesign.signedData && !(minedecrypt.decryptData && retour.completeSignOrDecrypt == false)) { //Subpart chiffrée = stop
 
             if (mimesign.completeSignOrDecrypt)
                 retour.completeSignOrDecrypt = true;
+            else
+                retour.specialmimepart = mimesign.specialmimepart;
 
             retour.signResult = mimesign.signResult;
 
 
         }
 
-        //Pas d'openpgpmime, on cherche en inline
-        if (!minedecrypt.decryptData) {
+        //Pas d'openpgpmime, on cherche en inline (sauf si y'a une subpart qui à été signée/chiffrée, par sécurisé on s'arrête)
+        if (!minedecrypt.decryptData && !((mimesign.signedData || minedecrypt.decryptData) && retour.completeSignOrDecrypt == false)) {
 
             inlinedecrypt = this.Decrypt();
 
@@ -499,10 +549,8 @@ FireGPGMimeDecoder.prototype = {
 
         }
 
-        //Pas d'openpgpmime, on cherche en inline
-
-
-        if (!mimesign.signedData) {
+        //Pas d'openpgpmime, on cherche en inline (sauf si y'a une subpart qui à été signée/chiffrée, par sécurisé on s'arrête)
+        if (!mimesign.signedData && !((mimesign.signedData || minedecrypt.decryptData) && retour.completeSignOrDecrypt == false)) {
 
             inlinesign = this.Sign();
 
@@ -515,18 +563,7 @@ FireGPGMimeDecoder.prototype = {
             }
         }
 
-        retour.attachements = new Array();
-        /*//Si pas completeSignOrDecrypt
-        retour.attachements[0].signResult = "";
-        //Si pas completeSignOrDecrypt OU fichier chiffré
-        retour.attachements[0].decryptresult = "";
-        retour.attachements[0].decryptDataToInsert = "";
-
-        //Si pas completeSignOrDecrypt
-        retour.subparts = new Array();
-        retour.subparts[0].signResult = "";
-        retour.subparts[0].decryptresult = "";
-        retour.subparts[0].decryptDataToInsert = "";*/
+        retour.attachements = this.parseSpecialAttachements();
 
 
         return retour;
@@ -569,6 +606,52 @@ FireGPGMimeDecoder.prototype = {
             }
 
 
+        } else {
+
+            //On essaie de trouver une subpart
+            subparttotest = null;
+
+            var i;
+            if (this.mainPart.multipart) {
+                for(i = 0; i < this.mainPart.numberofsubparts; i++) {
+
+                    if (this.mainPart.subparts[i].openpgpmimeencrypted) {
+                        subparttotest = this.mainPart.subparts[i];
+                        break;
+                    }
+
+
+                }
+            }
+
+            if (subparttotest != null) {
+
+                retour.decryptData = true;
+                retour.completeSignOrDecrypt = false;
+
+                if (stopOnDecrypt) {
+                    retour.decryptDataToInsert = data;
+                    return retour;
+                }
+
+                data = this.extractEncryptedPart(subparttotest);
+
+                fireGPGDebug("Find mail part encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
+
+                retour.specialmimepart = subparttotest.texte;
+
+                retour.decryptresult = FireGPG.decrypt(false,data);
+
+                if (retour.decryptresult.result == RESULT_SUCCESS) {
+
+                    subparttotest = this.mimeParsing(convertCRLFToStandarts(retour.decryptresult.decrypted));
+                    subparttotest.thisisanencryptedpart = true;
+
+                    retour.decryptDataToInsert = this.mimeToText(subparttotest);
+                    this.mainPart.subparts[i] = subparttotest;
+                }
+
+            }
         }
 
 
@@ -597,6 +680,38 @@ FireGPGMimeDecoder.prototype = {
 
             retour.signResult = FireGPG.verify(true,data)
 
+        } else {
+
+            //On essaie de trouver une subpart
+            subparttotest = null;
+
+            var i;
+            if (this.mainPart.multipart) {
+                for(i = 0; i < this.mainPart.numberofsubparts; i++) {
+
+                    if (this.mainPart.subparts[i].openpgpmimesigned) {
+                        subparttotest = this.mainPart.subparts[i];
+                        break;
+                    }
+
+
+                }
+            }
+
+            if (subparttotest != null) {
+
+                retour.signedData = true;
+                retour.completeSignOrDecrypt = false;
+
+                data = this.extractSignedPart(subparttotest);
+
+                fireGPGDebug("Find mail part signed, data tested : " + data, "MimeDecoder-MimeSign");
+
+                retour.specialmimepart = subparttotest.texte;
+
+                retour.signResult = FireGPG.verify(true,data)
+
+            }
         }
 
         return retour;
@@ -657,7 +772,7 @@ FireGPGMimeDecoder.prototype = {
 
     },
 
-    Decrypt: function() {
+    Decrypt: function(stopOnDecrypt) {
 
 
         var retour = new Object();
@@ -683,12 +798,16 @@ FireGPGMimeDecoder.prototype = {
             return retour;
 
 
-
         firstEcnrypt = data.substring(firstEncryptPos, data.indexOf("\r\n-----END PGP MESSAGE-----") + ("\r\n-----END PGP MESSAGE-----").length);
 
         fireGPGDebug("Inline decrypt detected : " + data + "\n--\n" + firstEcnrypt, "MimeDecoder-Decrypt");
 
         charset = this.extractCharset(this.mainPart.headers['CONTENT-TYPE']);
+
+        if (stopOnDecrypt) {
+            retour.decryptDataToInsert = firstEcnrypt.replace(/\r/gi, '');
+            return retour;
+        }
 
         var resultTest = FireGPG.decrypt(true,firstEcnrypt.replace(/\r/gi, ''));
 
@@ -698,6 +817,94 @@ FireGPGMimeDecoder.prototype = {
 
         return retour;
 
+
+    },
+
+    parseSpecialAttachements: function() {
+       var retour = new Array();
+
+        if (!this.mainPart.multipart)
+            return retour;
+
+       //Attachements qui semblent chiffrés
+       //.ASC, .PGP
+       for (var i = 0; i < this.mainPart.numberofsubparts; i++) {
+            if (this.mainPart.subparts[i].attachement) {
+                var ext = getFileExtention(this.mainPart.subparts[i].filename)
+
+                if (ext == "asc" || ext == "pgp") {
+
+                    var tmpFile = new Object();
+                    tmpFile.filename = this.mainPart.subparts[i].filename;
+                    tmpFile.type = "encrypted";
+                    tmpFile.data = this.mainPart.subparts[i].clearBinBody;
+
+                    retour.push(tmpFile);
+
+                }
+            }
+
+       }
+
+
+       //Attachements fournis avec une signature
+       //.sig
+      /* for (var i = 0; i < this.mainPart.numberofsubparts; i++) {
+            if (this.mainPart.subparts[i].attachement) {
+                var ext = getFileExtention(this.mainPart.subparts[i].filename)
+
+                if (ext == "sig") {
+
+                    originalName = this.mainPart.subparts[i].filename.substring(0,this.mainPart.subparts[i].filename.length - 4 );
+
+                    for (var i2 = 0; i2 < this.mainPart.numberofsubparts; i2++) {
+                        if (this.mainPart.subparts[i2].attachement) {
+                                if (this.mainPart.subparts[i2].filename == originalName) {
+
+                                    data = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\n" + this.mainPart.subparts[i2].clearBinBody.replace(/\n\-/gi, "\n- -").replace(/\r\-/gi, "\r- -")  + "\n-----BEGIN PGP SIGNATURE-----\n\n"+ Base64.encode(this.mainPart.subparts[i].clearBinBody,true) + "\n-----END PGP SIGNATURE-----";
+
+                                    var tmpFile = new Object();
+                                    tmpFile.filename = this.mainPart.subparts[i2].filename;
+                                    tmpFile.type = "signedfile";
+                                    tmpFile.signresult = FireGPG.verify(true,data,'UTF-8');
+
+                                    alert(dumper(tmpFile.signresult));
+
+                                    removeFile("/tmp/a");
+                                    putIntoBinFile("/tmp/a",data);
+
+                                    retour.push(tmpFile);
+
+                                    break;
+                                }
+
+                        }
+                    }
+
+                }
+            }
+
+       }*/
+
+
+       //Attachements venant d'être déchifrés
+       if (this.mainPart.thisisanencryptedpart) {
+            for (var i = 0; i < this.mainPart.numberofsubparts; i++) {
+                if (this.mainPart.subparts[i].attachement) {
+
+                    var tmpFile = new Object();
+                    tmpFile.filename = this.mainPart.subparts[i].filename;
+                    tmpFile.type = "decrypted";
+                    tmpFile.data = this.mainPart.subparts[i].clearBinBody;
+
+                    retour.push(tmpFile);
+
+                }
+
+           }
+       }
+
+       return retour;
 
     },
 

@@ -1,6 +1,6 @@
 <!ENTITY keyimporter "Import key from server">
 <!ENTITY close-button "Закрыть">
-<!ENTITY import-button "Import selected keys">
+<!ENTITY import-button "Импортировать выбранные ключи">
 <!ENTITY search-button "Search">
 <!ENTITY search-description "Search for :">
 <!ENTITY key-create "Created">

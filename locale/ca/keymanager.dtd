@@ -1,25 +1,25 @@
-<!ENTITY key-status "Status">
-<!ENTITY key-trust "Trust">
+<!ENTITY key-status "Estat">
+<!ENTITY key-trust "Confiar">
 <!ENTITY key-expire "Expirar">
 <!ENTITY key-create "Creada">
 <!ENTITY key-id "ID">
 <!ENTITY key-name "Nom">
-<!ENTITY revoke-button "Revoke key">
+<!ENTITY revoke-button "Revoca la clau">
 <!ENTITY sign-button "Signatures">
 <!ENTITY changetrust-button "Confiança canviada">
-<!ENTITY importserver-button "Import from server">
+<!ENTITY importserver-button "Importar del servidor">
 <!ENTITY exportserver-button "Exportar al servidor">
 <!ENTITY importfile-button "Importar des de arxiu">
 <!ENTITY exportfile-button "Exporta a fitxer">
 <!ENTITY new-button "Nova clau">
 <!ENTITY keymanager "Administrador de claus">
-<!ENTITY refrech "Refresh keys from server">
+<!ENTITY refrech "Refresca les claus des del servidor">
 <!ENTITY trustUnded "Eliminar informació sobre confiança">
 <!ENTITY trustDont "I don't trust this key">
 <!ENTITY trustMargi "I marginally trust this key">
 <!ENTITY trustFull "I fully trust this key">
 <!ENTITY trustUltimate "Confiar en aquesta clau com a última instància (!)">
-<!ENTITY password-button "Change password">
+<!ENTITY password-button "Canviar contrasenya">
 <!ENTITY del-button "Esborrar">
 <!ENTITY revokeNoRaison "No reason specified">
 <!ENTITY revokeComprimse "La clau ha estat compromesa">

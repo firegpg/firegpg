@@ -669,13 +669,13 @@ var GPGAccess = {
             A <GPGReturn> structure.
 
     */
-    decrypt: function(text,password) {
+    decrypt: function(text,password,binFileMode) {
 
 			result = this.runGnupg(this.getBaseArugments() +
 					" --passphrase-fd 0 " +
 					" --output -" +
 					" --decrypt"
-				, password + "\n" + text);
+				, password + "\n" + text,(binFileMode ? 'iso-8859-1' : undefined));
 
 		// The decrypted text
 		var result2 = new GPGReturn();

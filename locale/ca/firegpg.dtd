@@ -49,4 +49,4 @@
 <!ENTITY firegpgContext.labelManager "Administrador de claus">
 <!ENTITY firegpgToolbar.labelManager "Administrador de claus">
 <!ENTITY firegpgMenu.labelManager "Administrador de claus">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
+<!ENTITY keynotrevokedpassword "Error, clau no revocada. Contrasenya incorrecta?">

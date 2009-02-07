@@ -1442,12 +1442,13 @@ var Base64 = {
     _keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
 
     // public method for encoding
-    encode : function (input) {
+    encode : function (input,bMode) {
         var output = "";
         var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
         var i = 0;
 
-        input = Base64._utf8_encode(input);
+        if (bMode != true)
+            input = Base64._utf8_encode(input);
 
         while (i < input.length) {
 
@@ -1476,7 +1477,7 @@ var Base64 = {
     },
 
     // public method for decoding
-    decode : function (input) {
+    decode : function (input,bMode) {
         var output = "";
         var chr1, chr2, chr3;
         var enc1, enc2, enc3, enc4;
@@ -1506,7 +1507,8 @@ var Base64 = {
 
         }
 
-        output = Base64._utf8_decode(output);
+        if (bMode != true)
+            output = Base64._utf8_decode(output);
 
         return output;
 
@@ -1568,7 +1570,20 @@ var Base64 = {
         }
 
         return string;
+    },
+
+    pgpencode: function(texte) {
+
+
+
+
     }
+
+}
+
+function getFileExtention(filename) {
+
+   return filename.substring(filename.length - 3,filename.length).toLowerCase();
 
 }
 
