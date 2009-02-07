@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 # build.sh -- builds JAR and XPI files for mozilla extensions
 #   by Nickolay Ponomarev <asqueella@gmail.com>
 #   (original version based on Nathan Yergler's build script)
