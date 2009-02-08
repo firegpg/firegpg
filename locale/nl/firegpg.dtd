@@ -49,4 +49,4 @@
 <!ENTITY firegpgContext.labelManager "Sleutelbeheer">
 <!ENTITY firegpgToolbar.labelManager "Sleutelbeheer">
 <!ENTITY firegpgMenu.labelManager "Sleutelbeheer">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
+<!ENTITY keynotrevokedpassword "Fout, sleutel niet ingetrokken. Verkeerd wachtwoord?">

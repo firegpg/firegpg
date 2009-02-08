@@ -158,20 +158,16 @@ var cGmail2 = {
 
                         var i18n = document.getElementById("firegpg-strings");
 
-                        if (result.decryptresult && result.decryptresult.result == RESULT_SUCCESS)  {
-
+                        if (result.decryptresult && (cGmail2.noAutoDecrypt || result.decryptresult.result == RESULT_SUCCESS))  {
                             if (cGmail2.noAutoDecrypt) {
+                                td.innerHTML = i18n.getString("GMailD");
 
-                                if (td.innerHTML == i18n.getString("GMailNoS") || td.innerHTML ==  "") {
-                                    td.innerHTML = i18n.getString("GMailD");
-
-                                    var tmpListener = new Object;
-                                    tmpListener = null;
-                                    tmpListener = new cGmail2.callBack(doc)
-                                    td.addEventListener('click',tmpListener,true);
-                                    td.setAttribute("style","");
-                                    td.setAttribute("firegpg-mail-to-decrypt", result.decryptDataToInsert);
-                                }
+                                var tmpListener = new Object;
+                                tmpListener = null;
+                                tmpListener = new cGmail2.callBack(doc)
+                                td.addEventListener('click',tmpListener,true);
+                                td.setAttribute("style","");
+                                td.setAttribute("firegpg-mail-to-decrypt", result.decryptDataToInsert);
 
                             } else {
 
@@ -192,7 +188,7 @@ var cGmail2 = {
                         if (result.signResult != null) {
 
                            if (result.signResult.signresult == RESULT_ERROR_NO_GPG_DATA) {
-                                if (cGmail2.nonosign != true && !result.decryptresult)
+                                if (cGmail2.nonosign != true && !result.decryptresult && !cGmail2.noAutoDecrypt)
                                 {
                                     td.setAttribute("style","color: orange;");
                                     td.innerHTML = i18n.getString("GMailNoS");
@@ -218,7 +214,7 @@ var cGmail2 = {
 
                         } else {
 
-                            if (cGmail2.nonosign != true && !result.decryptresult)
+                            if (cGmail2.nonosign != true && !result.decryptresult && !cGmail2.noAutoDecrypt)
                                 {
                                     td.setAttribute("style","color: orange;");
                                     td.innerHTML = i18n.getString("GMailNoS");
@@ -229,7 +225,7 @@ var cGmail2 = {
 
                             data = decoder.washFromPlain(result.specialmimepart).replace(/<br \/>/gi, '\n');
                             rid="firegpg" +  genreate_api_key() +  "subpart" +  genreate_api_key() + "display" +  genreate_api_key();
-                            td.innerHTML += " <br /><span style=\"color: magenta;\">" + i18n.getString("OnlyASubPart").replace(/%d/, '<a href="#" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);">').replace(/%d2/,
+                            td.innerHTML += " <br /><span style=\"color: magenta;\">" + i18n.getString("OnlyASubPart").replace(/%w/, '<a href="#" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);">').replace(/%w2/,
                                                                                                                                                                                  '</a><span id="' + rid +'" style="display: none">' + data + '</span></span>');
                         }
 
@@ -250,8 +246,8 @@ var cGmail2 = {
                                     var table = doc.createElement('table');
 
                                     table.innerHTML = '<tbody><tr><td class="kVqJFe"><span id=":ga"><a href="#"><img gpg_action="sattachement2"  class="xPxtgd" src="/mail/images/generic.gif"></a></span></td><td><b>%n</b>  <br>%t&nbsp;&nbsp;<span id=":gd"><a href="#" gpg_action="sattachement">%s</a>&nbsp;&nbsp;</span></td></tr></tbody>';
-                                    table.innerHTML = table.innerHTML.replace(/%t/, 'FireGPG decrypted file'); //HARDCODED
-                                    table.innerHTML = table.innerHTML.replace(/%s/, 'Save as'); //HARDCODED
+                                    table.innerHTML = table.innerHTML.replace(/%t/, i18n.getString("decryptedfile"));
+                                    table.innerHTML = table.innerHTML.replace(/%s/, i18n.getString("SaveAS"));
                                     table.innerHTML = table.innerHTML.replace(/%n/, htmlEncode(att.filename));
                                     table.setAttribute('firegpg-file-content',Base64.encode(att.data,true));
                                     table.setAttribute('firegpg-file-name', att.filename);
@@ -290,8 +286,8 @@ var cGmail2 = {
                                         var tableBox = doc.createElement('table');
 
                                         tableBox.innerHTML = '<tbody><tr><td class="kVqJFe"><span id=":ga"><a href="#"><img class="xPxtgd" src="/mail/images/generic.gif"></a></span></td><td><b>%n</b>  <br>%t&nbsp;&nbsp;<span id=":gd">&nbsp;&nbsp;</span></td></tr></tbody>';
-                                        tableBox.innerHTML = table.innerHTML.replace(/%t/, 'FireGPG encrypted file'); //HARDCODED
-                                        tableBox.innerHTML = table.innerHTML.replace(/%n/, htmlEncode(att.filename));
+                                        tableBox.innerHTML = tableBox.innerHTML.replace(/%t/, i18n.getString("firegpgencrypted"));
+                                        tableBox.innerHTML = tableBox.innerHTML.replace(/%n/, htmlEncode(att.filename));
                                         tableBox.setAttribute('class', 'Dva3x');
 
                                         attachementBox.appendChild(tableBox);
@@ -307,7 +303,7 @@ var cGmail2 = {
                                     newA.setAttribute('firegpg-file-type','encrypted');
                                     newA.setAttribute('gpg_action','attachement');
                                     newA.setAttribute('style','cursor: pointer;');
-                                    newA.innerHTML = 'Decrypt'; //HARDCODED
+                                    newA.innerHTML = i18n.getString("decrypt");
                                     var tmpListener = new Object;
                                     tmpListener = null;
                                     tmpListener = new cGmail2.callBack(doc)
@@ -867,7 +863,7 @@ var cGmail2 = {
 
 
        //If the user want to decrypt the mail (can use normal attibutes)
-			if (target.innerHTML == i18n.getString("GMailD")) {
+			if (target.innerHTML.indexOf(i18n.getString("GMailD")) == 0) {
 
                 var tmpNode = target;
 

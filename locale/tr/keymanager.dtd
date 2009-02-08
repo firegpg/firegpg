@@ -7,10 +7,10 @@
 <!ENTITY revoke-button "Revoke key">
 <!ENTITY sign-button "Signatures">
 <!ENTITY changetrust-button "Change trust">
-<!ENTITY importserver-button "Import from server">
-<!ENTITY exportserver-button "Export to server">
-<!ENTITY importfile-button "Import from file">
-<!ENTITY exportfile-button "Export to file">
+<!ENTITY importserver-button "Sunucudan içe aktar">
+<!ENTITY exportserver-button "Sunucuya dışa aktarım">
+<!ENTITY importfile-button "Dosyadan içe aktar">
+<!ENTITY exportfile-button "Dosyaya dışa aktarım">
 <!ENTITY new-button "New key">
 <!ENTITY keymanager "Key manager">
 <!ENTITY refrech "Refresh keys from server">
@@ -20,12 +20,12 @@
 <!ENTITY trustFull "I fully trust this key">
 <!ENTITY trustUltimate "Trust this key ultimately (!)">
 <!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
+<!ENTITY del-button "Sil">
 <!ENTITY revokeNoRaison "No reason specified">
 <!ENTITY revokeComprimse "Key has been compromised">
 <!ENTITY revokeRemplaced "Key is superseded">
 <!ENTITY revokeNotUsed "Key is no longer used">
 <!ENTITY userid-button "User ID">
-<!ENTITY add "Add">
-<!ENTITY delete "Delete">
+<!ENTITY add "Ekle">
+<!ENTITY delete "Sil">
 <!ENTITY revoke "Revoke">

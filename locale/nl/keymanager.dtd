@@ -1,31 +1,31 @@
 <!ENTITY key-status "Status">
-<!ENTITY key-trust "Trust">
-<!ENTITY key-expire "Expire">
-<!ENTITY key-create "Created">
+<!ENTITY key-trust "Vertrouwen">
+<!ENTITY key-expire "Verloopt">
+<!ENTITY key-create "Aangemaakt">
 <!ENTITY key-id "ID">
-<!ENTITY key-name "Name">
-<!ENTITY revoke-button "Revoke key">
-<!ENTITY sign-button "Signatures">
+<!ENTITY key-name "Naam">
+<!ENTITY revoke-button "Inrekken van de sleutel">
+<!ENTITY sign-button "Handtekeningen">
 <!ENTITY changetrust-button "Vertrouwen aanpassen">
-<!ENTITY importserver-button "Import from server">
+<!ENTITY importserver-button "Importeren vanaf een server">
 <!ENTITY exportserver-button "Exporteer naar server">
-<!ENTITY importfile-button "Import from file">
+<!ENTITY importfile-button "Importeren uit een bestand">
 <!ENTITY exportfile-button "Exporteer naar bestand">
-<!ENTITY new-button "New key">
-<!ENTITY keymanager "Key manager">
-<!ENTITY refrech "Refresh keys from server">
-<!ENTITY trustUnded "Remove information about trusting">
-<!ENTITY trustDont "I don't trust this key">
-<!ENTITY trustMargi "I marginally trust this key">
-<!ENTITY trustFull "I fully trust this key">
-<!ENTITY trustUltimate "Trust this key ultimately (!)">
-<!ENTITY password-button "Change password">
+<!ENTITY new-button "Nieuwe sleutel">
+<!ENTITY keymanager "Sleutel beheerder">
+<!ENTITY refrech "Vernieuw sleutels van de server">
+<!ENTITY trustUnded "Verwijder informatie over vertrouwen">
+<!ENTITY trustDont "Ik vertrouw deze sleutel niet">
+<!ENTITY trustMargi "Ik vertrouw deze sleutel maar net">
+<!ENTITY trustFull "I vertrouw deze sleutel volledig">
+<!ENTITY trustUltimate "Vertrouw deze sleutel onvoorwaardelijk (!)">
+<!ENTITY password-button "Verander wachtwoord">
 <!ENTITY del-button "Verwijder">
-<!ENTITY revokeNoRaison "No reason specified">
-<!ENTITY revokeComprimse "Key has been compromised">
-<!ENTITY revokeRemplaced "Key is superseded">
-<!ENTITY revokeNotUsed "Key is no longer used">
-<!ENTITY userid-button "User ID">
+<!ENTITY revokeNoRaison "geen reden opgegeven">
+<!ENTITY revokeComprimse "Sleutel is gecompromiteerd">
+<!ENTITY revokeRemplaced "Sleutel is opgevolgd">
+<!ENTITY revokeNotUsed "Sleutel wordt niet meer gebruikt">
+<!ENTITY userid-button "Gebruikers ID">
 <!ENTITY add "Toevoegen">
 <!ENTITY delete "Verwijder">
-<!ENTITY revoke "Revoke">
+<!ENTITY revoke "Intrekken">

@@ -1,10 +1,10 @@
-<!ENTITY crypt-button "Encrypt">
-<!ENTITY dcrypt-button "Decrypt">
+<!ENTITY crypt-button "Zašifruj">
+<!ENTITY dcrypt-button "Odšifruj">
 <!ENTITY sign-button "Sign">
 <!ENTITY verify-button "Verify">
 <!ENTITY open-button "Open">
 <!ENTITY save-button "Save">
-<!ENTITY cryptandsign-button "Sign and encrypt">
+<!ENTITY cryptandsign-button "Podpíš a zašifruj">
 <!ENTITY sign-clear-button "Clearsign">
 <!ENTITY symcrypt-button "Symmetric encryption">
-<!ENTITY closeandcopy-button "Copy to clipboard and close">
+<!ENTITY closeandcopy-button "Skopíruj do schránky a zatvor">

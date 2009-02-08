@@ -270,6 +270,7 @@ FireGPGMimeDecoder.prototype = {
 
     washFromHtml: function(texte) {
 
+
         texte = texte.replace(/(\n|\r)/gi, "");
         texte = texte.replace(/<br( |\/)?>/gi, "\r\n");
         texte = texte.replace(/<\/?[^>]+(>|$)/g, "");
@@ -507,7 +508,6 @@ FireGPGMimeDecoder.prototype = {
         minedecrypt = this.MimeDecrypt(stopOnDecrypt);
 
         if (minedecrypt.decryptData) {
-
            if (minedecrypt.completeSignOrDecrypt)
                 retour.completeSignOrDecrypt = true;
             else
@@ -529,14 +529,24 @@ FireGPGMimeDecoder.prototype = {
             retour.signResult = mimesign.signResult;
 
 
+        } else {
+
+            if (minedecrypt.decryptData && minedecrypt.decryptresult.signresult == RESULT_SUCCESS) {
+                retour.signResult = new Object();
+                retour.signResult.signresult = minedecrypt.decryptresult.signresult;
+                retour.signResult.signresulttext = minedecrypt.decryptresult.signresulttext;
+                retour.signResult.signresultuser = minedecrypt.decryptresult.signresultuser;
+                retour.signResult.signresultdate = minedecrypt.decryptresult.signresultdate;
+            }
         }
 
         //Pas d'openpgpmime, on cherche en inline (sauf si y'a une subpart qui à été signée/chiffrée, par sécurisé on s'arrête)
         if (!minedecrypt.decryptData && !((mimesign.signedData || minedecrypt.decryptData) && retour.completeSignOrDecrypt == false)) {
 
-            inlinedecrypt = this.Decrypt();
+            inlinedecrypt = this.Decrypt(stopOnDecrypt);
 
             if (inlinedecrypt.decryptData) {
+
                 //On considère l'inline comme complet
                 retour.completeSignOrDecrypt = true;
 
@@ -560,6 +570,15 @@ FireGPGMimeDecoder.prototype = {
 
                 retour.signResult = inlinesign.signResult;
 
+            } else {
+
+                if (inlinedecrypt.decryptData && inlinedecrypt.decryptresult.signresult == RESULT_SUCCESS) {
+                    retour.signResult = new Object();
+                    retour.signResult.signresult = inlinedecrypt.decryptresult.signresult;
+                    retour.signResult.signresulttext = inlinedecrypt.decryptresult.signresulttext;
+                    retour.signResult.signresultuser = inlinedecrypt.decryptresult.signresultuser;
+                    retour.signResult.signresultdate = inlinedecrypt.decryptresult.signresultdate;
+                }
             }
         }
 
@@ -585,12 +604,14 @@ FireGPGMimeDecoder.prototype = {
             retour.decryptData = true;
             retour.completeSignOrDecrypt = true;
 
+            data = this.extractEncryptedPart(this.mainPart);
+
             if (stopOnDecrypt) {
                 retour.decryptDataToInsert = data;
+                retour.decryptresult = true;
+                fireGPGDebug("{OldDecrypt} Find mail whole encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
                 return retour;
             }
-
-            data = this.extractEncryptedPart(this.mainPart);
 
             fireGPGDebug("Find mail whole encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
 
@@ -629,16 +650,19 @@ FireGPGMimeDecoder.prototype = {
                 retour.decryptData = true;
                 retour.completeSignOrDecrypt = false;
 
+                data = this.extractEncryptedPart(subparttotest);
+
+                retour.specialmimepart = subparttotest.texte;
+
                 if (stopOnDecrypt) {
                     retour.decryptDataToInsert = data;
+                    retour.decryptresult = true;
+                    fireGPGDebug("{OldDecrypt} Find mail part encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
                     return retour;
                 }
 
-                data = this.extractEncryptedPart(subparttotest);
 
                 fireGPGDebug("Find mail part encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
-
-                retour.specialmimepart = subparttotest.texte;
 
                 retour.decryptresult = FireGPG.decrypt(false,data);
 
@@ -805,6 +829,8 @@ FireGPGMimeDecoder.prototype = {
         charset = this.extractCharset(this.mainPart.headers['CONTENT-TYPE']);
 
         if (stopOnDecrypt) {
+            retour.decryptData = true;
+            retour.decryptresult = true;
             retour.decryptDataToInsert = firstEcnrypt.replace(/\r/gi, '');
             return retour;
         }
@@ -832,7 +858,7 @@ FireGPGMimeDecoder.prototype = {
             if (this.mainPart.subparts[i].attachement) {
                 var ext = getFileExtention(this.mainPart.subparts[i].filename)
 
-                if (ext == "asc" || ext == "pgp") {
+                if ((ext == "asc" || ext == "pgp") && this.mainPart.subparts[i].headers['CONTENT-TYPE'].indexOf('application/pgp-signature') == -1) {
 
                     var tmpFile = new Object();
                     tmpFile.filename = this.mainPart.subparts[i].filename;
@@ -890,7 +916,7 @@ FireGPGMimeDecoder.prototype = {
        //Attachements venant d'être déchifrés
        if (this.mainPart.thisisanencryptedpart) {
             for (var i = 0; i < this.mainPart.numberofsubparts; i++) {
-                if (this.mainPart.subparts[i].attachement) {
+                if (this.mainPart.subparts[i].attachement && this.mainPart.subparts[i].headers['CONTENT-TYPE'].indexOf('application/pgp-signature') == -1) {
 
                     var tmpFile = new Object();
                     tmpFile.filename = this.mainPart.subparts[i].filename;

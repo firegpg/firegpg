@@ -1,17 +1,17 @@
-<!ENTITY newkey "FireGPG - new key">
-<!ENTITY warningaboutgeneeration "Warning! Key generation can take a lot of time, and will freeze Firefox. Do something else while key is generated to create more entropy.">
-<!ENTITY name-message "Name">
+<!ENTITY newkey "FireGPG - nieuwe sleutel">
+<!ENTITY warningaboutgeneeration "Waarschuwing! Sleutel generatie kan een poos duren, en zal firefox bevriezen. Doe tijdelijk iets anders als de sleutel gegenereerd wordt.">
+<!ENTITY name-message "Naam">
 <!ENTITY email-message "Email">
 <!ENTITY comment-message "Commentaar">
-<!ENTITY password1-message "Password">
-<!ENTITY password2-message "Repeat password">
-<!ENTITY keyneverexpire "The key never expires">
-<!ENTITY keyexpire-message "Key expires in">
+<!ENTITY password1-message "Wachtwoord">
+<!ENTITY password2-message "Herhaal wachtwoord">
+<!ENTITY keyneverexpire "De sleutel verloopt nooit">
+<!ENTITY keyexpire-message "Sleutel verloopt in">
 <!ENTITY expire-year "jaren">
 <!ENTITY expire-month "maanden">
 <!ENTITY expire-days "dagen">
-<!ENTITY advancedoptions "Geavanceerde opties ">
-<!ENTITY keylenght-message "Key length">
-<!ENTITY keytype-message "Key type">
+<!ENTITY advancedoptions "Geavanceerde opties">
+<!ENTITY keylenght-message "sleutel lengte">
+<!ENTITY keytype-message "Sleutel type">
 <!ENTITY generate-button "Genereer sleutel">
 <!ENTITY cancel-button "Annuleren">

@@ -1344,7 +1344,7 @@ function getKeyServer() {
 function showSearchBox(autoSearch) {
 
 
-    window.openDialog("chrome://firegpg/content/searchkey.xul", "searchBox", "chrome,centerscreen", {autoSearch: autoSearch}).focus();
+    window.openDialog("chrome://firegpg/content/Dialogs/Keymanager/searchkey.xul", "searchBox", "chrome,centerscreen", {autoSearch: autoSearch}).focus();
 
 }
 

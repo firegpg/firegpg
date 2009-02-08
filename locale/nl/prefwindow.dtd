@@ -49,27 +49,27 @@
 <!ENTITY gmail-disable-autosave-checkbox "Automatisch opslaan afzetten">
 <!ENTITY gmail-buton-csign-checkbox "Leesbaar ondertekenen">
 <!ENTITY gmail-buton-csignsend-checkbox "Leesbaar ondertekenen en versturen">
-<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
-<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
-<!ENTITY keyserver-message "Keyserver">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms, in most of case you have this choices:">
+<!ENTITY hide-fireftp-message "Geef geen melding weer over oude geinstalleerde IPC bibliotheken.">
+<!ENTITY use-fireftp-workaround "Probeer toegang te verkrijgen tot IPC met de oude API.">
+<!ENTITY keyserver-message "Sleutelserver">
+<!ENTITY symmetric-algo "Algorithe dat gebruikt woord voor symmetrische encryptie. Leeg laten voor standaard invoe. Gebruik 'gpg --version' om de lijst van bruikbare algorithes te verkrijgen, in de meeste gevallen hebt u de volgende keuzes:">
 <!ENTITY gmail-new-interface "Nieuwe Gmail-interface">
-<!ENTITY gmail-select-by-default-label "Selected by default :">
+<!ENTITY gmail-select-by-default-label "Standaard selectie:">
 <!ENTITY gmail-buton-inline-checkbox "Binnensregels">
 <!ENTITY gmail-old-interface "Oude Gmail-interface">
 <!ENTITY gmail-smtp-options-label "SMTP-opties (opengpg/mime-mails)">
-<!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
-<!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
+<!ENTITY gmail-smtp-google-com "Probeer nooit om van google.com onthouden wachtwoorden te gebruiken">
+<!ENTITY gmail-smtp-username "Gebruikersnaam (laat leeg om de gebruikersnaam van de ingelogde account te gebruiken) :">
 <!ENTITY gmail-smtp-host "Host (smtp.gmail.com)">
 <!ENTITY gmail-smtp-port "Poort (465):">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Gebruik SSL:">
 <!ENTITY gmail-disable-sign-detection "Zet antwoordherkenning uit voor binnensregelige ondertekening (en versleuteling) (gebruik altijd het volledige bericht)">
 <!ENTITY gmail-disable-auto-decryption "Oud gedrag voor ontsleuteling">
 <!ENTITY gmail-force-from "Van-waarde forceren:">
-<!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
+<!ENTITY gpg-special-path-values "Gebruik {$FxFolder} om gebruik te maken van de firefox map en {$SPACE} om een spatie in een argument te krijgen">
 <!ENTITY decrypt-when-reply "Ontsleutel inhoud bij antwoord">
-<!ENTITY gmail-buton-attachements-checkbox "Attachements">
-<!ENTITY autorwap-liste-action.label "Action">
+<!ENTITY gmail-buton-attachements-checkbox "Toevoegingen">
+<!ENTITY autorwap-liste-action.label "Actie">
 <!ENTITY autorwap-liste-domain.label "Webmail">
-<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY autowrap_list.label "Automatische antwoorden (dubbel klikken om te verwijderen) :">
 <!ENTITY paneautowrap.title "Autowrap">

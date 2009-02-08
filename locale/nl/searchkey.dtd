@@ -1,8 +1,8 @@
-<!ENTITY keyimporter "Import key from server">
+<!ENTITY keyimporter "Importeren van een sleutel van een server">
 <!ENTITY close-button "Sluiten">
-<!ENTITY import-button "Import selected keys">
-<!ENTITY search-button "Search">
-<!ENTITY search-description "Search for :">
-<!ENTITY key-create "Created">
-<!ENTITY key-id "ID">
-<!ENTITY key-name "Name">
+<!ENTITY import-button "Importeren van de geselecteerde sleutels">
+<!ENTITY search-button "Zoeken">
+<!ENTITY search-description "Zoek naar :">
+<!ENTITY key-create "Aangemaakt">
+<!ENTITY key-id "Id">
+<!ENTITY key-name "Naam">

@@ -21,12 +21,12 @@
 <!ENTITY firegpgMenu.labelErase "Kayıtlı parolayı temizle">
 <!ENTITY firegpgContext.labelErase "Kayıtlı parolayı temizle">
 <!ENTITY firegpgToolbar.labelErase "Kayıtlı parolayı temizle">
-<!ENTITY firegpgMenu.labelImport "Dahil">
-<!ENTITY firegpgContext.labelImport "Dahil">
-<!ENTITY firegpgToolbar.labelImport "Dahil">
-<!ENTITY firegpgMenu.labelExport "Hariç">
-<!ENTITY firegpgContext.labelExport "Hariç">
-<!ENTITY firegpgToolbar.labelExport "Hariç">
+<!ENTITY firegpgMenu.labelImport "İçe aktarım">
+<!ENTITY firegpgContext.labelImport "İçe aktarım">
+<!ENTITY firegpgToolbar.labelImport "İçe aktarım">
+<!ENTITY firegpgMenu.labelExport "Dışa aktarım">
+<!ENTITY firegpgContext.labelExport "Dışa aktarım">
+<!ENTITY firegpgToolbar.labelExport "Dışa aktarım">
 <!ENTITY firegpgPopInfo.labelBonjour "Bienvenue !<br />FireGPG à été installé correctement !">
 <!ENTITY firegpgPopInfo.labelAccessOk "FireGPG parviens à accéder à GnuPG !">
 <!ENTITY firegpgPopInfo.labelAccessErr "FireGPG ne parviens pas à accéder à GnuPG : L'avez vous installé ? Son chemin est-il correctement défini ?">

@@ -68,8 +68,8 @@
 <!ENTITY gmail-force-from "Forcer le champ 'De' :">
 <!ENTITY gpg-special-path-values "Utilisez {$FxFolder} pour avoir le dossier de Firefox et {$SPACE} pour un espace à l'intérieur d'un argument">
 <!ENTITY decrypt-when-reply "Déchiffrer les mail des réponses">
-<!ENTITY gmail-buton-attachements-checkbox "Attachements">
+<!ENTITY gmail-buton-attachements-checkbox "Fichiers attachés">
 <!ENTITY autorwap-liste-action.label "Action">
 <!ENTITY autorwap-liste-domain.label "Webmail">
-<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
-<!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY autowrap_list.label "Réponses automatiques (double-click pour supprimer):">
+<!ENTITY paneautowrap.title "Découpage">
