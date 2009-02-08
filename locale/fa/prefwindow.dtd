@@ -66,10 +66,10 @@
 <!ENTITY gmail-disable-sign-detection "یافتن جوای را از امضای در خط غیرفعال کن (و رمزگذاری) (همیشه از همه ایمیل استفاده کن)ا">
 <!ENTITY gmail-disable-auto-decryption "حالت قدیمی برای رمزگشایی">
 <!ENTITY gmail-force-from "اجبار توسط مقدار:">
-<!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
+<!ENTITY gpg-special-path-values "از {$FxFolder} برای داشتن پوشه فایرفاکس و از {$SPACE} برای ورود یک جای خالی در آرگومان‌ها استفاده کن">
 <!ENTITY decrypt-when-reply "رمزگشایی محتوا هنگام پاسخ‌دهی">
-<!ENTITY gmail-buton-attachements-checkbox "Attachements">
-<!ENTITY autorwap-liste-action.label "Action">
-<!ENTITY autorwap-liste-domain.label "Webmail">
-<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
-<!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY gmail-buton-attachements-checkbox "الحاقیات">
+<!ENTITY autorwap-liste-action.label "عمل">
+<!ENTITY autorwap-liste-domain.label "پست تحت وب">
+<!ENTITY autowrap_list.label "پاسخ‌دهی خودکار (برای حذف دوبار کلیک کنید):">
+<!ENTITY paneautowrap.title "پنهان‌سازی خودکار">

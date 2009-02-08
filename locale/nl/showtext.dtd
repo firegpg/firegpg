@@ -1,5 +1,5 @@
 <!ENTITY crypt-button "Versleutel">
-<!ENTITY dcrypt-button "Ontcijfer">
+<!ENTITY dcrypt-button "Ontsleutel">
 <!ENTITY sign-button "Onderteken">
 <!ENTITY verify-button "Verifieer">
 <!ENTITY open-button "Open">

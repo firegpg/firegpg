@@ -68,8 +68,8 @@
 <!ENTITY gmail-force-from "Použít napevno hodnotu:">
 <!ENTITY gpg-special-path-values "Použijte {$FxFolder} pro adresář Firefoxu a {$SPACE} abyste měli mezeru uvnitř parametru">
 <!ENTITY decrypt-when-reply "Dešifrovat obsah při odpovídání">
-<!ENTITY gmail-buton-attachements-checkbox "Attachements">
-<!ENTITY autorwap-liste-action.label "Action">
+<!ENTITY gmail-buton-attachements-checkbox "Přílohy">
+<!ENTITY autorwap-liste-action.label "Akce">
 <!ENTITY autorwap-liste-domain.label "Webmail">
-<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
-<!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY autowrap_list.label "Automatické odpovědi (dvojklikem lze smazat):">
+<!ENTITY paneautowrap.title "Zarovnávat">

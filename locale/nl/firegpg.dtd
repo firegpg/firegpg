@@ -5,7 +5,7 @@
 <!ENTITY firegpgContext.labelSign "Onderteken">
 <!ENTITY firegpgContext.labelCrypt "Versleutel">
 <!ENTITY firegpgContext.labelVerif "Controlleer">
-<!ENTITY firegpgContext.labelDecry "Ontcijfer">
+<!ENTITY firegpgContext.labelDecry "Ontsleutel">
 <!ENTITY firegpgContext.labelOptions "Instellingen">
 <!ENTITY firegpgMenu.label "FireGPG">
 <!ENTITY firegpgMenu.labelSign "Onderteken">
@@ -27,12 +27,12 @@
 <!ENTITY firegpgMenu.labelExport "Exporteer">
 <!ENTITY firegpgContext.labelExport "Exporteer">
 <!ENTITY firegpgToolbar.labelExport "Exporteer">
-<!ENTITY firegpgPopInfo.labelBonjour "Bienvenue !<br />FireGPG à été installé correctement !">
-<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG parviens à accéder à GnuPG !">
-<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG ne parviens pas à accéder à GnuPG : L'avez vous installé ? Son chemin est-il correctement défini ?">
-<!ENTITY firegpgPopInfo.labelKeyOk "Une clé privée à corrctement été définie !">
-<!ENTITY firegpgPopInfo.labelKeyErr "Attention: veuillez définir une clé privée dans les options !">
-<!ENTITY firegpgPopInfo.close "Fermer">
+<!ENTITY firegpgPopInfo.labelBonjour "Welkom! FireGPG is met succes geinstalleerd.">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG heeft geen toegang to gpg.">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG heeft geen toegang tot het gpg bestand. Verzeker u ervan dat deze is geinstalleerd, of geef het pad handmatig op in de voorkeuren. ">
+<!ENTITY firegpgPopInfo.labelKeyOk "een private sleutel is geselecteerd.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Waarschuwing: kies een private sleutel in de voorkeuren.">
+<!ENTITY firegpgPopInfo.close "Sluiten">
 <!ENTITY firegpgPopInfo.options "Instellingen">
 <!ENTITY firegpgContext.labelEditeur "Open tekstverwerker">
 <!ENTITY firegpgMenu.labelEditeur "Open tekstverwerker">
