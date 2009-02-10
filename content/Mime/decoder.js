@@ -517,7 +517,7 @@ FireGPGMimeDecoder.prototype = {
             retour.decryptDataToInsert = minedecrypt.decryptDataToInsert;
         }
 
-        mimesign = this.MimeSign();
+        var mimesign = this.MimeSign();
 
         if (mimesign.signedData && !(minedecrypt.decryptData && retour.completeSignOrDecrypt == false)) { //Subpart chiffrée = stop
 
@@ -540,6 +540,8 @@ FireGPGMimeDecoder.prototype = {
             }
         }
 
+        var inlinedecrypt = null;
+
         //Pas d'openpgpmime, on cherche en inline (sauf si y'a une subpart qui à été signée/chiffrée, par sécurisé on s'arrête)
         if (!minedecrypt.decryptData && !((mimesign.signedData || minedecrypt.decryptData) && retour.completeSignOrDecrypt == false)) {
 
@@ -559,6 +561,8 @@ FireGPGMimeDecoder.prototype = {
 
         }
 
+        var inlinesign = null;
+
         //Pas d'openpgpmime, on cherche en inline (sauf si y'a une subpart qui à été signée/chiffrée, par sécurisé on s'arrête)
         if (!mimesign.signedData && !((mimesign.signedData || minedecrypt.decryptData) && retour.completeSignOrDecrypt == false)) {
 
@@ -572,12 +576,14 @@ FireGPGMimeDecoder.prototype = {
 
             } else {
 
-                if (inlinedecrypt.decryptData && inlinedecrypt.decryptresult.signresult == RESULT_SUCCESS) {
-                    retour.signResult = new Object();
-                    retour.signResult.signresult = inlinedecrypt.decryptresult.signresult;
-                    retour.signResult.signresulttext = inlinedecrypt.decryptresult.signresulttext;
-                    retour.signResult.signresultuser = inlinedecrypt.decryptresult.signresultuser;
-                    retour.signResult.signresultdate = inlinedecrypt.decryptresult.signresultdate;
+                if (inlinedecrypt  != null) {
+                    if (inlinedecrypt.decryptData && inlinedecrypt.decryptresult.signresult == RESULT_SUCCESS) {
+                        retour.signResult = new Object();
+                        retour.signResult.signresult = inlinedecrypt.decryptresult.signresult;
+                        retour.signResult.signresulttext = inlinedecrypt.decryptresult.signresulttext;
+                        retour.signResult.signresultuser = inlinedecrypt.decryptresult.signresultuser;
+                        retour.signResult.signresultdate = inlinedecrypt.decryptresult.signresultdate;
+                    }
                 }
             }
         }

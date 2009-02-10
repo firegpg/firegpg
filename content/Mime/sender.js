@@ -335,7 +335,7 @@ FireGPGMimeSender.prototype =
 
             if (prefs.sign && !prefs.encrypt) {
 
-                var result = FireGPG.sign(false,stringToWork+ crlf);
+                var result = FireGPG.sign(false,stringToWork+ crlf, null, null, null, prefs.whoSendTheMail );
 
                 if (result.result == RESULT_SUCCESS) {
                     signedData = result.signed.substring(result.signed.lastIndexOf("-----BEGIN PGP SIGNATURE-----"), result.signed.length)
@@ -361,8 +361,7 @@ FireGPGMimeSender.prototype =
 
             } else if (prefs.sign) { //Sign + encrypted
 
-
-                var result = FireGPG.cryptAndSign(false,stringToWork, null ,false,null, null, false, whoWillGotTheMail);
+                var result = FireGPG.cryptAndSign(false,stringToWork, null ,false,null, null, false, whoWillGotTheMail, prefs.whoSendTheMail);
 
                 if (result.result == RESULT_SUCCESS) {
 

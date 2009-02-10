@@ -428,7 +428,7 @@ cGmail2.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><tr><td c
             }
             // DEPRECATED: this.statusMessage.statusDiv. It is BAD when sending a reply that is non-encrypted, followed by an encrypted reply.
             // 0.3.2: removed: div[@class='fgrX7c']//div[@class='IY0d9c']/div[contains(@class, 'EGSDee')]/
-            var sD = d.evaluate(".//div/div[@class='n38jzf' and table/@class='cyVRte']", d.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+            var sD = d.evaluate(".//div/div[contains(@class,'n38jzf') and table/@class='cyVRte']", d.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 //				printAncestors("statusDiv", sD);
             cGmail2.i18n = this.i18n;
             sD.addEventListener("DOMAttrModified", changeStatusMessage, false);

@@ -484,11 +484,12 @@ var cGmail2 = {
 
 
                 //END OF THE TEST FOR MESSAGES.
-
+//fireGPGDebug('Begining test for compose messages', 'ProbWithReplyForward');
                 //Test for compose buttons 'CoUvaf'
                 var listeTest = doc.getElementsByClassName('LlWyA','div');
                 var listeTest2 = doc.getElementsByClassName('CoUvaf','div');
 
+//fireGPGDebug('1:' + listeTest + ' 2:' + listeTest2, 'ProbWithReplyForward');
 
                 listeTest = listeTest.concat(listeTest2);
 
@@ -496,12 +497,14 @@ var cGmail2 = {
 
                     if (listeTest[i].hasAttribute("gpg") == false) {
 
+                        fireGPGDebug(listeTest[i] + 'NoFireGPG, processing', 'ProbWithReplyForward');
+
                         listeTest[i].setAttribute("gpg","ok");
 
                         //Position to add the button
                         var spamLimite = listeTest[i].getElementsByTagName('span');
                         spamLimite = spamLimite[0];
-
+//fireGPGDebug('spamLimite is ' + spamLimite, 'ProbWithReplyForward');
                         //Nouvelle version du lundi 29 septembre 2008
                         if (listeTest[i].firstChild && listeTest[i].firstChild.getAttribute("class") == "c1I77d yCMBJb goog-container")
                             var wheretoadd = listeTest[i].firstChild;
@@ -511,7 +514,7 @@ var cGmail2 = {
                                 wheretoadd = listeTest[i].firstChild.childNodes[1];
                         }
 
-
+//fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
                         /*if (cGmail2.b_sign == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailCLS"),"sign",spamLimite);
                         if (cGmail2.b_sign_s == true)
@@ -533,7 +536,7 @@ var cGmail2 = {
                         //Rajouter une propriété sur le button send pour le repérer
                         var children = listeTest[i].getElementsByClassName('goog-imageless-button-content');
                         children[0].firstChild.setAttribute("gpg_action", "send_button");
-
+//fireGPGDebug('children[0] is ' + children[0], 'ProbWithReplyForward');
 
                         //Listeners
                         try {
@@ -545,10 +548,10 @@ var cGmail2 = {
 
                         } catch (e) {  fireGPGDebug(e,'cgmail2.checkDoc',true);  }
 
-
+//fireGPGDebug('mouseup set', 'ProbWithReplyForward');
 
                         if (listeTest[i].getAttribute('class').indexOf('LlWyA') != -1) {
-
+//fireGPGDebug('button2!', 'ProbWithReplyForward');
                             children[0].firstChild.setAttribute("gpg_action", "send_button2");
 
 
@@ -561,7 +564,7 @@ var cGmail2 = {
                                 tablebox = listeTest[i].parentNode.parentNode.getElementsByTagName('table');
 
                             tablebox = tablebox[0];
-
+//fireGPGDebug('tablebox is ' + tablebox, 'ProbWithReplyForward');
                             var boxwhereadd = tablebox.parentNode;
 
                             var span = doc.createElement("span");
@@ -577,7 +580,7 @@ var cGmail2 = {
                             tmpListener = new cGmail2.callBack(doc)
                             span.addEventListener('click',tmpListener,false);
 
-
+//fireGPGDebug('span is ' + span, 'ProbWithReplyForward');
                             //Rajout des trucs à FireGPG
                             var firegpgactions = doc.createElement("tr");
 
@@ -610,7 +613,7 @@ var cGmail2 = {
 
                             firegpgactions.appendChild(title);
                             firegpgactions.appendChild(checkboxes);
-
+//fireGPGDebug('firegpgactions is ' + firegpgactions, 'ProbWithReplyForward');
                             fileattachimage = tablebox.getElementsByClassName('msHBT','img');
 
                             filesattachbox = fileattachimage[0].parentNode.parentNode;
@@ -620,7 +623,7 @@ var cGmail2 = {
                             } catch (e) {   fireGPGDebug(e,'cgmail2.checkDoc(insert checkboxes)',true); }
 
                             if (cGmail2.decryptOnReply) {
-
+//fireGPGDebug('Decrypt on reply set', 'ProbWithReplyForward');
                                 form =  listeTest[i].parentNode.getElementsByTagName('form');
                                 //Nouvelle version du lundi 29 septembre 2008
                                 if (form.length == 0) {
@@ -678,7 +681,7 @@ var cGmail2 = {
 
                         form = form[0];
 
-
+//fireGPGDebug('Form is ' + form, 'ProbWithReplyForward');
                        // if (this.useremail == null) {
 
 
@@ -686,11 +689,11 @@ var cGmail2 = {
                       //  }
 
                         form.setAttribute("firegpg-mail-id", "");
-
+//fireGPGDebug('Setting mailid', 'ProbWithReplyForward');
                         findHere = form.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
                         elements = findHere.getElementsByClassName('ArwC7c', 'div');
                         if (elements[0]) {
-                            form.setAttribute("firegpg-mail-id", elements[0].getAttribute("firegpg-mail-id"));
+                            form.setAttribute("firegpg-mail-id", elements[0].getAttribute("firegpg-mail-id"));    fireGPGDebug('to ' + elements[0].getAttribute("firegpg-mail-id"), 'ProbWithReplyForward');
                         }
 
 
@@ -712,9 +715,9 @@ var cGmail2 = {
                             GPL 2 License.
                         */
                         // Disable autosave and add appropriate notification
-
+//fireGPGDebug('Disable autosave ?', 'ProbWithReplyForward');
                         if (disable_autosave && form) // && form
-                        {
+                        {  fireGPGDebug('Disabling autosave', 'ProbWithReplyForward');
 
                             String.prototype.startsWith = function(s)
                             {
@@ -1194,7 +1197,7 @@ var cGmail2 = {
                     form =  buttonsboxes.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByTagName('form');
                      f = form[0];
 
-                     cGmail2.setProgressMessage(f, i18n.getString("GmailCreatingMail"));
+                    cGmail2.setProgressMessage(f, i18n.getString("GmailCreatingMail"));
 
 
 
@@ -1354,6 +1357,7 @@ var cGmail2 = {
                     prefs.encrypt = encrypt;
                     prefs.attachements = attachements;
                     prefs.whoWillGotTheMail = whoWillGotTheMail;
+                    prefs.whoSendTheMail = cGmail2.extractMails(from);
 
                     resulta = false;
 
@@ -2042,7 +2046,14 @@ var cGmail2 = {
         }
 
 
-    	//Pattern
+
+
+		return cGmail2.extractMails(forWho);
+	},
+
+    extractMails: function(forWho) {
+
+        	//Pattern
 		var reg = new RegExp('[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}', 'gi');
 
 		var aMail = reg.exec(forWho);
@@ -2057,8 +2068,9 @@ var cGmail2 = {
 			aMail = reg.exec(forWho);
 		}
 
-		return returnList;
-	},
+        return returnList;
+
+    },
 
     /*
     */
@@ -2509,9 +2521,9 @@ var cGmail2 = {
         //
         this.handleEvent = function(event) {
 
-          // fireGPGDebug(event.target.className);
+          // fireGPGDebug(event.target.className, 'Nodeinsersed');
 
-            if ((event.target.className == "HprMsc" || event.target.className == "y4Wv6d" || event.target.className == "XoqCub") && (cGmail2.docOccuped[this._docid] == undefined || cGmail2.docOccuped[this._docid] == false)) //load old mail | compose | Mail widnow
+            if (event.target && event.target.className && (event.target.className == "HprMsc" || event.target.className.indexOf("y4Wv6d") != -1 || event.target.className == "XoqCub") && (cGmail2.docOccuped[this._docid] == undefined || cGmail2.docOccuped[this._docid] == false)) //load old mail | compose | Mail widnow
             {
 
                 setTimeout("cGmail2.checkDoc("+this._docid+")", 0);

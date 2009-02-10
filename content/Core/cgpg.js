@@ -197,7 +197,7 @@ var FireGPG = {
             password - _Optional_, if not set ask the user.
             notClear - _Optional_, Do not make a clear sign
     */
-    sign: function(silent, text, keyID, password, notClear) {
+    sign: function(silent, text, keyID, password, notClear, autoSelectPrivate) {
 
         var returnObject = new GPGReturn();
 
@@ -250,7 +250,7 @@ var FireGPG = {
 
 		// Needed for a sign
 		if (keyID == undefined || keyID == null) {
-            keyID = getSelfKey();
+            keyID = getSelfKey(autoSelectPrivate);
         }
 
         if(keyID == null) {
@@ -794,7 +794,7 @@ var FireGPG = {
             binFileMode - _Optional_, Default to false. Set this to true if data isensn't  simple text.
             autoSelect - _Optional_, An array of recipients' keys' id to autoselect on the key's list selection.
     */
-    cryptAndSign: function(silent, text, keyIdList, fromGpgAuth, password, keyID, binFileMode, autoSelect ) {
+    cryptAndSign: function(silent, text, keyIdList, fromGpgAuth, password, keyID, binFileMode, autoSelect, autoSelectPrivate) {
 
         var returnObject = new GPGReturn();
 
@@ -848,7 +848,7 @@ var FireGPG = {
 
         // Needed for a sign
 		if (keyID == undefined || keyID == null) {
-            keyID = getSelfKey();
+            keyID = getSelfKey(autoSelectPrivate);
         }
 
         if(keyID == null) {
@@ -1265,7 +1265,7 @@ var FireGPG = {
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;
 
-        if(result.sdOut.indexOf("BAD_PASSPHRASE") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1) {
+        if(result.sdOut.indexOf("BAD_PASSPHRASE") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_PIN") != -1) {
 
             if (result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1)
                 password = getPrivateKeyPassword(false, false,i18n.getString("symetricalPass") + ":", true);

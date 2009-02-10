@@ -55,7 +55,7 @@ const FIREGPG_VERSION_A = '073';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
-const FIREGPG_STATUS = 'RELASE';
+const FIREGPG_STATUS = 'DEVEL';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */
@@ -213,8 +213,11 @@ function choosePublicKey(preSelect)
     Show a dialog (list.xul) to choose a private key.
     null is returned if no keys are chosen.
 */
-function choosePrivateKey()
+function choosePrivateKey(preSelect)
 {
+    if(preSelect == undefined)
+		preSelect = {};
+
 	var params = {title: '', description: '', list: {}, selected_item: null, preSelect: {}};
 
     var i18n = document.getElementById("firegpg-strings");
@@ -222,13 +225,14 @@ function choosePrivateKey()
 	params.title = i18n.getString('choosePrivateKeyTitle');
 	params.description = i18n.getString('choosePrivateKeyDescription');
 
-
 	keylistcall = FireGPG.listKeys(true);
 
     if (keylistcall.result == RESULT_SUCCESS)
         params.list = keylistcall.keylist;
     else
         return;
+
+    params.preSelect = preSelect;
 
 	var dlg = window.openDialog('chrome://firegpg/content/Dialogs/list.xul',
 	                            '', 'chrome, dialog, modal, resizable=yes',
@@ -452,7 +456,7 @@ function eraseSavedPassword() {
     Function who return a  private key for the user (the default or the one selected in the list)
     null is returned if no key is selected.
 */
-function getSelfKey() {
+function getSelfKey(autoSelectPrivate) {
 	var keyID;
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
                            getService(Components.interfaces.nsIPrefService);
@@ -461,7 +465,7 @@ function getSelfKey() {
 
 	/* we must ask for private key ? */
 	if(keyID == '')
-		keyID = choosePrivateKey();
+		keyID = choosePrivateKey(autoSelectPrivate);
 
 	/* request password if key id is changed */
 	if(keyID.toString() != oldKeyID.toString()) {
