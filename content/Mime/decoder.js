@@ -259,6 +259,9 @@ FireGPGMimeDecoder.prototype = {
 
     washFromPlain: function(texte) {
 
+        if (!texte)
+            return '';
+
         texte = texte.replace(/</gi, "&lt;"); // Security
         texte = texte.replace(/>/gi, "&gt;");
         texte = texte.replace(/\r\n/gi, "<br />");
@@ -270,7 +273,9 @@ FireGPGMimeDecoder.prototype = {
 
     washFromHtml: function(texte) {
 
-
+        if (!texte)
+            return '';
+        
         texte = texte.replace(/(\n|\r)/gi, "");
         texte = texte.replace(/<br( |\/)?>/gi, "\r\n");
         texte = texte.replace(/<\/?[^>]+(>|$)/g, "");

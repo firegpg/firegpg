@@ -1,7 +1,10 @@
+2009-02-11 Maximilien Cuony
+    * New gmail interface
+
 2009-02-10 Maximilien Cuony
     * FS#246
     * FS#240
-    
+
 2009-02-09 Maximilien Cuony
     * Fix problem with inline decryption
     * Fixed some problem with compose buttons
