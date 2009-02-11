@@ -19,7 +19,7 @@
 <!ENTITY gmail-buton-crypt-checkbox "Zašifrovat">
 <!ENTITY gmail-buton-cryptsend-checkbox "Zašifrovat a odeslat">
 <!ENTITY allvays-to-myself-checkbox "Vždy zašifrovat sám sobě">
-<!ENTITY enable-gpgauth-check.label "Zapnout gpgAuth (prohlížec musí být restartován)">
+<!ENTITY enable-gpgauth-check.label "Zapnout gpgAuth (prohlížeč musí být restartován)">
 <!ENTITY enable-gpgauth-check.accesskey "E">
 <!ENTITY global-allow-keyring-pref.label "Vždy dešifrovat zprávy od Ověřených serverů">
 <!ENTITY global-allow-keyring-check.label "Vždy dešifrovat zprávy od Ověřených serverů">
@@ -38,7 +38,7 @@
 <!ENTITY hide-expired "Schovat prošlé klíče">
 <!ENTITY use-api "Zapnout FireGPG API pro webové stránky (jako roundcube) (vyžaduje restart)">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "Seznam povolených serverů (dvojklikem odstranit)">
+<!ENTITY api-liste-access.label "Seznam povolených serverů (dvojklikem lze smazat)">
 <!ENTITY api-liste-domain.label "Doména">
 <!ENTITY api-liste-keyauth.label "Klíč">
 <!ENTITY use-gpg-agent-checkbox "Zapnout GPG-agenta (pozor, může způsobit problémy)">
@@ -47,8 +47,8 @@
 <!ENTITY firegpg-ask-for-private-label.text "Vždy se ptát na tajný klíč">
 <!ENTITY inline-activated "Hledat PGP bloky ve stránkách (vyžaduje restart)">
 <!ENTITY gmail-disable-autosave-checkbox "Vypnout automatické ukládání">
-<!ENTITY gmail-buton-csign-checkbox "Podepsat">
-<!ENTITY gmail-buton-csignsend-checkbox "Podepsat a odeslat">
+<!ENTITY gmail-buton-csign-checkbox "Podepsat čitelně">
+<!ENTITY gmail-buton-csignsend-checkbox "Podepsat čitelně a odeslat">
 <!ENTITY hide-fireftp-message "Nezobrazovat zprávu o nainstalované staré IPC knihovně.">
 <!ENTITY use-fireftp-workaround "Pokusit se načíst IPC za pomocí starého API.">
 <!ENTITY keyserver-message "Server klíčů">
@@ -63,7 +63,7 @@
 <!ENTITY gmail-smtp-host "Server (smtp.gmail.com):">
 <!ENTITY gmail-smtp-port "Port (465):">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Použít SSL:">
-<!ENTITY gmail-disable-sign-detection "Vympout detekci odpovědi pro inline podpis (a šifrování) (vždy použít celý mail)">
+<!ENTITY gmail-disable-sign-detection "Vypnout detekci odpovědi pro inline podpis (a šifrování) (vždy použít celý mail)">
 <!ENTITY gmail-disable-auto-decryption "Staré chování pro dešifrování">
 <!ENTITY gmail-force-from "Použít napevno hodnotu:">
 <!ENTITY gpg-special-path-values "Použijte {$FxFolder} pro adresář Firefoxu a {$SPACE} abyste měli mezeru uvnitř parametru">
@@ -72,4 +72,5 @@
 <!ENTITY autorwap-liste-action.label "Akce">
 <!ENTITY autorwap-liste-domain.label "Webmail">
 <!ENTITY autowrap_list.label "Automatické odpovědi (dvojklikem lze smazat):">
-<!ENTITY paneautowrap.title "Zarovnávat">
+<!ENTITY paneautowrap.title "Zarovnání">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">

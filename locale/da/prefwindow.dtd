@@ -6,7 +6,7 @@
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Standard private nøgle:">
 <!ENTITY show-website-checkbox "Vis FireGPG's hjemmeside i GnuPG kommentarfeltet">
-<!ENTITY change-gpg-path-button "Browse">
+<!ENTITY change-gpg-path-button "Gennemse">
 <!ENTITY change-gpg-path-checkbox "Angiv stien til den kørbare gpg-fil:">
 <!ENTITY result-always-in-new-window "Vis altid resultat af kryptering og/eller underskrift i et nyt vindue.">
 <!ENTITY no-gpg-agent-checkbox "Tving slå GPG-agent fra (kan rette nogle problemer)">
@@ -28,7 +28,7 @@
 <!ENTITY turn-off-updates "Slå FireGPG auto-opdateringer fra">
 <!ENTITY key-name "Navn">
 <!ENTITY key-id "ID">
-<!ENTITY key-create "Opretted">
+<!ENTITY key-create "Oprettet">
 <!ENTITY key-expire "Udløber">
 <!ENTITY pane4.title "GPG">
 <!ENTITY gpg-add-options "Tilføj tilvalg til gpg-kommandoen: (Vær forsigtig: FireGPG kan holde op med at virke! Læs dokumentationen.)">
@@ -44,32 +44,33 @@
 <!ENTITY use-gpg-agent-checkbox "Slå GPG-agent til (advarsel, kan medføre problemer)">
 <!ENTITY search-description "Filter">
 <!ENTITY gmail-buton-use-select-checkbox "Vis liste fremfor knapper">
-<!ENTITY firegpg-ask-for-private-label.text "Altid spørg efter private nøgle">
+<!ENTITY firegpg-ask-for-private-label.text "Spørg altid efter privat nøgle">
 <!ENTITY inline-activated "Tjek for PGP-blok på sider (kræver genstart)">
 <!ENTITY gmail-disable-autosave-checkbox "Slå autogem-funktionen fra">
 <!ENTITY gmail-buton-csign-checkbox "Underskriv klartekst">
 <!ENTITY gmail-buton-csignsend-checkbox "Underskriv klartekst og send">
-<!ENTITY hide-fireftp-message "Vis ikke besked om gammelt IPC-bibliotek installeret.">
+<!ENTITY hide-fireftp-message "Vis ikke besked om installeret gammelt IPC-bibliotek.">
 <!ENTITY use-fireftp-workaround "Prøv at tilgå IPC med gamle API.">
 <!ENTITY keyserver-message "Nøgleserver">
 <!ENTITY symmetric-algo "Algoritme til brug ved symmetrisk kryptering. Lad blank være standard. Brug gpg --version for at have en liste over brugbare algoritmer. I fleste tilfælde har du disse muligheder:">
-<!ENTITY gmail-new-interface "Ny gmailgrænseflade">
+<!ENTITY gmail-new-interface "Ny Gmailgrænseflade">
 <!ENTITY gmail-select-by-default-label "Valgt som standard:">
 <!ENTITY gmail-buton-inline-checkbox "Indlejret">
-<!ENTITY gmail-old-interface "Gamle gmailgrænseflade">
+<!ENTITY gmail-old-interface "Gammel Gmailgrænseflade">
 <!ENTITY gmail-smtp-options-label "SMTP-indstillinger (openpgp/mime-e-poster)">
-<!ENTITY gmail-smtp-google-com "Forsøg aldrig at bruge google.com gemte adgangskode">
+<!ENTITY gmail-smtp-google-com "Forsøg aldrig at bruge google.com gemt adgangskode">
 <!ENTITY gmail-smtp-username "Brugernavn (brug blank for at bruge brugernavnet af aktuelle konto):">
 <!ENTITY gmail-smtp-host "Vært (smtp.gmail.com) :">
 <!ENTITY gmail-smtp-port "Port (465):">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Brug SSL:">
-<!ENTITY gmail-disable-sign-detection "Slå svar-genkendelse for indlejret underskrift (og kryptering)(altid brug hele e-posten) fra">
-<!ENTITY gmail-disable-auto-decryption "Gamle opførsel for afkryptering">
+<!ENTITY gmail-disable-sign-detection "Slå svargenkendelse for indlejret underskrift (og kryptering) (altid brug hele e-posten) fra">
+<!ENTITY gmail-disable-auto-decryption "Gammel opførsel for afkryptering">
 <!ENTITY gmail-force-from "Tving fra værdi:">
-<!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
+<!ENTITY gpg-special-path-values "Brug {$FxFolder} for Firefoxs mappe og {$SPACE} for et mellemrum i et argument">
 <!ENTITY decrypt-when-reply "Afkryptér indhold ved svar">
-<!ENTITY gmail-buton-attachements-checkbox "Attachements">
-<!ENTITY autorwap-liste-action.label "Action">
-<!ENTITY autorwap-liste-domain.label "Webmail">
-<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY gmail-buton-attachements-checkbox "Vedhæftninger">
+<!ENTITY autorwap-liste-action.label "Handling">
+<!ENTITY autorwap-liste-domain.label "Internetpost">
+<!ENTITY autowrap_list.label "Automatiske svar (dobbeltklik for at fjerne):">
 <!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">

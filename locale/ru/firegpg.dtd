@@ -47,6 +47,6 @@
 <!ENTITY firegpgToolbar.labelClearSign "Clearsign">
 <!ENTITY firegpgMenu.labelClearSign "Clearsign">
 <!ENTITY firegpgContext.labelManager "Key manager">
-<!ENTITY firegpgToolbar.labelManager "Key manager">
+<!ENTITY firegpgToolbar.labelManager "Брелок">
 <!ENTITY firegpgMenu.labelManager "Key manager">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
+<!ENTITY keynotrevokedpassword "Ошибка, ключ не отозван. Возможно, неверный пароль?">

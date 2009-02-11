@@ -1,9 +1,9 @@
 <!ENTITY key-status "Статус">
 <!ENTITY key-trust "Доверие">
-<!ENTITY key-expire "Expire">
-<!ENTITY key-create "Created">
+<!ENTITY key-expire "Истекает срок действия">
+<!ENTITY key-create "Создано">
 <!ENTITY key-id "ID">
-<!ENTITY key-name "Name">
+<!ENTITY key-name "Имя">
 <!ENTITY revoke-button "Revoke key">
 <!ENTITY sign-button "Signatures">
 <!ENTITY changetrust-button "Изменить степень доверия">
@@ -11,7 +11,7 @@
 <!ENTITY exportserver-button "Экспортировать на сервер">
 <!ENTITY importfile-button "Импортировать из файла">
 <!ENTITY exportfile-button "Экспортировать в факл">
-<!ENTITY new-button "New key">
+<!ENTITY new-button "Новый ключ">
 <!ENTITY keymanager "Key manager">
 <!ENTITY refrech "Refresh keys from server">
 <!ENTITY trustUnded "Remove information about trusting">

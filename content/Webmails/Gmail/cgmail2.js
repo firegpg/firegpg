@@ -166,7 +166,7 @@ var cGmail2 = {
                         if (mimeContentOf == "" || mimeContentOf == null) {
 
                             td.setAttribute("style","color: red;");
-                            td.innerHTML = '<span title="No data from the server. Try to refresh the page." onclick="alert(this.title);"><img src="' + IMG_MAIL_ERROR + '">&nbsp;Error</span>';//TOTRANSLATE *2 !!
+                            td.innerHTML = '<span title="' + i18n.getString("noDataFromServer") + '" onclick="alert(this.title);"><img src="' + IMG_MAIL_ERROR + '">&nbsp;' + i18n.getString("error") +'</span>';
 
                         } else {
 
@@ -198,14 +198,14 @@ var cGmail2 = {
                                     td.setAttribute("style","color: blue;");
 
                                     if (result.completeSignOrDecrypt)
-                                        td.innerHTML += '<span title="This email was decrypted." onclick="alert(this.title);"><img src="' + IMG_MAIL_DECRYPTED + '">&nbsp;Decrypted mail</span>&nbsp;';//TOTRANSLATE *2!!
+                                        td.innerHTML += '<span title="' + i18n.getString("emailDecrypted") + '" onclick="alert(this.title);"><img src="' + IMG_MAIL_DECRYPTED + '">&nbsp;' + i18n.getString("decryptedMail") + '</span>&nbsp;';
                                     else {
 
                                             data = decoder.washFromPlain(result.specialmimepart).replace(/<br \/>/gi, '\n');
                                             rid="firegpg" +  genreate_api_key() +  "subpart" +  genreate_api_key() + "display" +  genreate_api_key();
 
                                             td.setAttribute("style","color: magenta;");
-                                            td.innerHTML += '<span title="This apply only for a subpart ! Click to display the subpart. This email was decrypted." onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);"><img src="' + IMG_MAIL_DECRYPTED_PART + '">&nbsp;Part decrypted</span>&nbsp;<span id="' + rid +'" style="display: none">' + data + '</span>';//TOTRANSLATE *2!!
+                                            td.innerHTML += '<span title="' + i18n.getString("OnlyASubPart2") + ' ' + i18n.getString("emailDecrypted") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);"><img src="' + IMG_MAIL_DECRYPTED_PART + '">&nbsp;' + i18n.getString("partDecrypted") + '</span>&nbsp;<span id="' + rid +'" style="display: none">' + data + '</span>';
                                         }
 
                                     //td.setAttribute("style","color: blue;");
@@ -215,18 +215,21 @@ var cGmail2 = {
                                     //    td.innerHTML +=  i18n.getString("GMailSOK") + " " + htmlEncode(result.decryptresult.result.signresulttext) + " ";
 
                                     if (result.decryptresult.result.signresulttext != null &&  result.decryptresult.result.signresulttext != "") {
-                                        if (true)
+
+                                        if (cGmail2.showUserInfo)
                                             bonus = " (" + htmlEncode(result.decryptresult.result.signresulttext) + ")";
+                                        else
+                                            bonus = "";
 
                                         if (result.completeSignOrDecrypt)
-                                            td.innerHTML += '<span title="Good signature from ' + result.decryptresult.result.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(this.title);"><img src="' + IMG_MAIL_SIGNED_OK + '">&nbsp;Signed mail' + bonus + '</span>';//TOTRANSLATE *2!!
+                                            td.innerHTML += '<span title="' + i18n.getString("goodSignFrom") + ' ' + result.decryptresult.result.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(this.title);"><img src="' + IMG_MAIL_SIGNED_OK + '">&nbsp;' + i18n.getString("signedMail") + '' + bonus + '</span>';
                                         else {
 
                                             data = decoder.washFromPlain(result.specialmimepart).replace(/<br \/>/gi, '\n');
                                             rid="firegpg" +  genreate_api_key() +  "subpart" +  genreate_api_key() + "display" +  genreate_api_key();
 
                                             td.setAttribute("style","color: magenta;");
-                                            td.innerHTML += '<span title="This apply only for a subpart ! Click to display the subpart. Good signature from ' + result.decryptresult.result.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);"><img src="' + IMG_MAIL_SIGNED_PART + '">&nbsp;Part signed' + bonus + '</span><span id="' + rid +'" style="display: none">' + data + '</span>';//TOTRANSLATE *2!!
+                                            td.innerHTML += '<span title="' + i18n.getString("OnlyASubPart2 ")+ ' ' + i18n.getString("goodSignFrom") + ' ' + result.decryptresult.result.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);"><img src="' + IMG_MAIL_SIGNED_PART + '">&nbsp;' + i18n.getString("partSigned") + '' + bonus + '</span><span id="' + rid +'" style="display: none">' + data + '</span>';
                                         }
                                     }
 
@@ -243,7 +246,7 @@ var cGmail2 = {
                                         //td.innerHTML = i18n.getString("GMailNoS");
 
                                         //td.setAttribute("style","color: red;");
-                                        td.innerHTML = '<span title="FireGPG check this mail but found no signature or encrypted content" onclick="alert(this.title);"><img src="' + IMG_MAIL_NOTHING + '">&nbsp;FireGPG</span>';//TOTRANSLATE!!
+                                        td.innerHTML = '<span title="' + i18n.getString("nothingFound") + '" onclick="alert(this.title);"><img src="' + IMG_MAIL_NOTHING + '">&nbsp;FireGPG</span>';
 
                                     }
                                     nosign = true;
@@ -252,20 +255,20 @@ var cGmail2 = {
                                     td.setAttribute("style","color: red;");
                                     //td.innerHTML += i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
 
-                                    td.innerHTML += '<span title="Unknow error, FireGPG can\'t verify this email." onclick="alert(this.title);"><img src="' + IMG_MAIL_SIGNED_ERR + '">&nbsp;Error</span>';//TOTRANSLATE *2!!
+                                    td.innerHTML += '<span title="' + i18n.getString("unknowErrorCantVerify") + '" onclick="alert(this.title);"><img src="' + IMG_MAIL_SIGNED_ERR + '">&nbsp;' + i18n.getString("error") + '</span>';
                                 }
                                 else if (result.signResult.signresult == RESULT_ERROR_BAD_SIGN) {
                                     td.setAttribute("style","color: red;");
                                    // td.innerHTML += i18n.getString("GMailSErr") + " (" + i18n.getString("falseSign") + ")"; //"La première signature de ce mail est incorrect !";
 
-                                    td.innerHTML += '<span title="This email is signed, but with a wrong signature." onclick="alert(this.title);"><img src="' + IMG_MAIL_SIGNED_ERR + '">&nbsp;Wrong signature</span>';//TOTRANSLATE *2!!
+                                    td.innerHTML += '<span title="' + i18n.getString("wrongSignature") + '" onclick="alert(this.title);"><img src="' + IMG_MAIL_SIGNED_ERR + '">&nbsp;' + i18n.getString("wrongSignature2") + '</span>';
 
                                 }
                                 else if (result.signResult.signresult == RESULT_ERROR_NO_KEY) {
                                     td.setAttribute("style","color: red;");
                                    // td.innerHTML += i18n.getString("GMailSErr") + " (" + i18n.getString("keyNotFound") + ")";
 
-                                    td.innerHTML += '<span title="FireGPG can\'t verify this email because you haven\'t the public key of the sender," onclick="alert(this.title);"><img src="' + IMG_MAIL_SIGNED_ERR + '">&nbsp;Key not found</span>';//TOTRANSLATE *2!!
+                                    td.innerHTML += '<span title="' + i18n.getString("noPublicKey") + '" onclick="alert(this.title);"><img src="' + IMG_MAIL_SIGNED_ERR + '">&nbsp;' + i18n.getString("keyNotFound") + '</span>';
 
                                 }
                                 else if (result.signResult.signresulttext != null){
@@ -273,18 +276,21 @@ var cGmail2 = {
                                     td.setAttribute("style","color: green;");
                                     //td.innerHTML += i18n.getString("GMailSOK") + " " + htmlEncode(result.signResult.signresulttext); //"La première signature de ce mail est de testtest (testtest)
 
-                                    if (true)
+                                    if (cGmail2.showUserInfo)
                                         bonus = " (" + htmlEncode(result.signResult.signresulttext) + ")";
+                                    else
+                                            bonus = "";
 
+                                            
                                     if (result.completeSignOrDecrypt)
-                                        td.innerHTML += '<span title="Good signature from ' + result.signResult.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(this.title);"><img src="' + IMG_MAIL_SIGNED_OK + '">&nbsp;Signed mail' + bonus + '</span>';//TOTRANSLATE *2!!
+                                        td.innerHTML += '<span title="' + i18n.getString("goodSignFrom") + ' ' + result.signResult.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(this.title);"><img src="' + IMG_MAIL_SIGNED_OK + '">&nbsp;' + i18n.getString("signedMail") + '' + bonus + '</span>';
                                     else {
 
                                         data = decoder.washFromPlain(result.specialmimepart).replace(/<br \/>/gi, '\n');
                                         rid="firegpg" +  genreate_api_key() +  "subpart" +  genreate_api_key() + "display" +  genreate_api_key();
 
                                         td.setAttribute("style","color: magenta;");
-                                        td.innerHTML += '<span title="This apply only for a subpart ! Click to display the subpart. Good signature from ' + result.signResult.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);"><img src="' + IMG_MAIL_SIGNED_PART + '">&nbsp;Part signed' + bonus + '</span><span id="' + rid +'" style="display: none">' + data + '</span>';//TOTRANSLATE *2!!
+                                        td.innerHTML += '<span title="' + i18n.getString("OnlyASubPart2") + ' ' + i18n.getString("goodSignFrom") + ' ' + result.signResult.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);"><img src="' + IMG_MAIL_SIGNED_PART + '">&nbsp;' + i18n.getString("partSigned") + '' + bonus + '</span><span id="' + rid +'" style="display: none">' + data + '</span>';
                                     }
                                 }
 
@@ -294,7 +300,7 @@ var cGmail2 = {
                                     {
                                         //td.setAttribute("style","color: orange;");
                                         //td.innerHTML = i18n.getString("GMailNoS");
-                                        td.innerHTML = '<span title="FireGPG check this mail but found no signature or encrypted content" onclick="alert(this.title);"><img src="' + IMG_MAIL_NOTHING + '">&nbsp;FireGPG</span>';//TOTRANSLATE
+                                        td.innerHTML = '<span title="' + i18n.getString("nothingFound") + '" onclick="alert(this.title);"><img src="' + IMG_MAIL_NOTHING + '">&nbsp;FireGPG</span>';
 
                                     }
                                     nosign = true;
@@ -2442,6 +2448,9 @@ var cGmail2 = {
 			catch (e) { var decryptOnReply = false; }
             cGmail2.decryptOnReply = decryptOnReply;
 
+             try {	var showUserInfo = prefs.getBoolPref("gmail_show_user_info_for_signs");	}
+			catch (e) { var showUserInfo = false; }
+            cGmail2.showUserInfo = showUserInfo;
 
 
 		}

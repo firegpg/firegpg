@@ -43,9 +43,9 @@
 <!ENTITY firegpgToolbar.labelSymCrypt "Symetrické šifrování">
 <!ENTITY firegpgContext.labelSymCrypt "Symetrické šifrování">
 <!ENTITY firegpgMenu.labelSymCrypt "Symetrické šifrování">
-<!ENTITY firegpgContext.labelClearSign "Podepsat">
-<!ENTITY firegpgToolbar.labelClearSign "Podepsat">
-<!ENTITY firegpgMenu.labelClearSign "Podepsat">
+<!ENTITY firegpgContext.labelClearSign "Podepsat čitelně">
+<!ENTITY firegpgToolbar.labelClearSign "Podepsat čitelně">
+<!ENTITY firegpgMenu.labelClearSign "Podepsat čitelně">
 <!ENTITY firegpgContext.labelManager "Správce klíčů">
 <!ENTITY firegpgToolbar.labelManager "Správce klíčů">
 <!ENTITY firegpgMenu.labelManager "Správce klíčů">

@@ -5,6 +5,6 @@
 <!ENTITY open-button "Otevřít">
 <!ENTITY save-button "Uložit">
 <!ENTITY cryptandsign-button "Podepsat a zašifrovat">
-<!ENTITY sign-clear-button "Podepsat">
+<!ENTITY sign-clear-button "Podepsat čitelně">
 <!ENTITY symcrypt-button "Symetrická šifra">
 <!ENTITY closeandcopy-button "Zkopírovat do schránky a zavřít">

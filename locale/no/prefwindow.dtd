@@ -47,29 +47,30 @@
 <!ENTITY firegpg-ask-for-private-label.text "Alltid sp�r etter privat n�kkel">
 <!ENTITY inline-activated "Sjekk for PGP blokker i nettsider (omstart p�krevd)">
 <!ENTITY gmail-disable-autosave-checkbox "Sl� av autolagring">
-<!ENTITY gmail-buton-csign-checkbox "Clearsign">
-<!ENTITY gmail-buton-csignsend-checkbox "Clearsign and send">
-<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY gmail-buton-csign-checkbox "Klarer og signer">
+<!ENTITY gmail-buton-csignsend-checkbox "Klarer, signer og send">
+<!ENTITY hide-fireftp-message "Ikke vis meldingen om at en tidligere versjon av IPC-biblioteket er installert.">
 <!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
 <!ENTITY keyserver-message "Keyserver">
 <!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms, in most of case you have this choices:">
-<!ENTITY gmail-new-interface "New Gmail interface">
-<!ENTITY gmail-select-by-default-label "Selected by default :">
+<!ENTITY gmail-new-interface "Nytt Gmail grensesnitt">
+<!ENTITY gmail-select-by-default-label "Valgt som normalparameter:">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
-<!ENTITY gmail-old-interface "Old Gmail interface">
-<!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
-<!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
-<!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
-<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
-<!ENTITY gmail-smtp-port "Port (465) :">
-<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
-<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
+<!ENTITY gmail-old-interface "Eldre Gmail-grensesnitt">
+<!ENTITY gmail-smtp-options-label "SMTP-valg (openpgp/mime mailer)">
+<!ENTITY gmail-smtp-google-com "Ikke gjør forsøk på å bruke google.com-registerte passord">
+<!ENTITY gmail-smtp-username "Brukernavn (la feltet være tomt for brukernavn til en registert og tidligere brukt konto):">
+<!ENTITY gmail-smtp-host "Vertsmaskin (smtp.gmail.com):">
+<!ENTITY gmail-smtp-port "Port(465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Bruk SSL:">
+<!ENTITY gmail-disable-sign-detection "Kutt ut deteksjon for signering (og kryptering) av deler av en melding - bruk alltid hele meldingen">
 <!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
-<!ENTITY gmail-force-from "Force from value :">
-<!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
-<!ENTITY decrypt-when-reply "Decrypt content when reply">
-<!ENTITY gmail-buton-attachements-checkbox "Attachements">
-<!ENTITY autorwap-liste-action.label "Action">
-<!ENTITY autorwap-liste-domain.label "Webmail">
-<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY gmail-force-from "Påtvinge bruk av verdien:">
+<!ENTITY gpg-special-path-values "Bruke {$FxFolder}for å få Firefox sin mappe og {$SPACE} for å ha et mellomrom i et argument">
+<!ENTITY decrypt-when-reply "Dekrypter innholdet når det svares:">
+<!ENTITY gmail-buton-attachements-checkbox "Vedlegg">
+<!ENTITY autorwap-liste-action.label "Gjennomfør.">
+<!ENTITY autorwap-liste-domain.label "Webmail.">
+<!ENTITY autowrap_list.label "Automatisk svarfunksjon (dobbelklikk for å fjerne funksjonen)">
 <!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">

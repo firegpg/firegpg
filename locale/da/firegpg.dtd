@@ -19,7 +19,7 @@
 <!ENTITY firegpgToolbar.labelDecry "Afkryptér">
 <!ENTITY firegpgToolbar.labelOptions "Indstillinger">
 <!ENTITY firegpgMenu.labelErase "Ryd gemt adgangskode">
-<!ENTITY firegpgContext.labelErase "Ryd gemte adgangskode">
+<!ENTITY firegpgContext.labelErase "Ryd gemt adgangskode">
 <!ENTITY firegpgToolbar.labelErase "Ryd gemt adgangskode">
 <!ENTITY firegpgMenu.labelImport "Importér">
 <!ENTITY firegpgContext.labelImport "Importér">
@@ -29,7 +29,7 @@
 <!ENTITY firegpgToolbar.labelExport "Eksportér">
 <!ENTITY firegpgPopInfo.labelBonjour "Velkommen! FireGPG installationen blev gennemført.">
 <!ENTITY firegpgPopInfo.labelAccessOk "FireGPG kan tilgå gpg.">
-<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG kan ikke tilgå kørbare gpg-fil. Kontrollér at den er installeret eller angiv stien manuelt i indstillinger.">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG kan ikke tilgå den kørbare gpg-fil. Kontrollér at den er installeret eller angiv stien manuelt i indstillinger.">
 <!ENTITY firegpgPopInfo.labelKeyOk "En privat nøgle er valgt">
 <!ENTITY firegpgPopInfo.labelKeyErr "Advarsel: Vælg venligst en privat nøgle i indstillinger.">
 <!ENTITY firegpgPopInfo.close "Luk">

@@ -73,3 +73,4 @@
 <!ENTITY autorwap-liste-domain.label "Webmail">
 <!ENTITY autowrap_list.label "Otomatik yanıtlar (kaldırmak için çift tıklayınız):">
 <!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">

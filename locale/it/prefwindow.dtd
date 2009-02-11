@@ -68,8 +68,9 @@
 <!ENTITY gmail-force-from "Forza dal valore:">
 <!ENTITY gpg-special-path-values "Usa {$FxFolder} per avere la cartella di Firefox e {$SPACE} per avere uno spazio all'interno dell'argomento">
 <!ENTITY decrypt-when-reply "Decifra il contenuto quando rispondi">
-<!ENTITY gmail-buton-attachements-checkbox "Attachements">
-<!ENTITY autorwap-liste-action.label "Action">
+<!ENTITY gmail-buton-attachements-checkbox "Allegati">
+<!ENTITY autorwap-liste-action.label "Azione">
 <!ENTITY autorwap-liste-domain.label "Webmail">
-<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY autowrap_list.label "Risposte automatiche (doppio click per rimuovere)">
 <!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">

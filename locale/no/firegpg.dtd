@@ -40,13 +40,13 @@
 <!ENTITY firegpgContext.labelCryptSign "Signer og krypter">
 <!ENTITY firegpgMenu.labelCryptSign "Signer og krypter">
 <!ENTITY firegpgToolbar.labelCryptSign "Signer og krypterEnc">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelClearSign "Clearsign">
-<!ENTITY firegpgToolbar.labelClearSign "Clearsign">
-<!ENTITY firegpgMenu.labelClearSign "Clearsign">
-<!ENTITY firegpgContext.labelManager "Key manager">
-<!ENTITY firegpgToolbar.labelManager "Key manager">
-<!ENTITY firegpgMenu.labelManager "Key manager">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symmetrisk kryptering">
+<!ENTITY firegpgContext.labelSymCrypt "Symmetrisk kryptering">
+<!ENTITY firegpgMenu.labelSymCrypt "Symmetrisk krypering">
+<!ENTITY firegpgContext.labelClearSign "Klarer og send">
+<!ENTITY firegpgToolbar.labelClearSign "Klarer og signer">
+<!ENTITY firegpgMenu.labelClearSign "Klarer og signer">
+<!ENTITY firegpgContext.labelManager "Nøkkeladministrator">
+<!ENTITY firegpgToolbar.labelManager "Nøkkeladministrator">
+<!ENTITY firegpgMenu.labelManager "Nøkkeladministrator">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">

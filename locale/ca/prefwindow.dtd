@@ -73,3 +73,4 @@
 <!ENTITY autorwap-liste-domain.label "Correu web">
 <!ENTITY autowrap_list.label "Respostes automàtiques (doble clic per eliminar)">
 <!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">

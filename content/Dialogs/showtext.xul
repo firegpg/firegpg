@@ -56,16 +56,22 @@
   <label id="dcryptsignresult" style="display: none;" />
 
   <hbox id="buttons-box">
-    <button id="open-button" label="&open-button;" oncommand="openf();"/>
-    <button id="save-button" label="&save-button;" oncommand="savef();"/>
-    <button id="crypt-button" label="&crypt-button;" oncommand="crypt();"/>
-    <button id="crypt-button" label="&symcrypt-button;" oncommand="symcrypt();"/>
-    <button id="cryptandsign-button" label="&cryptandsign-button;" oncommand="cryptandsign();"/>
-    <button id="dcrypt-button" label="&dcrypt-button;" oncommand="dcrypt();"/>
-    <button id="sign-button" label="&sign-clear-button;" oncommand="sign();"/>
-    <button id="signplain-button" label="&sign-button;" oncommand="signUnClear();"/>
-    <button id="verify-button" label="&verify-button;" oncommand="verify();"/>
-    <button id="closeandcopy-button" label="&closeandcopy-button;" oncommand="closeandcopy();"/>
+    <vbox>
+        <hbox>
+            <button id="open-button" label="&open-button;" oncommand="openf();"/>
+            <button id="save-button" label="&save-button;" oncommand="savef();"/>
+            <button id="crypt-button" label="&crypt-button;" oncommand="crypt();"/>
+            <button id="crypt-button" label="&symcrypt-button;" oncommand="symcrypt();"/>
+            <button id="cryptandsign-button" label="&cryptandsign-button;" oncommand="cryptandsign();"/>
+        </hbox>
+        <hbox>
+            <button id="dcrypt-button" label="&dcrypt-button;" oncommand="dcrypt();"/>
+            <button id="sign-button" label="&sign-clear-button;" oncommand="sign();"/>
+            <button id="signplain-button" label="&sign-button;" oncommand="signUnClear();"/>
+            <button id="verify-button" label="&verify-button;" oncommand="verify();"/>
+            <button id="closeandcopy-button" label="&closeandcopy-button;" oncommand="closeandcopy();"/>
+        </hbox>
+    </vbox>
   </hbox>
 
 </dialog>

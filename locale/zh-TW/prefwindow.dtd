@@ -73,3 +73,4 @@
 <!ENTITY autorwap-liste-domain.label "Webmail">
 <!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
 <!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">

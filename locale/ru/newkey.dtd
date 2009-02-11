@@ -11,7 +11,7 @@
 <!ENTITY expire-month "месяцев">
 <!ENTITY expire-days "дней">
 <!ENTITY advancedoptions "Дополнительные настройки">
-<!ENTITY keylenght-message "Key length">
+<!ENTITY keylenght-message "Длина ключа">
 <!ENTITY keytype-message "Тип ключа">
 <!ENTITY generate-button "Создать ключ">
 <!ENTITY cancel-button "Отмена">
