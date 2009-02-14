@@ -73,4 +73,5 @@
 <!ENTITY autorwap-liste-domain.label "Webmail">
 <!ENTITY autowrap_list.label "Automatische antwoorden (dubbel klikken om te verwijderen) :">
 <!ENTITY paneautowrap.title "Autowrap">
-<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Laat gebruikers data zien voor goede ondertekeningen">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

@@ -1,3 +1,10 @@
+2009-02-14 Maximilien Cuony
+    * Fixing gmails problem (mails not parsed)
+    * Fixing gmails problem (mails sending)
+    * FS#241
+    * FS#245
+    * FS#248 (no more wrap system on webmails)
+
 2009-02-11 Maximilien Cuony
     * New gmail interface
     * Smaller editor

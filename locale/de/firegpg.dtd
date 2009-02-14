@@ -50,3 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Schlüsselmanager">
 <!ENTITY firegpgMenu.labelManager "Schlüsselmanager">
 <!ENTITY keynotrevokedpassword "Fehler, Schlüssel wurde nicht widerrufen. Falsches Passwort?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

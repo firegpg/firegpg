@@ -46,7 +46,9 @@
 <!ENTITY firegpgContext.labelClearSign "Assinatura limpa">
 <!ENTITY firegpgToolbar.labelClearSign "Ass. limpa">
 <!ENTITY firegpgMenu.labelClearSign "Assinatura limpa">
+<!ENTITY firegpgContext.labelManager "Gestor de chaves">
 <!ENTITY firegpgToolbar.labelManager "Gestor de chaves">
 <!ENTITY firegpgMenu.labelManager "Gestor de chaves">
-<!ENTITY firegpgContext.labelManager "Gestor de chaves">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password ?">
+<!ENTITY keynotrevokedpassword "Erro: chave não revogada. Senha errada?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

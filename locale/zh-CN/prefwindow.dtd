@@ -68,9 +68,10 @@
 <!ENTITY gmail-force-from "Force from value :">
 <!ENTITY gpg-special-path-values "使用 {$FxFolder} 代表 Firefox 的文件夹，和 {$SPACE} 代替参数里的空格">
 <!ENTITY decrypt-when-reply "回复时解密内容">
-<!ENTITY gmail-buton-attachements-checkbox "Attachements">
+<!ENTITY gmail-buton-attachements-checkbox "Attachments">
 <!ENTITY autorwap-liste-action.label "Action">
 <!ENTITY autorwap-liste-domain.label "Webmail">
 <!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

@@ -50,3 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Gerenciador de chaves">
 <!ENTITY firegpgMenu.labelManager "Gerenciador de chaves">
 <!ENTITY keynotrevokedpassword "Erro, chave não revogada. Senha incorreta?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

@@ -21,8 +21,8 @@
 <!ENTITY allvays-to-myself-checkbox "常に自分自身を暗号化する">
 <!ENTITY enable-gpgauth-check.label "gpgAuth を有効にする(ブラウザの再起動が必要です)">
 <!ENTITY enable-gpgauth-check.accesskey "E">
-<!ENTITY global-allow-keyring-pref.label "認証したサーバーからのメッセージを常に復号する">
-<!ENTITY global-allow-keyring-check.label "認証したサーバーからのメッセージを常に復号する">
+<!ENTITY global-allow-keyring-pref.label "認証したサーバーからのメッセージを常に復号化する">
+<!ENTITY global-allow-keyring-check.label "認証したサーバーからのメッセージを常に復号化する">
 <!ENTITY global-allow-keyring-check.accesskey "A">
 <!ENTITY per-domain-preferences.label "ドメインごとの設定:">
 <!ENTITY turn-off-updates "FireGPGの自動更新を無効にする。">
@@ -45,7 +45,7 @@
 <!ENTITY search-description "検索:">
 <!ENTITY gmail-buton-use-select-checkbox "ボタンの代わりにリストを表示する">
 <!ENTITY firegpg-ask-for-private-label.text "常に秘密鍵を尋ねる">
-<!ENTITY inline-activated "PGPブロックをページで確認する (再起動が必要)">
+<!ENTITY inline-activated "ページ中のPGPブロックを確認する (再起動が必要)">
 <!ENTITY gmail-disable-autosave-checkbox "自動保存の機能を無効にする">
 <!ENTITY gmail-buton-csign-checkbox "クリア署名">
 <!ENTITY gmail-buton-csignsend-checkbox "クリア署名して送信">
@@ -54,23 +54,24 @@
 <!ENTITY keyserver-message "鍵サーバー">
 <!ENTITY symmetric-algo "対称暗号可に用いるアルゴリズム。デフォルトは空白。gpg --version で利用可能なアルゴリズムが表示されます。多くの場合、以下の選択があります: ">
 <!ENTITY gmail-new-interface "新しいGmailインターフェース">
-<!ENTITY gmail-select-by-default-label "Selected by default :">
-<!ENTITY gmail-buton-inline-checkbox "Inline">
+<!ENTITY gmail-select-by-default-label "デフォルトで選択:">
+<!ENTITY gmail-buton-inline-checkbox "インライン">
 <!ENTITY gmail-old-interface "古いGmailインターフェース">
 <!ENTITY gmail-smtp-options-label "SMTPオプション (openpgp/MIMEメール)">
-<!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
+<!ENTITY gmail-smtp-google-com "google.comの記憶されたパスワードを使用しない">
 <!ENTITY gmail-smtp-username "ユーザー名 (ログインアカウントのユーザー名を使用する場合は空白): ">
 <!ENTITY gmail-smtp-host "ホスト (smtp.gmail.com): ">
 <!ENTITY gmail-smtp-port "ポート (465): ">
 <!ENTITY gmail-smtp-use-ssl-checkbox "SSLを使用する:">
-<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
-<!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
-<!ENTITY gmail-force-from "Force from value :">
-<!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
-<!ENTITY decrypt-when-reply "Decrypt content when reply">
-<!ENTITY gmail-buton-attachements-checkbox "Attachements">
-<!ENTITY autorwap-liste-action.label "Action">
-<!ENTITY autorwap-liste-domain.label "Webmail">
-<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY gmail-disable-sign-detection "インライン署名 (と暗号化) に対する、返信の検出を無効にする (常にメール全文を使用する)">
+<!ENTITY gmail-disable-auto-decryption "復号化の際、古い振る舞いをする">
+<!ENTITY gmail-force-from "強制from設定:">
+<!ENTITY gpg-special-path-values "Firefoxのフォルダは {$FxFolder}, 引数の間の空白は {$SPACE} と指定してください">
+<!ENTITY decrypt-when-reply "返信時に復号化する">
+<!ENTITY gmail-buton-attachements-checkbox "添付">
+<!ENTITY autorwap-liste-action.label "動作">
+<!ENTITY autorwap-liste-domain.label "ウエブメール">
+<!ENTITY autowrap_list.label "自動応答 (ダブルクリックで削除)">
 <!ENTITY paneautowrap.title "Autowrap">
-<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "正しい署名の場合、ユーザ情報を表示する">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

@@ -73,4 +73,5 @@
 <!ENTITY autorwap-liste-domain.label "Correo Web">
 <!ENTITY autowrap_list.label "Respuestas automáticas (doble-clic para remover):">
 <!ENTITY paneautowrap.title "Auto Encapsular">
-<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Mostrar datos de usuario para firmas verificadas">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

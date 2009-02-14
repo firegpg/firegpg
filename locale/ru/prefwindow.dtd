@@ -47,8 +47,8 @@
 <!ENTITY firegpg-ask-for-private-label.text "Всегда спрашивать личный ключ">
 <!ENTITY inline-activated "Проверять наличие PGP блоков в страницах (требуется перезапуск)">
 <!ENTITY gmail-disable-autosave-checkbox "Запретить автосохранение">
-<!ENTITY gmail-buton-csign-checkbox "Clearsign">
-<!ENTITY gmail-buton-csignsend-checkbox "Clearsign and send">
+<!ENTITY gmail-buton-csign-checkbox "Подписать">
+<!ENTITY gmail-buton-csignsend-checkbox "Подписать и отправить">
 <!ENTITY hide-fireftp-message "Не показывать предупреждение о старой версии библиотеки IPC.">
 <!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
 <!ENTITY keyserver-message "Сервер ключей">
@@ -59,12 +59,12 @@
 <!ENTITY gmail-old-interface "Старый интерфейс Gmail">
 <!ENTITY gmail-smtp-options-label "Параметры SMTP (для писем openpgp/mime)">
 <!ENTITY gmail-smtp-google-com "Никогда не использовать запомненный для google.com пароль">
-<!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
+<!ENTITY gmail-smtp-username "Имя пользователя (по умолчанию будет использовано имя текущего пользователя):">
 <!ENTITY gmail-smtp-host "Сервер (smtp.gmail.com):">
 <!ENTITY gmail-smtp-port "Порт (465):">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Использовать SSL:">
 <!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
-<!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
+<!ENTITY gmail-disable-auto-decryption "Старое поведение при расшифровке">
 <!ENTITY gmail-force-from "Начать со значения :">
 <!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
 <!ENTITY decrypt-when-reply "Расшифровать содержимое при ответе">
@@ -74,3 +74,4 @@
 <!ENTITY autowrap_list.label "Авто-ответы (убираются двойным кликом):">
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

@@ -46,7 +46,9 @@
 <!ENTITY firegpgContext.labelClearSign "Signer en clair">
 <!ENTITY firegpgToolbar.labelClearSign "Signer en clair">
 <!ENTITY firegpgMenu.labelClearSign "Signer en clair">
+<!ENTITY firegpgContext.labelManager "Gestionnaire de clés">
 <!ENTITY firegpgToolbar.labelManager "Gestionnaire de clés">
 <!ENTITY firegpgMenu.labelManager "Gestionnaire de clés">
-<!ENTITY firegpgContext.labelManager "Gestionnaire de clés">
 <!ENTITY keynotrevokedpassword "Erreur, clé pas révoquée. Mauvais mot de passe ?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

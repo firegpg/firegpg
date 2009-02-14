@@ -50,3 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Sleutelbeheer">
 <!ENTITY firegpgMenu.labelManager "Sleutelbeheer">
 <!ENTITY keynotrevokedpassword "Fout, sleutel niet ingetrokken. Verkeerd wachtwoord?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

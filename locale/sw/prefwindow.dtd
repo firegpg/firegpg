@@ -69,8 +69,9 @@
 <!ENTITY gpg-special-path-values "Använd {$FxFolder} för attha Firefoxs mapp och {$SPACE} för att ha ett mellanslag i ett argument">
 <!ENTITY decrypt-when-reply "Dekryptera innehåll vid svar">
 <!ENTITY gmail-buton-attachements-checkbox "Bifogade filer">
-<!ENTITY autorwap-liste-action.label "Action">
-<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY autorwap-liste-action.label "Handling">
+<!ENTITY autorwap-liste-domain.label "Webbmail">
 <!ENTITY autowrap_list.label "Automatiska svar (dubbelklicka för att ta bort):">
 <!ENTITY paneautowrap.title "Automatiskt radbyte">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

@@ -140,6 +140,9 @@ var FireGPGAutoWrap = {
 
     wrap: function(text) {
 
+        if (!text)
+            return text;
+
         return text.replace(/[\s\S]{70}/g,"$&\r\n");
 
     },

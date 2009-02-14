@@ -50,3 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Διαχειριστής κλειδιών">
 <!ENTITY firegpgMenu.labelManager "Διαχειριστής κλειδιών">
 <!ENTITY keynotrevokedpassword "Σφάλμα: το κλειδί δεν ανακλήθηκε. Μήπως δώσατε λάθος κωδικό ;">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

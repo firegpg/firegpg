@@ -50,3 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Nøkkeladministrator">
 <!ENTITY firegpgMenu.labelManager "Nøkkeladministrator">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

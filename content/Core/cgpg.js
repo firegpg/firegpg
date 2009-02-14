@@ -197,7 +197,7 @@ var FireGPG = {
             password - _Optional_, if not set ask the user.
             notClear - _Optional_, Do not make a clear sign
     */
-    sign: function(silent, text, keyID, password, notClear, autoSelectPrivate) {
+    sign: function(silent, text, keyID, password, notClear, autoSelectPrivate, wrap) {
 
         var returnObject = new GPGReturn();
 
@@ -206,6 +206,9 @@ var FireGPG = {
 
         if (notClear == undefined)
             notClear = false;
+
+        if (wrap == undefined)
+            wrap = false;
 
         this.initGPGACCESS();
         var i18n = document.getElementById("firegpg-strings");
@@ -225,7 +228,9 @@ var FireGPG = {
 
 
             //Vu que c'est peut etre un webmail, on passe dans l'autowrap
-            text = FireGPGAutoWrap.checkAndWrap(text);
+            //text = FireGPGAutoWrap.checkAndWrap(text);
+            if (wrap)
+                text = FireGPGAutoWrap.wrap(text);
 
         }
 

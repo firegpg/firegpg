@@ -18,7 +18,7 @@
 <!ENTITY trustDont "Jeg har ikke tillid til denne nøgle">
 <!ENTITY trustMargi "Jeg har kun delvis tillid til denne nøgle">
 <!ENTITY trustFull "Jeg har fuld tillid til denne nøgle">
-<!ENTITY trustUltimate "Have maksimal tillid til denne nøgle (!)">
+<!ENTITY trustUltimate "Hav maksimal tillid til denne nøgle (!)">
 <!ENTITY password-button "Ændr adgangskode">
 <!ENTITY del-button "Slet">
 <!ENTITY revokeNoRaison "Ingen grund angivet">

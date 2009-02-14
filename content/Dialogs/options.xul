@@ -212,6 +212,7 @@
             <preference id="gmail-force-from" name="extensions.firegpg.gmail_force_from" type="string"/>
 
             <preference id="gmail-decrypt-when-reply" name="extensions.firegpg.gmail_decrypt_when_reply" type="bool"/>
+            <preference id="gmail-keep-encrypted-mail" name="extensions.firegpg.gmail_keep_encrypted_mail" type="bool"/>
 
         </preferences>
 
@@ -222,12 +223,11 @@
               label="&gmail-enabled-checkbox.label;"
               accesskey="&gmail-enabled-checkbox.accesskey;"/>
 
-    <checkbox id="gmail-disable-autosave-checkbox" preference="gmail-disable-autosave"
+        <checkbox id="gmail-disable-autosave-checkbox" preference="gmail-disable-autosave"
               label="&gmail-disable-autosave-checkbox;"/>
 
         <checkbox id="gmail-show-user-info-for-signs-checkbox" preference="gmail-show-user-info-for-signs"
               label="&gmail-show-user-info-for-signs-checkbox;"/>
-    
 
         <groupbox flex="1">
             <caption>
@@ -245,15 +245,20 @@
                 <checkbox id="gmail-decrypt-when-reply-checkbox" preference="gmail-decrypt-when-reply"
                                 label="&decrypt-when-reply;"/>
 
-
-                <label  id="gmail-sbuttons-label" value="&gmail-select-by-default-label;"/>
+                <label style="text-decoration: underline;" id="gmail-sbuttons-label" value="&gmail-select-by-default-label;"/>
 
                 <checkbox id="gmail-select-by-default-sign-checkbox" preference="gmail-select-by-default-sign"
                                 label="&gmail-buton-sign-checkbox;"/>
 
-                <checkbox id="gmail-select-by-default-encrypt-checkbox" preference="gmail-select-by-default-encrypt"
+                <hbox>
+
+                    <checkbox id="gmail-select-by-default-encrypt-checkbox" preference="gmail-select-by-default-encrypt"
                                 label="&gmail-buton-crypt-checkbox;"/>
 
+                    <checkbox id="gmail-keep-encrypted-mail-checkbox" preference="gmail-keep-encrypted-mail"
+                                label="&gmail-keep-encrypted-mail;"/>
+
+                </hbox>
 
                 <checkbox id="gmail-select-by-default-inline-checkbox" preference="gmail-select-by-default-inline"
                                 label="&gmail-buton-inline-checkbox;"/>
@@ -369,7 +374,7 @@
 
     <!-- Autowrap -->
 
-    <prefpane id="pane5" label="&paneautowrap.title;" flex="1" image="chrome://firegpg/skin/opt-autowrap.png">
+    <!--<prefpane id="pane5" label="&paneautowrap.title;" flex="1" image="chrome://firegpg/skin/opt-autowrap.png">
 
 
         <label control="autowrap_list">&autowrap_list.label;</label>
@@ -385,7 +390,7 @@
 				</listcols>
 			</listbox>
 		</vbox>
-	</prefpane>
+	</prefpane>-->
     <!-- end of Autowrap -->
 
 

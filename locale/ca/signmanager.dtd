@@ -2,6 +2,6 @@
 <!ENTITY key-name "Nom">
 <!ENTITY key-id "ID de clau">
 <!ENTITY key-create "Data (de signatura o creació)">
-<!ENTITY sign-button "Sign this key">
+<!ENTITY sign-button "Signa aquesta clau">
 <!ENTITY revoke-button "Revoca aquesta signatura">
 <!ENTITY del-button "Esborra aquesta signatura">

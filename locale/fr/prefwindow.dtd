@@ -74,3 +74,4 @@
 <!ENTITY autowrap_list.label "Réponses automatiques (double-click pour supprimer):">
 <!ENTITY paneautowrap.title "Découpage">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Afficher les informations sur les utilisateurs des bonnes signatures">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

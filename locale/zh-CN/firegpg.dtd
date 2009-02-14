@@ -50,3 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "密钥管理器">
 <!ENTITY firegpgMenu.labelManager "密钥管理器">
 <!ENTITY keynotrevokedpassword "错误，密钥未被吊销。密码有错？">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

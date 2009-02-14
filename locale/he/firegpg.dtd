@@ -50,3 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "מנהל מפתחות">
 <!ENTITY firegpgMenu.labelManager "מנהל מפתחות">
 <!ENTITY keynotrevokedpassword "שגיאה, מפתח לא בוטל, האם טעית בסיסמה? ">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

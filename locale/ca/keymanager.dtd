@@ -15,13 +15,13 @@
 <!ENTITY keymanager "Administrador de claus">
 <!ENTITY refrech "Refresca les claus des del servidor">
 <!ENTITY trustUnded "Eliminar informació sobre confiança">
-<!ENTITY trustDont "I don't trust this key">
-<!ENTITY trustMargi "I marginally trust this key">
-<!ENTITY trustFull "I fully trust this key">
+<!ENTITY trustDont "No confio en aquesta clau">
+<!ENTITY trustMargi "No confio gaire en aquesta clau">
+<!ENTITY trustFull "Confio plenament en aquesta clau">
 <!ENTITY trustUltimate "Confiar en aquesta clau com a última instància (!)">
 <!ENTITY password-button "Canviar contrasenya">
 <!ENTITY del-button "Esborrar">
-<!ENTITY revokeNoRaison "No reason specified">
+<!ENTITY revokeNoRaison "Cap raó especificada">
 <!ENTITY revokeComprimse "La clau ha estat compromesa">
 <!ENTITY revokeRemplaced "Clau substituïda">
 <!ENTITY revokeNotUsed "Clau ja no s'utilitza">

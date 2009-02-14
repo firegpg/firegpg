@@ -74,3 +74,4 @@
 <!ENTITY autowrap_list.label "Automatische Antworten (Doppelklick zum Entfernen):">
 <!ENTITY paneautowrap.title "Automatische Verhüllung">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

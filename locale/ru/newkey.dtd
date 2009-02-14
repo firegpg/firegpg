@@ -5,8 +5,8 @@
 <!ENTITY comment-message "Комментарий">
 <!ENTITY password1-message "Password">
 <!ENTITY password2-message "Repeat password">
-<!ENTITY keyneverexpire "The key never expires">
-<!ENTITY keyexpire-message "Key expires in">
+<!ENTITY keyneverexpire "Срок действия неограничен.">
+<!ENTITY keyexpire-message "Ключ действителен ещё">
 <!ENTITY expire-year "лет">
 <!ENTITY expire-month "месяцев">
 <!ENTITY expire-days "дней">

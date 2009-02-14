@@ -52,6 +52,7 @@
 
 const ACTION_SIGN = 'SIGN';
 const ACTION_PSIGN = 'PLAINSIGN';
+const ACTION_WSIGN = 'WRAPSIGN';
 const ACTION_VERIF = 'VERIF';
 const ACTION_CRYPT = 'CRYPT';
 const ACTION_SYMCRYPT = 'SYMCRYPT';
@@ -108,6 +109,8 @@ var firegpg = {
 			FireGPG.sign();
         else if (action == ACTION_PSIGN)
 			FireGPG.sign(undefined,undefined,undefined,undefined,true);
+        else if (action == ACTION_WSIGN)
+			FireGPG.sign(undefined,undefined,undefined,undefined,undefined,undefined,true);
 		else if(action == ACTION_VERIF)
 			FireGPG.verify();
 		else if(action == ACTION_CRYPT)

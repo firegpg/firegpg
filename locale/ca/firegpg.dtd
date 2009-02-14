@@ -50,3 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Administrador de claus">
 <!ENTITY firegpgMenu.labelManager "Administrador de claus">
 <!ENTITY keynotrevokedpassword "Error, clau no revocada. Contrasenya incorrecta?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

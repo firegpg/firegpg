@@ -1,5 +1,5 @@
 <!ENTITY newkey "FireGPG - ny nøgle">
-<!ENTITY warningaboutgeneeration "Advarsel! Oprettelse af nøgle kan tage lang tid og vil fastfryse Firefox. Lav noget amdet imens nøgle bliver oprettet, for at oprette mere entropi.">
+<!ENTITY warningaboutgeneeration "Advarsel! Oprettelse af nøgle kan tage lang tid og vil fastfryse Firefox. Lav noget andet imens nøgle bliver oprettet, for at skabe mere adspredelse.">
 <!ENTITY name-message "Navn">
 <!ENTITY email-message "E-post">
 <!ENTITY comment-message "Kommentar">

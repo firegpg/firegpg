@@ -43,10 +43,12 @@
 <!ENTITY firegpgToolbar.labelSymCrypt "Симметричное шифрование">
 <!ENTITY firegpgContext.labelSymCrypt "Симметричное шифрование">
 <!ENTITY firegpgMenu.labelSymCrypt "Симметричное шифрование">
-<!ENTITY firegpgContext.labelClearSign "Clearsign">
-<!ENTITY firegpgToolbar.labelClearSign "Clearsign">
-<!ENTITY firegpgMenu.labelClearSign "Clearsign">
-<!ENTITY firegpgContext.labelManager "Key manager">
+<!ENTITY firegpgContext.labelClearSign "Подписать">
+<!ENTITY firegpgToolbar.labelClearSign "Подписать">
+<!ENTITY firegpgMenu.labelClearSign "Подписать">
+<!ENTITY firegpgContext.labelManager "Брелок">
 <!ENTITY firegpgToolbar.labelManager "Брелок">
-<!ENTITY firegpgMenu.labelManager "Key manager">
+<!ENTITY firegpgMenu.labelManager "Брелок">
 <!ENTITY keynotrevokedpassword "Ошибка, ключ не отозван. Возможно, неверный пароль?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

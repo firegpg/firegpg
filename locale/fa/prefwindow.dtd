@@ -73,4 +73,5 @@
 <!ENTITY autorwap-liste-domain.label "پست تحت وب">
 <!ENTITY autowrap_list.label "پاسخ‌دهی خودکار (برای حذف دوبار کلیک کنید):">
 <!ENTITY paneautowrap.title "پنهان‌سازی خودکار">
-<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "نمایش اطلاعات کاربر برای امضاهای درست">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

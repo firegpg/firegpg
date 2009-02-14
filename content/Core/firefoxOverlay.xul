@@ -65,6 +65,7 @@
     <menu id="menu-firegpg" label="&firegpgMenu.label;" class="menu-iconic firegpg-menu">
       <menupopup id="firegpg-menu-popup">
         <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgMenu.labelClearSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
+        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgMenu.labelWrapSign;" oncommand="firegpg.onMenuItemCommand(event,'WRAPSIGN')"/>
         <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgMenu.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'PLAINSIGN')"/>
         <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgMenu.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
         <menuseparator/>
@@ -89,6 +90,7 @@
     <menu id="context-firegpg" class="menu-iconic firegpg-menu" label="&firegpgContext.label;" src="chrome://firegpg/skin/firegpg.png">
       <menupopup  id="firegpg-contex-popup">
         <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgContext.labelClearSign;" oncommand="firegpg.onMenuItemCommand(event,'SIGN')"/>
+        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgContext.labelWrapSign;" oncommand="firegpg.onMenuItemCommand(event,'WRAPSIGN')"/>
         <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgContext.labelSign;" oncommand="firegpg.onMenuItemCommand(event,'PLAINSIGN')"/>
         <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgContext.labelVerif;" oncommand="firegpg.onMenuItemCommand(event,'VERIF')"/>
         <menuseparator/>

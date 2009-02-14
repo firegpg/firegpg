@@ -1,5 +1,5 @@
 <!ENTITY crypt-button "暗号化">
-<!ENTITY dcrypt-button "復号">
+<!ENTITY dcrypt-button "復号化">
 <!ENTITY sign-button "この鍵に署名する">
 <!ENTITY verify-button "検証">
 <!ENTITY open-button "開く">

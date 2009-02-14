@@ -50,9 +50,9 @@
 <!ENTITY gmail-buton-csign-checkbox "Neteja la signatura">
 <!ENTITY gmail-buton-csignsend-checkbox "Neteja la signatura i envia">
 <!ENTITY hide-fireftp-message "No mostrar el missatge que avisa de la presència de l'antiga llibreria IPC">
-<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
+<!ENTITY use-fireftp-workaround "Mira d'accedir al IPC amb l'API antic.">
 <!ENTITY keyserver-message "Servidor de claus">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms, in most of case you have this choices:">
+<!ENTITY symmetric-algo "Algoritme utilitzat per encriptació simètrica. Deixa-ho en blanc per defecte. Utilitza 'gpg --version' per obtenir la llista d'algoritmes utilitzables, en la majoría de cassos tens aquestes opcions:">
 <!ENTITY gmail-new-interface "Nova interfície Gmail">
 <!ENTITY gmail-select-by-default-label "Seleccionat per defecte:">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
@@ -73,4 +73,5 @@
 <!ENTITY autorwap-liste-domain.label "Correu web">
 <!ENTITY autowrap_list.label "Respostes automàtiques (doble clic per eliminar)">
 <!ENTITY paneautowrap.title "Autowrap">
-<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Mostra dades d'usuari per signatures correctes">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

@@ -50,3 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "金鑰管理程式">
 <!ENTITY firegpgMenu.labelManager "金鑰管理程式">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

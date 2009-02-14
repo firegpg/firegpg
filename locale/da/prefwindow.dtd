@@ -25,7 +25,7 @@
 <!ENTITY global-allow-keyring-check.label "Altid afkryptér beskeder fra godkendte servere">
 <!ENTITY global-allow-keyring-check.accesskey "A">
 <!ENTITY per-domain-preferences.label "Per domæneindstillinger">
-<!ENTITY turn-off-updates "Slå FireGPG auto-opdateringer fra">
+<!ENTITY turn-off-updates "Slå autoopdateringer til FireGPG fra">
 <!ENTITY key-name "Navn">
 <!ENTITY key-id "ID">
 <!ENTITY key-create "Oprettet">
@@ -36,7 +36,7 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "Underskriv, kryptér og send">
 <!ENTITY firegpg-version-label.text "Aktuelle FireGPG version:">
 <!ENTITY hide-expired "Skjul udløbne nøgler">
-<!ENTITY use-api "Slå FireGPG API til for internetsider (såsom for roundcube) (kræver genstart)">
+<!ENTITY use-api "Slå FireGPG API for internetsider til (såsom for roundcube) (kræver genstart)">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-access.label "Liste over tilladte sider (dobbeltklik for at fjerne)">
 <!ENTITY api-liste-domain.label "Domæne">
@@ -50,9 +50,9 @@
 <!ENTITY gmail-buton-csign-checkbox "Underskriv klartekst">
 <!ENTITY gmail-buton-csignsend-checkbox "Underskriv klartekst og send">
 <!ENTITY hide-fireftp-message "Vis ikke besked om installeret gammelt IPC-bibliotek.">
-<!ENTITY use-fireftp-workaround "Prøv at tilgå IPC med gamle API.">
+<!ENTITY use-fireftp-workaround "Prøv at tilgå IPC med det gamle API.">
 <!ENTITY keyserver-message "Nøgleserver">
-<!ENTITY symmetric-algo "Algoritme til brug ved symmetrisk kryptering. Lad blank være standard. Brug gpg --version for at have en liste over brugbare algoritmer. I fleste tilfælde har du disse muligheder:">
+<!ENTITY symmetric-algo "Algoritme til brug ved symmetrisk kryptering. Lad blank være standard. Brug gpg --version for at have en liste over brugbare algoritmer. I de fleste tilfælde har du disse muligheder:">
 <!ENTITY gmail-new-interface "Ny Gmailgrænseflade">
 <!ENTITY gmail-select-by-default-label "Valgt som standard:">
 <!ENTITY gmail-buton-inline-checkbox "Indlejret">
@@ -72,5 +72,6 @@
 <!ENTITY autorwap-liste-action.label "Handling">
 <!ENTITY autorwap-liste-domain.label "Internetpost">
 <!ENTITY autowrap_list.label "Automatiske svar (dobbeltklik for at fjerne):">
-<!ENTITY paneautowrap.title "Autowrap">
-<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
+<!ENTITY paneautowrap.title "Autoombryd">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Vis brugerdata for valide underskrifter">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
