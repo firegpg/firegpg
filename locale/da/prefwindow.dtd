@@ -74,4 +74,4 @@
 <!ENTITY autowrap_list.label "Automatiske svar (dobbeltklik for at fjerne):">
 <!ENTITY paneautowrap.title "Autoombryd">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Vis brugerdata for valide underskrifter">
-<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
+<!ENTITY gmail-keep-encrypted-mail "Kryptér svar til krypterede e-poster">

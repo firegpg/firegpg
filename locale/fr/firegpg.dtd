@@ -50,5 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Gestionnaire de clés">
 <!ENTITY firegpgMenu.labelManager "Gestionnaire de clés">
 <!ENTITY keynotrevokedpassword "Erreur, clé pas révoquée. Mauvais mot de passe ?">
-<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
-<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgContext.labelWrapSign "Signature découpée">
+<!ENTITY firegpgMenu.labelWrapSign "Signature découpée">

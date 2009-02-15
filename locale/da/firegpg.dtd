@@ -50,5 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Nøglehåndtering">
 <!ENTITY firegpgMenu.labelManager "Nøglehåndtering">
 <!ENTITY keynotrevokedpassword "Fejl, nøgle blev ikke inddraget. Forkert adgangskode?">
-<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
-<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgContext.labelWrapSign "Ombrudt underskrift">
+<!ENTITY firegpgMenu.labelWrapSign "Ombrudt underskrift">

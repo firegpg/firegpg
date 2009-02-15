@@ -50,5 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Administrador de claves">
 <!ENTITY firegpgMenu.labelManager "Administrador de claves">
 <!ENTITY keynotrevokedpassword "Error: clave no revocada. ¿Contraseña incorrecta?">
-<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
-<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgContext.labelWrapSign "Firma envuelta">
+<!ENTITY firegpgMenu.labelWrapSign "Firma envuelta">

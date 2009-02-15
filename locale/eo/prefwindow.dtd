@@ -25,7 +25,7 @@
 <!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
 <!ENTITY global-allow-keyring-check.accesskey "A">
 <!ENTITY per-domain-preferences.label "Per domain settings:">
-<!ENTITY turn-off-updates "Disable FireGPG automatic updates">
+<!ENTITY turn-off-updates "Malŝalti aŭtomatajn ĝisdatigojn de FireGPG">
 <!ENTITY key-name "Name">
 <!ENTITY key-id "ID">
 <!ENTITY key-create "Created">
@@ -36,12 +36,12 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "Sign, encrypt and send">
 <!ENTITY firegpg-version-label.text "Current FireGPG version:">
 <!ENTITY hide-expired "Hide expired keys">
-<!ENTITY use-api "Enable FireGPG API for webpages (such as roundcube) (restart required)">
+<!ENTITY use-api "Ŝalti FireGPG API por TTT-paĝoj (kiel roundcube) (restarto deviga)">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-access.label "Listo de permesitaj retpaĝaroj (duoble klaku por forigi)">
 <!ENTITY api-liste-domain.label "Domajno">
 <!ENTITY api-liste-keyauth.label "Ŝlosilo">
-<!ENTITY use-gpg-agent-checkbox "Enable GPG-agent (warning, can lead to issues)">
+<!ENTITY use-gpg-agent-checkbox "Ŝalti GPG-agento (averto, povas kaŭzi problemojn)">
 <!ENTITY search-description "Filter">
 <!ENTITY gmail-buton-use-select-checkbox "Display a list instead of buttons">
 <!ENTITY firegpg-ask-for-private-label.text "Always ask for private key">

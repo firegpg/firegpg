@@ -50,5 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Gestore delle chiavi">
 <!ENTITY firegpgMenu.labelManager "Gestore delle chiavi">
 <!ENTITY keynotrevokedpassword "Errore, chiave non revocata. Password sbagliata?">
-<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
-<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgContext.labelWrapSign "Firma nascosta">
+<!ENTITY firegpgMenu.labelWrapSign "Firma nascosta">

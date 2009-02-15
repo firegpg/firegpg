@@ -14,18 +14,18 @@
 <!ENTITY new-button "New key">
 <!ENTITY keymanager "Key manager">
 <!ENTITY refrech "Refresh keys from server">
-<!ENTITY trustUnded "Remove information about trusting">
-<!ENTITY trustDont "I don't trust this key">
-<!ENTITY trustMargi "I marginally trust this key">
-<!ENTITY trustFull "I fully trust this key">
-<!ENTITY trustUltimate "Trust this key ultimately (!)">
+<!ENTITY trustUnded "Forigi informon pri fidado">
+<!ENTITY trustDont "Mi ne fidas ĉi tiun ŝlosilon">
+<!ENTITY trustMargi "Mi iomete fidas ĉi tiun ŝlosilon">
+<!ENTITY trustFull "Mi plene fidas ĉi tiun ŝlosilon.">
+<!ENTITY trustUltimate "Fidi ĉi tiun ŝlosilon ĉiame (!)">
 <!ENTITY password-button "Change password">
 <!ENTITY del-button "Forigi">
 <!ENTITY revokeNoRaison "No reason specified">
 <!ENTITY revokeComprimse "Key has been compromised">
 <!ENTITY revokeRemplaced "Key is superseded">
 <!ENTITY revokeNotUsed "Key is no longer used">
-<!ENTITY userid-button "User ID">
+<!ENTITY userid-button "Uzantnumero">
 <!ENTITY add "Aldoni">
 <!ENTITY delete "Forigi">
 <!ENTITY revoke "Revoke">
