@@ -392,7 +392,7 @@ FireGPGGmailMimeSender.prototype.ourSent = function(msgs, err, prefs)
 
 
 
-                function changeStatusMessage(e)
+           /*     function changeStatusMessage(e)
                 {
                     var messageTd = this.ownerDocument.evaluate(".//td[@class='m14Grb']", this, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 //						printAncestors("DOMAttrModified", e.target);
@@ -440,17 +440,17 @@ cGmail2.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><tr><td c
             var discardcanceled = this.discardButton.dispatchEvent(discardevent);
             var discardevent=d.createEvent("MouseEvents");
             discardevent.initMouseEvent("mouseup", true, true, d.defaultView, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-            var discardcanceled = this.discardButton.dispatchEvent(discardevent);
+            var discardcanceled = this.discardButton.dispatchEvent(discardevent);*/
 
 
             //FireGPG :
             //Dosen't seem to work for reply insides mail : our method
-            divs = d.getElementsByClassName('n38jzf', 'div');
+            divs = d.getElementsByClassName('nH', 'div');
             for (var i=0;i<divs.length;i++) {
 
-                if (divs[i].getAttribute("style") == "") {
+                if (divs[i].firstChild && divs[i].firstChild.className == "b8") {
 
-                    tds = divs[i].getElementsByClassName('m14Grb', 'td');
+                    tds = divs[i].getElementsByClassName('vh', 'td');
                     tds[0].innerHTML = this.i18n.getString("MessageSend");
 
                 }

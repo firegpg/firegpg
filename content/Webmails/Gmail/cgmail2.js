@@ -578,7 +578,7 @@ fireGPGDebug("ok");
                 //END OF THE TEST FOR MESSAGES.
 //fireGPGDebug('Begining test for compose messages', 'ProbWithReplyForward');
                 //Test for compose buttons 'CoUvaf'
-                var listeTest = doc.getElementsByClassName('LlWyA','div');
+                var listeTest = doc.getElementsByClassName('eh','div');
                 var listeTest2 = doc.getElementsByClassName('CoUvaf','div');
 
 //fireGPGDebug('1:' + listeTest + ' 2:' + listeTest2, 'ProbWithReplyForward');
@@ -605,8 +605,11 @@ fireGPGDebug("ok");
                             if (wheretoadd.getAttribute("class") != "Q4uFlf goog-container")
                                 wheretoadd = listeTest[i].firstChild.childNodes[1];
                         }
+                        else if (listeTest[i].firstChild && listeTest[i].firstChild.getAttribute("class") == "dW D") { //Version du 5 mars 09
+                            var wheretoadd = listeTest[i].firstChild;
+                        }
 
-//fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
+fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
                         /*if (cGmail2.b_sign == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailCLS"),"sign",spamLimite);
                         if (cGmail2.b_sign_s == true)
@@ -664,10 +667,10 @@ fireGPGDebug("ok");
 
                         form = form[0];
 
-                        findHere = form.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                        elements = findHere.getElementsByClassName('ArwC7c', 'div');
+                        findHere = form.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+                        elements = findHere.getElementsByClassName('gs', 'div');
 
-                        if (listeTest[i].getAttribute('class').indexOf('LlWyA') != -1) {
+                        if (listeTest[i].getAttribute('class').indexOf('eh') != -1) {
 
                             children[0].firstChild.setAttribute("gpg_action", "send_button2");
 
@@ -687,7 +690,7 @@ fireGPGDebug("ok");
 
                             span.setAttribute("style","position: relative;  bottom: 26px;  right: 5px; float: right; margin-bottom: -30px;");
 
-                            span.innerHTML = '<img class="iyUIWc msHBT uVCMYd" src="images/cleardot.gif">&nbsp;<span gpg_action="add_crypted" style="font-size: 12px;" class="MRoIub">' + i18n.getString("GmailAddChiffred")+ '</span>&nbsp;<span gpg_action="add_crypted_and_sign" style="font-size: 12px;" class="MRoIub">' + i18n.getString("GmailAddChiffredSignToo")+ '</span>';
+                            span.innerHTML = '<img class="en ed" src="images/cleardot.gif">&nbsp;<span gpg_action="add_crypted" style="font-size: 12px;" class="el">' + i18n.getString("GmailAddChiffred")+ '</span>&nbsp;<span gpg_action="add_crypted_and_sign" style="font-size: 12px;" class="el">' + i18n.getString("GmailAddChiffredSignToo")+ '</span>';
 
                             boxwhereadd.insertBefore(span,tablebox.nextSibling);
 
@@ -703,16 +706,16 @@ fireGPGDebug("ok");
                             var title = doc.createElement("td");
                             var checkboxes = doc.createElement("td");
 
-                            title.setAttribute('class', 'sXkcDf');
+                            title.setAttribute('class', 'eD');
                             title.innerHTML = 'FireGPG:';
 
                             randId = genreate_api_key();
-                            checkboxes.setAttribute('class', 'J14TS');
+                            checkboxes.setAttribute('class', 'eC');
                             checkboxes.setAttribute('style', 'font-size: 12px;');
-                            checkboxes.innerHTML =  '<img id="'+randId+'a" src="'+IMG_SIGN_OFF+'" alt="'+IMG_SIGN_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-sign">&nbsp;<span class="MRoIub" onclick="document.getElementById(\''+randId+'a\').onclick();">' + i18n.getString("GMailS") + '</span>&nbsp;|&nbsp;' +
-                            '<img id="'+randId+'b" src="'+IMG_ENCRYPT_OFF+'" alt="'+IMG_ENCRYPT_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-encrypt" >&nbsp;<span class="MRoIub" onclick="document.getElementById(\''+randId+'b\').onclick();">' + i18n.getString("GMailC") + '</span>&nbsp;|&nbsp;' +
-                            '<img id="'+randId+'c" src="'+IMG_INLINE_OFF+'" alt="'+IMG_INLINE_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\'); if (this.title==\'Off\') { document.getElementById(\''+randId+'att\').style.display = \'\'; } else { document.getElementById(\''+randId+'att\').style.display = \'none\'; }" title="Off" class="firegpg-inline" >&nbsp;<span class="MRoIub" onclick="document.getElementById(\''+randId+'c\').onclick();">' + i18n.getString("GmailI") + '</span>' +
-                            '<span id="'+randId+'att">&nbsp;|&nbsp;<img id="'+randId+'d" src="'+IMG_ATTACHEMENTS_OFF+'" alt="'+IMG_ATTACHEMENTS_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-attachements" >&nbsp;<span class="MRoIub" onclick="document.getElementById(\''+randId+'d\').onclick();">' + i18n.getString("GmailA") + '</span></span>';
+                            checkboxes.innerHTML =  '<img id="'+randId+'a" src="'+IMG_SIGN_OFF+'" alt="'+IMG_SIGN_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-sign">&nbsp;<span class="el" onclick="document.getElementById(\''+randId+'a\').onclick();">' + i18n.getString("GMailS") + '</span>&nbsp;|&nbsp;' +
+                            '<img id="'+randId+'b" src="'+IMG_ENCRYPT_OFF+'" alt="'+IMG_ENCRYPT_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-encrypt" >&nbsp;<span class="el" onclick="document.getElementById(\''+randId+'b\').onclick();">' + i18n.getString("GMailC") + '</span>&nbsp;|&nbsp;' +
+                            '<img id="'+randId+'c" src="'+IMG_INLINE_OFF+'" alt="'+IMG_INLINE_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\'); if (this.title==\'Off\') { document.getElementById(\''+randId+'att\').style.display = \'\'; } else { document.getElementById(\''+randId+'att\').style.display = \'none\'; }" title="Off" class="firegpg-inline" >&nbsp;<span class="el" onclick="document.getElementById(\''+randId+'c\').onclick();">' + i18n.getString("GmailI") + '</span>' +
+                            '<span id="'+randId+'att">&nbsp;|&nbsp;<img id="'+randId+'d" src="'+IMG_ATTACHEMENTS_OFF+'" alt="'+IMG_ATTACHEMENTS_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-attachements" >&nbsp;<span class="el" onclick="document.getElementById(\''+randId+'d\').onclick();">' + i18n.getString("GmailA") + '</span></span>';
 
                             if (cGmail2.default_sign)
                                 checkboxes.innerHTML += '<script>document.getElementById(\''+randId+'a\').onclick();</script>';
@@ -728,7 +731,7 @@ fireGPGDebug("ok");
 
                             firegpgactions.appendChild(title);
                             firegpgactions.appendChild(checkboxes);
-                            fileattachimage = tablebox.getElementsByClassName('msHBT','img');
+                            fileattachimage = tablebox.getElementsByClassName('en ed','img');
 
                             filesattachbox = fileattachimage[0].parentNode.parentNode;
 
@@ -778,7 +781,8 @@ fireGPGDebug("ok");
                         form.setAttribute("firegpg-mail-id", "");
 //fireGPGDebug('Setting mailid', 'ProbWithReplyForward');
                         if (elements[0]) {
-                            form.setAttribute("firegpg-mail-id", elements[0].getAttribute("firegpg-mail-id"));    fireGPGDebug('to ' + elements[0].getAttribute("firegpg-mail-id"), 'ProbWithReplyForward');
+                            form.setAttribute("firegpg-mail-id", elements[0].getAttribute("firegpg-mail-id"));
+                            fireGPGDebug('to ' + elements[0].getAttribute("firegpg-mail-id"), 'ProbWithReplyForward');
                         }
 
 
@@ -1358,7 +1362,7 @@ fireGPGDebug("ok");
                            cGmail2.useremail = topwinjs.globals.USER_EMAIL;
                        } else {
 
-                           cGmail2.useremail = f.ownerDocument.evaluate(".//div[@class='nQ6QTe']//b[contains(text(), '@')]",
+                           cGmail2.useremail = f.ownerDocument.evaluate(".//div[@class='a8']//b[contains(text(), '@')]",
                                                                f.ownerDocument.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE,
                                                                null).singleNodeValue.textContent;
 
@@ -1699,7 +1703,7 @@ fireGPGDebug("ok");
 
                 whereSeacrch =boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
 
-                children = whereSeacrch.getElementsByClassName('g7q0he', 'span');
+                children = whereSeacrch.getElementsByClassName('eo el', 'span');
 
                 try {
                     var evt = dDocument.createEvent("MouseEvents");
@@ -1927,7 +1931,7 @@ fireGPGDebug("ok");
 
 
 
-        var i = dDocument.evaluate(".//td[contains(@class, 'opUkHb')]//iframe", boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        var i = dDocument.evaluate(".//td[contains(@class, 'd7')]//iframe", boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
         fireGPGDebug(i, 'iframefound');
 
@@ -2015,7 +2019,7 @@ fireGPGDebug("ok");
     */
     getTheTextarea: function(dDocument,boutonxboxnode) {
 
-        var i = dDocument.evaluate(".//td[contains(@class, 'opUkHb')]//textarea", boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        var i = dDocument.evaluate(".//td[contains(@class, 'd7')]//textarea", boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
         fireGPGDebug(i, 'textareadfound');
 
@@ -2144,7 +2148,7 @@ fireGPGDebug("ok");
 
         tmp = tmp.firstChild; */
 
-         var tmp = dDocument.evaluate(".//table[contains(@class, 'wHcYVb')]/tbody", tmp.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+         var tmp = dDocument.evaluate(".//table[contains(@class, 'cf eA')]/tbody", tmp.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
 
         var textareas = tmp .getElementsByTagName("textarea");
@@ -2204,7 +2208,7 @@ fireGPGDebug("ok");
 
         var tmp = boutonxboxnode;
 
-        var tmp = dDocument.evaluate(".//table[contains(@class, 'wHcYVb')]/tbody", tmp.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        var tmp = dDocument.evaluate(".//table[contains(@class, 'cf eA')]/tbody", tmp.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
         var selects = tmp .getElementsByTagName("select");
 
@@ -2220,7 +2224,7 @@ fireGPGDebug("ok");
 
 
         //Peut être en
-        var selects = tmp .getElementsByClassName("qIKyDc");
+        var selects = tmp .getElementsByClassName("ef");
 
         if (selects && selects[0])
             return selects[0].innerHTML.replace(/&lt;/gi, '<').replace(/&gt;/gi, '>');
@@ -2237,7 +2241,7 @@ fireGPGDebug("ok");
 
         var tmp = boutonxboxnode;
 
-        var tmp = dDocument.evaluate(".//table[contains(@class, 'wHcYVb')]/tbody", tmp.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        var tmp = dDocument.evaluate(".//table[contains(@class, 'cf eA')]/tbody", tmp.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
         var inputs  = tmp .getElementsByTagName("input");
 
@@ -2831,10 +2835,10 @@ fireGPGDebug("activated");
 		var d = t.document;
 		const F = XPathResult.FIRST_ORDERED_NODE_TYPE;
 
-		var jH = d.evaluate("div[contains(@class, 'jHZvnc')]", d.body, null, F, null).singleNodeValue;
+		var jH = d.evaluate("div[contains(@class, 'vY nq')]", d.body, null, F, null).singleNodeValue;
 		// used to have div[@class='jHZvnc'] but should be div[contains(@class, 'jHZvnc')], so moved around
-		var IY	= d.evaluate(".//div[@class='IY0d9c']", jH, null, F, null).singleNodeValue;
-		var wT	= d.evaluate("div/div[contains(@class,'wTsMFb')]", IY, null, F, null).singleNodeValue;
+		var IY	= d.evaluate(".//div[@class='no']", jH, null, F, null).singleNodeValue;
+		var wT	= d.evaluate("div/div[contains(@class,'nH')]", IY, null, F, null).singleNodeValue;
 		if (!wT) wT = d.evaluate("div/div[contains(@class,'QShok')]", IY, null, F, null).singleNodeValue;
 		if (text == null)
 		{
@@ -2846,15 +2850,15 @@ fireGPGDebug("activated");
 		stUtil.removeClassName(jH, "WBnLQb");
 
 		// <div class="IY0d9c"><div class="XoqCub EGSDee" style="width: 66px;"><div class="SsbSQb L4XNt"><span class="hdgibf">Loading...</span></div></div><div class="XoqCub EGSDee" style="width: 0px;"/></div>
-		var hd	= d.evaluate(".//span[@class='hdgibf']", wT, null, F, null).singleNodeValue;
+		var hd	= d.evaluate(".//span[@class='v1']", wT, null, F, null).singleNodeValue;
 		if (!hd)
 		{
 			// does not exist yet; this is the first time.
-			var EGSDee = d.evaluate(".//div[@class='IY0d9c']/div[contains(@class, 'EGSDee') and position()=1]", wT, null, F, null).singleNodeValue;
+			var EGSDee = d.evaluate(".//div[@class='no']/div[contains(@class, 'nH nn') and position()=1]", wT, null, F, null).singleNodeValue;
 			hd = d.createElement("span");
-			hd.className = "hdgibf";
+			hd.className = "v1";
 			var SsbSQb_L4XNt = d.createElement("div");
-			SsbSQb_L4XNt.className = "SsbSQb L4XNt";
+			SsbSQb_L4XNt.className = "vZ v3";
 			SsbSQb_L4XNt.appendChild(hd);
 			EGSDee.appendChild(SsbSQb_L4XNt);
 		}
