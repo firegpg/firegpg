@@ -55,7 +55,7 @@ const FIREGPG_VERSION_A = '074';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
-const FIREGPG_STATUS = 'RELASE';
+const FIREGPG_STATUS = 'DEVEL';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */
@@ -846,7 +846,7 @@ function testIfSomethingsIsNew() {
 
                     var toDetect = "NS1:version=\"" + versionAct + "\"";
 
-                    if (updateData.indexOf('ec8030f7-c20a-464f-9b0e-13a3a9e97384') != -1 && updateData.indexOf(toDetect) == -1  )
+                    if (updateData.indexOf('ec8030f7-c20a-464f-9b0e-13a3a9e97384') != -1 && updateData.indexOf(toDetect) == -1)
                     {
                         if (document.getElementById('firegpg-statusbar-update') != null) {
                             document.getElementById('firegpg-statusbar-update').style.display = '';
