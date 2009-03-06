@@ -1181,6 +1181,7 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
 			} else  if (target.getAttribute('gpg_action') == "send_button" || target.getAttribute('gpg_action') == "send_button2") {
 
 
+
                 if (event.type == "keydown" && event.which != 13) {
                     return;
                 }
@@ -2835,10 +2836,10 @@ fireGPGDebug("activated");
 		var d = t.document;
 		const F = XPathResult.FIRST_ORDERED_NODE_TYPE;
 
-		var jH = d.evaluate("div[contains(@class, 'vY nq')]", d.body, null, F, null).singleNodeValue;
+		var jH = d.evaluate("div[contains(@class, 'vY')]", d.body, null, F, null).singleNodeValue;
 		// used to have div[@class='jHZvnc'] but should be div[contains(@class, 'jHZvnc')], so moved around
 		var IY	= d.evaluate(".//div[@class='no']", jH, null, F, null).singleNodeValue;
-		var wT	= d.evaluate("div/div[contains(@class,'nH')]", IY, null, F, null).singleNodeValue;
+		var wT	= d.evaluate("div/div[contains(@class,'nH vX')]",IY, null, F, null).singleNodeValue;
 		if (!wT) wT = d.evaluate("div/div[contains(@class,'QShok')]", IY, null, F, null).singleNodeValue;
 		if (text == null)
 		{
@@ -2847,7 +2848,7 @@ fireGPGDebug("activated");
 		}
 
 		wT.parentNode.style.display = "";
-		stUtil.removeClassName(jH, "WBnLQb");
+		stUtil.removeClassName(jH, "nq");
 
 		// <div class="IY0d9c"><div class="XoqCub EGSDee" style="width: 66px;"><div class="SsbSQb L4XNt"><span class="hdgibf">Loading...</span></div></div><div class="XoqCub EGSDee" style="width: 0px;"/></div>
 		var hd	= d.evaluate(".//span[@class='v1']", wT, null, F, null).singleNodeValue;
