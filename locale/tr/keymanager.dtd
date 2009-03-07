@@ -3,7 +3,7 @@
 <!ENTITY key-expire "Expire">
 <!ENTITY key-create "Created">
 <!ENTITY key-id "ID">
-<!ENTITY key-name "Name">
+<!ENTITY key-name "İsim">
 <!ENTITY revoke-button "Revoke key">
 <!ENTITY sign-button "Signatures">
 <!ENTITY changetrust-button "Change trust">

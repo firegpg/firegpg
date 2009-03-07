@@ -73,5 +73,5 @@
 <!ENTITY autorwap-liste-domain.label "Webmail">
 <!ENTITY autowrap_list.label "Respostas automáticas (duplo clique para remover): ">
 <!ENTITY paneautowrap.title "Quebra de linhas automático">
-<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
-<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Mostrar dados do utilizador para assinaturas válidas">
+<!ENTITY gmail-keep-encrypted-mail "Cifrar resposta a mails cifrados">

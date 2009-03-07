@@ -5,7 +5,7 @@
 <!ENTITY key-id "ID">
 <!ENTITY key-name "Name">
 <!ENTITY revoke-button "Schlüssel widerufen">
-<!ENTITY sign-button "Signaturen">
+<!ENTITY sign-button "Unterschriften">
 <!ENTITY changetrust-button "Vertrauen ändern">
 <!ENTITY importserver-button "Vom Server importieren">
 <!ENTITY exportserver-button "Zum Server exportieren">

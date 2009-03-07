@@ -6,10 +6,10 @@
 <!ENTITY key-name "Nom">
 <!ENTITY revoke-button "Revoca la clau">
 <!ENTITY sign-button "Signatures">
-<!ENTITY changetrust-button "Confiança canviada">
+<!ENTITY changetrust-button "Canvi confiança">
 <!ENTITY importserver-button "Importar del servidor">
 <!ENTITY exportserver-button "Exportar al servidor">
-<!ENTITY importfile-button "Importar des de arxiu">
+<!ENTITY importfile-button "Importar des d'arxiu">
 <!ENTITY exportfile-button "Exporta a fitxer">
 <!ENTITY new-button "Nova clau">
 <!ENTITY keymanager "Administrador de claus">

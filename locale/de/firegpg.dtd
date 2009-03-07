@@ -4,18 +4,18 @@
 <!ENTITY firegpgContext.label "FireGPG">
 <!ENTITY firegpgContext.labelSign "Unterschreiben">
 <!ENTITY firegpgContext.labelCrypt "Verschlüsseln">
-<!ENTITY firegpgContext.labelVerif "Signatur überprüfen">
+<!ENTITY firegpgContext.labelVerif "Verifizieren">
 <!ENTITY firegpgContext.labelDecry "Entschlüsseln">
 <!ENTITY firegpgContext.labelOptions "Optionen">
 <!ENTITY firegpgMenu.label "FireGPG">
 <!ENTITY firegpgMenu.labelSign "Unterschreiben">
 <!ENTITY firegpgMenu.labelCrypt "Verschlüsseln">
-<!ENTITY firegpgMenu.labelVerif "Signatur überprüfen">
+<!ENTITY firegpgMenu.labelVerif "Verifizieren">
 <!ENTITY firegpgMenu.labelDecry "Entschlüsseln">
 <!ENTITY firegpgMenu.labelOptions "Optionen">
 <!ENTITY firegpgToolbar.labelSign "Unterschreiben">
 <!ENTITY firegpgToolbar.labelCrypt "Verschlüsseln">
-<!ENTITY firegpgToolbar.labelVerif "Signatur überprüfen">
+<!ENTITY firegpgToolbar.labelVerif "Verifizieren">
 <!ENTITY firegpgToolbar.labelDecry "Entschlüsseln">
 <!ENTITY firegpgToolbar.labelOptions "Optionen">
 <!ENTITY firegpgMenu.labelErase "Gespeichertes Passwort löschen">
@@ -43,12 +43,12 @@
 <!ENTITY firegpgToolbar.labelSymCrypt "Symmetrische Verschlüsselung">
 <!ENTITY firegpgContext.labelSymCrypt "Symmetrische Verschlüsselung">
 <!ENTITY firegpgMenu.labelSymCrypt "Symmetrische Verschlüsselung">
-<!ENTITY firegpgContext.labelClearSign "Klartextsignatur">
-<!ENTITY firegpgToolbar.labelClearSign "Klartextsignatur">
-<!ENTITY firegpgMenu.labelClearSign "Klartextsignatur">
+<!ENTITY firegpgContext.labelClearSign "Unterschrift in Klartext">
+<!ENTITY firegpgToolbar.labelClearSign "Unterschrift in Klartext">
+<!ENTITY firegpgMenu.labelClearSign "Unterschrift in Klartext">
 <!ENTITY firegpgContext.labelManager "Schlüsselmanager">
 <!ENTITY firegpgToolbar.labelManager "Schlüsselmanager">
 <!ENTITY firegpgMenu.labelManager "Schlüsselmanager">
 <!ENTITY keynotrevokedpassword "Fehler, Schlüssel wurde nicht widerrufen. Falsches Passwort?">
-<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
-<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgContext.labelWrapSign "Eingebettete Unterschrift">
+<!ENTITY firegpgMenu.labelWrapSign "Eingebettete Unterschrift">

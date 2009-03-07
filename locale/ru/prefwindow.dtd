@@ -5,7 +5,7 @@
 <!ENTITY gmail-enabled-checkbox.label "Поддержка GMail">
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Закрытый ключ по умолчанию:">
-<!ENTITY show-website-checkbox "Display FireGPG's website address in GnuPG comment field">
+<!ENTITY show-website-checkbox "Указать адрес сайта FireGPG в поле комментария GnuPG">
 <!ENTITY change-gpg-path-button "Установка пути к GPG">
 <!ENTITY change-gpg-path-checkbox "Укажите путь к GPG:">
 <!ENTITY result-always-in-new-window "Всегда показывать результат шифрования или подпись в новом окне.">
@@ -50,9 +50,9 @@
 <!ENTITY gmail-buton-csign-checkbox "Подписать">
 <!ENTITY gmail-buton-csignsend-checkbox "Подписать и отправить">
 <!ENTITY hide-fireftp-message "Не показывать предупреждение о старой версии библиотеки IPC.">
-<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
+<!ENTITY use-fireftp-workaround "Попробовать вызвать IPC через старую версию API.">
 <!ENTITY keyserver-message "Сервер ключей">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms, in most of case you have this choices:">
+<!ENTITY symmetric-algo "Алгоритм для симметричного шифрования. При незаполненном поле будет использоваться алгоритм по умолчанию. 'gpg --version' покажет список возможных алгоритмов. Чаще всего можно использовать следующие:">
 <!ENTITY gmail-new-interface "Новый интерфейс Gmail">
 <!ENTITY gmail-select-by-default-label "Выбрано по умолчанию :">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
@@ -73,5 +73,5 @@
 <!ENTITY autorwap-liste-domain.label "Веб-почта">
 <!ENTITY autowrap_list.label "Авто-ответы (убираются двойным кликом):">
 <!ENTITY paneautowrap.title "Autowrap">
-<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
-<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Для подлинных подписей показывать информацию об отправителях">
+<!ENTITY gmail-keep-encrypted-mail "Шифровать ответы на зашифрованные письма">

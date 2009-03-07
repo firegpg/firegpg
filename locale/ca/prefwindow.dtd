@@ -6,8 +6,8 @@
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "Clau privada per defecte:">
 <!ENTITY show-website-checkbox "Mostra el lloc web de FireGPG en un camp de comentari de GPG">
-<!ENTITY change-gpg-path-button "Configuració de l'ubicació del GPG">
-<!ENTITY change-gpg-path-checkbox "Especificar manualment l'ubicació del GPG:">
+<!ENTITY change-gpg-path-button "Configuració de la ubicació del GPG">
+<!ENTITY change-gpg-path-checkbox "Especificar manualment la ubicació del GPG:">
 <!ENTITY result-always-in-new-window "Mostra sempre el resultat d'una codificació o una signatura en una nova finestra.">
 <!ENTITY no-gpg-agent-checkbox "Força la desactivació dels agents GPG (pots solucionar alguns errors)">
 <!ENTITY ask-for-save-pass "Per defecte, demana per guardar la contrasenya.">
@@ -26,7 +26,7 @@
 <!ENTITY global-allow-keyring-check.accesskey "A">
 <!ENTITY per-domain-preferences.label "Configuració per domini">
 <!ENTITY turn-off-updates "Denega FireGPG d'actualitzar-se automàticament">
-<!ENTITY key-name "NOM">
+<!ENTITY key-name "Nom">
 <!ENTITY key-id "Id">
 <!ENTITY key-create "Creat">
 <!ENTITY key-expire "Caduca">
@@ -42,7 +42,7 @@
 <!ENTITY api-liste-domain.label "Domini">
 <!ENTITY api-liste-keyauth.label "Clau">
 <!ENTITY use-gpg-agent-checkbox "Activar Gpg-agent (Atenció, crear fallos...)">
-<!ENTITY search-description "filtre">
+<!ENTITY search-description "Filtre">
 <!ENTITY gmail-buton-use-select-checkbox "No mostris botons sino una llista">
 <!ENTITY firegpg-ask-for-private-label.text "Demanar sempre per la clau privada">
 <!ENTITY inline-activated "Activa el controlador per a blocs GPG en les pàgines (es necessita reiniciar)">
@@ -55,7 +55,7 @@
 <!ENTITY symmetric-algo "Algoritme utilitzat per encriptació simètrica. Deixa-ho en blanc per defecte. Utilitza 'gpg --version' per obtenir la llista d'algoritmes utilitzables, en la majoría de cassos tens aquestes opcions:">
 <!ENTITY gmail-new-interface "Nova interfície Gmail">
 <!ENTITY gmail-select-by-default-label "Seleccionat per defecte:">
-<!ENTITY gmail-buton-inline-checkbox "Inline">
+<!ENTITY gmail-buton-inline-checkbox "En línia">
 <!ENTITY gmail-old-interface "Antiga interfície Gmail">
 <!ENTITY gmail-smtp-options-label "Opcions SMTP (correus openpgp/mime)">
 <!ENTITY gmail-smtp-google-com "No intentar utilitzar mai la contrasenya recordada de google.com">
@@ -63,15 +63,15 @@
 <!ENTITY gmail-smtp-host "Amfitrió (smtp.gmail.com): ">
 <!ENTITY gmail-smtp-port "Port (465):">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Utilitzar SSL:">
-<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
+<!ENTITY gmail-disable-sign-detection "Inhibeix la detecció de resposta en signatura inline(i encriptació)(sempre utilitza tot el correu)">
 <!ENTITY gmail-disable-auto-decryption "Antic comportament per desencriptació">
 <!ENTITY gmail-force-from "Forçar des del valor:">
-<!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
+<!ENTITY gpg-special-path-values "Utilitza {$FxFolder} per tenir el directori del Firefox i {$SPACE} per tenir un espai dins un argument.">
 <!ENTITY decrypt-when-reply "Desencriptar contingut al respondre">
 <!ENTITY gmail-buton-attachements-checkbox "Arxius adjunts">
 <!ENTITY autorwap-liste-action.label "Acció">
 <!ENTITY autorwap-liste-domain.label "Correu web">
 <!ENTITY autowrap_list.label "Respostes automàtiques (doble clic per eliminar)">
-<!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY paneautowrap.title "Auto ajustament">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Mostra dades d'usuari per signatures correctes">
-<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
+<!ENTITY gmail-keep-encrypted-mail "Encripta la resposta de correus encriptats">

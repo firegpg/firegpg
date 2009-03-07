@@ -4,8 +4,8 @@
 <!ENTITY key-create "Создано">
 <!ENTITY key-id "ID">
 <!ENTITY key-name "Имя">
-<!ENTITY revoke-button "Revoke key">
-<!ENTITY sign-button "Signatures">
+<!ENTITY revoke-button "Отозвать ключ">
+<!ENTITY sign-button "Подписи">
 <!ENTITY changetrust-button "Изменить степень доверия">
 <!ENTITY importserver-button "Импортировать с сервера">
 <!ENTITY exportserver-button "Экспортировать на сервер">
@@ -13,19 +13,19 @@
 <!ENTITY exportfile-button "Экспортировать в факл">
 <!ENTITY new-button "Новый ключ">
 <!ENTITY keymanager "Брелок">
-<!ENTITY refrech "Refresh keys from server">
+<!ENTITY refrech "Обновить ключи с сервера">
 <!ENTITY trustUnded "Remove information about trusting">
-<!ENTITY trustDont "I don't trust this key">
-<!ENTITY trustMargi "I marginally trust this key">
-<!ENTITY trustFull "I fully trust this key">
+<!ENTITY trustDont "Я не доверяю этому ключу">
+<!ENTITY trustMargi "Я условно доверяю этому ключу">
+<!ENTITY trustFull "Я полностью доверяю этому ключу">
 <!ENTITY trustUltimate "Trust this key ultimately (!)">
-<!ENTITY password-button "Change password">
+<!ENTITY password-button "Поменять пароль">
 <!ENTITY del-button "Удалить">
-<!ENTITY revokeNoRaison "No reason specified">
-<!ENTITY revokeComprimse "Key has been compromised">
-<!ENTITY revokeRemplaced "Key is superseded">
-<!ENTITY revokeNotUsed "Key is no longer used">
-<!ENTITY userid-button "User ID">
+<!ENTITY revokeNoRaison "Без указания причины">
+<!ENTITY revokeComprimse "Ключ был скомпрометирован">
+<!ENTITY revokeRemplaced "Ключ был обновлён">
+<!ENTITY revokeNotUsed "Ключ больше не используется">
+<!ENTITY userid-button "ID пользователя">
 <!ENTITY add "Добавить">
 <!ENTITY delete "Удалить">
-<!ENTITY revoke "Revoke">
+<!ENTITY revoke "Отозвать">

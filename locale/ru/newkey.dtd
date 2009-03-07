@@ -1,10 +1,10 @@
-<!ENTITY newkey "FireGPG - new key">
-<!ENTITY warningaboutgeneeration "Warning! Key generation can take a lot of time, and will freeze Firefox. Do something else while key is generated to create more entropy.">
+<!ENTITY newkey "FireGPG - новый ключ">
+<!ENTITY warningaboutgeneeration "Внимание! Создание ключа может занять много времени, и при этом FireFox перестанет отвечать. Поделайте что-нибудь ещё на компьютере, чтобы повысить энтропию процесса создания.">
 <!ENTITY name-message "Имя">
 <!ENTITY email-message "E-mail">
 <!ENTITY comment-message "Комментарий">
-<!ENTITY password1-message "Password">
-<!ENTITY password2-message "Repeat password">
+<!ENTITY password1-message "Пароль">
+<!ENTITY password2-message "Повторите пароль">
 <!ENTITY keyneverexpire "Срок действия неограничен.">
 <!ENTITY keyexpire-message "Ключ действителен ещё">
 <!ENTITY expire-year "лет">

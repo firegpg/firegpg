@@ -55,7 +55,7 @@
 <!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms, in most of case you have this choices:">
 <!ENTITY gmail-new-interface "Nytt Gmail grensesnitt">
 <!ENTITY gmail-select-by-default-label "Valgt som normalparameter:">
-<!ENTITY gmail-buton-inline-checkbox "Inline">
+<!ENTITY gmail-buton-inline-checkbox "innbygget">
 <!ENTITY gmail-old-interface "Eldre Gmail-grensesnitt">
 <!ENTITY gmail-smtp-options-label "SMTP-valg (openpgp/mime mailer)">
 <!ENTITY gmail-smtp-google-com "Ikke gjør forsøk på å bruke google.com-registerte passord">
@@ -64,7 +64,7 @@
 <!ENTITY gmail-smtp-port "Port(465):">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Bruk SSL:">
 <!ENTITY gmail-disable-sign-detection "Kutt ut deteksjon for signering (og kryptering) av deler av en melding - bruk alltid hele meldingen">
-<!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
+<!ENTITY gmail-disable-auto-decryption "En gammel dekrypteringsrutine">
 <!ENTITY gmail-force-from "Påtvinge bruk av verdien:">
 <!ENTITY gpg-special-path-values "Bruke {$FxFolder}for å få Firefox sin mappe og {$SPACE} for å ha et mellomrom i et argument">
 <!ENTITY decrypt-when-reply "Dekrypter innholdet når det svares:">
@@ -73,5 +73,5 @@
 <!ENTITY autorwap-liste-domain.label "Webmail.">
 <!ENTITY autowrap_list.label "Automatisk svarfunksjon (dobbelklikk for å fjerne funksjonen)">
 <!ENTITY paneautowrap.title "Autowrap">
-<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Vise brukerinformasjon for aksepterte signaturer">
 <!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

@@ -72,6 +72,6 @@
 <!ENTITY autorwap-liste-action.label "Azione">
 <!ENTITY autorwap-liste-domain.label "Webmail">
 <!ENTITY autowrap_list.label "Risposte automatiche (doppio click per rimuovere)">
-<!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY paneautowrap.title "Autoavvolgimento">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "">
 <!ENTITY gmail-keep-encrypted-mail "Critta le repliche a mail crittate">

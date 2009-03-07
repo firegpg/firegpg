@@ -2,6 +2,6 @@
 <!ENTITY key-name "Имя">
 <!ENTITY key-id "ID ключа">
 <!ENTITY key-create "Дата (подписи или создания)">
-<!ENTITY sign-button "Sign this key">
-<!ENTITY revoke-button "Revoke this sign">
+<!ENTITY sign-button "Подписать этот ключ">
+<!ENTITY revoke-button "Отозвать эту подпись">
 <!ENTITY del-button "Удалить эту подпись">

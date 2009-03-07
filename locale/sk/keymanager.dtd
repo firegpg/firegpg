@@ -8,9 +8,9 @@
 <!ENTITY sign-button "Signatures">
 <!ENTITY changetrust-button "Zmeniť dôveru">
 <!ENTITY importserver-button "Import from server">
-<!ENTITY exportserver-button "Export to server">
+<!ENTITY exportserver-button "Export na server">
 <!ENTITY importfile-button "Import from file">
-<!ENTITY exportfile-button "Export to file">
+<!ENTITY exportfile-button "Export do súboru">
 <!ENTITY new-button "New key">
 <!ENTITY keymanager "Key manager">
 <!ENTITY refrech "Refresh keys from server">

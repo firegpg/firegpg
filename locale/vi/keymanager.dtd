@@ -1,31 +1,31 @@
-<!ENTITY key-status "Status">
+<!ENTITY key-status "Trạng thái">
 <!ENTITY key-trust "Trust">
-<!ENTITY key-expire "Expire">
-<!ENTITY key-create "Created">
+<!ENTITY key-expire "Hết hạn">
+<!ENTITY key-create "Được tạo">
 <!ENTITY key-id "ID">
-<!ENTITY key-name "Name">
+<!ENTITY key-name "Tên">
 <!ENTITY revoke-button "Revoke key">
-<!ENTITY sign-button "Signatures">
-<!ENTITY changetrust-button "Change trust">
+<!ENTITY sign-button "Chữ ký">
+<!ENTITY changetrust-button "Thay đổi trust">
 <!ENTITY importserver-button "Import from server">
-<!ENTITY exportserver-button "Export to server">
-<!ENTITY importfile-button "Import from file">
-<!ENTITY exportfile-button "Export to file">
-<!ENTITY new-button "New key">
-<!ENTITY keymanager "Key manager">
+<!ENTITY exportserver-button "Xuất ra máy chủ">
+<!ENTITY importfile-button "Nhập từ file">
+<!ENTITY exportfile-button "Xuất ra file">
+<!ENTITY new-button "Khóa mới">
+<!ENTITY keymanager "Qunả lý khóa">
 <!ENTITY refrech "Refresh keys from server">
 <!ENTITY trustUnded "Remove information about trusting">
-<!ENTITY trustDont "I don't trust this key">
+<!ENTITY trustDont "Tôi không tin tưởng khóa này">
 <!ENTITY trustMargi "I marginally trust this key">
-<!ENTITY trustFull "I fully trust this key">
+<!ENTITY trustFull "Tôi hoàn toàn tin tưởng khóa này">
 <!ENTITY trustUltimate "Trust this key ultimately (!)">
-<!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
-<!ENTITY revokeNoRaison "No reason specified">
+<!ENTITY password-button "Thay đổi mật khẩu">
+<!ENTITY del-button "Xóa">
+<!ENTITY revokeNoRaison "Không xác định lý do">
 <!ENTITY revokeComprimse "Key has been compromised">
 <!ENTITY revokeRemplaced "Key is superseded">
-<!ENTITY revokeNotUsed "Key is no longer used">
+<!ENTITY revokeNotUsed "Khóa không được sử dụng nữa">
 <!ENTITY userid-button "User ID">
-<!ENTITY add "Add">
-<!ENTITY delete "Delete">
+<!ENTITY add "Thêm">
+<!ENTITY delete "Xóa">
 <!ENTITY revoke "Revoke">

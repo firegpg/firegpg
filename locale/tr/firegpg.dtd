@@ -46,9 +46,9 @@
 <!ENTITY firegpgContext.labelClearSign "Clearsign">
 <!ENTITY firegpgToolbar.labelClearSign "Clearsign">
 <!ENTITY firegpgMenu.labelClearSign "Clearsign">
-<!ENTITY firegpgContext.labelManager "Key manager">
+<!ENTITY firegpgContext.labelManager "Anahtar yöneticisi">
 <!ENTITY firegpgToolbar.labelManager "Key manager">
-<!ENTITY firegpgMenu.labelManager "Key manager">
+<!ENTITY firegpgMenu.labelManager "Anahtar yöneticisi">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
 <!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
 <!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

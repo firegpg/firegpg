@@ -50,5 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "مدیر کلید">
 <!ENTITY firegpgMenu.labelManager "مدیر کلید">
 <!ENTITY keynotrevokedpassword "خطا، کلید ابطال نشد، پسورد اشتباهی؟">
-<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
-<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgContext.labelWrapSign "امضای پنهان‌سازی شده">
+<!ENTITY firegpgMenu.labelWrapSign "امضای پنهان‌سازی شده">

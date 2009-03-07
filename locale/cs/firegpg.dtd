@@ -50,5 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Správce klíčů">
 <!ENTITY firegpgMenu.labelManager "Správce klíčů">
 <!ENTITY keynotrevokedpassword "Chyba, klíč neodvolán. Špatné heslo?">
-<!ENTITY firegpgContext.labelWrapSign "Znak zalomení">
-<!ENTITY firegpgMenu.labelWrapSign "Znak zalomení">
+<!ENTITY firegpgContext.labelWrapSign "Zarovnat a podepsat">
+<!ENTITY firegpgMenu.labelWrapSign "Zarovnat a podepsat">

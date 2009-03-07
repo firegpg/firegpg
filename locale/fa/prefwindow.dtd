@@ -74,4 +74,4 @@
 <!ENTITY autowrap_list.label "پاسخ‌دهی خودکار (برای حذف دوبار کلیک کنید):">
 <!ENTITY paneautowrap.title "پنهان‌سازی خودکار">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "نمایش اطلاعات کاربر برای امضاهای درست">
-<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
+<!ENTITY gmail-keep-encrypted-mail "پاسخ ایمیل رمزشده را رمزگذاری کن">

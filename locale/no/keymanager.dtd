@@ -12,7 +12,7 @@
 <!ENTITY importfile-button "Importer fra fil">
 <!ENTITY exportfile-button "Eksporter til en fil">
 <!ENTITY new-button "New key">
-<!ENTITY keymanager "Key manager">
+<!ENTITY keymanager "Nøkkelforvalter">
 <!ENTITY refrech "Refresh keys from server">
 <!ENTITY trustUnded "Remove information about trusting">
 <!ENTITY trustDont "I don't trust this key">

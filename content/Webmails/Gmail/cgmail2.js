@@ -334,14 +334,14 @@ fireGPGDebug("ok");
 
                                             var table = doc.createElement('table');
 
-                                            table.innerHTML = '<tbody><tr><td class="kVqJFe"><span id=":ga"><a href="#"><img gpg_action="sattachement2"  class="xPxtgd" src="/mail/images/generic.gif"></a></span></td><td><b>%n</b>  <br>%t&nbsp;&nbsp;<span id=":gd"><a href="#" gpg_action="sattachement">%s</a>&nbsp;&nbsp;</span></td></tr></tbody>';
+                                            table.innerHTML = '<tbody><tr><td class="hw"><span id=":ga"><a href="#"><img gpg_action="sattachement2"  class="hu" src="/mail/images/generic.gif"></a></span></td><td><b>%n</b>  <br>%t&nbsp;&nbsp;<span id=":gd"><a href="#" gpg_action="sattachement">%s</a>&nbsp;&nbsp;</span></td></tr></tbody>';
                                             table.innerHTML = table.innerHTML.replace(/%t/, i18n.getString("decryptedfile"));
                                             table.innerHTML = table.innerHTML.replace(/%s/, i18n.getString("SaveAS"));
                                             table.innerHTML = table.innerHTML.replace(/%n/, htmlEncode(att.filename));
                                             table.setAttribute('firegpg-file-content',Base64.encode(att.data,true));
                                             table.setAttribute('firegpg-file-name', att.filename);
                                             table.setAttribute('firegpg-file-type','decrypted');
-                                            table.setAttribute('class', 'Dva3x');
+                                            table.setAttribute('class', 'cf hr');
                                             table.setAttribute('gpg_action','attachement');
                                             var tmpListener = new Object;
                                             tmpListener = null;
@@ -370,10 +370,10 @@ fireGPGDebug("ok");
 
                                                 var tableBox = doc.createElement('table');
 
-                                                tableBox.innerHTML = '<tbody><tr><td class="kVqJFe"><span id=":ga"><a href="#"><img class="xPxtgd" src="/mail/images/generic.gif"></a></span></td><td><b>%n</b>  <br>%t&nbsp;&nbsp;<span id=":gd">&nbsp;&nbsp;</span></td></tr></tbody>';
+                                                tableBox.innerHTML = '<tbody><tr><td class="hw"><span id=":ga"><a href="#"><img class="hu" src="/mail/images/generic.gif"></a></span></td><td><b>%n</b>  <br>%t&nbsp;&nbsp;<span id=":gd">&nbsp;&nbsp;</span></td></tr></tbody>';
                                                 tableBox.innerHTML = tableBox.innerHTML.replace(/%t/, i18n.getString("firegpgencrypted"));
                                                 tableBox.innerHTML = tableBox.innerHTML.replace(/%n/, htmlEncode(att.filename));
-                                                tableBox.setAttribute('class', 'Dva3x');
+                                                tableBox.setAttribute('class', 'cf hr');
 
                                                 attachementBox.appendChild(tableBox);
 
@@ -2673,11 +2673,11 @@ fireGPGDebug("activated");
         //
         this.handleEvent = function(event) {
 
-          //fireGPGDebug(event.target.className, 'Nodeinsersed');
+          fireGPGDebug(event.target.className, 'Nodeinsersed');
 
             if (event.target && event.target.className &&
                 (event.target.className == "HprMsc" || event.target.className.indexOf("y4Wv6d") != -1 || event.target.className == "XoqCub" ||//load old mail | compose | Mail widnow
-                 event.target.className.indexOf("HprMsc") != -1 || event.target.className.indexOf("CoUvaf") != -1 || event.target.className.indexOf("T1HY1") != -1) &&  //load old mail2 | compose2 | Mail widnow2
+                 event.target.className.indexOf("HprMsc") != -1 || event.target.className.indexOf("CoUvaf") != -1 || event.target.className.indexOf("T1HY1") != -1  || event.target.className.indexOf("cf hX") != -1) &&  //load old mail2 | compose2 | Mail widnow2 | bouton d'un mail
                 (cGmail2.docOccuped[this._docid] == undefined || cGmail2.docOccuped[this._docid] == false))
             {
                 fireGPGDebug("Captured !");

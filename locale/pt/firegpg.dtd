@@ -50,5 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Gestor de chaves">
 <!ENTITY firegpgMenu.labelManager "Gestor de chaves">
 <!ENTITY keynotrevokedpassword "Erro: chave não revogada. Senha errada?">
-<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
-<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgContext.labelWrapSign "Sinalizador de quebra de linha">
+<!ENTITY firegpgMenu.labelWrapSign "Sinalizador de quebra de linha">

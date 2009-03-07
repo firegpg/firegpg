@@ -27,7 +27,7 @@
 <!ENTITY firegpgMenu.labelExport "書き出し">
 <!ENTITY firegpgContext.labelExport "書き出し">
 <!ENTITY firegpgToolbar.labelExport "書き出し">
-<!ENTITY firegpgPopInfo.labelBonjour "ようこそ!FireGPGのインストールは成功しました。">
+<!ENTITY firegpgPopInfo.labelBonjour "ようこそ! FireGPGのインストールは成功しました。">
 <!ENTITY firegpgPopInfo.labelAccessOk "FireGPGはgpgにアクセス可能です。">
 <!ENTITY firegpgPopInfo.labelAccessErr "FireGPGは、gpgの実行形式ファイルにアクセスできませんでした。インストールされていることを確認するか、設定でパスを指定してください。">
 <!ENTITY firegpgPopInfo.labelKeyOk "秘密鍵が選択されました。">

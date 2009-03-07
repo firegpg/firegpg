@@ -11,7 +11,7 @@
 <!ENTITY expire-month "ay">
 <!ENTITY expire-days "gün">
 <!ENTITY advancedoptions "Gelişmiş seçenekler">
-<!ENTITY keylenght-message "Key length">
+<!ENTITY keylenght-message "Anahtar uzunluğu">
 <!ENTITY keytype-message "Key type">
 <!ENTITY generate-button "Generate key">
 <!ENTITY cancel-button "İptal">
