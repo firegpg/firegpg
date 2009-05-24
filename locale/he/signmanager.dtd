@@ -1,0 +1,7 @@
+<!ENTITY signmanager "מנהל חתימות">
+<!ENTITY key-name "שם">
+<!ENTITY key-id "זיהוי מפתח">
+<!ENTITY key-create "תאריך (חתימה או יצירה)">
+<!ENTITY sign-button "חתום מפתח זה">
+<!ENTITY revoke-button "בטל חתימה זו">
+<!ENTITY del-button "מחק חתימה זו">

@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Signaturhåndterer">
+<!ENTITY key-name "Navn">
+<!ENTITY key-id "NøkkelID">
+<!ENTITY key-create "Dato (from signering eller etablering av nøkkel)">
+<!ENTITY sign-button "Signer denne nøkkelen">
+<!ENTITY revoke-button "Trekk tilbake denne signaturen">
+<!ENTITY del-button "Slett dette tegnet.">

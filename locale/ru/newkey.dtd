@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - новый ключ">
+<!ENTITY warningaboutgeneeration "Внимание! Создание ключа может занять много времени, и при этом FireFox перестанет отвечать. Поделайте что-нибудь ещё на компьютере, чтобы повысить энтропию процесса создания.">
+<!ENTITY name-message "Имя">
+<!ENTITY email-message "E-mail">
+<!ENTITY comment-message "Комментарий">
+<!ENTITY password1-message "Пароль">
+<!ENTITY password2-message "Повторите пароль">
+<!ENTITY keyneverexpire "Срок действия неограничен.">
+<!ENTITY keyexpire-message "Ключ действителен ещё">
+<!ENTITY expire-year "лет">
+<!ENTITY expire-month "месяцев">
+<!ENTITY expire-days "дней">
+<!ENTITY advancedoptions "Дополнительные настройки">
+<!ENTITY keylenght-message "Длина ключа">
+<!ENTITY keytype-message "Тип ключа">
+<!ENTITY generate-button "Создать ключ">
+<!ENTITY cancel-button "Отмена">

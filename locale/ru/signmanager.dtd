@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Управление подписями">
+<!ENTITY key-name "Имя">
+<!ENTITY key-id "ID ключа">
+<!ENTITY key-create "Дата (подписи или создания)">
+<!ENTITY sign-button "Подписать этот ключ">
+<!ENTITY revoke-button "Отозвать эту подпись">
+<!ENTITY del-button "Удалить эту подпись">

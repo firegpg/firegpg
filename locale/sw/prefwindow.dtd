@@ -1,0 +1,77 @@
+<!ENTITY prefwindow.title "FireGPG - Inställningar">
+<!ENTITY pane1.title "Allmänt">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Gmail-support">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Förvald privat nyckel:">
+<!ENTITY show-website-checkbox "Visa FireGPG:s hemsideadress i GnuPG:s kommentarsfält">
+<!ENTITY change-gpg-path-button "Bläddra">
+<!ENTITY change-gpg-path-checkbox "Ange sökvägen till GPG:">
+<!ENTITY result-always-in-new-window "Visa alltid resultatet av en kryptering och/eller signering i ett nytt fönster.">
+<!ENTITY no-gpg-agent-checkbox "Tvinga avslut av 'gpg-agent' (kan fixa vissa problem)">
+<!ENTITY ask-for-save-pass "Som standard, fråga om lösenord skall memoreras">
+<!ENTITY gmail-no-no-sign-checkbox "Visa inte 'Ingen signatur hittades [...]'">
+<!ENTITY gmail-need-a-restart "Webbläsaren måste startas om för att dessa inställningar skall börja verka.">
+<!ENTITY gmail-buttons-label "Knappar som skall visas:">
+<!ENTITY gmail-buton-sign-checkbox "Signera">
+<!ENTITY gmail-buton-signsend-checkbox "Signera och skicka">
+<!ENTITY gmail-buton-crypt-checkbox "Kryptera">
+<!ENTITY gmail-buton-cryptsend-checkbox "Kryptera och skicka">
+<!ENTITY allvays-to-myself-checkbox "Kryptera alltid till mig själv">
+<!ENTITY enable-gpgauth-check.label "Aktivera 'gpgAuth' (webbläsaren måste startas om)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Dekryptera alltid meddelanden från autentiserade servrar">
+<!ENTITY global-allow-keyring-check.label "Dekryptera alltid meddelanden från autentiserade servrar">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Inställningar per domän:">
+<!ENTITY turn-off-updates "Inaktivera automatiska uppdateringar av FireGPG">
+<!ENTITY key-name "Namn">
+<!ENTITY key-id "Nyckel-ID">
+<!ENTITY key-create "Datum">
+<!ENTITY key-expire "Förfaller">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "Lägg till argument till GPG-kommandot: (Var försiktig: FireGPG kan sluta fungera! Läs dokumentationen.)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Signera och kryptera">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Signera, kryptera och skicka">
+<!ENTITY firegpg-version-label.text "Aktuell FireGPG-version:">
+<!ENTITY hide-expired "Dölj utgångna nycklar">
+<!ENTITY use-api "Aktivera 'FireGPG API' för hemsidor (som t.ex. roundcube) (omstart krävs)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "Lista över tillåtna hemsidor (dubbelklicka för att ta bort)">
+<!ENTITY api-liste-domain.label "Domän">
+<!ENTITY api-liste-keyauth.label "Nyckel">
+<!ENTITY use-gpg-agent-checkbox "Aktivera 'gpg-agent'. (Varning! Kan orsaka problem)">
+<!ENTITY search-description "Sök efter:">
+<!ENTITY gmail-buton-use-select-checkbox "Visa lista istället för knappar">
+<!ENTITY firegpg-ask-for-private-label.text "Fråga alltid efter privat nyckel">
+<!ENTITY inline-activated "Leta efter 'PGP-block' på hemsidor (omstart krävs)">
+<!ENTITY gmail-disable-autosave-checkbox "Avaktivera autosparfunktion">
+<!ENTITY gmail-buton-csign-checkbox "Signera i klartext">
+<!ENTITY gmail-buton-csignsend-checkbox "Signera i klartext och skicka">
+<!ENTITY hide-fireftp-message "Visa inte meddelande om gammalt IPC-bibliotek.">
+<!ENTITY use-fireftp-workaround "Försök att använda IPC med det gamla API:t.">
+<!ENTITY keyserver-message "Nyckelserver">
+<!ENTITY symmetric-algo "Algoritm för symmetrisk kryptering. Lämna blankt för standarinställning. Använd gpg --version för att se en lista över tillgängliga algoritmer. I de flesta fall har du följande alternativ:">
+<!ENTITY gmail-new-interface "Nya Gmail-gränssnittet">
+<!ENTITY gmail-select-by-default-label "Valt som standard:">
+<!ENTITY gmail-buton-inline-checkbox "Inline">
+<!ENTITY gmail-old-interface "Gamla Gmail-gränssnittet">
+<!ENTITY gmail-smtp-options-label "SMTP-alternativ (openpgp/mime-mejl)">
+<!ENTITY gmail-smtp-google-com "Försök aldrig använda sparat lösenord för google.com">
+<!ENTITY gmail-smtp-username "Användarnamn (lämna blankt för att använda aktivt konto):">
+<!ENTITY gmail-smtp-host "Värd (smtp.gmail.com):">
+<!ENTITY gmail-smtp-port "Port (465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Använd SSL:">
+<!ENTITY gmail-disable-sign-detection "Inaktivera svarsupptäckt för inline-signering (och kryptering) (använd alltid hela emailet)">
+<!ENTITY gmail-disable-auto-decryption "Gammalt beteende för dekryptering">
+<!ENTITY gmail-force-from "Tvinga från värde :">
+<!ENTITY gpg-special-path-values "Använd {$FxFolder} för attha Firefoxs mapp och {$SPACE} för att ha ett mellanslag i ett argument">
+<!ENTITY decrypt-when-reply "Dekryptera innehåll vid svar">
+<!ENTITY gmail-buton-attachements-checkbox "Bifogade filer">
+<!ENTITY autorwap-liste-action.label "Handling">
+<!ENTITY autorwap-liste-domain.label "Webbmail">
+<!ENTITY autowrap_list.label "Automatiska svar (dubbelklicka för att ta bort):">
+<!ENTITY paneautowrap.title "Automatiskt radbyte">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Visa användaruppgifter för giltiga signaturer (good signatures)">
+<!ENTITY gmail-keep-encrypted-mail "Krypterat svar på krypterad e-post">

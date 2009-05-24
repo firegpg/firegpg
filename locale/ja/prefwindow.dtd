@@ -1,0 +1,77 @@
+<!ENTITY prefwindow.title "FireGPG設定">
+<!ENTITY pane1.title "一般">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Gmailサポート">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "デフォルトの秘密鍵:">
+<!ENTITY show-website-checkbox "FireGPGウェブサイトのアドレスを、をGnuPGのコメント欄に表示する">
+<!ENTITY change-gpg-path-button "ブラウズ">
+<!ENTITY change-gpg-path-checkbox "gpgのパスを指定:">
+<!ENTITY result-always-in-new-window "常に暗号化や署名の結果を新しいウィンドウに表示する。">
+<!ENTITY no-gpg-agent-checkbox "GPGエージェントを強制的にオフにする (いくつかの問題が解決するかもしれません)">
+<!ENTITY ask-for-save-pass "デフォルトで, パスワードを保存するか尋ねる">
+<!ENTITY gmail-no-no-sign-checkbox "'署名がありません [...]' を表示しない">
+<!ENTITY gmail-need-a-restart "これらの設定を反映させるために、ブラウザの再起動が必要です。">
+<!ENTITY gmail-buttons-label "表示するボタン:">
+<!ENTITY gmail-buton-sign-checkbox "署名">
+<!ENTITY gmail-buton-signsend-checkbox "署名して送信">
+<!ENTITY gmail-buton-crypt-checkbox "暗号化">
+<!ENTITY gmail-buton-cryptsend-checkbox "暗号化して送信">
+<!ENTITY allvays-to-myself-checkbox "常に自分自身を暗号化する">
+<!ENTITY enable-gpgauth-check.label "gpgAuth を有効にする(ブラウザの再起動が必要です)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "認証したサーバーからのメッセージを常に復号化する">
+<!ENTITY global-allow-keyring-check.label "認証したサーバーからのメッセージを常に復号化する">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "ドメインごとの設定:">
+<!ENTITY turn-off-updates "FireGPGの自動更新を無効にする。">
+<!ENTITY key-name "名前">
+<!ENTITY key-id "ID">
+<!ENTITY key-create "日付 (署名または作成)">
+<!ENTITY key-expire "有効期限">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "gpgコマンドの引数を追加: (注意: FireGPGが動作を停止するかもしれません! 文書を読んでください)">
+<!ENTITY gmail-buton-signcrypt-checkbox "署名と暗号化">
+<!ENTITY gmail-buton-signcryptsend-checkbox "署名, 暗号化して送信">
+<!ENTITY firegpg-version-label.text "現在のFireGPGバージョン:">
+<!ENTITY hide-expired "有効期限切れの署名を隠す">
+<!ENTITY use-api "ウェブページのFireGPG APIを有効にする (roundcube等) (再起動が必要)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "許可されたサイトのリスト (ダブルクリックで削除)">
+<!ENTITY api-liste-domain.label "ドメイン">
+<!ENTITY api-liste-keyauth.label "鍵">
+<!ENTITY use-gpg-agent-checkbox "GPG-agentを有効にする (警告, 問題を引き起こすことがあります)">
+<!ENTITY search-description "検索:">
+<!ENTITY gmail-buton-use-select-checkbox "ボタンの代わりにリストを表示する">
+<!ENTITY firegpg-ask-for-private-label.text "常に秘密鍵を尋ねる">
+<!ENTITY inline-activated "ページ中のPGPブロックを確認する (再起動が必要)">
+<!ENTITY gmail-disable-autosave-checkbox "自動保存の機能を無効にする">
+<!ENTITY gmail-buton-csign-checkbox "クリア署名">
+<!ENTITY gmail-buton-csignsend-checkbox "クリア署名して送信">
+<!ENTITY hide-fireftp-message "古いIPCライブラリがインストールされている事に関するメッセージを表示しない。">
+<!ENTITY use-fireftp-workaround "IPCに古いAPIでのアクセスを試みる。">
+<!ENTITY keyserver-message "鍵サーバー">
+<!ENTITY symmetric-algo "対称暗号可に用いるアルゴリズム。デフォルトは空白。gpg --version で利用可能なアルゴリズムが表示されます。多くの場合、以下の選択があります: ">
+<!ENTITY gmail-new-interface "新しいGmailインターフェース">
+<!ENTITY gmail-select-by-default-label "デフォルトで選択:">
+<!ENTITY gmail-buton-inline-checkbox "インライン">
+<!ENTITY gmail-old-interface "古いGmailインターフェース">
+<!ENTITY gmail-smtp-options-label "SMTPオプション (openpgp/MIMEメール)">
+<!ENTITY gmail-smtp-google-com "google.comの記憶されたパスワードを使用しない">
+<!ENTITY gmail-smtp-username "ユーザー名 (ログインアカウントのユーザー名を使用する場合は空白): ">
+<!ENTITY gmail-smtp-host "ホスト (smtp.gmail.com): ">
+<!ENTITY gmail-smtp-port "ポート (465): ">
+<!ENTITY gmail-smtp-use-ssl-checkbox "SSLを使用する:">
+<!ENTITY gmail-disable-sign-detection "インライン署名 (と暗号化) に対する、返信の検出を無効にする (常にメール全文を使用する)">
+<!ENTITY gmail-disable-auto-decryption "復号化の際、古い振る舞いをする">
+<!ENTITY gmail-force-from "強制from設定:">
+<!ENTITY gpg-special-path-values "Firefoxのフォルダは {$FxFolder}, 引数の間の空白は {$SPACE} と指定してください">
+<!ENTITY decrypt-when-reply "返信時に復号化する">
+<!ENTITY gmail-buton-attachements-checkbox "添付">
+<!ENTITY autorwap-liste-action.label "動作">
+<!ENTITY autorwap-liste-domain.label "ウエブメール">
+<!ENTITY autowrap_list.label "自動応答 (ダブルクリックで削除)">
+<!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "正しい署名の場合、ユーザ情報を表示する">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

@@ -1,0 +1,7 @@
+<!ENTITY signmanager "签名管理器">
+<!ENTITY key-name "姓名">
+<!ENTITY key-id "密钥标识">
+<!ENTITY key-create "签名或创建日期">
+<!ENTITY sign-button "为这把密钥添加签署">
+<!ENTITY revoke-button "吊销此签名">
+<!ENTITY del-button "删除此签名">

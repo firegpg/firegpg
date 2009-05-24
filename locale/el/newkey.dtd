@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - νέο κλειδί">
+<!ENTITY warningaboutgeneeration "Προσοχή ! Η δημιουργία ενός κλειδιού ίσως διαρκέσει αρκετή ώρα και ο Firefox θα \"παγώσει\". Κάντε κάτι άλλο ενώ το κλειδί δημιουργείται για να παρέχετε περισσότερη εντροπία.">
+<!ENTITY name-message "Όνομα">
+<!ENTITY email-message "Email">
+<!ENTITY comment-message "Σχόλιο">
+<!ENTITY password1-message "Κωδικός">
+<!ENTITY password2-message "Επαναλάβετε τον κωδικό">
+<!ENTITY keyneverexpire "Το κλειδί δεν λήγει ποτέ">
+<!ENTITY keyexpire-message "Το κλειδί λήγει σε">
+<!ENTITY expire-year "χρόνια">
+<!ENTITY expire-month "μήνες">
+<!ENTITY expire-days "μέρες">
+<!ENTITY advancedoptions "Για προχωρημένους">
+<!ENTITY keylenght-message "Μήκος κλειδιού">
+<!ENTITY keytype-message "Τύπος κλειδιού">
+<!ENTITY generate-button "Δημιουργία κλειδιού">
+<!ENTITY cancel-button "Άκυρο">

@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Κρυπτογράφηση">
+<!ENTITY dcrypt-button "Αποκρυπτογράφηση">
+<!ENTITY sign-button "Υπογραφή">
+<!ENTITY verify-button "επαλήθευση">
+<!ENTITY open-button "Άνοιγμα">
+<!ENTITY save-button "Αποθήκευση">
+<!ENTITY cryptandsign-button "Υπογραφή και κρυπτογράφηση">
+<!ENTITY sign-clear-button "Απλή υπογραφή">
+<!ENTITY symcrypt-button "Συμμετρική κρυπτογράφηση">
+<!ENTITY closeandcopy-button "Αντιγραφή στο">

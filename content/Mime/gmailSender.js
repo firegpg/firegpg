@@ -448,7 +448,7 @@ cGmail2.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><tr><td c
 
 
             //FireGPG :
-            //Dosen't seem to work for reply insides mail : our method
+            //doesn't seem to work for reply insides mail : our method
             divs = d.getElementsByClassName('nH', 'div');
             for (var i=0;i<divs.length;i++) {
 

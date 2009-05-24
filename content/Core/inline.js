@@ -130,7 +130,8 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
 
 		// Universal set up
 		block.original.textContent = content;
-		frame.contentDocument.getElementById("toggle-original").addEventListener("click", function() {
+
+        frame.contentDocument.getElementById("toggle-original").addEventListener("click", function() {
 			var style = block.original.style;
 			if(style.display == "block") {
 				style.display = "none";
@@ -143,6 +144,23 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
             frame.style.width = block.body.scrollWidth + "px";
 			frame.style.height = block.body.scrollHeight + "px";
 		}, false);
+
+
+        frame.contentDocument.getElementById("switch-direction").textContent = FireGPGInline.i18n.getString("switchdirection")
+        frame.contentDocument.getElementById("switch-direction").addEventListener("click", function() {
+			var style = block.original.style;
+			if(style.direction == "rtl") {
+				style.direction = "ltr";
+                block.message.style.direction = "ltr";
+            }
+			else {
+				style.direction = "rtl";
+                block.message.style.direction = "rtl";
+            }
+
+		}, false);
+
+
 		var actionHandler = function() {
 			switch(blockType) {
 				case FireGPGInline.KEY_BLOCK:
@@ -190,8 +208,29 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
 				block.action.textContent = FireGPGInline.i18n.getString("decrypt");
 				break;
 		}
-        frame.style.width = block.body.scrollWidth + "px";
-		frame.style.height = block.body.scrollHeight + "px";
+
+		// Make sure that the block has nonzero size before resizing the frame:
+		frame.resize = function(self, content) {
+		    if(content.body.scrollWidth != 0 && content.body.scrollHeight != 0) {
+
+                if (content.body.scrollWidth > 50)
+                    width = content.body.scrollWidth;
+                else
+                    width = 50;
+
+                self.style.width = cwidth + "px";
+                self.style.height = content.body.scrollHeight + "px";
+		    } else {
+			// Wait 100ms and try again:
+                self.try += 1;
+                if (self.try < 20)
+                    setTimeout(self.resize, 100, self, content);
+		    }
+		}
+
+        frame.try = 0;
+		frame.resize(frame, block);
+
 	}, false);
 };
 

@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Encripta">
+<!ENTITY dcrypt-button "Desencripta">
+<!ENTITY sign-button "Signa">
+<!ENTITY verify-button "Verifica">
+<!ENTITY open-button "Obre">
+<!ENTITY save-button "Guarda">
+<!ENTITY cryptandsign-button "Signar i Encriptar">
+<!ENTITY sign-clear-button "Neteja la signatura">
+<!ENTITY symcrypt-button "Encriptació simètrica">
+<!ENTITY closeandcopy-button "Copiar al porta-retalls">

@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Εισαγωγή κλειδιού από τον εξυπηρετητή">
+<!ENTITY close-button "Κλείσιμο">
+<!ENTITY import-button "Εισαγωγή επιλεγμένων κλειδιών">
+<!ENTITY search-button "Αναζήτηση">
+<!ENTITY search-description "Αναζήτηση για:">
+<!ENTITY key-create "Δημιουργήθηκε">
+<!ENTITY key-id "Id">
+<!ENTITY key-name "Όνομα">

@@ -1,0 +1,31 @@
+<!ENTITY key-status "Status">
+<!ENTITY key-trust "Trust">
+<!ENTITY key-expire "Expire">
+<!ENTITY key-create "Created">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Name">
+<!ENTITY revoke-button "Revoke key">
+<!ENTITY sign-button "Signatures">
+<!ENTITY changetrust-button "Change trust">
+<!ENTITY importserver-button "Import from server">
+<!ENTITY exportserver-button "Export to server">
+<!ENTITY importfile-button "Import from file">
+<!ENTITY exportfile-button "Export to file">
+<!ENTITY new-button "New key">
+<!ENTITY keymanager "Key manager">
+<!ENTITY refrech "Refresh keys from server">
+<!ENTITY trustUnded "Remove information about trusting">
+<!ENTITY trustDont "I don't trust this key">
+<!ENTITY trustMargi "I marginally trust this key">
+<!ENTITY trustFull "I fully trust this key">
+<!ENTITY trustUltimate "Trust this key ultimately (!)">
+<!ENTITY password-button "Change password">
+<!ENTITY del-button "Delete">
+<!ENTITY revokeNoRaison "No reason specified">
+<!ENTITY revokeComprimse "Key has been compromised">
+<!ENTITY revokeRemplaced "Key is superseded">
+<!ENTITY revokeNotUsed "Key is no longer used">
+<!ENTITY userid-button "User ID">
+<!ENTITY add "">
+<!ENTITY delete "Delete">
+<!ENTITY revoke "Revoke">

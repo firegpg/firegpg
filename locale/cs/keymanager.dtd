@@ -1,0 +1,31 @@
+<!ENTITY key-status "Stav">
+<!ENTITY key-trust "Důvěryhodnost">
+<!ENTITY key-expire "Vyprší">
+<!ENTITY key-create "Vytvořeno">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Jméno">
+<!ENTITY revoke-button "Odvolat klíč">
+<!ENTITY sign-button "Podpisy">
+<!ENTITY changetrust-button "Změnit důvěryhodnost">
+<!ENTITY importserver-button "Import ze serveru">
+<!ENTITY exportserver-button "Exportovat na server">
+<!ENTITY importfile-button "Import ze souboru">
+<!ENTITY exportfile-button "Exportovat do souboru">
+<!ENTITY new-button "Nový klíč">
+<!ENTITY keymanager "Správce klíčů">
+<!ENTITY refrech "Aktualizovat klíče ze serveru">
+<!ENTITY trustUnded "Odstranit informaci o důvěryhodnosti">
+<!ENTITY trustDont "Tomuto klíči nevěřím">
+<!ENTITY trustMargi "Věřím tomuto klíči okrajově">
+<!ENTITY trustFull "Plně tomuto klíči důvěřuji">
+<!ENTITY trustUltimate "Věřím mu maximálně (!)">
+<!ENTITY password-button "Změnit heslo">
+<!ENTITY del-button "Smazat">
+<!ENTITY revokeNoRaison "Důvod neuvedený">
+<!ENTITY revokeComprimse "Klíč byl kompromitován">
+<!ENTITY revokeRemplaced "Klíč byl nahrazen">
+<!ENTITY revokeNotUsed "Klíč už není používán">
+<!ENTITY userid-button "ID uživatele">
+<!ENTITY add "Přidat">
+<!ENTITY delete "Smazat">
+<!ENTITY revoke "Odvolat">

@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "從伺服器匯入金鑰">
+<!ENTITY close-button "關閉">
+<!ENTITY import-button "Import selected keys">
+<!ENTITY search-button "搜尋">
+<!ENTITY search-description "Search for :">
+<!ENTITY key-create "Created">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Name">

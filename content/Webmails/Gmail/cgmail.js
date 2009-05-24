@@ -373,7 +373,7 @@ var cGmail = {
             id - The id of the button
             box - The node where the button is added.
             Ddocument - The page's document (of the node)
-            info1 -  Dosen't seem to be used.
+            info1 -  doesn't seem to be used.
     */
 	addBouton: function(label,id,box,Ddocument,info1) {
 

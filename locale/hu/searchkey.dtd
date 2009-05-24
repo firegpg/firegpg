@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Import key from server">
+<!ENTITY close-button "Bezárás">
+<!ENTITY import-button "Import selected keys">
+<!ENTITY search-button "Search">
+<!ENTITY search-description "Search for :">
+<!ENTITY key-create "Created">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Name">

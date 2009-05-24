@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Şifre">
+<!ENTITY dcrypt-button "Şifre Çöz">
+<!ENTITY sign-button "İmza">
+<!ENTITY verify-button "Doğrula">
+<!ENTITY open-button "Aç">
+<!ENTITY save-button "Kaydet">
+<!ENTITY cryptandsign-button "İmza ve şifre">
+<!ENTITY sign-clear-button "Clearsign">
+<!ENTITY symcrypt-button "Symmetric encryption">
+<!ENTITY closeandcopy-button "Panoya kopyala ve kapat">

@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Mã hóa">
+<!ENTITY dcrypt-button "Giải mã">
+<!ENTITY sign-button "Ký số">
+<!ENTITY verify-button "Xác thực">
+<!ENTITY open-button "Mở">
+<!ENTITY save-button "Lưu">
+<!ENTITY cryptandsign-button "Ký số và mã hóa">
+<!ENTITY sign-clear-button "Clearsign">
+<!ENTITY symcrypt-button "Mã hóa đối xứng">
+<!ENTITY closeandcopy-button "Copy vào Clopboard và đóng">

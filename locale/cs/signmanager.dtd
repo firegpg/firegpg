@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Správce podpisů">
+<!ENTITY key-name "Jméno">
+<!ENTITY key-id "ID klíče">
+<!ENTITY key-create "Datum (podpisu nebo vytvoření)">
+<!ENTITY sign-button "Podepsat tento klíč">
+<!ENTITY revoke-button "Odvolat tento podpis">
+<!ENTITY del-button "Smazat tento podpis">

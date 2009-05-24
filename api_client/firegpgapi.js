@@ -93,7 +93,7 @@ function fireGPGAuth(akf) {
 	if(FireGPGHelloOK == false) {
 		if(fireGPGHello() == false) {
 			/* TODO pas de message dans le fichier firegpgapi.js */
-			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
+			alert('FireGPG - api : Error, FireGPG doesn\'t respond.');
 			return false;
 		}
 	}
@@ -121,7 +121,7 @@ function fireGPGRegister() {
 	if(FireGPGHelloOK == false) {
 		if(fireGPGHello()== false) {
 			/* TODO pas de message dans le fichier firegpgapi.js */
-			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
+			alert('FireGPG - api : Error, FireGPG doesn\'t respond.');
 			return false;
 		}
 	}
@@ -146,7 +146,7 @@ function fireGPGListKey(auth_key) {
 	if(FireGPGHelloOK == false)
 	{
 		if(fireGPGHello()== false) {
-			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
+			alert('FireGPG - api : Error, FireGPG doesn\'t respond.');
 			return false;
 		}
 	}
@@ -204,7 +204,7 @@ function fireGPGListPrivKey(auth_key) {
 	if(FireGPGHelloOK == false)
 	{
 		if(fireGPGHello()== false) {
-			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
+			alert('FireGPG - api : Error, FireGPG doesn\'t respond.');
 			return false;
 		}
 	}
@@ -260,7 +260,7 @@ function fireGPGCheck(auth_key, text) {
 	if(FireGPGHelloOK == false)
 	{
 		if(fireGPGHello()== false) {
-			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
+			alert('FireGPG - api : Error, FireGPG doesn\'t respond.');
 			return false;
 		}
 	}
@@ -313,7 +313,7 @@ function fireGPGSign(auth_key, text, forceKey /* Optional */) {
 	if(FireGPGHelloOK == false)
 	{
 		if(fireGPGHello()== false) {
-			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
+			alert('FireGPG - api : Error, FireGPG doesn\'t respond.');
 			return false;
 		}
 	}
@@ -369,7 +369,7 @@ function fireGPGEncrypt(auth_key, text, dest_keys) {
 	if(FireGPGHelloOK == false)
 	{
 		if(fireGPGHello()== false) {
-			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
+			alert('FireGPG - api : Error, FireGPG doesn\'t respond.');
 			return false;
 		}
 	}
@@ -439,7 +439,7 @@ function fireGPGSignAndEncrypt(auth_key, text, dest_keys, forceKey /* Optional *
 	if(FireGPGHelloOK == false)
 	{
 		if(fireGPGHello()== false) {
-			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
+			alert('FireGPG - api : Error, FireGPG doesn\'t respond.');
 			return false;
 		}
 	}
@@ -512,7 +512,7 @@ function fireGPGDecrypt(auth_key, text) {
 	if(FireGPGHelloOK == false)
 	{
 		if(fireGPGHello()== false) {
-			alert('FireGPG - api : Error, FireGPG dosen\'t respond.');
+			alert('FireGPG - api : Error, FireGPG doesn\'t respond.');
 			return false;
 		}
 	}

@@ -1,0 +1,31 @@
+<!ENTITY key-status "Status">
+<!ENTITY key-trust "Troværdighed">
+<!ENTITY key-expire "Udløbe">
+<!ENTITY key-create "Oprettet">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Navn">
+<!ENTITY revoke-button "Inddrag nøgle">
+<!ENTITY sign-button "Underskrifter">
+<!ENTITY changetrust-button "Ændr troværdighed">
+<!ENTITY importserver-button "Importér fra server">
+<!ENTITY exportserver-button "Eksportér til server">
+<!ENTITY importfile-button "Importér fra fil">
+<!ENTITY exportfile-button "Eksportér til fil">
+<!ENTITY new-button "Ny nøgle">
+<!ENTITY keymanager "Nøglehåndtering">
+<!ENTITY refrech "Genopfrisk nøgler fra server">
+<!ENTITY trustUnded "Fjern information om troværdighed">
+<!ENTITY trustDont "Jeg har ikke tillid til denne nøgle">
+<!ENTITY trustMargi "Jeg har kun delvis tillid til denne nøgle">
+<!ENTITY trustFull "Jeg har fuld tillid til denne nøgle">
+<!ENTITY trustUltimate "Hav maksimal tillid til denne nøgle (!)">
+<!ENTITY password-button "Ændr adgangskode">
+<!ENTITY del-button "Slet">
+<!ENTITY revokeNoRaison "Ingen grund angivet">
+<!ENTITY revokeComprimse "Nøgler er blevet bragt i fare">
+<!ENTITY revokeRemplaced "Nøglen er afløst">
+<!ENTITY revokeNotUsed "Nøgler er ikke længere ibrug">
+<!ENTITY userid-button "Bruger-ID">
+<!ENTITY add "Tilføj">
+<!ENTITY delete "Slet">
+<!ENTITY revoke "Inddrag">

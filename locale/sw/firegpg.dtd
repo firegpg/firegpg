@@ -1,0 +1,54 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "Signera">
+<!ENTITY firegpgContext.labelCrypt "Kryptera">
+<!ENTITY firegpgContext.labelVerif "Verifiera">
+<!ENTITY firegpgContext.labelDecry "Dekryptera">
+<!ENTITY firegpgContext.labelOptions "Inställningar">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "Signera">
+<!ENTITY firegpgMenu.labelCrypt "Kryptera">
+<!ENTITY firegpgMenu.labelVerif "Verifiera">
+<!ENTITY firegpgMenu.labelDecry "Kryptera">
+<!ENTITY firegpgMenu.labelOptions "Inställningar">
+<!ENTITY firegpgToolbar.labelSign "Signera">
+<!ENTITY firegpgToolbar.labelCrypt "Kryptera">
+<!ENTITY firegpgToolbar.labelVerif "Verifiera">
+<!ENTITY firegpgToolbar.labelDecry "Dekryptera">
+<!ENTITY firegpgToolbar.labelOptions "Inställningar">
+<!ENTITY firegpgMenu.labelErase "Rensa sparat lösenord">
+<!ENTITY firegpgContext.labelErase "Rensa sparat lösenord">
+<!ENTITY firegpgToolbar.labelErase "Rensa sparat lösenord">
+<!ENTITY firegpgMenu.labelImport "Importera">
+<!ENTITY firegpgContext.labelImport "Importera">
+<!ENTITY firegpgToolbar.labelImport "Importera">
+<!ENTITY firegpgMenu.labelExport "Exportera">
+<!ENTITY firegpgContext.labelExport "Exportera">
+<!ENTITY firegpgToolbar.labelExport "Exportera">
+<!ENTITY firegpgPopInfo.labelBonjour "Välkommen! Installationen av FireGPG lyckades.">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG har åtkomst till GPG.">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG kan inte komma åt GPG. Kontrollera att det är installerat, eller ange sökvägen manuellt under 'Inställningar'.">
+<!ENTITY firegpgPopInfo.labelKeyOk "En privat nyckel är vald.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Varning: vänligen välj en privat nyckel under 'Inställningar'.">
+<!ENTITY firegpgPopInfo.close "Stäng">
+<!ENTITY firegpgPopInfo.options "Inställningar">
+<!ENTITY firegpgContext.labelEditeur "Textredigerare">
+<!ENTITY firegpgMenu.labelEditeur "Textredigerare">
+<!ENTITY firegpgToolbar.labelEditeur "Textredigerare">
+<!ENTITY firegpgContext.labelCryptSign "Signera och kryptera">
+<!ENTITY firegpgMenu.labelCryptSign "Signera och kryptera">
+<!ENTITY firegpgToolbar.labelCryptSign "Signera och kryptera">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symmetrisk kryptering">
+<!ENTITY firegpgContext.labelSymCrypt "Symmetrisk kryptering">
+<!ENTITY firegpgMenu.labelSymCrypt "Symmetrisk kryptering">
+<!ENTITY firegpgContext.labelClearSign "Klartextsignatur">
+<!ENTITY firegpgToolbar.labelClearSign "Klartextsignatur">
+<!ENTITY firegpgMenu.labelClearSign "Klartextsignatur">
+<!ENTITY firegpgContext.labelManager "Nyckelhanterare">
+<!ENTITY firegpgToolbar.labelManager "Nyckelhanterare">
+<!ENTITY firegpgMenu.labelManager "Nyckelhanterare">
+<!ENTITY keynotrevokedpassword "Fel, nyckel ej upphävd. Fel lösenord?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

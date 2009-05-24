@@ -143,7 +143,7 @@ var FireGPGAutoWrap = {
         if (!text)
             return text;
 
-        return text.replace(/[\s\S]{70}/g,"$&\r\n");
+        return text.replace(/(.{1,70})(?:\s|$)/g,"$1\n");
 
     },
 

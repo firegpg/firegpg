@@ -10,7 +10,9 @@
 		<div id="message"></div>
 		<div id="options">
 			<span tabindex="0" id="toggle-original">Show Original</span> |
-			<span tabindex="0" id="action"></span>
+			<span tabindex="0" id="action"></span> |
+            <span tabindex="0" id="switch-direction"></span>
+
 		</div>
 		<pre id="original" style="display: none;">
 		</pre>

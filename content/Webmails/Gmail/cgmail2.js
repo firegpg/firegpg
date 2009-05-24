@@ -142,7 +142,7 @@ var cGmail2 = {
                         if (boutonbox == "")
                             break;
 
-fireGPGDebug("ok");
+                        fireGPGDebug("ok");
                        // var contenuMail = this.getMailContent(listeTest[i],doc);
 
                        var td = doc.createElement("td");
@@ -688,7 +688,7 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
 
                             var span = doc.createElement("span");
 
-                            span.setAttribute("style","position: relative;  bottom: 26px;  right: 5px; float: right; margin-bottom: -30px;");
+                            span.setAttribute("style","position: relative;  bottom: 26px; right: 5px; float: right; margin-bottom: -30px;");
 
                             span.innerHTML = '<img class="en ed" src="images/cleardot.gif">&nbsp;<span gpg_action="add_crypted" style="font-size: 12px;" class="el">' + i18n.getString("GmailAddChiffred")+ '</span>&nbsp;<span gpg_action="add_crypted_and_sign" style="font-size: 12px;" class="el">' + i18n.getString("GmailAddChiffredSignToo")+ '</span>';
 

@@ -1,0 +1,77 @@
+<!ENTITY prefwindow.title "FireGPG 설정">
+<!ENTITY pane1.title "일반">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Gmail 지원">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "기본 개인키:">
+<!ENTITY show-website-checkbox "FireGPG 웹사이트 주소를 GPG 주석 영역에 보이기">
+<!ENTITY change-gpg-path-button "GPG 경로 지정">
+<!ENTITY change-gpg-path-checkbox "GPG 프로그램 경로를 직접 지정:">
+<!ENTITY result-always-in-new-window "암호화하거나 서명한 결과를 항상 새 창에 표시">
+<!ENTITY no-gpg-agent-checkbox "GPG의 agent를 강제로 끄기 (일부 오류 해결 가능)">
+<!ENTITY ask-for-save-pass "암호를 저장할지 물어봄">
+<!ENTITY gmail-no-no-sign-checkbox "서명을 찾지 못했다는 안내문을 표시하지 않기">
+<!ENTITY gmail-need-a-restart "아래 설정들을 바꾸고 적용하려면 브라우저를 다시 실행해야합니다.">
+<!ENTITY gmail-buttons-label "표시할 단추들:">
+<!ENTITY gmail-buton-sign-checkbox "서명">
+<!ENTITY gmail-buton-signsend-checkbox "서명하여 전송">
+<!ENTITY gmail-buton-crypt-checkbox "암호화">
+<!ENTITY gmail-buton-cryptsend-checkbox "암호화하여 전송">
+<!ENTITY allvays-to-myself-checkbox "항상 나 자신에게 암호화하여 보내기">
+<!ENTITY enable-gpgauth-check.label "gpgAuth 활성화 (Firefox 재시작 필요)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "인증된 서버로부터의 메세지를 항상 복호화">
+<!ENTITY global-allow-keyring-check.label "인증된 서버로부터의 메세지를 항상 복호화">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "도메인별 설정:">
+<!ENTITY turn-off-updates "FireGPG의 자동 업데이트를 사용하지 않음">
+<!ENTITY key-name "이름">
+<!ENTITY key-id "아이디">
+<!ENTITY key-create "생성됨">
+<!ENTITY key-expire "만료">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "gpg의 명령행에 인수를 넣으십시오: (경고! FireGPG를 고장낼 수 있습니다. 문서를 참조하셔요.)">
+<!ENTITY gmail-buton-signcrypt-checkbox "서명하고 암호화">
+<!ENTITY gmail-buton-signcryptsend-checkbox "서명하고 암호화해서 전송">
+<!ENTITY firegpg-version-label.text "현재 FireGPG 버전:">
+<!ENTITY hide-expired "만료된 키를 숨김">
+<!ENTITY use-api "(roundcube 같은) 웹페이지들을 위한 FireGPG의 API 활성화">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "허용된 사이트 목록 (지우려면 더블클릭)">
+<!ENTITY api-liste-domain.label "도메인">
+<!ENTITY api-liste-keyauth.label "키">
+<!ENTITY use-gpg-agent-checkbox "GPG 에이전트 활성화 (경고: 문제를 일으킬 수 있습니다...)">
+<!ENTITY search-description "필터:">
+<!ENTITY gmail-buton-use-select-checkbox "버튼 대신 드롭다운 리스트 보이기">
+<!ENTITY firegpg-ask-for-private-label.text "항상 개인키를 물어봄">
+<!ENTITY inline-activated "문서 내의 PGP 블럭에 대한 핸들러 활성화 (재시작 필요)">
+<!ENTITY gmail-disable-autosave-checkbox "자동 저장 비활성화">
+<!ENTITY gmail-buton-csign-checkbox "가독형 서명">
+<!ENTITY gmail-buton-csignsend-checkbox "가독형으로 서명하여 전송">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
+<!ENTITY keyserver-message "Keyserver">
+<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms, in most of case you have this choices:">
+<!ENTITY gmail-new-interface "New Gmail interface">
+<!ENTITY gmail-select-by-default-label "Selected by default :">
+<!ENTITY gmail-buton-inline-checkbox "Inline">
+<!ENTITY gmail-old-interface "Old Gmail interface">
+<!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
+<!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
+<!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
+<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
+<!ENTITY gmail-smtp-port "Port (465) :">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
+<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
+<!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
+<!ENTITY gmail-force-from "Force from value :">
+<!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
+<!ENTITY decrypt-when-reply "Decrypt content when reply">
+<!ENTITY gmail-buton-attachements-checkbox "Attachments">
+<!ENTITY autorwap-liste-action.label "Action">
+<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">

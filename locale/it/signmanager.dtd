@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Gestore delle firme">
+<!ENTITY key-name "Nome">
+<!ENTITY key-id "ID della chiave">
+<!ENTITY key-create "Data (firma o creazione)">
+<!ENTITY sign-button "Firma questa chiave">
+<!ENTITY revoke-button "Revoca questa firma">
+<!ENTITY del-button "Elimina questa firma">

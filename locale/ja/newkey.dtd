@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - 新しい鍵">
+<!ENTITY warningaboutgeneeration "警告! 鍵の生成には時間がかかり、Firefoxがフリーズするでしょう。鍵の作成中は、エントロピーを増大させるために、何か他のことをしてください。">
+<!ENTITY name-message "名前">
+<!ENTITY email-message "Eメール">
+<!ENTITY comment-message "コメント">
+<!ENTITY password1-message "パスワード">
+<!ENTITY password2-message "パスワードを再入力">
+<!ENTITY keyneverexpire "有効期限を定めない">
+<!ENTITY keyexpire-message "鍵を以下の有効期限を設定する">
+<!ENTITY expire-year "年">
+<!ENTITY expire-month "か月">
+<!ENTITY expire-days "日">
+<!ENTITY advancedoptions "詳細オプション">
+<!ENTITY keylenght-message "鍵長">
+<!ENTITY keytype-message "鍵の種類">
+<!ENTITY generate-button "鍵を作成">
+<!ENTITY cancel-button "キャンセル">

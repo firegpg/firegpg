@@ -1,0 +1,31 @@
+<!ENTITY key-status "Status">
+<!ENTITY key-trust "Confiance">
+<!ENTITY key-expire "Expiration">
+<!ENTITY key-create "Création">
+<!ENTITY key-id "Id">
+<!ENTITY key-name "Nom">
+<!ENTITY revoke-button "Révoquer la clé">
+<!ENTITY sign-button "Signatures">
+<!ENTITY changetrust-button "Changer la confiance">
+<!ENTITY importserver-button "Importer depuis le serveur">
+<!ENTITY exportserver-button "Exporter vers le serveur">
+<!ENTITY importfile-button "Importer depuis un fichier">
+<!ENTITY exportfile-button "Exporter vers un fichier">
+<!ENTITY new-button "Nouvelle clé">
+<!ENTITY keymanager "Gestionnaire de clés">
+<!ENTITY refrech "Rafraichir les clés depuis le serveur">
+<!ENTITY trustUnded "Supprimer les informations sur la confiance">
+<!ENTITY trustDont "Je ne fait pas confiance à cette clé">
+<!ENTITY trustMargi "Je fait marginalement confiance à cette clé">
+<!ENTITY trustFull "Je fait complètement confiance a cette clé">
+<!ENTITY trustUltimate "Faire confiance de manière ultime à cette clé (!)">
+<!ENTITY password-button "Changer le mot de passe">
+<!ENTITY del-button "Supprimer">
+<!ENTITY revokeNoRaison "Pas de raison spécifiée">
+<!ENTITY revokeComprimse "La clé à été compromise">
+<!ENTITY revokeRemplaced "La clé à été remplacée">
+<!ENTITY revokeNotUsed "La clé n'est plus utilisée">
+<!ENTITY userid-button "Identité">
+<!ENTITY add "Ajouter">
+<!ENTITY delete "Supprimer">
+<!ENTITY revoke "Révoquer">

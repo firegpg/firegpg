@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Versleutel">
+<!ENTITY dcrypt-button "Ontsleutel">
+<!ENTITY sign-button "Onderteken">
+<!ENTITY verify-button "Verifieer">
+<!ENTITY open-button "Open">
+<!ENTITY save-button "Opslaan">
+<!ENTITY cryptandsign-button "Onderteken en versleutel">
+<!ENTITY sign-clear-button "Leesbaar ondertekenen">
+<!ENTITY symcrypt-button "Symmetrische versleuteling">
+<!ENTITY closeandcopy-button "Naar klembord kopiëren en sluiten">

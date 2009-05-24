@@ -59,9 +59,9 @@ const idAppli = "firegpg@firegpg.team";
 
    XPCOM_STATE_NEVERTESTED - Never tryied to use the xpcom
    XPCOM_STATE_WORKS    - The xpcom works and we use it.
-   XPCOM_STATE_DONTWORK   - The xpcom dosen't work.
+   XPCOM_STATE_DONTWORK   - The xpcom doesn't work.
    XPCOM_STATE_DISABLED   - The xpcom is disabled
-   XPCOM_STATE_DONTWORK_IN_0_5   - The xpcom of version 0.5 dosen't work.
+   XPCOM_STATE_DONTWORK_IN_0_5   - The xpcom of version 0.5 doesn't work.
 */
 
 
@@ -203,7 +203,10 @@ var GPGAccess = {
         if (arguement == '')
             return "";
 
-        arguement = arguement.replace(/\{\$FXFolder\}/gi, FGPGFireFoxCurrentFolder);
+        //Escape spaces in {$FXFolder}
+        var currentFolder = FGPGFireFoxCurrentFolder.replace(/\s/g, '{$SPACE}');
+
+        arguement = arguement.replace(/\{\$FXFolder\}/gi, currentFolder);
 
         //We remove double-spaces
         var reg=new RegExp("  ", "gi");
@@ -691,7 +694,7 @@ var GPGAccess = {
 
     */
     selfTest: function() {
-        //One test is ok, if the command dosen't change, it's should works..
+        //One test is ok, if the command doesn't change, it's should works..
 
 		result = this.runGnupg(this.getBaseArugments()  + " --version");
 

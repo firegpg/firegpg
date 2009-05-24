@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "从服务器导入密钥">
+<!ENTITY close-button "关闭">
+<!ENTITY import-button "导入已选的密钥">
+<!ENTITY search-button "搜索">
+<!ENTITY search-description "搜索：">
+<!ENTITY key-create "已创建">
+<!ENTITY key-id "标识">
+<!ENTITY key-name "姓名">

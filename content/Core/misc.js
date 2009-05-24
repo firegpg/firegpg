@@ -81,7 +81,7 @@ const NS_PROCESSUTIL_CONTRACTID = "@mozilla.org/process/util;1";
 /*
    Constants: Tempory files
 
-   TMP_DIRECTORY - The base name for files (dosen't same to be a directory)
+   TMP_DIRECTORY - The base name for files (doesn't same to be a directory)
    TMP_FILES    - The file name for common files.
    TMP_RFILES   - The file name for executable scripts.
    TMP_EFILES   - The file name for executables..
@@ -539,7 +539,7 @@ function removeFile(path) {
 		fileobj.remove(path);
 	}
 	catch (e) {
-		/* If file dosen't exist */
+		/* If file doesn't exist */
 	}
 }
 
@@ -948,6 +948,8 @@ function gmailWrapping(text)
     Parameters:
         text - The text.
         limit - The maximum characters for one line.
+
+    
 */
 function wrap(text, limit)
 {
