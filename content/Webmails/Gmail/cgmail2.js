@@ -2404,6 +2404,8 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
 
         img = "<img src=\""+IMG_ENCRYPTED+"\" alt=\"" +IMG_ENCRYPTED2+"\" onmouseout=\"a = this.alt; this.alt=this.src; this.src=a; this.title = ''; \" onmouseover=\"if (this.title == '') { a = this.alt; this.alt=this.src; this.src=a; this.title = 'FireGPG'; }\">";
 
+		data = data.replace(/(.{1,70})(?:\s|$)/g,"$1<br/>")
+
         data = data.replace(/<br \/>/gi, '<br/>');
         data = data.replace(/ /gi, '&nbsp;');
 
