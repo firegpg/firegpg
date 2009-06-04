@@ -72,24 +72,26 @@ var cGmailListener = {
             aStatus - The status of the request.
     */
     onStateChange: function(aProgress, aRequest, aFlag, aStatus) {
+
 		// If a document's loading is finished
 		if(aFlag & FGPG_STATE_STOP) {
-
+        i
 			//If we need ton find the IK information
 			if (cGmail.ik == null)
 			{
+                if (aRequest != null) {
+                    if (aRequest.name.indexOf("?ik=") != -1 || aRequest.name.indexOf("&ik=") != -1)
+                    {
 
-				if (aRequest.name.indexOf("?ik=") != -1 || aRequest.name.indexOf("&ik=") != -1)
-				{
+                        var reg= new RegExp("ik\\=[a-zA-Z0-9]+");
+                        cGmail.ik = aRequest.name.match(reg);
 
-					var reg= new RegExp("ik\\=[a-zA-Z0-9]+");
-					cGmail.ik = aRequest.name.match(reg);
-
-					if (cGmail.ik != null && cGmail.ik != "")
-					{
-						cGmail.ik = cGmail.ik.toString().substring(3);
-					}
-				}
+                        if (cGmail.ik != null && cGmail.ik != "")
+                        {
+                            cGmail.ik = cGmail.ik.toString().substring(3);
+                        }
+                    }
+                }
 
 			}
 

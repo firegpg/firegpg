@@ -219,10 +219,17 @@ FireGPGMimeSender.prototype =
 
 
 		var encoder;
-		encoder = new FireGPGMimeEncoder((attachments.length>0),1);
+		encoder = new FireGPGMimeEncoder((attachments.length>0 || !isPlain),1);
         //encoder = new FireGPGMimeEncoder(true,1); //Toujours multipart
 
 		encoder.addBase64String(body,isPlain ? "text/plain; format=flowed" : "text/html",null);
+
+        if (!isPlain) {
+            encoder.addStringToStream(encoder.CRLF);
+            encoder.addBase64String(FireGPGMimeDecoder.prototype.washFromHtml(body), "text/plain; format=flowed",null);
+        }
+
+
 
 		// HERE, we have to asynchronously fill out all of the remote attachments
 		var i=0;
@@ -290,8 +297,9 @@ FireGPGMimeSender.prototype =
 		function postAttach()
 		{
 			var multiStream;
-			if (attachments.length>0)
-				multiStream=encoder.getMultipartStream("multipart/mixed",false);
+			if (attachments.length>0||!isPlain)  {
+				multiStream=encoder.getMultipartStream("multipart/alternative",false);
+            }
 			else
 				multiStream=encoder.getSinglePartStream();
 			var binaryStream =

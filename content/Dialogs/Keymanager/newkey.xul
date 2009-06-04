@@ -117,7 +117,7 @@
         </vbox>
 
 
-        <label value="&warningaboutgeneeration;" />
+        <label >&warningaboutgeneeration;</label>
 		<!-- commandes -->
 
         <hbox>
