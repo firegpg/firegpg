@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Laat gebruikers data zien voor goede ondertekeningen">
 <!ENTITY gmail-keep-encrypted-mail "Versleuteld antwoord op versleutelde mails">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

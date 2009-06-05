@@ -214,6 +214,8 @@
             <preference id="gmail-decrypt-when-reply" name="extensions.firegpg.gmail_decrypt_when_reply" type="bool"/>
             <preference id="gmail-keep-encrypted-mail" name="extensions.firegpg.gmail_keep_encrypted_mail" type="bool"/>
 
+            <preference id="gmail-smtp-no-auth" name="extensions.firegpg.gmail_smtp_no_auth" type="bool"/>
+
         </preferences>
 
         <label  id="gmail-need-a-restart-label" value="&gmail-need-a-restart;"/>
@@ -276,6 +278,9 @@
 
                 <label  id="gmail-smtp-port-label" value="&gmail-smtp-port;"/>
                 <textbox id="gmail-smtp-port-textbox"  preference="gmail-smtp-port"/>
+
+                <checkbox id="gmail-smtp-no-auth-checkbox" preference="gmail-smtp-no-auth"
+                                label="&gmail-smtp-no-auth-checkbox;"/>
 
                 <label  id="gmail-smtp-username-label" value="&gmail-smtp-username;"/>
                 <textbox id="gmail-smtp-username-textbox"  preference="gmail-smtp-username"/>

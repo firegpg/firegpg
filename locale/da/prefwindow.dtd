@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Autoombryd">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Vis brugerdata for valide underskrifter">
 <!ENTITY gmail-keep-encrypted-mail "Kryptér svar til krypterede e-poster">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

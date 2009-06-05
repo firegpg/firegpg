@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Afișează datele utilizatorului pentru semnăturile corecte">
 <!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

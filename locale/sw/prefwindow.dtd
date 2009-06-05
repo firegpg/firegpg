@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Automatiskt radbyte">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Visa användaruppgifter för giltiga signaturer (good signatures)">
 <!ENTITY gmail-keep-encrypted-mail "Krypterat svar på krypterad e-post">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

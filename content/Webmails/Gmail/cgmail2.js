@@ -1381,6 +1381,17 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
 
 
                     try {
+                          var no_auth = prefs.getBoolPref("gmail_smtp_no_auth",false);
+                      } catch (e) {
+                          no_auth = false;
+                      }
+
+                    if (no_auth) {
+                        a.smtpUsername = null;
+                    }
+
+
+                    try {
                         var host = prefs.getCharPref("gmail_host");
                     } catch (e) {
                         host = "smtp.gmail.com";

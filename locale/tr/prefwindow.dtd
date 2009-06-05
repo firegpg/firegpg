@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
 <!ENTITY gmail-keep-encrypted-mail "Şifreli postaların yanıtlarını da şifrele">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

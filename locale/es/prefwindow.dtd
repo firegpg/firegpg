@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Auto Encapsular">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Mostrar datos de usuario para firmas verificadas">
 <!ENTITY gmail-keep-encrypted-mail "Cifrar respuesta para correos cifrados">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

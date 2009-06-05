@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Автоперенос">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Для подлинных подписей показывать информацию об отправителях">
 <!ENTITY gmail-keep-encrypted-mail "Шифровать ответы на зашифрованные письма">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

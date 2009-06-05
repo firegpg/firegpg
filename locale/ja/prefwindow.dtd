@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "正しい署名の場合、ユーザ情報を表示する">
 <!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

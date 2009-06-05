@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Autoavvolgimento">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Mostra i dati degli utenti per le firme valide">
 <!ENTITY gmail-keep-encrypted-mail "Critta le repliche a mail crittate">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

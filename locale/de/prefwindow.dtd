@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Automatische Einbettung">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Zeige Benutzerdaten für verifizierte Unterschriften">
 <!ENTITY gmail-keep-encrypted-mail "Verschlüssele die Antwort auf verschlüsselte Mails">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

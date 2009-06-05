@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Quebra de linhas automático">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Mostrar dados do utilizador para assinaturas válidas">
 <!ENTITY gmail-keep-encrypted-mail "Cifrar resposta a mails cifrados">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Découpage">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Afficher les informations sur les utilisateurs des bonnes signatures">
 <!ENTITY gmail-keep-encrypted-mail "Chiffrer les réponses des mails chiffrés">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

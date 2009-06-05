@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Autoombrekking">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Vise brukerinformasjon for aksepterte signaturer">
 <!ENTITY gmail-keep-encrypted-mail "Krypter svaret på kryptert epost">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

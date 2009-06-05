@@ -485,7 +485,6 @@ var GPGAccess = {
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.err;
-
 		// We return result
 		return result2;
     },

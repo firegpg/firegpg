@@ -79,6 +79,8 @@ FireGPGGmailMimeSender.prototype.smtpPassword = function()
         no_google_com = false;
     }
 
+
+
     if (no_google_com)
         return this.smtpSeparatePassword();
 

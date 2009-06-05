@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "自动环绕">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "显示正确的签名的用户信息">
 <!ENTITY gmail-keep-encrypted-mail "如果邮件是加密的，那么回复时也加密">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">

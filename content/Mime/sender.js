@@ -544,7 +544,7 @@ FireGPGMimeSender.prototype =
 						switch (ret.substring(0, 3))
 						{
 						case "220": // greetings
-							if (smtpUsername == null || smtpPassword == null)
+							if (smtpUsername == null || smtpPassword == null || this.no_auth != null)
 								status = 6; // straight to begin from sequence.
 							return;
 						case "250": // we do auth

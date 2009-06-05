@@ -75,3 +75,4 @@
 <!ENTITY paneautowrap.title "Zarovnání">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Zobrazit uživatelská data pro platné podpisy">
 <!ENTITY gmail-keep-encrypted-mail "Šifrovat odpověď na šifrované emaily">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
