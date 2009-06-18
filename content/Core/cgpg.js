@@ -1096,8 +1096,11 @@ var FireGPG = {
             layer - The current layer
             division - The current layer level
     */
-    layerverify: function(text,layer,division, charset) {
+    layerverify: function(text,layer,division, charset,dontask) {
         var returnObject = new GPGReturn();
+
+        if (dontask == undefined)
+            dontask = false;
 
         // We get the result
 		var result = this.GPGAccess.verify(text, charset);
@@ -1124,13 +1127,17 @@ var FireGPG = {
 
 				idOfMissingKey = idOfMissingKey.substring(0,idOfMissingKey.indexOf("\n"));
 
-				if (confirm(document.getElementById('firegpg-strings').
-                getString('autoFeetch') + ' (' + idOfMissingKey + ')')) {
+                	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch("extensions.firegpg.");
+                var disabledown  = false;
+                try {
+                    disabledown = prefs.getBoolPref("dont_ask_to_download_key");
+                } catch (e) { disabledown = false; }
 
+				if (!dontask && !disabledown && confirm(document.getElementById('firegpg-strings').getString('autoFeetch') + ' (' + idOfMissingKey + ')')) {
 					FireGPG.retriveKeyFromServer(idOfMissingKey);
-
-					return this.layerverify(text,layer,division);
-
+					return this.layerverify(text,layer,division,charset,true);
 				}
 
 			}

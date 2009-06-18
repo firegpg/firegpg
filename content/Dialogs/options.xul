@@ -54,6 +54,7 @@
 
             <preference id="hide-fireftp-message-pref" name="extensions.firegpg.fireftp_already_warning" type="bool"/>
             <preference id="use-fireftp-workaround-pref" name="extensions.firegpg.fireftp_try_to_use_old_system" type="bool"/>
+            <preference id="dont_ask_to_download_key-pref" name="extensions.firegpg.dont_ask_to_download_key" type="bool"/>
 
 
 
@@ -88,6 +89,10 @@
 
         <checkbox  id="hide-fireftp-message" preference="hide-fireftp-message-pref" label="&hide-fireftp-message;"/>
         <checkbox  id="use-fireftp-workaround" preference="use-fireftp-workaround-pref" label="&use-fireftp-workaround;"/>
+
+        <checkbox  id="dont_ask_to_download_key" preference="dont_ask_to_download_key-pref" label="&dont_ask_to_download_key;"/>
+
+
 
 
         <!-- list of private keys -->
@@ -141,6 +146,7 @@
             <preference id="use-gpg-agent-pref" name="extensions.firegpg.use_gpg_agent" type="bool"/>
             <preference id="keyserver-pref" name="extensions.firegpg.keyserver" type="string"/>
             <preference id="symmetricalgo-pref" name="extensions.firegpg.symmetric_algo" type="string"/>
+            <preference id="keyserverproxy-pref" name="extensions.firegpg.keyserver_proxy" type="string"/>
 
 
         </preferences>
@@ -168,6 +174,9 @@
 
         <label  id="keyserver-label" value="&keyserver-message;"/>
         <textbox id="keyserver-textbox"  preference="keyserver-pref"/>
+
+         <label  id="keyserverproxy-label" value="&keyserverproxy-message;"/>
+        <textbox id="keyserverproxy-textbox"  preference="keyserverproxy-pref"/>
 
 
         <label value="&symmetric-algo;" />

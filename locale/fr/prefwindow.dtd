@@ -75,4 +75,6 @@
 <!ENTITY paneautowrap.title "Découpage">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Afficher les informations sur les utilisateurs des bonnes signatures">
 <!ENTITY gmail-keep-encrypted-mail "Chiffrer les réponses des mails chiffrés">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
+<!ENTITY gmail-smtp-no-auth-checkbox "Désactiver l'authentification SMTP">
+<!ENTITY dont_ask_to_download_key "Don\'t try to download missing keys">
+<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">

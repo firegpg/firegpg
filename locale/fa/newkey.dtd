@@ -10,7 +10,7 @@
 <!ENTITY expire-year "years">
 <!ENTITY expire-month "months">
 <!ENTITY expire-days "days">
-<!ENTITY advancedoptions "Advanced options">
+<!ENTITY advancedoptions "تنظیمات پیشرفته">
 <!ENTITY keylenght-message "Key length">
 <!ENTITY keytype-message "Key type">
 <!ENTITY generate-button "Generate key">

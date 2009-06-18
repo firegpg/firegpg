@@ -1,18 +1,18 @@
 <!ENTITY firegpg.label "FireGPG">
-<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FajroGPG">
 <!ENTITY firegpgToolbar.tooltip "FireGPG">
-<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.label "FajroGPG">
 <!ENTITY firegpgContext.labelSign "Sign">
 <!ENTITY firegpgContext.labelCrypt "Encrypt">
 <!ENTITY firegpgContext.labelVerif "Verify">
 <!ENTITY firegpgContext.labelDecry "Decrypt">
 <!ENTITY firegpgContext.labelOptions "Options">
-<!ENTITY firegpgMenu.label "FireGPG">
-<!ENTITY firegpgMenu.labelSign "Sign">
+<!ENTITY firegpgMenu.label "FajroGPG">
+<!ENTITY firegpgMenu.labelSign "Subskribi">
 <!ENTITY firegpgMenu.labelCrypt "Encrypt">
 <!ENTITY firegpgMenu.labelVerif "Verify">
 <!ENTITY firegpgMenu.labelDecry "Decrypt">
-<!ENTITY firegpgMenu.labelOptions "Options">
+<!ENTITY firegpgMenu.labelOptions "Opcioj">
 <!ENTITY firegpgToolbar.labelSign "Sign">
 <!ENTITY firegpgToolbar.labelCrypt "Encrypt">
 <!ENTITY firegpgToolbar.labelVerif "Verify">
@@ -21,11 +21,11 @@
 <!ENTITY firegpgMenu.labelErase "Clear saved password">
 <!ENTITY firegpgContext.labelErase "Clear saved password">
 <!ENTITY firegpgToolbar.labelErase "Clear saved password">
-<!ENTITY firegpgMenu.labelImport "Import">
-<!ENTITY firegpgContext.labelImport "Import">
+<!ENTITY firegpgMenu.labelImport "Importi">
+<!ENTITY firegpgContext.labelImport "Importi">
 <!ENTITY firegpgToolbar.labelImport "Import">
 <!ENTITY firegpgMenu.labelExport "Export">
-<!ENTITY firegpgContext.labelExport "Export">
+<!ENTITY firegpgContext.labelExport "Eksporti">
 <!ENTITY firegpgToolbar.labelExport "Export">
 <!ENTITY firegpgPopInfo.labelBonjour "Welcome! FireGPG installation was successful.">
 <!ENTITY firegpgPopInfo.labelAccessOk "FireGPG can access gpg.">
@@ -33,7 +33,7 @@
 <!ENTITY firegpgPopInfo.labelKeyOk "A private key is selected.">
 <!ENTITY firegpgPopInfo.labelKeyErr "Warning: please choose a private key in the preferences.">
 <!ENTITY firegpgPopInfo.close "Close">
-<!ENTITY firegpgPopInfo.options "Options">
+<!ENTITY firegpgPopInfo.options "Opcioj">
 <!ENTITY firegpgContext.labelEditeur "Text editor">
 <!ENTITY firegpgMenu.labelEditeur "Text editor">
 <!ENTITY firegpgToolbar.labelEditeur "Text editor">

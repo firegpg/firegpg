@@ -75,4 +75,6 @@
 <!ENTITY paneautowrap.title "Autoavvolgimento">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Mostra i dati degli utenti per le firme valide">
 <!ENTITY gmail-keep-encrypted-mail "Critta le repliche a mail crittate">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disabilita l'autenticazione SMTP">
+<!ENTITY dont_ask_to_download_key "Don\'t try to download missing keys">
+<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">

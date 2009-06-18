@@ -305,6 +305,23 @@ var GPGAccess = {
         return this.getGPGBonusCommand()  + " --quiet --no-tty --no-verbose --status-fd 2 --armor --batch" + this.getGPGAgentArgument();
     },
 
+    getProxyInformation: function () {
+
+        var proxy = "";
+        try {
+                var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                               getService(Components.interfaces.nsIPrefService);
+                prefs = prefs.getBranch("extensions.firegpg.");
+                proxy = prefs.getCharPref("keyserver_proxy");
+        } catch (e)  { }
+
+        if (proxy == "" || proxy == null)
+            return '';
+
+        return ' --keyserver-options http-proxy=' + proxy;
+
+    },
+
     /*
         Function: runGnupg
         Execute gnupg.
@@ -752,7 +769,7 @@ var GPGAccess = {
 
     refrechFromServer: function(server) {
 
-        result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server + " --refresh-keys");
+        result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server + this.getProxyInformation() + " --refresh-keys");
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.err;
@@ -764,7 +781,7 @@ var GPGAccess = {
 
     sendKeyToServer: function(key, server) {
 
-        result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server + " --send-keys "+ key);
+        result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server +  this.getProxyInformation() + " --send-keys "+ key);
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.err;
@@ -777,7 +794,7 @@ var GPGAccess = {
 
     retriveKeyFromServer: function(key, server) {
 
-        result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server + " --recv-keys "+ key);
+        result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server +  this.getProxyInformation() + " --recv-keys "+ key);
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.err;
@@ -791,7 +808,7 @@ var GPGAccess = {
 
 	searchKeyInServer: function(search, server) {
 
-        result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server + " --with-colons --search-keys "+ search);
+        result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server +  this.getProxyInformation() + " --with-colons --search-keys "+ search);
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.out;

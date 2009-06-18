@@ -76,3 +76,5 @@
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Visa användaruppgifter för giltiga signaturer (good signatures)">
 <!ENTITY gmail-keep-encrypted-mail "Krypterat svar på krypterad e-post">
 <!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
+<!ENTITY dont_ask_to_download_key "Don\'t try to download missing keys">
+<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">

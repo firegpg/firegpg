@@ -18,7 +18,7 @@
 <!ENTITY gmail-buton-signsend-checkbox "Sign and send">
 <!ENTITY gmail-buton-crypt-checkbox "Encrypt">
 <!ENTITY gmail-buton-cryptsend-checkbox "Encrypt and send">
-<!ENTITY allvays-to-myself-checkbox "Always encrypt to myself">
+<!ENTITY allvays-to-myself-checkbox "موقع ارسال به خودم همیشه رمزنگاری کن">
 <!ENTITY enable-gpgauth-check.label "Enable gpgAuth (browser must be restarted)">
 <!ENTITY enable-gpgauth-check.accesskey "E">
 <!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
@@ -38,9 +38,9 @@
 <!ENTITY hide-expired "Hide expired keys">
 <!ENTITY use-api "Enable FireGPG API for webpages (such as roundcube) (restart required)">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "List of allowed sites (double click to remove)">
-<!ENTITY api-liste-domain.label "Domain">
-<!ENTITY api-liste-keyauth.label "Key">
+<!ENTITY api-liste-access.label "فهرست سایت‌های مجاز (برای حذف دوبار کلیک نمایید)">
+<!ENTITY api-liste-domain.label "دامنه">
+<!ENTITY api-liste-keyauth.label "کلید">
 <!ENTITY use-gpg-agent-checkbox "Enable GPG-agent (warning, can lead to issues)">
 <!ENTITY search-description "Filter">
 <!ENTITY gmail-buton-use-select-checkbox "Display a list instead of buttons">
@@ -69,10 +69,12 @@
 <!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
 <!ENTITY decrypt-when-reply "Decrypt content when reply">
 <!ENTITY gmail-buton-attachements-checkbox "Attachments">
-<!ENTITY autorwap-liste-action.label "Action">
-<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY autorwap-liste-action.label "عملیات">
+<!ENTITY autorwap-liste-domain.label "وب میل">
 <!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
 <!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
 <!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
+<!ENTITY dont_ask_to_download_key "Don\'t try to download missing keys">
+<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
