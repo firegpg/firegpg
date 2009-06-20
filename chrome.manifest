@@ -1,38 +1,34 @@
 content	firegpg	content/
-locale	firegpg	en-US	locale/en-US/
-locale	firegpg	fr	locale/fr/
-locale	firegpg de	locale/de/
-locale	firegpg it	locale/it/
-locale	firegpg pl	locale/pl/
-locale	firegpg po	locale/po/
-locale	firegpg pt	locale/pt/
-locale	firegpg pt-BR	locale/pt_BR/
-locale	firegpg tr	locale/tr/
-locale	firegpg es	locale/es/
-locale	firegpg zh-CN	locale/zh-CN/
-locale	firegpg zh-TW	locale/zh-TW/
-locale	firegpg nl	locale/nl/
-locale	firegpg ca	locale/ca/
-locale	firegpg ko-KR	locale/ko-KR/
-locale	firegpg sr	locale/sr/
-locale	firegpg sw	locale/sw/
-locale	firegpg sv locale/sw/
-locale	firegpg he	locale/he/
-locale	firegpg bn	locale/bn/
-locale	firegpg	ru locale/ru/
-locale	firegpg	ar	locale/ar/
-locale	firegpg	hu locale/hu/
-locale	firegpg	no	locale/no/
-locale	firegpg	nb	locale/no/
-locale	firegpg	nb-NO	locale/no/
-locale	firegpg	cs	locale/cs/
-locale	firegpg	fa	locale/fa/
-locale	firegpg	ja	locale/ja/
-locale	firegpg	da	locale/da/
-locale	firegpg	ro 	locale/ro/
-locale	firegpg	eo	locale/eo/
-locale	firegpg	sk	locale/sk/
-skin	firegpg	classic/1.0	skin/
-overlay	chrome://browser/content/browser.xul	chrome://firegpg/content/Core/firefoxOverlay.xul
-overlay	chrome://webrunner/content/webrunner.xul	chrome://firegpg/content/Core/prismeOverlay.xul
-style	chrome://global/content/customizeToolbar.xul	chrome://firegpg/skin/overlay.css
+locale	    firegpg	en-US	        locale/en-US/
+locale  	    firegpg	ar	                locale/ar/
+locale	    firegpg ca	            locale/ca/
+locale	    firegpg	cs	            locale/cs/
+locale	    firegpg	da  	            locale/da/
+locale	    firegpg de  	            locale/de/
+locale	    firegpg el	                locale/el/
+locale	    firegpg	eo	            locale/eo/
+locale	    firegpg es	            locale/es/
+locale	    firegpg	fr	                locale/fr/
+locale	    firegpg he	            locale/he/
+locale	    firegpg	hu                locale/hu/
+locale	    firegpg it	                locale/it/
+locale	    firegpg	ja	                locale/ja/
+locale	    firegpg ko-KR	        locale/ko-KR/
+locale	    firegpg nl	                locale/nl/
+locale	    firegpg	no	            locale/no/
+locale	    firegpg	fa	                locale/pe/
+locale	    firegpg pl                 locale/pl/
+locale	    firegpg pt	                locale/pt/
+locale	    firegpg pt-BR	        locale/pt_BR/
+locale	    firegpg	ro 	            locale/ro/
+locale	    firegpg	ru                 locale/ru/
+locale	    firegpg sr	                locale/sr/
+locale	    firegpg sw	            locale/sw/
+locale	    firegpg tr	                locale/tr/
+locale	    firegpg vi	                locale/vi/
+locale	    firegpg zh-CN	        locale/zh-CN/
+locale	    firegpg zh-TW	        locale/zh-TW/
+skin	        firegpg	classic/1.0	skin/
+overlay	chrome://browser/content/browser.xul	            chrome://firegpg/content/Core/firefoxOverlay.xul
+overlay	chrome://webrunner/content/webrunner.xul	    chrome://firegpg/content/Core/prismeOverlay.xul
+style	    chrome://global/content/customizeToolbar.xul	chrome://firegpg/skin/overlay.css
