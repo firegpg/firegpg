@@ -37,3 +37,4 @@ pref("extensions.firegpg.gmail_keep_encrypted_mail", false);
 pref("extensions.firegpg.gmail_smtp_no_auth", false);
 pref("extensions.firegpg.dont_ask_to_download_key", false);
 pref("extensions.firegpg.keyserver_proxy", "");
+pref("extensions.firegpg.digest", "");

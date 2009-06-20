@@ -275,7 +275,7 @@ FireGPGMimeDecoder.prototype = {
 
         if (!texte)
             return '';
-        
+
         texte = texte.replace(/(\n|\r)/gi, "");
         texte = texte.replace(/<br( |\/)?>/gi, "\r\n");
         texte = texte.replace(/<\/?[^>]+(>|$)/g, "");
@@ -400,9 +400,15 @@ FireGPGMimeDecoder.prototype = {
 
     convertHash: function(hashHeader) {
 
+        //IN SENEDER, INVERTED ARRAY
+
         hash = Array();
         hash['pgp-md5'] = 'MD5';
         hash['pgp-sha1'] = 'SHA1';
+        hash['pgp-sha256'] = 'SHA256';
+        hash['pgp-sha384'] = 'SHA384';
+        hash['pgp-sha512'] = 'SHA512';
+        hash['pgp-sha224'] = 'SHA224';
         hash['pgp-ripemd160'] = 'RIPEMD160';
         hash['pgp-md2'] = 'MD2'; // ???
         hash['pgp-tiger192'] = 'TIGER192'; // ???

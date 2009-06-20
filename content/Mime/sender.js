@@ -222,12 +222,13 @@ FireGPGMimeSender.prototype =
 		encoder = new FireGPGMimeEncoder((attachments.length>0 || !isPlain),1);
         //encoder = new FireGPGMimeEncoder(true,1); //Toujours multipart
 
-		encoder.addBase64String(body,isPlain ? "text/plain; format=flowed" : "text/html",null);
-
         if (!isPlain) {
-            encoder.addStringToStream(encoder.CRLF);
+
             encoder.addBase64String(FireGPGMimeDecoder.prototype.washFromHtml(body), "text/plain; format=flowed",null);
+            encoder.addStringToStream(encoder.CRLF);
         }
+
+        encoder.addBase64String(body,isPlain ? "text/plain; format=flowed" : "text/html",null);
 
 
 
@@ -346,10 +347,62 @@ FireGPGMimeSender.prototype =
                 var result = FireGPG.sign(false,stringToWork+ crlf, null, null, null, prefs.whoSendTheMail );
 
                 if (result.result == RESULT_SUCCESS) {
+
+                    var digest = "SHA1"; //Unfortunaly by default..
+                    try {
+                            var prefss = Components.classes["@mozilla.org/preferences-service;1"].
+                                           getService(Components.interfaces.nsIPrefService);
+                            prefss = prefss.getBranch("extensions.firegpg.");
+                            digest = prefss.getCharPref("digest");
+                    } catch (e)  { }
+
+                    if (digest == "" || digest == null)
+                        digest = "SHA1";
+
+                    //IN DECODER, INVERTED ARRAY
+                    var digestformime = 'pgp-sha1';
+
+                    if  (digest == 'MD5') //Wooooooooo
+                        digestformime = 'pgp-md5';
+
+                    if  (digest == 'SHA1')
+                        digestformime = 'pgp-sha1';
+
+                    if  (digest == 'SHA256')
+                        digestformime = 'pgp-sha256';
+
+                    if  (digest == 'SHA384')
+                        digestformime = 'pgp-sha384';
+
+                    if  (digest == 'SHA512')
+                        digestformime = 'pgp-sha512';
+
+                    if  (digest == 'SHA224')
+                        digestformime = 'pgp-sha224';
+
+                    if  (digest == 'RIPEMD160')
+                        digestformime = 'pgp-ripemd160';
+
+                    if  (digest == 'TIGER192')
+                        digestformime = 'pgp-tiger192';
+
+                    if  (digest == 'HAVAL-5-160')
+                        digestformime = 'pgp-haval-5-160';
+
+                    if  (digest == 'MD2')
+                        digestformime = 'pgp-md2';
+
+                    if  (digest == 'MD5')
+                        digestformime = 'pgp-md5';
+
+                    if  (digest == 'MD5')
+                        digestformime = 'pgp-md5';
+
+
                     signedData = result.signed.substring(result.signed.lastIndexOf("-----BEGIN PGP SIGNATURE-----"), result.signed.length)
 
                   newmessage = 'X-FireGPG-Version: ' + FIREGPG_VERSION + crlf +
-                  'Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="'+boundeur+'"' +  crlf + crlf +
+                  'Content-Type: multipart/signed; micalg=' + digestformime +'; protocol="application/pgp-signature"; boundary="'+boundeur+'"' +  crlf + crlf +
                    'This is an OpenPGP/MIME signed message (RFC 2440 and 3156)' + crlf +
                    '--' + boundeur + crlf +
                    stringToWork + crlf  +

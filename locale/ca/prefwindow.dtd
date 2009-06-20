@@ -75,6 +75,7 @@
 <!ENTITY paneautowrap.title "Auto ajustament">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Mostra dades d'usuari per signatures correctes">
 <!ENTITY gmail-keep-encrypted-mail "Encripta la resposta de correus encriptats">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
-<!ENTITY dont_ask_to_download_key "Don\'t try to download missing keys">
-<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
+<!ENTITY gmail-smtp-no-auth-checkbox "Deshabilitar l'autenticació SMTP">
+<!ENTITY dont_ask_to_download_key "No provis de descarregar claus perdudes">
+<!ENTITY keyserverproxy-message "Proxy a utilitzar pels servidors de claus HTTP i HKP:">
+<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">

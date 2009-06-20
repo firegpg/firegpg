@@ -75,7 +75,7 @@ var cGmailListener = {
 
 		// If a document's loading is finished
 		if(aFlag & FGPG_STATE_STOP) {
-        i
+        
 			//If we need ton find the IK information
 			if (cGmail.ik == null)
 			{

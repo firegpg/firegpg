@@ -147,6 +147,7 @@
             <preference id="keyserver-pref" name="extensions.firegpg.keyserver" type="string"/>
             <preference id="symmetricalgo-pref" name="extensions.firegpg.symmetric_algo" type="string"/>
             <preference id="keyserverproxy-pref" name="extensions.firegpg.keyserver_proxy" type="string"/>
+            <preference id="digest-pref" name="extensions.firegpg.digest" type="string"/>
 
 
         </preferences>
@@ -178,6 +179,9 @@
          <label  id="keyserverproxy-label" value="&keyserverproxy-message;"/>
         <textbox id="keyserverproxy-textbox"  preference="keyserverproxy-pref"/>
 
+
+        <label  id="digest-label" value="&digest-message;"/>
+        <textbox id="digest-textbox"  preference="digest-pref"/>
 
         <label value="&symmetric-algo;" />
         <label value="3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH" />

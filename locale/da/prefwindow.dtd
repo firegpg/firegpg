@@ -76,5 +76,6 @@
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Vis brugerdata for valide underskrifter">
 <!ENTITY gmail-keep-encrypted-mail "Kryptér svar til krypterede e-poster">
 <!ENTITY gmail-smtp-no-auth-checkbox "Slå SMTP-godkendelse fra">
-<!ENTITY dont_ask_to_download_key "Don\'t try to download missing keys">
-<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
+<!ENTITY dont_ask_to_download_key "Undlad at hente manglende nøgler">
+<!ENTITY keyserverproxy-message "Proxy til brug for HTTP og HKP-nøgleservere:">
+<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">

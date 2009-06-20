@@ -806,7 +806,7 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
                         // Disable autosave and add appropriate notification
 //fireGPGDebug('Disable autosave ?', 'ProbWithReplyForward');
                         if (disable_autosave && form) // && form
-                        {  fireGPGDebug('Disabling autosave', 'ProbWithReplyForward');
+                        { // fireGPGDebug('Disabling autosave', 'ProbWithReplyForward');
 
                             String.prototype.startsWith = function(s)
                             {
@@ -846,10 +846,17 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
                                 const badpattern6 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$", "$T_$_P$YHa$"];
                                 const badpattern7 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$ptb$", "$E0$_P$BJa$"];
                                 const badpattern8 = ["$abb", "$9ab", "$Jab", "$L$a", "$u8a"];  //     $t8a
+                                const badpattern9 = ["EXc", "$8Ua", "gUc", "fUc", "$ATa"];  //         hla
 
+/*
+EXc $8Ua gUc fUc $ATa hla
 
+Zna Vna UIb $RQa $SQa Moa
 
-                                if (stackMatch(badpattern8, getValue.caller) || stackMatch(badpattern7, getValue.caller) || stackMatch(badpattern6, getValue.caller) || stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
+Zna Vna UIb $RQa $SQa Moa
+                                                                                              */
+
+                                if (stackMatch(badpattern9, getValue.caller) || stackMatch(badpattern8, getValue.caller) || stackMatch(badpattern7, getValue.caller) || stackMatch(badpattern6, getValue.caller) || stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
                                 {
                                     function AutosaveWreckingBall() {};
                                     AutosaveWreckingBall.prototype.value = "Wrecked";
@@ -859,12 +866,12 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
                                 else
                                 {
                                     // debugger; // keep this around for later usage when needing to adjust badpatterns
-                                /*    dump(getValue.caller.name + " " +
+                                    dump(getValue.caller.name + " " +
 				getValue.caller.caller.name + " " +
 				getValue.caller.caller.caller.name + " " +
 				getValue.caller.caller.caller.caller.name + " " +
 				getValue.caller.caller.caller.caller.caller.name + " " +
-				getValue.caller.caller.caller.caller.caller.caller.name + "\n\n");*/
+				getValue.caller.caller.caller.caller.caller.caller.name + "\n\n");
                                 }
                                 // finally, if nothing matches:
                                 return this.__proto__.__lookupGetter__("value").apply(this);

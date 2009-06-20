@@ -322,6 +322,23 @@ var GPGAccess = {
 
     },
 
+    getDiegestAlgo: function () {
+
+        var digest = "";
+        try {
+                var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                               getService(Components.interfaces.nsIPrefService);
+                prefs = prefs.getBranch("extensions.firegpg.");
+                digest = prefs.getCharPref("digest");
+        } catch (e)  { }
+
+        if (digest == "" || digest == null)
+            return '';
+
+       return ' --digest-algo ' + digest;
+
+    },
+
     /*
         Function: runGnupg
         Execute gnupg.
@@ -474,6 +491,7 @@ var GPGAccess = {
                     " --output -" +
 					" --passphrase-fd 0 " +
 					this.getGPGCommentArgument() +
+                    this.getDiegestAlgo() +
 					" --"  + (!notClear ? "clear" : "") +"sign "
 				, password + "\n" + text );
 
@@ -664,6 +682,7 @@ var GPGAccess = {
                     " --default-key " + keyID +
                     " --passphrase-fd 0" +
                     " --sign" +
+                    this.getDiegestAlgo() +
                     " --output -" +
                     " --encrypt ",
                     password + "\n" + text, (binFileMode ? 'iso-8859-1' : undefined));
