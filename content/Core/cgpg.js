@@ -263,11 +263,11 @@ var FireGPG = {
             return returnObject;
         }
 
-		if (password == undefined || password == null) {
+		if (!isGpgAgentActivated() && (password == undefined || password == null)) {
             password = getPrivateKeyPassword();
         }
 
-		if(password == null) {
+		if(!isGpgAgentActivated() && password == null) {
 			returnObject.result = RESULT_CANCEL;
             return returnObject;
         }
@@ -861,11 +861,11 @@ var FireGPG = {
             return returnObject;
         }
 
-		if (password == undefined || password == null) {
+		if (!isGpgAgentActivated() && (password == undefined || password == null)) {
             password = getPrivateKeyPassword();
         }
 
-		if(password == null) {
+		if(!isGpgAgentActivated() &&password == null) {
 			returnObject.result = RESULT_CANCEL;
             return returnObject;
         }
@@ -1260,13 +1260,13 @@ var FireGPG = {
             text = text.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
 
 		// Needed for a decrypt
-		if (password == undefined || password == null) {
+		if (!isGpgAgentActivated() && (password == undefined || password == null)) {
                 password = getsavedPassword();
                 if (password == null)
                     password = "wrongPass";
         }
 
-		if(password == null) {
+		if(!isGpgAgentActivated() && password == null) {
 			returnObject.result = RESULT_CANCEL;
             return returnObject;
         }

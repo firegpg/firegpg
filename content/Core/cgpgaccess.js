@@ -153,6 +153,29 @@ function loadXpcom () {
 
 }
 
+function isGpgAgentActivated() {
+    useGPGAgent = false;
+
+       var key = "extensions.firegpg.use_gpg_agent";
+       var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                              getService(Components.interfaces.nsIPrefBranch);
+
+       if(prefs.getPrefType(key) == prefs.PREF_BOOL)
+           if(prefs.getBoolPref(key))
+               useGPGAgent = true;
+
+    info = "";
+        try {
+            info = Components.classes["@mozilla.org/process/environment;1"].getService(Components.interfaces.nsIEnvironment).get('GPG_AGENT_INFO');
+        } catch (e) {
+        }
+
+    if (info == "")
+        useGPGAgent = false;
+
+
+    return useGPGAgent;
+}
 
 /*
    Class: GPGAccess
@@ -250,21 +273,13 @@ var GPGAccess = {
     */
     getGPGAgentArgument: function() {
 
-       useGPGAgent = false;
-
-       var key = "extensions.firegpg.use_gpg_agent";
-       var prefs = Components.classes["@mozilla.org/preferences-service;1"].
-                              getService(Components.interfaces.nsIPrefBranch);
-
-       if(prefs.getPrefType(key) == prefs.PREF_BOOL)
-           if(prefs.getBoolPref(key))
-               useGPGAgent = true;
-
-
-       if (!useGPGAgent)
+       if (!isGpgAgentActivated())
            return ' --no-use-agent';
-       else
-           return '';
+       else {
+            info = Components.classes["@mozilla.org/process/environment;1"].getService(Components.interfaces.nsIEnvironment).get('GPG_AGENT_INFO');
+
+           return ' --use-agent --gpg-agent-info ' + info ; //DOSEN'T WORKS WITH GNUPG2
+       }
    },
 
     /*
@@ -486,6 +501,18 @@ var GPGAccess = {
     */
     sign: function (text, password, keyID, notClear) {
 
+        if (isGpgAgentActivated()) {
+
+            result = this.runGnupg(this.getBaseArugments() +
+					" --default-key " + keyID +
+                    " --output -" +
+					this.getGPGCommentArgument() +
+                    this.getDiegestAlgo() +
+					" --"  + (!notClear ? "clear" : "") +"sign "
+				,  text );
+
+        } else {
+
 			result = this.runGnupg(this.getBaseArugments() +
 					" --default-key " + keyID +
                     " --output -" +
@@ -494,6 +521,8 @@ var GPGAccess = {
                     this.getDiegestAlgo() +
 					" --"  + (!notClear ? "clear" : "") +"sign "
 				, password + "\n" + text );
+
+        }
 
 		var result2 = new GPGReturn();
 		result2.output = result.out;
@@ -676,6 +705,21 @@ var GPGAccess = {
 		for(var i = 0; i < keyIdList.length; i++)
 			keyIdListArgument += ((i > 0) ? ' ' : '') + '-r ' + keyIdList[i];
 
+
+        if (isGpgAgentActivated()) {
+
+            result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument(fromGpgAuth) +
+                    " " + keyIdListArgument +
+                    this.getGPGCommentArgument() +
+                    " --default-key " + keyID +
+                    " --sign" +
+                    this.getDiegestAlgo() +
+                    " --output -" +
+                    " --encrypt ",
+                     text, (binFileMode ? 'iso-8859-1' : undefined));
+
+        } else {
+
             result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument(fromGpgAuth) +
                     " " + keyIdListArgument +
                     this.getGPGCommentArgument() +
@@ -686,6 +730,8 @@ var GPGAccess = {
                     " --output -" +
                     " --encrypt ",
                     password + "\n" + text, (binFileMode ? 'iso-8859-1' : undefined));
+
+        }
 
 		// The crypted text
 		var result2 = new GPGReturn();
@@ -709,11 +755,22 @@ var GPGAccess = {
     */
     decrypt: function(text,password,binFileMode) {
 
+        if (isGpgAgentActivated()) {
+
 			result = this.runGnupg(this.getBaseArugments() +
+					" --output -" +
+					" --decrypt"
+				,  text,(binFileMode ? 'iso-8859-1' : undefined));
+
+        } else {
+
+            result = this.runGnupg(this.getBaseArugments() +
 					" --passphrase-fd 0 " +
 					" --output -" +
 					" --decrypt"
 				, password + "\n" + text,(binFileMode ? 'iso-8859-1' : undefined));
+
+        }
 
 		// The decrypted text
 		var result2 = new GPGReturn();
