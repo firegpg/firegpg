@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Sign manager">
+<!ENTITY key-name "Tên">
+<!ENTITY key-id "ID của khóa">
+<!ENTITY key-create "Ngày (ký hoặc khởi tạo)">
+<!ENTITY sign-button "Ký khóa này">
+<!ENTITY revoke-button "Revoke this sign">
+<!ENTITY del-button "Xóa chữ ký số này">

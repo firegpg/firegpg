@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Import key from server">
+<!ENTITY close-button "Đóng">
+<!ENTITY import-button "Nhập các khóa được lựa chọn">
+<!ENTITY search-button "Tìm kiếm">
+<!ENTITY search-description "Tìm:">
+<!ENTITY key-create "Được tạo">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Tên">

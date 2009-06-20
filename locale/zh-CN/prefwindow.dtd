@@ -1,0 +1,81 @@
+<!ENTITY prefwindow.title "FireGPG 首选项">
+<!ENTITY pane1.title "一般情况">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Gmail 支持">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "默认私钥：">
+<!ENTITY show-website-checkbox "在 GnuPG 注释中显示 FireGPG 网址">
+<!ENTITY change-gpg-path-button "设定GPG路径">
+<!ENTITY change-gpg-path-checkbox "手动指定GPG路径">
+<!ENTITY result-always-in-new-window "总是在新窗口显示签署或加密后的效果">
+<!ENTITY no-gpg-agent-checkbox "强制关闭GPG代理（可解决一些错误）">
+<!ENTITY ask-for-save-pass "默认询问是否记住密码">
+<!ENTITY gmail-no-no-sign-checkbox "不要显示‘找不到签名[...]’">
+<!ENTITY gmail-need-a-restart "此选项需要重启浏览器才能生效。">
+<!ENTITY gmail-buttons-label "显示的按钮：">
+<!ENTITY gmail-buton-sign-checkbox "签名">
+<!ENTITY gmail-buton-signsend-checkbox "签名并发送">
+<!ENTITY gmail-buton-crypt-checkbox "加密">
+<!ENTITY gmail-buton-cryptsend-checkbox "加密并发送">
+<!ENTITY allvays-to-myself-checkbox "发信给自己时总是加密">
+<!ENTITY enable-gpgauth-check.label "启用 gpgAuth（需要重启浏览器）">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "总是解密来自已认证服务器的信件">
+<!ENTITY global-allow-keyring-check.label "总是解密来自已认证服务器的信件">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "据域名设置：">
+<!ENTITY turn-off-updates "禁用 FireGPG 自动升级">
+<!ENTITY key-name "姓名">
+<!ENTITY key-id "Id">
+<!ENTITY key-create "已创建的">
+<!ENTITY key-expire "过期">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "添加 gpg 命令行参数：（小心：可能使 FireGPG 无法工作！请参考文档。）">
+<!ENTITY gmail-buton-signcrypt-checkbox "签名并加密">
+<!ENTITY gmail-buton-signcryptsend-checkbox "签名，加密并发送">
+<!ENTITY firegpg-version-label.text "当前 FireGPG 版本：">
+<!ENTITY hide-expired "隐藏过期的密钥">
+<!ENTITY use-api "启用 FireGPG 用于网页的 API（比如 roundcube）（需要重启浏览器）">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "许可的站点的列表（双击以去除站点）">
+<!ENTITY api-liste-domain.label "域名">
+<!ENTITY api-liste-keyauth.label "密钥">
+<!ENTITY use-gpg-agent-checkbox "启用 GPG-agent（警告，可能带来问题……）">
+<!ENTITY search-description "过滤器">
+<!ENTITY gmail-buton-use-select-checkbox "显示下拉菜单而不是一串按钮">
+<!ENTITY firegpg-ask-for-private-label.text "总是询问私钥">
+<!ENTITY inline-activated "激活对页面中的PGP区块的解析（需要重启）">
+<!ENTITY gmail-disable-autosave-checkbox "禁用自动保存功能">
+<!ENTITY gmail-buton-csign-checkbox "明文签署">
+<!ENTITY gmail-buton-csignsend-checkbox "明文签署并发送">
+<!ENTITY hide-fireftp-message "如果安装了旧的IPC库则不显示消息。">
+<!ENTITY use-fireftp-workaround "尝试以老的 API 访问 IPC。">
+<!ENTITY keyserver-message "公钥服务器">
+<!ENTITY symmetric-algo "对称加密使用的算法。留空则为默认。使用“gpg --version”来查看可用的算法列表，在大多数情况下使用这个选择：">
+<!ENTITY gmail-new-interface "新 Gmail 界面">
+<!ENTITY gmail-select-by-default-label "默认选择：">
+<!ENTITY gmail-buton-inline-checkbox "内嵌">
+<!ENTITY gmail-old-interface "老 Gmail 界面">
+<!ENTITY gmail-smtp-options-label "SMTP 选项 (OpenGPG/MIME 邮件)">
+<!ENTITY gmail-smtp-google-com "从不使用google.com记住密码">
+<!ENTITY gmail-smtp-username "用户名（留空以使用已登录帐号的用户名）">
+<!ENTITY gmail-smtp-host "主机 (smtp.gmail.com)：">
+<!ENTITY gmail-smtp-port "端口 (465)：">
+<!ENTITY gmail-smtp-use-ssl-checkbox "使用 SSL：">
+<!ENTITY gmail-disable-sign-detection "对内嵌签名（加密）禁用回复检测（始终使用整个邮件）">
+<!ENTITY gmail-disable-auto-decryption "使用旧的行为解密">
+<!ENTITY gmail-force-from "强制为：">
+<!ENTITY gpg-special-path-values "使用 {$FxFolder} 代表 Firefox 的文件夹，和 {$SPACE} 代替参数里的空格">
+<!ENTITY decrypt-when-reply "回复时解密内容">
+<!ENTITY gmail-buton-attachements-checkbox "附件">
+<!ENTITY autorwap-liste-action.label "操作">
+<!ENTITY autorwap-liste-domain.label "网页邮件">
+<!ENTITY autowrap_list.label "自动答复(双击关闭)">
+<!ENTITY paneautowrap.title "自动环绕">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "显示正确的签名的用户信息">
+<!ENTITY gmail-keep-encrypted-mail "如果邮件是加密的，那么回复时也加密">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
+<!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
+<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
+<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">

@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "加密">
+<!ENTITY dcrypt-button "解密">
+<!ENTITY sign-button "签名">
+<!ENTITY verify-button "验证">
+<!ENTITY open-button "打开">
+<!ENTITY save-button "保存">
+<!ENTITY cryptandsign-button "签名并加密">
+<!ENTITY sign-clear-button "明文签名">
+<!ENTITY symcrypt-button "对称加密">
+<!ENTITY closeandcopy-button "复制至剪贴板并关闭">

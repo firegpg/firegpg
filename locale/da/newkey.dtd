@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - ny nøgle">
+<!ENTITY warningaboutgeneeration "Advarsel! Oprettelse af nøgle kan tage lang tid og vil fastfryse Firefox. Lav noget andet imens nøgle bliver oprettet, for at skabe mere adspredelse.">
+<!ENTITY name-message "Navn">
+<!ENTITY email-message "E-post">
+<!ENTITY comment-message "Kommentar">
+<!ENTITY password1-message "Adgangskode">
+<!ENTITY password2-message "Gentag adgangskode">
+<!ENTITY keyneverexpire "Nøglen udløber aldrig">
+<!ENTITY keyexpire-message "Nøgle udløber om">
+<!ENTITY expire-year "år">
+<!ENTITY expire-month "måneder">
+<!ENTITY expire-days "dage">
+<!ENTITY advancedoptions "Avancerede indstillinger">
+<!ENTITY keylenght-message "Nøglelængde">
+<!ENTITY keytype-message "Nøgletype">
+<!ENTITY generate-button "Opret nøgle">
+<!ENTITY cancel-button "Afbryd">

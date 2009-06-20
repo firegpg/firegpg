@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Kryptér">
+<!ENTITY dcrypt-button "Dekryptér">
+<!ENTITY sign-button "Underskriv">
+<!ENTITY verify-button "Kontrollér">
+<!ENTITY open-button "Åben">
+<!ENTITY save-button "Gem">
+<!ENTITY cryptandsign-button "Underskriv og kryptér">
+<!ENTITY sign-clear-button "Underskriv klartekst">
+<!ENTITY symcrypt-button "Symmetrisk kryptering">
+<!ENTITY closeandcopy-button "Kopiér til klippebord og luk">

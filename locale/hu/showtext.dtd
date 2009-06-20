@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Titkosítás">
+<!ENTITY dcrypt-button "Visszafejtés">
+<!ENTITY sign-button "Aláírás">
+<!ENTITY verify-button "Ellenőrzés">
+<!ENTITY open-button "Megnyitás">
+<!ENTITY save-button "Mentés">
+<!ENTITY cryptandsign-button "Aláírás és titkosítás">
+<!ENTITY sign-clear-button "Clearsign">
+<!ENTITY symcrypt-button "Symmetric encryption">
+<!ENTITY closeandcopy-button "Vágólapra másolás és bezárás">

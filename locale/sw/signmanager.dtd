@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Signaturhanterare">
+<!ENTITY key-name "Namn">
+<!ENTITY key-id "NyckelID">
+<!ENTITY key-create "Datum (signerad eller skapad)">
+<!ENTITY sign-button "Signera denna nyckel">
+<!ENTITY revoke-button "Annullera denna signatur.">
+<!ENTITY del-button "Ta bort denna signatur">

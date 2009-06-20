@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Импортировать ключ с сервера">
+<!ENTITY close-button "Закрыть">
+<!ENTITY import-button "Импортировать выбранные ключи">
+<!ENTITY search-button "Поиск">
+<!ENTITY search-description "Найти:">
+<!ENTITY key-create "Создано">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Имя">

@@ -1,0 +1,81 @@
+<!ENTITY prefwindow.title "FireGPG-indstillinger">
+<!ENTITY pane1.title "Generel">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Gmail understøttelse">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Standard private nøgle:">
+<!ENTITY show-website-checkbox "Vis FireGPG's hjemmeside i GnuPG kommentarfeltet">
+<!ENTITY change-gpg-path-button "Gennemse">
+<!ENTITY change-gpg-path-checkbox "Angiv stien til den kørbare gpg-fil:">
+<!ENTITY result-always-in-new-window "Vis altid resultat af kryptering og/eller underskrift i et nyt vindue.">
+<!ENTITY no-gpg-agent-checkbox "Tving slå GPG-agent fra (kan rette nogle problemer)">
+<!ENTITY ask-for-save-pass "Som standard, spørg om adgangskode skal huskes">
+<!ENTITY gmail-no-no-sign-checkbox "Undlad at vise 'Ingen underskrift fundet [...]'">
+<!ENTITY gmail-need-a-restart "Browseren skal genstartes, for at disse indstillinger træder i kraft.">
+<!ENTITY gmail-buttons-label "Knapper der vises:">
+<!ENTITY gmail-buton-sign-checkbox "Underskriv">
+<!ENTITY gmail-buton-signsend-checkbox "Underskriv og send">
+<!ENTITY gmail-buton-crypt-checkbox "Kryptér">
+<!ENTITY gmail-buton-cryptsend-checkbox "Kryptér og send">
+<!ENTITY allvays-to-myself-checkbox "Kryptér altid til mig selv">
+<!ENTITY enable-gpgauth-check.label "Slå gpgAuth til (browser skal genstartes)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Altid dekryptér beskeder fra godkendte servere">
+<!ENTITY global-allow-keyring-check.label "Altid dekryptér beskeder fra godkendte servere">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Per domæneindstillinger">
+<!ENTITY turn-off-updates "Slå autoopdateringer til FireGPG fra">
+<!ENTITY key-name "Navn">
+<!ENTITY key-id "ID">
+<!ENTITY key-create "Oprettet">
+<!ENTITY key-expire "Udløber">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "Tilføj tilvalg til gpg-kommandoen: (Vær forsigtig: FireGPG kan holde op med at virke! Læs dokumentationen.)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Underskriv og kryptér">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Underskriv, kryptér og send">
+<!ENTITY firegpg-version-label.text "Aktuelle FireGPG version:">
+<!ENTITY hide-expired "Skjul udløbne nøgler">
+<!ENTITY use-api "Slå FireGPG API for internetsider til (såsom for roundcube) (kræver genstart)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "Liste over tilladte sider (dobbeltklik for at fjerne)">
+<!ENTITY api-liste-domain.label "Domæne">
+<!ENTITY api-liste-keyauth.label "Nøgle">
+<!ENTITY use-gpg-agent-checkbox "Slå GPG-agent til (advarsel, kan medføre problemer)">
+<!ENTITY search-description "Filter">
+<!ENTITY gmail-buton-use-select-checkbox "Vis liste fremfor knapper">
+<!ENTITY firegpg-ask-for-private-label.text "Spørg altid efter privat nøgle">
+<!ENTITY inline-activated "Tjek for PGP-blok på sider (kræver genstart)">
+<!ENTITY gmail-disable-autosave-checkbox "Slå autogem-funktionen fra">
+<!ENTITY gmail-buton-csign-checkbox "Underskriv klartekst">
+<!ENTITY gmail-buton-csignsend-checkbox "Underskriv klartekst og send">
+<!ENTITY hide-fireftp-message "Vis ikke besked om installeret gammelt IPC-bibliotek.">
+<!ENTITY use-fireftp-workaround "Prøv at tilgå IPC med det gamle API.">
+<!ENTITY keyserver-message "Nøgleserver">
+<!ENTITY symmetric-algo "Algoritme til brug ved symmetrisk kryptering. Lad blank være standard. Brug gpg --version for at have en liste over brugbare algoritmer. I de fleste tilfælde har du disse muligheder:">
+<!ENTITY gmail-new-interface "Ny Gmailgrænseflade">
+<!ENTITY gmail-select-by-default-label "Valgt som standard:">
+<!ENTITY gmail-buton-inline-checkbox "Indlejret">
+<!ENTITY gmail-old-interface "Gammel Gmailgrænseflade">
+<!ENTITY gmail-smtp-options-label "SMTP-indstillinger (openpgp/mime-e-poster)">
+<!ENTITY gmail-smtp-google-com "Forsøg aldrig at bruge google.com gemt adgangskode">
+<!ENTITY gmail-smtp-username "Brugernavn (brug blank for at bruge brugernavnet af aktuelle konto):">
+<!ENTITY gmail-smtp-host "Vært (smtp.gmail.com) :">
+<!ENTITY gmail-smtp-port "Port (465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Brug SSL:">
+<!ENTITY gmail-disable-sign-detection "Slå svargenkendelse for indlejret underskrift (og kryptering) (altid brug hele e-posten) fra">
+<!ENTITY gmail-disable-auto-decryption "Gammel opførsel for dekryptering">
+<!ENTITY gmail-force-from "Tving fra værdi:">
+<!ENTITY gpg-special-path-values "Brug {$FxFolder} for Firefoxs mappe og {$SPACE} for et mellemrum i et argument">
+<!ENTITY decrypt-when-reply "Dekryptér indhold ved svar">
+<!ENTITY gmail-buton-attachements-checkbox "Vedhæftninger">
+<!ENTITY autorwap-liste-action.label "Handling">
+<!ENTITY autorwap-liste-domain.label "Internetpost">
+<!ENTITY autowrap_list.label "Automatiske svar (dobbeltklik for at fjerne):">
+<!ENTITY paneautowrap.title "Autoombryd">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Vis brugerdata for valide underskrifter">
+<!ENTITY gmail-keep-encrypted-mail "Kryptér svar til krypterede e-poster">
+<!ENTITY gmail-smtp-no-auth-checkbox "Slå SMTP-godkendelse fra">
+<!ENTITY dont_ask_to_download_key "Undlad at hente manglende nøgler">
+<!ENTITY keyserverproxy-message "Proxy til brug for HTTP og HKP-nøgleservere:">
+<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">

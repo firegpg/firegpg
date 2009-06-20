@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - new key">
+<!ENTITY warningaboutgeneeration "Avertu! Ŝlosila generado povas daŭri longtempe, kaj povas frostigi Firefox-on. Faru ion alimaniere dum ŝlosilo generas por krei pli da entropio.">
+<!ENTITY name-message "Name">
+<!ENTITY email-message "Retpoŝto">
+<!ENTITY comment-message "Komenti">
+<!ENTITY password1-message "Password">
+<!ENTITY password2-message "Repeat password">
+<!ENTITY keyneverexpire "The key never expires">
+<!ENTITY keyexpire-message "Key expires in">
+<!ENTITY expire-year "jaroj">
+<!ENTITY expire-month "monatoj">
+<!ENTITY expire-days "tagoj">
+<!ENTITY advancedoptions "Progresaj opcioj">
+<!ENTITY keylenght-message "Key length">
+<!ENTITY keytype-message "Key type">
+<!ENTITY generate-button "Generate key">
+<!ENTITY cancel-button "Nuligi">

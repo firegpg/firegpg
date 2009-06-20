@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Importar chave a partir do servidor">
+<!ENTITY close-button "Fechar">
+<!ENTITY import-button "Chaves selecionadas importadas">
+<!ENTITY search-button "Procurar">
+<!ENTITY search-description "Procurar por:">
+<!ENTITY key-create "Criado">
+<!ENTITY key-id "Id">
+<!ENTITY key-name "Nome">

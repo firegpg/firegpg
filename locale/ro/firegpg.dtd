@@ -1,0 +1,54 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "Semnează">
+<!ENTITY firegpgContext.labelCrypt "Criptează">
+<!ENTITY firegpgContext.labelVerif "Verifică">
+<!ENTITY firegpgContext.labelDecry "Decriptează">
+<!ENTITY firegpgContext.labelOptions "Opțiuni">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "Semnează">
+<!ENTITY firegpgMenu.labelCrypt "Criptează">
+<!ENTITY firegpgMenu.labelVerif "Verifică">
+<!ENTITY firegpgMenu.labelDecry "Decriptează">
+<!ENTITY firegpgMenu.labelOptions "Opțiuni">
+<!ENTITY firegpgToolbar.labelSign "Semnează">
+<!ENTITY firegpgToolbar.labelCrypt "Criptează">
+<!ENTITY firegpgToolbar.labelVerif "Verifică">
+<!ENTITY firegpgToolbar.labelDecry "Decriptează">
+<!ENTITY firegpgToolbar.labelOptions "Opțiuni">
+<!ENTITY firegpgMenu.labelErase "Șterge parola salvată">
+<!ENTITY firegpgContext.labelErase "Șterge parola salvată">
+<!ENTITY firegpgToolbar.labelErase "Șterge parola salvată">
+<!ENTITY firegpgMenu.labelImport "Importă">
+<!ENTITY firegpgContext.labelImport "Importă">
+<!ENTITY firegpgToolbar.labelImport "Importă">
+<!ENTITY firegpgMenu.labelExport "Exportă">
+<!ENTITY firegpgContext.labelExport "Exportă">
+<!ENTITY firegpgToolbar.labelExport "Exportă">
+<!ENTITY firegpgPopInfo.labelBonjour "Bine ați venit! Instalarea FireGPG a avut succes.">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG poate accesa gpg.">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG nu poate accesa executabilul gpg. Asigurați-vă că este instalat, sau specificați manual în dialogul de preferințe calea la care poate fi accesat.">
+<!ENTITY firegpgPopInfo.labelKeyOk "O cheie privată a fost aleasă.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Avertizare: trebuie să alegeți o cheie privată în fereastra de preferințe.">
+<!ENTITY firegpgPopInfo.close "Închide">
+<!ENTITY firegpgPopInfo.options "Opțiuni">
+<!ENTITY firegpgContext.labelEditeur "Editor de text">
+<!ENTITY firegpgMenu.labelEditeur "Editor de text">
+<!ENTITY firegpgToolbar.labelEditeur "Editor de text">
+<!ENTITY firegpgContext.labelCryptSign "Semnează și criptează">
+<!ENTITY firegpgMenu.labelCryptSign "Semnează și criptează">
+<!ENTITY firegpgToolbar.labelCryptSign "Semnează și criptează">
+<!ENTITY firegpgToolbar.labelSymCrypt "Criptare simetică">
+<!ENTITY firegpgContext.labelSymCrypt "Criptare simetrică">
+<!ENTITY firegpgMenu.labelSymCrypt "Criptare simetrică">
+<!ENTITY firegpgContext.labelClearSign "Semnare în clar">
+<!ENTITY firegpgToolbar.labelClearSign "Semnează în clar">
+<!ENTITY firegpgMenu.labelClearSign "Semnează în clar">
+<!ENTITY firegpgContext.labelManager "Administrator de chei">
+<!ENTITY firegpgToolbar.labelManager "Administrator de chei">
+<!ENTITY firegpgMenu.labelManager "Administrator de chei">
+<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

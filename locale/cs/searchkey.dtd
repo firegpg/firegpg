@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Import klíče ze serveru">
+<!ENTITY close-button "Zavřít">
+<!ENTITY import-button "Importovat označené klíče">
+<!ENTITY search-button "Hledat">
+<!ENTITY search-description "Vyhledat :">
+<!ENTITY key-create "Vytvořeno">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Jméno">

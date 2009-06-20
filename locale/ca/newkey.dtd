@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - nova clau">
+<!ENTITY warningaboutgeneeration "Alerta! La generació de claus pot tardar, i congelarà el Firefox. Fes alguna altra cosa mentre es genera la clau per crear més entropia.">
+<!ENTITY name-message "Nom">
+<!ENTITY email-message "Email">
+<!ENTITY comment-message "Comentari">
+<!ENTITY password1-message "Contrassenya">
+<!ENTITY password2-message "Repeteix la contrasenya">
+<!ENTITY keyneverexpire "La clau mai expirarà">
+<!ENTITY keyexpire-message "La clau expira en">
+<!ENTITY expire-year "anys">
+<!ENTITY expire-month "mesos">
+<!ENTITY expire-days "dies">
+<!ENTITY advancedoptions "Opcions avançades">
+<!ENTITY keylenght-message "Llargària de la clau">
+<!ENTITY keytype-message "Tipus de clau">
+<!ENTITY generate-button "Genera clau">
+<!ENTITY cancel-button "Cancel·la">

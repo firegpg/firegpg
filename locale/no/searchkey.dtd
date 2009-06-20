@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Importer nøkkel fra tjener (server)">
+<!ENTITY close-button "Lukk.">
+<!ENTITY import-button "Importer valgt(e) nøkkel(er)">
+<!ENTITY search-button "Søk">
+<!ENTITY search-description "Søk etter:">
+<!ENTITY key-create "Etablert">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Navn">

@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - nový klíč">
+<!ENTITY warningaboutgeneeration "Varování! Vytváření klíče může zabrat dost času a dočasně zmrazí Firefox. Dělejte něco jiného zatímco se klíč generuje, získají se tím potřebná náhodná data.">
+<!ENTITY name-message "Jméno">
+<!ENTITY email-message "Email">
+<!ENTITY comment-message "Komentář">
+<!ENTITY password1-message "Heslo">
+<!ENTITY password2-message "Zopakujte heslo">
+<!ENTITY keyneverexpire "Klíč nikdy nevyprší">
+<!ENTITY keyexpire-message "Klíč vyprší za">
+<!ENTITY expire-year "roky">
+<!ENTITY expire-month "měsíce">
+<!ENTITY expire-days "dny">
+<!ENTITY advancedoptions "Pokročilé nastavení">
+<!ENTITY keylenght-message "Délka klíče">
+<!ENTITY keytype-message "Typ klíče">
+<!ENTITY generate-button "Vytvořit klíč">
+<!ENTITY cancel-button "Zrušit">

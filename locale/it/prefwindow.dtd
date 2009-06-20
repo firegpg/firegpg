@@ -1,0 +1,81 @@
+<!ENTITY prefwindow.title "FireGPG - Preferenza">
+<!ENTITY pane1.title "Generale">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Supporto GMail">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Chiave privata di default">
+<!ENTITY show-website-checkbox "Mostra l'indirizzo del sito web di FireGPG nel campo 'commenti' GPG">
+<!ENTITY change-gpg-path-button "Seleziona cartella">
+<!ENTITY change-gpg-path-checkbox "Specifica un percorso alternativo per GPG:">
+<!ENTITY result-always-in-new-window "Visualizza sempre il testo criptato / firmato in una nuova finestra.">
+<!ENTITY no-gpg-agent-checkbox "Forza disattivazione di gpg's agent (può risolvere alcuni errori)">
+<!ENTITY ask-for-save-pass "Chiedi di salvare la password come azione predefinita">
+<!ENTITY gmail-no-no-sign-checkbox "Nascondi 'Nessuna firma trovata [...]' ">
+<!ENTITY gmail-need-a-restart "Queste opzioni necessitano di un riavvio del browser">
+<!ENTITY gmail-buttons-label "Mostra pulsanti">
+<!ENTITY gmail-buton-sign-checkbox "Firma">
+<!ENTITY gmail-buton-signsend-checkbox "Firma e Invia">
+<!ENTITY gmail-buton-crypt-checkbox "Cripta">
+<!ENTITY gmail-buton-cryptsend-checkbox "Cripta e Invia">
+<!ENTITY allvays-to-myself-checkbox "Seleziona sempre la mia chiave per criptare">
+<!ENTITY enable-gpgauth-check.label "Abilita GPGAuth (Richiede il riavvio di Firefox)">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Decripta sempre i messaggi provenienti da Server Autenticati">
+<!ENTITY global-allow-keyring-check.label "Decripta sempre i messaggi provenienti da Server Autenticati">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Impostazioni di dominio">
+<!ENTITY turn-off-updates "Disabilita gli aggiornamenti automatici di FireGPG">
+<!ENTITY key-name "Nome">
+<!ENTITY key-id "ID">
+<!ENTITY key-create "Creata">
+<!ENTITY key-expire "Scaduta">
+<!ENTITY pane4.title "Gpg">
+<!ENTITY gpg-add-options "Argomenti aggiuntivi via linea di comando per GPG: (Attenzione! Può causare crash di FireGPG! Leggere la documentazione)">
+<!ENTITY gmail-buton-signcrypt-checkbox "Firma e Cripta">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Firma, Cripta e Invia">
+<!ENTITY firegpg-version-label.text "Versione attuale di FireGPG:">
+<!ENTITY hide-expired "Nascondi le chiavi scadute">
+<!ENTITY use-api "Attiva le API di FireGPG per le pagine web (come roundcube) (E' richiesto il riavvio)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-access.label "Lista dei siti consentiti (doppio click per rimuovere)">
+<!ENTITY api-liste-domain.label "Dominio">
+<!ENTITY api-liste-keyauth.label "Chiave">
+<!ENTITY use-gpg-agent-checkbox "Attiva l'agente GPG (ATTENZIONE: potrebbe causare malfunzionamenti...)">
+<!ENTITY search-description "Filtro:">
+<!ENTITY gmail-buton-use-select-checkbox "Usa menu a tendina al posto dei pulsanti">
+<!ENTITY firegpg-ask-for-private-label.text "Chiedi sempre la chiave privata">
+<!ENTITY inline-activated "Attiva il gestore per i blocchi PGP (richiede il riavvio)">
+<!ENTITY gmail-disable-autosave-checkbox "Disabilita il salvataggio automatico">
+<!ENTITY gmail-buton-csign-checkbox "Firma">
+<!ENTITY gmail-buton-csignsend-checkbox "Firma ed invia">
+<!ENTITY hide-fireftp-message "Non mostrare gli avvisi relativi alle vecchie librerie IPC installate">
+<!ENTITY use-fireftp-workaround "Prova ad usare le vecchie API per accedere alle librerie IPC">
+<!ENTITY keyserver-message "Server delle chiavi">
+<!ENTITY symmetric-algo "Algoritmo usato per la crittazione simmetrica. Lasciare vuoto per usare quello predefinito. Usare gpg --version per una lista degli algoritmi disponibili. Nella maggior parte dei casi le scelte disponibili sono:">
+<!ENTITY gmail-new-interface "Nuova interfaccia di Gmail">
+<!ENTITY gmail-select-by-default-label "Impostazione predefinita:">
+<!ENTITY gmail-buton-inline-checkbox "In linea">
+<!ENTITY gmail-old-interface "Vecchia interfaccia di Gmail">
+<!ENTITY gmail-smtp-options-label "Opzioni SMTP (openpgp/mime messaggi)">
+<!ENTITY gmail-smtp-google-com "Non tentare di utilizzare la password memorizzata di google.com">
+<!ENTITY gmail-smtp-username "Nome utente (lasciare in bianco per utilizzare il nome utente dell'account connesso):">
+<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) :">
+<!ENTITY gmail-smtp-port "Porta (465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Utilizza SSL:">
+<!ENTITY gmail-disable-sign-detection "Disattiva il rilevamento in risposta di firme nel corpo del messaggio (e cifratura)(usa sempre l'intero messaggio)">
+<!ENTITY gmail-disable-auto-decryption "Vecchia procedura di decifrazione">
+<!ENTITY gmail-force-from "Forza dal valore:">
+<!ENTITY gpg-special-path-values "Usa {$FxFolder} per avere la cartella di Firefox e {$SPACE} per avere uno spazio all'interno dell'argomento">
+<!ENTITY decrypt-when-reply "Decifra il contenuto quando rispondi">
+<!ENTITY gmail-buton-attachements-checkbox "Allegati">
+<!ENTITY autorwap-liste-action.label "Azione">
+<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY autowrap_list.label "Risposte automatiche (doppio click per rimuovere)">
+<!ENTITY paneautowrap.title "Autoavvolgimento">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Mostra i dati degli utenti per le firme valide">
+<!ENTITY gmail-keep-encrypted-mail "Critta le repliche a mail crittate">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disabilita l'autenticazione SMTP">
+<!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
+<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
+<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">

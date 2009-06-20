@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Cifrar">
+<!ENTITY dcrypt-button "Decifrar">
+<!ENTITY sign-button "Assinar">
+<!ENTITY verify-button "Verificar">
+<!ENTITY open-button "Abrir">
+<!ENTITY save-button "Salvar">
+<!ENTITY cryptandsign-button "Assinar e Cifrar">
+<!ENTITY sign-clear-button "Assinar">
+<!ENTITY symcrypt-button "Criptografia simétrica">
+<!ENTITY closeandcopy-button "Copiar para área de transferência e fechar">

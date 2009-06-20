@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - khóa mới">
+<!ENTITY warningaboutgeneeration "Warning! Key generation can take a lot of time, and will freeze Firefox. Do something else while key is generated to create more entropy.">
+<!ENTITY name-message "Tên">
+<!ENTITY email-message "Email">
+<!ENTITY comment-message "Ghi chú">
+<!ENTITY password1-message "Mật khẩu">
+<!ENTITY password2-message "Nhắc lại mật khẩu">
+<!ENTITY keyneverexpire "Khóa không bao giờ hết hạn">
+<!ENTITY keyexpire-message "Khóa hết hạn trong ">
+<!ENTITY expire-year "năm">
+<!ENTITY expire-month "tháng">
+<!ENTITY expire-days "ngày">
+<!ENTITY advancedoptions "Các lựa chọn nâng cao">
+<!ENTITY keylenght-message "Độ dài khóa">
+<!ENTITY keytype-message "Kiểu khóa">
+<!ENTITY generate-button "Tạo khóa">
+<!ENTITY cancel-button "Bỏ qua">

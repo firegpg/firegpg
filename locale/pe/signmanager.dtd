@@ -1,0 +1,7 @@
+<!ENTITY signmanager "مدیر امضا">
+<!ENTITY key-name "نام">
+<!ENTITY key-id "مشخصه کلید">
+<!ENTITY key-create "(تاریخ (امضا یا تولید">
+<!ENTITY sign-button "این کلید را امضا کن">
+<!ENTITY revoke-button "ابطال این امضا">
+<!ENTITY del-button "حذف این امضا">

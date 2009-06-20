@@ -1,0 +1,54 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "署名">
+<!ENTITY firegpgContext.labelCrypt "暗号化">
+<!ENTITY firegpgContext.labelVerif "検証">
+<!ENTITY firegpgContext.labelDecry "復号化">
+<!ENTITY firegpgContext.labelOptions "オプション">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "署名">
+<!ENTITY firegpgMenu.labelCrypt "暗号化">
+<!ENTITY firegpgMenu.labelVerif "検証">
+<!ENTITY firegpgMenu.labelDecry "復号化">
+<!ENTITY firegpgMenu.labelOptions "オプション">
+<!ENTITY firegpgToolbar.labelSign "署名">
+<!ENTITY firegpgToolbar.labelCrypt "暗号化">
+<!ENTITY firegpgToolbar.labelVerif "検証">
+<!ENTITY firegpgToolbar.labelDecry "復号化">
+<!ENTITY firegpgToolbar.labelOptions "オプション">
+<!ENTITY firegpgMenu.labelErase "保存されたパスワードをクリア">
+<!ENTITY firegpgContext.labelErase "保存されたパスワードをクリア">
+<!ENTITY firegpgToolbar.labelErase "保存されたパスワードをクリア">
+<!ENTITY firegpgMenu.labelImport "読み込み">
+<!ENTITY firegpgContext.labelImport "読み込み">
+<!ENTITY firegpgToolbar.labelImport "読み込み">
+<!ENTITY firegpgMenu.labelExport "書き出し">
+<!ENTITY firegpgContext.labelExport "書き出し">
+<!ENTITY firegpgToolbar.labelExport "書き出し">
+<!ENTITY firegpgPopInfo.labelBonjour "ようこそ! FireGPGのインストールは成功しました。">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPGはgpgにアクセス可能です。">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPGは、gpgの実行形式ファイルにアクセスできませんでした。インストールされていることを確認するか、設定でパスを指定してください。">
+<!ENTITY firegpgPopInfo.labelKeyOk "秘密鍵が選択されました。">
+<!ENTITY firegpgPopInfo.labelKeyErr "警告: 秘密鍵を設定で選択してください。">
+<!ENTITY firegpgPopInfo.close "閉じる">
+<!ENTITY firegpgPopInfo.options "オプション">
+<!ENTITY firegpgContext.labelEditeur "テキストエディタ">
+<!ENTITY firegpgMenu.labelEditeur "テキストエディタ">
+<!ENTITY firegpgToolbar.labelEditeur "テキストエディタ">
+<!ENTITY firegpgContext.labelCryptSign "署名と暗号化">
+<!ENTITY firegpgMenu.labelCryptSign "署名と暗号化">
+<!ENTITY firegpgToolbar.labelCryptSign "署名と暗号化">
+<!ENTITY firegpgToolbar.labelSymCrypt "対称暗号化">
+<!ENTITY firegpgContext.labelSymCrypt "対称暗号化">
+<!ENTITY firegpgMenu.labelSymCrypt "対称暗号化">
+<!ENTITY firegpgContext.labelClearSign "クリア署名">
+<!ENTITY firegpgToolbar.labelClearSign "クリア署名">
+<!ENTITY firegpgMenu.labelClearSign "クリア署名">
+<!ENTITY firegpgContext.labelManager "鍵マネージャ">
+<!ENTITY firegpgToolbar.labelManager "鍵マネージャ">
+<!ENTITY firegpgMenu.labelManager "鍵マネージャ">
+<!ENTITY keynotrevokedpassword "エラー, ユーザーIDは破棄されませんでした。パスワードを間違えましたか?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

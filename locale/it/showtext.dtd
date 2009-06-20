@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Cripta">
+<!ENTITY dcrypt-button "Decripta">
+<!ENTITY sign-button "Firma">
+<!ENTITY verify-button "Verifica">
+<!ENTITY open-button "Apri">
+<!ENTITY save-button "Salva">
+<!ENTITY cryptandsign-button "Firma e Cripta">
+<!ENTITY sign-clear-button "Firma">
+<!ENTITY symcrypt-button "Criptazione simmetrica">
+<!ENTITY closeandcopy-button "Copia negli appunti e chiudi">

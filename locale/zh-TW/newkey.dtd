@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - 新金鑰">
+<!ENTITY warningaboutgeneeration "警告！產生金鑰可能需要花費大量時間，而且 Firefox 會暫時卡住不動。請您在此過程中多做一些其他事情（像是敲打鍵盤、移動滑鼠、讀寫硬碟之類的），以幫助金鑰產生器獲得夠多的亂數。 ">
+<!ENTITY name-message "Name">
+<!ENTITY email-message "電子郵件">
+<!ENTITY comment-message "註釋">
+<!ENTITY password1-message "密碼">
+<!ENTITY password2-message "請重覆密碼">
+<!ENTITY keyneverexpire "The key never expires">
+<!ENTITY keyexpire-message "Key expires in">
+<!ENTITY expire-year "年">
+<!ENTITY expire-month "月">
+<!ENTITY expire-days "天">
+<!ENTITY advancedoptions "進階選項">
+<!ENTITY keylenght-message "金鑰長度">
+<!ENTITY keytype-message "金鑰類型">
+<!ENTITY generate-button "產生金鑰">
+<!ENTITY cancel-button "取消">

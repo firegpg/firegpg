@@ -1,0 +1,31 @@
+<!ENTITY key-status "Status">
+<!ENTITY key-trust "Tillit">
+<!ENTITY key-expire "Utlöper">
+<!ENTITY key-create "Skapad">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Namn">
+<!ENTITY revoke-button "Upphäv denna signatur">
+<!ENTITY sign-button "Signaturer">
+<!ENTITY changetrust-button "Ändra tillit">
+<!ENTITY importserver-button "Importera från server">
+<!ENTITY exportserver-button "Exportera till server">
+<!ENTITY importfile-button "Importera från fil">
+<!ENTITY exportfile-button "Exportera till fil">
+<!ENTITY new-button "Ny nyckel">
+<!ENTITY keymanager "Nyckelhanterare">
+<!ENTITY refrech "Uppdatera nycklar från serverd">
+<!ENTITY trustUnded "Ta bort information om tillit">
+<!ENTITY trustDont "Jag litar inte på denna här nyckeln">
+<!ENTITY trustMargi "Jag har en viss tillit till denna nyckel">
+<!ENTITY trustFull "Jag litar på denna nyckel fullständigt">
+<!ENTITY trustUltimate "Lita på denna nyckel ultimativt (!)">
+<!ENTITY password-button "Ändra lösenord">
+<!ENTITY del-button "Radera denna signatur">
+<!ENTITY revokeNoRaison "Ingen orsak angiven">
+<!ENTITY revokeComprimse "Nyckeln har äventyrats">
+<!ENTITY revokeRemplaced "Nyckeln är ersatt">
+<!ENTITY revokeNotUsed "Nyckeln används inte längre">
+<!ENTITY userid-button "Användar-ID">
+<!ENTITY add "Lägg till">
+<!ENTITY delete "Radera">
+<!ENTITY revoke "Upphäv">

@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Importér nøgle fra server">
+<!ENTITY close-button "Luk">
+<!ENTITY import-button "Importér valgte nøgler">
+<!ENTITY search-button "Søg">
+<!ENTITY search-description "Søg for:">
+<!ENTITY key-create "Oprettet">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Navn">

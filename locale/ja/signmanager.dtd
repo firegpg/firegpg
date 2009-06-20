@@ -1,0 +1,7 @@
+<!ENTITY signmanager "署名マネージャ">
+<!ENTITY key-name "名前">
+<!ENTITY key-id "鍵ID">
+<!ENTITY key-create "日付 (署名または作成)">
+<!ENTITY sign-button "この鍵に署名する">
+<!ENTITY revoke-button "この署名を破棄する">
+<!ENTITY del-button "この署名を削除する">

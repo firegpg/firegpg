@@ -1,0 +1,54 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "簽名">
+<!ENTITY firegpgContext.labelCrypt "加密">
+<!ENTITY firegpgContext.labelVerif "驗證">
+<!ENTITY firegpgContext.labelDecry "解密">
+<!ENTITY firegpgContext.labelOptions "選項">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "簽名">
+<!ENTITY firegpgMenu.labelCrypt "加密">
+<!ENTITY firegpgMenu.labelVerif "驗證">
+<!ENTITY firegpgMenu.labelDecry "解密">
+<!ENTITY firegpgMenu.labelOptions "選項">
+<!ENTITY firegpgToolbar.labelSign "簽名">
+<!ENTITY firegpgToolbar.labelCrypt "加密">
+<!ENTITY firegpgToolbar.labelVerif "驗證">
+<!ENTITY firegpgToolbar.labelDecry "解密">
+<!ENTITY firegpgToolbar.labelOptions "選項">
+<!ENTITY firegpgMenu.labelErase "清除已存密碼">
+<!ENTITY firegpgContext.labelErase "清除已存密碼">
+<!ENTITY firegpgToolbar.labelErase "清除已存密碼">
+<!ENTITY firegpgMenu.labelImport "匯入">
+<!ENTITY firegpgContext.labelImport "匯入">
+<!ENTITY firegpgToolbar.labelImport "匯入">
+<!ENTITY firegpgMenu.labelExport "匯出">
+<!ENTITY firegpgContext.labelExport "匯出">
+<!ENTITY firegpgToolbar.labelExport "匯出">
+<!ENTITY firegpgPopInfo.labelBonjour "歡迎！FireGPG 安裝成功！">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG 可存取 gpg。">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG 無法存取 gpg 可執行檔。請檢查是否有安裝該軟體，或者偏好設定裡手動指定路徑。">
+<!ENTITY firegpgPopInfo.labelKeyOk "已選擇私鑰。">
+<!ENTITY firegpgPopInfo.labelKeyErr "警告：請在偏好設定裡選擇一個私鑰。">
+<!ENTITY firegpgPopInfo.close "關閉">
+<!ENTITY firegpgPopInfo.options "選項">
+<!ENTITY firegpgContext.labelEditeur "文字編輯器">
+<!ENTITY firegpgMenu.labelEditeur "文字編輯器">
+<!ENTITY firegpgToolbar.labelEditeur "文字編輯器">
+<!ENTITY firegpgContext.labelCryptSign "簽署並加密">
+<!ENTITY firegpgMenu.labelCryptSign "簽署並加密">
+<!ENTITY firegpgToolbar.labelCryptSign "簽署並加密">
+<!ENTITY firegpgToolbar.labelSymCrypt "對稱加密">
+<!ENTITY firegpgContext.labelSymCrypt "對稱加密">
+<!ENTITY firegpgMenu.labelSymCrypt "對稱加密">
+<!ENTITY firegpgContext.labelClearSign "明文簽章">
+<!ENTITY firegpgToolbar.labelClearSign "明文簽章">
+<!ENTITY firegpgMenu.labelClearSign "明文簽章">
+<!ENTITY firegpgContext.labelManager "Key manager">
+<!ENTITY firegpgToolbar.labelManager "金鑰管理程式">
+<!ENTITY firegpgMenu.labelManager "金鑰管理程式">
+<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

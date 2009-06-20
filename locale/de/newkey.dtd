@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - neuer Schlüssel">
+<!ENTITY warningaboutgeneeration "Warnung! Die Schlüsselgenerierung kann einige Zeit in Anspruch nehmen, Firefox kann in dieser Zeit nicht benutzt werden. Machen Sie während der Schlüsselgenerierung irgendwas anderes (mit dem PC) um den Zufallsgenerator zu unterstützen.">
+<!ENTITY name-message "Name">
+<!ENTITY email-message "E-Mail">
+<!ENTITY comment-message "Kommentar">
+<!ENTITY password1-message "Passwort">
+<!ENTITY password2-message "Passwort wiederholen">
+<!ENTITY keyneverexpire "Der Schlüssel verfällt nie">
+<!ENTITY keyexpire-message "Schlüssel läuft ab in">
+<!ENTITY expire-year "Jahre">
+<!ENTITY expire-month "Monate">
+<!ENTITY expire-days "Tage">
+<!ENTITY advancedoptions "Erweiterte Optionen">
+<!ENTITY keylenght-message "Schlüssellänge">
+<!ENTITY keytype-message "Schlüsseltyp">
+<!ENTITY generate-button "Schlüssel generieren">
+<!ENTITY cancel-button "Abbrechen">

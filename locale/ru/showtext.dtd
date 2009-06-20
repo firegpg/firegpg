@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Зашифровать">
+<!ENTITY dcrypt-button "Расшифровать">
+<!ENTITY sign-button "Подписать">
+<!ENTITY verify-button "Проверить">
+<!ENTITY open-button "Открыть">
+<!ENTITY save-button "Сохранить">
+<!ENTITY cryptandsign-button "Подписать и зашифровать">
+<!ENTITY sign-clear-button "Подписать открытый текст">
+<!ENTITY symcrypt-button "Симметричное шифрование">
+<!ENTITY closeandcopy-button "Копировать в буфер и закрыть">

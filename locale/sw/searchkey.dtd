@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Importera nyckel från server">
+<!ENTITY close-button "Stäng">
+<!ENTITY import-button "Importera markerade nycklar">
+<!ENTITY search-button "Sök">
+<!ENTITY search-description "Sök efter:">
+<!ENTITY key-create "Skapad">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Namn">

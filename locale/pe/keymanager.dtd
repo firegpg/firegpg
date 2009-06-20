@@ -1,0 +1,31 @@
+<!ENTITY key-status "وضعیت">
+<!ENTITY key-trust "اعتبار">
+<!ENTITY key-expire "انقضا">
+<!ENTITY key-create "تولید شده">
+<!ENTITY key-id "مشخصه">
+<!ENTITY key-name "نام">
+<!ENTITY revoke-button "ابطال کلید">
+<!ENTITY sign-button "امضاها">
+<!ENTITY changetrust-button "تغییر اعتبار">
+<!ENTITY importserver-button "وارد کردن از سرور">
+<!ENTITY exportserver-button "انتقال به سرور">
+<!ENTITY importfile-button "وارد کردن از فایل">
+<!ENTITY exportfile-button "انتقال به فایل">
+<!ENTITY new-button "کلید جدید">
+<!ENTITY keymanager "مدیر کلید">
+<!ENTITY refrech "بازخوانی کلیدها از سرور">
+<!ENTITY trustUnded "اطلاعات اعتبار را حذف کن">
+<!ENTITY trustDont "من به این کلید اطمینان ندارم">
+<!ENTITY trustMargi "من تقریباً به این کلید اطمینان دارم">
+<!ENTITY trustFull "من کاملاً به ابن کلید اطمینان دارم">
+<!ENTITY trustUltimate "نهایت اطمینان را به این کلید داشته باش">
+<!ENTITY password-button "تغییر رمزعبور">
+<!ENTITY del-button "حذف">
+<!ENTITY revokeNoRaison "هیچ دلیلی مشخص نشده است">
+<!ENTITY revokeComprimse "کلید مشکل امنیتی دارد">
+<!ENTITY revokeRemplaced "کلید جایگزین شد">
+<!ENTITY revokeNotUsed "کلید دیگر استفاده نمی‌شود">
+<!ENTITY userid-button "مشخصه کاربر">
+<!ENTITY add "افزودن">
+<!ENTITY delete "حذف">
+<!ENTITY revoke "ابطال">

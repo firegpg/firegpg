@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Verschlüsseln">
+<!ENTITY dcrypt-button "Entschlüsseln">
+<!ENTITY sign-button "Unterschreiben">
+<!ENTITY verify-button "Unterschrift überprüfen">
+<!ENTITY open-button "Öffnen">
+<!ENTITY save-button "Speichern">
+<!ENTITY cryptandsign-button "Unterschreiben und Verschlüsseln">
+<!ENTITY sign-clear-button "Unterschrift in Klartext">
+<!ENTITY symcrypt-button "Symmetrische Verschlüsselung">
+<!ENTITY closeandcopy-button "In Zwischenablage kopieren und schließen">

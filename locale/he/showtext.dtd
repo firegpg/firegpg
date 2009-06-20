@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "הצפנה">
+<!ENTITY dcrypt-button "פעינוח">
+<!ENTITY sign-button "חתימה">
+<!ENTITY verify-button "אימות">
+<!ENTITY open-button "פתח">
+<!ENTITY save-button "שמור">
+<!ENTITY cryptandsign-button "חתום והצפן">
+<!ENTITY sign-clear-button "נקה חתימה">
+<!ENTITY symcrypt-button "הצפנה סימטרית">
+<!ENTITY closeandcopy-button "העתק ללוח ושמור">

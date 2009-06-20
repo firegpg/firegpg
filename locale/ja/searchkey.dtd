@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "鍵をサーバーから併合する">
+<!ENTITY close-button "閉じる">
+<!ENTITY import-button "選択した鍵を併合する">
+<!ENTITY search-button "検索">
+<!ENTITY search-description "Search for :">
+<!ENTITY key-create "Created">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "名前">

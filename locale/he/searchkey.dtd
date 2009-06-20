@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "ייבא מפתח משרת">
+<!ENTITY close-button "סגור">
+<!ENTITY import-button "ייבא מפתחות">
+<!ENTITY search-button "חפש">
+<!ENTITY search-description "חפש :">
+<!ENTITY key-create "נוצר">
+<!ENTITY key-id "זיהוי">
+<!ENTITY key-name "שם">

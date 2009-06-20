@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - ny krypteringsnøkkel">
+<!ENTITY warningaboutgeneeration "Advarsel! Nøkkelgenerering kan ta lang til og vil fryse Firefox. Gjør noe annet mens nøkkelen genererer.">
+<!ENTITY name-message "Navn">
+<!ENTITY email-message "Email.">
+<!ENTITY comment-message "Kommentar.">
+<!ENTITY password1-message "Passord">
+<!ENTITY password2-message "Gjenta passord">
+<!ENTITY keyneverexpire "Nøkkelen utløper aldri">
+<!ENTITY keyexpire-message "Nøkkel utløper om">
+<!ENTITY expire-year "år">
+<!ENTITY expire-month "måneder">
+<!ENTITY expire-days "dager">
+<!ENTITY advancedoptions "Avanserte valgmuligheter.">
+<!ENTITY keylenght-message "Nøkkellengde">
+<!ENTITY keytype-message "Type Krypteringsnøkkel">
+<!ENTITY generate-button "Generer en nøkkel">
+<!ENTITY cancel-button "Annuller.">

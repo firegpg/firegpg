@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Διαχειριστής υπογραφών">
+<!ENTITY key-name "Όνομα">
+<!ENTITY key-id "Κωδικός κλειδιού">
+<!ENTITY key-create "Ημερομηνία (υπογραφής ή δημιουργίας)">
+<!ENTITY sign-button "Υπέγραψε το κλειδί">
+<!ENTITY revoke-button "Ανάκληση της υπογραφής">
+<!ENTITY del-button "Διαγραφή αυτής της υπογραφής">

@@ -1,0 +1,54 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "وقّع">
+<!ENTITY firegpgContext.labelCrypt "عمِّ">
+<!ENTITY firegpgContext.labelVerif "تحقّق">
+<!ENTITY firegpgContext.labelDecry "ظهّر">
+<!ENTITY firegpgContext.labelOptions "خيارات">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "وقّع">
+<!ENTITY firegpgMenu.labelCrypt "عمِّ">
+<!ENTITY firegpgMenu.labelVerif "تحقّق">
+<!ENTITY firegpgMenu.labelDecry "ظهّر">
+<!ENTITY firegpgMenu.labelOptions "خيارات">
+<!ENTITY firegpgToolbar.labelSign "وقّع">
+<!ENTITY firegpgToolbar.labelCrypt "عمِّ">
+<!ENTITY firegpgToolbar.labelVerif "تحقّق">
+<!ENTITY firegpgToolbar.labelDecry "ظهّر">
+<!ENTITY firegpgToolbar.labelOptions "خيارات">
+<!ENTITY firegpgMenu.labelErase "أخل كلمة السرّ المحفوظة">
+<!ENTITY firegpgContext.labelErase "أخل كلمة السر المحفوظة">
+<!ENTITY firegpgToolbar.labelErase "أخل كلمة السر المحفوظة">
+<!ENTITY firegpgMenu.labelImport "استورد">
+<!ENTITY firegpgContext.labelImport "استورد">
+<!ENTITY firegpgToolbar.labelImport "استورد">
+<!ENTITY firegpgMenu.labelExport "صدّر">
+<!ENTITY firegpgContext.labelExport "صدّر">
+<!ENTITY firegpgToolbar.labelExport "صدّر">
+<!ENTITY firegpgPopInfo.labelBonjour "مرحبا!لقد تم تثبيت FireGPG بنجاح.">
+<!ENTITY firegpgPopInfo.labelAccessOk "بوسع FireGPG النفاذ إلى GnuPG.">
+<!ENTITY firegpgPopInfo.labelAccessErr "تعذّر على FireGPG النفاذ إلى GnuPG؛ هل هو مثبت؟ هل مساره مضبوط؟">
+<!ENTITY firegpgPopInfo.labelKeyOk "اخترت مفتاحا سريا!">
+<!ENTITY firegpgPopInfo.labelKeyErr "تحذير: اختر مفتاحا سريا في الخيارات.">
+<!ENTITY firegpgPopInfo.close "أغلق">
+<!ENTITY firegpgPopInfo.options "خيارات">
+<!ENTITY firegpgContext.labelEditeur "افتح المحرر">
+<!ENTITY firegpgMenu.labelEditeur "افتح المحرر">
+<!ENTITY firegpgToolbar.labelEditeur "افتح المحرر">
+<!ENTITY firegpgContext.labelCryptSign "وقّع و عمِّ">
+<!ENTITY firegpgMenu.labelCryptSign "وقّع و عمِّ">
+<!ENTITY firegpgToolbar.labelCryptSign "وقّع و عمِّ">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
+<!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
+<!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
+<!ENTITY firegpgContext.labelClearSign "Clearsign">
+<!ENTITY firegpgToolbar.labelClearSign "Clearsign">
+<!ENTITY firegpgMenu.labelClearSign "Clearsign">
+<!ENTITY firegpgContext.labelManager "Key manager">
+<!ENTITY firegpgToolbar.labelManager "Key manager">
+<!ENTITY firegpgMenu.labelManager "Key manager">
+<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
+<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">

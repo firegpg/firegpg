@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - nuova chiave">
+<!ENTITY warningaboutgeneeration "Attenzione! La procedura di generazione della chiave può richiedere molto tempo e bloccare Firefox. Per generare più entropia possibile è consigliabile eseguire azioni a caso con mouse e tastiera">
+<!ENTITY name-message "Nome">
+<!ENTITY email-message "Email">
+<!ENTITY comment-message "Commento">
+<!ENTITY password1-message "Password">
+<!ENTITY password2-message "Reinserisci la password">
+<!ENTITY keyneverexpire "La chiave non ha scadenza">
+<!ENTITY keyexpire-message "La chiave scade tra">
+<!ENTITY expire-year "anni">
+<!ENTITY expire-month "mesi">
+<!ENTITY expire-days "giorni">
+<!ENTITY advancedoptions "Opzioni avanzate">
+<!ENTITY keylenght-message "Dimensione della chiave">
+<!ENTITY keytype-message "Algoritmo">
+<!ENTITY generate-button "Genera chiave">
+<!ENTITY cancel-button "Annulla">

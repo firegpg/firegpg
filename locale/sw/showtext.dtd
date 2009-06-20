@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Kryptera">
+<!ENTITY dcrypt-button "Dekryptera">
+<!ENTITY sign-button "Signera denna nyckel">
+<!ENTITY verify-button "Verifiera">
+<!ENTITY open-button "Öppna">
+<!ENTITY save-button "Spara">
+<!ENTITY cryptandsign-button "Signera och kryptera">
+<!ENTITY sign-clear-button "Signera i klartext">
+<!ENTITY symcrypt-button "Symmetrisk kryptering">
+<!ENTITY closeandcopy-button "Kopiera till urklipp och stäng">

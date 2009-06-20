@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Importar clau des del servidor">
+<!ENTITY close-button "Tancar">
+<!ENTITY import-button "Importar les claus seleccionades">
+<!ENTITY search-button "Cercar">
+<!ENTITY search-description "Cercar:">
+<!ENTITY key-create "Creada">
+<!ENTITY key-id "Id">
+<!ENTITY key-name "Nom">
