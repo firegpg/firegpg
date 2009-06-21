@@ -63,7 +63,7 @@
 <!ENTITY gmail-smtp-host "Amfitrió (smtp.gmail.com): ">
 <!ENTITY gmail-smtp-port "Port (465):">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Utilitzar SSL:">
-<!ENTITY gmail-disable-sign-detection "Inhibeix la detecció de resposta en signatura inline(i encriptació)(sempre utilitza tot el correu)">
+<!ENTITY gmail-disable-sign-detection "Desactiva la detecció de resposta en signatura en línia(i encriptació)(sempre utilitza tot el correu)">
 <!ENTITY gmail-disable-auto-decryption "Antic comportament per desencriptació">
 <!ENTITY gmail-force-from "Forçar des del valor:">
 <!ENTITY gpg-special-path-values "Utilitza {$FxFolder} per tenir el directori del Firefox i {$SPACE} per tenir un espai dins un argument.">
@@ -78,4 +78,4 @@
 <!ENTITY gmail-smtp-no-auth-checkbox "Deshabilitar l'autenticació SMTP">
 <!ENTITY dont_ask_to_download_key "No provis de descarregar claus perdudes">
 <!ENTITY keyserverproxy-message "Proxy a utilitzar pels servidors de claus HTTP i HKP:">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">
+<!ENTITY digest-message "Resum (el hash utilitzat per signar) (SHA256, SHA512, etc.) (Gmail utilitza aquest valor per crear correus): ">

@@ -78,4 +78,4 @@
 <!ENTITY gmail-smtp-no-auth-checkbox "Désactiver l'authentification SMTP">
 <!ENTITY dont_ask_to_download_key "Ne pas essayer de télécharger les clés manquantes">
 <!ENTITY keyserverproxy-message "Proxy à utiliser pour les serveurs de clés utilisant les protocoles HTTP et HKP">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">
+<!ENTITY digest-message "Hachage (Hash utilisé pour signer) (SHA256, SHA512, etc.) (Gmail utilise cette valeur pour créer les mails) :">

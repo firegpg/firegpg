@@ -78,4 +78,4 @@
 <!ENTITY gmail-smtp-no-auth-checkbox "Slå SMTP-godkendelse fra">
 <!ENTITY dont_ask_to_download_key "Undlad at hente manglende nøgler">
 <!ENTITY keyserverproxy-message "Proxy til brug for HTTP og HKP-nøgleservere:">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">
+<!ENTITY digest-message "Digest (Hash brugt til underskrift) (SHA256, SHA512, etc.) (Gmail bruger denne værdi til at oprette e-poster): ">

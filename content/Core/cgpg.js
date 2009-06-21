@@ -1277,7 +1277,7 @@ var FireGPG = {
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;
 
-        if(result.sdOut.indexOf("BAD_PASSPHRASE") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_PIN") != -1) {
+        if(result.sdOut.indexOf("DECRYPTION_OKAY") == -1 && (result.sdOut.indexOf("BAD_PASSPHRASE") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_PIN") != -1)) {
 
             if (result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1)
                 password = getPrivateKeyPassword(false, false,i18n.getString("symetricalPass") + ":", true);
@@ -1297,7 +1297,7 @@ var FireGPG = {
 
         }
 
-        if(result.sdOut.indexOf("BAD_PASSPHRASE") != -1) {
+        if(result.sdOut.indexOf("DECRYPTION_OKAY") == -1 && result.sdOut.indexOf("BAD_PASSPHRASE") != -1) {
 
             if (!silent)
                 alert(i18n.getString("decryptFailedPassword"));
