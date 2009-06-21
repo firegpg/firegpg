@@ -565,6 +565,7 @@ FireGPGMimeDecoder.prototype = {
 
                 retour.decryptresult = inlinedecrypt.decryptresult;
                 retour.decryptDataToInsert = inlinedecrypt.decryptDataToInsert;
+                retour.moreDecryptData = inlinedecrypt.moreDecryptData;
 
             }
 
@@ -857,6 +858,26 @@ FireGPGMimeDecoder.prototype = {
         retour.decryptData = true;
         retour.decryptDataToInsert = this.washForInsertion(resultTest.decrypted, false);
         retour.decryptresult = resultTest;
+
+        retour.moreDecryptData = new Array();
+
+
+        /* If there is more than one part encryped */
+        data = data.substring(data.indexOf("\r\n-----END PGP MESSAGE-----") + ("\r\n-----END PGP MESSAGE-----").length, data.length );
+        var i = 0;
+
+        while (  data.indexOf("\r\n-----BEGIN PGP MESSAGE-----") != -1    ) {
+
+            firstEcnrypt = data.substring(data.indexOf("\r\n-----BEGIN PGP MESSAGE-----"), data.indexOf("\r\n-----END PGP MESSAGE-----") + ("\r\n-----END PGP MESSAGE-----").length);
+            fireGPGDebug("Inline decrypt detected new encrypted content: " + data + "\n--\n" + firstEcnrypt, "MimeDecoder-Decrypt");
+            tmpResultTest = FireGPG.decrypt(true,firstEcnrypt.replace(/\r/gi, ''));
+
+            retour.moreDecryptData[i] = this.washForInsertion(tmpResultTest.decrypted, false);
+
+            i++;
+            data = data.substring(data.indexOf("\r\n-----END PGP MESSAGE-----") + ("\r\n-----END PGP MESSAGE-----").length, data.length );
+        }
+
 
         return retour;
 

@@ -1,3 +1,6 @@
+2009-06-21 Maximilien Cuony
+    * Autodecrypting multi inline encrypted mail
+
 2009-06-20 Maximilien Cuony
     * FS#170
     * Cleaning locales : +el, -po sv bn nb nb-no sk

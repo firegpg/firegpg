@@ -198,7 +198,15 @@ var cGmail2 = {
                                         td.setAttribute("firegpg-mail-to-decrypt", result.decryptDataToInsert);
 
                                     } else {
+
                                        this.setMailContent(listeTest[i],doc,result.decryptDataToInsert);
+
+                                       if (result.moreDecryptData && result.moreDecryptData.length > 0) {
+
+                                            for (var titop = 0; titop < result.moreDecryptData.length; titop++)
+                                                this.setMailContent(listeTest[i],doc,result.moreDecryptData[titop]);
+
+                                       }
 
                                         if (cGmail2.decryptOnReply)
                                             listeTest[i].setAttribute("firegpg-decrypted-data", result.decryptDataToInsert);
@@ -2427,7 +2435,7 @@ Zna Vna UIb $RQa $SQa Moa
         data = data.replace(/<br \/>/gi, '<br/>');
         data = data.replace(/ /gi, '&nbsp;');
 
-        i.innerHTML = before + img + "<br /><br />" + data + "<br /><br />" + img  +  after;
+        i.innerHTML = before + img + "<br /><br />" + data + "<br />" + img  +  after;
 
 	},
 
