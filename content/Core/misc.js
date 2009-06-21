@@ -59,7 +59,7 @@ const FIREGPG_STATUS = 'RELASE';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */
-const FIREGPG_SVN = "$Rev: 519 $";
+const FIREGPG_SVN = "$Rev: 558 $";
 
 /*
    Constants: Id for components.
