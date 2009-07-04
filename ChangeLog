@@ -6,6 +6,8 @@
     * FS#317
     * Old api disabled
     * FS#318
+    * Improved inline size
+    * !FS#313
 
 2009-06-21 Maximilien Cuony
     * 0.7.6 released !

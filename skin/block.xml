@@ -5,6 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="block.css" />
 	</head>
 	<body id="firegpg-inline">
+        <div id="trusted-confirm"></div>
 		<div id="header"></div>
 		<pre id="output" style="display: none;"></pre>
 		<div id="message"></div>

@@ -86,8 +86,14 @@ label.link {
 	text-decoration: underline;
 }
 
-#firegpg-statusbar-update label {
+#firegpg-statusbar-update {
     background-color: red;
     color: white;
 
+}
+
+#firegpg-statusbar-trusted-content {
+
+    background-color: #006600;
+    color: white;
 }

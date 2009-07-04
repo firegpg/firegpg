@@ -51,3 +51,12 @@ body.failure #output {
 	white-space: pre-wrap;
     overflow: auto;
 }
+
+#trusted-confirm {
+    background-color: #006600;
+    color: white;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    font-size: 12px;
+}

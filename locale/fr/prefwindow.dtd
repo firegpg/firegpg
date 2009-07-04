@@ -19,12 +19,7 @@
 <!ENTITY gmail-buton-crypt-checkbox "Chiffrer">
 <!ENTITY gmail-buton-cryptsend-checkbox "Chiffrer et Envoyer">
 <!ENTITY allvays-to-myself-checkbox "Toujours chiffrer les messages pour soi-même.">
-<!ENTITY enable-gpgauth-check.label "Activer gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "E">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
-<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
-<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "Toujours déchiffrer les messages des serveurs authentifiés.">
 <!ENTITY global-allow-keyring-check.label "Toujours déchiffrer les messages des serveurs authentifiés.">
 <!ENTITY global-allow-keyring-check.accesskey "A">
@@ -83,3 +78,8 @@
 <!ENTITY dont_ask_to_download_key "Ne pas essayer de télécharger les clés manquantes">
 <!ENTITY keyserverproxy-message "Proxy à utiliser pour les serveurs de clés utilisant les protocoles HTTP et HKP">
 <!ENTITY digest-message "Hachage (Hash utilisé pour signer) (SHA256, SHA512, etc.) (Gmail utilise cette valeur pour créer les mails) :">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">

@@ -19,12 +19,7 @@
 <!ENTITY gmail-buton-crypt-checkbox "Cripta">
 <!ENTITY gmail-buton-cryptsend-checkbox "Cripta e Invia">
 <!ENTITY allvays-to-myself-checkbox "Seleziona sempre la mia chiave per criptare">
-<!ENTITY enable-gpgauth-check.label "Abilita GPGAuth (Richiede il riavvio di Firefox)">
 <!ENTITY enable-gpgauth-check.accesskey "E">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
-<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
-<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "Decripta sempre i messaggi provenienti da Server Autenticati">
 <!ENTITY global-allow-keyring-check.label "Decripta sempre i messaggi provenienti da Server Autenticati">
 <!ENTITY global-allow-keyring-check.accesskey "A">
@@ -80,6 +75,11 @@
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Mostra i dati degli utenti per le firme valide">
 <!ENTITY gmail-keep-encrypted-mail "Critta le repliche a mail crittate">
 <!ENTITY gmail-smtp-no-auth-checkbox "Disabilita l'autenticazione SMTP">
-<!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
-<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">
+<!ENTITY dont_ask_to_download_key "Non provare a scaricare le chiavi mancanti">
+<!ENTITY keyserverproxy-message "Proxy da usare per HTTP e server HKP:">
+<!ENTITY digest-message "Digest (tipo di Hash usato per firmare) (SHA256, SHA512, ecc.)">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">

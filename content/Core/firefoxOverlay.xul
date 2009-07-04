@@ -175,10 +175,13 @@
   <!-- end gpgAuth status window -->
 
     <statusbar id="status-bar">
-        <statusbarpanel id="firegpg-statusbar-update"  onclick="firegpg.onMenuItemCommand(null,'UPDATE');" style="display: none;">
+
+        <statusbarpanel id="firegpg-statusbar">
             <img src="chrome://firegpg/skin/firegpg.png" class="statusbarpanel-iconic"/>
-            <label value="An update of FireGPG is available" />
+            <label value="An update of FireGPG is available"   id="firegpg-statusbar-update"  onclick="firegpg.onMenuItemCommand(null,'UPDATE');" style="display: none;"/>
+            <label value=""   id="firegpg-statusbar-trusted-content"  style="display: none;"/>
         </statusbarpanel>
+
         <!-- gpgAuth statusbar button -->
 		    <statusbarpanel id="gpgauth-statusbar-button"
 			    class="statusbarpanel-iconic"

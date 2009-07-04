@@ -19,7 +19,6 @@
 <!ENTITY gmail-buton-crypt-checkbox "Versleutel">
 <!ENTITY gmail-buton-cryptsend-checkbox "Versleutel en Verstuur">
 <!ENTITY allvays-to-myself-checkbox "Altijd versleutelen naar mezelf.">
-<!ENTITY enable-gpgauth-check.label "Gebruik gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "E">
 <!ENTITY global-allow-keyring-pref.label "Berichten van Geauthentificeerde Servers altijd ontcijferen">
 <!ENTITY global-allow-keyring-check.label "Altijd berichten van Geauthentificeerde Servers ontcijferen">
@@ -78,4 +77,9 @@
 <!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
 <!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
 <!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">
+<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">

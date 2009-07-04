@@ -218,8 +218,13 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
                 else
                     width = 50;
 
-                self.style.width = cwidth + "px";
-                self.style.height = content.body.scrollHeight + "px";
+                 if (content.body.scrollHeight > 50)
+                    height = content.body.scrollHeight;
+                else
+                    height = 50;
+
+                self.style.width = width + "px";
+                self.style.height = height + "px";
 		    } else {
 			// Wait 100ms and try again:
                 self.try += 1;
@@ -230,6 +235,10 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
 
         frame.try = 0;
 		frame.resize(frame, block);
+
+        frame.contentDocument.addEventListener("mouseover", FireGPGInline.mouseOverTrusted, false);
+        frame.contentDocument.addEventListener("mouseout", FireGPGInline.mouseOutTrusted, false);
+        frame.contentDocument.getElementById('trusted-confirm').title = FireGPGInline.i18n.getString("trusted-block") ;
 
 	}, false);
 };
@@ -515,3 +524,34 @@ FireGPGInline.initSystem = function() {
 
     FireGPGInline.i18n = document.getElementById("firegpg-strings");
 };
+
+FireGPGInline.mouseOverTrusted = function(aEvent) {
+
+    if (!document.getElementById('firegpg-statusbar-trusted-content'))
+        return;
+
+    var randId = '';
+
+    validchars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+    for (var i = 0; i < 4; i++)
+        randId += validchars.charAt( Math.floor( Math.random() * validchars.length ) );
+
+    aEvent.target.ownerDocument.getElementById('trusted-confirm').innerHTML = randId;
+
+    document.getElementById('firegpg-statusbar-trusted-content').value = randId;
+    document.getElementById('firegpg-statusbar-trusted-content').style.display = '';
+
+}
+
+FireGPGInline.mouseOutTrusted = function(aEvent) {
+
+
+    if (!document.getElementById('firegpg-statusbar-trusted-content'))
+        return;
+
+    aEvent.target.ownerDocument.getElementById('trusted-confirm').innerHTML = '';
+
+    document.getElementById('firegpg-statusbar-trusted-content').style.display = 'none';
+
+}

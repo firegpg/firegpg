@@ -19,12 +19,7 @@
 <!ENTITY gmail-buton-crypt-checkbox "Κρυπτογράφηση">
 <!ENTITY gmail-buton-cryptsend-checkbox "Κρυπτογράφηση και Αποστολή">
 <!ENTITY allvays-to-myself-checkbox "Να κρυπτογραφείται πάντοτε το περιεχόμενο που αποστέλλεται στον εαυτό μου.">
-<!ENTITY enable-gpgauth-check.label "Ενεργοποίηση gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "E">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
-<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
-<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "Να γίνεται πάντοτε αποκρυπτογράφηση μηνυμάτων από ταυτοποιημένους εξυπηρετητές ">
 <!ENTITY global-allow-keyring-check.label "Να γίνεται πάντοτε αποκρυπτογράφηση μηνυμάτων από ταυτοποιημένους εξυπηρετητές ">
 <!ENTITY global-allow-keyring-check.accesskey "A">
@@ -67,7 +62,7 @@
 <!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
 <!ENTITY gmail-smtp-port "Port (465) :">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Χρήση SSL:">
-<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign (and encryption) (always use the whole mail)">
+<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign and encryption(always use the whole mail)">
 <!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
 <!ENTITY gmail-force-from "Εξαναγκασμός από τιμή:">
 <!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
@@ -82,4 +77,9 @@
 <!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
 <!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
 <!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">
+<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">

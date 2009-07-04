@@ -8,7 +8,7 @@
 <!ENTITY show-website-checkbox "Display FireGPG's website address in GnuPG comment field">
 <!ENTITY change-gpg-path-button "Răsfoiește">
 <!ENTITY change-gpg-path-checkbox "Specificați calea la care se află programul gpg">
-<!ENTITY result-always-in-new-window "Always display result of encryption and/or signature in a new window.">
+<!ENTITY result-always-in-new-window "Always display result of encryption and/or signature in a new window">
 <!ENTITY no-gpg-agent-checkbox "Force turning off GPG agent (can fix some issues)">
 <!ENTITY ask-for-save-pass "În mod implicit cere acordul pentru stocarea parolelor">
 <!ENTITY gmail-no-no-sign-checkbox "Nu afișa mesajul 'Nici o semnătură nu a fost găsită[...]'">
@@ -19,12 +19,7 @@
 <!ENTITY gmail-buton-crypt-checkbox "Criptează">
 <!ENTITY gmail-buton-cryptsend-checkbox "Criptează și trimite">
 <!ENTITY allvays-to-myself-checkbox "Întotdeauna criptează către mine însumi">
-<!ENTITY enable-gpgauth-check.label "Activează gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "E">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
-<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
-<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "Decriptează automat mesajele de la Serverele Autentificate">
 <!ENTITY global-allow-keyring-check.label "Decriptează automat mesajele de la Serverele Autentificate">
 <!ENTITY global-allow-keyring-check.accesskey "A">
@@ -40,7 +35,7 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "Semnează, criptează și trimite">
 <!ENTITY firegpg-version-label.text "Versiunea curentă de FireGPG:">
 <!ENTITY hide-expired "Ascunde cheile expirate">
-<!ENTITY use-api "Enable FireGPG API for webpages (such as roundcube) (restart required)">
+<!ENTITY use-api "Enable FireGPG API for webpages, such as roundcube. (Requires browser restart)">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-access.label "Lista site-urilor permise (dublu-clic pentru ștergere)">
 <!ENTITY api-liste-domain.label "Domeniu">
@@ -53,10 +48,10 @@
 <!ENTITY gmail-disable-autosave-checkbox "Dezactivează salvarea automată">
 <!ENTITY gmail-buton-csign-checkbox "Semnează în clar">
 <!ENTITY gmail-buton-csignsend-checkbox "Semnează în clar și trimite">
-<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed.">
-<!ENTITY use-fireftp-workaround "Try to access to IPC with the old api.">
+<!ENTITY hide-fireftp-message "Don\'t show message about old IPC library installed">
+<!ENTITY use-fireftp-workaround "Try to access to IPC with the old API">
 <!ENTITY keyserver-message "Keyserver">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms, in most of case you have this choices:">
+<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use \'gpg --version\' to have the list of usable algorithms. In most cases, you should have these choices:">
 <!ENTITY gmail-new-interface "Noua interfață Gmail">
 <!ENTITY gmail-select-by-default-label "Ales în mod implicit:">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
@@ -82,4 +77,9 @@
 <!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
 <!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
 <!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">
+<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">

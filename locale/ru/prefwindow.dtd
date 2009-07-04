@@ -19,12 +19,7 @@
 <!ENTITY gmail-buton-crypt-checkbox "Зашифровать">
 <!ENTITY gmail-buton-cryptsend-checkbox "Зашифровать и отправить">
 <!ENTITY allvays-to-myself-checkbox "Всегда шифровать моим ключом.">
-<!ENTITY enable-gpgauth-check.label "Включить gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "E">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
-<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
-<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "Всегда расшифровывать сообщения от избранных серверов">
 <!ENTITY global-allow-keyring-check.label "Всегда расшифровывать сообщения с избранных серверов">
 <!ENTITY global-allow-keyring-check.accesskey "A">
@@ -79,7 +74,12 @@
 <!ENTITY paneautowrap.title "Автоперенос">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Для подлинных подписей показывать информацию об отправителях">
 <!ENTITY gmail-keep-encrypted-mail "Шифровать ответы на зашифрованные письма">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
-<!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
-<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail use this value to create mails): ">
+<!ENTITY gmail-smtp-no-auth-checkbox "Отключить SMTP аутентификацию">
+<!ENTITY dont_ask_to_download_key "Не пытаться скачать недостающие ключи">
+<!ENTITY keyserverproxy-message "Прокси для соединения с HTTP и HKP серверами ключей:">
+<!ENTITY digest-message "Дайджест (хэш-функция, используемая в подписи) (SHA256, SHA512, и т. п.) (Gmail использует это значение при создании письма):">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
