@@ -19,7 +19,7 @@
 <!ENTITY gmail-buton-crypt-checkbox "Versleutel">
 <!ENTITY gmail-buton-cryptsend-checkbox "Versleutel en Verstuur">
 <!ENTITY allvays-to-myself-checkbox "Altijd versleutelen naar mezelf.">
-<!ENTITY enable-gpgauth-check.label "Gebruik gpgAuth (Vereist dat je Firefox opnieuw opstart)">
+<!ENTITY enable-gpgauth-check.label "Gebruik gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "E">
 <!ENTITY global-allow-keyring-pref.label "Berichten van Geauthentificeerde Servers altijd ontcijferen">
 <!ENTITY global-allow-keyring-check.label "Altijd berichten van Geauthentificeerde Servers ontcijferen">

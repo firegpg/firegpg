@@ -19,8 +19,12 @@
 <!ENTITY gmail-buton-crypt-checkbox "Κρυπτογράφηση">
 <!ENTITY gmail-buton-cryptsend-checkbox "Κρυπτογράφηση και Αποστολή">
 <!ENTITY allvays-to-myself-checkbox "Να κρυπτογραφείται πάντοτε το περιεχόμενο που αποστέλλεται στον εαυτό μου.">
-<!ENTITY enable-gpgauth-check.label "Ενεργοποίηση gpgAuth (Απαιτείται επανεκκίνηση του Firefox)">
+<!ENTITY enable-gpgauth-check.label "Ενεργοποίηση gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "Να γίνεται πάντοτε αποκρυπτογράφηση μηνυμάτων από ταυτοποιημένους εξυπηρετητές ">
 <!ENTITY global-allow-keyring-check.label "Να γίνεται πάντοτε αποκρυπτογράφηση μηνυμάτων από ταυτοποιημένους εξυπηρετητές ">
 <!ENTITY global-allow-keyring-check.accesskey "A">

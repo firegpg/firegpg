@@ -19,8 +19,12 @@
 <!ENTITY gmail-buton-crypt-checkbox "عمِّ">
 <!ENTITY gmail-buton-cryptsend-checkbox "عمِّ ثم أرسل">
 <!ENTITY allvays-to-myself-checkbox "دوما عمِّ لنفسي.">
-<!ENTITY enable-gpgauth-check.label "فعّل gpgAuth (يتطلب إعادة تشغيل فيرفكس)">
+<!ENTITY enable-gpgauth-check.label "فعّل gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "ع">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "دائما ظهّر الرسائل من الخواديم المستوثَقة.">
 <!ENTITY global-allow-keyring-check.label "دوما ظهّر الرسائل من الخواديم المستوثَقة">
 <!ENTITY global-allow-keyring-check.accesskey "ث">

@@ -1,0 +1,12 @@
+2009-06-21 Kyle Huff
+	* gpgAuth v1.2.1 
+	* Added requirement for authentication token to be signed+encrypted
+	* Implemented optional statusbar icon and status window
+	* Firefox no longer requires restart after changing gpgAuth preferences
+	* Fixed size of domain override list 
+2009-06-21 Kyle Huff
+	* gpgAuth v1.2.1 
+	* Added requirement for authentication token to be signed+encrypted
+	* Implemented optional statusbar icon and status window
+	* Firefox no longer requires restart after changing gpgAuth preferences
+	* Fixed size of domain override list 

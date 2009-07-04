@@ -36,6 +36,7 @@
   - ***** END LICENSE BLOCK ***** -->
 
 <?xml-stylesheet href="chrome://firegpg/skin/overlay.css" type="text/css"?>
+<?xml-stylesheet href="chrome://firegpg/skin/gpgauth.css" type="text/css"?>
 <!DOCTYPE overlay SYSTEM "chrome://firegpg/locale/firegpg.dtd">
 <overlay id="firegpg-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script src="overlay.js"/>
@@ -150,13 +151,44 @@
 
     </vbox>-->
 
+  <!-- gpgAuth status window -->
+  <popupset id="mainPopupSet">
+   <panel id="gpgauth-Panel" hidden="true" orient="horizontal" pack="start" align="center" noautohide="true" noautofocus="true">
+       <stack id="gpgauth-InnerStack">
+        <vbox>
+          <stack id="gpgauth-Titlebar" style="height: 31px; width:332px; background-image: url('chrome://firegpg/skin/sw-header-gpgauth.png');">	
+            <bbox id="gpgauth-Closebox" align="right" width="100%"><image id="gpgauth-CloseButton" onclick="gpgAuth.status_window.togglePopup()" style="float: right;"/></bbox>
+          </stack>
+        </vbox>
+       <vbox id="gpgauth-Status" style="top: 31px; width:332px; height:150px; background-image:url('chrome://firegpg/skin/sw-body-gpgauth.png');">
+        <stack style="padding: 0 3px 0 3px;">
+          <textbox multiline="true" oninput="gpgAuth.status_window.cancelInput(event, this);" class="gpgauth-StatusWindowText" id="gpgauth-Status-details"/>
+        </stack>
+        <hbox style="width:100%;">
+          <text value="copy" class="gpgauth-CustomLink" id="gpgauth-CopyButton" onclick="gpgAuth.copyToClipboard( document.getElementById('gpgauth-Status-details').value);"/>
+          <text value="clear" class="gpgauth-CustomLink" id="gpgauth-ClearButton" onclick="document.getElementById('gpgauth-Status-details').value='';"/>
+          <text value="gpgAuth options" class="gpgauth-CustomLink" id="gpgauth-OptionsButton" onclick="window.openDialog('chrome://firegpg/content/Dialogs/options.xul', 'optionsFiregpg', 'chrome, centerscreen, toolbar', 'pane3').focus(); gpgAuth.status_window.togglePopup();"/>
+        </hbox>
+       </vbox>
+     </stack>
+  </panel>
+  </popupset>
+  <!-- end gpgAuth status window -->
+
     <statusbar id="status-bar">
         <statusbarpanel id="firegpg-statusbar-update"  onclick="firegpg.onMenuItemCommand(null,'UPDATE');" style="display: none;">
             <img src="chrome://firegpg/skin/firegpg.png" class="statusbarpanel-iconic"/>
             <label value="An update of FireGPG is available" />
         </statusbarpanel>
+        <!-- gpgAuth statusbar button -->
+		    <statusbarpanel id="gpgauth-statusbar-button"
+			    class="statusbarpanel-iconic"
+			    onclick="return gpgAuth.status_window.togglePopup()"
+			    tooltiptext="gpgAuth Status Window" style="display:none;">
+          <img src="chrome://firegpg/skin/sb-gpgauth.png" id="gpgauth-StatusIcon" class="statusbarpanel-iconic"/>
+		    </statusbarpanel>
+        <!-- end gpgAuth statusbar button -->
       </statusbar>
-
 
 </overlay>
 

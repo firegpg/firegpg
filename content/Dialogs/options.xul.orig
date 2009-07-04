@@ -36,7 +36,6 @@
   - ***** END LICENSE BLOCK ***** -->
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="chrome://firegpg/skin/gpgauth.css" type="text/css"?>
 <!DOCTYPE prefwindow SYSTEM "chrome://firegpg/locale/prefwindow.dtd">
 <prefwindow id="optionsforefiregpg" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;" onload="onLoad(this); sizeToContent(); this.innerHeight = this.innerHeight + 100;">
 
@@ -413,22 +412,18 @@
     <!-- end of Autowrap -->
 
 
-    <!-- gpgAuth -->
+    <!-- Gpg auth -->
 
     <prefpane id="pane3" label="&pane3.title;" flex="1" image="chrome://firegpg/skin/opt-gpgauth.png">
 		<preferences id="preferences_gpgauth">
-			<preference id="global-enable-gpgauth-pref" name="extensions.firegpg.gpgauth.global.enable_gpgauth" type="bool"/>
-			<preference id="global-enable-statusbar-pref" name="extensions.firegpg.gpgauth.global.enable_gpgauth_statusbar" type="bool"/>
-			<preference id="global-enable-statuswindow-pref" name="extensions.firegpg.gpgauth.global.enable_gpgauth_statuswindow" type="bool"/>
+			<preference id="enable-gpgauth-pref" name="extensions.firegpg.gpgauth.global.enable_gpgauth" type="bool"/>
 			<preference id="global-allow-keyring-pref" name="extensions.firegpg.gpgauth.global.allow_keyring" type="bool"/>
 		</preferences>
-    <checkbox id="global-enable-gpgauth-check" preference="global-enable-gpgauth-pref" oncommand="document.getElementById('global-enable-gpgauth-pref').value == true ? (window.opener.gpgAuth.listenerUnload(), window.opener.gpgauth_status._statusButton.style.display = 'none' ) : (window.opener.gpgAuth.onLoad(), (document.getElementById('global-enable-statusbar-pref').value == true ? window.opener.gpgauth_status._statusButton.style.display = '' : window.opener.gpgauth_status._statusButton.style.display = 'none'));" label="&enable-gpgauth-check.label;" accesskey="&enable-gpgauth-check.accesskey;"/>
-    <checkbox id="global-enable-statusbar-check" preference="global-enable-statusbar-pref" oncommand="document.getElementById('global-enable-statusbar-pref').value == true ? window.opener.gpgauth_status._statusButton.style.display = 'none' : window.opener.gpgauth_status._statusButton.style.display = '';" label="&enable-gpgauth-statusbar-check.label;" accesskey="&enable-gpgauth-statusbar-check.accesskey;"/>
-    <checkbox id="global-enable-statuswindow-check" preference="global-enable-statuswindow-pref" oncommand="document.getElementById('global-enable-statuswindow-pref').value == true ? window.opener.gpgAuth.gpgauth_statuswindow_enabled=false : window.opener.gpgAuth.gpgauth_statuswindow_enabled=true;" label="&enable-gpgauth-statuswindow-check.label;" accesskey="&enable-gpgauth-statuswindow-check.accesskey;"/>
-    <checkbox id="global-allow-keyring-check" preference="global-allow-keyring-pref" label="&global-allow-keyring-check.label;" accesskey="&global-allow-keyring-check.accesskey;"/>
+		<checkbox id="enable-gpgauth-check" preference="enable-gpgauth-pref" oncommand="alert( 'You must restart Firefox for this setting to take effect' );" label="&enable-gpgauth-check.label;" accesskey="&enable-gpgauth-check.accesskey;"/>
+		<checkbox id="global-allow-keyring-check" preference="global-allow-keyring-pref" label="&global-allow-keyring-check.label;" accesskey="&global-allow-keyring-check.accesskey;"/>
 		<label control="domain_list">&per-domain-preferences.label;</label>
 		<vbox>
-			<listbox id="domain_list" style="width:100%;height:300px;min-height:300px;">
+			<listbox id="domain_list" rows="4">
 				<listhead>
 					<listheader label="Domain"/>
 					<listheader label="Event"/>
@@ -441,9 +436,8 @@
 				</listcols>
 			</listbox>
 		</vbox>
-    <text value="http://www.gpgauth.com/" class="gpgauth-CustomLink" onclick="window.open('http://www.gpgauth.com'); window.close();"/>
 	</prefpane>
-    <!-- end of gpgAuth -->
+    <!-- end of gpg auth -->
 
     <stringbundleset id="stringbundleset">
         <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
@@ -456,7 +450,7 @@
     <script src="../Api/api.js"/>
     <script src="options.js"/>
     <script src="../GpgAuth/gpgauth_options.js"/>
-     <script src="../Webmails/autowrap.js"/>
+    <script src="../Webmails/autowrap.js"/>
 
 </prefwindow>
 

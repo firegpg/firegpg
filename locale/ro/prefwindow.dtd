@@ -19,8 +19,12 @@
 <!ENTITY gmail-buton-crypt-checkbox "Criptează">
 <!ENTITY gmail-buton-cryptsend-checkbox "Criptează și trimite">
 <!ENTITY allvays-to-myself-checkbox "Întotdeauna criptează către mine însumi">
-<!ENTITY enable-gpgauth-check.label "Activează gpgAuth (navigatorul trebuie repornit)">
+<!ENTITY enable-gpgauth-check.label "Activează gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "Decriptează automat mesajele de la Serverele Autentificate">
 <!ENTITY global-allow-keyring-check.label "Decriptează automat mesajele de la Serverele Autentificate">
 <!ENTITY global-allow-keyring-check.accesskey "A">

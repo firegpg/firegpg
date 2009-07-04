@@ -19,8 +19,12 @@
 <!ENTITY gmail-buton-crypt-checkbox "Kryptera">
 <!ENTITY gmail-buton-cryptsend-checkbox "Kryptera och skicka">
 <!ENTITY allvays-to-myself-checkbox "Kryptera alltid till mig själv">
-<!ENTITY enable-gpgauth-check.label "Aktivera 'gpgAuth' (webbläsaren måste startas om)">
+<!ENTITY enable-gpgauth-check.label "Aktivera 'gpgAuth'">
 <!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "Dekryptera alltid meddelanden från autentiserade servrar">
 <!ENTITY global-allow-keyring-check.label "Dekryptera alltid meddelanden från autentiserade servrar">
 <!ENTITY global-allow-keyring-check.accesskey "A">

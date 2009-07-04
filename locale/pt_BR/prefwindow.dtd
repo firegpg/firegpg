@@ -19,8 +19,12 @@
 <!ENTITY gmail-buton-crypt-checkbox "Cifrar">
 <!ENTITY gmail-buton-cryptsend-checkbox "Cifrar e Enviar">
 <!ENTITY allvays-to-myself-checkbox "Sempre cifrar para mim mesmo.">
-<!ENTITY enable-gpgauth-check.label "Habilitar o gpgAuth (requer que o Firefox seja reiniciado).">
+<!ENTITY enable-gpgauth-check.label "Habilitar o gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "Sempre decifrar mensagens de servidores autenticados.">
 <!ENTITY global-allow-keyring-check.label "Sempre decifrar mensagens de servidores autenticados.">
 <!ENTITY global-allow-keyring-check.accesskey "A">

@@ -1,0 +1,126 @@
+#gpgauth-statusbar-button {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+#gpgauth-StatusIcon {
+  height: 16px;
+}
+
+#gpgauth-CloseButton { 
+  list-style-image: url("chrome://firegpg/skin/sw-close-gpgauth.png");
+  -moz-image-region: rect(16px, 16px, 32px, 0px);
+}
+
+#gpgauth-Closebox{
+	margin-top: 4px;
+	margin-right: 4px;
+}
+
+#gpgauth-CloseButton:hover { 
+  -moz-image-region: rect(0px, 16px, 15px, 0px);
+}
+
+#gpgauth-CloseButton:active { 
+  -moz-image-region: rect(32px, 16px, 48px, 0px);
+}
+
+.gpgauth-StatusWindowText {
+	-moz-appearance: none;
+	border:1px solid #000;
+	background-color: transparent;
+	background: none;
+	padding: 0 0 0 2px;
+	width: 336px;
+	height: 130px;
+	font-size: 9px;
+}
+
+#gpgauth-CopyButton {
+	-moz-appearance:none;
+	margin-left: 14px;
+}
+
+#gpgauth-ClearButton {
+	-moz-appearance:none;
+	margin-left: 20px;
+}
+
+#gpgauth-OptionsButton {
+	margin-left:122px;
+	margin-rigth:3px;
+}
+
+.gpgauth-CustomLink {
+	color: #00a;
+	text-decoration: underline;
+}
+
+.gpgauth-CustomLink:hover {
+	cursor: pointer;
+	color: #17F;
+	text-decoration: bold;
+}
+#gpgauth-statusbar-button {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+#gpgauth-StatusIcon {
+  height: 16px;
+}
+
+#gpgauth-CloseButton { 
+  list-style-image: url("chrome://firegpg/skin/sw-close-gpgauth.png");
+  -moz-image-region: rect(16px, 16px, 32px, 0px);
+}
+
+#gpgauth-Closebox{
+	margin-top: 4px;
+	margin-right: 4px;
+}
+
+#gpgauth-CloseButton:hover { 
+  -moz-image-region: rect(0px, 16px, 15px, 0px);
+}
+
+#gpgauth-CloseButton:active { 
+  -moz-image-region: rect(32px, 16px, 48px, 0px);
+}
+
+.gpgauth-StatusWindowText {
+	-moz-appearance: none;
+	border:1px solid #000;
+	background-color: transparent;
+	background: none;
+	padding: 0 0 0 2px;
+	width: 336px;
+	height: 130px;
+	font-size: 9px;
+}
+
+#gpgauth-CopyButton {
+	-moz-appearance:none;
+	margin-left: 14px;
+}
+
+#gpgauth-ClearButton {
+	-moz-appearance:none;
+	margin-left: 20px;
+}
+
+#gpgauth-OptionsButton {
+	margin-left:122px;
+	margin-rigth:3px;
+}
+
+.gpgauth-CustomLink {
+	color: #00a;
+	text-decoration: underline;
+}
+
+.gpgauth-CustomLink:hover {
+	cursor: pointer;
+	color: #17F;
+	text-decoration: bold;
+}

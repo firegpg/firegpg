@@ -19,8 +19,12 @@
 <!ENTITY gmail-buton-crypt-checkbox "Šifruj">
 <!ENTITY gmail-buton-cryptsend-checkbox "Šifruj i Pošalji">
 <!ENTITY allvays-to-myself-checkbox "Uvek šifruj za mene.">
-<!ENTITY enable-gpgauth-check.label "Uključi gpgAuth (Zahteva restartovanje Firefoxa)">
+<!ENTITY enable-gpgauth-check.label "Uključi gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "Uvek dešifruj poruke od Autentikovanih Servera">
 <!ENTITY global-allow-keyring-check.label "Uvek dešifruj poruke od Autentifikovanih Servera">
 <!ENTITY global-allow-keyring-check.accesskey "A">

@@ -751,9 +751,6 @@ var FireGPG = {
 
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;
-		returnObject.keylist = result.keylist;
-		returnObject.prikey_id = result.prikey_id;
-		returnObject.subkey_id = result.subkey_id;
 
 
 		if(result.sdOut.indexOf("END_ENCRYPTION") == -1)
@@ -1355,7 +1352,6 @@ var FireGPG = {
             returnObject.signresulttext = infos2 + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
             returnObject.signresultuser = infos2;
             returnObject.signresultdate = date.toLocaleString();
-            returnObject.signresultkeyid = infos[0];
 
 		}
 

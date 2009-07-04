@@ -19,8 +19,12 @@
 <!ENTITY gmail-buton-crypt-checkbox "加密">
 <!ENTITY gmail-buton-cryptsend-checkbox "加密并发送">
 <!ENTITY allvays-to-myself-checkbox "发信给自己时总是加密">
-<!ENTITY enable-gpgauth-check.label "启用 gpgAuth（需要重启浏览器）">
+<!ENTITY enable-gpgauth-check.label "启用 gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "总是解密来自已认证服务器的信件">
 <!ENTITY global-allow-keyring-check.label "总是解密来自已认证服务器的信件">
 <!ENTITY global-allow-keyring-check.accesskey "A">

@@ -314,18 +314,10 @@ var GPGAccess = {
 
     /*
        Function: getBaseArugments
-
-        Parameters:
-            fromGpgAuth - _Optional_  use the GpgAuth's parameter to add verbosity to aquire the key and subkey ID when encrypting.
-
-       Return the commons arguments for all GnuPG's commands
+       Return the commons arugments for all GnuPG's commands
     */
-    getBaseArugments: function (fromGpgAuth) {
-        if (fromGpgAuth != undefined && fromGpgAuth == true) {
-    		return this.getGPGBonusCommand()  + " --quiet --no-tty --verbose --status-fd 2 --armor --batch" + this.getGPGAgentArgument();
-		}
+    getBaseArugments: function () {
         return this.getGPGBonusCommand()  + " --quiet --no-tty --no-verbose --status-fd 2 --armor --batch" + this.getGPGAgentArgument();
-		
     },
 
     getProxyInformation: function () {
@@ -636,30 +628,17 @@ var GPGAccess = {
 		for(var i = 0; i < keyIdList.length; i++)
 			keyIdListArgument += ((i > 0) ? ' ' : '') + '-r ' + keyIdList[i];
 
-		result = this.runGnupg(this.getBaseArugments(fromGpgAuth) +  this.getGPGTrustArgument(fromGpgAuth) +
+		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument(fromGpgAuth) +
 				" " + keyIdListArgument +
 				this.getGPGCommentArgument() +
 				" --output -" +
 				" --encrypt", text, (binFileMode ? 'iso-8859-1' : undefined));
 
-		if ( result.err.indexOf( "subkey" ) > 0 )
-			subkey_id = result.err.substring( result.err.indexOf( "subkey" ) + 7, result.err.indexOf( "instead" ) - 1 );
-		else
-			subkey_id = null;
-
-		if ( result.err.indexOf( "primary" ) > 0 )
-			prikey_id = result.err.substring( result.err.indexOf( "primary key" ) + 12, result.err.indexOf( "\n" ) );
-		else
-			prikey_id = null;
-
 		// The crypted text
+
 		var result2 = new GPGReturn();
 		result2.output = result.out;
 		result2.sdOut = result.err;
-		result2.keylist = keyIdList;
-		result2.subkey_id = subkey_id;
-		result2.prikey_id = prikey_id;
-		
 
 		return result2;
     },

@@ -19,8 +19,12 @@
 <!ENTITY gmail-buton-crypt-checkbox "암호화">
 <!ENTITY gmail-buton-cryptsend-checkbox "암호화하여 전송">
 <!ENTITY allvays-to-myself-checkbox "항상 나 자신에게 암호화하여 보내기">
-<!ENTITY enable-gpgauth-check.label "gpgAuth 활성화 (Firefox 재시작 필요)">
+<!ENTITY enable-gpgauth-check.label "gpgAuth 활성화">
 <!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "인증된 서버로부터의 메세지를 항상 복호화">
 <!ENTITY global-allow-keyring-check.label "인증된 서버로부터의 메세지를 항상 복호화">
 <!ENTITY global-allow-keyring-check.accesskey "A">

@@ -804,7 +804,7 @@ function testIfSomethingsIsNew() {
 
     } else {
 
-        //DESACTIVED FOR ADDON.MOZILLA.ORG        /*
+        //DESACTIVED FOR ADDON.MOZILLA.ORG/*
 
 
 

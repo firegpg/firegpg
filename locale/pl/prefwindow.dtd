@@ -19,8 +19,12 @@
 <!ENTITY gmail-buton-crypt-checkbox "Szyfruj">
 <!ENTITY gmail-buton-cryptsend-checkbox "Szyfruj i wyślij">
 <!ENTITY allvays-to-myself-checkbox "Zawsze szyfruj do siebie">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth (browser must be restarted)">
+<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
 <!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "Always decrypt messages from Authenticated Servers">
 <!ENTITY global-allow-keyring-check.label "Always decrypt messages from Authenticated Servers">
 <!ENTITY global-allow-keyring-check.accesskey "A">

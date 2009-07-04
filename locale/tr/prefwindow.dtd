@@ -19,8 +19,12 @@
 <!ENTITY gmail-buton-crypt-checkbox "Şifre">
 <!ENTITY gmail-buton-cryptsend-checkbox "Şifre ve Gönder">
 <!ENTITY allvays-to-myself-checkbox "Her zaman şifrele.">
-<!ENTITY enable-gpgauth-check.label "gpgAuth kullan (Firefox yeniden başlatmak gerekir)">
+<!ENTITY enable-gpgauth-check.label "gpgAuth kullan">
 <!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY global-allow-keyring-pref.label "Her zaman yetkili sunuculardan mesajı çöz.">
 <!ENTITY global-allow-keyring-check.label "Herzaman yetkili sunuculardan mesajı çöz">
 <!ENTITY global-allow-keyring-check.accesskey "A">
