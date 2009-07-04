@@ -83,7 +83,7 @@ function onAccept()
 
 	/* the password */
 	var password = document.getElementById('password-textbox').value;
-	window.arguments[0].password = password; /* TODO supprimer youMustEnterPassword de la traduction ? */
+	window.arguments[0].password = password;
 
 	window.arguments[0].result = true;
 	window.arguments[0].save_password = document.getElementById('save-password-checkbox').checked ? true : false;

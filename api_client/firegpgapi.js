@@ -353,7 +353,7 @@ function fireGPGSign(auth_key, text, forceKey /* Optional */) {
 		} else {
 
 			return_object.sign_ok = false;
-			return_object.reason = FireGPGReturnData.getAttribute('error'); //unknow, bad-pass
+			return_object.reason = FireGPGReturnData.getAttribute('error'); //unknow, bad-pass, , user-canceled
 
 		}
 
@@ -496,7 +496,7 @@ function fireGPGSignAndEncrypt(auth_key, text, dest_keys, forceKey /* Optional *
 		} else {
 
 			return_object.signandencrypt_ok = false;
-			return_object.reason = FireGPGReturnData.getAttribute('error'); //unknow, bad-pass
+			return_object.reason = FireGPGReturnData.getAttribute('error'); //unknow, bad-pass, , user-canceled
 
 		}
 
@@ -555,7 +555,7 @@ function fireGPGDecrypt(auth_key, text) {
 		} else {
 
 			return_object.decrypt_ok = false;
-			return_object.reason = FireGPGReturnData.getAttribute('error'); //unknow, bad-pass
+			return_object.reason = FireGPGReturnData.getAttribute('error'); //unknow, bad-pass, user-canceled
 
 		}
 

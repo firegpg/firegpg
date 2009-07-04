@@ -88,7 +88,10 @@
 				else
 					error_message("La AKF n'a pas été retournée par FireGPG :(");
 			}
-
+akf = fireGPGRegister();
+alert(akf);
+akf = fireGPGRegister();
+alert(akf);
 			/*
 			 * On signe un texte, pour voir si cela marche ;-)
 			 */
@@ -156,8 +159,10 @@
                     error_message("La raison: " + result.reason);
                 }
             }
-			else
+			else {
 				error_message("Erreur lors du chiffrement du texte.");
+                error_message("Raison: " + result.reason);
+            }
 
 			/*
 			 * On déchiffre le texte
@@ -176,8 +181,10 @@
                     error_message("La raison: " + result.reason);
                 }
             }
-			else
+			else {
 				error_message("Erreur lors du chiffrement du texte.");
+                error_message("Raison: " + result.reason);
+            }
 
 			/*
 			 * Signe et chiffre le texte.
@@ -196,8 +203,10 @@
                     error_message("La raison: " + result.reason);
                 }
             }
-			else
+			else {
 				error_message("Erreur lors du chiffrement et signature du texte.");
+                error_message("Raison: " + result.reason);
+            }
 
 			/*
 			 * Afficher les clés publiques.
@@ -210,8 +219,10 @@
                 for(id in key_list)
 					document.write("<i>" + id + "</i> ==>" + key_list[id] +"<br />");
 			}
-			else
+			else {
 				error_message("Erreur lors de la demande de la liste des clés publiques.");
+                error_message("Raison: " + result.reason);
+            }
 
 			/*
 			 * Afficher les clés publiques.
@@ -224,8 +235,10 @@
                 for(id in key_list)
 					document.write("<i>" + id + "</i> ==>" + key_list[id] +"<br />");
 			}
-			else
+			else {
 				error_message("Erreur lors de la demande de la liste des clés privées.");
+                error_message("Raison: " + result.reason);
+            }
 		</script>
 
 <!-- vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

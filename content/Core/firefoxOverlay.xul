@@ -49,7 +49,6 @@
   <script src="cselect.js"/>
   <script src="../GpgAuth/gpgauth.js"/>
   <script src="../Api/api.js"/>
-  <script src="./Api/new_api.js"/>
   <script src="inline.js"/>
   <script src="../Mime/mime.js" />
   <script src="../Mime/decoder.js" />
@@ -156,7 +155,7 @@
    <panel id="gpgauth-Panel" hidden="true" orient="horizontal" pack="start" align="center" noautohide="true" noautofocus="true">
        <stack id="gpgauth-InnerStack">
         <vbox>
-          <stack id="gpgauth-Titlebar" style="height: 31px; width:332px; background-image: url('chrome://firegpg/skin/sw-header-gpgauth.png');">	
+          <stack id="gpgauth-Titlebar" style="height: 31px; width:332px; background-image: url('chrome://firegpg/skin/sw-header-gpgauth.png');">
             <bbox id="gpgauth-Closebox" align="right" width="100%"><image id="gpgauth-CloseButton" onclick="gpgAuth.status_window.togglePopup()" style="float: right;"/></bbox>
           </stack>
         </vbox>

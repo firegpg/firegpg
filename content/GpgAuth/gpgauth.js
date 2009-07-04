@@ -153,7 +153,7 @@ var gpgAuth = {
 			if ( ! server_token_tests ) {
 				return false;
 			} else {
-				gpgAuth.decryptUserToken();
+				gpgAuth.decryptUserToken(UTK_ELM);
 			}
 		}
 	},
@@ -242,6 +242,7 @@ var gpgAuth = {
 						gpgAuth.gpg_elements[ gpgAuth.domain ][ 'STK_ERROR' ] = false;
 						gpgAuth.gpg_elements[ gpgAuth.domain ][ 'USE_UNTRUSTED' ] = true;
 						gpgAuth.gpg_elements[ gpgAuth.domain ][ 'SERVER_VALIDATED' ] = "No, but use anyway";
+						STK_ELM.value = error;
 						STK_ELM.innerHTML = error;
 						gpgAuth.status_window.update( "... continuing by request.." );
 						return true;
@@ -260,6 +261,7 @@ var gpgAuth = {
 					gpgAuth.gpg_elements[ gpgAuth.domain ][ 'SERVER_VALIDATED' ] = true;
 					server_token.sdOut = false;
 					server_token.sdOut2 = false;
+					STK_ELM.value = error;
 					STK_ELM.innerHTML = error;
 					return true;
 				}
@@ -284,6 +286,7 @@ var gpgAuth = {
 			} else {
 				// Populate the Server Token Eelement with the data that we have encrypted
 				gpgAuth.status_window.update( "... putting encrypted token into the form field." );
+				STK_ELM.value = server_token.encrypted;
 				STK_ELM.innerHTML = server_token.encrypted;
 				server_token.sdOut = false;
 				server_token.sdOut2 = false;
@@ -295,15 +298,16 @@ var gpgAuth = {
 
 	doServerTokenTests: function( STK_ELM, STK_RES_ELM, UTK_ELM, event ) {
 		// If 'USE_UNTRUSTED' is true, then we will not be doing any server verification
-		gpgAuth.status_window.update( "... beginning phase2 of server validation" );
+		gpgAuth.status_window.update( "... beginning phase2 of server validation" );	
+		STK_RES_VALUE = STK_RES_ELM.value == undefined ? STK_RES_ELM.innerHTML : STK_RES_ELM.value;
 		if ( ! gpgAuth.gpg_elements[ gpgAuth.domain ][ 'USE_UNTRUSTED' ] ) {
-			if ( STK_RES_ELM && STK_RES_ELM.innerHTML.length > 2 ) {
+			if ( STK_RES_ELM && STK_RES_VALUE.length > 2 ) {
 				// Create a regular expression to ensure the unencrypted response from the server
 				// matches the format of our random token
 				gpgAuth.status_window.update( "... collecting token from server" );
 				var random_re = new RegExp( "^[a-z0-9]+$", "i" );
 				// Proceed only if the response from the server matches both the format and content of the original token
-				if ( random_re.test( STK_RES_ELM.innerHTML ) && STK_RES_ELM.innerHTML == gpgAuth.gpg_elements[ gpgAuth.domain ][ 'RANDOM_VALUE' ] ) {
+				if ( random_re.test( STK_RES_VALUE ) && STK_RES_VALUE == gpgAuth.gpg_elements[ gpgAuth.domain ][ 'RANDOM_VALUE' ] ) {
 					if ( gpgAuth.prefs.prefHasUserValue( ".global.allow_keyring" )  && gpgAuth.prefs.getBoolPref( ".global.allow_keyring" ) ) {
 						 gpgAuth.gpg_elements[ gpgAuth.domain ][ 'ALLOW_KEYRING' ] = gpgAuth.prefs.getBoolPref( ".global.allow_keyring" );
 					} else if ( gpgAuth.prefs.prefHasUserValue( ".domain_options." + gpgAuth.domain + ".allow_keyring" ) ) {
@@ -391,10 +395,11 @@ var gpgAuth = {
 	Function: decryptUserToken
 	This function is called to decrypt the data sent by the server that is encrypted with the users public key
 	*/
-	decryptUserToken: function( e ) {
+	decryptUserToken: function( UTK_ELM, e ) {
 		var timestamp = new Date().getTime();
 		var ms = timestamp - gpgAuth.gpg_elements[ gpgAuth.domain ][ 'TIME_STAMP' ]; // Get miliseconds since login was pressed
-		user_token = content.document.getElementById( "gpg_auth:user_token" ).innerHTML;
+		//user_token = content.document.getElementById( "gpg_auth:user_token" ).value;
+		user_token = UTK_ELM.value == undefined ? UTK_ELM.innerHTML : UTK_ELM.value;
 		// Clear and recreate the array
 		// Check to see if we received a token to decrypt, and make sure it did not take more than 3 minutes to get it.
 		if ( user_token && ms < 300000 ) {
@@ -458,7 +463,8 @@ var gpgAuth = {
 					}
 					gpgAuth.status_window.update( "... returning the decryted token to the form field" );
 					// Insert the decrypted result into the proper element and submit the login form.
-					content.document.getElementById( "gpg_auth:user_token" ).innerHTML = result.decrypted;
+					UTK_ELM.innerHTML = result.decrypted;
+					UTK_ELM.value = result.decrypted;
 					gpgAuth.status_window.update( "... submitting the form" );
 					if ( gpgAuth.gpgauth_statuswindow_enabled ) {
 						gpgAuth.status_window._panel.hidePopup();

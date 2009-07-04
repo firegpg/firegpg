@@ -132,16 +132,22 @@ var gpgApi = {
 
         access = gpgApi.getAccessList();
 
+        auth_key = "";
+        for (domainTest in access)
+            if (domain == access[domainTest])
+                auth_key = domainTest;
 
-        auth_key = genreate_api_key();
-
-        while (access[auth_key] != null) {
+        if (auth_key == "") {
             auth_key = genreate_api_key();
+
+            while (access[auth_key] != null) {
+                auth_key = genreate_api_key();
+            }
+
+            access[auth_key] = domain;
+
+            gpgApi.setAccessList(access);
         }
-
-        access[auth_key] = domain;
-
-        gpgApi.setAccessList(access);
 
         returnData = gpgApi.getReturnDataNode(event.target);
 
@@ -330,8 +336,11 @@ var gpgApi = {
 			return;
 
 		var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
-		if(password == null)
+		if(password == null) {
+            returnData.setAttribute('result', 'sign-err');
+            returnData.setAttribute('error', 'user-canceled');
 			return;
+        }
 
         var result = FireGPG.sign(true,text,keyID,password);
 
@@ -349,6 +358,12 @@ var gpgApi = {
         {
             returnData.setAttribute('result', 'sign-err');
             returnData.setAttribute('error', 'bad-pass');
+			return;
+        }
+        else if (result.result  == RESULT_CANCEL)
+        {
+            returnData.setAttribute('result', 'sign-err');
+            returnData.setAttribute('error', 'user-canceled');
 			return;
         }
 		else {
@@ -402,8 +417,11 @@ var gpgApi = {
 
 
         var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
-		if(password == null)
-			return
+		if(password == null) {
+			returnData.setAttribute('result', 'sign-err');
+            returnData.setAttribute('error', 'user-canceled');
+			return;
+        }
 
         // We get the result
 		var result = FireGPG.cryptAndSign(true,text,keyIdList,false,password,keyID);
@@ -419,6 +437,12 @@ var gpgApi = {
         {
             returnData.setAttribute('result', 'signandencrypt-err');
             returnData.setAttribute('error', 'bad-pass');
+			return;
+        }
+        else if (result.result  == RESULT_CANCEL)
+        {
+            returnData.setAttribute('result', 'signandencrypt-err');
+            returnData.setAttribute('error', 'user-canceled');
 			return;
         }
 		else {
@@ -473,6 +497,7 @@ var gpgApi = {
 
             return;
         }
+
 		else {
 
 			returnData.setAttribute('result', 'encrypt-err');
@@ -514,8 +539,11 @@ var gpgApi = {
         // Needed for decrypt
 
 		var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
-		if(password == null)
+		if(password == null) {
+			returnData.setAttribute('result', 'sign-err');
+            returnData.setAttribute('error', 'user-canceled');
 			return;
+        }
 
         // We get the result
 		var result = FireGPG.decrypt(true, text,password);
@@ -544,6 +572,12 @@ var gpgApi = {
             returnData.setAttribute('error', 'bad-pass');
 			return;
         }
+        else if (result.result  == RESULT_CANCEL)
+        {
+            returnData.setAttribute('result', 'decrypt-err');
+            returnData.setAttribute('error', 'user-canceled');
+			return;
+        }
 		else {
 
             returnData.setAttribute('result', 'decrypt-err');
@@ -567,8 +601,7 @@ var gpgApi = {
 
         s = s.replace(/#/g,"#1");
         s = s.replace(/:/g,"#2");
-        s = s.replace(/,/g,"#2");
-
+        s = s.replace(/,/g,"#3");
         return s;
     },
 

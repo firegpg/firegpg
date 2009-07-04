@@ -49,7 +49,6 @@
   <script src="cselect.js"/>
   <script src="../GpgAtuh/gpgauth.js"/>
   <script src="../Api/api.js"/>
-  <script src="../Api/new_api.js"/>
   <script src="prisme.js"/>
   <script src="../Mime/mime.js" />
   <script src="../Mime/decoder.js" />

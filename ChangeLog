@@ -1,3 +1,12 @@
+2009-07-04 Maximilien Cuony
+    * Removing warning when erasing saved password
+    * FS#305
+    * FS#314
+    * FS#315
+    * FS#317
+    * Old api disabled
+    * FS#318
+
 2009-06-21 Maximilien Cuony
     * 0.7.6 released !
     * Autodecrypting multi inline encrypted mail

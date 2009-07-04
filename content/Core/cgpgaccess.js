@@ -325,7 +325,7 @@ var GPGAccess = {
     		return this.getGPGBonusCommand()  + " --quiet --no-tty --verbose --status-fd 2 --armor --batch" + this.getGPGAgentArgument();
 		}
         return this.getGPGBonusCommand()  + " --quiet --no-tty --no-verbose --status-fd 2 --armor --batch" + this.getGPGAgentArgument();
-		
+
     },
 
     getProxyInformation: function () {
@@ -565,7 +565,7 @@ var GPGAccess = {
         Function: listkey
         List  keys.
 
-        Parameters:
+3        Parameters:
             onlyPrivate - Boolean, set to true if only a private key list is wanted.
 
         Return:
@@ -579,7 +579,7 @@ var GPGAccess = {
 		if (onlyPrivate == true)
 			mode = "--list-secret-keys";
 
-		result = this.runGnupg(this.getBaseArugments() + " --fingerprint --with-colons " + mode,"","ISO-8859-1");
+		result = this.runGnupg(this.getBaseArugments() + " --fixed-list-mode --fingerprint --with-colons " + mode,"","ISO-8859-1");
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.out;
@@ -659,7 +659,7 @@ var GPGAccess = {
 		result2.keylist = keyIdList;
 		result2.subkey_id = subkey_id;
 		result2.prikey_id = prikey_id;
-		
+
 
 		return result2;
     },

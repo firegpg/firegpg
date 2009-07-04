@@ -47,7 +47,7 @@
             <preference id="no-gpg-agent-pref" name="extensions.firegpg.no_gpg_agent" type="bool"/>
             <preference id="show-web-site-pref" name="extensions.firegpg.show_website" type="bool"/>
             <preference id="result-always-in-new-window-pref" name="extensions.firegpg.result_always_in_new_window" type="bool"/>
-            <preference id="ask-for-save-pass-pref" name="extensions.firegpg.default_memory" type="bool"/>
+            <!-- <preference id="ask-for-save-pass-pref" name="extensions.firegpg.default_memory" type="bool"/> -->
             <preference id="allvays-to-myself-pref" name="extensions.firegpg.allvays_to_myself" type="bool"/>
             <preference id="no-updates" name="extensions.firegpg.no_updates" type="bool"/>
             <preference id="hide-expired-pref" name="extensions.firegpg.hide_expired" type="bool"/>
@@ -73,7 +73,7 @@
         <checkbox  id="result-always-in-new-window" preference="result-always-in-new-window-pref"  label="&result-always-in-new-window;"/>
 
         <!-- Ask for pass ? -->
-        <checkbox  id="ask-for-save-pass" preference="ask-for-save-pass-pref" label="&ask-for-save-pass;"/>
+        <!-- <checkbox  id="ask-for-save-pass" preference="ask-for-save-pass-pref" label="&ask-for-save-pass;"/> -->
 
         <!-- show web site -->
         <checkbox  id="show-website-checkbox" preference="show-web-site-pref" checked="true" label="&show-website-checkbox;"/>

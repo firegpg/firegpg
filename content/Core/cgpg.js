@@ -423,8 +423,16 @@ var FireGPG = {
 
                     } else {
                         var keyId = infos[4];
-                        var keyDate = infos[5];
-                        var keyExpi = infos[6];
+                        tmpDate = new Date(),
+                        tmpDate.setTime(infos[5] * 1000);
+                        var keyDate = tmpDate.getFullYear() +'-' + (tmpDate.getMonth() +1 )+ '-' +tmpDate.getDate();
+
+                        if (infos[6] != "") {
+                            tmpDate.setTime(infos[6] * 1000);
+                            var keyExpi = tmpDate.getFullYear() +'-' + (tmpDate.getMonth() + 1) + '-' +tmpDate.getDate();
+                        }
+                        else
+                            var keyExpi  = "";
 						var keyTrust = infos[8];
                     }
 
@@ -457,9 +465,11 @@ var FireGPG = {
 							theKey.expired = true;
 
 							if (infos[0] == "uid") {
-								returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
-                                if (returnObject.keylist[returnObject.keylist.length-1].keyName == "") //GPG2 !
-                                    returnObject.keylist[returnObject.keylist.length-1].keyName = keyName;
+                                 if (returnObject.keylist[returnObject.keylist.length-1].keyName == "") //GPG2 !
+                                    returnObject.keylist[returnObject.keylist.length-1].keyName = keyName;  //We don't push the key
+								else
+                                    returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
+
                             }
 							else
 								returnObject.keylist.push(theKey);
@@ -474,9 +484,11 @@ var FireGPG = {
 							theKey.expired = true;
 
                         if (infos[0] == "uid") {
-                            returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
                             if (returnObject.keylist[returnObject.keylist.length-1].keyName == "") //GPG2 !
-                                returnObject.keylist[returnObject.keylist.length-1].keyName = keyName;
+                                returnObject.keylist[returnObject.keylist.length-1].keyName = keyName; //We don't push the key
+                            else
+                                returnObject.keylist[returnObject.keylist.length-1].subKeys.push(theKey);
+
                         }
                         else if (infos[0] == "sig" && lastObjectType == "pub")
                             returnObject.keylist[returnObject.keylist.length-1].signs.push(theKey);

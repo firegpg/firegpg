@@ -318,7 +318,7 @@ function getPassword(question, save_password, domain, nosavecheckbox) {
 		try {
 			save_password = prefs.getBoolPref("default_memory");
 		} catch (e) {
-			save_password = true;
+			save_password = false;
 		}
 	}
 
@@ -336,8 +336,13 @@ function getPassword(question, save_password, domain, nosavecheckbox) {
 	                            '', 'chrome, dialog, modal, resizable=yes', params);
 	dlg.focus();
 
-	if(params.result)
+	if(params.result) {
+
+        if (domain == false && nosavecheckbox == false)
+            prefs.setBoolPref("default_memory",params.save_password);
+
 		return params;
+    }
 
 	return null;
 }
@@ -409,7 +414,10 @@ function getPrivateKeyPassword(useSavedPassword /* default = true */, domain /* 
 		return null;
 
 	if(result.save_password && domain == false && nosavecheckbox != true) {
+
 		savedPassword = result.password;
+
+
 
 		try {
 			document.getElementById('firegpg-menu-memo-pop').style.display = '';
@@ -443,9 +451,12 @@ function eraseSavedPassword() {
 	savedPassword = null;
 
 	try {
-		document.getElementById('firegpg-menu-memo-pop').style.display = 'none';
-		document.getElementById('firegpg-menu-memo-menu').style.display = 'none';
-		document.getElementById('firegpg-menu-memo-tool').style.display = 'none';
+		if (document.getElementById('firegpg-menu-memo-pop'))
+            document.getElementById('firegpg-menu-memo-pop').style.display = 'none';
+		if (document.getElementById('firegpg-menu-memo-menu'))
+            document.getElementById('firegpg-menu-memo-menu').style.display = 'none';
+		if (document.getElementById('firegpg-menu-memo-tool'))
+            document.getElementById('firegpg-menu-memo-tool').style.display = 'none';
 	}
 	catch (e) {  fireGPGDebug(e,'misc.eraseSavedPassword',true);  }
 }
