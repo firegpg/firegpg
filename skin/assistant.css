@@ -1,0 +1,75 @@
+.title {
+
+    font-size: 120%;
+    width: 100%;
+    border-bottom: 1px #555 solid;
+    font-weight: bold;
+
+    background-image: url('chrome://firegpg/skin/assisantlogo.png');
+    background-attachment: fixed;
+    background-position: right top;
+    background-repeat: no-repeat;
+
+    margin-bottom: 15px;
+}
+
+.advanced {
+    color: #17A4AA;
+}
+
+.good {
+    color: #2B9A15;
+     font-weight: bold;
+
+    margin-left: 25px;
+
+    padding-left: 24px;
+    padding-top: 3px;
+    height: 24px;
+
+    background-image: url('chrome://firegpg/skin/assistantgood.png');
+    background-position: left top;
+    background-repeat: no-repeat;
+
+
+}
+
+.bad {
+    color: #CC0000;
+     font-weight: bold;
+
+    margin-left: 25px;
+
+    padding-left: 24px;
+    padding-top: 3px;
+    height: 24px;
+
+    background-image: url('chrome://firegpg/skin/assisantbad.png');
+    background-position: left top;
+    background-repeat: no-repeat;
+
+}
+
+.whatnext {
+
+    margin-left: 25px;
+
+    padding-left: 24px;
+    padding-top: 3px;
+    height: 24px;
+
+    background-image: url('chrome://firegpg/skin/assistantwhatnext.png');
+    background-position: left top;
+    background-repeat: no-repeat;
+
+}
+
+.help {
+
+    padding-right: 24px;
+
+    background-image: url('chrome://firegpg/skin/assisanthelp.png');
+    background-position: right top;
+    background-repeat: no-repeat;
+
+}

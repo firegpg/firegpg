@@ -771,7 +771,16 @@ function testIfSomethingsIsNew() {
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 		                       getService(Components.interfaces.nsIPrefService);
 		prefs = prefs.getBranch("extensions.firegpg.");
-	var version  = "";
+
+
+
+    /* Should we show the assistant ? */
+
+   /* var assis = window.openDialog('chrome://firegpg/content/Dialogs/Assistant/1-welcome.xul','', 'chrome, dialog, resizable=false');
+	assis.focus();*/
+
+
+    var version  = "";
 	try {
 		version = prefs.getCharPref("gpg_version");
 	} catch (e) { }
