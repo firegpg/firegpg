@@ -105,6 +105,11 @@ var firegpg = {
 
     */
 	onDelayMenuAction: function(action) {
+
+
+ var assis = window.openDialog('chrome://firegpg/content/Dialogs/Assistant/1-welcome.xul','', 'chrome, dialog, resizable=false');
+	assis.focus();
+
 		if (action == ACTION_SIGN)
 			FireGPG.sign();
         else if (action == ACTION_PSIGN)

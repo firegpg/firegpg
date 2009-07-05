@@ -52,6 +52,8 @@
 
 .whatnext {
 
+    font-weight: bold;
+
     margin-left: 25px;
 
     padding-left: 24px;
@@ -71,5 +73,15 @@
     background-image: url('chrome://firegpg/skin/assisanthelp.png');
     background-position: right top;
     background-repeat: no-repeat;
+
+}
+
+.link {
+    color: #3333FF;
+    cursor: pointer;
+}
+
+.link:hover {
+    text-decoration: underline;
 
 }

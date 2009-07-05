@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+  -   Version: MPL 1.1/GPL 2.0/LGPL 2.1
+  -
+  - The contents of this file are subject to the Mozilla Public License Version
+  - 1.1 (the "License"); you may not use this file except in compliance with
+  - the License. You may obtain a copy of the License at
+  - http://www.mozilla.org/MPL/
+  -
+  - Software distributed under the License is distributed on an "AS IS" basis,
+  - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+  - for the specific language governing rights and limitations under the
+  - License.
+  -
+  - The Original Code is FireGPG.
+  -
+  - The Initial Developer of the Original Code is
+  - FireGPG Team.
+  - Portions created by the Initial Developer are Copyright (C) 2007
+  - the Initial Developer. All Rights Reserved.
+  -
+  - Contributor(s):
+  -
+  - Alternatively, the contents of this file may be used under the terms of
+  - either the GNU General Public License Version 2 or later (the "GPL"), or
+  - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+  - in which case the provisions of the GPL or the LGPL are applicable instead
+  - of those above. If you wish to allow use of your version of this file only
+  - under the terms of either the GPL or the LGPL, and not to allow others to
+  - use your version of this file under the terms of the MPL, indicate your
+  - decision by deleting the provisions above and replace them with the notice
+  - and other provisions required by the GPL or the LGPL. If you do not delete
+  - the provisions above, a recipient may use your version of this file under
+  - the terms of any one of the MPL, the GPL or the LGPL.
+  -
+  - ***** END LICENSE BLOCK ***** -->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://firegpg/skin/assistant.css" type="text/css"?>
+<!DOCTYPE dialog SYSTEM "chrome://firegpg/locale/2-gnupg.dtd">
+<dialog title="FireGPG Assistant - GnuPG" orient="vertical" id="dialogbox"
+        onload="onLoad();" buttons="extra1,extra2" buttonlabelextra1="Stop" buttonlabelextra2="Next" buttondir ="rtl"
+        ondialogextra1="this.close();" ondialogextra2="next();"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        width="800px"
+        height="550px">
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
+  </stringbundleset>
+
+
+  <script src="2-gnupg.js"/>
+  <script src="../../Core/misc.js"/>
+  <script src="../../Core/cgpgaccess.js"/>
+  <script src="../../Core/cgpg.js"/>
+
+    <label class="title" value="GnuPG" />
+
+    <description>
+        FireGPG use GnuPG to handle any pgp operation, it's mean GnuPG must be installed for a working FireGPG.
+    </description>
+
+    <label value=" " />
+
+
+    <vbox id="gnuPG-working" style="display: none;">
+        <label class="good" value="GnuPG seem to be accesible and working." />
+        <label value=" " />
+        <label class="whatnext advanced" value="Do you want to set a custom homedir for GnuPG ?" />
+        <button label="Set a home dir" oncommand="sepecialHome();" />
+
+    </vbox>
+
+    <vbox id="gnuPG-notworking"  style="display: none;">
+         <label class="bad" value="GnuPG dosen't works, there is a problem. Please fix this and click on next." />
+<label value=" " />
+
+         <label class="whatnext" value="Did you install GnuPG ?" />
+         <label class="" value="You can download GnuPG here: (But any GnuPG will works)" />
+         <label class="link" onclick="window.open('http://gpg4win.org/download.html');" value="Windows users: Click here to download gpg4win" />
+         <label class="link" onclick="window.open('http://www.gnupg.org/download/');" value="Linux users: Please use the package shiped with your distribution, or click here for sources." />
+         <label class="link" onclick="window.open('http://www.google.ch/search?q=gnupg+macos');" value="MacOs users: I don't know how, but there is a way. Google is your friend." />
+
+
+<label value=" " />
+         <label class="whatnext advanced" value="Is you GnuPG installed in an uncommon location ?" />
+         <label class="advanced" value="Please set the path to GnuPG here: " />
+
+         <hbox>
+
+            <textbox id="gpg-path-textbox" disabled="disabled"/>
+            <button id="change-gpg-path-button" label="Browse"
+                  control="gpg-path-textbox" oncommand="chooseGPGPath();"/>
+        </hbox>
+
+<label value=" " />
+
+
+         <label class="whatnext" value="Is FireFTP installed ?" />
+         <label class="" value="FireGPG and FireFTP conflict dues to the old IPC library of FireFTP. " />
+         <label class="" value="If FireGPG's fix dosen't works, you have to uninstall one of them to let's the another working." />
+<label value=" " />
+
+         <label class="whatnext advanced" value="Are you using a strange plateform ?" />
+         <label class="advanced" value="FireGPG works only on Windows, MacOs and Linux x86 and x86_64 plateforms. " />
+         <label class="advanced link" onclick="window.open('http://blog.getfiregpg.org/2008/10/17/how-to-compile-the-ipc-library/');" value="You need to recompile the IPC library if it's the case." />
+
+    </vbox>
+
+
+
+    <!--<label value="Here is some information about icons and color used: "/>
+    <label value=" " />
+    <label class="whatnext" value="This sugest a solution or something you should do" />
+    <label value=" " />
+    <label class="good" value="This is something good" />
+    <label value=" " />
+    <label class="bad" value="This is a problem" />
+    <label value=" " />
+    <label class="advanced" value="This is for advanced users. You don't understand it ? It's not a problem, don't change it." />
+    <label value=" " />
+    <label class="help" value="This is something with help, keep your mouse over to see it" tooltiptext="Hello, I'm the help"/>-->
+
+
+
+</dialog>
+
+<!-- vim:ai:et:sw=2:ts=2:sts=2:tw=0:fenc=utf-8
+ -->

@@ -43,7 +43,21 @@
         win - The form herself.
 
 */
-function onLoad(win)
-{
+function onLoad(win) {
+
+}
+
+/*
+    Function: next
+
+    Process to the next step of the assistant
+
+*/
+function next() {
+
+    this.close();
+
+    var assis = window.openDialog('chrome://firegpg/content/Dialogs/Assistant/2-gnupg.xul','', 'chrome, dialog, resizable=false');
+	assis.focus();
 
 }

@@ -37,9 +37,9 @@
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://firegpg/skin/assistant.css" type="text/css"?>
-<!DOCTYPE dialog SYSTEM "chrome://firegpg/locale/1-welcome.dtd">
-<dialog title="FireGPG Assistant - Welcome" orient="vertical"
-        onload="onLoad()" buttons="extra1,extra2" buttonlabelextra1="Skip" buttonlabelextra2="Next" buttondir ="rtl"
+<!DOCTYPE dialog SYSTEM "chrome://firegpg/locale/3-privatekey.dtd">
+<dialog title="FireGPG Assistant - Private key" orient="vertical" id="dialogbox"
+        onload="onLoad();" buttons="extra1,extra2" buttonlabelextra1="Stop" buttonlabelextra2="Next" buttondir ="rtl"
         ondialogextra1="this.close();" ondialogextra2="next();"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns:html="http://www.w3.org/1999/xhtml"
@@ -49,18 +49,67 @@
   <stringbundleset id="stringbundleset">
     <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
   </stringbundleset>
-  <script src="1-welcome.js"/>
 
-    <label class="title" value="FireGPG Assistant" />
+
+  <script src="3-privatekey.js"/>
+  <script src="../../Core/misc.js"/>
+  <script src="../../Core/cgpgaccess.js"/>
+  <script src="../../Core/cgpg.js"/>
+
+    <label class="title" value="Private key" />
 
     <description>
-        Welcome ! <html:br/><html:br/>
-        This assistant will help you to configure FireGPG, if you're a new user it's recommanded to follow it to get a working configuration.<html:br/><html:br/><html:br/>
-        What ever you choose to do, you will be able to use the option windows to change any option later.
-      </description>
+        PGP system work with a private key and a public key. You sign messages with your private key and another users verify your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.
+    </description>
 
-    <label value=" " /><label value=" " />
-    <label value="Here is some information about icons and color used: "/>
+    <label value=" " />
+
+
+    <vbox id="private-key-exist" style="display: none ;">
+        <label class="good" value="You have at least a private key in your keyring" />
+        <label value=" " />
+        <label class="whatnext" value="Set a default key" />
+
+        <label  id="firegpg-ask-for-private-label" value="Ask for private key" style="display: none;"/>
+
+        <tree id="private-keys-listbox" flex="1" hidecolumnpicker="false" onselect="privateKeySelected(this)" style="height: 300px;">
+
+            <treecols>
+
+                <treecol primary="true" flex="1"  label="Name" persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+                <treecol name="id" label="Id" syle="width: 100px" flex="0" persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+                <treecol  label="Created" syle="width: 100px" flex="0"  persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+                <treecol  label="Expire" syle="width: 100px" flex="0" persist="width,hidden"/>
+                <splitter class="tree-splitter"/>
+
+            </treecols>
+
+            <treechildren id="private-keys-listbox-child" properties=""/>
+
+        </tree>
+
+    </vbox>
+
+    <vbox id="private-key-dosent-exist"  style="display: none ;">
+        <label class="bad" value="You don't have any private key in your keyring" />
+        <label value=" " />
+
+        <label class="whatnext" value="Generate a private and a public key" />
+        <button oncommand="genKey();" label="Generate" />
+
+        <label value=" " />
+        <label class="whatnext " value="Import a private key" />
+        <button oncommand="import();" label="Import" />
+
+    </vbox>
+
+    <!--<label value="Here is some information about icons and color used: "/>
     <label value=" " />
     <label class="whatnext" value="This sugest a solution or something you should do" />
     <label value=" " />
@@ -70,7 +119,7 @@
     <label value=" " />
     <label class="advanced" value="This is for advanced users. You don't understand it ? It's not a problem, don't change it." />
     <label value=" " />
-    <label class="help" value="This is something with help, keep your mouse over to see it" tooltiptext="Hello, I'm the help"/>
+    <label class="help" value="This is something with help, keep your mouse over to see it" tooltiptext="Hello, I'm the help"/>-->
 
 
 
