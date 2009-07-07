@@ -62,7 +62,7 @@ function next() {
 
     this.close();
 
-    var assis = window.openDialog('chrome://firegpg/content/Dialogs/Assistant/3-privatekey.xul','', 'chrome, dialog, resizable=false');
+    var assis = window.openDialog('chrome://firegpg/content/Dialogs/Assistant/4-gmail.xul','', 'chrome, dialog, resizable=false');
 
     assis.focus();
 
