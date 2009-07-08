@@ -56,10 +56,38 @@
     <label class="title" value="Options" />
 
     <description>
-        Here you can set some globals options
+        Here you can set some globals options for some FireGPG features:
     </description>
 
     <label value=" " />
+
+    <prefpane>
+
+            <preferences>
+
+                <preference id="inline-activated-pref" name="extensions.firegpg.activate_inline" type="bool"  instantApply="true"/>
+                <preference id="no-gpg-agent-pref" name="extensions.firegpg.no_gpg_agent" type="bool"  instantApply="true"/>
+                <preference id="use-api-pref" name="extensions.firegpg.enable_gpgapi" type="bool"  instantApply="true"/>
+                <preference id="global-enable-gpgauth-pref" name="extensions.firegpg.gpgauth.global.enable_gpgauth" type="bool"  instantApply="true"/>
+
+            </preferences>
+
+
+
+            <checkbox id="inline-activated-checkbox" preference="inline-activated-pref"
+                            label="Enable Inline detection" tooltiptext="If a webpage contains a PGP block, FireGPG can detect it and let's do relevent operations with it !" class="help"/>
+
+                <checkbox id="no-gpg-agent-checkbox" preference="no-gpg-agent-encrypt"
+                            label="Disable GPG-Agent" class="advanced"/>
+
+            <checkbox id="use-api-checkbox" preference="use-api-pref"
+                            label="Enable FireGPG API" tooltiptext="FireGPG API let's any website use gpg's features - of course with security mecanisms" class="help"/>
+
+
+            <checkbox id="global-enable-gpgauth-checkbox" preference="global-enable-gpgauth-pref"
+                            label="Enable gpgAuth" tooltiptext="gpgAuth is mechanism or process to authenticate web-users using GnuPG, not developped by FireGPG authors" class="help"/>
+
+        </prefpane>
 
     <!--<label value="Here is some information about icons and color used: "/>
     <label value=" " />

@@ -61,7 +61,7 @@ function next() {
     this.close();
 
     var assis = window.openDialog('chrome://firegpg/content/Dialogs/Assistant/6-end.xul','', 'chrome, dialog, resizable=false');
-
+   
     assis.focus();
 
 }

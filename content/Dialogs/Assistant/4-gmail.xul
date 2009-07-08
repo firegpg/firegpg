@@ -104,7 +104,10 @@
         </vbox>
 
         <vbox id="smtp-not-working"  style="display: none ;">
-            <label class="bad" value="FireGPG isn't able to access to the smtp server" />
+            <label class="bad" value="FireGPG isn't able to access to the smtp server OR request is still in progress" />
+            <label value=" " />
+
+            <label class="whatnext" value="Wait 15 seconds or more if your connexion is very slow" />
             <label value=" " />
 
             <label class="whatnext" value="Set parameters of a working smtp server (eg. your internet provider or your work place server)" />
@@ -113,7 +116,6 @@
 
             <preferences>
 
-            <preference id="gmail-smtp-google-com" name="extensions.firegpg.gmail_never_use_google_com_password" type="bool"  instantApply="true"/>
                 <preference id="gmail-smtp-use-ssl" name="extensions.firegpg.gmail_use_ssl" type="bool"  instantApply="true"/>
                 <preference id="gmail-smtp-port" name="extensions.firegpg.gmail_port" type="string"  instantApply="true"/>
                 <preference id="gmail-smtp-host" name="extensions.firegpg.gmail_host" type="string"  instantApply="true"/>

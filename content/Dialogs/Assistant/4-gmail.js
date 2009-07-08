@@ -45,6 +45,7 @@
 */
 
 var gmailOk = false;
+
 function onLoad(win) {
     testGmailOn();
 }
@@ -61,7 +62,7 @@ function next() {
 
     this.close();
 
-    if (gmailOk)
+    if (!gmailOk)
         var assis = window.openDialog('chrome://firegpg/content/Dialogs/Assistant/4-gmail.xul','', 'chrome, dialog, resizable=false');
     else
         var assis = window.openDialog('chrome://firegpg/content/Dialogs/Assistant/5-options.xul','', 'chrome, dialog, resizable=false');
@@ -112,11 +113,72 @@ function testGmailOn() {
 
 function testSmtp() {
 
-    if (true) {
-        gmailOk = true;
-        document.getElementById('smtp-working').style.display = '';
-    } else {
-        gmailOk = false;
-        document.getElementById('smtp-not-working').style.display = '';
-    }
+     var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                          getService(Components.interfaces.nsIPrefService);
+    prefs = prefs.getBranch("extensions.firegpg.");
+
+    if (prefs.getBoolPref("gmail_use_ssl",true))
+        smtpSocketTypes = new Array("ssl")
+    else
+        smtpSocketTypes = null;
+
+
+    transportService = Components
+        .classes["@mozilla.org/network/socket-transport-service;1"]
+        .getService(Components.interfaces.nsISocketTransportService);
+
+    transport = transportService
+        .createTransport(smtpSocketTypes,  smtpSocketTypes ? smtpSocketTypes.length : 0,  prefs.getCharPref("gmail_host"), parseInt( prefs.getCharPref("gmail_port")), null);
+
+    outstream = transport.openOutputStream(transport.OPEN_BLOCKING,0,0);
+    instream = transport.openInputStream(0,0,0);
+
+    sriptInstream = Components
+        .classes["@mozilla.org/scriptableinputstream;1"]
+        .createInstance(Components.interfaces.nsIScriptableInputStream);
+
+    sriptInstream.init(instream);
+
+    dataListener = {
+        onStartRequest: function(request, context) {
+             if (outstream)
+                outstream.write("HELO 127.0.0.1","HELO 127.0.0.1".length);
+
+        },
+        onStopRequest: function(request, context, status) {
+           if (outstream)
+                outstream.close();
+            if (sriptInstream)
+                sriptInstream.close();
+        },
+        onDataAvailable: function(request, context, inputStream, offset, count) {
+
+            retour = sriptInstream.read(count);
+            retour = retour.split(/ /gi);
+
+            if (retour[0] == "220") {
+
+                gmailOk = true;
+                document.getElementById('smtp-working').style.display = '';
+                document.getElementById('smtp-not-working').style.display = 'none';
+
+            }
+
+             if (outstream)
+                outstream.close()
+             if (sriptInstream)
+                sriptInstream.close()
+
+        }
+    };
+
+    pump = Components
+        .classes["@mozilla.org/network/input-stream-pump;1"]
+        .createInstance(Components.interfaces.nsIInputStreamPump);
+    pump.init(instream, -1, -1, 0, 0, false);
+    pump.asyncRead(dataListener, null);
+
+    gmailOk = false;
+    document.getElementById('smtp-not-working').style.display = '';
+
 }

@@ -39,8 +39,8 @@
 <?xml-stylesheet href="chrome://firegpg/skin/assistant.css" type="text/css"?>
 <!DOCTYPE dialog SYSTEM "chrome://firegpg/locale/6-end.dtd">
 <dialog title="FireGPG Assistant - Done !" orient="vertical" id="dialogbox"
-        onload="onLoad();" buttons="extra1,extra2" buttonlabelextra1="Stop" buttonlabelextra2="Next" buttondir ="rtl"
-        ondialogextra1="this.close();" ondialogextra2="next();"
+        onload="onLoad();" buttons="extra1" buttonlabelextra1="Close" buttondir ="rtl"
+        ondialogextra1="this.close();"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns:html="http://www.w3.org/1999/xhtml"
         width="800px"
@@ -57,9 +57,23 @@
     <label class="title" value="Done !" />
 
     <description>
-        Assistant is now done. Blablabla
+        Assistant is now done. Now you should be able to use FireGPG.
     </description>
 
+    <label value=" " />
+
+    <label class="whatnext" value="Read the documentation" />
+    <label class="link" onclick="window.open('http://getfiregpg.org/s/doc');" value="You will find some link on this page" />
+
+    <label value=" " />
+
+    <label class="whatnext" value="Translate FireGPG" />
+    <label class="link" onclick="window.open('http://translate.getfiregpg.org/');" value="Horrible mistake or FireGPG in your language ? Here is the website !" />
+    <label value=" " />
+
+    <label class="whatnext" value="Help FireGPG" />
+    <label class="link" onclick="window.open('http://getfiregpg.org/s/contrib/');" value="How to help FireGPG" />
+    <label class="link" onclick="window.open('http://bugs.getfiregpg.org');" value="Report a bug or ask for a new feature" />
     <label value=" " />
 
     <!--<label value="Here is some information about icons and color used: "/>

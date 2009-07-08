@@ -38,9 +38,7 @@
 //Mime functions {DECODING}
 
 
-FireGPGMimeDecoder = function(data)
-{
-
+FireGPGMimeDecoder = function(data) {
 	this.init(data);
 };
 
