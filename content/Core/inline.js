@@ -451,8 +451,24 @@ FireGPGInline.DecryptMessage = function(content, block) {
         block.body.className = "ok";
         block.message.textContent = result.decrypted;
 
-        if (result.signresulttext)
-            block.header.textContent = i18n.getString("encrypted-message") + ", " + i18n.getString("validSignInCrypt") + " " + result.signresulttext;
+
+        if (result.notEncrypted) {
+
+              if (result.signresulttext)
+                block.header.textContent = i18n.getString("notencrypted-message") + ", " + i18n.getString("validSignInCrypt") + " " + result.signresulttext;
+            else
+                block.header.textContent = i18n.getString("notencrypted-message")
+
+
+
+        } else {
+
+            if (result.signresulttext)
+                block.header.textContent = i18n.getString("encrypted-message") + ", " + i18n.getString("validSignInCrypt") + " " + result.signresulttext;
+
+        }
+
+
 
     } else if (result.result == RESULT_ERROR_PASSWORD) {
 

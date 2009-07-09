@@ -560,6 +560,9 @@ var gpgApi = {
                 returnData.setAttribute('sign-info', result.signresulttext);
 			}
 
+            if (result.notEncrypted)
+                returnData.setAttribute('warning', 'no-encrpted');
+
 
 			returnData.setAttribute('result', 'decrypt-ok');
             returnData.setAttribute('text', result.decrypted);

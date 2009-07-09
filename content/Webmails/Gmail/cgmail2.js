@@ -1576,6 +1576,9 @@ Zna Vna UIb $RQa $SQa Moa
                         if (result.result == RESULT_SUCCESS)
                             data = result.decrypted;
 
+                        if (result.notEncrypted)
+                            alert(i18n.getString("notEncryptedButPlainText"));
+
                         name = name.substring(0, name.length -4);
 
                         break;
@@ -2705,7 +2708,7 @@ fireGPGDebug("activated");
 
             if (event.target && event.target.className &&
                 (event.target.className == "HprMsc" || event.target.className.indexOf("y4Wv6d") != -1 || event.target.className == "XoqCub" ||//load old mail | compose | Mail widnow
-                 event.target.className.indexOf("HprMsc") != -1 || event.target.className.indexOf("CoUvaf") != -1 || event.target.className.indexOf("T1HY1") != -1  || event.target.className.indexOf("cf hX") != -1) &&  //load old mail2 | compose2 | Mail widnow2 | bouton d'un mail
+                 event.target.className.indexOf("HprMsc") != -1 || event.target.className.indexOf("CoUvaf") != -1 || event.target.className.indexOf("T1HY1") != -1  || event.target.className.indexOf("cf hX") != -1 || event.target.className.indexOf("Bs nH iY") != -1) &&  //load old mail2 | compose2 | Mail widnow2 | bouton d'un mail
                 (cGmail2.docOccuped[this._docid] == undefined || cGmail2.docOccuped[this._docid] == false))
             {
                 fireGPGDebug("Captured !");

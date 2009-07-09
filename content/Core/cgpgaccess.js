@@ -278,7 +278,7 @@ var GPGAccess = {
        else {
             info = Components.classes["@mozilla.org/process/environment;1"].getService(Components.interfaces.nsIEnvironment).get('GPG_AGENT_INFO');
 
-           return ' --use-agent --gpg-agent-info ' + info ; //DOSEN'T WORKS WITH GNUPG2
+           return ''; // (NB, handeld with environement !!) --use-agent --gpg-agent-info ' + info ;
        }
    },
 
@@ -362,6 +362,12 @@ var GPGAccess = {
 
     },
 
+    getEnv: function() {
+
+        return [];
+
+    },
+
     /*
         Function: runGnupg
         Execute gnupg.
@@ -400,6 +406,8 @@ var GPGAccess = {
             if(parametersS[i] != "" && parametersS[i] != null)
                 gpgArgs.push(parametersS[i].replace(/\{\$SPACE\}/gi, ' '));
 
+        env = this.getEnv();
+
 
         try {
 
@@ -413,7 +421,7 @@ var GPGAccess = {
         }
 
         try {
-            this.ipcService.runPipe(fileobj, gpgArgs, gpgArgs.length, "", sdtIn, sdtIn.length, [], 0, outStrObj, outLenObj, errStrObj, errLenObj);
+            this.ipcService.runPipe(fileobj, gpgArgs, gpgArgs.length, "", sdtIn, sdtIn.length, env, env.length, outStrObj, outLenObj, errStrObj, errLenObj);
         }
         catch (e) {
 
@@ -453,7 +461,7 @@ var GPGAccess = {
 
                 try {
                    /// FireFTP version but it's crash some times firefox
-                   this.ipcService.execPipe(this.getGPGCommand() + " " + parameters, false,  "", sdtIn, sdtIn.length, [], 0, outStrObj, outLenObj, errStrObj, errLenObj);
+                   this.ipcService.execPipe(this.getGPGCommand() + " " + parameters, false,  "", sdtIn, sdtIn.length,  env, env.length, outStrObj, outLenObj, errStrObj, errLenObj);
                 } catch (e) {
                 }
 
@@ -565,7 +573,7 @@ var GPGAccess = {
         Function: listkey
         List  keys.
 
-3        Parameters:
+        Parameters:
             onlyPrivate - Boolean, set to true if only a private key list is wanted.
 
         Return:

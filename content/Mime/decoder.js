@@ -814,6 +814,8 @@ FireGPGMimeDecoder.prototype = {
 
     Decrypt: function(stopOnDecrypt) {
 
+        var i18n = document.getElementById("firegpg-strings");
+
 
         var retour = new Object();
         retour.completeSignOrDecrypt = false;
@@ -857,6 +859,9 @@ FireGPGMimeDecoder.prototype = {
         retour.decryptDataToInsert = this.washForInsertion(resultTest.decrypted, false);
         retour.decryptresult = resultTest;
 
+        if (resultTest.notEncrypted)
+            alert(i18n.getString("notEncryptedButPlainText"));
+
         retour.moreDecryptData = new Array();
 
 
@@ -871,6 +876,10 @@ FireGPGMimeDecoder.prototype = {
             tmpResultTest = FireGPG.decrypt(true,firstEcnrypt.replace(/\r/gi, ''));
 
             retour.moreDecryptData[i] = this.washForInsertion(tmpResultTest.decrypted, false);
+
+            if (tmpResultTest.notEncrypted)
+                alert(i18n.getString("notEncryptedButPlainText"));
+
 
             i++;
             data = data.substring(data.indexOf("\r\n-----END PGP MESSAGE-----") + ("\r\n-----END PGP MESSAGE-----").length, data.length );

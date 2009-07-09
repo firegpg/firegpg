@@ -1334,6 +1334,15 @@ var FireGPG = {
             return returnObject;
 		}
 
+        if (result.sdOut.indexOf("PLAINTEXT") != -1) {
+
+            if (!silent)
+                alert(i18n.getString("notEncryptedButPlainText"));
+
+            returnObject.notEncrypted = true;
+
+        }
+
 
         //Il y avait une signature dans le truc //TODO: detect bad signs.
 		if(result.sdOut.indexOf("GOODSIG") != -1) {

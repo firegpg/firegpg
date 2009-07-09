@@ -50,38 +50,23 @@
    ACTION_ERASE - Erase the current saved password.
 */
 
-const ACTION_SIGN = 'SIGN';
-const ACTION_PSIGN = 'PLAINSIGN';
-const ACTION_WSIGN = 'WRAPSIGN';
-const ACTION_VERIF = 'VERIF';
-const ACTION_CRYPT = 'CRYPT';
-const ACTION_SYMCRYPT = 'SYMCRYPT';
-const ACTION_CRYPTSIGN = 'CRYPTSIGN';
+
 const ACTION_DECRYPT = 'DECRYPT';
-const ACTION_IMPORT = 'IMPORT';
-const ACTION_EXPORT = 'EXPORT';
-const ACTION_EDITEUR = 'EDITEUR';
-const ACTION_MANAGER = 'MANAGER';
 const ACTION_OPTS = 'OPTS';
 const ACTION_ERASE = 'ERASE';
-const ACTION_UPDATE = 'UPDATE';
 
  /*
-  * Class: firegpg
-  * This is the class to comunicate with the menus added in firefox. She watch the loading of new windows too.
+  * Class: firegpgdownloader
+  * This is the class to comunicate with the menus added in firefox downloader
   */
-var firegpg = {
+var firegpgdownloader = {
 
     /*
     Function: onLoad
-    This function is called when a new Firefox's windows is created. She init another listers, and the translator system.
+    This function is called when a new Downloadmager's windows is created. She init another listers, and the translator system.
     */
     onLoad: function() {
 
-        cGmail.initSystem();
-        cGmail2.initSystem();
-        FireGPGInline.initSystem();
-		//APIListener.init();
 
 		// initialization code
 		this.initialized = true;
@@ -93,7 +78,7 @@ var firegpg = {
     This function is called when a menu item is selected. It's call <onDelayMenuAction> 100 milliseconds laters (we have to wait dues to a bug).
     */
 	onMenuItemCommand: function(e,action) {
-		setTimeout("firegpg.onDelayMenuAction('"+action+"')", 100);
+		setTimeout("firegpgdownloader.onDelayMenuAction('"+action+"')", 100);
 	},
 
     /*
@@ -105,36 +90,16 @@ var firegpg = {
 
     */
 	onDelayMenuAction: function(action) {
-		if (action == ACTION_SIGN)
-			FireGPG.sign();
-        else if (action == ACTION_PSIGN)
-			FireGPG.sign(undefined,undefined,undefined,undefined,true);
-        else if (action == ACTION_WSIGN)
-			FireGPG.sign(undefined,undefined,undefined,undefined,undefined,undefined,true);
-		else if(action == ACTION_VERIF)
-			FireGPG.verify();
-		else if(action == ACTION_CRYPT)
-			FireGPG.crypt();
-        else if(action == ACTION_SYMCRYPT)
-			FireGPG.crypt(undefined,undefined,undefined,undefined,undefined,undefined,true);
-		else if(action == ACTION_CRYPTSIGN)
-			FireGPG.cryptAndSign();
-		else if(action == ACTION_DECRYPT)
+		if(action == ACTION_DECRYPT)
 			FireGPG.decrypt();
-		else if(action == ACTION_IMPORT)
-			FireGPG.kimport();
-		else if(action == ACTION_EXPORT)
-			FireGPG.kexport();
-		else if(action == ACTION_EDITEUR)
-			showEditor('');
-		else if(action == ACTION_MANAGER)
-			window.openDialog("chrome://firegpg/content/Dialogs/Keymanager/keymanager.xul", "keyManager", "chrome, centerscreen, toolbar").focus();
 		else if(action == ACTION_OPTS)
 			window.openDialog("chrome://firegpg/content/Dialogs/options.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
 		else if (action == ACTION_ERASE)
 			eraseSavedPassword();
-        else if(action == ACTION_UPDATE)
-			showUpdateDialog();
+        else { //L'action contiens le hash
+
+
+        }
 	},
 
     /*
@@ -143,9 +108,26 @@ var firegpg = {
     */
 	onToolbarButtonCommand: function(e) {
 		// just reuse the function above.  you can change this, obviously!
-		firegpg.onMenuItemCommand(e);
-	}
+		firegpgdownloader.onMenuItemCommand(e);
+	},
+
+    /*
+     Function: addFireGPGContextMenu
+     Add the FireGPG ContactMenu (if should be showed...)
+    */
+    addFireGPGContextMenu: function(menu,event) {
+        if (menu.childNodes[0] && menu.childNodes[0].id && menu.childNodes[0].id == 'menuitem_open' && menu.childNodes[1] && menu.childNodes[1].id && menu.childNodes[1].id == 'menuitem_show') {
+            menuCloned = document.getElementById('menu-firegpg-download').cloneNode(true);
+            menu.insertBefore(menuCloned, menu.childNodes[1]);
+        }
+
+
+        //alert(document.getElementById('downloadView').getSelectedItem(0).getAttribute('path'));
+
+    }
 };
 
-window.addEventListener("load", function(e) { firegpg.onLoad(e); }, false);
+
+
+window.addEventListener("load", function(e) { firegpgdownloader.onLoad(e); }, false);
 // vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8
