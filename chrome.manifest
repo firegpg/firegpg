@@ -29,6 +29,7 @@ locale	    firegpg vi	                locale/vi/
 locale	    firegpg zh-CN	        locale/zh-CN/
 locale	    firegpg zh-TW	        locale/zh-TW/
 skin	        firegpg	classic/1.0	skin/
-overlay	chrome://browser/content/browser.xul	            chrome://firegpg/content/Core/firefoxOverlay.xul
-overlay	chrome://webrunner/content/webrunner.xul	    chrome://firegpg/content/Core/prismeOverlay.xul
-style	    chrome://global/content/customizeToolbar.xul	chrome://firegpg/skin/overlay.css
+overlay	chrome://browser/content/browser.xul	                        chrome://firegpg/content/Core/firefoxOverlay.xul
+overlay	chrome://webrunner/content/webrunner.xul	                chrome://firegpg/content/Core/prismeOverlay.xul
+overlay    chrome://mozapps/content/downloads/downloads.xul    chrome://firegpg/content/Core/downloadMangerOverlay.xul
+style	    chrome://global/content/customizeToolbar.xul	            chrome://firegpg/skin/overlay.css

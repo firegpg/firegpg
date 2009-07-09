@@ -47,6 +47,10 @@
   list-style-image: url("chrome://firegpg/skin/manager.png");
 }
 
+.firegpg-menu-hash {
+  list-style-image: url("chrome://firegpg/skin/hash.png");
+}
+
 .firegpg-menu {
 	list-style-image: url("chrome://firegpg/skin/firegpg.png");
 }
