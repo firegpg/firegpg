@@ -50,5 +50,5 @@
 <!ENTITY firegpgToolbar.labelManager "Nyckelhanterare">
 <!ENTITY firegpgMenu.labelManager "Nyckelhanterare">
 <!ENTITY keynotrevokedpassword "Fel, nyckel ej upphävd. Fel lösenord?">
-<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
-<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgContext.labelWrapSign "Linjebruten signering">
+<!ENTITY firegpgMenu.labelWrapSign "Linjebruten signering">

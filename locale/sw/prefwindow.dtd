@@ -74,10 +74,10 @@
 <!ENTITY paneautowrap.title "Automatiskt radbyte">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Visa användaruppgifter för giltiga signaturer (good signatures)">
 <!ENTITY gmail-keep-encrypted-mail "Krypterat svar på krypterad e-post">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
-<!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
-<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">
+<!ENTITY gmail-smtp-no-auth-checkbox "Inaktivera SMTP-autentisering">
+<!ENTITY dont_ask_to_download_key "Försök inte ladda ner saknade nycklar">
+<!ENTITY keyserverproxy-message "Proxy för HTTP och HKP (keyserver):">
+<!ENTITY digest-message "Digest (Hash för signering) (SHA256, SHA512, etc) (Gmail använder detta värde för att skapa mail):">
 <!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
 <!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">

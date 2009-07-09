@@ -75,7 +75,7 @@
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Mostrar datos de usuario para firmas verificadas">
 <!ENTITY gmail-keep-encrypted-mail "Cifrar respuesta para correos cifrados">
 <!ENTITY gmail-smtp-no-auth-checkbox "Deshabilitar autenticación SMTP">
-<!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
+<!ENTITY dont_ask_to_download_key "No intente descargar llaves perdidas">
 <!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
 <!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">
 <!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
