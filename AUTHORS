@@ -1,34 +1,15 @@
-FireGPG Team <contact@getfiregpg.org> including :
-    Achraf cherti (Not active since 2007)
-    Maximilien Cuony
+Main developer:
+    Maximilien Cuony  <contact@getfiregpg.org>
 
-GPG Auth module :
+Old developers:
+    Achraf cherti (Not active since 2007)
+
+GPG Auth module:
 	Kyle L. Huff
 
 Translations :
-    English translation by Sébastien Wains
-    French translation by FireGPG Team
-    Italian translation by Alessandro Pascali
-    German translation by Stephan Klein
-    Polish translation by Kacper86
-    Portuguese translation by Antonio Manuel Dias
-    Türkish translation by Alparslan Ozturk
-    Spanish translation by Nukeador
-    Chinese translation by Weakish Jiang
-    Türkish translation by Alparslan Ozturk
-    Dutch translation by Bob
-    Brazilian Portuguese translation by Eri Ramos Bastos
-    Serbian translation by Fedor Lucic
-
-Website translations :
-	Deutch by Bob Van Hove
-	Traditional and Simplified Chinese by Weakish Jiang
-	Spanish by Priapo
-
-Patchs by :
-    Ilya Chernikov (Mac OS Bug)
-    Hometoast (Windows Bug)
-
+    All translators of http://translate.getfiregpg.org
+    
 Use code form Gmail S/MIME
         Copyright (C) 2005-2007 Richard Jones.
         Copyright (C) 2007-2008 Sean Leonard of SeanTek(R).
