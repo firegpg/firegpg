@@ -52,3 +52,7 @@
 <!ENTITY keynotrevokedpassword "错误，密钥未被吊销。密码有错？">
 <!ENTITY firegpgContext.labelWrapSign "环绕签名">
 <!ENTITY firegpgMenu.labelWrapSign "环绕签名">
+<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelHashs "Hashes">

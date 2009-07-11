@@ -52,3 +52,7 @@
 <!ENTITY keynotrevokedpassword "שגיאה, מפתח לא בוטל, האם טעית בסיסמה? ">
 <!ENTITY firegpgContext.labelWrapSign "חתימה עטופה">
 <!ENTITY firegpgMenu.labelWrapSign "חתום בצורה עטופה">
+<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelHashs "Hashes">

@@ -52,3 +52,7 @@
 <!ENTITY keynotrevokedpassword "Errore, chiave non revocata. Password sbagliata?">
 <!ENTITY firegpgContext.labelWrapSign "Firma nascosta">
 <!ENTITY firegpgMenu.labelWrapSign "Firma nascosta">
+<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelHashs "Hashes">

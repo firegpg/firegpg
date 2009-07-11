@@ -52,3 +52,7 @@
 <!ENTITY keynotrevokedpassword "Erreur, clé pas révoquée. Mauvais mot de passe ?">
 <!ENTITY firegpgContext.labelWrapSign "Signature découpée">
 <!ENTITY firegpgMenu.labelWrapSign "Signature découpée">
+<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelHashs "Hashes">

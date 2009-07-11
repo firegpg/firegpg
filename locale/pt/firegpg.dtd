@@ -52,3 +52,7 @@
 <!ENTITY keynotrevokedpassword "Erro: chave não revogada. Senha errada?">
 <!ENTITY firegpgContext.labelWrapSign "Sinalizador de quebra de linha">
 <!ENTITY firegpgMenu.labelWrapSign "Sinalizador de quebra de linha">
+<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelHashs "Hashes">

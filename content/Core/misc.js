@@ -555,6 +555,26 @@ function removeFile(path) {
 	}
 }
 
+/*
+    Function: fileExist
+    Return true if a file exist
+
+    Parameters:
+        path - The file to delete.
+*/
+function fileExist(path) {
+	var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
+	                         createInstance(Components.interfaces.nsILocalFile);
+	fileobj.initWithPath(path);
+
+	try {
+		return fileobj.exists();
+	}
+	catch (e) {
+		return false;
+	}
+}
+
 
 /*
     Function: putIntoFile
@@ -1613,5 +1633,3 @@ function getFileExtention(filename) {
    return filename.substring(filename.length - 3,filename.length).toLowerCase();
 
 }
-
-

@@ -52,3 +52,7 @@
 <!ENTITY keynotrevokedpassword "Error, clau no revocada. Contrasenya incorrecta?">
 <!ENTITY firegpgContext.labelWrapSign "Signatura ajustada">
 <!ENTITY firegpgMenu.labelWrapSign "Signatura ajustada">
+<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelHashs "Hashes">

@@ -197,7 +197,7 @@ var FireGPG = {
             password - _Optional_, if not set ask the user.
             notClear - _Optional_, Do not make a clear sign
     */
-    sign: function(silent, text, keyID, password, notClear, autoSelectPrivate, wrap) {
+    sign: function(silent, text, keyID, password, notClear, autoSelectPrivate, wrap, fileMode, fileFrom, fileTo) {
 
         var returnObject = new GPGReturn();
 
@@ -210,8 +210,83 @@ var FireGPG = {
         if (wrap == undefined)
             wrap = false;
 
+
+        if (fileMode == undefined)
+            fileMode = false;
+
         this.initGPGACCESS();
         var i18n = document.getElementById("firegpg-strings");
+
+        if (fileMode) {
+
+            if (fileFrom == undefined) {
+
+                var nsIFilePicker = Components.interfaces.nsIFilePicker;
+                var fp = Components.classes["@mozilla.org/filepicker;1"]
+                      .createInstance(nsIFilePicker);
+
+                fp.init(window, i18n.getString('sourceFile'), nsIFilePicker.modeOpen);
+                fp.appendFilters(nsIFilePicker.filterAll);
+
+                if (fp.show() != nsIFilePicker.returnOK) { //L'utilisateur annule
+                    fileFrom = null;
+                } else {
+                    fileFrom = fp.file.path;
+                }
+
+                if (fileFrom == null | fileFrom == '') {
+                    returnObject.result = RESULT_CANCEL;
+                    return returnObject;
+                }
+
+            }
+
+            if (fileTo == undefined) {
+
+                if (!confirm(i18n.getString('signUseDefault'))) {
+
+
+                    var nsIFilePicker = Components.interfaces.nsIFilePicker;
+                    var fp = Components.classes["@mozilla.org/filepicker;1"]
+                          .createInstance(nsIFilePicker);
+
+                    fp.init(window, i18n.getString('destinationFile'), nsIFilePicker.modeSave);
+                    fp.appendFilters(nsIFilePicker.filterAll);
+
+                    done = false;
+
+                    while(!done) {
+
+                         if (fp.show() == nsIFilePicker.returnCancel ) { //L'utilisateur annule
+                            fileTo = null;
+                        } else {
+                            fileTo = fp.file.path;
+                        }
+
+                        if (fileTo == fileFrom) {
+                            alert( i18n.getString('formAndToSame'));
+                        } else
+                            done = true;
+
+                    }
+
+
+               } else {
+
+                    fileTo = fileFrom + '.sig';
+                    removeFile(fileTo); //If the already exist
+               }
+
+                if (fileTo == null | fileTo == '') {
+                    returnObject.result = RESULT_CANCEL;
+                    return returnObject;
+                }
+
+                removeFile(fileTo);
+
+            }
+        }
+
 
         // GPG verification
         var gpgTest = FireGPG.selfTest(silent);
@@ -222,7 +297,7 @@ var FireGPG = {
         }
 
 
-        if (text == undefined || text == null) {
+        if ((text == undefined || text == null) && !fileMode) {
             var autoSetMode = true;
             text = Selection.get();
 
@@ -234,7 +309,7 @@ var FireGPG = {
 
         }
 
-        if (text == "") {
+        if (text == "" && !fileMode) {
             if (!silent)
                 alert(i18n.getString("noData"));
 
@@ -246,7 +321,7 @@ var FireGPG = {
 
         var tryPosition = text.indexOf("-----BEGIN PGP SIGNED MESSAGE-----");
 
-        if (tryPosition != -1) {
+        if (tryPosition != -1 && !fileMode) {
 			if (!silent && !confirm(i18n.getString("alreadySign"))) {
                 returnObject.result = RESULT_ERROR_ALREADY_SIGN;
                 return returnObject;
@@ -273,7 +348,7 @@ var FireGPG = {
         }
 
         // We get the result
-		var result = this.GPGAccess.sign(text, password, keyID, notClear);
+		var result = this.GPGAccess.sign(text, password, keyID, notClear, fileMode, fileFrom, fileTo);
 
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;
@@ -312,6 +387,10 @@ var FireGPG = {
 			else //Else, we show a windows with the result
 				showText(result.output);
 		}
+
+        if (fileMode) {
+            alert(i18n.getString("operationOnFileDone"));
+        }
 
         returnObject.signed = result.output;
 
@@ -673,15 +752,79 @@ var FireGPG = {
             symetrical - _Optional_. Use symetrical encrypt
             password - _Optional_. The password for symetrical encryption.
     */
-	crypt: function(silent, text, keyIdList, fromGpgAuth, binFileMode, autoSelect, symetrical, password) {
+	crypt: function(silent, text, keyIdList, fromGpgAuth, binFileMode, autoSelect, symetrical, password, fileMode, fileFrom, fileTo) {
 
         var returnObject = new GPGReturn();
 
         if (silent == undefined)
             silent = false;
 
+        if (fileMode == undefined)
+            fileMode = false;
+
         this.initGPGACCESS();
         var i18n = document.getElementById("firegpg-strings");
+
+        if (fileMode) {
+
+            if (fileFrom == undefined) {
+
+                var nsIFilePicker = Components.interfaces.nsIFilePicker;
+                var fp = Components.classes["@mozilla.org/filepicker;1"]
+                      .createInstance(nsIFilePicker);
+
+                fp.init(window, i18n.getString('sourceFile'), nsIFilePicker.modeOpen);
+                fp.appendFilters(nsIFilePicker.filterAll);
+
+                if (fp.show() != nsIFilePicker.returnOK) { //L'utilisateur annule
+                    fileFrom = null;
+                } else {
+                    fileFrom = fp.file.path;
+                }
+
+                if (fileFrom == null | fileFrom == '') {
+                    returnObject.result = RESULT_CANCEL;
+                    return returnObject;
+                }
+
+            }
+
+            if (fileTo == undefined) { //Nb: il ne doit pas exister !
+
+
+                var nsIFilePicker = Components.interfaces.nsIFilePicker;
+                var fp = Components.classes["@mozilla.org/filepicker;1"]
+                      .createInstance(nsIFilePicker);
+
+                fp.init(window, i18n.getString('destinationFile'), nsIFilePicker.modeSave);
+                fp.appendFilters(nsIFilePicker.filterAll);
+
+                done = false;
+
+                while(!done) {
+
+                     if (fp.show() == nsIFilePicker.returnCancel ) { //L'utilisateur annule
+                        fileTo = null;
+                    } else {
+                        fileTo = fp.file.path;
+                    }
+
+                    if (fileTo == fileFrom) {
+                        alert( i18n.getString('formAndToSame'));
+                    } else
+                        done = true;
+
+                }
+
+                if (fileTo == null | fileTo == '') {
+                    returnObject.result = RESULT_CANCEL;
+                    return returnObject;
+                }
+
+                removeFile(fileTo);
+
+            }
+        }
 
         // GPG verification
         var gpgTest = FireGPG.selfTest(silent);
@@ -695,12 +838,12 @@ var FireGPG = {
         if (symetrical == null || symetrical == undefined)
             symetrical = false;
 
-        if (text == undefined || text == null) {
+        if ((text == undefined || text == null)  && !fileMode) {
             var autoSetMode = true;
             text = Selection.get();
         }
 
-        if (text == "") {
+        if (text == "" && !fileMode) {
             if (!silent)
                 alert(i18n.getString("noData"));
 
@@ -711,7 +854,7 @@ var FireGPG = {
 
         var tryPosition = text.indexOf("-----BEGIN PGP MESSAGE-----");
 
-        if (tryPosition != -1) {
+        if (tryPosition != -1 && !fileMode) {
 			if (!silent && !confirm(i18n.getString("alreadyCrypt"))) {
 
                 returnObject.result = RESULT_ERROR_ALREADY_CRYPT;
@@ -756,9 +899,9 @@ var FireGPG = {
 
 		// We get the result
         if (!symetrical)
-            var result = this.GPGAccess.crypt(text, keyIdList,fromGpgAuth,binFileMode);
+            var result = this.GPGAccess.crypt(text, keyIdList,fromGpgAuth,binFileMode, fileMode, fileFrom, fileTo);
         else
-            var result = this.GPGAccess.symetric(text, password, algo);
+            var result = this.GPGAccess.symetric(text, password, algo, fileMode, fileFrom, fileTo);
 
 
         returnObject.sdOut = result.sdOut;
@@ -790,6 +933,11 @@ var FireGPG = {
 				showText(result.output);
 		}
 
+
+        if (fileMode) {
+            alert(i18n.getString("operationOnFileDone"));
+        }
+
         returnObject.encrypted = result.output;
 
         returnObject.result = RESULT_SUCCESS;
@@ -814,15 +962,79 @@ var FireGPG = {
             binFileMode - _Optional_, Default to false. Set this to true if data isensn't  simple text.
             autoSelect - _Optional_, An array of recipients' keys' id to autoselect on the key's list selection.
     */
-    cryptAndSign: function(silent, text, keyIdList, fromGpgAuth, password, keyID, binFileMode, autoSelect, autoSelectPrivate) {
+    cryptAndSign: function(silent, text, keyIdList, fromGpgAuth, password, keyID, binFileMode, autoSelect, autoSelectPrivate, fileMode, fileFrom, fileTo) {
 
         var returnObject = new GPGReturn();
 
         if (silent == undefined)
             silent = false;
 
+        if (fileMode == undefined)
+            fileMode = false;
+
         this.initGPGACCESS();
         var i18n = document.getElementById("firegpg-strings");
+
+        if (fileMode) {
+
+            if (fileFrom == undefined) {
+
+                var nsIFilePicker = Components.interfaces.nsIFilePicker;
+                var fp = Components.classes["@mozilla.org/filepicker;1"]
+                      .createInstance(nsIFilePicker);
+
+                fp.init(window, i18n.getString('sourceFile'), nsIFilePicker.modeOpen);
+                fp.appendFilters(nsIFilePicker.filterAll);
+
+                if (fp.show() != nsIFilePicker.returnOK) { //L'utilisateur annule
+                    fileFrom = null;
+                } else {
+                    fileFrom = fp.file.path;
+                }
+
+                if (fileFrom == null | fileFrom == '') {
+                    returnObject.result = RESULT_CANCEL;
+                    return returnObject;
+                }
+
+            }
+
+            if (fileTo == undefined) { //Nb: il ne doit pas exister !
+
+
+                var nsIFilePicker = Components.interfaces.nsIFilePicker;
+                var fp = Components.classes["@mozilla.org/filepicker;1"]
+                      .createInstance(nsIFilePicker);
+
+                fp.init(window, i18n.getString('destinationFile'), nsIFilePicker.modeSave);
+                fp.appendFilters(nsIFilePicker.filterAll);
+
+                done = false;
+
+                while(!done) {
+
+                     if (fp.show() == nsIFilePicker.returnCancel ) { //L'utilisateur annule
+                        fileTo = null;
+                    } else {
+                        fileTo = fp.file.path;
+                    }
+
+                    if (fileTo == fileFrom) {
+                        alert( i18n.getString('formAndToSame'));
+                    } else
+                        done = true;
+
+                }
+
+                if (fileTo == null | fileTo == '') {
+                    returnObject.result = RESULT_CANCEL;
+                    return returnObject;
+                }
+
+                removeFile(fileTo);
+
+            }
+        }
 
         // GPG verification
         var gpgTest = FireGPG.selfTest(silent);
@@ -833,12 +1045,12 @@ var FireGPG = {
         }
 
 
-        if (text == undefined || text == null) {
+        if ((text == undefined || text == null) && !fileMode) {
             var autoSetMode = true;
             text = Selection.get();
         }
 
-        if (text == "") {
+        if (text == "" && !fileMode) {
             if (!silent)
                 alert(i18n.getString("noData"));
 
@@ -849,7 +1061,7 @@ var FireGPG = {
 
         var tryPosition = text.indexOf("-----BEGIN PGP MESSAGE-----");
 
-        if (tryPosition != -1) {
+        if (tryPosition != -1 && !fileMode) {
 			if (!silent && !confirm(i18n.getString("alreadyCrypt"))) {
                 returnObject.result = RESULT_ERROR_ALREADY_CRYPT;
                 return returnObject;
@@ -886,7 +1098,7 @@ var FireGPG = {
         }
 
 		// We get the result
-		var result = this.GPGAccess.cryptAndSign(text, keyIdList,fromGpgAuth, password, keyID, binFileMode);
+		var result = this.GPGAccess.cryptAndSign(text, keyIdList,fromGpgAuth, password, keyID, binFileMode, fileMode, fileFrom, fileTo);
 
 
         returnObject.sdOut = result.sdOut;
@@ -926,6 +1138,11 @@ var FireGPG = {
 				showText(result.output);
 		}
 
+
+        if (fileMode) {
+            alert(i18n.getString("operationOnFileDone"));
+        }
+
         returnObject.encrypted = result.output;
 
         returnObject.result = RESULT_SUCCESS;
@@ -944,15 +1161,80 @@ var FireGPG = {
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
             text - _Optional_, if not set try to use the selection. The text to verify
     */
-	verify: function(silent, text, charset, signData) {
+	verify: function(silent, text, charset, signData, fileMode, fileFrom, fileSig) {
 
         var returnObject = new GPGReturn();
 
         if (silent == undefined)
             silent = false;
 
+        if (fileMode == undefined)
+            fileMode = false;
+
         this.initGPGACCESS();
         var i18n = document.getElementById("firegpg-strings");
+
+
+        if (fileMode) {
+
+            if (fileFrom == undefined) {
+
+                var nsIFilePicker = Components.interfaces.nsIFilePicker;
+                var fp = Components.classes["@mozilla.org/filepicker;1"]
+                      .createInstance(nsIFilePicker);
+
+                fp.init(window, i18n.getString('sourceFile'), nsIFilePicker.modeOpen);
+                fp.appendFilters(nsIFilePicker.filterAll);
+
+                if (fp.show() != nsIFilePicker.returnOK) { //L'utilisateur annule
+                    fileFrom = null;
+                } else {
+                    fileFrom = fp.file.path;
+                }
+
+                if (fileFrom == null | fileFrom == '') {
+                    returnObject.result = RESULT_CANCEL;
+                    return returnObject;
+                }
+
+            }
+
+            if (fileSig == undefined) {
+
+                if (fileExist(fileFrom + '.sig')) {
+
+                    if (confirm(i18n.getString('sigFoundSelectAFile'))) {
+
+                        fileSig = fileFrom + '.sig';
+
+                    }
+                }
+                if (fileSig == undefined) {
+
+                        var nsIFilePicker = Components.interfaces.nsIFilePicker;
+                        var fp = Components.classes["@mozilla.org/filepicker;1"]
+                              .createInstance(nsIFilePicker);
+
+                        fp.init(window, null, nsIFilePicker.modeOpen);
+                        fp.appendFilters(nsIFilePicker.filterAll);
+
+
+                        if (fp.show() != nsIFilePicker.returnOK    ) { //L'utilisateur annule
+                            fileSig = null;
+                        } else {
+                            fileSig = fp.file.path;
+                        }
+
+                        if (fileSig == null | fileSig == '') {
+                            returnObject.result = RESULT_CANCEL;
+                            return returnObject;
+                        }
+
+
+                }
+            }
+        }
+
 
         // GPG verification
         var gpgTest = FireGPG.selfTest(silent);
@@ -963,12 +1245,12 @@ var FireGPG = {
         }
 
 
-        if (text == undefined || text == null) {
+        if ((text == undefined || text == null) && !fileMode ) {
             var autoSetMode = true;
             text = Selection.get();
         }
 
-        if (text == "") {
+        if (text == "" && !fileMode) {
             if (!silent)
                 alert(i18n.getString("noData"));
 
@@ -977,7 +1259,12 @@ var FireGPG = {
 			return returnObject;
 		}
 
-		var results = this.layers(text,0, charset);
+        if (!fileMode)
+            var results = this.layers(text,0, charset);
+        else {
+
+            results = new Array(this.layerverify(undefined,undefined,undefined, undefined,undefined, fileMode, fileFrom, fileSig));
+        }
 
         returnObject.signsresults = results;
 
@@ -1111,14 +1398,14 @@ var FireGPG = {
             layer - The current layer
             division - The current layer level
     */
-    layerverify: function(text,layer,division, charset,dontask) {
+    layerverify: function(text,layer,division, charset,dontask, fileMode, fileFrom, fileSig) {
         var returnObject = new GPGReturn();
 
         if (dontask == undefined)
             dontask = false;
 
         // We get the result
-		var result = this.GPGAccess.verify(text, charset);
+		var result = this.GPGAccess.verify(text, charset, fileMode, fileFrom, fileSig);
 
         if ( charset && charset.toLowerCase() == "iso-8859-1")
             result.sdOut = EnigConvertToUnicode(result.sdOut, 'UTF-8');
@@ -1152,7 +1439,7 @@ var FireGPG = {
 
 				if (!dontask && !disabledown && confirm(document.getElementById('firegpg-strings').getString('autoFeetch') + ' (' + idOfMissingKey + ')')) {
 					FireGPG.retriveKeyFromServer(idOfMissingKey);
-					return this.layerverify(text,layer,division,charset,true);
+					return this.layerverify(text,layer,division,charset,true, fileMode, fileFrom, fileSig);
 				}
 
 			}
@@ -1211,7 +1498,7 @@ var FireGPG = {
             text - _Optional_, if not set try to use the selection. The text to decrypt.
             password - _Optional_, if not set ask the user. The password of the key used to encrypt the data.
     */
-	decrypt: function(silent, text, password, binFileEncoded) { try {
+	decrypt: function(silent, text, password, binFileEncoded, fileMode, fileFrom, fileTo) { try {
 		var returnObject = new GPGReturn();
 
         if (silent == undefined)
@@ -1220,8 +1507,72 @@ var FireGPG = {
         if (binFileEncoded === undefined)
             binFileEncoded = false;
 
+        if (fileMode == undefined)
+            fileMode = false;
+
         this.initGPGACCESS();
         var i18n = document.getElementById("firegpg-strings");
+
+        if (fileMode) {
+
+            if (fileFrom == undefined) {
+
+                var nsIFilePicker = Components.interfaces.nsIFilePicker;
+                var fp = Components.classes["@mozilla.org/filepicker;1"]
+                      .createInstance(nsIFilePicker);
+
+                fp.init(window, i18n.getString('sourceFile'), nsIFilePicker.modeOpen);
+                fp.appendFilters(nsIFilePicker.filterAll);
+
+                if (fp.show() != nsIFilePicker.returnOK) { //L'utilisateur annule
+                    fileFrom = null;
+                } else {
+                    fileFrom = fp.file.path;
+                }
+
+                if (fileFrom == null | fileFrom == '') {
+                    returnObject.result = RESULT_CANCEL;
+                    return returnObject;
+                }
+
+            }
+
+            if (fileTo == undefined) { //Nb: il ne doit pas exister !
+
+
+                var nsIFilePicker = Components.interfaces.nsIFilePicker;
+                var fp = Components.classes["@mozilla.org/filepicker;1"]
+                      .createInstance(nsIFilePicker);
+
+                fp.init(window, i18n.getString('destinationFile'), nsIFilePicker.modeSave);
+                fp.appendFilters(nsIFilePicker.filterAll);
+
+                done = false;
+
+                while(!done) {
+
+                     if (fp.show() == nsIFilePicker.returnCancel ) { //L'utilisateur annule
+                        fileTo = null;
+                    } else {
+                        fileTo = fp.file.path;
+                    }
+
+                    if (fileTo == fileFrom) {
+                        alert( i18n.getString('formAndToSame'));
+                    } else
+                        done = true;
+
+                }
+
+                if (fileTo == null | fileTo == '') {
+                    returnObject.result = RESULT_CANCEL;
+                    return returnObject;
+                }
+
+                removeFile(fileTo);
+
+            }
+        }
 
         // GPG verification
         var gpgTest = FireGPG.selfTest(silent);
@@ -1232,12 +1583,12 @@ var FireGPG = {
         }
 
 
-        if (text == undefined || text == null) {
+        if ((text == undefined || text == null) && !fileMode) {
             var autoSetMode = true;
             text = Selection.get();
         }
 
-        if (text == "") {
+        if (text == "" && !fileMode) {
             if (!silent)
                 alert(i18n.getString("noData"));
 
@@ -1262,7 +1613,7 @@ var FireGPG = {
 		reg=new RegExp("FIREGPGTRALALAENDHIHAN", "gi"); // We don't have to detect disabled balises
 		text = text.replace(reg, "-----END PGP MESSAGE-----");
 
-		if ((firstPosition == -1 || lastPosition == -1) && !binFileEncoded) {
+		if ((firstPosition == -1 || lastPosition == -1) && !binFileEncoded && !fileMode) {
 			if (!silent)
                 alert(i18n.getString("noGPGData"));
 
@@ -1271,7 +1622,7 @@ var FireGPG = {
             return returnObject;
 		}
 
-        if (!binFileEncoded)
+        if (!binFileEncoded && !fileMode)
             text = text.substring(firstPosition,lastPosition + ("-----END PGP MESSAGE-----").length);
 
 		// Needed for a decrypt
@@ -1287,7 +1638,7 @@ var FireGPG = {
         }
 
 		// We get the result
-		var result = this.GPGAccess.decrypt(text,password,binFileEncoded);
+		var result = this.GPGAccess.decrypt(text,password,binFileEncoded, fileMode, fileFrom, fileTo);
 
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;
@@ -1305,7 +1656,7 @@ var FireGPG = {
             }
 
             // We get the result
-            var result = this.GPGAccess.decrypt(text,password);
+            var result = this.GPGAccess.decrypt(text,password,binFileEncoded, fileMode, fileFrom, fileTo);
 
             returnObject.sdOut = result.sdOut;
             returnObject.output = result.output;
@@ -1333,8 +1684,7 @@ var FireGPG = {
             eraseSavedPassword();
             return returnObject;
 		}
-
-        if (result.sdOut.indexOf("PLAINTEXT") != -1) {
+        if (result.sdOut.indexOf("PLAINTEXT") != -1 && result.sdOut.indexOf("DECRYPTION_OKAY") == -1) { //Filemode produit un output en.. plaintext..
 
             if (!silent)
                 alert(i18n.getString("notEncryptedButPlainText"));
@@ -1390,6 +1740,10 @@ var FireGPG = {
                 //Else, we show a windows with the result
                 showText(result.output,undefined,undefined,undefined,returnObject.signresulttext);
             }
+        }
+
+        if (fileMode) {
+            alert(i18n.getString("operationOnFileDone"));
         }
 
         returnObject.decrypted = result.output;
@@ -2192,6 +2546,44 @@ var FireGPG = {
             return returnObject;
         }
 
+
+    },
+
+    computeHash: function(silent,hash,file) {
+
+        if (silent == undefined)
+            silent = false;
+
+        this.initGPGACCESS();
+
+        var returnObject = new GPGReturn();
+
+        //This values must be given ...
+        if(hash == null || hash == undefined) {
+			returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+        if(file == null || file == undefined) {
+			returnObject.result = RESULT_CANCEL;
+            return returnObject;
+        }
+
+        var result = this.GPGAccess.computeHash(hash,file);
+
+        tmpHash = result.sdOut;
+        tmpHash = tmpHash.substring(tmpHash.lastIndexOf(':') + 1, tmpHash.length);
+        tmpHash = tmpHash.replace(/ /gi, '');
+        tmpHash = tmpHash.toLowerCase();
+
+        if (!silent)
+            alert(tmpHash);
+
+        returnObject.result = RESULT_SUCCESS;
+        returnObject.sdOut = result.sdOut;
+        returnObject.output = tmpHash;
+
+        return returnObject;
 
     }
 

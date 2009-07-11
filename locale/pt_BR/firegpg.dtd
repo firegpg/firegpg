@@ -52,3 +52,7 @@
 <!ENTITY keynotrevokedpassword "Erro, chave não revogada. Senha incorreta?">
 <!ENTITY firegpgContext.labelWrapSign "Assinar envolto">
 <!ENTITY firegpgMenu.labelWrapSign "Assinar envolto">
+<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelHashs "Hashes">

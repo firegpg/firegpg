@@ -65,6 +65,13 @@ const ACTION_MANAGER = 'MANAGER';
 const ACTION_OPTS = 'OPTS';
 const ACTION_ERASE = 'ERASE';
 const ACTION_UPDATE = 'UPDATE';
+const ACTION_FSIGN = 'FSIGN';
+const ACTION_FVERIF = 'FVERIF';
+const ACTION_FCRYPT = 'FCRYPT';
+const ACTION_FDECRYPT = 'FDECRYPT';
+const ACTION_FSYMCRYPT = 'FSYMCRYPT';
+const ACTION_FCRYPTSIGN = 'FCRYPTSIGN';
+const ACTION_FHASHES = 'FHASHES';
 
  /*
   * Class: firegpg
@@ -135,6 +142,22 @@ var firegpg = {
 			eraseSavedPassword();
         else if(action == ACTION_UPDATE)
 			showUpdateDialog();
+        else if(action == ACTION_FSIGN)
+			FireGPG.sign(false, '', undefined, undefined, undefined, undefined, undefined, true);
+        else if(action == ACTION_FVERIF)
+			FireGPG.verify(false, '', undefined, undefined, true);
+        else if(action == ACTION_FCRYPT)
+			FireGPG.crypt(false,'',undefined,undefined,undefined,undefined,undefined,undefined,true);
+        else if(action == ACTION_FDECRYPT)
+			FireGPG.decrypt(false,'', undefined,undefined,true);
+        else if(action == ACTION_FHASHES)
+			window.openDialog("chrome://firegpg/content/Dialogs/hash.xul", "hashFireGPG", "chrome, centerscreen, toolbar").focus();
+        else if(action == ACTION_FSYMCRYPT)
+			FireGPG.crypt(false,'',undefined,undefined,undefined,undefined,true,undefined,true);
+        else if(action == ACTION_FCRYPTSIGN)
+			FireGPG.cryptAndSign(false, '', undefined, undefined, undefined, undefined, undefined, undefined, undefined, true);
+
+
 	},
 
     /*

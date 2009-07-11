@@ -54,7 +54,8 @@
 const ACTION_DECRYPT = 'DECRYPT';
 const ACTION_OPTS = 'OPTS';
 const ACTION_ERASE = 'ERASE';
-
+const ACTION_VERIFY = 'VERIFY';
+const ACTION_HASH = 'HASH';
  /*
   * Class: firegpgdownloader
   * This is the class to comunicate with the menus added in firefox downloader
@@ -91,15 +92,17 @@ var firegpgdownloader = {
     */
 	onDelayMenuAction: function(action) {
 		if(action == ACTION_DECRYPT)
-			FireGPG.decrypt();
+			FireGPG.decrypt(false,'', undefined,undefined,true,document.getElementById('downloadView').getSelectedItem(0).getAttribute('path'));
+        else if(action == ACTION_VERIFY)
+			FireGPG.verify(false, '', undefined, undefined, true,document.getElementById('downloadView').getSelectedItem(0).getAttribute('path'));
 		else if(action == ACTION_OPTS)
 			window.openDialog("chrome://firegpg/content/Dialogs/options.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
+        else if(action == ACTION_HASH) {
+			window.openDialog("chrome://firegpg/content/Dialogs/hash.xul", "hashFireGPG", "chrome, centerscreen, toolbar", {file: document.getElementById('downloadView').getSelectedItem(0).getAttribute('path')}).focus();
+        }
 		else if (action == ACTION_ERASE)
 			eraseSavedPassword();
-        else { //L'action contiens le hash
 
-
-        }
 	},
 
     /*
@@ -130,4 +133,3 @@ var firegpgdownloader = {
 
 
 window.addEventListener("load", function(e) { firegpgdownloader.onLoad(e); }, false);
-// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

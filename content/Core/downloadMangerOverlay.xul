@@ -43,16 +43,14 @@
   <script src="cgpgaccess.js"/>
   <script src="cgpg.js"/>
 
-  <stringbundleset id="stringbundleset">
+  <stringbundleset id="downloadSet">
     <stringbundle id="firegpg-strings" src="chrome://firegpg/locale/firegpg.properties"/>
   </stringbundleset>
 
     <window id="downloadManager">
         <menupopup id="firegpg-menu-popup" onmouseout="setTimeout('if (document.getElementById(\'firegpg-menu-popup\').tag == \'a\') {document.getElementById(\'firegpg-menu-popup\').hidePopup(); }' , 500);  this.tag = 'a';" onmouseover="this.tag = '';" >
-            <menuitem class="firegpg-menu-hash menuitem-iconic" label="MD5" oncommand="firegpgdownloader.onMenuItemCommand(event,'MD5')"/>
-            <menuitem class="firegpg-menu-hash menuitem-iconic" label="SHA1" oncommand="firegpgdownloader.onMenuItemCommand(event,'SHA1')"/>
-            <menuitem class="firegpg-menu-hash menuitem-iconic" label="SHA256" oncommand="firegpgdownloader.onMenuItemCommand(event,'SHA256')"/>
-            <menuitem class="firegpg-menu-hash menuitem-iconic" label="SHA512" oncommand="firegpgdownloader.onMenuItemCommand(event,'SHA512')"/>
+            <menuitem class="firegpg-menu-hash menuitem-iconic" label="&firegpgMenu.labelHashs;" oncommand="firegpgdownloader.onMenuItemCommand(event,'HASH')"/>
+            <menuitem class="firegpg-menu-verify menuitem-iconic" label="&firegpgMenu.labelVerif;" oncommand="firegpgdownloader.onMenuItemCommand(event,'VERIFY')"/>
             <menuitem class="firegpg-menu-decrypt menuitem-iconic" label="&firegpgMenu.labelDecry;" oncommand="firegpgdownloader.onMenuItemCommand(event,'DECRYPT')"/>
             <menuseparator/>
             <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgMenu.labelOptions;" oncommand="firegpgdownloader.onMenuItemCommand(event,'OPTS')"/>

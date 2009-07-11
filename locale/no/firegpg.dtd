@@ -52,3 +52,7 @@
 <!ENTITY keynotrevokedpassword "Feil, nøkkelen ble ikke tilbakekalt.Feil passord?">
 <!ENTITY firegpgContext.labelWrapSign "Ombrukket tegn">
 <!ENTITY firegpgMenu.labelWrapSign "Ombrukket tegn">
+<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelHashs "Hashes">

@@ -515,28 +515,56 @@ var GPGAccess = {
 
 
     */
-    sign: function (text, password, keyID, notClear) {
+    sign: function (text, password, keyID, notClear, fileMode, fileFrom, fileTo) {
 
-        if (isGpgAgentActivated()) {
+        if (!fileMode) {
 
-            result = this.runGnupg(this.getBaseArugments() +
-					" --default-key " + keyID +
-                    " --output -" +
-					this.getGPGCommentArgument() +
-                    this.getDiegestAlgo() +
-					" --"  + (!notClear ? "clear" : "") +"sign "
-				,  text );
+            if (isGpgAgentActivated()) {
+
+                result = this.runGnupg(this.getBaseArugments() +
+                        " --default-key " + keyID +
+                        " --output -" +
+                        this.getGPGCommentArgument() +
+                        this.getDiegestAlgo() +
+                        " --"  + (!notClear ? "clear" : "") +"sign "
+                    ,  text );
+
+            } else {
+
+                result = this.runGnupg(this.getBaseArugments() +
+                        " --default-key " + keyID +
+                        " --output -" +
+                        " --passphrase-fd 0 " +
+                        this.getGPGCommentArgument() +
+                        this.getDiegestAlgo() +
+                        " --"  + (!notClear ? "clear" : "") +"sign "
+                    , password + "\n" + text );
+
+            }
 
         } else {
+                if (isGpgAgentActivated()) {
 
-			result = this.runGnupg(this.getBaseArugments() +
-					" --default-key " + keyID +
-                    " --output -" +
-					" --passphrase-fd 0 " +
-					this.getGPGCommentArgument() +
-                    this.getDiegestAlgo() +
-					" --"  + (!notClear ? "clear" : "") +"sign "
-				, password + "\n" + text );
+                result = this.runGnupg(this.getBaseArugments() +
+                        " --default-key " + keyID +
+                        " --output " + fileTo +
+                        this.getGPGCommentArgument() +
+                        this.getDiegestAlgo() +
+                        " --detach-sign " + fileFrom
+                    ,  '' );
+
+            } else {
+
+                result = this.runGnupg(this.getBaseArugments() +
+                        " --default-key " + keyID +
+                        " --output " + fileTo +
+                        " --passphrase-fd 0 " +
+                        this.getGPGCommentArgument() +
+                        this.getDiegestAlgo() +
+                        " --detach-sign " + fileFrom
+                    , password + "\n"  );
+
+            }
 
         }
 
@@ -559,9 +587,9 @@ var GPGAccess = {
 
 
     */
-    verify: function(text, charset) {
+    verify: function(text, charset, fileMode, fileFrom, fileSig) {
 
-		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() + " --verify", text, charset);
+		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() + " --verify" + (fileMode ? ' ' + fileSig + ' ' + fileFrom : ''), text, charset);
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.err;
@@ -631,13 +659,22 @@ var GPGAccess = {
 
 
     */
-    crypt: function(text, keyIdList, fromGpgAuth, binFileMode) {
+    crypt: function(text, keyIdList, fromGpgAuth, binFileMode, fileMode, fileFrom, fileTo) {
 
 		if (fromGpgAuth == null)
 			fromGpgAuth = false;
 
         if (binFileMode == null)
 			binFileMode = false;
+
+        if (fileMode) {
+            outputFd = fileTo;
+            inputFd = fileFrom;
+
+        } else {
+            outputFd = '-';
+            inputFd = '';
+        }
 
 		/* key id list in the arguments */
 		var keyIdListArgument = '';
@@ -647,8 +684,8 @@ var GPGAccess = {
 		result = this.runGnupg(this.getBaseArugments(fromGpgAuth) +  this.getGPGTrustArgument(fromGpgAuth) +
 				" " + keyIdListArgument +
 				this.getGPGCommentArgument() +
-				" --output -" +
-				" --encrypt", text, (binFileMode ? 'iso-8859-1' : undefined));
+				" --output " + outputFd +
+				" --encrypt " + inputFd,  (!fileMode ? text : ''), (binFileMode ? 'iso-8859-1' : undefined));
 
 		if ( result.err.indexOf( "subkey" ) > 0 )
 			subkey_id = result.err.substring( result.err.indexOf( "subkey" ) + 7, result.err.indexOf( "instead" ) - 1 );
@@ -685,15 +722,26 @@ var GPGAccess = {
 
 
     */
-    symetric: function(text, password, algo) {
+    symetric: function(text, password, algo, fileMode, fileFrom, fileTo) {
 
-            result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() +
-                    this.getGPGCommentArgument() +
-                    " --passphrase-fd 0" +
-                    " --output -" +
-                    (algo != "" ? " --cipher-algo " + trim(algo) : "") +
-                    " --symmetric ",
-                    password + "\n" + text);
+        if (fileMode) {
+            outputFd = fileTo;
+            inputFd = fileFrom;
+
+        } else {
+            outputFd = '-';
+            inputFd = '';
+        }
+
+
+        result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() +
+        this.getGPGCommentArgument() +
+        " --passphrase-fd 0" +
+        " --output " + outputFd +
+        (algo != "" ? " --cipher-algo " + trim(algo) : "") +
+        " --symmetric " + inputFd,
+        password + "\n" + (!fileMode ? text : ''));
+
 
 		var result2 = new GPGReturn();
 		result2.output = result.out;
@@ -720,7 +768,7 @@ var GPGAccess = {
 
 
     */
-    cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode) {
+    cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode, fileMode, fileFrom, fileTo) {
 
 
 		if (fromGpgAuth == null)
@@ -735,6 +783,15 @@ var GPGAccess = {
 			keyIdListArgument += ((i > 0) ? ' ' : '') + '-r ' + keyIdList[i];
 
 
+        if (fileMode) {
+            outputFd = fileTo;
+            inputFd = fileFrom;
+
+        } else {
+            outputFd = '-';
+            inputFd = '';
+        }
+
         if (isGpgAgentActivated()) {
 
             result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument(fromGpgAuth) +
@@ -743,9 +800,9 @@ var GPGAccess = {
                     " --default-key " + keyID +
                     " --sign" +
                     this.getDiegestAlgo() +
-                    " --output -" +
-                    " --encrypt ",
-                     text, (binFileMode ? 'iso-8859-1' : undefined));
+                    " --output " + outputFd +
+                    " --encrypt " + inputFd,
+                     (!fileMode ? text : ''), (binFileMode ? 'iso-8859-1' : undefined));
 
         } else {
 
@@ -756,9 +813,9 @@ var GPGAccess = {
                     " --passphrase-fd 0" +
                     " --sign" +
                     this.getDiegestAlgo() +
-                    " --output -" +
-                    " --encrypt ",
-                    password + "\n" + text, (binFileMode ? 'iso-8859-1' : undefined));
+                    " --output " + outputFd +
+                    " --encrypt " + inputFd,
+                    password + "\n" + (!fileMode ? text : ''), (binFileMode ? 'iso-8859-1' : undefined));
 
         }
 
@@ -782,26 +839,37 @@ var GPGAccess = {
             A <GPGReturn> structure.
 
     */
-    decrypt: function(text,password,binFileMode) {
+    decrypt: function(text,password,binFileMode, fileMode, fileFrom, fileTo) {
+
+        if (fileMode) {
+            outputFd = fileTo;
+            inputFd = fileFrom;
+
+        } else {
+            outputFd = '-';
+            inputFd = '';
+        }
+
 
         if (isGpgAgentActivated()) {
 
-			result = this.runGnupg(this.getBaseArugments() +
-					" --output -" +
-					" --decrypt"
-				,  text,(binFileMode ? 'iso-8859-1' : undefined));
+            result = this.runGnupg(this.getBaseArugments() +
+                    " --output " + outputFd +
+                    " --decrypt " + inputFd
+                ,  (!fileMode ? text : ''),(binFileMode ? 'iso-8859-1' : undefined));
 
         } else {
 
             result = this.runGnupg(this.getBaseArugments() +
-					" --passphrase-fd 0 " +
-					" --output -" +
-					" --decrypt"
-				, password + "\n" + text,(binFileMode ? 'iso-8859-1' : undefined));
+                    " --passphrase-fd 0 " +
+                    " --output " + outputFd +
+                    " --decrypt " + inputFd
+                , password + "\n" + (!fileMode ? text : ''),(binFileMode ? 'iso-8859-1' : undefined));
 
         }
 
-		// The decrypted text
+
+		// The decrypted text (maybe)
 		var result2 = new GPGReturn();
 		result2.output = result.out;
 		result2.sdOut = result.err;
@@ -1101,6 +1169,20 @@ var GPGAccess = {
 
     },
 
+    computeHash: function(hash,file) {
+
+         result = this.runGnupg(this.getBaseArugments()  + " --print-md " + hash + " " + file, '');
+
+        var result2 = new GPGReturn();
+		result2.sdOut = result.out;
+
+
+		// We return result
+		return result2;
+
+
+    },
+
     /*
         Function: runATest
         Test if we are currently able to run the a command.
@@ -1122,6 +1204,8 @@ var GPGAccess = {
 
 		return true;
     },
+
+
 
     /*
         Function: tryToFoundTheRightCommand

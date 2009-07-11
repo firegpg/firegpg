@@ -52,3 +52,7 @@
 <!ENTITY keynotrevokedpassword "خطا، کلید ابطال نشد، پسورد اشتباهی؟">
 <!ENTITY firegpgContext.labelWrapSign "امضای پنهان‌سازی شده">
 <!ENTITY firegpgMenu.labelWrapSign "امضای پنهان‌سازی شده">
+<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelHashs "Hashes">

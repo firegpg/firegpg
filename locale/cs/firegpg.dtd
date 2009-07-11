@@ -52,3 +52,7 @@
 <!ENTITY keynotrevokedpassword "Chyba, klíč neodvolán. Špatné heslo?">
 <!ENTITY firegpgContext.labelWrapSign "Zarovnat a podepsat">
 <!ENTITY firegpgMenu.labelWrapSign "Zarovnat a podepsat">
+<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelHashs "Hashes">

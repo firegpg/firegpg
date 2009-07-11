@@ -52,3 +52,7 @@
 <!ENTITY keynotrevokedpassword "エラー, ユーザーIDは破棄されませんでした。パスワードを間違えましたか?">
 <!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
 <!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">
+<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgMenu.labelHashs "Hashes">
