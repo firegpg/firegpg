@@ -75,7 +75,7 @@ var cGmailListener = {
 
 		// If a document's loading is finished
 		if(aFlag & FGPG_STATE_STOP) {
-        
+
 			//If we need ton find the IK information
 			if (cGmail.ik == null)
 			{
@@ -1047,5 +1047,3 @@ var cGmail = {
 
 
 };
-
-// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

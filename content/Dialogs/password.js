@@ -90,5 +90,3 @@ function onAccept()
 
 	return true;
 }
-
-// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8

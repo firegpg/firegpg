@@ -173,5 +173,3 @@ var APIListener = {
 	    gBrowser.removeProgressListener(APIProgressListener);
     }
 };
-
-// vim:ai:et:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:

@@ -2597,6 +2597,3 @@ FireGPG.GPGAccess.parent = FireGPG;
 //Test if we have to show the 'what is new ?'
 //We wait 3 sec.
 setTimeout("testIfSomethingsIsNew()",3000);
-
-
-// vim:ai:noet:sw=4:ts=4:sts=4:tw=0:fenc=utf-8:foldmethod=indent:
