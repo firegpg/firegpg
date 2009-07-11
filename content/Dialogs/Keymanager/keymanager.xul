@@ -45,7 +45,7 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 <!DOCTYPE prefwindow SYSTEM "chrome://firegpg/locale/keymanager.dtd">
 <dialog id="key-dialog" title="&keymanager;" orient="vertical" autostretch="always"
         onload="onLoad(this); sizeToContent(); this.innerHeight = this.innerHeight + 500;"
-        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" buttons="accept">
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" buttons="accept" disabled="disabled">
 
 
    <vbox  flex="1" >

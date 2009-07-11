@@ -85,7 +85,13 @@ function rebuildList() {
 	if (trim(search) == "")
 		return;
 
+    document.getElementById('search-button').disabled = 'disabled';
+    document.getElementById('import-button').disabled = 'disabled';
+
 	keylistcall = FireGPG.searchKeyInServer(search);
+
+    document.getElementById('search-button').disabled = '';
+    document.getElementById('import-button').disabled = '';
 
     if (keylistcall.result == RESULT_SUCCESS)
         gpg_keys = keylistcall.keylist;

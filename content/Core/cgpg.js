@@ -1824,12 +1824,34 @@ var FireGPG = {
         //Boite pour attendre la boite d'attente
         var wait_box2 = window.open("chrome://firegpg/content/Dialogs/Keymanager/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
 
-        // We get the result
-        try {
-		var result = this.GPGAccess.searchKeyInServer(search,getKeyServer());
-        } catch (e) { } //To be sure to close the wait_box
+
+        backgroundTask = {
+            run: function() {
+                    this.result == null;
+                     // We get the result
+                    try {
+                    this.result = this.GPGAccess.searchKeyInServer(this.search,getKeyServer());
+                    } catch (e) { } //To be sure to close the wait_box
+            }
+          }
+
+        backgroundTask.GPGAccess = this.GPGAccess;
+        backgroundTask.search = search;
+
+        var thread = Components.classes["@mozilla.org/thread-manager;1"]
+                               .getService(Components.interfaces.nsIThreadManager)
+                               .newThread(0);
+        thread.dispatch(backgroundTask, thread.DISPATCH_NORMAL);
+
+        var thread = Components.classes["@mozilla.org/thread-manager;1"]
+                               .getService(Components.interfaces.nsIThreadManager)
+                               .currentThread;
+        while (backgroundTask.result == null)
+          thread.processNextEvent(true);
 
         wait_box.close();
+
+        result = backgroundTask.result;
 
 		// We get informations from GPG
 		result = EnigConvertGpgToUnicode(result.sdOut);
@@ -1957,12 +1979,33 @@ var FireGPG = {
         //Boite pour attendre la boite d'attente
         var wait_box2 = window.open("chrome://firegpg/content/Dialogs/Keymanager/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
 
-        // We get the result
-        try {
-		var result = this.GPGAccess.retriveKeyFromServer(keyId,getKeyServer());
-        } catch (e) { } //To be sure to close the wait_box
+        backgroundTask = {
+            run: function() {
+                    this.result == null;
+                     // We get the result
+                    try {
+                    this.result = this.GPGAccess.retriveKeyFromServer(this.keyId,getKeyServer());
+                    } catch (e) { } //To be sure to close the wait_box
+            }
+          }
+
+        backgroundTask.GPGAccess = this.GPGAccess;
+        backgroundTask.keyId = keyId;
+
+        var thread = Components.classes["@mozilla.org/thread-manager;1"]
+                               .getService(Components.interfaces.nsIThreadManager)
+                               .newThread(0);
+        thread.dispatch(backgroundTask, thread.DISPATCH_NORMAL);
+
+        var thread = Components.classes["@mozilla.org/thread-manager;1"]
+                               .getService(Components.interfaces.nsIThreadManager)
+                               .currentThread;
+        while (backgroundTask.result == null)
+          thread.processNextEvent(true);
 
         wait_box.close();
+
+        result = backgroundTask.result;
 
 
         if (result.sdOut.indexOf('IMPORT_OK') > 0) {
@@ -2003,13 +2046,34 @@ var FireGPG = {
         //Boite pour attendre la boite d'attente
         var wait_box2 = window.open("chrome://firegpg/content/Dialogs/Keymanager/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
 
-        // We get the result
-        try {
-		var result = this.GPGAccess.sendKeyToServer(keyId,getKeyServer());
-        } catch (e) { } //To be sure to close the wait_box
+
+        backgroundTask = {
+            run: function() {
+                    this.result == null;
+                     // We get the result
+                    try {
+                    this.result = this.GPGAccess.sendKeyToServer(this.keyId,getKeyServer());
+                    } catch (e) { } //To be sure to close the wait_box
+            }
+          }
+
+        backgroundTask.GPGAccess = this.GPGAccess;
+        backgroundTask.keyId = keyId;
+
+        var thread = Components.classes["@mozilla.org/thread-manager;1"]
+                               .getService(Components.interfaces.nsIThreadManager)
+                               .newThread(0);
+        thread.dispatch(backgroundTask, thread.DISPATCH_NORMAL);
+
+        var thread = Components.classes["@mozilla.org/thread-manager;1"]
+                               .getService(Components.interfaces.nsIThreadManager)
+                               .currentThread;
+        while (backgroundTask.result == null)
+          thread.processNextEvent(true);
 
         wait_box.close();
 
+        result = backgroundTask.result;
 
         if (result.sdOut) {
 
@@ -2048,15 +2112,32 @@ var FireGPG = {
         //Boite pour attendre la boite d'attente
         var wait_box2 = window.open("chrome://firegpg/content/Dialogs/Keymanager/wait2.xul", "waitBox2", "chrome,centerscreen,resizable=0,minimizable=0,modal");
 
+         backgroundTask = {
+            run: function() {
+                    this.result == null;
+                     // We get the result
+                    try {
+                    this.result = this.GPGAccess.refrechFromServer(getKeyServer());
+                    } catch (e) { } //To be sure to close the wait_box
+            }
+          }
 
+        backgroundTask.GPGAccess = this.GPGAccess;
 
-        // We get the result
-        try {
-		var result = this.GPGAccess.refrechFromServer(getKeyServer());
-        } catch (e) { } //To be sure to close the wait_box
+        var thread = Components.classes["@mozilla.org/thread-manager;1"]
+                               .getService(Components.interfaces.nsIThreadManager)
+                               .newThread(0);
+        thread.dispatch(backgroundTask, thread.DISPATCH_NORMAL);
+
+        var thread = Components.classes["@mozilla.org/thread-manager;1"]
+                               .getService(Components.interfaces.nsIThreadManager)
+                               .currentThread;
+        while (backgroundTask.result == null)
+          thread.processNextEvent(true);
 
         wait_box.close();
 
+        result = backgroundTask.result;
 
         if (result.sdOut) {
 

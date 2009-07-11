@@ -2,6 +2,7 @@
     * FS#308
     * FS#3
     * Doing some cleaning up in the code, including license..
+    * Don't block interface when using keyservers
 
 2009-07-09 Maximilien Cuony
     * Improving gmail detection
