@@ -40,19 +40,21 @@
 <dialog title="&about;" orient="vertical" autostretch="always"
         onload="sizeToContent()" buttons="accept"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <groupbox align="center" orient="horizontal">
-    <text value="FireGPG" style="font-weight: bold; font-size: x-large;"/>
-    <!--<text value="&version; 0.1"/>-->
-    <separator class="thin"/><br /><br />
+    <vbox>
 
-    <text value="&createdBy;" style="font-weight: bold;"/>
-    <text value="Maximilien Cuony"/>
-    <separator class="thin"/><br /><br />
+        <text value="FireGPG" style="font-weight: bold; font-size: x-large;"/>
 
-    <text value="&homepage;" style="font-weight: bold;"/>
-    <text value="http://getfiregpg.org/"
-          class="url"
-          onclick="window.open('http://getfiregpg.org'); window.close();"/>
-    <separator class="thin"/>
-  </groupbox>
+        <hbox>
+            <text value="&createdBy;" style="font-weight: bold;"/>
+            <text value="Maximilien Cuony"/>
+        </hbox>
+
+        <hbox>
+            <text value="&homepage;" style="font-weight: bold;"/>
+            <text value="http://getfiregpg.org/"
+                  class="url"
+                  onclick="window.open('http://getfiregpg.org'); window.close();"/>
+        </hbox>
+
+    </vbox>
 </dialog>

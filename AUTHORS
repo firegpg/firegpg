@@ -1,7 +1,8 @@
-Main developer:
-    Maximilien Cuony  <contact@getfiregpg.org>
+Current FireGPG team:
+    Main developer:
+        Maximilien Cuony  <contact@getfiregpg.org>
 
-Old developers:
+Retired developers of FireGPG team:
     Achraf cherti (Not active since 2007)
 
 GPG Auth module:
@@ -9,7 +10,10 @@ GPG Auth module:
 
 Translations :
     All translators of http://translate.getfiregpg.org
-    
+
 Use code form Gmail S/MIME
-        Copyright (C) 2005-2007 Richard Jones.
-        Copyright (C) 2007-2008 Sean Leonard of SeanTek(R).
+    Copyright (C) 2005-2007 Richard Jones.
+    Copyright (C) 2007-2008 Sean Leonard of SeanTek(R).
+
+Use the IPC libraray:
+    Copryright (C) 2000 Ramalingam Saravanan

@@ -1,38 +1,43 @@
-/* ***** BEGIN LICENSE BLOCK *****
-*   Version: MPL 1.1/GPL 2.0/LGPL 2.1
-*
-* The contents of this file are subject to the Mozilla Public License Version
-* 1.1 (the "License"); you may not use this file except in compliance with
-* the License. You may obtain a copy of the License at
-* http://www.mozilla.org/MPL/
-*
-* Software distributed under the License is distributed on an "AS IS" basis,
-* WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
-* for the specific language governing rights and limitations under the
-* License.
-*
-* The Original Code is gpg_auth.
-*
-* The Initial Developer of the Original Code is Kyle L. Huff.
-*
-* Portions created by the Initial Developer are Copyright (C) 2007
-* the Initial Developer. All Rights Reserved.
-*
-* Contributor(s):
-*
-* Alternatively, the contents of this file may be used under the terms of
-* either the GNU General Public License Version 2 or later (the "GPL"), or
-* the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
-* in which case the provisions of the GPL or the LGPL are applicable instead
-* of those above. If you wish to allow use of your version of this file only
-* under the terms of either the GPL or the LGPL, and not to allow others to
-* use your version of this file under the terms of the MPL, indicate your
-* decision by deleting the provisions above and replace them with the notice
-* and other provisions required by the GPL or the LGPL. If you do not delete
-* the provisions above, a recipient may use your version of this file under
-* the terms of any one of the MPL, the GPL or the LGPL.
-*
-* ***** END LICENSE BLOCK ***** */
+/*
+
+***** BEGIN LICENSE BLOCK *****
+
+Version: MPL 1.1/GPL 2.0/LGPL 2.1
+
+The contents of this source code are subject to the Mozilla Public License
+Version 1.1 (the "License"); you may not use this source code except in
+compliance with the License. You may obtain a copy of the License at
+http://www.mozilla.org/MPL/
+
+Software distributed under the License is distributed on an "AS IS" basis,
+WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+for the specific language governing rights and limitations under the
+License.
+
+The Original Code is the gpg_auth.
+
+The Initial Developer of the Original Code is Kyle L. Huff.
+
+Portions created by the Initial Developer are Copyright (C) 2007
+the Initial Developer. All Rights Reserved.
+
+Contributor(s):
+
+Alternatively, the contents of this source code may be used under the terms of
+either the GNU General Public License Version 2 or later (the "GPL"), or
+the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+in which case the provisions of the GPL or the LGPL are applicable instead
+of those above. If you wish to allow use of your version of this source code
+only under the terms of either the GPL or the LGPL, and not to allow others to
+use your version of this source code under the terms of the MPL, indicate your
+decision by deleting the provisions above and replace them with the notice
+and other provisions required by the GPL or the LGPL. If you do not delete
+the provisions above, a recipient may use your version of this source code
+under the terms of any one of the MPL, the GPL or the LGPL.
+
+***** END LICENSE BLOCK *****
+
+*/
 
 /*
    Class: gpgAuth
@@ -85,7 +90,7 @@ var gpgAuth = {
 		this.status_window.onLoad();
 		if ( gpgauth_enabled ) {
 			if ( ! this.initialized ) {
-				this.status_window.update( "gpgAuth " + this._version + " Initialized..", show=false );	
+				this.status_window.update( "gpgAuth " + this._version + " Initialized..", show=false );
 			}
 		}
 
@@ -133,7 +138,7 @@ var gpgAuth = {
 		var STK_ELM = content.document.getElementById( "gpg_auth:server_token" );
 		// Server Token Response Element - A place-holder for the server to put the decrypted version of the STK_ELM contents
 		var STK_RES_ELM = content.document.getElementById( "gpg_auth:server_response_token" );
-		// User Token Element - A place-holder for the server to put an encrypted token, 
+		// User Token Element - A place-holder for the server to put an encrypted token,
 		// encrypted to the users public key. (Also where the user puts the decrypted version)
 		var UTK_ELM = content.document.getElementById( "gpg_auth:user_token" );
 
@@ -265,7 +270,7 @@ var gpgAuth = {
 					STK_ELM.innerHTML = error;
 					return true;
 				}
-			} else { 
+			} else {
 				// A server key was found, but the error returned did not match any known error,
 				//  alert the user and die
 				gpgAuth.status_window.update( "... unable to encrypt a token for this host." );
@@ -298,7 +303,7 @@ var gpgAuth = {
 
 	doServerTokenTests: function( STK_ELM, STK_RES_ELM, UTK_ELM, event ) {
 		// If 'USE_UNTRUSTED' is true, then we will not be doing any server verification
-		gpgAuth.status_window.update( "... beginning phase2 of server validation" );	
+		gpgAuth.status_window.update( "... beginning phase2 of server validation" );
 		STK_RES_VALUE = STK_RES_ELM.value == undefined ? STK_RES_ELM.innerHTML : STK_RES_ELM.value;
 		if ( ! gpgAuth.gpg_elements[ gpgAuth.domain ][ 'USE_UNTRUSTED' ] ) {
 			if ( STK_RES_ELM && STK_RES_VALUE.length > 2 ) {

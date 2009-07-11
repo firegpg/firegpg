@@ -10,15 +10,14 @@ WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
 for the specific language governing rights and limitations under the
 License.
 
-The Original Code is FireGPG.
+The Original Code is the FireGPG extension.
 
-The Initial Developer of the Original Code is
-FireGPG Team.
+The Initial Developer of the Original Code is Maximilien Cuony.
 
 Portions created by the Initial Developer are Copyright (C) 2007
 the Initial Developer. All Rights Reserved.
 
-Contributor(s): See AUTHORS
+Contributor(s): See AUTHORS and license blocks at the begining of each file for details.
 
 Alternatively, the contents of this source code may be used under the terms of
 either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -31,3 +30,7 @@ decision by deleting the provisions above and replace them with the notice
 and other provisions required by the GPL or the LGPL. If you do not delete
 the provisions above, a recipient may use your version of this source code
 under the terms of any one of the MPL, the GPL or the LGPL.
+
+Portions created by Gmail S/MIME are Copyright (C) 2005-2007 Richard Jones, 2007-2008 Sean Leonard of SeanTek(R). All Rights Reserved.
+Portions created by gpg_auth are Copyright (C) 2007 Kyle L. Huff. All Rights Reserved.
+Portions created by protoZilla are Copyright (C) 2000 Ramalingam Saravanan. All Rights Reserved.
