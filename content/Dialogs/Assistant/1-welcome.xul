@@ -43,8 +43,8 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://firegpg/skin/assistant.css" type="text/css"?>
 <!DOCTYPE dialog SYSTEM "chrome://firegpg/locale/1-welcome.dtd">
-<dialog title="FireGPG Assistant - Welcome" orient="vertical"
-        onload="onLoad()" buttons="extra1,extra2" buttonlabelextra1="Skip" buttonlabelextra2="Next" buttondir ="rtl"
+<dialog title="&title;" orient="vertical"
+        onload="onLoad()" buttons="extra1,extra2" buttonlabelextra1="&skip;" buttonlabelextra2="&next;" buttondir ="rtl"
         ondialogextra1="this.close();" ondialogextra2="next();"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns:html="http://www.w3.org/1999/xhtml"
@@ -56,26 +56,24 @@ under the terms of any one of the MPL, the GPL or the LGPL.
   </stringbundleset>
   <script src="1-welcome.js"/>
 
-    <label class="title" value="FireGPG Assistant" />
+    <label class="title" value="&title2;" />
 
     <description>
-        Welcome ! <html:br/><html:br/>
-        This assistant will help you to configure FireGPG, if you're a new user it's recommanded to follow it to get a working configuration.<html:br/><html:br/><html:br/>
-        What ever you choose to do, you will be able to use the option windows to change any option later.
+        &description;
       </description>
 
     <label value=" " /><label value=" " />
-    <label value="Here is some information about icons and color used: "/>
+    <label value="&infoabout;"/>
     <label value=" " />
-    <label class="whatnext" value="This sugest a solution or something you should do" />
+    <label class="whatnext" value="&whatnext;" />
     <label value=" " />
-    <label class="good" value="This is something good" />
+    <label class="good" value="&good;" />
     <label value=" " />
-    <label class="bad" value="This is a problem" />
+    <label class="bad" value="&problem;" />
     <label value=" " />
-    <label class="advanced" value="This is for advanced users. You don't understand it ? It's not a problem, don't change it." />
+    <label class="advanced" value="&advanced;" />
     <label value=" " />
-    <label class="help" value="This is something with help, keep your mouse over to see it" tooltiptext="Hello, I'm the help"/>
+    <label class="help" value="&help;" tooltiptext="&helppop;"/>
 
 
 

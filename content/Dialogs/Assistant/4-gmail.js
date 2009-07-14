@@ -39,7 +39,6 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 */
 
-
 /*
     Function: onLoad
 
@@ -63,8 +62,6 @@ function onLoad(win) {
 
 */
 function next() {
-
-
 
     this.close();
 

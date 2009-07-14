@@ -51,7 +51,7 @@
 <!ENTITY hide-fireftp-message "Não mostrar mensagens sobre biblioteca IPC antiga instalada.">
 <!ENTITY use-fireftp-workaround "Tente acessar o IPC com a API antiga.">
 <!ENTITY keyserver-message "Servidor de chaves">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use \'gpg --version\' to have the list of usable algorithms. In most cases, you should have these choices:">
+<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms. In most cases, you should have these choices:">
 <!ENTITY gmail-new-interface "Nova interface do gmail">
 <!ENTITY gmail-select-by-default-label "Selecionado por padrão:">
 <!ENTITY gmail-buton-inline-checkbox "Em linha">

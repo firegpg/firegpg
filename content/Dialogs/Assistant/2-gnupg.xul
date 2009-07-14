@@ -42,8 +42,8 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://firegpg/skin/assistant.css" type="text/css"?>
 <!DOCTYPE dialog SYSTEM "chrome://firegpg/locale/2-gnupg.dtd">
-<dialog title="FireGPG Assistant - GnuPG" orient="vertical" id="dialogbox"
-        onload="onLoad();" buttons="extra1,extra2" buttonlabelextra1="Stop" buttonlabelextra2="Next" buttondir ="rtl"
+<dialog title="&title;" orient="vertical" id="dialogbox"
+        onload="onLoad();" buttons="extra1,extra2" buttonlabelextra1="&stop;" buttonlabelextra2="&next;" buttondir ="rtl"
         ondialogextra1="this.close();" ondialogextra2="next();"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns:html="http://www.w3.org/1999/xhtml"
@@ -60,73 +60,52 @@ under the terms of any one of the MPL, the GPL or the LGPL.
   <script src="../../Core/cgpgaccess.js"/>
   <script src="../../Core/cgpg.js"/>
 
-    <label class="title" value="GnuPG" />
+    <label class="title" value="&title2;" />
 
     <description>
-        FireGPG use GnuPG to handle any pgp operation, it's mean GnuPG must be installed for a working FireGPG.
+        &description;
     </description>
 
     <label value=" " />
 
 
     <vbox id="gnuPG-working" style="display: none;">
-        <label class="good" value="GnuPG seem to be accesible and working." />
+        <label class="good" value="&working;" />
         <label value=" " />
-        <label class="whatnext advanced" value="Do you want to set a custom homedir for GnuPG ?" />
-        <button label="Set a home dir" oncommand="sepecialHome();" />
+        <label class="whatnext advanced" value="&specialhome;" />
+        <button label="&sethome;" oncommand="sepecialHome();" />
 
     </vbox>
 
     <vbox id="gnuPG-notworking"  style="display: none;">
-         <label class="bad" value="GnuPG dosen't works, there is a problem. Please fix this and click on next." />
-<label value=" " />
+        <label class="bad" value="&notworking;" />
+        <label value=" " />
 
-         <label class="whatnext" value="Did you install GnuPG ?" />
-         <label class="" value="You can download GnuPG here: (But any GnuPG will works)" />
-         <label class="link" onclick="window.open('http://gpg4win.org/download.html');" value="Windows users: Click here to download gpg4win" />
-         <label class="link" onclick="window.open('http://www.gnupg.org/download/');" value="Linux users: Please use the package shiped with your distribution, or click here for sources." />
-         <label class="link" onclick="window.open('http://www.google.ch/search?q=gnupg+macos');" value="MacOs users: I don't know how, but there is a way. Google is your friend." />
+        <label class="whatnext" value="&isinstalled;" />
+        <label class="" value="&download;" />
+        <label class="link" onclick="window.open('http://gpg4win.org/download.html');" value="&windows;" />
+        <label class="link" onclick="window.open('http://www.gnupg.org/download/');" value="&linux;" />
+        <label class="link" onclick="window.open('http://www.google.ch/search?q=gnupg+macos');" value="&macos;1" />
+        <label value=" " />
 
+        <label class="whatnext advanced" value="&uncommon;" />
+        <label class="advanced" value="&setpath;" />
 
-<label value=" " />
-         <label class="whatnext advanced" value="Is you GnuPG installed in an uncommon location ?" />
-         <label class="advanced" value="Please set the path to GnuPG here: " />
-
-         <hbox>
-
+        <hbox>
             <textbox id="gpg-path-textbox" disabled="disabled"/>
-            <button id="change-gpg-path-button" label="Browse"
-                  control="gpg-path-textbox" oncommand="chooseGPGPath();"/>
+            <button id="change-gpg-path-button" label="&browse;" control="gpg-path-textbox" oncommand="chooseGPGPath();"/>
         </hbox>
+        <label value=" " />
 
-<label value=" " />
+        <label class="whatnext" value="&isfireftp;" />
+        <label class="" value="&fireftpproblem;" />
+        <label class="" value="&uninstall;" />
+        <label value=" " />
 
-
-         <label class="whatnext" value="Is FireFTP installed ?" />
-         <label class="" value="FireGPG and FireFTP conflict dues to the old IPC library of FireFTP. " />
-         <label class="" value="If FireGPG's fix dosen't works, you have to uninstall one of them to let's the another working." />
-<label value=" " />
-
-         <label class="whatnext advanced" value="Are you using a strange plateform ?" />
-         <label class="advanced" value="FireGPG works only on Windows, MacOs and Linux x86 and x86_64 plateforms. " />
-         <label class="advanced link" onclick="window.open('http://blog.getfiregpg.org/2008/10/17/how-to-compile-the-ipc-library/');" value="You need to recompile the IPC library if it's the case." />
+        <label class="whatnext advanced" value="&strangeplateform;" />
+        <label class="advanced" value="&platform;" />
+        <label class="advanced link" onclick="window.open('http://blog.getfiregpg.org/2008/10/17/how-to-compile-the-ipc-library/');" value="&recompile;" />
 
     </vbox>
-
-
-
-    <!--<label value="Here is some information about icons and color used: "/>
-    <label value=" " />
-    <label class="whatnext" value="This sugest a solution or something you should do" />
-    <label value=" " />
-    <label class="good" value="This is something good" />
-    <label value=" " />
-    <label class="bad" value="This is a problem" />
-    <label value=" " />
-    <label class="advanced" value="This is for advanced users. You don't understand it ? It's not a problem, don't change it." />
-    <label value=" " />
-    <label class="help" value="This is something with help, keep your mouse over to see it" tooltiptext="Hello, I'm the help"/>-->
-
-
 
 </dialog>

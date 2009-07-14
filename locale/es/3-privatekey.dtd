@@ -1,0 +1,17 @@
+<!ENTITY title "FireGPG Assistant - Private key">
+<!ENTITY stop "Stop">
+<!ENTITY next "Next">
+<!ENTITY title2 "Private key">
+<!ENTITY description "PGP system work with a private key and a public key. You sign messages with your private key and another users verify your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
+<!ENTITY pk "You have at least a private key in your keyring">
+<!ENTITY setdk "Set a default key">
+<!ENTITY askforpk "Ask for private key">
+<!ENTITY name "Name">
+<!ENTITY id "Id">
+<!ENTITY created "Created">
+<!ENTITY expire "Expire">
+<!ENTITY nopk "You don't have any private key in your keyring">
+<!ENTITY genpk "Generate a private and a public key">
+<!ENTITY gen "Generate">
+<!ENTITY importpk "Import a private key">
+<!ENTITY import "Import">

@@ -48,10 +48,10 @@
 <!ENTITY gmail-disable-autosave-checkbox "停用自動儲存功能">
 <!ENTITY gmail-buton-csign-checkbox "明文簽章">
 <!ENTITY gmail-buton-csignsend-checkbox "明文簽章並傳送">
-<!ENTITY hide-fireftp-message "Don\'t show message about old IPC library installed">
+<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed">
 <!ENTITY use-fireftp-workaround "嘗試以舊的 API 存取 IPC。">
 <!ENTITY keyserver-message "金鑰伺服器">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use \'gpg --version\' to have the list of usable algorithms. In most cases, you should have these choices:">
+<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms. In most cases, you should have these choices:">
 <!ENTITY gmail-new-interface "新 Gmail 介面">
 <!ENTITY gmail-select-by-default-label "Selected by default :">
 <!ENTITY gmail-buton-inline-checkbox "Inline">

@@ -43,8 +43,8 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://firegpg/skin/assistant.css" type="text/css"?>
 <!DOCTYPE dialog SYSTEM "chrome://firegpg/locale/4-gmail.dtd">
-<dialog title="FireGPG Assistant - Gmail" orient="vertical" id="dialogbox"
-        onload="onLoad();" buttons="extra1,extra2" buttonlabelextra1="Stop" buttonlabelextra2="Next" buttondir ="rtl"
+<dialog title="&title;" orient="vertical" id="dialogbox"
+        onload="onLoad();" buttons="extra1,extra2" buttonlabelextra1="&stop;" buttonlabelextra2="&next;" buttondir ="rtl"
         ondialogextra1="this.close();" ondialogextra2="next();"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns:html="http://www.w3.org/1999/xhtml"
@@ -58,113 +58,87 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
   <script src="4-gmail.js"/>
 
-    <label class="title" value="Gmail support" />
+    <label class="title" value="&title2;" />
 
     <description>
-        FireGPG can be integrated with gmail: additionnals buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signs of any mails.
+        &description;
     </description>
 
     <label value=" " />
 
-    <checkbox id="gmail-enabled" label="Enable gmail support" oncommand="switchedEnabled();" />
+    <checkbox id="gmail-enabled" label="&enable;" oncommand="switchedEnabled();" />
     <label value=" " />
 
     <vbox id="gmail-turned-on" style="display: none ;">
 
         <vbox id="smtp-working" style="display: none ;">
-            <label class="good" value="FireGPG is able to access to the smtp server" />
-            <label  class="help" value="NB: Authentification is not tested !" tooltiptext="FireGPG will warn you when he try to send a mail if there is a problem" />
+            <label class="good" value="&smtpok;" />
+            <label  class="help" value="&noauth;" tooltiptext="&noauthhelp;" />
             <label value=" " />
-            <label class="whatnext" value="Set default options for sending mails" />
+            <label class="whatnext" value="&setdo;" />
 
             <prefpane>
 
-            <preferences>
+                <preferences>
+                    <preference id="gmail-select-by-default-sign" name="extensions.firegpg.gmail_select_by_default_sign" type="bool" instantApply="true"/>
+                    <preference id="gmail-select-by-default-encrypt" name="extensions.firegpg.gmail_select_by_default_encrypt" type="bool"  instantApply="true"/>
+                    <preference id="gmail-select-by-default-inline" name="extensions.firegpg.gmail_select_by_default_inline" type="bool"  instantApply="true"/>
+                    <preference id="gmail-select-by-default-attachements" name="extensions.firegpg.gmail_select_by_default_attachements" type="bool"  instantApply="true"/>
 
-                <preference id="gmail-select-by-default-sign" name="extensions.firegpg.gmail_select_by_default_sign" type="bool" instantApply="true"/>
-                <preference id="gmail-select-by-default-encrypt" name="extensions.firegpg.gmail_select_by_default_encrypt" type="bool"  instantApply="true"/>
-                <preference id="gmail-select-by-default-inline" name="extensions.firegpg.gmail_select_by_default_inline" type="bool"  instantApply="true"/>
-                <preference id="gmail-select-by-default-attachements" name="extensions.firegpg.gmail_select_by_default_attachements" type="bool"  instantApply="true"/>
+                </preferences>
 
+                <checkbox id="gmail-select-by-default-sign-checkbox" preference="gmail-select-by-default-sign" label="&sign;"/>
 
-            </preferences>
+                <checkbox id="gmail-select-by-default-encrypt-checkbox" preference="gmail-select-by-default-encrypt" label="&encrypt;"/>
 
-
-
-                <checkbox id="gmail-select-by-default-sign-checkbox" preference="gmail-select-by-default-sign"
-                                label="Sign"/>
-
-                    <checkbox id="gmail-select-by-default-encrypt-checkbox" preference="gmail-select-by-default-encrypt"
-                                label="Encrypt"/>
-
-                <checkbox id="gmail-select-by-default-attachements-checkbox" preference="gmail-select-by-default-attachements"
-                                label="Attachements"/>
+                <checkbox id="gmail-select-by-default-attachements-checkbox" preference="gmail-select-by-default-attachements" label="&atta;"/>
 
 
-                <checkbox id="gmail-select-by-default-inline-checkbox" preference="gmail-select-by-default-inline"
-                                label="Use inline" tooltiptext="Inline is bad and not working everytime. OpenPGP/Mime, as standard, should be used !" class="help"/>
+                <checkbox id="gmail-select-by-default-inline-checkbox" preference="gmail-select-by-default-inline" label="&inline;" tooltiptext="&inlinesuck;" class="help"/>
 
             </prefpane>
 
         </vbox>
 
         <vbox id="smtp-not-working"  style="display: none ;">
-            <label class="bad" value="FireGPG isn't able to access to the smtp server OR request is still in progress" />
+            <label class="bad" value="&nosmtp;" />
             <label value=" " />
 
-            <label class="whatnext" value="Wait 15 seconds or more if your connexion is very slow" />
+            <label class="whatnext" value="&wait;" />
             <label value=" " />
 
-            <label class="whatnext" value="Set parameters of a working smtp server (eg. your internet provider or your work place server)" />
+            <label class="whatnext" value="&setp;" />
 
-             <prefpane>
+            <prefpane>
 
-            <preferences>
+                <preferences>
 
-                <preference id="gmail-smtp-use-ssl" name="extensions.firegpg.gmail_use_ssl" type="bool"  instantApply="true"/>
-                <preference id="gmail-smtp-port" name="extensions.firegpg.gmail_port" type="string"  instantApply="true"/>
-                <preference id="gmail-smtp-host" name="extensions.firegpg.gmail_host" type="string"  instantApply="true"/>
-                <preference id="gmail-smtp-username" name="extensions.firegpg.gmail_username" type="string"  instantApply="true"/>
+                    <preference id="gmail-smtp-use-ssl" name="extensions.firegpg.gmail_use_ssl" type="bool"  instantApply="true"/>
+                    <preference id="gmail-smtp-port" name="extensions.firegpg.gmail_port" type="string"  instantApply="true"/>
+                    <preference id="gmail-smtp-host" name="extensions.firegpg.gmail_host" type="string"  instantApply="true"/>
+                    <preference id="gmail-smtp-username" name="extensions.firegpg.gmail_username" type="string"  instantApply="true"/>
 
-                <preference id="gmail-smtp-no-auth" name="extensions.firegpg.gmail_smtp_no_auth" type="bool"  instantApply="true"/>
+                    <preference id="gmail-smtp-no-auth" name="extensions.firegpg.gmail_smtp_no_auth" type="bool"  instantApply="true"/>
 
                 </preferences>
 
-
-            <label  id="gmail-smtp-host-label" value="Host"/>
+                <label  id="gmail-smtp-host-label" value="&host;"/>
                 <textbox id="gmail-smtp-host-textbox"  preference="gmail-smtp-host"/>
 
-                <label  id="gmail-smtp-port-label" value="Port"/>
+                <label  id="gmail-smtp-port-label" value="&port;"/>
                 <textbox id="gmail-smtp-port-textbox"  preference="gmail-smtp-port"/>
 
-                <checkbox id="gmail-smtp-no-auth-checkbox" preference="gmail-smtp-no-auth"
-                                label="No auth"/>
+                <checkbox id="gmail-smtp-no-auth-checkbox" preference="gmail-smtp-no-auth" label="No auth"/>
 
-                <label  id="gmail-smtp-username-label" value="Username"/>
+                <label  id="gmail-smtp-username-label" value="&username;"/>
                 <textbox id="gmail-smtp-username-textbox"  preference="gmail-smtp-username"/>
 
-
-                 <checkbox id="gmail-smtp-use-ssl-checkbox" preference="gmail-smtp-use-ssl"
-                                label="Use SSL"/>
-
-
+                <checkbox id="gmail-smtp-use-ssl-checkbox" preference="gmail-smtp-use-ssl" label="&ssl;"/>
 
             </prefpane>
         </vbox>
 
     </vbox>
-
-    <!--<label value="Here is some information about icons and color used: "/>
-    <label value=" " />
-    <label class="whatnext" value="This sugest a solution or something you should do" />
-    <label value=" " />
-    <label class="good" value="This is something good" />
-    <label value=" " />
-    <label class="bad" value="This is a problem" />
-    <label value=" " />
-    <label class="advanced" value="This is for advanced users. You don't understand it ? It's not a problem, don't change it." />
-    <label value=" " />
-    <label class="help" value="This is something with help, keep your mouse over to see it" tooltiptext="Hello, I'm the help"/>-->
 
 
 

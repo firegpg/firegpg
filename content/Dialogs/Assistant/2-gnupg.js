@@ -169,14 +169,14 @@ function sepecialHome() {
         var currentOption = prefs.getCharPref("gpg_user_options");
 
         if (currentOption != null && currentOption != "") {
-            if (!confirm('You have already set custom options for GnuPG to ' + currentOption + "\n" + 'This button is going to erase this value, continue ?'))
+            if (!confirm(document.getElementById('firegpg-strings').getString('homediralreadyset').replace(/%1/gi, currentOption + "\n")))
                 return;
 
         }
 
         prefs.setCharPref("gpg_user_options", "--home " + directory.replace(/ /gi, '{$SPACE}'));
 
-        alert('Home dir set to "' + directory + '"');
+        alert(document.getElementById('firegpg-strings').getString('homedirset').replace(/%s/gi, directory));
 
 
     }

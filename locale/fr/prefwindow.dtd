@@ -57,8 +57,8 @@
 <!ENTITY gmail-buton-inline-checkbox "Inline">
 <!ENTITY gmail-old-interface "Ancienne interface de gmail">
 <!ENTITY gmail-smtp-options-label "Options SMTP (openpgp/mime mails)">
-<!ENTITY gmail-smtp-google-com "Ne jamais essayer d\'utiliser le mot de passe sauvegardé pour google.com">
-<!ENTITY gmail-smtp-username "Nom d\'utilisateur (laisser blanc pour le nom d\'utilisateur qui est loggé): ">
+<!ENTITY gmail-smtp-google-com "Ne jamais essayer d'utiliser le mot de passe sauvegardé pour google.com">
+<!ENTITY gmail-smtp-username "Nom d'utilisateur (laisser blanc pour le nom d'utilisateur qui est loggé): ">
 <!ENTITY gmail-smtp-host "Serveur (smtp.gmail.com) :">
 <!ENTITY gmail-smtp-port "Port (465) :">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Utiliser SSL :">

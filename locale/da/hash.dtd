@@ -1,5 +1,5 @@
-<!ENTITY thitle "Compute hashes of fles">
-<!ENTITY result "Result:">
-<!ENTITY browse "Select a file">
+<!ENTITY thitle "Bereng hashes for filer">
+<!ENTITY result "Rsultat:">
+<!ENTITY browse "Vælg en fil">
 <!ENTITY hash "Type:">
-<!ENTITY copy "Copy hash to clipboard">
+<!ENTITY copy "Kopiér hash til udklipsholder">

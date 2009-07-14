@@ -43,8 +43,8 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://firegpg/skin/assistant.css" type="text/css"?>
 <!DOCTYPE dialog SYSTEM "chrome://firegpg/locale/3-privatekey.dtd">
-<dialog title="FireGPG Assistant - Private key" orient="vertical" id="dialogbox"
-        onload="onLoad();" buttons="extra1,extra2" buttonlabelextra1="Stop" buttonlabelextra2="Next" buttondir ="rtl"
+<dialog title="&title;" orient="vertical" id="dialogbox"
+        onload="onLoad();" buttons="extra1,extra2" buttonlabelextra1="&stop;" buttonlabelextra2="&next;" buttondir ="rtl"
         ondialogextra1="this.close();" ondialogextra2="next();"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns:html="http://www.w3.org/1999/xhtml"
@@ -61,36 +61,36 @@ under the terms of any one of the MPL, the GPL or the LGPL.
   <script src="../../Core/cgpgaccess.js"/>
   <script src="../../Core/cgpg.js"/>
 
-    <label class="title" value="Private key" />
+    <label class="title" value="&title2;" />
 
     <description>
-        PGP system work with a private key and a public key. You sign messages with your private key and another users verify your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.
+        &description;
     </description>
 
     <label value=" " />
 
 
     <vbox id="private-key-exist" style="display: none ;">
-        <label class="good" value="You have at least a private key in your keyring" />
+        <label class="good" value="&pk;" />
         <label value=" " />
-        <label class="whatnext" value="Set a default key" />
+        <label class="whatnext" value="&setdk;" />
 
-        <label  id="firegpg-ask-for-private-label" value="Ask for private key" style="display: none;"/>
+        <label  id="firegpg-ask-for-private-label" value="&askforpk;" style="display: none;"/>
 
         <tree id="private-keys-listbox" flex="1" hidecolumnpicker="false" onselect="privateKeySelected(this)" style="height: 300px;">
 
             <treecols>
 
-                <treecol primary="true" flex="1"  label="Name" persist="width,hidden"/>
+                <treecol primary="true" flex="1"  label="&name;" persist="width,hidden"/>
                 <splitter class="tree-splitter"/>
 
-                <treecol name="id" label="Id" syle="width: 100px" flex="0" persist="width,hidden"/>
+                <treecol name="id" label="&id;" syle="width: 100px" flex="0" persist="width,hidden"/>
                 <splitter class="tree-splitter"/>
 
-                <treecol  label="Created" syle="width: 100px" flex="0"  persist="width,hidden"/>
+                <treecol  label="&created;" syle="width: 100px" flex="0"  persist="width,hidden"/>
                 <splitter class="tree-splitter"/>
 
-                <treecol  label="Expire" syle="width: 100px" flex="0" persist="width,hidden"/>
+                <treecol  label="&expire;" syle="width: 100px" flex="0" persist="width,hidden"/>
                 <splitter class="tree-splitter"/>
 
             </treecols>
@@ -102,30 +102,16 @@ under the terms of any one of the MPL, the GPL or the LGPL.
     </vbox>
 
     <vbox id="private-key-dosent-exist"  style="display: none ;">
-        <label class="bad" value="You don't have any private key in your keyring" />
+        <label class="bad" value="&nopk;" />
         <label value=" " />
 
-        <label class="whatnext" value="Generate a private and a public key" />
-        <button oncommand="genKey();" label="Generate" />
+        <label class="whatnext" value="&genpk;" />
+        <button oncommand="genKey();" label="&gen;" />
 
         <label value=" " />
-        <label class="whatnext " value="Import a private key" />
-        <button oncommand="import();" label="Import" />
+        <label class="whatnext " value="&importpk;" />
+        <button oncommand="import();" label="&import;" />
 
     </vbox>
-
-    <!--<label value="Here is some information about icons and color used: "/>
-    <label value=" " />
-    <label class="whatnext" value="This sugest a solution or something you should do" />
-    <label value=" " />
-    <label class="good" value="This is something good" />
-    <label value=" " />
-    <label class="bad" value="This is a problem" />
-    <label value=" " />
-    <label class="advanced" value="This is for advanced users. You don't understand it ? It's not a problem, don't change it." />
-    <label value=" " />
-    <label class="help" value="This is something with help, keep your mouse over to see it" tooltiptext="Hello, I'm the help"/>-->
-
-
 
 </dialog>

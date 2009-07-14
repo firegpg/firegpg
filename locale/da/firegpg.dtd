@@ -53,6 +53,6 @@
 <!ENTITY firegpgContext.labelWrapSign "Ombrudt underskrift">
 <!ENTITY firegpgMenu.labelWrapSign "Ombrudt underskrift">
 <!ENTITY firegpgContext.labelHashs "Hashes">
-<!ENTITY firegpgContext.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgContext.labelFiles "Filoperationer">
+<!ENTITY firegpgMenu.labelFiles "Filoperationer">
 <!ENTITY firegpgMenu.labelHashs "Hashes">

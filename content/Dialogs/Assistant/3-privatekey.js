@@ -64,12 +64,9 @@ function onLoad(win) {
 */
 function next() {
 
-
-
     this.close();
 
     var assis = window.openDialog('chrome://firegpg/content/Dialogs/Assistant/4-gmail.xul','', 'chrome, dialog, resizable=false');
-
     assis.focus();
 
 }
@@ -192,7 +189,7 @@ function privateKeySelected(listbox) {
 */
 function genKey() {
 
-     window.openDialog("chrome://firegpg/content/Dialogs/Keymanager/newkey.xul", "newkey", "chrome, centerscreen, toolbar, modal").focus();
+    window.openDialog("chrome://firegpg/content/Dialogs/Keymanager/newkey.xul", "newkey", "chrome, centerscreen, toolbar, modal").focus();
     textPrivateKey();
 }
 
@@ -212,6 +209,7 @@ function import() {
     var data = getFromFile(filePath);
 
 	FireGPG.kimport(false,data, true);
- textPrivateKey();
+
+     textPrivateKey();
 
 }
