@@ -552,7 +552,7 @@ var GPGAccess = {
 
                 result = this.runGnupg(this.getBaseArugments() +
                         " --default-key " + keyID +
-                        " --output " + fileTo +
+                        " --output " + fileTo.replace(/\s/g, '{$SPACE}') +
                         this.getGPGCommentArgument() +
                         this.getDiegestAlgo() +
                         " --detach-sign " + fileFrom
@@ -562,7 +562,7 @@ var GPGAccess = {
 
                 result = this.runGnupg(this.getBaseArugments() +
                         " --default-key " + keyID +
-                        " --output " + fileTo +
+                        " --output " + fileTo.replace(/\s/g, '{$SPACE}') +
                         " --passphrase-fd 0 " +
                         this.getGPGCommentArgument() +
                         this.getDiegestAlgo() +
@@ -594,7 +594,7 @@ var GPGAccess = {
     */
     verify: function(text, charset, fileMode, fileFrom, fileSig) {
 
-		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() + " --verify" + (fileMode ? ' ' + fileSig + ' ' + fileFrom : ''), text, charset);
+		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() + " --verify" + (fileMode ? ' ' + fileSig.replace(/\s/g, '{$SPACE}') + ' ' + fileFrom.replace(/\s/g, '{$SPACE}') : ''), text, charset);
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.err;
@@ -673,8 +673,8 @@ var GPGAccess = {
 			binFileMode = false;
 
         if (fileMode) {
-            outputFd = fileTo;
-            inputFd = fileFrom;
+            outputFd = fileTo.replace(/\s/g, '{$SPACE}');
+            inputFd = fileFrom.replace(/\s/g, '{$SPACE}');
 
         } else {
             outputFd = '-';
@@ -730,8 +730,8 @@ var GPGAccess = {
     symetric: function(text, password, algo, fileMode, fileFrom, fileTo) {
 
         if (fileMode) {
-            outputFd = fileTo;
-            inputFd = fileFrom;
+            outputFd = fileTo.replace(/\s/g, '{$SPACE}');
+            inputFd = fileFrom.replace(/\s/g, '{$SPACE}');
 
         } else {
             outputFd = '-';
@@ -789,8 +789,8 @@ var GPGAccess = {
 
 
         if (fileMode) {
-            outputFd = fileTo;
-            inputFd = fileFrom;
+            outputFd = fileTo.replace(/\s/g, '{$SPACE}');
+            inputFd = fileFrom.replace(/\s/g, '{$SPACE}');
 
         } else {
             outputFd = '-';
@@ -847,8 +847,8 @@ var GPGAccess = {
     decrypt: function(text,password,binFileMode, fileMode, fileFrom, fileTo) {
 
         if (fileMode) {
-            outputFd = fileTo;
-            inputFd = fileFrom;
+            outputFd = fileTo.replace(/\s/g, '{$SPACE}');
+            inputFd = fileFrom.replace(/\s/g, '{$SPACE}');
 
         } else {
             outputFd = '-';
@@ -1176,7 +1176,7 @@ var GPGAccess = {
 
     computeHash: function(hash,file) {
 
-         result = this.runGnupg(this.getBaseArugments()  + " --print-md " + hash + " " + file, '');
+         result = this.runGnupg(this.getBaseArugments()  + " --print-md " + hash + " " + file.replace(/\s/g, '{$SPACE}'), '');
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.out;
