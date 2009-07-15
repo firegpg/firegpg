@@ -1371,14 +1371,23 @@ var FireGPG = {
                 if( firstPosition!=-1 && lastPosition!=-1) {
                         division++;
                         var divisiontxt=text.substring(firstPosition,lastPosition+endtxt.length+1);
+
+
+
                         var tmpverifyresult = this.layerverify(divisiontxt,layer,division, charset);
+                        resultss[resultss.length] = tmpverifyresult;
+
+                        while(tmpverifyresult.moresign != undefined) {
+                            var tmpverifyresult = this.layerverify(divisiontxt,layer,division, charset,undefined, undefined, undefined, undefined, tmpverifyresult.moresign);
+                            resultss[resultss.length] = tmpverifyresult;
+
+                        }
+
                         divisiontxt = divisiontxt.replace(begin,"");
                         divisiontxt = divisiontxt.replace(end,"");
                         divisiontxt = divisiontxt.replace(layerbegin,begintxt);
                         divisiontxt = divisiontxt.replace(layermid,midtxt);
                         divisiontxt = divisiontxt.replace(layerend,endtxt);
-
-                        resultss[resultss.length] = tmpverifyresult;
 
                         resultss = this.layers(divisiontxt,layer+1, charset, resultss);
                        //resultss = resultss.concat(subverif);
@@ -1400,17 +1409,25 @@ var FireGPG = {
             layer - The current layer
             division - The current layer level
     */
-    layerverify: function(text,layer,division, charset,dontask, fileMode, fileFrom, fileSig) {
+    layerverify: function(text,layer,division, charset,dontask, fileMode, fileFrom, fileSig,nextText) {
         var returnObject = new GPGReturn();
 
         if (dontask == undefined)
             dontask = false;
 
-        // We get the result
-		var result = this.GPGAccess.verify(text, charset, fileMode, fileFrom, fileSig);
 
-        if ( charset && charset.toLowerCase() == "iso-8859-1")
-            result.sdOut = EnigConvertToUnicode(result.sdOut, 'UTF-8');
+        // We get the result
+        if (nextText == undefined) {
+            var result = this.GPGAccess.verify(text, charset, fileMode, fileFrom, fileSig);
+
+            if ( charset && charset.toLowerCase() == "iso-8859-1")
+                result.sdOut = EnigConvertToUnicode(result.sdOut, 'UTF-8');
+        }         else {
+            result = new GPGReturn();
+            result.sdOut = nextText;
+
+        }
+
 
         returnObject.sdOut = result.sdOut;
 
@@ -1420,11 +1437,25 @@ var FireGPG = {
 
             returnObject.result = RESULT_ERROR_UNKNOW;
 
-            if(result.sdOut.indexOf("BADSIG") != -1)
+            if(result.sdOut.indexOf("BADSIG") != -1) {
                 returnObject.result = RESULT_ERROR_BAD_SIGN;
+
+                testIfMore = result.sdOut.substring(result.sdOut.indexOf("BADSIG") + "BADSIG".length,result.sdOut.length);
+
+                if (testIfMore.indexOf("GOODSIG") != -1 || testIfMore.indexOf("ERRSIG") != -1 || testIfMore.indexOf("BADSIG") != -1 || testIfMore.indexOf("REVKEYSIG") != -1) {
+                    returnObject.moresign = testIfMore;
+                }
+
+            }
 
             if(result.sdOut.indexOf("NO_PUBKEY") != -1) {
                 returnObject.result = RESULT_ERROR_NO_KEY;
+
+                testIfMore = result.sdOut.substring(result.sdOut.indexOf("NO_PUBKEY")  + "NO_PUBKEY".length,result.sdOut.length);
+
+                if (testIfMore.indexOf("GOODSIG") != -1 || testIfMore.indexOf("ERRSIG") != -1 || testIfMore.indexOf("BADSIG") != -1 || testIfMore.indexOf("REVKEYSIG") != -1) {
+                    returnObject.moresign = testIfMore;
+                }
 
 				idOfMissingKey = result.sdOut.substring(result.sdOut.indexOf("NO_PUBKEY") + 10);
 				idOfMissingKey += "\n";
@@ -1441,7 +1472,7 @@ var FireGPG = {
 
 				if (!dontask && !disabledown && confirm(document.getElementById('firegpg-strings').getString('autoFeetch') + ' (' + idOfMissingKey + ')')) {
 					FireGPG.retriveKeyFromServer(idOfMissingKey);
-					return this.layerverify(text,layer,division,charset,true, fileMode, fileFrom, fileSig);
+					return this.layerverify(text,layer,division,charset,true, fileMode, fileFrom, fileSig,nextText);
 				}
 
 			}
@@ -1482,6 +1513,12 @@ var FireGPG = {
             returnObject.signresulttext = infos2 + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
             returnObject.signresultuser = infos2 ;
             returnObject.signresultdate = date.toLocaleString();
+
+            testIfMore = result.sdOut.substring(result.sdOut.indexOf("GOODSIG") + "GOODSIG".length,result.sdOut.length);
+
+            if (testIfMore.indexOf("GOODSIG") != -1 || testIfMore.indexOf("ERRSIG") != -1 || testIfMore.indexOf("BADSIG") != -1 || testIfMore.indexOf("REVKEYSIG") != -1) {
+                returnObject.moresign = testIfMore;
+            }
 
 		}
 
