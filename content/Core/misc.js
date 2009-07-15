@@ -64,7 +64,7 @@ const FIREGPG_STATUS = 'DEVEL';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */
-const FIREGPG_SVN = "$Rev: 558 $";
+const FIREGPG_SVN = "$Rev$";
 
 /*
    Constants: Id for components.
@@ -798,13 +798,18 @@ function testIfSomethingsIsNew() {
 		prefs = prefs.getBranch("extensions.firegpg.");
 
 
-
     /* Should we show the assistant ? */
+    var assistant  = "";
+	try {
+		assistant = prefs.getBoolPref("assisant_has_already_been_executed");
+	} catch (e) {  assistant = false}
 
-   /* var assis = window.openDialog('chrome://firegpg/content/Dialogs/Assistant/1-welcome.xul','', 'chrome, dialog, resizable=false');
-	assis.focus();*/
+    if (!assistant)  {
+        window.openDialog('chrome://firegpg/content/Dialogs/Assistant/1-welcome.xul','', 'chrome, dialog, resizable=false').focus();
+        prefs.setBoolPref("assisant_has_already_been_executed",true)
+    }
 
-
+    //Check des versions
     var version  = "";
 	try {
 		version = prefs.getCharPref("gpg_version");
