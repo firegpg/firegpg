@@ -98,7 +98,7 @@ function onLoad(win) {
 
      //Set version number
     if (FIREGPG_STATUS != 'DEVEL')
-        document.getElementById('firegpg-version-version').value = FIREGPG_VERSION;
+        document.getElementById('firegpg-version-version').value = FIREGPG_VERSION + ' (' + FIREGPG_SVN + ')';
     else
         document.getElementById('firegpg-version-version').value = 'DEVEL - ' + FIREGPG_VERSION + ' - Svn version:  ' + FIREGPG_SVN;
 
@@ -322,4 +322,12 @@ function showWarnings() {
 		if (!confirm(i18n.getString('turn-off-updates-w1')) || !confirm(i18n.getString('turn-off-updates-w2')))
 			checkBox.checked = true;
 	}
+}
+
+/*
+  Function: showAssistant
+  Show the assistant
+*/
+function showAssistant() {
+    window.openDialog('chrome://firegpg/content/Dialogs/Assistant/1-welcome.xul','', 'chrome, dialog, resizable=false').focus()
 }

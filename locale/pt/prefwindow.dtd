@@ -83,3 +83,4 @@
 <!ENTITY enable-gpgauth-statuswindow-check.label "Exibir a janela de status com gpgAuth em uso">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Habilitar gpgAuth">
+<!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">

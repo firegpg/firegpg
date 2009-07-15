@@ -63,18 +63,15 @@ Portions created by gpg_auth are Copyright (C) 2007 Kyle L. Huff All Rights Rese
             <preference id="hide-fireftp-message-pref" name="extensions.firegpg.fireftp_already_warning" type="bool"/>
             <preference id="use-fireftp-workaround-pref" name="extensions.firegpg.fireftp_try_to_use_old_system" type="bool"/>
             <preference id="dont_ask_to_download_key-pref" name="extensions.firegpg.dont_ask_to_download_key" type="bool"/>
-
-
-
         </preferences>
-
-
 
         <hbox>
             <label  id="firegpg-version-label" value="&firegpg-version-label.text;"/>
 
             <label  id="firegpg-version-version" value=""/>
         </hbox>
+
+        <button label="&panpan-assistant-is-now-dead;" onclick="showAssistant()" />
 
         <!-- Always sign or verify in a new window -->
         <checkbox  id="result-always-in-new-window" preference="result-always-in-new-window-pref"  label="&result-always-in-new-window;"/>
