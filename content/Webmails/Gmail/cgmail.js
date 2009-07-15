@@ -505,7 +505,7 @@ var cGmail = {
 				gBrowser.addProgressListener(cGmailListener,
 				         Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
 			}
-		} catch (e) { fireGPGDebug(e,'cgmail.listenerLoad',true); }
+		} catch (e) {}
 	},
 
 

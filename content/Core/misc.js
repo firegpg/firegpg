@@ -463,7 +463,7 @@ function eraseSavedPassword() {
 		if (document.getElementById('firegpg-menu-memo-tool'))
             document.getElementById('firegpg-menu-memo-tool').style.display = 'none';
 	}
-	catch (e) {  fireGPGDebug(e,'misc.eraseSavedPassword',true);  }
+	catch (e) {    }
 }
 
 
