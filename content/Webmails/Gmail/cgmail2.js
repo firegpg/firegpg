@@ -291,26 +291,26 @@ var cGmail2 = {
                                         td.innerHTML += '<span title="' + i18n.getString("noPublicKey") + '" onclick="alert(this.title);  return false;"><img src="' + IMG_MAIL_SIGNED_ERR + '">&nbsp;' + i18n.getString("keyNotFound") + '</span>';
 
                                     }
-                                    else if (result.signResult.signresulttext != null){
+                                    else if (result.signResult.signsresulttext != null){
 
                                         td.setAttribute("style","color: green;");
                                         //td.innerHTML += i18n.getString("GMailSOK") + " " + htmlEncode(result.signResult.signresulttext); //"La première signature de ce mail est de testtest (testtest)
 
                                         if (cGmail2.showUserInfo)
-                                            bonus = " (" + htmlEncode(result.signResult.signresulttext) + ")";
+                                            bonus = " (" + htmlEncode(result.signResult.signsresulttext).replace(/\n/gi, '<br />') + ")";
                                         else
                                                 bonus = "";
 
 
                                         if (result.completeSignOrDecrypt)
-                                            td.innerHTML += '<span title="' + i18n.getString("goodSignFrom") + ' ' + result.signResult.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(this.title); return false;"><img src="' + IMG_MAIL_SIGNED_OK + '">&nbsp;' + i18n.getString("signedMail") + '' + bonus + '</span>';
+                                            td.innerHTML += '<span title="' + result.signResult.signsresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(this.title); return false;"><img src="' + IMG_MAIL_SIGNED_OK + '">&nbsp;' + i18n.getString("signedMail") + '' + bonus + '</span>';
                                         else {
 
                                             data = decoder.washFromPlain(result.specialmimepart).replace(/<br \/>/gi, '\n');
                                             rid="firegpg" +  genreate_api_key() +  "subpart" +  genreate_api_key() + "display" +  genreate_api_key();
 
                                             td.setAttribute("style","color: magenta;");
-                                            td.innerHTML += '<span title="' + i18n.getString("OnlyASubPart2") + ' ' + i18n.getString("goodSignFrom") + ' ' + result.signResult.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);  return false;"><img src="' + IMG_MAIL_SIGNED_PART + '">&nbsp;' + i18n.getString("partSigned") + '' + bonus + '</span><span id="' + rid +'" style="display: none">' + data + '</span>';
+                                            td.innerHTML += '<span title="' + i18n.getString("OnlyASubPart2") + ' '  + result.signResult.signsresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);  return false;"><img src="' + IMG_MAIL_SIGNED_PART + '">&nbsp;' + i18n.getString("partSigned") + '' + bonus + '</span><span id="' + rid +'" style="display: none">' + data + '</span>';
                                         }
                                     }
 

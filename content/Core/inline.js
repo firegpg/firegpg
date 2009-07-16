@@ -419,7 +419,7 @@ FireGPGInline.VerifySignature = function(content, block) {
 
     if (resultTest.signresult == RESULT_SUCCESS) {
         block.body.className = "ok";
-        block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifSuccess") + " " + resultTest.signresulttext;
+        block.header.textContent = i18n.getString("signed-message") + ", " + resultTest.signsresulttext;
     }
     else if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
         block.body.className = "failure";
