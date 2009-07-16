@@ -77,6 +77,10 @@ const ACTION_FDECRYPT = 'FDECRYPT';
 const ACTION_FSYMCRYPT = 'FSYMCRYPT';
 const ACTION_FCRYPTSIGN = 'FCRYPTSIGN';
 const ACTION_FHASHES = 'FHASHES';
+const ACTION_SWITCHINLINESITEON = 'SWITCHINLINESITEON';
+const ACTION_SWITCHINLINESITEOFF = 'SWITCHINLINESITEOFF';
+const ACTION_SWITCHINLINEPAGEON = 'SWITCHINLINEPAGEON';
+const ACTION_SWITCHINLINEPAGEOFF = 'SWITCHINLINEPAGEOFF';
 
  /*
   * Class: firegpg
@@ -161,6 +165,44 @@ var firegpg = {
 			FireGPG.crypt(false,'',undefined,undefined,undefined,undefined,true,undefined,true);
         else if(action == ACTION_FCRYPTSIGN)
 			FireGPG.cryptAndSign(false, '', undefined, undefined, undefined, undefined, undefined, undefined, undefined, true);
+        else if(action == ACTION_SWITCHINLINESITEON) {
+
+            FireGPGInline.siteOn(content.document.location);
+
+            var num = gBrowser.browsers.length;
+            for (var i = 0; i < num; i++) {
+              var b = gBrowser.getBrowserAtIndex(i);
+              try {
+
+                if (b.contentDocument.location.host == content.document.location.host)
+                    b.contentDocument.location.reload();
+              } catch(e) {
+                Components.utils.reportError(e);
+              }
+            }
+
+        } else if(action == ACTION_SWITCHINLINESITEOFF) {
+
+            FireGPGInline.siteOff(content.document.location);
+
+            var num = gBrowser.browsers.length;
+            for (var i = 0; i < num; i++) {
+              var b = gBrowser.getBrowserAtIndex(i);
+              try {
+                if (b.contentDocument.location.host == content.document.location.host)
+                    b.contentDocument.location.reload();
+                } catch(e) {
+                Components.utils.reportError(e);
+              }
+            }
+
+        } else if(action == ACTION_SWITCHINLINEPAGEON) {
+            FireGPGInline.pageOn(content.document.location);
+            content.document.location.reload();
+        } else if(action == ACTION_SWITCHINLINEPAGEOFF) {
+            FireGPGInline.pageOff(content.document.location);
+            content.document.location.reload();
+        }
 
 
 	},
@@ -172,7 +214,55 @@ var firegpg = {
 	onToolbarButtonCommand: function(e) {
 		// just reuse the function above.  you can change this, obviously!
 		firegpg.onMenuItemCommand(e);
-	}
+	},
+
+
+    updatePopUp: function() {
+
+        var i18n = document.getElementById("firegpg-strings");
+
+        if (FireGPGInline.activate) {
+
+            if (FireGPGInline.canIBeExecutedHere(content.document.location))
+                document.getElementById('firegpg-status-of-inline').label = i18n.getString('inline-is-on-general');
+            else
+                document.getElementById('firegpg-status-of-inline').label = i18n.getString('inline-is-off-specific');
+
+
+        } else {
+
+            if (FireGPGInline.canIBeExecutedHere(content.document.location))
+                document.getElementById('firegpg-status-of-inline').label = i18n.getString('inline-is-off-general');
+            else
+                document.getElementById('firegpg-status-of-inline').label = i18n.getString('inline-is-on-specific');
+        }
+
+        if (FireGPGInline.canIBeExecutedHere(content.document.location)) {
+            document.getElementById('firegpg-inline-temp-switcher').label = i18n.getString('inline-tmp-desactivate-for-this-page');
+            document.getElementById('firegpg-inline-temp-switcher').tag = ACTION_SWITCHINLINEPAGEOFF;
+        } else {
+            document.getElementById('firegpg-inline-temp-switcher').label = i18n.getString('inline-tmp-activate-for-this-page');
+            document.getElementById('firegpg-inline-temp-switcher').tag = ACTION_SWITCHINLINEPAGEON;
+        }
+
+        site = FireGPGInline.siteStatus(content.document.location);
+
+        if (site == 'ON')
+            site = true;
+        else if (site == 'OFF')
+            site = false;
+        else
+            site = FireGPGInline.activate;
+
+        if (site) {
+            document.getElementById('firegpg-inline-switcher').label = i18n.getString('inline-desactivate-for-this-site');
+            document.getElementById('firegpg-inline-switcher').tag = ACTION_SWITCHINLINESITEOFF;
+        } else {
+            document.getElementById('firegpg-inline-switcher').label = i18n.getString('inline-activate-for-this-site');
+            document.getElementById('firegpg-inline-switcher').tag = ACTION_SWITCHINLINESITEON;
+        }
+
+    }
 };
 
 window.addEventListener("load", function(e) { firegpg.onLoad(e); }, false);

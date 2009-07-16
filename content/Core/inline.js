@@ -499,6 +499,13 @@ FireGPGInline.DecryptMessage = function(content, block) {
 
 */
 FireGPGInline.onPageLoad = function(aEvent) {
+
+
+
+
+
+
+
     var doc = aEvent.originalTarget;
     if(doc.nodeName != "#document")
         return;
@@ -507,10 +514,11 @@ FireGPGInline.onPageLoad = function(aEvent) {
 	if(doc.location.protocol == "chrome:")
 		return;
 
-    if (doc.location.href.indexOf("mail.google.com") != -1)
+    if (!FireGPGInline.canIBeExecutedHere(doc.location))
         return;
 
     FireGPGInline.HandlePage(doc);
+
 
 
 };
@@ -522,7 +530,7 @@ FireGPGInline.onPageLoad = function(aEvent) {
 */
 FireGPGInline.initSystem = function() {
 
-    var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+        var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 	                           getService(Components.interfaces.nsIPrefService);
 
     prefs = prefs.getBranch("extensions.firegpg.");
@@ -532,8 +540,8 @@ FireGPGInline.initSystem = function() {
         activate = true;
     }
 
-    if (!activate)
-        return;
+    FireGPGInline.activate = activate;
+
 
     try {
         if (document.getElementById("appcontent"))
@@ -575,4 +583,145 @@ FireGPGInline.mouseOutTrusted = function(aEvent) {
 
     document.getElementById('firegpg-statusbar-trusted-content').style.display = 'none';
 
+}
+
+FireGPGInline.canIBeExecutedHere = function(aUrl) {
+
+    page = FireGPGInline.pageStatus(aUrl);
+
+    if (page == 'ON')
+        return true;
+
+    if (page == 'OFF')
+        return false;
+
+    site = FireGPGInline.siteStatus(aUrl);
+
+    if (site == 'ON')
+        return true;
+
+    if (site == 'OFF')
+        return false;
+
+    return FireGPGInline.activate;
+
+}
+
+FireGPGInline.siteStatus = function(aUrl) {
+
+    try {
+
+        if (aUrl.host.indexOf("mail.google.com") != -1) //Forcé parqu'on handle de toutes façons
+            return 'OFF';
+
+        var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                                   getService(Components.interfaces.nsIPrefService);
+
+        prefs = prefs.getBranch("extensions.firegpg.");
+        try {
+            sites = prefs.getCharPref("inline_sites");
+        } catch (e) {
+            sites = '';
+        }
+
+        host = aUrl.href.replace(/,/gi, '~~~&'); //Just in case
+
+        data = sites.split(',');
+
+        for(var i = 0; i < data.length; i+=2) {
+
+            if (data[i] == host) {
+                return data[i+1];
+            }
+
+        }
+
+        return '';
+    } catch (e) {
+		return '';
+	}
+
+}
+
+FireGPGInline.siteOn = function(aUrl) {
+
+    FireGPGInline.setSiteTo(aUrl, 'ON');
+
+}
+
+FireGPGInline.siteOff = function(aUrl) {
+
+    FireGPGInline.setSiteTo(aUrl, 'OFF');
+
+}
+
+FireGPGInline.setSiteTo = function(aUrl, value) {
+
+    var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+	                           getService(Components.interfaces.nsIPrefService);
+
+    prefs = prefs.getBranch("extensions.firegpg.");
+    try {
+        sites = prefs.getCharPref("inline_sites");
+    } catch (e) {
+        sites = '';
+    }
+
+    host = aUrl.href.replace(/,/gi, '~~~&'); //Just in case
+
+    data = sites.split(',');
+
+    datas = new Array();
+
+    for(var i = 0; i < data.length; i+=2) {
+       datas[data[i]] = data[i+1];
+    }
+
+    if ( (value == 'ON' && !FireGPGInline.activate) || (value == 'OFF' && FireGPGInline.activate)) //Veut-on autre chose que le default ?
+        datas[host] = value;
+    else
+        delete datas[host];
+
+    option = '';
+
+    for (host in datas) {
+        if (host != undefined && datas[host] != undefined)
+            option += host + "," + datas[host] + ",";
+    }
+
+    prefs.setCharPref("inline_sites",option);
+}
+
+
+FireGPGInline.pageStatus = function(aUrl) {
+
+
+   if (FireGPGInline.siteTmpStats == undefined || FireGPGInline.siteTmpStats[aUrl.href] == undefined || FireGPGInline.siteTmpStats[aUrl.href] == '')
+        return ''
+
+    return FireGPGInline.siteTmpStats[aUrl.href] ;
+
+}
+
+FireGPGInline.pageOn = function(aUrl) {
+
+    if (FireGPGInline.siteTmpStats == undefined)
+        FireGPGInline.siteTmpStats = new Array();
+
+    if (!FireGPGInline.canIBeExecutedHere(aUrl))
+        FireGPGInline.siteTmpStats[aUrl.href] = 'ON';
+    else
+        delete FireGPGInline.siteTmpStats[aUrl.href];
+
+}
+
+FireGPGInline.pageOff = function(aUrl) {
+
+    if (FireGPGInline.siteTmpStats == undefined)
+        FireGPGInline.siteTmpStats = new Array();
+
+    if (FireGPGInline.canIBeExecutedHere(aUrl))
+        FireGPGInline.siteTmpStats[aUrl.href] = 'OFF';
+    else
+        delete FireGPGInline.siteTmpStats[aUrl.href];
 }

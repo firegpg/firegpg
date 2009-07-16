@@ -22,7 +22,7 @@ The Initial Developer of the Original Code is Maximilien Cuony.
 Portions created by the Initial Developer are Copyright (C) 2007
 the Initial Developer. All Rights Reserved.
 
-Contributor(s): 
+Contributor(s):
 
 Alternatively, the contents of this source code may be used under the terms of
 either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -204,7 +204,14 @@ under the terms of any one of the MPL, the GPL or the LGPL.
     <statusbar id="status-bar">
 
         <statusbarpanel id="firegpg-statusbar">
-            <img src="chrome://firegpg/skin/firegpg.png" class="statusbarpanel-iconic"/>
+
+             <menupopup id="firegpg-icon-pop-up" onpopupshowing="firegpg.updatePopUp();">
+                    <menuitem class="firegpg-menu menuitem-iconic" id="firegpg-status-of-inline" label="" disabled="true"/>
+                    <menuitem class="firegpg-menu menuitem-iconic" id="firegpg-inline-switcher" label="" oncommand="firegpg.onMenuItemCommand(event,this.tag)"/>
+                    <menuitem class="firegpg-menu menuitem-iconic" id="firegpg-inline-temp-switcher" label="" oncommand="firegpg.onMenuItemCommand(event,this.tag)"/>
+                  </menupopup>
+
+            <img src="chrome://firegpg/skin/firegpg.png" class="statusbarpanel-iconic" popup="firegpg-icon-pop-up" />
             <label value="An update of FireGPG is available"   id="firegpg-statusbar-update"  onclick="firegpg.onMenuItemCommand(null,'UPDATE');" style="display: none;"/>
             <label value=""   id="firegpg-statusbar-trusted-content"  style="display: none;"/>
         </statusbarpanel>
