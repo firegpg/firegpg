@@ -1679,6 +1679,8 @@ var FireGPG = {
 		// We get the result
 		var result = this.GPGAccess.decrypt(text,password,binFileEncoded, fileMode, fileFrom, fileTo);
 
+        alert(result.sdOut);
+
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;
 
@@ -1731,6 +1733,8 @@ var FireGPG = {
             returnObject.notEncrypted = true;
 
         }
+
+
 
 
         //Il y avait une signature dans le truc //TODO: detect bad signs.

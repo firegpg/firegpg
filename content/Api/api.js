@@ -341,7 +341,8 @@ var gpgApi = {
 			return;
 
 		var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
-		if(password == null) {
+
+		if(password == null || password == "") {
             returnData.setAttribute('result', 'sign-err');
             returnData.setAttribute('error', 'user-canceled');
 			return;
@@ -422,7 +423,7 @@ var gpgApi = {
 
 
         var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
-		if(password == null) {
+		if(password == null || password == "") {
 			returnData.setAttribute('result', 'sign-err');
             returnData.setAttribute('error', 'user-canceled');
 			return;
@@ -544,7 +545,7 @@ var gpgApi = {
         // Needed for decrypt
 
 		var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
-		if(password == null) {
+		if(password == null || password == "") {
 			returnData.setAttribute('result', 'sign-err');
             returnData.setAttribute('error', 'user-canceled');
 			return;
