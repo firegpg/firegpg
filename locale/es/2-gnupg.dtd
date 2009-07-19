@@ -2,7 +2,7 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Next">
 <!ENTITY title2 "GnuPG">
-<!ENTITY description "FireGPG use GnuPG to handle any pgp operation, it's mean GnuPG must be installed for a working FireGPG.">
+<!ENTITY description "FireGPG usa GnuPG para manejar las operaciones pgp, eso significa que debes de tener instalado GnuPG para que tu FireGPG funcione!">
 <!ENTITY working "GnuPG seem to be accesible and working.">
 <!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
 <!ENTITY sethome "Set a home dir">
@@ -14,7 +14,7 @@
 <!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
 <!ENTITY uncommon "Is you GnuPG installed in an uncommon location ?">
 <!ENTITY setpath "Please set the path to GnuPG here: ">
-<!ENTITY browse "Browse">
+<!ENTITY browse "Buscar">
 <!ENTITY isfireftp "Is FireFTP installed ?">
 <!ENTITY fireftpproblem "FireGPG and FireFTP conflict dues to the old IPC library of FireFTP.">
 <!ENTITY uninstall "If FireGPG's fix dosen't works, you have to uninstall one of them to let's the another working.">

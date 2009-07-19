@@ -1,3 +1,6 @@
+2009-07-19 Maximilien Cuony
+    * Improving security of the api if gpg-agent is turned on
+
 2009-07-18 Maximilien Cuony
     * Cancel api request when blank password given
 

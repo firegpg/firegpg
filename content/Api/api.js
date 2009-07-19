@@ -340,18 +340,33 @@ var gpgApi = {
 		if(keyID == null)
 			return;
 
-		var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
+        // For I18N
+		var i18n = document.getElementById("firegpg-strings");
 
-		if(password == null || password == "") {
-            returnData.setAttribute('result', 'sign-err');
-            returnData.setAttribute('error', 'user-canceled');
-			return;
+        if (!isGpgAgentActivated()) {
+            var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
+
+            if(password == null || password == "") {
+                returnData.setAttribute('result', 'sign-err');
+                returnData.setAttribute('error', 'user-canceled');
+                return;
+            }
         }
+        else {
+            if (!confirm(i18n.getString('comfirm-api-access-with-agent').replace(/%1/gi,event.target.ownerDocument.location))) {
+
+                returnData.setAttribute('result', 'sign-err');
+                returnData.setAttribute('error', 'user-canceled');
+                return;
+            }
+
+        }
+
+
 
         var result = FireGPG.sign(true,text,keyID,password);
 
-		// For I18N
-		var i18n = document.getElementById("firegpg-strings");
+
 
 		if (result.result  == RESULT_SUCCESS)
         {
@@ -421,12 +436,25 @@ var gpgApi = {
 
          keyIdList = keys.split(/;/g);
 
+        // For I18N
+		var i18n = document.getElementById("firegpg-strings");
 
-        var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
-		if(password == null || password == "") {
-			returnData.setAttribute('result', 'sign-err');
-            returnData.setAttribute('error', 'user-canceled');
-			return;
+         if (!isGpgAgentActivated()) {
+            var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
+            if(password == null || password == "") {
+                returnData.setAttribute('result', 'sign-err');
+                returnData.setAttribute('error', 'user-canceled');
+                return;
+            }
+        }
+        else {
+            if (!confirm(i18n.getString('comfirm-api-access-with-agent').replace(/%1/gi,event.target.ownerDocument.location))) {
+
+                returnData.setAttribute('result', 'sign-err');
+                returnData.setAttribute('error', 'user-canceled');
+                return;
+            }
+
         }
 
         // We get the result
@@ -542,21 +570,32 @@ var gpgApi = {
 			return;
 		}
 
-        // Needed for decrypt
+        // For I18N
+		var i18n = document.getElementById("firegpg-strings");
 
-		var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
-		if(password == null || password == "") {
-			returnData.setAttribute('result', 'sign-err');
-            returnData.setAttribute('error', 'user-canceled');
-			return;
+        // Needed for decrypt
+        if (!isGpgAgentActivated()) {
+            var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
+            if(password == null || password == "") {
+                returnData.setAttribute('result', 'sign-err');
+                returnData.setAttribute('error', 'user-canceled');
+                return;
+            }
+        }
+        else {
+            if (!confirm(i18n.getString('comfirm-api-access-with-agent').replace(/%1/gi,event.target.ownerDocument.location))) {
+
+                returnData.setAttribute('result', 'sign-err');
+                returnData.setAttribute('error', 'user-canceled');
+                return;
+            }
+
         }
 
         // We get the result
-		var result = FireGPG.decrypt(true, text,password);
+		var result = FireGPG.decrypt(true, text,password, undefined, undefined, undefined, undefined,true);
 
 
-		// For I18N
-		var i18n = document.getElementById("firegpg-strings");
 
 		if (result.result  == RESULT_SUCCESS)
         {

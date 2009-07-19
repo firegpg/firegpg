@@ -1537,7 +1537,7 @@ var FireGPG = {
             text - _Optional_, if not set try to use the selection. The text to decrypt.
             password - _Optional_, if not set ask the user. The password of the key used to encrypt the data.
     */
-	decrypt: function(silent, text, password, binFileEncoded, fileMode, fileFrom, fileTo) { try {
+	decrypt: function(silent, text, password, binFileEncoded, fileMode, fileFrom, fileTo, api) { try {
 		var returnObject = new GPGReturn();
 
         if (silent == undefined)
@@ -1548,6 +1548,9 @@ var FireGPG = {
 
         if (fileMode == undefined)
             fileMode = false;
+
+        if (api == undefined)
+            api = false;
 
         this.initGPGACCESS();
         var i18n = document.getElementById("firegpg-strings");
@@ -1684,7 +1687,7 @@ var FireGPG = {
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;
 
-        if(result.sdOut.indexOf("DECRYPTION_OKAY") == -1 && (result.sdOut.indexOf("BAD_PASSPHRASE") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_PIN") != -1)) {
+        if(!api && result.sdOut.indexOf("DECRYPTION_OKAY") == -1 && (result.sdOut.indexOf("BAD_PASSPHRASE") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_PIN") != -1)) {
 
             if (result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1)
                 password = getPrivateKeyPassword(false, false,i18n.getString("symetricalPass") + ":", true);
