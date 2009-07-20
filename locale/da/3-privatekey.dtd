@@ -1,17 +1,17 @@
-<!ENTITY title "FireGPG Assistant - Private key">
+<!ENTITY title "FireGPG assistent - privatnøgle">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Private key">
-<!ENTITY description "PGP system work with a private key and a public key. You sign messages with your private key and another users verify your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
-<!ENTITY pk "You have at least a private key in your keyring">
-<!ENTITY setdk "Set a default key">
-<!ENTITY askforpk "Ask for private key">
-<!ENTITY name "Name">
+<!ENTITY next "Fremad">
+<!ENTITY title2 "Privatnøgle">
+<!ENTITY description "PGP-system fungere med en privatnøgle og en offentlig nøgle. Du underskriver beskeder med din privatnøgle og en anden bruger verificerer den underskrift med din offentlige nøgle. Hvis de vil sende dig en besked, kan de bruge din offentlige nøgle, og kun du er i stand til at dekryptere den med din privatnøgle.">
+<!ENTITY pk "Du har mindst én privatnøgle i din nøglering">
+<!ENTITY setdk "Indstil som standardnøgle">
+<!ENTITY askforpk "Spørg efter privatnøgle">
+<!ENTITY name "Navn">
 <!ENTITY id "Id">
-<!ENTITY created "Created">
-<!ENTITY expire "Expire">
-<!ENTITY nopk "You don't have any private key in your keyring">
-<!ENTITY genpk "Generate a private and a public key">
-<!ENTITY gen "Generate">
-<!ENTITY importpk "Import a private key">
+<!ENTITY created "Oprettet">
+<!ENTITY expire "Udløb">
+<!ENTITY nopk "Du har ikke nogen privatnøgle i din nøglering">
+<!ENTITY genpk "Generér en privat og en offentlig nøgle">
+<!ENTITY gen "Generér">
+<!ENTITY importpk "Importér en privatnøgle">
 <!ENTITY import "Import">

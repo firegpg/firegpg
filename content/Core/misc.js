@@ -126,7 +126,7 @@ var updateAvailable = false;
 function fireGPGDebug(message, debugCode, fatal) {
 
     if (FIREGPG_STATUS == "RELASE" && !fatal)
-	
+
         return;
 
     if (fatal)
@@ -211,7 +211,7 @@ function choosePublicKey(preSelect)
 
     Show a dialog (list.xul) to choose a private key.
     null is returned if no keys are chosen.
-	
+
 	Parameters:
 		preSelect - _Optional_. A list of key to preselect
 */
@@ -469,10 +469,10 @@ function eraseSavedPassword() {
 
     Function who return a  private key for the user (the default or the one selected in the list)
     null is returned if no key is selected.
-	
+
 	Parameters:
 		autoSelectPrivate - _Optional_. A list of key to autoselect
-		
+
 */
 function getSelfKey(autoSelectPrivate) {
 	var keyID;
@@ -798,6 +798,7 @@ function testIfSomethingsIsNew() {
 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 		                       getService(Components.interfaces.nsIPrefService);
 		prefs = prefs.getBranch("extensions.firegpg.");
+
 
 
     /* Should we show the assistant ? */
@@ -1443,7 +1444,7 @@ function getKeyServer() {
 /*
 	Function: showSearchBox
 	Show the dialog box to search key
-	
+
 	Paramters:
 		autoSearch - Preset the search field
 */
@@ -1457,7 +1458,7 @@ function showSearchBox(autoSearch) {
 /*
 	Function: convertCRLFToStandarts
 	Convert CR to CRLF, LF to CRLF and keep CRLF
-	
+
 	Parameters:
 		text - The text
 */
@@ -1481,7 +1482,7 @@ function convertCRLFToStandarts(text) {
 	This will accept some data as the argument and return a
 	text that will be a more readable version of the
 	array/hash/object that is given.
-	
+
 	Paramters:
 		arr - The object
 		level - The current level of the dump
@@ -1534,14 +1535,14 @@ function dump2(o) {
 
 /*
 	Class: UTF8
-	Class to handle UTF8 tests. 
+	Class to handle UTF8 tests.
 	http://snippets.dzone.com/posts/show/5294
 */
 UTF8 = {
 	/*
 		Function: encode
 		Encode a text to utf8
-		
+
 		Parameters:
 			s - The text
 	*/
@@ -1551,11 +1552,11 @@ UTF8 = {
 		);
 		return s.join("");
 	},
-	
+
 	/*
 		Function: decode
 		Decode a utf8 text
-	
+
 		Parameters:
 			s - The text
 	*/
@@ -1585,7 +1586,7 @@ var Base64 = {
     /*
 		Function: encode
 		Encode to base6
-		
+
 		Parameters:
 			input - The text
 			bMode - Convert to utf8
@@ -1627,7 +1628,7 @@ var Base64 = {
     /*
 		Function: decode
 		Decode a base64 string
-		
+
 		Paramters:
 			input - The text
 			bMode - Decode from utf8
@@ -1672,7 +1673,7 @@ var Base64 = {
     /*
 		Function: _utf8_encode
 		Encode a string to utf8
-		
+
 		Parameters:
 			string - The string
 	*/
@@ -1705,7 +1706,7 @@ var Base64 = {
     /*
 		Function: _utf8_decode
 		Decode string from utf8
-		
+
 		Parameters:
 			utftext - The text
 	*/
@@ -1742,7 +1743,7 @@ var Base64 = {
 	/*
 		Function: pgpencode
 		Useless function who do nothing
-		
+
 		Parameters:
 			texte - A variable. Cool.
 	*/
@@ -1754,10 +1755,13 @@ var Base64 = {
 /*
 	Function: getFileExtention
 	Return the extention of a file
-	
+
 	Parameters:
 		filename - The file name
 */
 function getFileExtention(filename) {
    return filename.substring(filename.length - 3,filename.length).toLowerCase();
 }
+
+
+

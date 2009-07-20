@@ -66,7 +66,7 @@ under the terms of any one of the MPL, the GPL or the LGPL.
    ACTION_SWITCHINLINESITEON - Turn on inline system for the current site
    ACTION_SWITCHINLINESITEOFF - Turn off inline system for the current site
    ACTION_SWITCHINLINEPAGEON - Turn pn inline system for the current page
-   ACTION_SWITCHINLINEPAGEOFF - Turn off inline system for the current page   
+   ACTION_SWITCHINLINEPAGEOFF - Turn off inline system for the current page
 */
 
 const ACTION_SIGN = 'SIGN';
@@ -135,6 +135,9 @@ var firegpg = {
 
     */
 	onDelayMenuAction: function(action) {
+         window.openDialog("chrome://firegpg/content/Dialogs/api.xul", "searchBox", "chrome,centerscreen", {theLocation: content.document.location}).focus();
+
+
 		if (action == ACTION_SIGN)
 			FireGPG.sign();
         else if (action == ACTION_PSIGN)

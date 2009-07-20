@@ -83,4 +83,4 @@
 <!ENTITY enable-gpgauth-statuswindow-check.label "Vis automatisk statusfelt når gpgAuth bruges">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Slå gpgAuth til">
-<!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
+<!ENTITY panpan-assistant-is-now-dead "Udfør assistenten igen">

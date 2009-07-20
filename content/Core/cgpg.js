@@ -1721,9 +1721,6 @@ var FireGPG = {
 
 		// We get the result
 		var result = this.GPGAccess.decrypt(text,password,binFileEncoded, fileMode, fileFrom, fileTo);
-
-        alert(result.sdOut);
-
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;
 

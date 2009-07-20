@@ -1,22 +1,22 @@
-<!ENTITY title "FireGPG Assistant - Gmail">
+<!ENTITY title "FireGPG assistent - Gmail">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Gmail support">
-<!ENTITY description "FireGPG can be integrated with gmail: additionnals buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signs of any mails.">
-<!ENTITY enable "Enable gmail support">
-<!ENTITY smtpok "FireGPG is able to access to the smtp server">
-<!ENTITY noauth "NB: Authentification is not tested !">
-<!ENTITY noauthhelp "FireGPG will warn you when he try to send a mail if there is a problem">
-<!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
-<!ENTITY atta "Attachements">
-<!ENTITY inline "Use inline">
-<!ENTITY inlinesuck "Inline is bad and not working everytime. OpenPGP/Mime, as standard, should be used !">
-<!ENTITY nosmtp "FireGPG isn't able to access to the smtp server OR request is still in progress">
-<!ENTITY wait "Wait 15 seconds or more if your connexion is very slow">
-<!ENTITY setp "Set parameters of a working smtp server (eg. your internet provider or your work place server)">
-<!ENTITY host "Host (smtp.gmail.com): ">
-<!ENTITY port "Port (465):">
-<!ENTITY username "Username (leave blank to use the username of logged account):">
-<!ENTITY ssl "Use SSL">
-<!ENTITY setdo "Set default options for sending mails">
+<!ENTITY next "Fremad">
+<!ENTITY title2 "Understøttelse af Gmail">
+<!ENTITY description "FireGPG kan integreres med Gmail: Ekstra knapper til kryptering og/eller underskrift af e-post er tilføjet. Du vil kunne dekryptere og kontrollere underskrifter på alle e-poster.">
+<!ENTITY enable "Slå understøttelse af Gmail til">
+<!ENTITY smtpok "FireGPG er i stand til at tilgå SMTP-serveren">
+<!ENTITY noauth "NB: Godkendelse er ikke blevet afprøvet!">
+<!ENTITY noauthhelp "FireGPG vil advare dig, når den forsøger at sende en e-post, og der er et problem">
+<!ENTITY sign "Underskriv">
+<!ENTITY encrypt "Kryptér">
+<!ENTITY atta "Vedhæftninger">
+<!ENTITY inline "Brug indlejret">
+<!ENTITY inlinesuck "Indlejring er ødelagt og virker ikke hver gang. OpenPGP/MIME bør bruges som standard!">
+<!ENTITY nosmtp "FirGPG er ikke i stand til at tilgå SMTP-serveren ELLER anmodningen er stadig under udførelse">
+<!ENTITY wait "Vent 15 sekunder eller mere hvis din forbindelse er meget langsom">
+<!ENTITY setp "Indstil parametre til en fungerende SMTP-server (eksempelvis din internetudbyder eller din arbejdspladsserver)">
+<!ENTITY host "Vært (smtp.gmail.com): ">
+<!ENTITY port " Port (465):">
+<!ENTITY username "Brugernavn (lad brugernavnet være tomt for at bruge brugernavn for indlogget konto):">
+<!ENTITY ssl "Brug SSL">
+<!ENTITY setdo "Indstil standarder for afsendelse af e-poster">
