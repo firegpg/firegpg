@@ -43,8 +43,11 @@ under the terms of any one of the MPL, the GPL or the LGPL.
    Constants: Actions.
 
    ACTION_SIGN - Sign the current selected data
+   ACTION_PSIGN - Plain sign the current selected data
+   ACTION_WSIGN - Sign the wrapped current selected data
    ACTION_VERIF - Verifiy signs of the current selected data
    ACTION_CRYPT - Encrypt the current selected data
+   ACTION_SYMCRYPT - Encrypt the current selected data with symetric algo
    ACTION_CRYPTSIGN -  Encrypt and sign the current selected data
    ACTION_DECRYPT - Decrypt the current selected data
    ACTION_IMPORT - Import the current selected data
@@ -52,7 +55,18 @@ under the terms of any one of the MPL, the GPL or the LGPL.
    ACTION_EDITEUR - Show the editor windows
    ACTION_MANAGER - Show the key manager windows
    ACTION_OPTS - Show the options windows
-   ACTION_ERASE - Erase the current saved password.
+   ACTION_ERASE - Erase the current saved password
+   ACTION_FSIGN = Sign a file
+   ACTION_FVERIF = Verify sign of a file
+   ACTION_FCRYPT = Encrypt a file
+   ACTION_FDECRYPT = Decrypt a file
+   ACTION_FSYMCRYPT - Encrypt with symetric algo a file
+   ACTION_FCRYPTSIGN - Crypt and sign a file
+   ACTION_FHASHES - Show the hash'windows
+   ACTION_SWITCHINLINESITEON - Turn on inline system for the current site
+   ACTION_SWITCHINLINESITEOFF - Turn off inline system for the current site
+   ACTION_SWITCHINLINEPAGEON - Turn pn inline system for the current page
+   ACTION_SWITCHINLINEPAGEOFF - Turn off inline system for the current page   
 */
 
 const ACTION_SIGN = 'SIGN';
@@ -216,7 +230,10 @@ var firegpg = {
 		firegpg.onMenuItemCommand(e);
 	},
 
-
+	/*
+	Function: updatePopUp
+	Update labels of inline popup
+	*/
     updatePopUp: function() {
 
         var i18n = document.getElementById("firegpg-strings");

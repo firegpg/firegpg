@@ -39,23 +39,12 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 */
 
-/*
-try {
-     	const cid = "@getfiregpg.org/XPCOM/FireGPGCall;1";
-		obj = Components.classes[cid].createInstance();
-		obj = obj.QueryInterface(Components.interfaces.IFireGPGCall);
-	} catch (err) {
-		alert("E" + err);
-    }
-	var res = obj.Call("touch"," touch /tmp/coucou","testtest\n");
-    alert("R" + res);
-//
-*/
-
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */
 const FIREGPG_VERSION = '0.7.6';
 
+/* Constant: FIREGPG_VERSION_A
+  The current verion of FireGPG without dots */
 const FIREGPG_VERSION_A = '076';
 
 /* Constant: FIREGPG_STATUS
@@ -117,6 +106,10 @@ var savedPassword = null; /* the private key password */
  */
 var oldKeyID = '';
 
+/*
+	Variable: updateAvailable
+	True if an update of FireGPG is available
+*/
 var updateAvailable = false;
 
 /*
@@ -133,6 +126,7 @@ var updateAvailable = false;
 function fireGPGDebug(message, debugCode, fatal) {
 
     if (FIREGPG_STATUS == "RELASE" && !fatal)
+	
         return;
 
     if (fatal)
@@ -153,7 +147,7 @@ function fireGPGDebug(message, debugCode, fatal) {
     null is returned if the public key is not choosed
 
     Paramters:
-        preSelect - _Optional_. And array of kkey to preselect.
+        preSelect - _Optional_. And array of keys to preselect.
 
 */
 function choosePublicKey(preSelect)
@@ -217,6 +211,9 @@ function choosePublicKey(preSelect)
 
     Show a dialog (list.xul) to choose a private key.
     null is returned if no keys are chosen.
+	
+	Parameters:
+		preSelect - _Optional_. A list of key to preselect
 */
 function choosePrivateKey(preSelect)
 {
@@ -472,6 +469,10 @@ function eraseSavedPassword() {
 
     Function who return a  private key for the user (the default or the one selected in the list)
     null is returned if no key is selected.
+	
+	Parameters:
+		autoSelectPrivate - _Optional_. A list of key to autoselect
+		
 */
 function getSelfKey(autoSelectPrivate) {
 	var keyID;
@@ -701,6 +702,7 @@ function putIntoBinFile(filename, data) {
 
     Parameters:
         aURL - The location of the file.
+		maxData - _Optional_. The max length of data to get. {MAX} is returned if there is too data
 */
 function getBinContent(aURL, maxData) {
 	var ioService = Components.classes["@mozilla.org/network/io-service;1"].
@@ -915,6 +917,10 @@ function testIfSomethingsIsNew() {
 	}
 }
 
+/*
+Function: showUpdateDialog
+Show the update dialog to let user update FireGPG
+*/
 function showUpdateDialog() {
 
     var i18n = document.getElementById("firegpg-strings");
@@ -1212,7 +1218,7 @@ function CreateTreeItemKey(key, document, forceId) {
 
 
 /*
-  Function: CreateTreeItemKey
+  Function: CreateTreeItemKey2
 
   Return a Treeitem for the key in parameter
 
@@ -1220,6 +1226,8 @@ function CreateTreeItemKey(key, document, forceId) {
     key - The key
     document - The current document.
     forceId - If we have to force the id of the key
+	privateKey - True if it's a private key
+	subkey - True if it's a subkey
 */
 function CreateTreeItemKey2(key, document, forceId, privateKey, subkey) {
 
@@ -1302,6 +1310,15 @@ function CreateTreeItemKey2(key, document, forceId, privateKey, subkey) {
 
 }
 
+/*
+Function: setSkinForKey
+Set the correct class of a key, using his status (private, revoked)
+
+Parameters:
+	key - The key
+	child - The element
+	privateKEy - True if it's a private key
+*/
 function setSkinForKey(key, child, privateKey) {
 
     if (privateKey  == true)
@@ -1317,7 +1334,17 @@ function setSkinForKey(key, child, privateKey) {
 
 }
 
+/*
+  Function: CreateTreeItemKey3
+  Return a Treeitem for the key in parameter
 
+  Parameters:
+    key - The key
+    document - The current document.
+    mainKey - The partent key of the key
+	sign - The sign of the key
+	havePrivate - If the user have the private key
+*/
 function CreateTreeItemKey3(key, document, mainKey, sign, havePrivate) {
 
     var  item  = document.createElement('treeitem');
@@ -1358,6 +1385,17 @@ function CreateTreeItemKey3(key, document, mainKey, sign, havePrivate) {
 
 }
 
+/*
+  Function: setSkinForKey2
+  Set class for a node with the key attribute
+
+  Parameters:
+    key - The key
+    child - The node
+    mainKey - The partent key of the key
+	sign - The sign of the key
+	havePrivate - If the user have the private key
+*/
 function setSkinForKey2(key, child, mainKey, sign, havePrivate) {
 
     if (mainKey  == true)
@@ -1376,6 +1414,10 @@ function setSkinForKey2(key, child, mainKey, sign, havePrivate) {
 
 }
 
+/*
+	Function: getKeyServer
+	Return the current key server
+*/
 function getKeyServer() {
 
         var prefs = Components.classes["@mozilla.org/preferences-service;1"].
@@ -1398,6 +1440,13 @@ function getKeyServer() {
 
 }
 
+/*
+	Function: showSearchBox
+	Show the dialog box to search key
+	
+	Paramters:
+		autoSearch - Preset the search field
+*/
 function showSearchBox(autoSearch) {
 
 
@@ -1405,6 +1454,13 @@ function showSearchBox(autoSearch) {
 
 }
 
+/*
+	Function: convertCRLFToStandarts
+	Convert CR to CRLF, LF to CRLF and keep CRLF
+	
+	Parameters:
+		text - The text
+*/
 function convertCRLFToStandarts(text) {
     //Standarts say: \r\n, stoo.
 
@@ -1419,63 +1475,90 @@ function convertCRLFToStandarts(text) {
 
 }
 
-/**
-* Function : dump()
-* Arguments: The data - array,hash(associative array),object
-*    The level - OPTIONAL
-* Returns  : The textual representation of the array.
-* This function was inspired by the print_r function of PHP.
-* This will accept some data as the argument and return a
-* text that will be a more readable version of the
-* array/hash/object that is given.
+/*
+	Function: dumper
+	This function was inspired by the print_r function of PHP.
+	This will accept some data as the argument and return a
+	text that will be a more readable version of the
+	array/hash/object that is given.
+	
+	Paramters:
+		arr - The object
+		level - The current level of the dump
+
 */
 function dumper(arr,level) {
-var dumped_text = "";
-if(!level) level = 0;
+	var dumped_text = "";
 
-//The padding given at the beginning of the line.
-var level_padding = "";
-for(var j=0;j<level+1;j++) level_padding += "    ";
+	if(!level) level = 0;
 
-if(typeof(arr) == 'object') { //Array/Hashes/Objects
- for(var item in arr) {
-  var value = arr[item];
+	//The padding given at the beginning of the line.
+	var level_padding = "";
+	for(var j=0;j<level+1;j++) level_padding += "    ";
 
-  if(typeof(value) == 'object') { //If it is an array,
-   dumped_text += level_padding + "'" + item + "' ...\n";
-   dumped_text += dumper(value,level+1);
-  } else {
-   dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
-  }
- }
-} else { //Stings/Chars/Numbers etc.
- dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+	if(typeof(arr) == 'object') { //Array/Hashes/Objects
+	 for(var item in arr) {
+	  var value = arr[item];
+
+	  if(typeof(value) == 'object') { //If it is an array,
+	   dumped_text += level_padding + "'" + item + "' ...\n";
+	   dumped_text += dumper(value,level+1);
+	  } else {
+	   dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
+	  }
+	 }
+	} else { //Stings/Chars/Numbers etc.
+	 dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+	}
+	return dumped_text;
 }
-return dumped_text;
-}
 
+/*
+	Function: dump2
+	Show an array or an object in a console
 
-
+	Parameters:
+		o - The object
+*/
 function dump2(o) {
 
     for (i in o) {
-if (o[i])
- fireGPGDebug(o[i], i, true);
+	if (o[i])
+	 fireGPGDebug(o[i], i, true);
 
-if (o.i)
- fireGPGDebug(o.i, '~' + i, true);
+	if (o.i)
+	 fireGPGDebug(o.i, '~' + i, true);
+	}
+
 }
 
-}
-
-//http://snippets.dzone.com/posts/show/5294
+/*
+	Class: UTF8
+	Class to handle UTF8 tests. 
+	http://snippets.dzone.com/posts/show/5294
+*/
 UTF8 = {
+	/*
+		Function: encode
+		Encode a text to utf8
+		
+		Parameters:
+			s - The text
+	*/
 	encode: function(s){
 		for(var c, i = -1, l = (s = s.split("")).length, o = String.fromCharCode; ++i < l;
 			s[i] = (c = s[i].charCodeAt(0)) >= 127 ? o(0xc0 | (c >>> 6)) + o(0x80 | (c & 0x3f)) : s[i]
 		);
 		return s.join("");
 	},
+	
+	/*
+		Function: decode
+		Decode a utf8 text
+	
+		Parameters:
+			s - The text
+	*/
 	decode: function(s){
 		for(var a, b, i = -1, l = (s = s.split("")).length, o = String.fromCharCode, c = "charCodeAt"; ++i < l;
 			((a = s[i][c](0)) & 0x80) &&
@@ -1486,19 +1569,27 @@ UTF8 = {
 	}
 };
 
-/**
-*
-*  Base64 encode / decode
-*  http://www.webtoolkit.info/
-*
-**/
-
+/*
+	Class: Base64
+	Class to handle base64 encoding
+	http://www.webtoolkit.info/
+*/
 var Base64 = {
 
-    // private property
+ 	/*
+	Variable: _keyStr
+	Valid base64 chars
+	*/
     _keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
 
-    // public method for encoding
+    /*
+		Function: encode
+		Encode to base6
+		
+		Parameters:
+			input - The text
+			bMode - Convert to utf8
+	*/
     encode : function (input,bMode) {
         var output = "";
         var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
@@ -1533,7 +1624,14 @@ var Base64 = {
         return output;
     },
 
-    // public method for decoding
+    /*
+		Function: decode
+		Decode a base64 string
+		
+		Paramters:
+			input - The text
+			bMode - Decode from utf8
+	*/
     decode : function (input,bMode) {
         var output = "";
         var chr1, chr2, chr3;
@@ -1571,7 +1669,13 @@ var Base64 = {
 
     },
 
-    // private method for UTF-8 encoding
+    /*
+		Function: _utf8_encode
+		Encode a string to utf8
+		
+		Parameters:
+			string - The string
+	*/
     _utf8_encode : function (string) {
         string = string.replace(/\r\n/g,"\n");
         var utftext = "";
@@ -1598,7 +1702,13 @@ var Base64 = {
         return utftext;
     },
 
-    // private method for UTF-8 decoding
+    /*
+		Function: _utf8_decode
+		Decode string from utf8
+		
+		Parameters:
+			utftext - The text
+	*/
     _utf8_decode : function (utftext) {
         var string = "";
         var i = 0;
@@ -1629,17 +1739,25 @@ var Base64 = {
         return string;
     },
 
+	/*
+		Function: pgpencode
+		Useless function who do nothing
+		
+		Parameters:
+			texte - A variable. Cool.
+	*/
     pgpencode: function(texte) {
-
-
-
-
     }
 
 }
 
+/*
+	Function: getFileExtention
+	Return the extention of a file
+	
+	Parameters:
+		filename - The file name
+*/
 function getFileExtention(filename) {
-
    return filename.substring(filename.length - 3,filename.length).toLowerCase();
-
 }

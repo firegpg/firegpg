@@ -42,17 +42,13 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 /*
    Constants: Actions.
 
-   ACTION_SIGN - Sign the current selected data
-   ACTION_VERIF - Verifiy signs of the current selected data
-   ACTION_CRYPT - Encrypt the current selected data
-   ACTION_CRYPTSIGN -  Encrypt and sign the current selected data
-   ACTION_DECRYPT - Decrypt the current selected data
-   ACTION_IMPORT - Import the current selected data
-   ACTION_EXPORT - Show the dialog to export a key
+
+   ACTION_VERIF - Verifiy signs of the current selected file
+   ACTION_DECRYPT - Decrypt the current selected file
    ACTION_EDITEUR - Show the editor windows
-   ACTION_MANAGER - Show the key manager windows
    ACTION_OPTS - Show the options windows
    ACTION_ERASE - Erase the current saved password.
+   ACTION_HASH - The the hash window
 */
 
 

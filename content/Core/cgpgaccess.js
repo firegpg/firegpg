@@ -69,8 +69,6 @@ const idAppli = "firegpg@firegpg.team";
    XPCOM_STATE_DONTWORK_IN_0_5   - The xpcom of version 0.5 doesn't work.
 */
 
-
-
 const XPCOM_STATE_DONTWORK_IN_0_5 = 2;
 const XPCOM_STATE_DISABLED_IN_0_5 = 3;
 

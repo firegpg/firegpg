@@ -39,11 +39,21 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 */
 
+/*
+ Class: gpgApi
+ Class who manage link between FireGPG and the website who use the api
+ */
 var gpgApi = {
+	/*
+	 Function: onLoad
+	 Init api features when a new page is loaded
+	 */
 	onLoad: function() {
+		
 		this.initialized = true;
 		this.strings = document.getElementById( "firegpg-strings" );
 
+		//Is api enabled ?
 		this.prefs = Components.classes["@mozilla.org/preferences-service;1"].
 				getService(Components.interfaces.nsIPrefService);
 		this.prefs = this.prefs.getBranch("extensions.firegpg.");
@@ -54,6 +64,7 @@ var gpgApi = {
 			var gpgapi_enabled = true;
 		}
 
+		//Add listeners
 		if ( gpgapi_enabled ) {
 			window.addEventListener( "firegpg:hello", this.hello, false, true );
             window.addEventListener( "firegpg:auth", this.auth, false, true );
@@ -70,6 +81,10 @@ var gpgApi = {
 
 	},
 
+	/*
+		Function: listenerUnload
+		Remove all api listeners
+	*/
 	listenerUnload: function( event ) {
 		window.removeEventListener( "firegpg:hello", this.hello, false, true );
         window.removeEventListener( "firegpg:auth", this.auth, false, true );
@@ -84,8 +99,10 @@ var gpgApi = {
 
 	},
 
-
-    //Return 'firegpg-ok' in 'result' (useful to test firegpg's api presence)
+	/*
+		Function: hello
+		Return 'firegpg-ok' in 'result' (useful to test firegpg's api presence)
+	*/
     hello: function ( event ) {
 
         returnData = gpgApi.getReturnDataNode(event.target);
@@ -96,10 +113,14 @@ var gpgApi = {
 
     },
 
-    //Return 'auth-ok' in 'result' (or 'auth-fail' is the website have rights to use the api
-    //Paramters : 'auth_key' --> the key for the website
+	/*
+		Function: auth
+		Return 'auth-ok' in 'result' (or 'auth-fail' is the website have rights to use the api
+    	
+		Paramters:
+			auth_key - the key for the website
+	*/
     auth: function ( event ) {
-
 
         data = gpgApi.getDataNode(event.target);
 
@@ -117,7 +138,10 @@ var gpgApi = {
 
     },
 
-    //Try to register a webpage (ask the user). Put 'register-ok' in 'result' or 'register-fail'. It's all is ok, put the auth key in 'auth_key'
+    /*
+		Function: register
+		Try to register a webpage (ask the user). Put 'register-ok' in 'result' or 'register-fail'. It's all is ok, put the auth key in 'auth_key'
+	*/
     register: function ( event ) {
 
         domain = gpgApi.getDomain(event.target.ownerDocument.location);
@@ -163,7 +187,10 @@ var gpgApi = {
 
     },
 
-    // Return the node with data attributes for return
+    /*
+		Function: getDataNode
+		Return the node with data attributes for return
+	*/
     getDataNode: function(d) {
 
         liste = d.getElementsByTagName( "firegpg:data" );
@@ -172,8 +199,13 @@ var gpgApi = {
 
     },
 
-    //Return 'list-ok' in 'result' (or 'list-err' is there is a problem), and the list of public key in list
-    //Paramters : 'auth_key' --> the key for the website
+	/*
+		Function: listkey
+		Return 'list-ok' in 'result' (or 'list-err' is there is a problem), and the list of public key in list
+    	
+		Paramters:
+		auth_key' - the key for the website
+	*/
     listkey: function ( event ) {
 
 
@@ -207,8 +239,13 @@ var gpgApi = {
 
     },
 
-    //Return 'list-ok' in 'result' (or 'list-err' is there is a problem), and the list of private key in list
-    //Paramters : 'auth_key' --> the key for the website
+    /*
+		Function: listprivkey
+		Return 'list-ok' in 'result' (or 'list-err' is there is a problem), and the list of private key in list
+		
+		Paramters: 
+			auth_key - the key for the website
+	*/
     listprivkey: function ( event ) {
 
 
@@ -242,9 +279,17 @@ var gpgApi = {
 
     },
 
-    // Return 'check-ok' in 'result' (or 'check-err' is there is a problem) if the sign is valid.
-    // Return in 'ckeck-infos' info on sign
-    // Paramters : 'auth_key' --> the key for the website, 'text' -> the text to check
+	/*
+		Function: check
+		Return 'check-ok' in 'result' (or 'check-err' is there is a problem) if the sign is valid.
+    	
+		Return:
+		in 'ckeck-infos' info on sign
+    	
+		Paramters:
+			auth_key - the key for the website
+			text - the text to check
+	*/
     check: function ( event ) {
 
 
@@ -309,9 +354,16 @@ var gpgApi = {
 
     },
 
-    // Return 'sign-ok' in 'result' (or 'sign-err' is there is a problem) if makeing a sign was successfull
-    // Return in 'text' a signed text
-    // Paramters : 'auth_key' --> the key for the website, 'text' -> the text to check, 'force-key' --> optional, to force the gpg's key to use
+    /*
+		Function: sign
+		Return 'sign-ok' in 'result' (or 'sign-err' is there is a problem) if makeing a sign was successfull
+   		Return in 'text' a signed text
+    	
+		Paramters:
+			auth_key - the key for the website
+			text - the text to check
+			force-key - optional, to force the gpg's key to use
+	*/
     sign: function ( event ) {
 
         data = gpgApi.getDataNode(event.target);
@@ -400,9 +452,17 @@ var gpgApi = {
 
     },
 
-    // Return 'signandencrypt-ok' in 'result' (or 'signandencrypt-err' is there is a problem) if makeing a signed and encrypted text was successfull
-    // Return in 'text' the encrypted  text
-    // Paramters : 'auth_key' --> the key for the website, 'text' -> the text to check, 'keys' --> the keys list, 'force-key' --> optional, to force the gpg's key to use
+    /*
+		Function: signandencrypt
+		Return 'signandencrypt-ok' in 'result' (or 'signandencrypt-err' is there is a problem) if makeing a signed and encrypted text was successfull
+    	Return in 'text' the encrypted  text
+		
+    	Paramters: 
+			auth_key - the key for the website
+			text - the text to check
+			keys - the keys list
+			force-key - optional, to force the gpg's key to use
+	*/
     signandencrypt: function ( event ) {
 
 
@@ -493,9 +553,16 @@ var gpgApi = {
     },
 
 
-    // Return 'encrypt-ok' in 'result' (or 'encrypt-err' is there is a problem) if makeing a ecnrypted text was successfull
-    // Return in 'text' the encrypted  text
-    // Paramters : 'auth_key' --> the key for the website, 'text' -> the text to check, 'keys' --> the keys list
+    /*
+		Function: encrypt
+		Return 'encrypt-ok' in 'result' (or 'encrypt-err' is there is a problem) if makeing a ecnrypted text was successfull
+    	Return in 'text' the encrypted  text
+    	
+		Paramters:
+			auth_key - the key for the website
+			text - the text to check
+			keys - the keys list
+	*/
     encrypt: function ( event ) {
 
 
@@ -545,9 +612,15 @@ var gpgApi = {
 
     },
 
-    // Return 'decrypt-ok' in 'result' (or 'decrypt-err' is there is a problem) if trying to decrypt a text was successfull
-    // Return in 'text' the decrypted text
-    // Paramters : 'auth_key' --> the key for the website, 'text' -> the text to decrypt
+	/*
+		Function: decrypt
+    	Return 'decrypt-ok' in 'result' (or 'decrypt-err' is there is a problem) if trying to decrypt a text was successfull
+    	Return in 'text' the decrypted text
+    
+		Paramters: 
+			auth_key - the key for the website
+			text - the text to decrypt
+	*/
     decrypt: function ( event ) {
 
 
@@ -641,8 +714,10 @@ var gpgApi = {
 
 
 
-
-    // Change # to #1, : to #2 and , to #3 in a string
+	/*
+		Function: removeDoublePoint
+		Change # to #1, : to #2 and , to #3 in a string
+	*/
     removeDoublePoint: function(s) {
 
         s = s.toString();
@@ -654,7 +729,10 @@ var gpgApi = {
     },
 
 
-    // Return the node with data attributes for return
+    /*
+		Function: getReturnDataNode
+		Return the node with data attributes for return
+	*/
     getReturnDataNode: function(d) {
 
         liste = d.getElementsByTagName( "firegpg:returndata" );
@@ -663,7 +741,10 @@ var gpgApi = {
 
     },
 
-    // Return true if the user have sign to use FireGPG's api
+    /*
+		Function: isAuth
+		Return true if the user have right to use FireGPG's api
+	*/
     isAuth: function(key, document) {
 
         try {
@@ -679,7 +760,10 @@ var gpgApi = {
 
     },
 
-    //Get the current domain for the page, or the webpage if we're in local (file://)
+    /*
+		Function: getDomain
+		Get the current domain for the page, or the webpage if we're in local (file://)
+	*/
     getDomain: function(url) {
 
 
@@ -702,7 +786,10 @@ var gpgApi = {
 
     },
 
-    //Return the list of access
+    /*
+		Function: getAccessList
+		Return the list of access
+	*/
     getAccessList: function() {
 
         var array_return = new Array();
@@ -741,7 +828,10 @@ var gpgApi = {
 
     },
 
-    //Set a new list of access
+    /*
+		Function: setAccessList
+		Set a new list of access
+	*/
     setAccessList: function(arrayy) {
 
         var final_data = ';';

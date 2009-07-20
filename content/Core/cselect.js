@@ -44,7 +44,13 @@ under the terms of any one of the MPL, the GPL or the LGPL.
    Class to handle selection
 */
 var Selection = {
-	/* find a select in a frame */
+	/* 
+	Function: getFrame
+	find a select in a frame
+	
+	Parameters:
+		frames - The frame
+	*/
 	getFrame: function(frames) {
 		var i;
 		var selObj;
