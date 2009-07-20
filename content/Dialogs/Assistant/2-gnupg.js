@@ -39,18 +39,22 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 */
 
+
+
+/*
+  Variable: gpgWorking
+  True if gpg is working
+*/
+var gpgWorking = false;
+
 /*
     Function: onLoad
-
     This function is called when the form is show.
 
     Parameters:
         win - The form herself.
 
 */
-
-var gpgWorking = false;
-
 function onLoad(win) {
     testGpg();
 
@@ -65,7 +69,6 @@ function onLoad(win) {
 
 /*
     Function: next
-
     Process to the next step of the assistant
 
 */
@@ -84,6 +87,10 @@ function next() {
 
 }
 
+/*
+    Function: testGpg
+    Test if gpg works and change the interface
+*/
 function testGpg() {
 
     var result = FireGPG.selfTest(true);
@@ -133,8 +140,10 @@ function directorySelector() {
 }
 
 
-
-
+/*
+    Function: chooseGPGPath
+    Set a new path to GPG
+*/
 function chooseGPGPath() {
 
     var gpg_path = fileSelector();
@@ -156,6 +165,10 @@ function chooseGPGPath() {
 
 }
 
+/*
+    Function: sepcialHome
+    Set a new home. This function erase customs parameters already set
+*/
 function sepecialHome() {
 
     var prefs = Components.classes["@mozilla.org/preferences-service;1"].
@@ -175,10 +188,6 @@ function sepecialHome() {
         }
 
         prefs.setCharPref("gpg_user_options", "--home " + directory.replace(/ /gi, '{$SPACE}'));
-
         alert(document.getElementById('firegpg-strings').getString('homedirset').replace(/%s/gi, directory));
-
-
     }
-
 }

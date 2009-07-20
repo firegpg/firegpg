@@ -42,23 +42,18 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 /*
     Function: onLoad
-
     This function is called when the form is show.
 
     Parameters:
         win - The form herself.
-
 */
-
 
 function onLoad(win) {
 }
 
 /*
     Function: next
-
     Process to the next step of the assistant
-
 */
 function next() {
     this.close();

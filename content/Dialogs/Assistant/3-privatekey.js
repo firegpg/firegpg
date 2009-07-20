@@ -49,16 +49,12 @@ under the terms of any one of the MPL, the GPL or the LGPL.
         win - The form herself.
 
 */
-
-var gpgWorking = false;
-
 function onLoad(win) {
     textPrivateKey();
 }
 
 /*
     Function: next
-
     Process to the next step of the assistant
 
 */
@@ -72,7 +68,8 @@ function next() {
 }
 
 /*
-
+    Function: textPrivateKey
+    Test if there is a private key and set the interface
 */
 function textPrivateKey() {
 
@@ -185,7 +182,8 @@ function privateKeySelected(listbox) {
 }
 
 /*
-
+    Function: genKey
+    Load the window to create a new ey
 */
 function genKey() {
 
@@ -193,6 +191,10 @@ function genKey() {
     textPrivateKey();
 }
 
+/*
+    Function: import
+    Let's user import a key
+*/
 function import() {
 
 	var nsIFilePicker = Components.interfaces.nsIFilePicker;

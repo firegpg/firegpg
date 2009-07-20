@@ -42,8 +42,6 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 
 
-
-
 var curentlySelected = null;
 var curentlySelectedR = null;
 var privateKey = false;

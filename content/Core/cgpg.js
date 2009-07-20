@@ -131,6 +131,7 @@ function GPGReturn() {
 		expired - True if the key is expired
 		revoked - True if the key is revoked
 		keyTrust - Trust of the key
+		fingerPrint - The fingerprint of the ey
 
 */
 function GPGKey() {
@@ -198,6 +199,12 @@ var FireGPG = {
             keyID - _Optional_, if not set use the default private key or ask the user. The private keyID used to sign.
             password - _Optional_, if not set ask the user.
             notClear - _Optional_, Do not make a clear sign
+            autoSelectPrivate - _Optional_. List of private key to preselect
+            wrap - _Optional_. Wrap signed text
+            fileMode - _Optional_. Indicate the user want to sign a file
+            fileFrom - _Optional_. The file to sign
+            fileTo - _Optional_. The file where to put the signature
+
     */
     sign: function(silent, text, keyID, password, notClear, autoSelectPrivate, wrap, fileMode, fileFrom, fileTo) {
 
@@ -401,6 +408,13 @@ var FireGPG = {
 
     },
 
+    /*
+        Function: listSigns
+        List signatures of a key
+
+        Parameters:
+            key - The key
+    */
     listSigns: function(key) {
 
         return this.listKeys(false,true,key);
@@ -415,6 +429,8 @@ var FireGPG = {
 
         Parameters:
             onlyPrivate - _Optional_, default to false. Set this to true to get only the private keys.
+            allKeys - _Optional_. Return expired and revokey keys too
+            onlySignOfThisKey - _Optional_. Return only signs of the key
 
     */
 	listKeys: function(onlyPrivate, allKeys, onlySignOfThisKey) {
@@ -601,6 +617,7 @@ var FireGPG = {
         Parameters:
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
             text - _Optional_, if not set try to use the selection. The text to import
+            passSecurity - _Optional_, let's user import anything (like private keys, booo)
     */
 	kimport: function(silent, text, passSecurity) {
 
@@ -753,6 +770,9 @@ var FireGPG = {
             autoSelect - _Optional_, An array of recipients' keys' id to autoselect on the key's list selection.
             symetrical - _Optional_. Use symetrical encrypt
             password - _Optional_. The password for symetrical encryption.
+            fileMode - _Optional_. Indicate the user want to encrypt a file
+            fileFrom - _Optional_. The file to encrypt
+            fileTo - _Optional_. The file where to put the encrypted content
     */
 	crypt: function(silent, text, keyIdList, fromGpgAuth, binFileMode, autoSelect, symetrical, password, fileMode, fileFrom, fileTo) {
 
@@ -963,6 +983,10 @@ var FireGPG = {
             keyIdList - _Optional_, if not set ask the user. An array of recipients' keys' id to encrypt
             binFileMode - _Optional_, Default to false. Set this to true if data isensn't  simple text.
             autoSelect - _Optional_, An array of recipients' keys' id to autoselect on the key's list selection.
+            autoSelect - _Optional_ An array of private key to autoselect on key's list selection.
+            fileMode - _Optional_. Indicate the user want to encrypt&sign a file
+            fileFrom - _Optional_. The file to sign
+            fileTo - _Optional_. The file where to put the encrypted & signed file
     */
     cryptAndSign: function(silent, text, keyIdList, fromGpgAuth, password, keyID, binFileMode, autoSelect, autoSelectPrivate, fileMode, fileFrom, fileTo) {
 
@@ -1162,6 +1186,11 @@ var FireGPG = {
         Parameters:
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
             text - _Optional_, if not set try to use the selection. The text to verify
+            charset - _Optional_, the charset to use
+            signData - Deprecated parameter.
+            fileMode - _Optional_. Indicate the user want to verify the signature of a file
+            fileFrom - _Optional_. The file to verify
+            fileSig - _Optional_. The file with the signature
     */
 	verify: function(silent, text, charset, signData, fileMode, fileFrom, fileSig) {
 
@@ -1408,6 +1437,12 @@ var FireGPG = {
             text - The text to verify
             layer - The current layer
             division - The current layer level
+            charset - The charset to use
+            dontask - If set to true, don't ask to download the key
+            fileMode - _Optional_. Indicate the user want to verify the signature of a file
+            fileFrom - _Optional_. The file to verify
+            fileSig - _Optional_. The file with the signature
+            nextText - The Gpg output to use for signature verification (used for multi signs)
     */
     layerverify: function(text,layer,division, charset,dontask, fileMode, fileFrom, fileSig,nextText) {
         var returnObject = new GPGReturn();
@@ -1536,6 +1571,11 @@ var FireGPG = {
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
             text - _Optional_, if not set try to use the selection. The text to decrypt.
             password - _Optional_, if not set ask the user. The password of the key used to encrypt the data.
+            binFileEncoded - _Optional_ Work on binary data
+            fileMode - _Optional_. Indicate the user want to Decrypt a file
+            fileFrom - _Optional_. The file to decrypt
+            fileTo - _Optional_. The file where to put the decrypted file
+            api - _Optional_ True if it's a call form the api
     */
 	decrypt: function(silent, text, password, binFileEncoded, fileMode, fileFrom, fileTo, api) { try {
 		var returnObject = new GPGReturn();
@@ -1853,6 +1893,14 @@ var FireGPG = {
         return returnObject;
 	},
 
+    /*
+      Function: searchKeyInServer
+      Seach for a key in keyserver
+
+      Parameters:
+        search - The text to search
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+    */
     searchKeyInServer: function(search, silent) {
 
 		var returnObject = new GPGReturn();
@@ -2005,6 +2053,14 @@ var FireGPG = {
 
     },
 
+    /*
+      Function: retriveKeyFromServer
+      Get a key from a keyserver
+
+      Parameters:
+        keyId - The ked id to get
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+    */
     retriveKeyFromServer: function(keyId, silent) {
 
 
@@ -2077,6 +2133,14 @@ var FireGPG = {
 
     },
 
+     /*
+      Function: sendKeyToServer
+      Send a key from a keyserver
+
+      Parameters:
+        keyId - The ked id to send
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+    */
     sendKeyToServer: function(keyId, silent) {
 
         if (silent == undefined)
@@ -2143,6 +2207,13 @@ var FireGPG = {
 
     },
 
+    /*
+      Function: refreshKeysFromServer
+      Syncronize keys with the keyserver
+
+      Parameters:
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+    */
     refreshKeysFromServer: function(silent) {
 
         if (silent == undefined)
@@ -2201,6 +2272,15 @@ var FireGPG = {
 
     },
 
+    /*
+      Function: changeTrust
+      Change trust of a key
+
+      Parameters:
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+        key - The key id
+        trustLevel - The new level of trusting
+    */
 	changeTrust: function(silent, key, trustLevel) {
 
 
@@ -2241,6 +2321,16 @@ var FireGPG = {
 	},
 
 
+    /*
+      Function: changePassword
+      Change password of a key
+
+      Parameters:
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+        key - The key id
+        oldpass - The old password
+        newpass - The new password
+    */
     changePassword: function(silent, key, oldpass, newpass) {
 
         var i18n = document.getElementById("firegpg-strings");
@@ -2315,6 +2405,23 @@ var FireGPG = {
 		//
 	},
 
+    /*
+      Function: generateKey
+      Generate a new key
+
+      Parameters:
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+        name - The name of the key
+        email - The email of the key
+        comment - The cpmment of the key
+        password1 - The password of the key
+        password2 - The password of the key
+        keyneverexpire - True if the key shouldn't expire
+        keyexpirevalue - The expiration value of the key
+        keyexpiretype - The type of the expiration value
+        keylength - The length of the key
+        keytype - The type of the key
+    */
     generateKey: function(silent, name, email, comment, password1, password2, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype) {
 
         var i18n = document.getElementById("firegpg-strings");
@@ -2394,6 +2501,14 @@ var FireGPG = {
 
     },
 
+    /*
+      Function: deleteKey
+      Delete a key (!)
+
+      Parameters:
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+        key - The key to delete
+    */
     deleteKey: function(silent, key) {
 
 
@@ -2418,6 +2533,16 @@ var FireGPG = {
 
 	},
 
+    /*
+      Function: revokeKey
+      Revoke a key (!)
+
+      Parameters:
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+        key - The key to revoke
+        raison - The rasion to delete the key
+        password - The password of the key
+    */
     revokeKey: function (silent, key, raison, password) {
 
         if (silent == undefined)
@@ -2462,6 +2587,18 @@ var FireGPG = {
 
     },
 
+    /*
+      Function: addUid
+      Add a new identity to a key
+
+      Parameters:
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+        key - The key to revoke
+        name - The name of the new UID
+        email - The email of the new UID
+        comment - The comment of the new UID
+        password - The password of the key
+    */
     addUid: function (silent, key, name, email, comment, password) {
 
         if (silent == undefined)
@@ -2538,6 +2675,16 @@ var FireGPG = {
         }
     },
 
+    /*
+      Function: revokeUid
+      Revoke an identity of a key
+
+      Parameters:
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+        key - The key
+        uid - The uid to revoke
+        password - The password of the key
+    */
     revokeUid: function (silent, key, uid, password) {
 
         if (silent == undefined)
@@ -2582,7 +2729,16 @@ var FireGPG = {
 
     },
 
+    /*
+      Function: delUid
+      Delete an identity of a key
 
+      Parameters:
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+        key - The key
+        uid - The uid to delete
+        password - The password of the key
+    */
     delUid: function (silent, key, uid) {
 
         if (silent == undefined)
@@ -2608,6 +2764,16 @@ var FireGPG = {
 
     },
 
+    /*
+      Function: signKey
+      Sign a key
+
+      Parameters:
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+        key - The key
+        keyForSign - The key used to sign
+        password - The password of the key (used to sign)
+    */
     signKey: function(silent, key, keyForSign, password) {
 
 
@@ -2676,6 +2842,15 @@ var FireGPG = {
 
     },
 
+    /*
+      Function: computeHash
+      Compute hash of a file
+
+      Parameters:
+        silent - _Optional_, default to false. Set this to true to disable any alert for the user
+        hash - The hash to use (MD5, SHA1, etc.)
+        file - The file
+    */
     computeHash: function(silent,hash,file) {
 
         if (silent == undefined)
@@ -2715,6 +2890,7 @@ var FireGPG = {
     }
 
 }
+
 var okWait;
 
 // We load the good class for the OS

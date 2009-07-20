@@ -39,6 +39,15 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 */
 
+
+/*
+ Variable: gmailOk
+ True if gmail is working
+*/
+
+ var gmailOk = false;
+
+
 /*
     Function: onLoad
 
@@ -49,7 +58,6 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 */
 
-var gmailOk = false;
 
 function onLoad(win) {
     testGmailOn();
@@ -57,7 +65,6 @@ function onLoad(win) {
 
 /*
     Function: next
-
     Process to the next step of the assistant
 
 */
@@ -75,7 +82,8 @@ function next() {
 }
 
 /*
-
+    Function: switchedEnabled
+    Switch on or off gmail
 */
 function switchedEnabled() {
 
@@ -90,6 +98,10 @@ function switchedEnabled() {
     testGmailOn();
 }
 
+/*
+    Function: testGmailOn
+    Test if gmail is activated and working, and change the interface
+*/
 function testGmailOn() {
 
     document.getElementById('gmail-turned-on').style.display = 'none';
@@ -114,6 +126,10 @@ function testGmailOn() {
     }
 }
 
+/*
+    Function: testSmtp
+    Test is the current smtp server set in options is working. Change the interface
+*/
 function testSmtp() {
 
      var prefs = Components.classes["@mozilla.org/preferences-service;1"].

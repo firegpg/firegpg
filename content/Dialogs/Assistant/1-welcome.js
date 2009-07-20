@@ -21,7 +21,7 @@ The Initial Developer of the Original Code is Maximilien Cuony.
 Portions created by the Initial Developer are Copyright (C) 2007
 the Initial Developer. All Rights Reserved.
 
-Contributor(s): 
+Contributor(s):
 
 Alternatively, the contents of this source code may be used under the terms of
 either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -41,7 +41,6 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 /*
     Function: onLoad
-
     This function is called when the form is show.
 
     Parameters:
@@ -54,9 +53,7 @@ function onLoad(win) {
 
 /*
     Function: next
-
     Process to the next step of the assistant
-
 */
 function next() {
 

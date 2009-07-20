@@ -60,7 +60,7 @@ const OS_WINDOWS = "WINNT";
 const idAppli = "firegpg@firegpg.team";
 
 /*
-   Constants: States of the xpcom support.
+   Constants: States of the xpcom support. Deprecated
 
    XPCOM_STATE_NEVERTESTED - Never tryied to use the xpcom
    XPCOM_STATE_WORKS    - The xpcom works and we use it.
@@ -92,6 +92,10 @@ var useGPGTrust = true;
 var file = Components.classes["@mozilla.org/file/directory_service;1"].
               getService(Components.interfaces.nsIProperties).
               get("CurProcD", Components.interfaces.nsIFile);
+
+/* Variable: FGPGFireFoxCurrentFolder
+  The folder of Firefox
+*/
 var FGPGFireFoxCurrentFolder = file.path;
 
 
@@ -156,6 +160,10 @@ function loadXpcom () {
 
 }
 
+/*
+    Function: isGpgAgentActivated
+    Return true if we should use the agent (option and environement variable set
+*/
 function isGpgAgentActivated() {
     useGPGAgent = false;
 
@@ -331,6 +339,10 @@ var GPGAccess = {
 
     },
 
+    /*
+        Function: getProxyInformation
+        Return the option to set the proxy for keyservers
+    */
     getProxyInformation: function () {
 
         var proxy = "";
@@ -348,6 +360,10 @@ var GPGAccess = {
 
     },
 
+    /*
+        Function: getDiegestAlgo
+        Return the option to set diegest algo to use for signs hashs
+    */
     getDiegestAlgo: function () {
 
         var digest = "";
@@ -365,6 +381,10 @@ var GPGAccess = {
 
     },
 
+    /*
+       Function: getEnv
+       Return environement parameters
+    */
     getEnv: function() {
 
         return [];
@@ -512,6 +532,9 @@ var GPGAccess = {
             password - The password of the private key
             keyID - The ID of the private key to use.
             notClear - Do not make a clear sign
+            fileMode - _Optional_. Indicate the user want to sign a file
+            fileFrom - _Optional_. The file to sign
+            fileTo - _Optional_. The file where to put the signature
 
         Return:
             A <GPGReturn> structure.
@@ -584,10 +607,13 @@ var GPGAccess = {
 
         Parameters:
             text - A text with the GnuPG data to test.
+            charset - _Optional_, the charset to use
+            fileMode - _Optional_. Indicate the user want to verify the signature of a file
+            fileFrom - _Optional_. The file to verify
+            fileSig - _Optional_. The file with the signature
 
         Return:
             A <GPGReturn> structure.
-
 
     */
     verify: function(text, charset, fileMode, fileFrom, fileSig) {
@@ -609,7 +635,6 @@ var GPGAccess = {
 
         Return:
             A <GPGReturn> structure.
-
 
     */
     listkey: function(onlyPrivate) {
@@ -634,7 +659,6 @@ var GPGAccess = {
         Return:
             A <GPGReturn> structure.
 
-
     */
     listsigns: function(key) {
 
@@ -656,6 +680,9 @@ var GPGAccess = {
             keyIdList - A key list of recipients
             fromGpgAuth - _Optional_. Set this to true if called form GpgAuth
             binFileMode - _Optional_. Set this to true if data is binary (no text)
+            fileMode - _Optional_. Indicate the user want to encrypt a file
+            fileFrom - _Optional_. The file to encrypt
+            fileTo - _Optional_. The file where to put the encrypted content
 
         Return:
             A <GPGReturn> structure.
@@ -719,6 +746,10 @@ var GPGAccess = {
         Parameters:
             text - The data to encrypt
             password - The password
+            algo - The cipher used to encrypt
+            fileMode - Indicate the user want to encrypt a file
+            fileFrom - The file to sign
+            fileTo -  The file where to put the encrypted file
 
         Return:
             A <GPGReturn> structure.
@@ -763,12 +794,13 @@ var GPGAccess = {
             fromGpgAuth -  Set this to true if called form GpgAuth
             password - The password of the private key
             keyID - The ID of the private key to use.
-            binFileMode - _Optional_. Set this to true if data is binary (no text)
-
+            binFileMode - Set this to true if data is binary (no text)
+            fileMode - Indicate the user want to encrypt&sign a file
+            fileFrom - The file to sign
+            fileTo - The file where to put the encrypted & signed file
 
         Return:
             A <GPGReturn> structure.
-
 
     */
     cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode, fileMode, fileFrom, fileTo) {
@@ -837,6 +869,10 @@ var GPGAccess = {
         Parameters:
             text - The data to decrypt
             password - The password of the private key
+            binFileEncoded - Work on binary data
+            fileMode - Indicate the user want to Decrypt a file
+            fileFrom - The file to decrypt
+            fileTo - The file where to put the decrypted file
 
         Return:
             A <GPGReturn> structure.
@@ -943,6 +979,16 @@ var GPGAccess = {
 		return result2;
     },
 
+    /*
+      Function: refreshKeysFromServer
+      Syncronize keys with the keyserver
+
+      Parameters:
+        server - The key server to use
+
+      Return:
+        A <GPGReturn> structure.
+    */
     refrechFromServer: function(server) {
 
         result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server + this.getProxyInformation() + " --refresh-keys");
@@ -955,6 +1001,17 @@ var GPGAccess = {
 
     },
 
+     /*
+      Function: sendKeyToServer
+      Send a key from a keyserver
+
+      Parameters:
+        keyId - The ked id to send
+        server - The key server to use
+
+      Return:
+        A <GPGReturn> structure.
+    */
     sendKeyToServer: function(key, server) {
 
         result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server +  this.getProxyInformation() + " --send-keys "+ key);
@@ -967,7 +1024,17 @@ var GPGAccess = {
 
     },
 
+    /*
+      Function: retriveKeyFromServer
+      Get a key from a keyserver
 
+      Parameters:
+        keyId - The ked id to get
+        server - The key server to use
+
+      Return:
+        A <GPGReturn> structure.
+    */
     retriveKeyFromServer: function(key, server) {
 
         result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server +  this.getProxyInformation() + " --recv-keys "+ key);
@@ -981,7 +1048,17 @@ var GPGAccess = {
 
     },
 
+    /*
+      Function: searchKeyInServer
+      Seach for a key in keyserver
 
+      Parameters:
+        search - The text to search
+        server - The key server to use
+
+      Return:
+        A <GPGReturn> structure.
+    */
 	searchKeyInServer: function(search, server) {
 
         result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server +  this.getProxyInformation() + " --with-colons --search-keys "+ search);
@@ -994,7 +1071,17 @@ var GPGAccess = {
 
     },
 
+    /*
+      Function: changeTrust
+      Change trust of a key
 
+      Parameters:
+        key - The key id
+        trustLevel - The new level of trusting
+
+      Return:
+        A <GPGReturn> structure.
+    */
     changeTrust: function(key, trustLevel){
 
         result = this.runGnupg(this.getBaseArugments()  + " --command-fd 0 --edit-key " + key + " trust", trustLevel + "\n");
@@ -1008,6 +1095,18 @@ var GPGAccess = {
 
     },
 
+    /*
+      Function: changePassword
+      Change password of a key
+
+      Parameters:
+        key - The key id
+        oldpass - The old password
+        newpass - The new password
+
+      Return:
+        A <GPGReturn> structure.
+    */
     changePassword: function(key, oldpass, newpass){
 
         result = this.runGnupg(this.getBaseArugments()  + " --no-batch --command-fd 0  --edit-key " + key + " passwd" ,  oldpass + "\n");
@@ -1026,6 +1125,25 @@ var GPGAccess = {
 
     },
 
+    /*
+      Function: generateKey
+      Generate a new key
+
+      Parameters:
+        name - The name of the key
+        email - The email of the key
+        comment - The cpmment of the key
+        password1 - The password of the key
+        password2 - The password of the key
+        keyneverexpire - True if the key shouldn't expire
+        keyexpirevalue - The expiration value of the key
+        keyexpiretype - The type of the expiration value
+        keylength - The length of the key
+        keytype - The type of the key
+
+      Return:
+        A <GPGReturn> structure.
+    */
     genereateKey: function(name, email, comment, password, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype){
 
 
@@ -1077,7 +1195,16 @@ var GPGAccess = {
 
     },
 
+    /*
+      Function: deleteKey
+      Delete a key (!)
 
+      Parameters:
+        key - The key to delete
+
+      Return:
+        A <GPGReturn> structure.
+    */
     deleteKey: function(key){
 
         result = this.runGnupg(this.getBaseArugments()  + " --delete-secret-and-public-key " + key);
@@ -1091,6 +1218,18 @@ var GPGAccess = {
 
     },
 
+    /*
+      Function: delUid
+      Delete an identity of a key
+
+      Parameters:
+        key - The key
+        uid - The uid to delete
+        password - The password of the key
+
+      Return:
+        A <GPGReturn> structure.
+    */
     delUid: function(key, uid) {
 
         //uid         sélectionner le nom d'utilisateur N
@@ -1108,6 +1247,19 @@ var GPGAccess = {
 
     },
 
+    /*
+      Function: revokeUid
+      Revoke an identity of a key
+
+      Parameters:
+        key - The key
+        uid - The uid to revoke
+        password - The password of the key
+        raison - The raison of the revocation
+
+      Return:
+        A <GPGReturn> structure.
+    */
     revokeUid: function(key, uid, password, raison ) {
 
         //uid         sélectionner le nom d'utilisateur N
@@ -1126,6 +1278,20 @@ var GPGAccess = {
 
     },
 
+    /*
+      Function: addUid
+      Add a new identity to a key
+
+      Parameters:
+        key - The key to revoke
+        name - The name of the new UID
+        email - The email of the new UID
+        comment - The comment of the new UID
+        password - The password of the key
+
+      Return:
+        A <GPGReturn> structure.
+    */
     addUid: function(key, name, email, comment, password) {
 
 
@@ -1140,6 +1306,18 @@ var GPGAccess = {
 
     },
 
+    /*
+      Function: signKey
+      Sign a key
+
+      Parameters:
+        key - The key
+        keyForSign - The key used to sign
+        password - The password of the key (used to sign)
+
+      Return:
+        A <GPGReturn> structure.
+    */
     signKey: function(key, keyForSign, password) {
 
         result = this.runGnupg(this.getBaseArugments()  + " --no-batch --default-key " + keyForSign + " --command-fd 0 --sign-key " + key , "y\n" + password + "\n");
@@ -1153,11 +1331,27 @@ var GPGAccess = {
 
     },
 
+    /*
+        Function: revoqueSign
+        Deprecated function
+    */
     revoqueSign: function (key, uid, password) {
 
 
     },
 
+    /*
+      Function: revokeKey
+      Revoke a key (!)
+
+      Parameters:
+        key - The key to revoke
+        raison - The rasion to delete the key
+        password - The password of the key
+
+      Return:
+        A <GPGReturn> structure.
+    */
     revokeKey: function (key, password, raison) {
 
         result = this.runGnupg(this.getBaseArugments()  + " --no-batch --command-fd 0 --edit-key " + key + " revkey", "y\n" + raison + "\n\ny\n" + password + "\nsave\ny");
@@ -1172,6 +1366,17 @@ var GPGAccess = {
 
     },
 
+    /*
+      Function: computeHash
+      Compute hash of a file
+
+      Parameters:
+        hash - The hash to use (MD5, SHA1, etc.)
+        file - The file
+
+      Return:
+        A <GPGReturn> structure.
+    */
     computeHash: function(hash,file) {
 
          result = this.runGnupg(this.getBaseArugments()  + " --print-md " + hash + " " + file.replace(/\s/g, '{$SPACE}'), '');
@@ -1189,7 +1394,6 @@ var GPGAccess = {
     /*
         Function: runATest
         Test if we are currently able to run the a command.
-
 
         Parameters:
             option - The option to test.

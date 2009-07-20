@@ -45,32 +45,49 @@ SubTitle: Documentation of FireGPG's source code
 # --------------------------------------------------------------------------
 
 
-Group: FireGPG Classes and functions  {
+Group: Core  {
 
-   File: FireGPG  (no auto-title, content/cgpg.js)
-   File: GPGAccess  (no auto-title, content/cgpgaccess.js)
-   File: Overlay  (no auto-title, content/overlay.js)
-   File: Gmail  (no auto-title, content/cgmail.js)
-   File: Gmail2  (no auto-title, content/cgmail2.js)
-   File: Selection  (content/cselect.js)
-   File: Misc  (no auto-title, content/misc.js)
-   File: Inline  (no auto-title, content/keyring.js)
-   File: Api  (no auto-title, content/new_api.js)
-   }  # Group: FireGPG Classes and functions
+   File: cGpg  (no auto-title, content/Core/cgpg.js)
+   File: cGpgAccess  (no auto-title, content/Core/cgpgaccess.js)
+   File: cSelect  (no auto-title, content/Core/cselect.js)
+   File: Overlay - Download  (no auto-title, content/Core/downloadOverlay.js)
+   File: Inline  (no auto-title, content/Core/inline.js)
+   File: Misc  (no auto-title, content/Core/misc.js)
+   File: Overlay - Main  (no auto-title, content/Core/overlay.js)
+   }  # Group: Core
 
-Group: Dialogues-relatives  {
+Group: Dialogs  {
 
-   File: List  (no auto-title, content/list.js)
-   File: Showtext  (no auto-title, content/showtext.js)
-   File: Password  (no auto-title, content/password.js)
-   File: Options  (no auto-title, content/options.js)
-   }  # Group: Dialogues-relatives
+   Group: Assistant  {
 
-Group: Misc  {
+      File: Assistant &lparen;1&rparen; Welcome  (no auto-title, content/Dialogs/Assistant/1-welcome.js)
+      File: Assistant &lparen;2&rparen; GnuPG  (no auto-title, content/Dialogs/Assistant/2-gnupg.js)
+      File: Assistant &lparen;3&rparen; Privatekey  (no auto-title, content/Dialogs/Assistant/3-privatekey.js)
+      File: Assistant &lparen;4&rparen; Gmail  (no auto-title, content/Dialogs/Assistant/4-gmail.js)
+      File: Assistant &lparen;5&rparen; Options  (no auto-title, content/Dialogs/Assistant/5-options.js)
+      File: Assistant &lparen;6&rparen; End  (no auto-title, content/Dialogs/Assistant/6-end.js)
+      }  # Group: Assistant
 
-   File: GpgAuth  (no auto-title, content/gpgauth.js)
-   File: GpgAuth Options  (no auto-title, content/gpgauth_options.js)
-   }  # Group: Misc
+   File: Key lists  (no auto-title, content/Dialogs/list.js)
+   File: Options  (no auto-title, content/Dialogs/options.js)
+   File: Password  (no auto-title, content/Dialogs/password.js)
+   File: Showtext  (no auto-title, content/Dialogs/showtext.js)
+   }  # Group: Dialogs
+
+Group: GpgAuth  {
+
+   File: GpgAuth  (no auto-title, content/GpgAuth/gpgauth.js)
+   File: GpgAuth Options  (no auto-title, content/GpgAuth/gpgauth_options.js)
+   }  # Group: GpgAuth
+
+Group: Webmail  {
+
+   File: cGmail  (no auto-title, content/Webmails/Gmail/cgmail.js)
+   File: cGmail2  (no auto-title, content/Webmails/Gmail/cgmail2.js)
+   }  # Group: Webmail
+
+File: Api  (no auto-title, content/Api/api.js)
+File: misc/new_api.js  (misc/new_api.js)
 
 Group: Index  {
 
