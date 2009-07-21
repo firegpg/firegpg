@@ -187,24 +187,90 @@ function onLoad(win) {
 
     access = gpgApi.getAccessList();
 
-    for (var key in access) {
-
+    for(domain in access.domains_allowed) {
         var  item   = document.createElement('listitem');
-
-        item.setAttribute('gpgApi-key',key);
-
+        item.setAttribute('gpgApi-domain',domain);
+        item.setAttribute('gpgApi-type','DA');
         var  child1 = document.createElement('listcell');
-        child1.setAttribute('label', access[key]);
+        child1.setAttribute('label', domain);
         item.appendChild(child1);
-
         var  child2 = document.createElement('listcell');
-        child2.setAttribute('label', key.substr(0,40) + '...');
+        child2.setAttribute('label', access.domains_allowed[domain].substr(0,40) + '...');
         item.appendChild(child2);
-
         listbox.appendChild(item);
-
         item.setAttribute('ondblclick','apiRemoveMySelf(this);');
+    }
 
+    for(domain in access.domains_denied) {
+        var  item   = document.createElement('listitem');
+        item.setAttribute('gpgApi-domain',domain);
+        item.setAttribute('gpgApi-type','DD');
+        var  child1 = document.createElement('listcell');
+        child1.setAttribute('label', domain);
+        item.appendChild(child1);
+        var  child2 = document.createElement('listcell');
+        child2.setAttribute('label',  document.getElementById('firegpg-strings').getString('api-not-allows') );
+        item.appendChild(child2);
+        listbox.appendChild(item);
+        item.setAttribute('ondblclick','apiRemoveMySelf(this);');
+    }
+
+
+    for(domain in access.sites_allowed) {
+        var  item   = document.createElement('listitem');
+        item.setAttribute('gpgApi-domain',domain);
+        item.setAttribute('gpgApi-type','SA');
+        var  child1 = document.createElement('listcell');
+        child1.setAttribute('label', domain);
+        item.appendChild(child1);
+        var  child2 = document.createElement('listcell');
+        child2.setAttribute('label', access.sites_allowed[domain].substr(0,40) + '...');
+        item.appendChild(child2);
+        listbox.appendChild(item);
+        item.setAttribute('ondblclick','apiRemoveMySelf(this);');
+    }
+
+    for(domain in access.sites_denied) {
+        var  item   = document.createElement('listitem');
+        item.setAttribute('gpgApi-domain',domain);
+        item.setAttribute('gpgApi-type','SD');
+        var  child1 = document.createElement('listcell');
+        child1.setAttribute('label', domain);
+        item.appendChild(child1);
+        var  child2 = document.createElement('listcell');
+        child2.setAttribute('label',  document.getElementById('firegpg-strings').getString('api-not-allows') );
+        item.appendChild(child2);
+        listbox.appendChild(item);
+        item.setAttribute('ondblclick','apiRemoveMySelf(this);');
+    }
+
+
+    for(domain in access.pages_allowed) {
+        var  item   = document.createElement('listitem');
+        item.setAttribute('gpgApi-domain',domain);
+        item.setAttribute('gpgApi-type','PA');
+        var  child1 = document.createElement('listcell');
+        child1.setAttribute('label', domain);
+        item.appendChild(child1);
+        var  child2 = document.createElement('listcell');
+        child2.setAttribute('label', access.pages_allowed[domain].substr(0,40) + '...');
+        item.appendChild(child2);
+        listbox.appendChild(item);
+        item.setAttribute('ondblclick','apiRemoveMySelf(this);');
+    }
+
+    for(domain in access.pages_denied) {
+        var  item   = document.createElement('listitem');
+        item.setAttribute('gpgApi-domain',domain);
+        item.setAttribute('gpgApi-type','PD');
+        var  child1 = document.createElement('listcell');
+        child1.setAttribute('label', domain);
+        item.appendChild(child1);
+        var  child2 = document.createElement('listcell');
+        child2.setAttribute('label', document.getElementById('firegpg-strings').getString('api-not-allows') );
+        item.appendChild(child2);
+        listbox.appendChild(item);
+        item.setAttribute('ondblclick','apiRemoveMySelf(this);');
     }
 
     //Load autowrap actions
@@ -271,7 +337,18 @@ function apiRemoveMySelf(item) {
 
     access = gpgApi.getAccessList();
 
-    delete(access[item.getAttribute('gpgApi-key')]);
+    if (item.getAttribute('gpgApi-type') == 'DA')
+        delete(access.domains_allowed[item.getAttribute('gpgApi-domain')]);
+    if (item.getAttribute('gpgApi-type') == 'DD')
+        delete(access.domains_denied[item.getAttribute('gpgApi-domain')]);
+    if (item.getAttribute('gpgApi-type') == 'SA')
+        delete(access.sites_allowed[item.getAttribute('gpgApi-domain')]);
+    if (item.getAttribute('gpgApi-type') == 'SA')
+        delete(access.sites_denied[item.getAttribute('gpgApi-domain')]);
+    if (item.getAttribute('gpgApi-type') == 'PA')
+        delete(access.pages_allowed[item.getAttribute('gpgApi-domain')]);
+    if (item.getAttribute('gpgApi-type') == 'PD')
+        delete(access.pages_denied[item.getAttribute('gpgApi-domain')]);
 
     gpgApi.setAccessList(access);
 

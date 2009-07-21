@@ -378,7 +378,7 @@ Portions created by gpg_auth are Copyright (C) 2007 Kyle L. Huff All Rights Rese
 		<checkbox  id="use-api" preference="use-api-pref" label="&use-api;"/>
 
 
-        <label control="api_domain_list">&api-liste-access.label;</label>
+        <label control="api_domain_list">&api-liste-access2.label;</label>
 		<vbox>
 			<listbox id="api_domain_list" rows="15">
 				<listhead>

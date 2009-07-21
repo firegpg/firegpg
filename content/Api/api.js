@@ -49,7 +49,7 @@ var gpgApi = {
 	 Init api features when a new page is loaded
 	 */
 	onLoad: function() {
-		
+
 		this.initialized = true;
 		this.strings = document.getElementById( "firegpg-strings" );
 
@@ -116,7 +116,7 @@ var gpgApi = {
 	/*
 		Function: auth
 		Return 'auth-ok' in 'result' (or 'auth-fail' is the website have rights to use the api
-    	
+
 		Paramters:
 			auth_key - the key for the website
 	*/
@@ -144,43 +144,26 @@ var gpgApi = {
 	*/
     register: function ( event ) {
 
-        domain = gpgApi.getDomain(event.target.ownerDocument.location);
-
-        var texte = document.getElementById("firegpg-strings").getString('api-accept');
-
-        var reg=new RegExp("\!D\!", "g");
-        texte = texte.replace(reg,domain);
-        var reg=new RegExp("\!N\!", "g");
-        texte = texte.replace(reg,"\n");
-
-        if (confirm(texte) == false)
-        {
+        if (!gpgApi.canRegister(event.target.ownerDocument.location)) {
             returnData.setAttribute('result', 'register-fail');
             return;
         }
 
-        access = gpgApi.getAccessList();
+        var params = {theLocation: event.target.ownerDocument.location, apiKey: null  };
 
-        auth_key = "";
-        for (domainTest in access)
-            if (domain == access[domainTest])
-                auth_key = domainTest;
+        var dlg = window.openDialog('chrome://firegpg/content/Dialogs/api.xul',
+	                            '', 'chrome, dialog, modal, resizable=yes',
+	                            params);
+        dlg.focus();
 
-        if (auth_key == "") {
-            auth_key = genreate_api_key();
-
-            while (access[auth_key] != null) {
-                auth_key = genreate_api_key();
-            }
-
-            access[auth_key] = domain;
-
-            gpgApi.setAccessList(access);
+        if (params.apiKey == null) {
+            returnData.setAttribute('result', 'register-fail');
+            return;
         }
 
         returnData = gpgApi.getReturnDataNode(event.target);
 
-        returnData.setAttribute('auth_key', auth_key);
+        returnData.setAttribute('auth_key', params.apiKey);
         returnData.setAttribute('result', 'register-ok');
 
         return;
@@ -202,7 +185,7 @@ var gpgApi = {
 	/*
 		Function: listkey
 		Return 'list-ok' in 'result' (or 'list-err' is there is a problem), and the list of public key in list
-    	
+
 		Paramters:
 		auth_key' - the key for the website
 	*/
@@ -242,8 +225,8 @@ var gpgApi = {
     /*
 		Function: listprivkey
 		Return 'list-ok' in 'result' (or 'list-err' is there is a problem), and the list of private key in list
-		
-		Paramters: 
+
+		Paramters:
 			auth_key - the key for the website
 	*/
     listprivkey: function ( event ) {
@@ -282,10 +265,10 @@ var gpgApi = {
 	/*
 		Function: check
 		Return 'check-ok' in 'result' (or 'check-err' is there is a problem) if the sign is valid.
-    	
+
 		Return:
 		in 'ckeck-infos' info on sign
-    	
+
 		Paramters:
 			auth_key - the key for the website
 			text - the text to check
@@ -358,7 +341,7 @@ var gpgApi = {
 		Function: sign
 		Return 'sign-ok' in 'result' (or 'sign-err' is there is a problem) if makeing a sign was successfull
    		Return in 'text' a signed text
-    	
+
 		Paramters:
 			auth_key - the key for the website
 			text - the text to check
@@ -456,8 +439,8 @@ var gpgApi = {
 		Function: signandencrypt
 		Return 'signandencrypt-ok' in 'result' (or 'signandencrypt-err' is there is a problem) if makeing a signed and encrypted text was successfull
     	Return in 'text' the encrypted  text
-		
-    	Paramters: 
+
+    	Paramters:
 			auth_key - the key for the website
 			text - the text to check
 			keys - the keys list
@@ -557,7 +540,7 @@ var gpgApi = {
 		Function: encrypt
 		Return 'encrypt-ok' in 'result' (or 'encrypt-err' is there is a problem) if makeing a ecnrypted text was successfull
     	Return in 'text' the encrypted  text
-    	
+
 		Paramters:
 			auth_key - the key for the website
 			text - the text to check
@@ -616,8 +599,8 @@ var gpgApi = {
 		Function: decrypt
     	Return 'decrypt-ok' in 'result' (or 'decrypt-err' is there is a problem) if trying to decrypt a text was successfull
     	Return in 'text' the decrypted text
-    
-		Paramters: 
+
+		Paramters:
 			auth_key - the key for the website
 			text - the text to decrypt
 	*/
@@ -742,6 +725,104 @@ var gpgApi = {
     },
 
     /*
+        Function: register
+        Authenticate a domain|website|page and return the api key
+    */
+    allowRegister: function(theLocation, type) {
+
+        access = gpgApi.getAccessList();
+
+        if (type == 'D') {
+            if (access.domains_allowed[theLocation.hostname] != undefined)
+                return access.domains_allowed[theLocation.hostname];
+
+            key = genreate_api_key();
+            access.domains_allowed[theLocation.hostname] = key;
+            gpgApi.setAccessList(access);
+            return key;
+        }
+
+        if (type == 'S') {
+            if (access.sites_allowed[theLocation.protocol + '//' + theLocation.host] != undefined)
+                return access.sites_allowed[theLocation.protocol + '//' + theLocation.host];
+
+            key = genreate_api_key();
+            access.sites_allowed[theLocation.protocol + '//' + theLocation.host] = key;
+            gpgApi.setAccessList(access);
+            return key;
+        }
+
+        if (type == 'P') {
+            if (access.pages_allowed[theLocation.href] != undefined)
+                return access.pages_allowed[theLocation.href];
+
+            key = genreate_api_key();
+            access.pages_allowed[theLocation.href] = key;
+            gpgApi.setAccessList(access);
+            return key;
+        }
+
+        return '???';
+
+
+    },
+
+     /*
+        Function: denyRegister
+        Deny futur registrations from a domain|website|page
+    */
+    denyRegister: function(theLocation, type) {
+
+        access = gpgApi.getAccessList();
+
+        if (type == 'D') {
+            access.domains_denied[theLocation.hostname] = 'deny';
+            gpgApi.setAccessList(access);
+        }
+
+        if (type == 'S') {
+            access.sites_denied[theLocation.protocol + '//' + theLocation.host] = 'deny';
+            gpgApi.setAccessList(access);
+        }
+
+        if (type == 'P') {
+            access.pages_denied[theLocation.href] = 'deny';
+            gpgApi.setAccessList(access);
+        }
+
+
+    },
+
+    /*
+        Function: canRegister
+        Return true if the user have right to try toregister to use FireGPG's api
+    */
+    canRegister: function(theLocation) {
+
+        try {
+
+            access = gpgApi.getAccessList();
+
+            if (theLocation.hostname != '')
+                if (access.domains_denied[theLocation.hostname] == 'deny')
+                    return false;
+
+            if (theLocation.host != '')
+                if (access.sites_denied[theLocation.protocol + '//' + theLocation.host] == 'deny')
+                    return false;
+
+            if (theLocation.href != '')
+                if (access.pages_denied[theLocation.href] == 'deny')
+                    return false;
+
+        } catch (e) { alert(e); }
+
+        return true;
+
+
+    },
+
+    /*
 		Function: isAuth
 		Return true if the user have right to use FireGPG's api
 	*/
@@ -749,10 +830,21 @@ var gpgApi = {
 
         try {
 
-            access = this.getAccessList();
+            theLocation = document.location;
 
-            if (access[key.toString()] == gpgApi.getDomain(document.location))
-                return true;
+            access = gpgApi.getAccessList();
+
+            if (theLocation.hostname != '')
+                if (access.domains_allowed[theLocation.hostname] == key.toString())
+                    return true;
+
+            if (theLocation.host != '')
+                if (access.sites_allowed[theLocation.protocol + '//' + theLocation.host] == key.toString())
+                    return true;
+
+            if (theLocation.href != '')
+                if (access.pages_allowed[theLocation.href] == key.toString())
+                    return true;
 
         } catch (e) { }
 
@@ -792,36 +884,55 @@ var gpgApi = {
 	*/
     getAccessList: function() {
 
-        var array_return = new Array();
+        var array_return = new Object();
+
+        array_return.domains_allowed = new Array();
+        array_return.sites_allowed = new Array();
+        array_return.pages_allowed = new Array();
+
+        array_return.domains_denied = new Array();
+        array_return.sites_denied = new Array();
+        array_return.pages_denied = new Array();
 
         var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 		                       getService(Components.interfaces.nsIPrefService);
 		prefs = prefs.getBranch("extensions.firegpg.");
-        var auths_chain  = ";,;";
-        try {
-            auths_chain = prefs.getCharPref("api_list_auth");
-        } catch (e) { auths_chain = ";,;";  }
 
-        if (auths_chain == ";,;" || auths_chain == "" || auths_chain ==  null)
+        var auths_chain  = "";
+        try {
+            auths_chain = prefs.getCharPref("api_access");
+        } catch (e) { auths_chain = "";  }
+
+        if (auths_chain == "" || auths_chain ==  null)
             return array_return;
 
-        var reg=new RegExp(";", "g");
+        var reg=new RegExp(/\|/gi);
 
         splitage = auths_chain.split(reg);
 
-        for (var i=0; i< splitage.length; i++) {
+        for (var i=0; i< splitage.length-3; i+=4) {
 
-            domain_and_key = splitage[i];
-
-            var reg2 = new RegExp(",", "g");
-
-            domain_and_key = domain_and_key.split(reg2);
-
-            if (domain_and_key[1] != undefined && domain_and_key[1] != "" && domain_and_key[1] != 0) {
-
-                array_return[domain_and_key[1]] = domain_and_key[0];
-
+            if (splitage[i] == 'D') {
+                if (splitage[i+2]  == 'A')
+                    array_return.domains_allowed[splitage[i+1].replace(/~1/gi, '|').replace(/~2/gi,'~')] = splitage[i+3];
+                else
+                    array_return.domains_denied[splitage[i+1].replace(/~1/gi, '|').replace(/~2/gi,'~')] = 'deny';
             }
+
+            if (splitage[i] == 'S') {
+                if (splitage[i+2]  == 'A')
+                    array_return.sites_allowed[splitage[i+1].replace(/~1/gi, '|').replace(/~2/gi,'~')] = splitage[i+3];
+                else
+                    array_return.sites_denied[splitage[i+1].replace(/~1/gi, '|').replace(/~2/gi,'~')] = 'deny';
+            }
+
+            if (splitage[i] == 'P') {
+                if (splitage[i+2]  == 'A')
+                    array_return.pages_allowed[splitage[i+1].replace(/~1/gi, '|').replace(/~2/gi,'~')] = splitage[i+3];
+                else
+                    array_return.pages_denied[splitage[i+1].replace(/~1/gi, '|').replace(/~2/gi,'~')] = 'deny';
+            }
+
         }
 
         return array_return;
@@ -834,19 +945,31 @@ var gpgApi = {
 	*/
     setAccessList: function(arrayy) {
 
-        var final_data = ';';
+        var final_data = '';
 
-        for (var key in arrayy) {
+        for(domain in arrayy.domains_allowed)
+            final_data += 'D|' + domain.replace(/~/gi, '~2').replace(/\|/gi, '~1') + '|A|' + arrayy.domains_allowed[domain] + '|';
 
-            final_data = final_data + arrayy[key] + ',' + key + ';';
+        for(domain in arrayy.domains_denied)
+            final_data += 'D|' + domain.replace(/~/gi, '~2').replace(/\|/gi, '~1') + '|D|deny|';
 
-        }
+        for(domain in arrayy.sites_allowed)
+            final_data += 'S|' + domain.replace(/~/gi, '~2').replace(/\|/gi, '~1') + '|A|' + arrayy.sites_allowed[domain] + '|';
+
+        for(domain in arrayy.sites_denied)
+            final_data += 'S|' + domain.replace(/~/gi, '~2').replace(/\|/gi, '~1') + '|D|deny|';
+
+        for(domain in arrayy.pages_allowed)
+            final_data += 'P|' + domain.replace(/~/gi, '~2').replace(/\|/gi, '~1') + '|A|' + arrayy.pages_allowed[domain] + '|';
+
+        for(domain in arrayy.pages_denied)
+            final_data += 'P|' + domain.replace(/~/gi, '~2').replace(/\|/gi, '~1') + '|D|deny|';
 
         var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 		                       getService(Components.interfaces.nsIPrefService);
 		prefs = prefs.getBranch("extensions.firegpg.");
 
-        prefs.setCharPref("api_list_auth",final_data);
+        prefs.setCharPref("api_access",final_data);
 
 
     },

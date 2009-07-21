@@ -37,7 +37,6 @@
 <!ENTITY hide-expired "Ascunde cheile expirate">
 <!ENTITY use-api "Enable FireGPG API for webpages, such as roundcube. (Requires browser restart)">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "Lista site-urilor permise (dublu-clic pentru ștergere)">
 <!ENTITY api-liste-domain.label "Domeniu">
 <!ENTITY api-liste-keyauth.label "Cheie">
 <!ENTITY use-gpg-agent-checkbox "Enable GPG-agent (warning, can lead to issues)">
@@ -84,3 +83,4 @@
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
+<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">

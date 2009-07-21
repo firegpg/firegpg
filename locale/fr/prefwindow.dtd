@@ -37,7 +37,6 @@
 <!ENTITY hide-expired "Cacher les clés expirées.">
 <!ENTITY use-api "Activer l'API de FireGPG pour les pages webs (par exemple roundcube)(redémarrage nécessaire)">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "Listes des sites autorisés (double-click pour supression)">
 <!ENTITY api-liste-domain.label "Domaine">
 <!ENTITY api-liste-keyauth.label "Clé">
 <!ENTITY use-gpg-agent-checkbox "Activer 'gpg-agent' (attention, peut causer des problèmes...)">
@@ -84,3 +83,4 @@
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
+<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">

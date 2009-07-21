@@ -135,10 +135,7 @@ var firegpg = {
 
     */
 	onDelayMenuAction: function(action) {
-         window.openDialog("chrome://firegpg/content/Dialogs/api.xul", "searchBox", "chrome,centerscreen", {theLocation: content.document.location}).focus();
-
-
-		if (action == ACTION_SIGN)
+   		if (action == ACTION_SIGN)
 			FireGPG.sign();
         else if (action == ACTION_PSIGN)
 			FireGPG.sign(undefined,undefined,undefined,undefined,true);

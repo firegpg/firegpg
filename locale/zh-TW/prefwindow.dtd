@@ -37,7 +37,6 @@
 <!ENTITY hide-expired "隱藏過期的金鑰">
 <!ENTITY use-api "啟用 FireGPG 用於網頁的 API（比如 roundcube）（需要重新啟動瀏覽器）">
 <!ENTITY paneapi.title "API ">
-<!ENTITY api-liste-access.label "許可的站點的列表（雙擊以去除站點）">
 <!ENTITY api-liste-domain.label "域名">
 <!ENTITY api-liste-keyauth.label "金鑰">
 <!ENTITY use-gpg-agent-checkbox "啟用 GPG-agent（警告，可能帶來問題……）">
@@ -84,3 +83,4 @@
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
+<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">

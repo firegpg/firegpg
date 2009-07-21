@@ -37,7 +37,6 @@
 <!ENTITY hide-expired "Скрыть устаревшие ключи">
 <!ENTITY use-api "Активный API программы FireGPG для веб-сайтов, напр. roundcube (требуется перезапуск)">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "Список разрешенных сайтов (двойным щелчком можно убрать сайт)">
 <!ENTITY api-liste-domain.label "Домен">
 <!ENTITY api-liste-keyauth.label "Ключ">
 <!ENTITY use-gpg-agent-checkbox "Включить GPG-agent (может вызвать ошибки)">
@@ -84,3 +83,4 @@
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
+<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">

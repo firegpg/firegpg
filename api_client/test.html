@@ -57,7 +57,7 @@
 			 * AKF - Authentification Key of FireGPG
 			 * (Clé de l'authentification FireGPG)
 			 */
-			var akf = 'om2ESPYGlJ92By2LEs7jKjy9WCJts0Zt00EiixpTIcWoBGzPQBIsQ5TqlgUFBBcRWeXU9lcfwxKamAlHtitm';
+			var akf = 'gN3VhAUi9KJ2QlNY8KCbotXdFxRgSdUYYWKZChnIZjNxBuqp2yTqH4hO436rwGe0HKnUx3jLudbWCJEa4EKleqnA74m3ZJK12';
 
 			/*
 			 * Il faut rester poli, on 'salue' FireGPG :)
@@ -85,156 +85,161 @@
 					success_message("Superbe, une AKF nous a été allouée ! C'est celle-ci :");
 					pre_message(akf);
 				}
-				else
-					error_message("La AKF n'a pas été retournée par FireGPG :(");
-			}
-
-			/*
-			 * On signe un texte, pour voir si cela marche ;-)
-			 */
-			text_to_sign = "Ce texte est à signer :)";
-			signed_text = ""; /* la signature sera mise ici */
-			title("Signature du texte : '" + text_to_sign + "'");
-			result = fireGPGSign(akf, text_to_sign);
-			if(result) {
-				if(result.sign_ok) {
-					success_message("Le texte a été signé avec succès.");
-
-					message("La signature :");
-					pre_message(result.text);
-
-					signed_text = result.text;
-				}
 				else {
-					error_message("Erreur lors de la signature du texte.");
-					error_message("Raison: " + result.reason);
-				}
-			}
-			else {
-				error_message("Erreur lors de la signature du texte.");
-                error_message("Raison: " + result.reason);
+					error_message("La AKF n'a pas été retournée par FireGPG :(");
+                    stop = true;
+                }
 			}
 
-			/*
-			 * On vérifie le texte signé avec notre clé.
-			 */
-			title("Vérification du texte précédemment signé...");
-            result = fireGPGCheck(akf, signed_text);
-			if(result) {
-				success_message("Le texte a pu être vérifié !");
+            if (true) {
 
-                if(result.sign_valid == true) {
-					success_message("La signature est valide !");
-					success_message("Quelques informations : " + result.infos);
-                } else {
-					error_message("La signature est invalide.");
+                /*
+                 * On signe un texte, pour voir si cela marche ;-)
+                 */
+                text_to_sign = "Ce texte est à signer :)";
+                signed_text = ""; /* la signature sera mise ici */
+                title("Signature du texte : '" + text_to_sign + "'");
+                result = fireGPGSign(akf, text_to_sign);
+                if(result) {
+                    if(result.sign_ok) {
+                        success_message("Le texte a été signé avec succès.");
+
+                        message("La signature :");
+                        pre_message(result.text);
+
+                        signed_text = result.text;
+                    }
+                    else {
+                        error_message("Erreur lors de la signature du texte.");
+                        error_message("Raison: " + result.reason);
+                    }
+                }
+                else {
+                    error_message("Erreur lors de la signature du texte.");
                     error_message("Raison: " + result.reason);
                 }
-            }
-			else
-				error_message("Erreur lors de la vérification de la signature du texte.");
 
-			/*
-			 * On chiffre un texte...
-			 */
-            text = "Hello world";
-			encrypted_text = ""; /* on va mettre le texte chiffré ici */
-			privkey = "1D59334D929E7331";
-			title("Chiffrement du texte : '" + text + "'");
-            result = fireGPGEncrypt(akf, text, new Array(privkey));
+                /*
+                 * On vérifie le texte signé avec notre clé.
+                 */
+                title("Vérification du texte précédemment signé...");
+                result = fireGPGCheck(akf, signed_text);
+                if(result) {
+                    success_message("Le texte a pu être vérifié !");
 
-			if(result) {
-				success_message("Le texte a pu être chiffré avec succès !");
-
-
-                if(result.encrypt_ok == true) {
-					message("Le texte chiffré :");
-					pre_message(result.text);
-					encrypted_text = result.text;
-                } else {
-					error_message("Le chiffrement n'a pas pu être fait...");
-                    error_message("La raison: " + result.reason);
+                    if(result.sign_valid == true) {
+                        success_message("La signature est valide !");
+                        success_message("Quelques informations : " + result.infos);
+                    } else {
+                        error_message("La signature est invalide.");
+                        error_message("Raison: " + result.reason);
+                    }
                 }
-            }
-			else {
-				error_message("Erreur lors du chiffrement du texte.");
-                error_message("Raison: " + result.reason);
-            }
+                else
+                    error_message("Erreur lors de la vérification de la signature du texte.");
 
-			/*
-			 * On déchiffre le texte
-			 */
-			title("Déchiffrement du texte précédemment chiffré...");
-            result = fireGPGDecrypt(akf, encrypted_text, new Array(privkey));
+                /*
+                 * On chiffre un texte...
+                 */
+                text = "Hello world";
+                encrypted_text = ""; /* on va mettre le texte chiffré ici */
+                privkey = "1D59334D929E7331";
+                title("Chiffrement du texte : '" + text + "'");
+                result = fireGPGEncrypt(akf, text, new Array(privkey));
 
-			if(result) {
-				success_message("La fonction de déchiffrement a pu être appelée avec succès.");
+                if(result) {
+                    success_message("Le texte a pu être chiffré avec succès !");
 
-                if(result.decrypt_ok == true) {
-					message("Le texte déchiffré :");
-					pre_message(result.text);
-                } else {
-					error_message("Le déchiffrement n'a pas pu être fait...");
-                    error_message("La raison: " + result.reason);
+
+                    if(result.encrypt_ok == true) {
+                        message("Le texte chiffré :");
+                        pre_message(result.text);
+                        encrypted_text = result.text;
+                    } else {
+                        error_message("Le chiffrement n'a pas pu être fait...");
+                        error_message("La raison: " + result.reason);
+                    }
                 }
-            }
-			else {
-				error_message("Erreur lors du chiffrement du texte.");
-                error_message("Raison: " + result.reason);
-            }
-
-			/*
-			 * Signe et chiffre le texte.
-			 */
-			title("Chiffrement et signature...");
-            result = fireGPGSignAndEncrypt(akf, text, new Array(privkey));
-
-			if(result) {
-				success_message("La fonction de chiffrement et signature a pu être appelée avec succès.");
-
-                if(result.signandencrypt_ok == true) {
-					message("Le texte chiffré et signé :");
-					pre_message(result.text);
-                } else {
-					error_message("Le chiffrement et signature n'a pas pu être fait...");
-                    error_message("La raison: " + result.reason);
+                else {
+                    error_message("Erreur lors du chiffrement du texte.");
+                    error_message("Raison: " + result.reason);
                 }
-            }
-			else {
-				error_message("Erreur lors du chiffrement et signature du texte.");
-                error_message("Raison: " + result.reason);
-            }
 
-			/*
-			 * Afficher les clés publiques.
-			 */
-			title("Affichage des clés publiques...");
-            key_list = fireGPGListKey(akf);
-			if (key_list) {
-				success_message("La liste des clés publiques a été obtenue.");
+                /*
+                 * On déchiffre le texte
+                 */
+                title("Déchiffrement du texte précédemment chiffré...");
+                result = fireGPGDecrypt(akf, encrypted_text, new Array(privkey));
 
-                for(id in key_list)
-					document.write("<i>" + id + "</i> ==>" + key_list[id] +"<br />");
-			}
-			else {
-				error_message("Erreur lors de la demande de la liste des clés publiques.");
-                error_message("Raison: " + result.reason);
-            }
+                if(result) {
+                    success_message("La fonction de déchiffrement a pu être appelée avec succès.");
 
-			/*
-			 * Afficher les clés publiques.
-			 */
-			title("Affichage des clés privées...");
-            key_list = fireGPGListPrivKey(akf);
-			if (key_list) {
-				success_message("La liste des clés privées a été obtenue.");
+                    if(result.decrypt_ok == true) {
+                        message("Le texte déchiffré :");
+                        pre_message(result.text);
+                    } else {
+                        error_message("Le déchiffrement n'a pas pu être fait...");
+                        error_message("La raison: " + result.reason);
+                    }
+                }
+                else {
+                    error_message("Erreur lors du chiffrement du texte.");
+                    error_message("Raison: " + result.reason);
+                }
 
-                for(id in key_list)
-					document.write("<i>" + id + "</i> ==>" + key_list[id] +"<br />");
-			}
-			else {
-				error_message("Erreur lors de la demande de la liste des clés privées.");
-                error_message("Raison: " + result.reason);
+                /*
+                 * Signe et chiffre le texte.
+                 */
+                title("Chiffrement et signature...");
+                result = fireGPGSignAndEncrypt(akf, text, new Array(privkey));
+
+                if(result) {
+                    success_message("La fonction de chiffrement et signature a pu être appelée avec succès.");
+
+                    if(result.signandencrypt_ok == true) {
+                        message("Le texte chiffré et signé :");
+                        pre_message(result.text);
+                    } else {
+                        error_message("Le chiffrement et signature n'a pas pu être fait...");
+                        error_message("La raison: " + result.reason);
+                    }
+                }
+                else {
+                    error_message("Erreur lors du chiffrement et signature du texte.");
+                    error_message("Raison: " + result.reason);
+                }
+
+                /*
+                 * Afficher les clés publiques.
+                 */
+                title("Affichage des clés publiques...");
+                key_list = fireGPGListKey(akf);
+                if (key_list) {
+                    success_message("La liste des clés publiques a été obtenue.");
+
+                    for(id in key_list)
+                        document.write("<i>" + id + "</i> ==>" + key_list[id] +"<br />");
+                }
+                else {
+                    error_message("Erreur lors de la demande de la liste des clés publiques.");
+                    error_message("Raison: " + result.reason);
+                }
+
+                /*
+                 * Afficher les clés publiques.
+                 */
+                title("Affichage des clés privées...");
+                key_list = fireGPGListPrivKey(akf);
+                if (key_list) {
+                    success_message("La liste des clés privées a été obtenue.");
+
+                    for(id in key_list)
+                        document.write("<i>" + id + "</i> ==>" + key_list[id] +"<br />");
+                }
+                else {
+                    error_message("Erreur lors de la demande de la liste des clés privées.");
+                    error_message("Raison: " + result.reason);
+                }
             }
 		</script>
 

@@ -37,7 +37,6 @@
 <!ENTITY hide-expired "Dölj utgångna nycklar">
 <!ENTITY use-api "Aktivera 'FireGPG API' för hemsidor (som t.ex. roundcube) (omstart krävs)">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "Lista över tillåtna hemsidor (dubbelklicka för att ta bort)">
 <!ENTITY api-liste-domain.label "Domän">
 <!ENTITY api-liste-keyauth.label "Nyckel">
 <!ENTITY use-gpg-agent-checkbox "Aktivera 'gpg-agent'. (Varning! Kan orsaka problem)">
@@ -84,3 +83,4 @@
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
+<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">

@@ -37,7 +37,6 @@
 <!ENTITY hide-expired "Sakrij ">
 <!ENTITY use-api "Aktivni FireGPG API za sajtove (kao Roundcube)(Restart potreban) ">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "Liste dozvoljenih sajtova (dupli-klik za brisanje)">
 <!ENTITY api-liste-domain.label "Domen">
 <!ENTITY api-liste-keyauth.label "Ključ">
 <!ENTITY use-gpg-agent-checkbox "Aktivni GPG-agent (može dovesti izlaske)">
@@ -84,3 +83,4 @@
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
+<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">

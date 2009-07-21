@@ -37,7 +37,6 @@
 <!ENTITY hide-expired "Süresi biten anahtarı gizle">
 <!ENTITY use-api "Web sayfaları için FireGPG apisini aktif yap (tekrar başlatmak gerekir)">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "İzin verilen siteler(kaldırmak için çift-tıkla)">
 <!ENTITY api-liste-domain.label "Alan">
 <!ENTITY api-liste-keyauth.label "Anahtar">
 <!ENTITY use-gpg-agent-checkbox "Ggp-ajan aktif yap (uyarı, sorunlar başlayabilir...)">
@@ -84,3 +83,4 @@
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
+<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">

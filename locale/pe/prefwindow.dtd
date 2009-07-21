@@ -37,7 +37,6 @@
 <!ENTITY hide-expired "مخفی کردن کلیدهای منقضی شده">
 <!ENTITY use-api "نیاز به راه‌اندازی مجدد (roundcube رابط تابعی فایرجی‌پی‌جی را برای صفحات وب فعال کن (مانند ">
 <!ENTITY paneapi.title "API">
-<!ENTITY api-liste-access.label "(لیست سایت‌های مجاز (برای حذف دوبار کلیک کنید">
 <!ENTITY api-liste-domain.label "دامنه">
 <!ENTITY api-liste-keyauth.label "کلید">
 <!ENTITY use-gpg-agent-checkbox "(فعال کردن پیش‌کار جی‌پی‌جی (می‌تواند به مشکلاتی منجر شود">
@@ -84,3 +83,4 @@
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
+<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">

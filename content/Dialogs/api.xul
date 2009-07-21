@@ -55,8 +55,8 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
   <script src="api.js"/>
   <script src="../Core/misc.js"/>
-  <script src="../Core/cgpgaccess.js"/>
-  <script src="../Core/cgpg.js"/>
+  <script src="../Api/api.js"/>
+
 
    <vbox  flex="1" >
 

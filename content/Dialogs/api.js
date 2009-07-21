@@ -68,6 +68,7 @@ function onLoad(d) {
     translation = document.getElementById('can-access').label;
 
     theLocation = window.arguments[0].theLocation;
+    this.theLocation = theLocation;
 
     document.getElementById('domain').label += ' (' + theLocation.hostname + ')';
     document.getElementById('website').label += ' (' + theLocation.protocol + '//' +  theLocation.host + ')';
@@ -88,7 +89,7 @@ function onLoad(d) {
     Show the warning about https if need
 */
 function updateWaring() {
-fireGPGDebug('a');
+
     if (document.getElementById('domain').selected == true || theLocation.protocol != 'https:')
         document.getElementById('non-https').style.display = '';
     else
@@ -113,4 +114,45 @@ function decraseCounter() {
         document.getElementById('can-access').label = translation;
         document.getElementById('can-access').disabled = '';
    }
+}
+
+/*
+    Function: ignore
+    Ingore the request -> close the window
+*/
+function ignore() {
+    this.close();
+}
+
+/*
+    Function: cannot
+    For the selected thing to be ignored in the futur
+*/
+function cannot() {
+    if (document.getElementById('domain').selected)
+        gpgApi.denyRegister(this.theLocation, 'D');
+    else if (document.getElementById('website').selected)
+        gpgApi.denyRegister(this.theLocation, 'S');
+    else if (document.getElementById('page').selected)
+        gpgApi.denyRegister(this.theLocation, 'P');
+
+    this.close();
+}
+
+/*
+    Function: can
+    Lets the selected thing to use the api and return the api key
+*/
+function can() {
+
+    if (document.getElementById('domain').selected)
+        key = gpgApi.allowRegister(this.theLocation, 'D');
+    else if (document.getElementById('website').selected)
+        key = gpgApi.allowRegister(this.theLocation, 'S');
+    else if (document.getElementById('page').selected)
+        key = gpgApi.allowRegister(this.theLocation, 'P');
+
+    window.arguments[0].apiKey = key;
+
+    this.close();
 }
