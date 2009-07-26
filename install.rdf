@@ -6,10 +6,10 @@
 
                    em:id="toolkit@mozilla.org"
                    em:minVersion="1.5"
-                   em:maxVersion="3.*" />
+                   em:maxVersion="3.5.*" />
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="firegpg@firegpg.team"
-                   em:version="0.7.6"
+                   em:version="0.7.7"
                    em:type="2"
                    em:name="FireGPG"
                    em:description="An extension that acts as an assistant for using GPG."

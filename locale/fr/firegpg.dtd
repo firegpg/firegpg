@@ -53,6 +53,6 @@
 <!ENTITY firegpgContext.labelWrapSign "Signature découpée">
 <!ENTITY firegpgMenu.labelWrapSign "Signature découpée">
 <!ENTITY firegpgContext.labelHashs "Hashes">
-<!ENTITY firegpgContext.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgContext.labelFiles "Opérations sur les fichiers">
+<!ENTITY firegpgMenu.labelFiles "Opérations sur les fichiers">
 <!ENTITY firegpgMenu.labelHashs "Hashes">

@@ -53,6 +53,6 @@
 <!ENTITY firegpgContext.labelWrapSign "Omvatte ondertekening">
 <!ENTITY firegpgMenu.labelWrapSign "Omvatte handtekening">
 <!ENTITY firegpgContext.labelHashs "Hashes">
-<!ENTITY firegpgContext.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgContext.labelFiles "Bestandsoperaties">
+<!ENTITY firegpgMenu.labelFiles "Bestandsoperaties">
 <!ENTITY firegpgMenu.labelHashs "Hashes">

@@ -72,15 +72,15 @@
 <!ENTITY autowrap_list.label "Automatische Antworten (Doppelklick zum Entfernen):">
 <!ENTITY paneautowrap.title "Automatische Einbettung">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Zeige Benutzerdaten für verifizierte Unterschriften">
-<!ENTITY gmail-keep-encrypted-mail "Verschlüssele die Antwort auf verschlüsselte Mails">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
+<!ENTITY gmail-keep-encrypted-mail "Antworten auf verschlüsselte E-Mails verschlüsseln">
+<!ENTITY gmail-smtp-no-auth-checkbox "SMTP-Authentifizierung deaktivieren">
 <!ENTITY dont_ask_to_download_key "Bitte laden sie keine fehlenden Schlüssel herunter">
-<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
+<!ENTITY keyserverproxy-message "Proxy für HTTP- und HKP-Schlüsselserver:">
 <!ENTITY digest-message "Digest (Hash der zum Signieren benutzt wird) (SHA256, SHA512, etc.) (Gmail nutzt dies zum erstellen neuer Mails):">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.label "gpgAuth Statusleisten-Symbol aktivieren">
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Automatische Anzeige des Statusfensters bei der Benutzung von gpgAuth">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
-<!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
-<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">
+<!ENTITY enable-gpgauth-check.label "gpgAuth aktivieren">
+<!ENTITY panpan-assistant-is-now-dead "Den Assistenten nochmals ausführen">
+<!ENTITY api-liste-access2.label "Liste der Rechte für die API (Doppelklick zum Entfernen)">

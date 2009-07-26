@@ -1,17 +1,17 @@
-<!ENTITY title "FireGPG Assistant - Private key">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Private key">
-<!ENTITY description "PGP system work with a private key and a public key. You sign messages with your private key and another users verify your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
-<!ENTITY pk "You have at least a private key in your keyring">
-<!ENTITY setdk "Set a default key">
-<!ENTITY askforpk "Ask for private key">
-<!ENTITY name "Name">
+<!ENTITY title "Assistent FireGPG - Clau privada">
+<!ENTITY stop "">
+<!ENTITY next "Proper">
+<!ENTITY title2 "Clau privada">
+<!ENTITY description "El sistema PGP treballa amb una clau privada i una de pública. Firmes missatges amb la teva clau privada i els altres usuaris verifiquen la teva signatura amb la teva clau pública. Si volen enviar-te un missatge, utilitzen la teva clau pública, i tu, i només tu, pots desencriptar-lo amb la teva clau privada.">
+<!ENTITY pk "Tens com a mínim una clau privada al teu clauer">
+<!ENTITY setdk "Estableix una clau per defecte">
+<!ENTITY askforpk "Pregunta la clau privada">
+<!ENTITY name "Nom">
 <!ENTITY id "Id">
-<!ENTITY created "Created">
-<!ENTITY expire "Expire">
-<!ENTITY nopk "You don't have any private key in your keyring">
-<!ENTITY genpk "Generate a private and a public key">
-<!ENTITY gen "Generate">
-<!ENTITY importpk "Import a private key">
-<!ENTITY import "Import">
+<!ENTITY created "Creat">
+<!ENTITY expire "Expira">
+<!ENTITY nopk "No tens cap clau privada en el teu clauer">
+<!ENTITY genpk "Genera una clau privada i una de pública">
+<!ENTITY gen "Genera">
+<!ENTITY importpk "Importa una clau privada">
+<!ENTITY import "Importa">

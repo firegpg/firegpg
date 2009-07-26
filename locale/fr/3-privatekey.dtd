@@ -1,17 +1,17 @@
-<!ENTITY title "FireGPG Assistant - Private key">
+<!ENTITY title "Assistant FireGPG - Clé privée">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Private key">
-<!ENTITY description "PGP system work with a private key and a public key. You sign messages with your private key and another users verify your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
-<!ENTITY pk "You have at least a private key in your keyring">
-<!ENTITY setdk "Set a default key">
+<!ENTITY next "Suivant">
+<!ENTITY title2 "Clé privée">
+<!ENTITY description "Le système PGP fonctionne avec une clé privée et une clé publique. Vos message son signés avec votre clé privées et les autres utilisateurs vérifient votre signature avec votre clé public. Si ils veulent vous envoyer un message, ils utilisent votre clé publique, et vous, seulement vous, peut déchiffrer le message avec votre clé privée.">
+<!ENTITY pk "Vous avez au moins une clé privée dans votre trousseau">
+<!ENTITY setdk "Définir une clé par défaut">
 <!ENTITY askforpk "Demander la clé privée">
-<!ENTITY name "Name">
-<!ENTITY id "Id">
+<!ENTITY name "Nom">
+<!ENTITY id "ID">
 <!ENTITY created "Créé(e)">
-<!ENTITY expire "Expire">
-<!ENTITY nopk "You don't have any private key in your keyring">
-<!ENTITY genpk "Generate a private and a public key">
-<!ENTITY gen "Generate">
-<!ENTITY importpk "Import a private key">
-<!ENTITY import "Import">
+<!ENTITY expire "Expiration">
+<!ENTITY nopk "Vous avez aucune clé privée dans votre trousseau.">
+<!ENTITY genpk "Générer une clé privée et une clé publique">
+<!ENTITY gen "Générer">
+<!ENTITY importpk "Importer une clé privée">
+<!ENTITY import "Importer">

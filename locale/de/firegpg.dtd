@@ -53,6 +53,6 @@
 <!ENTITY firegpgContext.labelWrapSign "Eingebettete Unterschrift">
 <!ENTITY firegpgMenu.labelWrapSign "Eingebettete Unterschrift">
 <!ENTITY firegpgContext.labelHashs "Hashes">
-<!ENTITY firegpgContext.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgContext.labelFiles "Datei-Operationen">
+<!ENTITY firegpgMenu.labelFiles "Datei-Operationen">
 <!ENTITY firegpgMenu.labelHashs "Hashes">

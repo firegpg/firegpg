@@ -9,7 +9,7 @@
 <!ENTITY noauthhelp "FireGPG will warn you when he try to send a mail if there is a problem">
 <!ENTITY sign "Sign">
 <!ENTITY encrypt "Encrypt">
-<!ENTITY atta "Attachements">
+<!ENTITY atta "Вложения">
 <!ENTITY inline "Use inline">
 <!ENTITY inlinesuck "Inline is bad and not working everytime. OpenPGP/Mime, as standard, should be used !">
 <!ENTITY nosmtp "FireGPG isn't able to access to the smtp server OR request is still in progress">

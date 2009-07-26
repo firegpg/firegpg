@@ -1,22 +1,22 @@
-<!ENTITY title "FireGPG Assistant - Gmail">
+<!ENTITY title "Assistant FireGPG - Gmail">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Gmail support">
-<!ENTITY description "FireGPG can be integrated with gmail: additionnals buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signs of any mails.">
+<!ENTITY next "Suivant">
+<!ENTITY title2 "Support Gmail">
+<!ENTITY description "FireGPG peut être intégré à gmail: des boutons sont ajoutés vous permettant de chiffrer et/ou signer les mails et vous pourrez déchiffrer et vérifier les signatures de n'importe quel mail.">
 <!ENTITY enable "Activer la prise en charge de gmail">
-<!ENTITY smtpok "FireGPG is able to access to the smtp server">
-<!ENTITY noauth "NB: Authentification is not tested !">
-<!ENTITY noauthhelp "FireGPG will warn you when he try to send a mail if there is a problem">
-<!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
+<!ENTITY smtpok "FireGPG est capable d'accéder au serveur smtp">
+<!ENTITY noauth "NB: L'authentification n'est pas testée !">
+<!ENTITY noauthhelp "FireGPG vous avertira quand il essaiera d'envoyer un mail si il y a un problème">
+<!ENTITY sign "Signer">
+<!ENTITY encrypt "Chiffrer">
 <!ENTITY atta "Pièces jointes">
-<!ENTITY inline "Use inline">
-<!ENTITY inlinesuck "Inline is bad and not working everytime. OpenPGP/Mime, as standard, should be used !">
-<!ENTITY nosmtp "FireGPG isn't able to access to the smtp server OR request is still in progress">
-<!ENTITY wait "Wait 15 seconds or more if your connexion is very slow">
-<!ENTITY setp "Set parameters of a working smtp server (eg. your internet provider or your work place server)">
-<!ENTITY host "Host (smtp.gmail.com): ">
+<!ENTITY inline "Utiliser l'inline">
+<!ENTITY inlinesuck "L'inline est mauvais et ne fonctionne pas tout le temps. OpenPGP/Mime, un standard, devrais être utilisé !">
+<!ENTITY nosmtp "FireGPG n'est pas capable d'accéder au serveur smtp OU la requête est encore en cours">
+<!ENTITY wait "Attendez 15 secondes ou plus si votre connexion est très lente">
+<!ENTITY setp "Définissez les paramètres d'un serveur smtp fonctionnel (p.e votre fournisseur d'accès ou le serveur de votre entreprise)">
+<!ENTITY host "Serveur (smtp.gmail.com):">
 <!ENTITY port "Port (465):">
-<!ENTITY username "Username (leave blank to use the username of logged account):">
-<!ENTITY ssl "Use SSL">
-<!ENTITY setdo "Set default options for sending mails">
+<!ENTITY username "Nom d'utilisateur (laissez blanc pour utiliser celui de l'utilisateur loggé):">
+<!ENTITY ssl "Utiliser SSL">
+<!ENTITY setdo "Définir les options par défaut pour l'envoi des mails">

@@ -1,5 +1,5 @@
 <!ENTITY newkey "FireGPG - nueva clave">
-<!ENTITY warningaboutgeneeration "¡Aviso! La generación de claves puede tardar bastante tiempo y congelar Firefox. Haga otra cosa mientras se genera la clave para generar más entropía.">
+<!ENTITY warningaboutgeneeration "¡Aviso! La generación de claves puede tardar bastante tiempo y congelar Firefox. Haz otra cosa mientras se genera la clave para generar más entropía.">
 <!ENTITY name-message "Nombre">
 <!ENTITY email-message "Correo Electrónico">
 <!ENTITY comment-message "Comentario">

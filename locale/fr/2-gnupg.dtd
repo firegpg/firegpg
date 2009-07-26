@@ -1,23 +1,23 @@
-<!ENTITY title "FireGPG Assistant - GnuPG">
+<!ENTITY title "Assistant FireGPG - GnuPG">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY next "Suivant">
 <!ENTITY title2 "GnuPG">
-<!ENTITY description "FireGPG use GnuPG to handle any pgp operation, it's mean GnuPG must be installed for a working FireGPG.">
-<!ENTITY working "GnuPG seem to be accesible and working.">
-<!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
-<!ENTITY sethome "Set a home dir">
-<!ENTITY notworking "GnuPG dosen't works, there is a problem. Please fix this and click on next.">
-<!ENTITY isinstalled "Did you install GnuPG ?">
-<!ENTITY download "You can download GnuPG here: (But any GnuPG will works)">
-<!ENTITY windows "Windows users: Click here to download gpg4win">
-<!ENTITY linux "Linux users: Please use the package shiped with your distribution, or click here for sources.">
-<!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
-<!ENTITY uncommon "Is you GnuPG installed in an uncommon location ?">
-<!ENTITY setpath "Please set the path to GnuPG here: ">
-<!ENTITY browse "Browse">
-<!ENTITY isfireftp "Is FireFTP installed ?">
-<!ENTITY fireftpproblem "FireGPG and FireFTP conflict dues to the old IPC library of FireFTP.">
-<!ENTITY uninstall "If FireGPG's fix dosen't works, you have to uninstall one of them to let's the another working.">
-<!ENTITY strangeplateform "Are you using a strange plateform ?">
-<!ENTITY platform "FireGPG works only on Windows, MacOs and Linux x86 and x86_64 plateforms.">
-<!ENTITY recompile "You need to recompile the IPC library if it's the case.">
+<!ENTITY description "FireGPG utilise GnuPG pour gérer les opérations pgp, cela veux dire que GnuPG doit être installé pour faire fonctionner FireGPG.">
+<!ENTITY working "GnuPG semble être accessible et fonctionnel.">
+<!ENTITY specialhome "Voulez vous définir un home personnalisé pour GnuPG ?">
+<!ENTITY sethome "Définir un dossier home">
+<!ENTITY notworking "GnuPG ne fonctionne pas, il y a un problème. Merci de le résoudre et de cliquer sur suivant.">
+<!ENTITY isinstalled "Avez vous installé GnuPG ?">
+<!ENTITY download "Vous pouvez télécharger GnuPG ici: (Mais n'importe quel GnuPG fonctionnera)">
+<!ENTITY windows "Utilisateurs Windows: Cliquez ici pour télécharger gpg4win">
+<!ENTITY linux "Utilisateur de linux: Merci d'utiliser le paquet fourni avec votre distribution, ou cliquez ici pour les sources.">
+<!ENTITY macos "Utilisateurs de MacOs: Je ne sais pas comment, mais il y a un moyen. Google est votre ami.">
+<!ENTITY uncommon "Est-ce que GnuPG est installé dans un emplacement personnalisé ?">
+<!ENTITY setpath "Merci de définir le chemin de GnuPG ici:">
+<!ENTITY browse "Parcourir">
+<!ENTITY isfireftp "FireFTP est-il installé ?">
+<!ENTITY fireftpproblem "FireGPG et FireFTP sont en conflit à cause de l'ancienne librairie IPC de FireFTP.">
+<!ENTITY uninstall "Si la solution de FireGPG ne fonctionne pas, vous devez déinstaller un des deux pour que l'autre fonctionne.">
+<!ENTITY strangeplateform "Utilisez vous une architecture peu commune ?">
+<!ENTITY platform "FireGPG fonctionne seulement sous Windows, MacOs et Linux, architectures x86 et x86_64 ">
+<!ENTITY recompile "Vous devez recompiler la librairie IPC si c'est le cas.">

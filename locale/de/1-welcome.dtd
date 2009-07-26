@@ -1,12 +1,12 @@
-<!ENTITY title "FireGPG Assistant - Welcome">
-<!ENTITY skip "Skip">
-<!ENTITY next "Next">
-<!ENTITY title2 "FireGPG Assistant">
-<!ENTITY infoabout "Here is some information about icons and color used:">
-<!ENTITY whatnext "This sugest a solution or something you should do">
-<!ENTITY good "This is something good">
-<!ENTITY problem "This is a problem">
-<!ENTITY advanced "This is for advanced users. You don't understand it ? It's not a problem, don't change it.">
-<!ENTITY help "This is something with help, keep your mouse over to see it">
-<!ENTITY helppop "Hello, I'm the help">
-<!ENTITY description "Welcome ! <html:br/><html:br/>         This assistant will help you to configure FireGPG, if you're a new user it's recommanded to follow it to get a working configuration.<html:br/><html:br/><html:br/>         What ever you choose to do, you will be able to use the option windows to change any option later.">
+<!ENTITY title "FireGPG Assistent - Willkommen">
+<!ENTITY skip "Überspringen">
+<!ENTITY next "Weiter">
+<!ENTITY title2 "FireGPG Assistent">
+<!ENTITY infoabout "Hier sind einige Informationen über verwendete Symbole und Farben:">
+<!ENTITY whatnext "Dies schlägt Ihnen eine Lösung oder einen Schritt vor, den Sie durchführen sollten.">
+<!ENTITY good "Das ist etwas gutes">
+<!ENTITY problem "Dies ist ein Problem">
+<!ENTITY advanced "Dies ist für fortgeschrittene Benutzer. Sie verstehen etwas nicht? Kein Problem, verändern Sie es einfach nicht.">
+<!ENTITY help "Dies ist etwas zur Hilfe, halten Sie den Mauszeiger darüber um es zu sehen">
+<!ENTITY helppop "Hallo, ich bin die Hilfefunktion">
+<!ENTITY description "Willkommen! Dieser Assistent wird Ihnen dabei helfen, FireGPG zu konfigurieren. Falls Sie FireGPG das erste Mal benutzen, ist es empfehlenswert, den Anweisungen zu folgen, um eine funktionierende Konfiguration zu erhalten. Wie auch immer Sie sich entscheiden, Sie können die Einstellungen auch später jederzeit wieder ändern.">

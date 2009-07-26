@@ -1,22 +1,22 @@
-<!ENTITY title "FireGPG Assistant - Gmail">
+<!ENTITY title "FireGPG Assistent - Gmail">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Gmail support">
-<!ENTITY description "FireGPG can be integrated with gmail: additionnals buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signs of any mails.">
-<!ENTITY enable "Enable gmail support">
-<!ENTITY smtpok "FireGPG is able to access to the smtp server">
-<!ENTITY noauth "NB: Authentification is not tested !">
-<!ENTITY noauthhelp "FireGPG will warn you when he try to send a mail if there is a problem">
-<!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
-<!ENTITY atta "Attachements">
-<!ENTITY inline "Use inline">
-<!ENTITY inlinesuck "Inline is bad and not working everytime. OpenPGP/Mime, as standard, should be used !">
-<!ENTITY nosmtp "FireGPG isn't able to access to the smtp server OR request is still in progress">
-<!ENTITY wait "Wait 15 seconds or more if your connexion is very slow">
-<!ENTITY setp "Set parameters of a working smtp server (eg. your internet provider or your work place server)">
-<!ENTITY host "Host (smtp.gmail.com): ">
-<!ENTITY port "Port (465):">
-<!ENTITY username "Username (leave blank to use the username of logged account):">
-<!ENTITY ssl "Use SSL">
-<!ENTITY setdo "Set default options for sending mails">
+<!ENTITY next "Volgende">
+<!ENTITY title2 "Gmail ondersteuning">
+<!ENTITY description "FireGPG kan geïntegreerd worden in Gmail: extra knoppen om e-mails te versleutelen en/of tekenen worden toegevoegd en het is mogelijk om e-mails te ontsleutelen of verifiëren.">
+<!ENTITY enable "Activeer Gmail support">
+<!ENTITY smtpok "FireGPG kan de smtp server bereiken">
+<!ENTITY noauth "NB: Authentificatie is niet getest!">
+<!ENTITY noauthhelp "FireGPG zal u waarschuwen bij het versturen van een e-mail als er een probleem ontstaat">
+<!ENTITY sign "Voorzien van handtekening">
+<!ENTITY encrypt "Encrypteer">
+<!ENTITY atta "Bijlagen">
+<!ENTITY inline "Gebruik binnensregels">
+<!ENTITY inlinesuck "Binnensregels werkt slecht en niet iedere keer. OpenPGP/Mime, als standaard, zou gebruikt moeten worden!">
+<!ENTITY nosmtp "FireGPG is niet in staat de smtp server te bereiken OF het verzoek is nog in behandeling">
+<!ENTITY wait "Wacht 15 seconden of meer als uw verbinding heel langzaam is">
+<!ENTITY setp "Stel de parameters van een werkende smtp server in (bijv. van uw internet provider of de server van uw werk)">
+<!ENTITY host "Host">
+<!ENTITY port "Poort (465):">
+<!ENTITY username "Gebruikersnaam (leeg laten om de naam van de gelogde account te gebruiken):">
+<!ENTITY ssl "Gebruik SSL">
+<!ENTITY setdo "Stel standaard opties in voor het versturen van e-mail">

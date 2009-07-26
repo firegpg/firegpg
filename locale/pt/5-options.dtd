@@ -1,12 +1,12 @@
-<!ENTITY title "FireGPG Assistant - Options">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Options">
-<!ENTITY description "Here you can set some globals options for some FireGPG features:">
-<!ENTITY inline "Enable Inline detection">
-<!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and let's do relevent operations with it !">
-<!ENTITY disableagent "Disable GPG-Agent">
-<!ENTITY api "Enable FireGPG API">
-<!ENTITY apihelp "FireGPG API let's any website use gpg's features - of course with security mecanisms">
-<!ENTITY gpgauth "Enable gpgAuth">
-<!ENTITY gpgauthhelp "gpgAuth is mechanism or process to authenticate web-users using GnuPG, not developped by FireGPG authors">
+<!ENTITY title "Assistente do FireGPG - Opções">
+<!ENTITY stop "Parar">
+<!ENTITY next "Seguinte">
+<!ENTITY title2 "Opções">
+<!ENTITY description "Pode definir, aqui, algumas opções globais de algumas das funcionalidades do FireGPG:">
+<!ENTITY inline "Activar a detecção embutida">
+<!ENTITY inlinehelp "Se uma página web contiver um bloco PGP, o FireGPG pode detectá-lo e permitir fazer as operações relevantes.">
+<!ENTITY disableagent "Desactivar o GPG-Agent">
+<!ENTITY api "Activar API do FireGPG">
+<!ENTITY apihelp "A API do FireGPG permite usufruir das funcionalidades do gpg em qualquer website - com mecanismos de segurança, claro">
+<!ENTITY gpgauth "Activar o gpgAuth">
+<!ENTITY gpgauthhelp "O gpgAuth é um mecanismo ou processo de autenticação de utilizadores web que usa o GnuPG, não desenvolvido pelos autores do FireGPG">

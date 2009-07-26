@@ -1,5 +1,5 @@
 <!ENTITY thitle "Compute hashes of fles">
 <!ENTITY result "Result:">
-<!ENTITY browse "Select a file">
+<!ENTITY browse "Выберите файл">
 <!ENTITY hash "Type:">
 <!ENTITY copy "Copy hash to clipboard">

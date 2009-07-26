@@ -77,10 +77,10 @@
 <!ENTITY dont_ask_to_download_key "No provis de descarregar claus perdudes">
 <!ENTITY keyserverproxy-message "Proxy a utilitzar pels servidors de claus HTTP i HKP:">
 <!ENTITY digest-message "Resum (el hash utilitzat per signar) (SHA256, SHA512, etc.) (Gmail utilitza aquest valor per crear correus): ">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.label "Habilita la icona de la barra d'estat de gpgAuth">
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Mostra automàticament la finestra d'estat quan utilitzis gpgAuth">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
-<!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
-<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">
+<!ENTITY enable-gpgauth-check.label "Habilita gpgAuth">
+<!ENTITY panpan-assistant-is-now-dead "Executa l'assistent altre cop">
+<!ENTITY api-liste-access2.label "Llista de drets per a l'API (doble click per treure)">

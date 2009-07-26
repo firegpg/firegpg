@@ -69,7 +69,7 @@
 <!ENTITY gmail-buton-attachements-checkbox "Documentos Adjuntos">
 <!ENTITY autorwap-liste-action.label "Acción">
 <!ENTITY autorwap-liste-domain.label "Correo Web">
-<!ENTITY autowrap_list.label "Respuestas automáticas (doble-clic para remover):">
+<!ENTITY autowrap_list.label "Respuestas automáticas (dos clicks para quitar)">
 <!ENTITY paneautowrap.title "Auto Encapsular">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Mostrar datos de usuario para firmas verificadas">
 <!ENTITY gmail-keep-encrypted-mail "Cifrar respuesta para correos cifrados">

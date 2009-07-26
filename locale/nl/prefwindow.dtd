@@ -73,14 +73,14 @@
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Laat gebruikers data zien voor goede ondertekeningen">
 <!ENTITY gmail-keep-encrypted-mail "Versleuteld antwoord op versleutelde mails">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
-<!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
-<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY gmail-smtp-no-auth-checkbox "Deactiveer SMTP authenticatie">
+<!ENTITY dont_ask_to_download_key "Probeer niet missende sleutels te downloaden">
+<!ENTITY keyserverproxy-message "Proxy te gebruiken voor HTTP en HKP sleutelservers:">
+<!ENTITY digest-message "Versleutelmethode (Hash om mee te versleutelen) (SHA256, SHA512, etc.) (Gmail ondersteunt deze waarde om e-mails te maken): ">
+<!ENTITY enable-gpgauth-statusbar-check.label "Activeer het gpgAuth statusbalk icoon">
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
-<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
-<!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
-<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Automatisch het statusvenster laten zien bij gebruik van gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "V">
+<!ENTITY enable-gpgauth-check.label "Activeer gpgAuth">
+<!ENTITY panpan-assistant-is-now-dead "Start de assistent opnieuw">
+<!ENTITY api-liste-access2.label "Lijst van rechten voor de API (dubbelklikken om te verwijderen)">

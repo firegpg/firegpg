@@ -1,17 +1,17 @@
-<!ENTITY title "FireGPG Assistant - Private key">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Private key">
-<!ENTITY description "PGP system work with a private key and a public key. You sign messages with your private key and another users verify your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
-<!ENTITY pk "You have at least a private key in your keyring">
-<!ENTITY setdk "Set a default key">
-<!ENTITY askforpk "Ask for private key">
-<!ENTITY name "Name">
-<!ENTITY id "Id">
-<!ENTITY created "Created">
-<!ENTITY expire "Expire">
-<!ENTITY nopk "You don't have any private key in your keyring">
-<!ENTITY genpk "Generate a private and a public key">
-<!ENTITY gen "Generate">
-<!ENTITY importpk "Import a private key">
-<!ENTITY import "Import">
+<!ENTITY title "Assistente do FireGPG - Chave privada">
+<!ENTITY stop "Parar">
+<!ENTITY next "Seguinte">
+<!ENTITY title2 "Chave privada">
+<!ENTITY description "O sistema PGP funciona com uma chave privada e outra pública. Você assina mensagens com a sua chave privada e outro utilizador verifica essas assinaturas com a sua chave pública. Se alguém quiser enviar-lhe uma mensagem, usa a sua chave pública e apenas você a pode decifrar com a sua chave privada.">
+<!ENTITY pk "Tem pelo menos uma chave privada no seu porta-chaves">
+<!ENTITY setdk "Defina a chave que estará activa por omissão">
+<!ENTITY askforpk "Pedir uma chave privada">
+<!ENTITY name "Nome">
+<!ENTITY id "ID">
+<!ENTITY created "Criada">
+<!ENTITY expire "Expira a">
+<!ENTITY nopk "Não tem qualquer chave privada no seu porta-chaves">
+<!ENTITY genpk "Gerar um par de chaves privada e pública">
+<!ENTITY gen "Gerar">
+<!ENTITY importpk "Importar uma chave privada">
+<!ENTITY import "Importar">

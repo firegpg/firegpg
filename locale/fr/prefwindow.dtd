@@ -77,10 +77,10 @@
 <!ENTITY dont_ask_to_download_key "Ne pas essayer de télécharger les clés manquantes">
 <!ENTITY keyserverproxy-message "Proxy à utiliser pour les serveurs de clés utilisant les protocoles HTTP et HKP">
 <!ENTITY digest-message "Hachage (Hash utilisé pour signer) (SHA256, SHA512, etc.) (Gmail utilise cette valeur pour créer les mails) :">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.label "Activer l'icône de la barre de status de gpgAuth">
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Automatiquement afficher la fenêtre de status lors de l'utilisation de gpgAuth">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
-<!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
-<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">
+<!ENTITY enable-gpgauth-check.label "Activer gpgAuth">
+<!ENTITY panpan-assistant-is-now-dead "Exécuter l'assistant à nouveau">
+<!ENTITY api-liste-access2.label "Liste des droits pour l'API (double cliquer pour supprimer)">

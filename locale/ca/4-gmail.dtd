@@ -1,22 +1,22 @@
-<!ENTITY title "FireGPG Assistant - Gmail">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Gmail support">
-<!ENTITY description "FireGPG can be integrated with gmail: additionnals buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signs of any mails.">
-<!ENTITY enable "Enable gmail support">
-<!ENTITY smtpok "FireGPG is able to access to the smtp server">
-<!ENTITY noauth "NB: Authentification is not tested !">
-<!ENTITY noauthhelp "FireGPG will warn you when he try to send a mail if there is a problem">
-<!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
-<!ENTITY atta "Attachements">
-<!ENTITY inline "Use inline">
-<!ENTITY inlinesuck "Inline is bad and not working everytime. OpenPGP/Mime, as standard, should be used !">
-<!ENTITY nosmtp "FireGPG isn't able to access to the smtp server OR request is still in progress">
-<!ENTITY wait "Wait 15 seconds or more if your connexion is very slow">
-<!ENTITY setp "Set parameters of a working smtp server (eg. your internet provider or your work place server)">
+<!ENTITY title "Assistent FireGPG - Gmail">
+<!ENTITY stop "Para">
+<!ENTITY next "Proper">
+<!ENTITY title2 "Suport Gmail">
+<!ENTITY description "FireGPG pot integrar-se amb Gmail: S'afegeixen botons addicionals per a encriptar i/o signar e-mails, i podràs desencriptar i verificar signatures dels e-mails rebuts.">
+<!ENTITY enable "Habilita suport de Gmail">
+<!ENTITY smtpok "FireGPG pot accedir el servidor SMTP">
+<!ENTITY noauth "NB: L'autenticació no s'ha provat!">
+<!ENTITY noauthhelp "FireGPG t'avisarà si hi ha un problema quan miri d'enviar un e-mail">
+<!ENTITY sign "Signa">
+<!ENTITY encrypt "Encripta">
+<!ENTITY atta "Adjunts">
+<!ENTITY inline "Utilitza &quot;Inline&quot;">
+<!ENTITY inlinesuck "&quot;Inline&quot; és dolent i no funciona sempre. S'hauria d'utilitzar, com a estàndard, OpenPGP/Mime!">
+<!ENTITY nosmtp "FireGPG no pot accedir al servidor SMTP o la demanda és en curs encara">
+<!ENTITY wait "Espera't 15 segons o més si la teva connexió és molt lenta">
+<!ENTITY setp "Estableix paràmetres d'un servidor SMTP (del teu ISP o la feina)">
 <!ENTITY host "Host (smtp.gmail.com): ">
-<!ENTITY port "Port (465):">
-<!ENTITY username "Username (leave blank to use the username of logged account):">
-<!ENTITY ssl "Use SSL">
-<!ENTITY setdo "Set default options for sending mails">
+<!ENTITY port "Port(465):">
+<!ENTITY username "Nom d'usuari (en blanc per utilitzar el nom d'usuari del compte actual):">
+<!ENTITY ssl "Utilitza SSL">
+<!ENTITY setdo "Estableix opcions per defecte per enviar e-mails">
