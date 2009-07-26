@@ -90,7 +90,7 @@ under the terms of any one of the MPL, the GPL or the LGPL.
               <menuitem class="firegpg-menu-decrypt menuitem-iconic" label="&firegpgMenu.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'FDECRYPT')"/>
               <menuitem class="firegpg-menu-crypt menuitem-iconic" label="&firegpgMenu.labelSymCrypt;" oncommand="firegpg.onMenuItemCommand(event,'FSYMCRYPT')"/>
               <menuitem class="firegpg-menu-cryptsign menuitem-iconic" label="&firegpgMenu.labelCryptSign;" oncommand="firegpg.onMenuItemCommand(event,'FCRYPTSIGN')"/>
-              <menuitem class="firegpg-menu menuitem-iconic" label="&firegpgMenu.labelHashs;" oncommand="firegpg.onMenuItemCommand(event,'FHASHES')"/>
+              <menuitem class="firegpg-menu-hash menuitem-iconic" label="&firegpgMenu.labelHashs;" oncommand="firegpg.onMenuItemCommand(event,'FHASHES')"/>
             </menupopup>
         </menu>
         <menuitem class="firegpg-menu-editeur menuitem-iconic" label="&firegpgMenu.labelEditeur;" oncommand="firegpg.onMenuItemCommand(event,'EDITEUR')"/>
@@ -126,7 +126,7 @@ under the terms of any one of the MPL, the GPL or the LGPL.
               <menuitem class="firegpg-menu-decrypt menuitem-iconic" label="&firegpgContext.labelDecry;" oncommand="firegpg.onMenuItemCommand(event,'FDECRYPT')"/>
               <menuitem class="firegpg-menu-crypt menuitem-iconic" label="&firegpgContext.labelSymCrypt;" oncommand="firegpg.onMenuItemCommand(event,'FSYMCRYPT')"/>
               <menuitem class="firegpg-menu-cryptsign menuitem-iconic" label="&firegpgContext.labelCryptSign;" oncommand="firegpg.onMenuItemCommand(event,'FCRYPTSIGN')"/>
-              <menuitem class="firegpg-menu menuitem-iconic" label="&firegpgContext.labelHashs;" oncommand="firegpg.onMenuItemCommand(event,'FHASHES')"/>
+              <menuitem class="firegpg-menu-hash menuitem-iconic" label="&firegpgContext.labelHashs;" oncommand="firegpg.onMenuItemCommand(event,'FHASHES')"/>
             </menupopup>
         </menu>
         <menuitem class="firegpg-menu-editeur menuitem-iconic" label="&firegpgContext.labelEditeur;" oncommand="firegpg.onMenuItemCommand(event,'EDITEUR')"/>
