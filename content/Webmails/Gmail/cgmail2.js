@@ -138,13 +138,13 @@ var cGmail2 = {
 
                         //On cherche la boite avec les boutons
                         for (var j = 0; j < boutonboxs.length; j++) {
-                            if (boutonboxs[j].getAttribute("class").indexOf("cf gz") != -1) { //EWdQcf
+                            if (boutonboxs[j] && boutonboxs[j].getAttribute("class").indexOf("cf gz") != -1) { //EWdQcf
                                 boutonbox = boutonboxs[j].firstChild.firstChild;
                                 break;
                             }
                         }
 
-                        if (boutonbox == "")
+                        if (boutonbox == "" || !boutonbox)
                             break;
 
                         fireGPGDebug("ok");
@@ -860,6 +860,7 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
                                 const badpattern7 = ["$Z$_P$", "$Z$_P$", "$Z$_P$", "$Z$_P$ptb$", "$E0$_P$BJa$"];
                                 const badpattern8 = ["$abb", "$9ab", "$Jab", "$L$a", "$u8a"];  //     $t8a
                                 const badpattern9 = ["EXc", "$8Ua", "gUc", "fUc", "$ATa"];  //         hla
+                                const badpattern10 = ["Qsa", "Jsa", "Jkb", "$wTa", "$xTa"];  //         xta
 
 /*
 EXc $8Ua gUc fUc $ATa hla
@@ -869,7 +870,7 @@ Zna Vna UIb $RQa $SQa Moa
 Zna Vna UIb $RQa $SQa Moa
                                                                                               */
 
-                                if (stackMatch(badpattern9, getValue.caller) || stackMatch(badpattern8, getValue.caller) || stackMatch(badpattern7, getValue.caller) || stackMatch(badpattern6, getValue.caller) || stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
+                                if (stackMatch(badpattern10, getValue.caller) || stackMatch(badpattern9, getValue.caller) || stackMatch(badpattern8, getValue.caller) || stackMatch(badpattern7, getValue.caller) || stackMatch(badpattern6, getValue.caller) || stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
                                 {
                                     function AutosaveWreckingBall() {};
                                     AutosaveWreckingBall.prototype.value = "Wrecked";
@@ -900,8 +901,8 @@ Zna Vna UIb $RQa $SQa Moa
 
 
                             // message about autosave disabled
-                            var spanAS = form.ownerDocument.evaluate(".//div[contains(@class,'c1I77d')]//span[@class='x1Kcd']",
-                                                                            form.parentNode.parentNode, null,
+                            var spanAS = form.ownerDocument.evaluate(".//div[contains(@class,'dW')]//span[@class='d2']",
+                                                                            form.parentNode.parentNode.parentNode.parentNode, null,
                                                                             XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
                             for (var o=0;o<spanAS.snapshotLength;o++)
                             {

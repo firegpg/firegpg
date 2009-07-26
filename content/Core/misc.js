@@ -1762,6 +1762,3 @@ var Base64 = {
 function getFileExtention(filename) {
    return filename.substring(filename.length - 3,filename.length).toLowerCase();
 }
-
-
-
