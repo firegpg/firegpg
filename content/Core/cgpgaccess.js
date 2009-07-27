@@ -302,13 +302,13 @@ var GPGAccess = {
             fromGpgAuth - _Optionnal_  use the GpgAuth's parameter
 
     */
-    getGPGTrustArgument: function (fromGpgAuth) {
+    getGPGTrustArgument: function (fromGpgAuth,fromDTA) {
 
         if (fromGpgAuth != undefined && fromGpgAuth == true)
             if ( gpgAuth.prefs.prefHasUserValue( '.global.trust_model' ) && gpgAuth.prefs.getCharPref( '.global.trust_model' ) != "" )
                 return ' --trust-model ' + gpgAuth.prefs.getCharPref( '.global.trust_model' );
 
-       if (useGPGTrust)
+       if (useGPGTrust && !fromDTA)
            return ' --trust-model always';
        else
            return '';
@@ -616,9 +616,14 @@ var GPGAccess = {
             A <GPGReturn> structure.
 
     */
-    verify: function(text, charset, fileMode, fileFrom, fileSig) {
+    verify: function(text, charset, fileMode, fileFrom, fileSig, fileDataForSign, fromDTA) {
 
-		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument() + " --verify" + (fileMode ? ' ' + fileSig.replace(/\s/g, '{$SPACE}') + ' ' + fileFrom.replace(/\s/g, '{$SPACE}') : ''), text, charset);
+        if (fileDataForSign != undefined && fileDataForSign != '') {
+            fileSig = '-';
+            text = fileDataForSign;
+        }
+
+		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument(undefined, fromDTA) + " --verify" + (fileMode ? ' ' + fileSig.replace(/\s/g, '{$SPACE}') + ' ' + fileFrom.replace(/\s/g, '{$SPACE}') : ''), text, charset);
 
         var result2 = new GPGReturn();
 		result2.sdOut = result.err;

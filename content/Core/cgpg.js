@@ -1191,8 +1191,10 @@ var FireGPG = {
             fileMode - _Optional_. Indicate the user want to verify the signature of a file
             fileFrom - _Optional_. The file to verify
             fileSig - _Optional_. The file with the signature
+            fileDataForSign - _Optional_. The data with the signatur
+            fromDTA - _Optional_. True if called form DTA
     */
-	verify: function(silent, text, charset, signData, fileMode, fileFrom, fileSig) {
+	verify: function(silent, text, charset, signData, fileMode, fileFrom, fileSig, fileDataForSign, fromDTA) {
 
         var returnObject = new GPGReturn();
 
@@ -1201,6 +1203,9 @@ var FireGPG = {
 
         if (fileMode == undefined)
             fileMode = false;
+
+        if (fromDTA == undefined)
+            fromDTA = false;
 
         this.initGPGACCESS();
         var i18n = document.getElementById("firegpg-strings");
@@ -1230,7 +1235,7 @@ var FireGPG = {
 
             }
 
-            if (fileSig == undefined) {
+            if (fileSig == undefined && fileDataForSign == undefined) {
 
                 if (fileExist(fileFrom + '.sig')) {
 
@@ -1294,7 +1299,7 @@ var FireGPG = {
             var results = this.layers(text,0, charset);
         else {
 
-            results = new Array(this.layerverify(undefined,undefined,undefined, undefined,undefined, fileMode, fileFrom, fileSig));
+            results = new Array(this.layerverify(undefined,undefined,undefined, undefined,undefined, fileMode, fileFrom, fileSig, undefined, fileDataForSign, fromDTA));
         }
 
         returnObject.signsresults = results;
@@ -1341,6 +1346,13 @@ var FireGPG = {
             returnObject.signresulttext = results[0].signresulttext;
             returnObject.signresultuser = results[0].signresultuser;
             returnObject.signresultdate = results[0].signresultdate;
+
+            if (results[0].revoked)
+                returnObject.revoked  = results[0].revoked;
+
+            if (results[0].notTrusted)
+                returnObject.notTrusted  = results[0].notTrusted;
+
 
             returnObject.result = RESULT_SUCCESS;
 
@@ -1443,8 +1455,10 @@ var FireGPG = {
             fileFrom - _Optional_. The file to verify
             fileSig - _Optional_. The file with the signature
             nextText - The Gpg output to use for signature verification (used for multi signs)
+            fileDataForSign - _Optional_. The data with the signatur
+            fromDTA - _Optional_. True if called form DTA
     */
-    layerverify: function(text,layer,division, charset,dontask, fileMode, fileFrom, fileSig,nextText) {
+    layerverify: function(text,layer,division, charset,dontask, fileMode, fileFrom, fileSig, nextText, fileDataForSign, fromDTA) {
         var returnObject = new GPGReturn();
 
         if (dontask == undefined)
@@ -1453,7 +1467,7 @@ var FireGPG = {
 
         // We get the result
         if (nextText == undefined) {
-            var result = this.GPGAccess.verify(text, charset, fileMode, fileFrom, fileSig);
+            var result = this.GPGAccess.verify(text, charset, fileMode, fileFrom, fileSig, fileDataForSign, fromDTA);
 
             if ( charset && charset.toLowerCase() == "iso-8859-1")
                 result.sdOut = EnigConvertToUnicode(result.sdOut, 'UTF-8');
@@ -1466,11 +1480,14 @@ var FireGPG = {
 
         returnObject.sdOut = result.sdOut;
 
-
 		// If check failled
 		if(result.sdOut.indexOf("GOODSIG") == "-1") {
 
             returnObject.result = RESULT_ERROR_UNKNOW;
+
+            if(result.sdOut.indexOf("REVKEYSIG") != -1) {
+                returnObject.revoked = true;
+            }
 
             if(result.sdOut.indexOf("BADSIG") != -1) {
                 returnObject.result = RESULT_ERROR_BAD_SIGN;
@@ -1513,6 +1530,12 @@ var FireGPG = {
 			}
 
 		} else {
+
+            if(result.sdOut.indexOf("TRUST_UNDEFINED") != -1) {
+                returnObject.notTrusted = true;
+            }
+
+
 			// If he work, we get informations of the Key
 			var infos = result.sdOut;
 

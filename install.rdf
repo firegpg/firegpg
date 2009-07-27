@@ -4,7 +4,7 @@
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><!--em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"-->
   <RDF:Description RDF:about="rdf:#$g5s0x"
 
-                   em:id="toolkit@mozilla.org"
+                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
                    em:minVersion="1.5"
                    em:maxVersion="3.5.*" />
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
@@ -15,11 +15,10 @@
                    em:description="An extension that acts as an assistant for using GPG."
                    em:creator="FireGPG Team"
                    em:homepageURL="http://www.getfiregpg.org/"
-                   em:updateURL="http://www.getfiregpg.org/stable/update.rdf"
                    em:aboutURL="chrome://firegpg/content/Dialogs/about.xul"
                    em:optionsURL="chrome://firegpg/content/Dialogs/options.xul"
                    em:iconURL="chrome://firegpg/content/firegpg.png"
-                   em:updateKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC39KBStycIN2Bk8KyCnMOGs0yi6k7fVpQjG7g7xJy/yPqBBXXYZ2E5zqCy/lLynnuWGqAhWrb4b1/i7U9Qt2uojwKoNELqb7nx219Hv753OH5jLFUwZ5GMjIJ9DxEhfjg7UG9pN2l6XZqXQqJMXz9oJf6bWZBegw0auEx1EzLzZQIDAQAB">
+                  >
     <em:targetApplication RDF:resource="rdf:#$g5s0x"/>
   </RDF:Description>
 </RDF:RDF>

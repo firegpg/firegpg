@@ -135,6 +135,8 @@ var firegpg = {
 
     */
 	onDelayMenuAction: function(action) {
+        
+
    		if (action == ACTION_SIGN)
 			FireGPG.sign();
         else if (action == ACTION_PSIGN)
