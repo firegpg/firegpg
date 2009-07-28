@@ -625,6 +625,8 @@ var cGmail2 = {
                         }
                         else if (listeTest[i].firstChild && listeTest[i].firstChild.getAttribute("class") == "dW D") { //Version du 5 mars 09
                             var wheretoadd = listeTest[i].firstChild;
+                        }else if (listeTest[i].firstChild && listeTest[i].firstChild.getAttribute("class") == "dW") { //Version du 28 juil 09
+                            var wheretoadd = listeTest[i].firstChild;
                         }
 
 fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
@@ -751,6 +753,15 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
                             firegpgactions.appendChild(checkboxes);
                             fileattachimage = tablebox.getElementsByClassName('en ed','img');
 
+                            if (!fileattachimage[0]) {
+                                fileattachimage = tablebox.getElementsByClassName('en','img'); //Forward ??
+
+                            }
+
+                            if (!fileattachimage[0]) {
+                                fireGPGDebug('Unable to add buttons', 'cgmail2-addbuttons',true);
+                            }
+
                             filesattachbox = fileattachimage[0].parentNode.parentNode;
 
                             try {
@@ -867,6 +878,7 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
                                 const badpattern9 = ["EXc", "$8Ua", "gUc", "fUc", "$ATa"];  //         hla
                                 const badpattern10 = ["Qsa", "Jsa", "Jkb", "$wTa", "$xTa"];  //         xta
 
+                                const badpattern11 = ["nWc", "$DWa", "yTc", "xTc", "$1Ua"];  //         Cpa
 /*
 EXc $8Ua gUc fUc $ATa hla
 
@@ -875,7 +887,7 @@ Zna Vna UIb $RQa $SQa Moa
 Zna Vna UIb $RQa $SQa Moa
                                                                                               */
 
-                                if (stackMatch(badpattern10, getValue.caller) || stackMatch(badpattern9, getValue.caller) || stackMatch(badpattern8, getValue.caller) || stackMatch(badpattern7, getValue.caller) || stackMatch(badpattern6, getValue.caller) || stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
+                                if (stackMatch(badpattern11, getValue.caller) || stackMatch(badpattern10, getValue.caller) || stackMatch(badpattern9, getValue.caller) || stackMatch(badpattern8, getValue.caller) || stackMatch(badpattern7, getValue.caller) || stackMatch(badpattern6, getValue.caller) || stackMatch(badpattern5, getValue.caller) || stackMatch(badpattern4, getValue.caller) || stackMatch(badpattern3, getValue.caller) || stackMatch(badpattern1, getValue.caller) || stackMatch(badpattern2, getValue.caller))
                                 {
                                     function AutosaveWreckingBall() {};
                                     AutosaveWreckingBall.prototype.value = "Wrecked";
@@ -1972,6 +1984,8 @@ Zna Vna UIb $RQa $SQa Moa
 
 
 
+
+
         var i = dDocument.evaluate(".//td[contains(@class, 'd7')]//iframe", boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
         fireGPGDebug(i, 'iframefound');
@@ -2724,8 +2738,9 @@ fireGPGDebug("activated");
             {
                 fireGPGDebug("Captured !");
 
-                setTimeout("cGmail2.checkDoc("+this._docid+")", 0);
-                 cGmail2.docOccuped[this._docid] = true;
+                cGmail2.docOccuped[this._docid] = true;
+                setTimeout("cGmail2.checkDoc("+this._docid+")",1000);
+
 
             }
 
@@ -2746,24 +2761,25 @@ fireGPGDebug("activated");
 
         fireGPGDebug('Starting get content', 'getMimeMailContens');
 
-        var elements = id.parentNode.getElementsByTagName("img");
+        var elements = id.parentNode.parentNode.parentNode.parentNode.firstChild.getElementsByTagName("img");
 
         actionbox = "";
 
         //On cherche la boite avec les boutons
         for (var j = 0; j < elements.length; j++) {
-            if (elements[j].getAttribute("class") == "hA") {
+            if (elements[j].getAttribute("class") == "hA" && elements[j].getAttribute("alt") == "") {
                 actionbox = elements[j].parentNode;
-                break;
+                //break;
             }
-        }
+        }//
 
         fireGPGDebug('Actionbox is ' + actionbox, 'getMimeMailContens');
 
 
 
          //This is a ugly hack.
-        var evt = doc.createEvent("MouseEvents");
+
+          var evt = doc.createEvent("MouseEvents");
          evt.initMouseEvent("click", true, true, window,
            0, 0, 0, 0, 0, false, false, false, false, 0, null);
 
@@ -2773,8 +2789,9 @@ fireGPGDebug("activated");
 
         fireGPGDebug('Event dispatech (click) is ' + a, 'getMimeMailContens');
 
+      //  return '';
        //On choppe le bouton en question
-       //CHILDREN OF zWKgkf
+       //CHILDREN OF gv
        // act="32"
 
         papa = doc.getElementsByClassName('gv');
@@ -2782,20 +2799,48 @@ fireGPGDebug("activated");
 
         fireGPGDebug('Papa is ' + papa, 'getMimeMailContens');
 
-        for (var j = 0; j < papa.childNodes.length; j++) {
+        detailsElement = null;
+
+       /* for (var j = 0; j < papa.childNodes.length; j++) {
+
+            fireGPGDebug(papa.childNodes[j].getAttribute("act"));
+
             if (papa.childNodes[j].getAttribute("act") == "32") {
                 detailsElement = papa.childNodes[j];
                 break;
             }
+        }*/
+
+        var detailsElement = doc.evaluate(".//div[@act='32']", papa, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
+        if (detailsElement == null) {
+            fireGPGDebug('Holy cow, no detailsElement !!!', 'getMimeMailContens',true);
+            return '';
         }
 
         fireGPGDebug('detailsElement is ' + detailsElement, 'getMimeMailContens');
-
         doc.body.setAttribute('firegpg',"#FIREGPGCAPTURE");
 
         var evt3 = doc.createEvent("MouseEvents");
+         evt3.initMouseEvent("mousedown", true, true, window,
+           1, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+         var scollage = doc.documentElement.scrollTop;
+         detailsElement.dispatchEvent(evt3);
+         doc.documentElement.scrollTop = scollage;
+
+
+         var evt3 = doc.createEvent("MouseEvents");
          evt3.initMouseEvent("mouseup", true, true, window,
-           0, 0, 0, 0, 0, false, false, false, false, 0, null);
+           1, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+         var scollage = doc.documentElement.scrollTop;
+         detailsElement.dispatchEvent(evt3);
+         doc.documentElement.scrollTop = scollage;
+
+        var evt3 = doc.createEvent("MouseEvents");
+         evt3.initMouseEvent("click", true, true, window,
+           1, 0, 0, 0, 0, false, false, false, false, 0, null);
 
          var scollage = doc.documentElement.scrollTop;
          detailsElement.dispatchEvent(evt3);
@@ -2807,7 +2852,7 @@ fireGPGDebug("activated");
 
         if (url == "#FIREGPGCAPTURE" ) {
             //Close popup
-             var evt4 = doc.createEvent("MouseEvents");
+            var evt4 = doc.createEvent("MouseEvents");
             evt4.initMouseEvent("mousedown", true, true, window,
              0, 0, 0, 0, 0, false, false, false, false, 0, null);
 
