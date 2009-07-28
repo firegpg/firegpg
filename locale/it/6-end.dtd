@@ -1,11 +1,11 @@
-<!ENTITY title "FireGPG Assistant - Done !">
-<!ENTITY title2 "Done !">
-<!ENTITY description "Assistant is now done. Now you should be able to use FireGPG.">
-<!ENTITY doc "Read the documentation">
-<!ENTITY doc2 "You will find some link on this page">
-<!ENTITY tr "Translate FireGPG">
-<!ENTITY tr2 "Horrible mistake or FireGPG in your language ? Here is the website !">
-<!ENTITY help "Help FireGPG">
-<!ENTITY help2 "How to contribute to FireGPG">
-<!ENTITY bug "Report a bug or ask for a new feature">
-<!ENTITY close "Close">
+<!ENTITY title "Procedura guidata di FireGPG - Fatto!">
+<!ENTITY title2 "Fatto!">
+<!ENTITY description "L'assistant ha finto. Ora dovreste essere in grado di utilizzare FireGPG">
+<!ENTITY doc "Leggi la documentazione">
+<!ENTITY doc2 "Troverete alcuni li<x>nks in questa pagina">
+<!ENTITY tr "Traduci FireGPG">
+<!ENTITY tr2 "Errore orribile in FireGPG nella vostra lingua? qui c'è il sito web!">
+<!ENTITY help "Aiuto di FireGPG">
+<!ENTITY help2 "Come contribuire allo sviluppo di FireGPG">
+<!ENTITY bug "Segnalare un baco o richiedere una nuova feature">
+<!ENTITY close "Chiudi">

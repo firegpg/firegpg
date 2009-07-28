@@ -2,11 +2,11 @@
 <!ENTITY skip "Passer">
 <!ENTITY next "Suivant">
 <!ENTITY title2 "Assistant FireGPG">
-<!ENTITY infoabout "Voici quelques informations sur les icônes et les couleurs utilisées:">
-<!ENTITY whatnext "Ceci suggère une solution ou quelque chose que vous dévirez faire">
+<!ENTITY infoabout "Voici quelques informations sur les icones et les couleurs utilisées:">
+<!ENTITY whatnext "Ceci suggère une solution ou quelque chose que vous devriez faire">
 <!ENTITY good "Ceci est bien">
 <!ENTITY problem "Il y a un problème">
 <!ENTITY advanced "Cette partie est pour les utilisateurs avancés. Vous ne la comprenez pas ? Ce n'est pas un problème, n'y touchez pas.">
 <!ENTITY help "C'est quelque chose avec de l'aide, gardez votre souris dessus pour la voir">
 <!ENTITY helppop "Bonjour, je suis l'aide">
-<!ENTITY description "Bienvenue ! Cette assistant va vous aider à configurer FireGPG, si vous êtes un nouvel utilisateur il est recommandé de le suivre pour obtenir une configuration fonctionnelle. Quelque soit les choix que vous faites, vous pourrez utiliser les préférences pour changer n'importe quelle option plus tard.">
+<!ENTITY description "Bienvenue ! Cet assistant va vous aider à configurer FireGPG. Si vous êtes un nouvel utilisateur, il est recommandé de le suivre pour obtenir une configuration fonctionnelle. Quels que soient les choix que vous faites, vous pourrez utiliser les préférences pour changer n'importe quelle option plus tard.">

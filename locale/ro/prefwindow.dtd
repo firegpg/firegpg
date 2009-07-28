@@ -35,7 +35,7 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "Semnează, criptează și trimite">
 <!ENTITY firegpg-version-label.text "Versiunea curentă de FireGPG:">
 <!ENTITY hide-expired "Ascunde cheile expirate">
-<!ENTITY use-api "Enable FireGPG API for webpages, such as roundcube. (Requires browser restart)">
+<!ENTITY use-api "Enable FireGPG API for webpages, such as RoundCube. (Requires browser restart)">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-domain.label "Domeniu">
 <!ENTITY api-liste-keyauth.label "Cheie">
@@ -73,7 +73,7 @@
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Afișează datele utilizatorului pentru semnăturile corecte">
 <!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentication">
 <!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
 <!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
 <!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">

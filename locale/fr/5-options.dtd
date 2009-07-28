@@ -2,11 +2,11 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Suivant">
 <!ENTITY title2 "Options">
-<!ENTITY description "Ici vous pouvez obtenir quelques options globales pour quelques fonctionnalités de FireGPG">
+<!ENTITY description "Ici vous pouvez régler certaines options globales des fonctionnalités de FireGPG">
 <!ENTITY inline "Activer la détection Inline">
-<!ENTITY inlinehelp "Si une page contiens un block PGP, FireGPG peut le détecter et vous permettre d'opérer dessus !">
+<!ENTITY inlinehelp "Si une page contient un bloc PGP, FireGPG peut le détecter et opérer dessus !">
 <!ENTITY disableagent "Désactiver l'agent GPG">
 <!ENTITY api "Activer l'API FireGPG">
-<!ENTITY apihelp "L'API de FireGPG API permet aux sites web d'utiliser les fonctionnalités de gpg - avec bien sûr des mécanismes de sécurité">
+<!ENTITY apihelp "L'API de FireGPG permet aux sites Web d'utiliser les fonctionnalités de GPG - avec bien sûr des mécanismes de sécurité">
 <!ENTITY gpgauth "Activer gpgAuth">
-<!ENTITY gpgauthhelp "gpgAuth est un mécanisme ou un processus permettant d'authentifier des utilisateurs web en utilisant GnuPG, qui n'est pas développé par les auteurs de FireGPG">
+<!ENTITY gpgauthhelp "GpgAuth est un mécanisme ou un processus permettant d'authentifier des utilisateurs Web en utilisant GnuPG. Il n'est pas développé par les auteurs de FireGPG. ">

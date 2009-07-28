@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Šifrēt">
+<!ENTITY dcrypt-button "Atšifrēt">
+<!ENTITY sign-button "Parakstīt">
+<!ENTITY verify-button "Verificēt">
+<!ENTITY open-button "Atvērt">
+<!ENTITY save-button "Saglabāt">
+<!ENTITY cryptandsign-button "Parakstīt un šifrēt">
+<!ENTITY sign-clear-button "Notīrīt parakstu">
+<!ENTITY symcrypt-button "Simetriskā šifrēšana">
+<!ENTITY closeandcopy-button "Kopēt uz starpliktuvi un aizvērt">

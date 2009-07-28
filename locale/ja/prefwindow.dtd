@@ -50,7 +50,7 @@
 <!ENTITY hide-fireftp-message "古いIPCライブラリがインストールされている事に関するメッセージを表示しない。">
 <!ENTITY use-fireftp-workaround "IPCに古いAPIでのアクセスを試みる。">
 <!ENTITY keyserver-message "鍵サーバー">
-<!ENTITY symmetric-algo "対称暗号可に用いるアルゴリズム。デフォルトは空白。gpg --version で利用可能なアルゴリズムが表示されます。多くの場合、以下の選択があります: ">
+<!ENTITY symmetric-algo "対称暗号可に用いるアルゴリズム。デフォルトは空白。'gpg --version' で利用可能なアルゴリズムが表示されます。多くの場合、以下の選択があります: ">
 <!ENTITY gmail-new-interface "新しいGmailインターフェース">
 <!ENTITY gmail-select-by-default-label "デフォルトで選択:">
 <!ENTITY gmail-buton-inline-checkbox "インライン">
@@ -73,7 +73,7 @@
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "正しい署名の場合、ユーザ情報を表示する">
 <!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentication">
 <!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
 <!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
 <!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">

@@ -1,0 +1,17 @@
+<!ENTITY title "Asisten FireGPG - Kunci privat">
+<!ENTITY stop "Stop">
+<!ENTITY next "Lanjut">
+<!ENTITY title2 "Kunci privat">
+<!ENTITY description "Sistem PGP bekerja dengan sebuah kunci privat dan kunci publik. Anda menandatangani pesan dengan kunci privat Anda dan pengguna lain memverifikasi tanda tangan Anda dengan kunci publik Anda. Jika mereka hendak mengirimkan pesan ke Anda, mereka menggunakan kunci publik Anda, dan Anda dan hanya Anda, yang bisa mendekripsinya dengan kunci privat Anda.">
+<!ENTITY pk "Anda memiliki paling tidak sebuah kunci privat pada keyring Anda">
+<!ENTITY setdk "Tentukan kunci default">
+<!ENTITY askforpk "Meminta kunci privat">
+<!ENTITY name "Nama">
+<!ENTITY id "Id">
+<!ENTITY created "Terbentuk">
+<!ENTITY expire "Kadaluarsa">
+<!ENTITY nopk "Anda tidak memiliki kunci privat pada keyring Anda">
+<!ENTITY genpk "Membuat kunci privat dan publik">
+<!ENTITY gen "Membuat">
+<!ENTITY importpk "Impor kunci privat">
+<!ENTITY import "Impor">

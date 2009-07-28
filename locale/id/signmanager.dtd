@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Manajer tanda tangan">
+<!ENTITY key-name "Nama">
+<!ENTITY key-id "ID Kunci">
+<!ENTITY key-create "Tanggal (tanda tangan atau pembuatan)">
+<!ENTITY sign-button "Tandatangani kunci ini">
+<!ENTITY revoke-button "Batalkan tanda tangan ini">
+<!ENTITY del-button "Hapus tanda ini">

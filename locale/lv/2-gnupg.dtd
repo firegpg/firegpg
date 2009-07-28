@@ -1,0 +1,23 @@
+<!ENTITY title "FireGPG asistents - GnuPGP">
+<!ENTITY stop "Pārtraukt">
+<!ENTITY next "Tālāk">
+<!ENTITY title2 "GnuPGP">
+<!ENTITY description "FireGPG izmanto GnuGP, lai tiktu galā ar pgp operācijām, tas nozīmē, ka GnuGP jābūt instalētam, lai FireGPG varētu strādāt.">
+<!ENTITY working "GnuPG liekas pieejams un strādā.">
+<!ENTITY specialhome "Vai vēlaties norādīt pielāgotu mājas direktoriju priekš GnuPG?">
+<!ENTITY sethome "Uzstādīt mājas direktoriju">
+<!ENTITY notworking "GnuPGP nestrāda, ir problēma. Lūdzu salabojiet un klikšķiniet tālāk.">
+<!ENTITY isinstalled "Vai jūs instalējāt GnuPG?">
+<!ENTITY download "Jūs varat lejupielādēt GnuGP šeit: (Bet jebkurš GnuPG darbojas)">
+<!ENTITY windows "Windows lietotāji: uzklikšķiniet, lai lejupielādētu gpg4win">
+<!ENTITY linux "Linux lietotāji: Lūdzu norādiet paciņu, kas izlaista ar jūsu distributīvu, vai uzklikšķiniet šeit pēc avotiem. ">
+<!ENTITY macos "MacOs lietotāji: Es nezinu kā, bet ir ceļš. Google ir jūsu draugs.">
+<!ENTITY uncommon "Vai jūsu GnuPG ir instalēts nestandarta vietā?">
+<!ENTITY setpath "Lūdzu uzstādiet ceļu uz GnuPGP šeit:">
+<!ENTITY browse "Pārlūkot">
+<!ENTITY isfireftp "Vai FireFTP ir instalēts?">
+<!ENTITY fireftpproblem "FireGPG un FireFTO konfliktē dēļ cecas IPC bibliotēkas, no FireFTP.">
+<!ENTITY uninstall "Ja FireGPG labojums nestrādā, jums var nākties atinstalēt vienu no spraudņiem, lai ļautu otram strādāt.">
+<!ENTITY strangeplateform "Vai jūs izmantojat dīvainu platformu?">
+<!ENTITY platform "FireGPG strādā tikai uz Windows, MacOs un Linux x86_64 platformām.">
+<!ENTITY recompile "Jums ir jāpārkompilē IPC bibliotēka, ja tas ir pie vainas.">

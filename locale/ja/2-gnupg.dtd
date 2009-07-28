@@ -1,23 +1,23 @@
 <!ENTITY title "FireGPG Assistant - GnuPG">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY next "次">
 <!ENTITY title2 "GnuPG">
-<!ENTITY description "FireGPG use GnuPG to handle any pgp operation, it's mean GnuPG must be installed for a working FireGPG.">
-<!ENTITY working "GnuPG seem to be accesible and working.">
+<!ENTITY description "FireGPG uses GnuPG to handle any pgp operation. This means GnuPG must be installed for FireGPG to work.">
+<!ENTITY working "GnuPG seems to be accessible and working.">
 <!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
 <!ENTITY sethome "Set a home dir">
-<!ENTITY notworking "GnuPG dosen't works, there is a problem. Please fix this and click on next.">
-<!ENTITY isinstalled "Did you install GnuPG ?">
-<!ENTITY download "You can download GnuPG here: (But any GnuPG will works)">
+<!ENTITY notworking "GnuPG doesn't work, there is a problem. Please fix this and click on next.">
+<!ENTITY isinstalled "GnuPGをインストールしましたか?">
+<!ENTITY download "You can download GnuPG here: (But any GnuPG will work)">
 <!ENTITY windows "Windows users: Click here to download gpg4win">
-<!ENTITY linux "Linux users: Please use the package shiped with your distribution, or click here for sources.">
+<!ENTITY linux "Linux users: Please use the package shipped with your distribution, or click here for sources.">
 <!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
-<!ENTITY uncommon "Is you GnuPG installed in an uncommon location ?">
+<!ENTITY uncommon "Is you GnuPG installed in an uncommon location?">
 <!ENTITY setpath "Please set the path to GnuPG here: ">
 <!ENTITY browse "Browse">
-<!ENTITY isfireftp "Is FireFTP installed ?">
-<!ENTITY fireftpproblem "FireGPG and FireFTP conflict dues to the old IPC library of FireFTP.">
-<!ENTITY uninstall "If FireGPG's fix dosen't works, you have to uninstall one of them to let's the another working.">
-<!ENTITY strangeplateform "Are you using a strange plateform ?">
+<!ENTITY isfireftp "FireGPGはインストールされていますか?">
+<!ENTITY fireftpproblem "FireGPG and FireFTP conflict due to the old IPC library of FireFTP.">
+<!ENTITY uninstall "If FireGPG's fix doesn't work, you have to uninstall one of them to get the other working.">
+<!ENTITY strangeplateform "Are you using a strange platform?">
 <!ENTITY platform "FireGPG works only on Windows, MacOs and Linux x86 and x86_64 plateforms.">
-<!ENTITY recompile "You need to recompile the IPC library if it's the case.">
+<!ENTITY recompile "You need to recompile the IPC library if that's the case.">

@@ -11,9 +11,11 @@ locale	    firegpg es	            locale/es/
 locale	    firegpg	fr	                locale/fr/
 locale	    firegpg he	            locale/he/
 locale	    firegpg	hu                locale/hu/
+locale	    firegpg id	                locale/id/
 locale	    firegpg it	                locale/it/
 locale	    firegpg	ja	                locale/ja/
 locale	    firegpg ko-KR	        locale/ko-KR/
+locale	    firegpg	lv	                locale/lv/
 locale	    firegpg nl	                locale/nl/
 locale	    firegpg	no	            locale/no/
 locale	    firegpg	fa	                locale/pe/

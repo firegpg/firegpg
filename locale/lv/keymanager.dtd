@@ -1,0 +1,31 @@
+<!ENTITY key-status "Status">
+<!ENTITY key-trust "Uzticamība">
+<!ENTITY key-expire "Beidzas">
+<!ENTITY key-create "Izveidots">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Vārds">
+<!ENTITY revoke-button "Atsaukt atslēgu">
+<!ENTITY sign-button "Paraksti">
+<!ENTITY changetrust-button "Mainīt uzticamību">
+<!ENTITY importserver-button "Importēt no servera">
+<!ENTITY exportserver-button "Eksportēt uz serveri">
+<!ENTITY importfile-button "Importēt no faila">
+<!ENTITY exportfile-button "Eksportēt uz failu">
+<!ENTITY new-button "Jauna atslēga">
+<!ENTITY keymanager "Atslēgu pārvaldnieks">
+<!ENTITY refrech "Atsvaidzināt atslēgas no servera">
+<!ENTITY trustUnded "Noņemt ticamības informāciju">
+<!ENTITY trustDont "Es neuzticos šai atslēgai">
+<!ENTITY trustMargi "Es daļēji uzticos šai atslēgai">
+<!ENTITY trustFull "Es pilnībā uzticos šai atslēgai">
+<!ENTITY trustUltimate "Pilnīgi un galīgi ticēt šai atslēgai (!)">
+<!ENTITY password-button "Mainīt paroli">
+<!ENTITY del-button "Dzēst">
+<!ENTITY revokeNoRaison "Iemesls nav norādīts">
+<!ENTITY revokeComprimse "Atslēga ir kompromitēta">
+<!ENTITY revokeRemplaced "Atslēga ir apspiesta">
+<!ENTITY revokeNotUsed "Atslēgu vairs neizmanto">
+<!ENTITY userid-button "Lietotāja ID">
+<!ENTITY add "Pievienot">
+<!ENTITY delete "Dzēst">
+<!ENTITY revoke "Atsaukt">

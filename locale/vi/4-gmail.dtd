@@ -2,19 +2,19 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Next">
 <!ENTITY title2 "Gmail support">
-<!ENTITY description "FireGPG can be integrated with gmail: additionnals buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signs of any mails.">
+<!ENTITY description "FireGPG can be integrated with gmail: additional buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signatures of any email that contains them.">
 <!ENTITY enable "Enable gmail support">
-<!ENTITY smtpok "FireGPG is able to access to the smtp server">
-<!ENTITY noauth "NB: Authentification is not tested !">
-<!ENTITY noauthhelp "FireGPG will warn you when he try to send a mail if there is a problem">
+<!ENTITY smtpok "FireGPG is able to access to the SMTP server">
+<!ENTITY noauth "NB: Authentication is not tested!">
+<!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
 <!ENTITY sign "Sign">
 <!ENTITY encrypt "Encrypt">
-<!ENTITY atta "Attachements">
+<!ENTITY atta "Attachments">
 <!ENTITY inline "Use inline">
-<!ENTITY inlinesuck "Inline is bad and not working everytime. OpenPGP/Mime, as standard, should be used !">
-<!ENTITY nosmtp "FireGPG isn't able to access to the smtp server OR request is still in progress">
-<!ENTITY wait "Wait 15 seconds or more if your connexion is very slow">
-<!ENTITY setp "Set parameters of a working smtp server (eg. your internet provider or your work place server)">
+<!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
+<!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">
+<!ENTITY wait "Wait 15 seconds or more if your connection is very slow">
+<!ENTITY setp "Set parameters of a working SMTP server (eg. your internet provider or your workplace server)">
 <!ENTITY host "Host (smtp.gmail.com): ">
 <!ENTITY port "Port (465):">
 <!ENTITY username "Username (leave blank to use the username of logged account):">

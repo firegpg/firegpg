@@ -1,0 +1,22 @@
+<!ENTITY title "FireGPG asistents - Gmail">
+<!ENTITY stop "Pārtraukt">
+<!ENTITY next "Tālāk">
+<!ENTITY title2 "Gmail atbalsts">
+<!ENTITY description "FireGPG var tikt integrēts iekš gmail: papildus pogas šifrēšanai un/vai pastu parakstīšanai tiks pievienotas un jūs varēsiet atšifrēt un verificēt parakstus jebkuram pastam.">
+<!ENTITY enable "Ieslēgt gmail atbalstu">
+<!ENTITY smtpok "FireGPG nevar piekļūt smtp serverim">
+<!ENTITY noauth "NB: Autentifikācija nav pārbaudīta!">
+<!ENTITY noauthhelp "FireGPG brīdinās, kad jūs mēģināsiet sūtīt pastu, ja ir kāda problēma">
+<!ENTITY sign "Parakstīt">
+<!ENTITY encrypt "Šifrēt">
+<!ENTITY atta "Pielikumi">
+<!ENTITY inline "Izmantot iekļaušanu">
+<!ENTITY inlinesuck "Iekļautais ir slikts un nestrādā pareizi, katru reizi. OpenPGP/Mime, kā standarti, jāizmanto!">
+<!ENTITY nosmtp "FireGPG nevar piekļūt smtp serverim VAI atbilde vēl tiek veidota">
+<!ENTITY wait "Pagaidiet 15 sekundes vai vairāk, ja jūsu savienojums ir ļoti lēns">
+<!ENTITY setp "Uzstādīt parametrus strādājošam smtp serverim (tas ir, jūs vietējais pakalpojuma sniedzējs vai darba vietas serveris)">
+<!ENTITY host "Resursdators (smtp.gmail.com):">
+<!ENTITY port "Ports (465):">
+<!ENTITY username "Lietotāja vārds (atstājiet tukšu ja vēlaties izmantot kontu ar kuru esat pieteicies):">
+<!ENTITY ssl "Izmantot SSL">
+<!ENTITY setdo "Uzstādīt noklusētas opcijas pasta sūtīšanai">

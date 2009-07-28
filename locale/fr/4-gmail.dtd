@@ -2,21 +2,21 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Suivant">
 <!ENTITY title2 "Support Gmail">
-<!ENTITY description "FireGPG peut être intégré à gmail: des boutons sont ajoutés vous permettant de chiffrer et/ou signer les mails et vous pourrez déchiffrer et vérifier les signatures de n'importe quel mail.">
-<!ENTITY enable "Activer la prise en charge de gmail">
+<!ENTITY description "FireGPG peut être intégré à gmail: des boutons permettant de chiffrer et/ou signer les courriels sont ajoutés. Vous pourrez déchiffrer et vérifier les signatures de n'importe quel courriel.">
+<!ENTITY enable "Activer la prise en charge de Gmail">
 <!ENTITY smtpok "FireGPG est capable d'accéder au serveur smtp">
 <!ENTITY noauth "NB: L'authentification n'est pas testée !">
-<!ENTITY noauthhelp "FireGPG vous avertira quand il essaiera d'envoyer un mail si il y a un problème">
+<!ENTITY noauthhelp "FireGPG vous avertira quand il essaiera d'envoyer un courriel s'il y a un problème">
 <!ENTITY sign "Signer">
 <!ENTITY encrypt "Chiffrer">
 <!ENTITY atta "Pièces jointes">
 <!ENTITY inline "Utiliser l'inline">
-<!ENTITY inlinesuck "L'inline est mauvais et ne fonctionne pas tout le temps. OpenPGP/Mime, un standard, devrais être utilisé !">
+<!ENTITY inlinesuck "L'inline est mauvais et ne fonctionne pas tout le temps. Le standard OpenPGP/Mime devrait être utilisé !">
 <!ENTITY nosmtp "FireGPG n'est pas capable d'accéder au serveur smtp OU la requête est encore en cours">
 <!ENTITY wait "Attendez 15 secondes ou plus si votre connexion est très lente">
-<!ENTITY setp "Définissez les paramètres d'un serveur smtp fonctionnel (p.e votre fournisseur d'accès ou le serveur de votre entreprise)">
+<!ENTITY setp "Définissez les paramètres d'un serveur smtp fonctionnel (votre fournisseur d'accès ou le serveur de votre entreprise)">
 <!ENTITY host "Serveur (smtp.gmail.com):">
 <!ENTITY port "Port (465):">
 <!ENTITY username "Nom d'utilisateur (laissez blanc pour utiliser celui de l'utilisateur loggé):">
 <!ENTITY ssl "Utiliser SSL">
-<!ENTITY setdo "Définir les options par défaut pour l'envoi des mails">
+<!ENTITY setdo "Définir les options par défaut pour l'envoi des courriels">

@@ -1,0 +1,17 @@
+<!ENTITY title "FireGPG asistents - Privātā atslēga">
+<!ENTITY stop "Pārtraukt">
+<!ENTITY next "Tālāk">
+<!ENTITY title2 "Privātā atslēga">
+<!ENTITY description "PGP sistēma strādā ar privāto un publisko atslēgu. Jūs parakstāt ar privāto atslēgu un cits lietotais verificē jūsu parakstu ar jūsu publisko atslēgu. Ja viņi vēlēsies nosūtīt jums ziņu, viņi izmantos jūsu publisko atslēgu un jūs, tikai jūs, varat atšifrēt to ar savu privāto atslēgu.">
+<!ENTITY pk "Jums vismaz ir privātā atslēga, jūsu atslēgu riņķī">
+<!ENTITY setdk "Uzstādīt noklusēto atslēgu">
+<!ENTITY askforpk "Jautāt pēc privātās atslēgas">
+<!ENTITY name "Vārds">
+<!ENTITY id "Id">
+<!ENTITY created "Izveidots">
+<!ENTITY expire "Iztecējums">
+<!ENTITY nopk "Jūsu atslēgu saišķī nav nevienas privātās atslēgas">
+<!ENTITY genpk "Ģenerēt privāto un publisko atslēgu">
+<!ENTITY gen "Ģenerēt">
+<!ENTITY importpk "Importēt privāto atslēgu">
+<!ENTITY import "Importēt">

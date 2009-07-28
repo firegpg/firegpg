@@ -1,0 +1,12 @@
+<!ENTITY title "Asisten FireGPG - Opsi">
+<!ENTITY stop "Stop">
+<!ENTITY next "Lanjut">
+<!ENTITY title2 "Opsi">
+<!ENTITY description "Disini Anda bisa menentukan beberapa opsi global untuk beberapa fitur FireGPG:">
+<!ENTITY inline "Aktifkan deteksi Inline">
+<!ENTITY inlinehelp "Jika sebuah halaman web mengandung blok PGP, FireGPG bisa mendeteksinya dan melakukan operasi yang relevan!">
+<!ENTITY disableagent "Nonaktifkan GPG-Agent">
+<!ENTITY api "Aktifkan API FireGPG">
+<!ENTITY apihelp "API FireGPG mengijinkan sembarang website menggunakan fitur-fitur gpg - tentu saja dengan mekanisme keamanan">
+<!ENTITY gpgauth "Aktifkan gpgAuth">
+<!ENTITY gpgauthhelp "gpgAuth adalah mekanisme atau proses untuk mengauthentikasi pengguna-web menggunakan GnuPG, tidak dibuat oleh pembuat FireGPG">

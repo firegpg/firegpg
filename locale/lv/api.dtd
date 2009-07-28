@@ -1,0 +1,11 @@
+<!ENTITY thitle "FireGPG Api">
+<!ENTITY intro "Patreizējā vietne vēlas izmantot FireGPG API.">
+<!ENTITY warning1 "! Piekrīties TIKAI ja UZTICATIES šai vietnei !">
+<!ENTITY infos "Ja pieeja ir sniegta, tad mājas lapa var piekļūt katrai FireGPG funkcijai (šifrēt, atšifrēt, parakstīt, verificēt parakstu, šifrēt un parakstīt, importēt un eksportēt publiskās atslēgas). Jūsu parole netiks glabāta atmiņa, kad API tiek lietots. Jums tiks vaicāta parole, katru reizi, kad viņa nepieciešama.">
+<!ENTITY warning2 "! Jūs atļausiet ne-https plūsmu. Tas ir bīstami. !">
+<!ENTITY domain "Domēns">
+<!ENTITY website "Vietne">
+<!ENTITY page "Lapa">
+<!ENTITY can-access "Var piekļūt">
+<!ENTITY cannot-access "Nevar piekļūt">
+<!ENTITY ignore "Ignorēt">

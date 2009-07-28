@@ -4,7 +4,7 @@
 <!ENTITY title2 "Options">
 <!ENTITY description "Här kan du se globala inställningar för några FireGPG-funktioner">
 <!ENTITY inline "Enable Inline detection">
-<!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and let's do relevent operations with it !">
+<!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">
 <!ENTITY disableagent "Stäng av GPG-Agent">
 <!ENTITY api "Aktiver FireGPG:s API">
 <!ENTITY apihelp "FireGPG API låter alla webbsiter använda gpg:s funktioner - självklart med säkerhetsmekanismer">

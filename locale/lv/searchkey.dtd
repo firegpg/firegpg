@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Importēt atslēgu no servera">
+<!ENTITY close-button "Aizvērt">
+<!ENTITY import-button "Importēt atlasītās atslēgas">
+<!ENTITY search-button "Meklēt">
+<!ENTITY search-description "Meklēt:">
+<!ENTITY key-create "Izveidots">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Vārds">

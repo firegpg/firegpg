@@ -4,8 +4,8 @@
 <!ENTITY title2 "Options">
 <!ENTITY description "Aqui puedes especificar algunas opciones globales de algunas caracteristicas de FireGPG:">
 <!ENTITY inline "Enable Inline detection">
-<!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and let's do relevent operations with it !">
-<!ENTITY disableagent "Disable GPG-Agent">
+<!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">
+<!ENTITY disableagent "Deshabilitar Agente-GPG">
 <!ENTITY api "Activar FireGPG API">
 <!ENTITY apihelp "FireGPG API permite a cualquier sitio web usar las características de GPG - por supuesto, con mecanismos de seguridad.">
 <!ENTITY gpgauth "Enable gpgAuth">

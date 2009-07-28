@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Enkripsi">
+<!ENTITY dcrypt-button "Dekrip">
+<!ENTITY sign-button "Tandatangani">
+<!ENTITY verify-button "Verifikasi">
+<!ENTITY open-button "Buka">
+<!ENTITY save-button "Simpan">
+<!ENTITY cryptandsign-button "Tandai dan enkrip">
+<!ENTITY sign-clear-button "Hapus tanda tangan">
+<!ENTITY symcrypt-button "Enkripsi simetris">
+<!ENTITY closeandcopy-button "Salin ke clipboard dan tutup">

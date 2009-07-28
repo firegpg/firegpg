@@ -15,7 +15,7 @@
 <!ENTITY gmail-need-a-restart "Ces options nécessitent le redémarrage de Firefox">
 <!ENTITY gmail-buttons-label "Boutons à afficher :">
 <!ENTITY gmail-buton-sign-checkbox "Signer">
-<!ENTITY gmail-buton-signsend-checkbox "Signer et Envoyer">
+<!ENTITY gmail-buton-signsend-checkbox "Signer et envoyer">
 <!ENTITY gmail-buton-crypt-checkbox "Chiffrer">
 <!ENTITY gmail-buton-cryptsend-checkbox "Chiffrer et Envoyer">
 <!ENTITY allvays-to-myself-checkbox "Toujours chiffrer les messages pour soi-même.">
@@ -35,26 +35,26 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "Signer, chiffrer et envoyer">
 <!ENTITY firegpg-version-label.text "Version de FireGPG :">
 <!ENTITY hide-expired "Cacher les clés expirées.">
-<!ENTITY use-api "Activer l'API de FireGPG pour les pages webs (par exemple roundcube)(redémarrage nécessaire)">
+<!ENTITY use-api "Activer l'API de FireGPG pour les pages Web (par exemple roundcube). Redémarrage nécessaire. ">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-domain.label "Domaine">
 <!ENTITY api-liste-keyauth.label "Clé">
 <!ENTITY use-gpg-agent-checkbox "Activer 'gpg-agent' (attention, peut causer des problèmes...)">
 <!ENTITY search-description "Rechercher :">
-<!ENTITY gmail-buton-use-select-checkbox "Ne pas afficher des boutons mais une liste de sélection.">
+<!ENTITY gmail-buton-use-select-checkbox "Afficher une liste plutôt que des boutons. ">
 <!ENTITY firegpg-ask-for-private-label.text "Toujours demander la clé privée">
 <!ENTITY inline-activated "Activer le système de détection dans le contenu des pages (redémarrage nécessaire)">
 <!ENTITY gmail-disable-autosave-checkbox "Désactiver la sauvegarde automatique">
 <!ENTITY gmail-buton-csign-checkbox "Signer en clair">
 <!ENTITY gmail-buton-csignsend-checkbox "Signer en clair et envoyer">
-<!ENTITY hide-fireftp-message "Ne pas afficher de message apropos d'une ancienne librarie IPC installée.">
+<!ENTITY hide-fireftp-message "Ne pas afficher de message à propos d'une ancienne bibliothèque IPC installée.">
 <!ENTITY use-fireftp-workaround "Essayer d'accéder à la librarie IPC avec l'ancienne API.">
-<!ENTITY keyserver-message "Serveur de clé">
+<!ENTITY keyserver-message "Serveur de clés">
 <!ENTITY symmetric-algo "Algorithme utilisé pour le chiffrement symétrique. Laisser blanc pour le défaut. Utilisez gpg --version pour avoir la liste des algorithmes utilisables, dans la plupart des cas vous avez ces choix :">
-<!ENTITY gmail-new-interface "Nouvelle interface de gmail">
+<!ENTITY gmail-new-interface "Nouvelle interface de Gmail">
 <!ENTITY gmail-select-by-default-label "Sélectionné par défaut :">
 <!ENTITY gmail-buton-inline-checkbox "Inline">
-<!ENTITY gmail-old-interface "Ancienne interface de gmail">
+<!ENTITY gmail-old-interface "Ancienne interface de Gmail">
 <!ENTITY gmail-smtp-options-label "Options SMTP (openpgp/mime mails)">
 <!ENTITY gmail-smtp-google-com "Ne jamais essayer d'utiliser le mot de passe sauvegardé pour google.com">
 <!ENTITY gmail-smtp-username "Nom d'utilisateur (laisser blanc pour le nom d'utilisateur qui est loggé): ">
@@ -65,21 +65,21 @@
 <!ENTITY gmail-disable-auto-decryption "Ancien comportement pour le déchiffrement">
 <!ENTITY gmail-force-from "Forcer le champ 'De' :">
 <!ENTITY gpg-special-path-values "Utilisez {$FxFolder} pour avoir le dossier de Firefox et {$SPACE} pour un espace à l'intérieur d'un argument">
-<!ENTITY decrypt-when-reply "Déchiffrer les mail des réponses">
+<!ENTITY decrypt-when-reply "Déchiffrer les courriels lorsque vous répondez">
 <!ENTITY gmail-buton-attachements-checkbox "Fichiers attachés">
 <!ENTITY autorwap-liste-action.label "Action">
 <!ENTITY autorwap-liste-domain.label "Webmail">
 <!ENTITY autowrap_list.label "Réponses automatiques (double-click pour supprimer):">
 <!ENTITY paneautowrap.title "Découpage">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Afficher les informations sur les utilisateurs des bonnes signatures">
-<!ENTITY gmail-keep-encrypted-mail "Chiffrer les réponses des mails chiffrés">
+<!ENTITY gmail-keep-encrypted-mail "Chiffrer les réponses aux courriels chiffrés ">
 <!ENTITY gmail-smtp-no-auth-checkbox "Désactiver l'authentification SMTP">
 <!ENTITY dont_ask_to_download_key "Ne pas essayer de télécharger les clés manquantes">
 <!ENTITY keyserverproxy-message "Proxy à utiliser pour les serveurs de clés utilisant les protocoles HTTP et HKP">
-<!ENTITY digest-message "Hachage (Hash utilisé pour signer) (SHA256, SHA512, etc.) (Gmail utilise cette valeur pour créer les mails) :">
-<!ENTITY enable-gpgauth-statusbar-check.label "Activer l'icône de la barre de status de gpgAuth">
+<!ENTITY digest-message "Hachage (Hash utilisé pour signer) (SHA256, SHA512, etc.) (Gmail utilise cette valeur pour créer les courriels) :">
+<!ENTITY enable-gpgauth-statusbar-check.label "Activer l'icone de la barre de statut de gpgAuth">
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Automatiquement afficher la fenêtre de status lors de l'utilisation de gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Afficher automatiquement la fenêtre de statut lors de l'utilisation de gpgAuth">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Activer gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Exécuter l'assistant à nouveau">

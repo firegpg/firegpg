@@ -30,12 +30,12 @@
 <!ENTITY key-create "Được tạo">
 <!ENTITY key-expire "Hết hạn">
 <!ENTITY pane4.title "GPG">
-<!ENTITY gpg-add-options "Add arguments to the gpg command : (Be careful : FireGPG could stop working ! Read the documentation.)">
+<!ENTITY gpg-add-options "Add arguments to the gpg command : (Be careful : FireGPG could stop working! Read the documentation).">
 <!ENTITY gmail-buton-signcrypt-checkbox "Ký số và mã hóa">
 <!ENTITY gmail-buton-signcryptsend-checkbox "ký số, mã hóa và gửi">
 <!ENTITY firegpg-version-label.text "Phiên bản hiện thời của FireGPG:">
 <!ENTITY hide-expired "Ẩn các khóa đã hết hạn">
-<!ENTITY use-api "Enable FireGPG API for webpages, such as roundcube. (Requires browser restart)">
+<!ENTITY use-api "Enable FireGPG API for webpages, such as RoundCube. (Requires browser restart)">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-domain.label "Domain">
 <!ENTITY api-liste-keyauth.label "Khóa">
@@ -73,7 +73,7 @@
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
 <!ENTITY gmail-keep-encrypted-mail "Mã hóa reply của mail được mã hóa">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentification">
+<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentication">
 <!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
 <!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
 <!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">

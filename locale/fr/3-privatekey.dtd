@@ -2,7 +2,7 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Suivant">
 <!ENTITY title2 "Clé privée">
-<!ENTITY description "Le système PGP fonctionne avec une clé privée et une clé publique. Vos message son signés avec votre clé privées et les autres utilisateurs vérifient votre signature avec votre clé public. Si ils veulent vous envoyer un message, ils utilisent votre clé publique, et vous, seulement vous, peut déchiffrer le message avec votre clé privée.">
+<!ENTITY description "Le système PGP fonctionne avec une clé privée et une clé publique. Vos messages sont signés avec votre clé privée et les autres utilisateurs vérifient votre signature avec votre clé publique. S'ils veulent vous envoyer un message, ils utilisent votre clé publique, et vous, seulement vous, pouvez déchiffrer le message avec votre clé privée.">
 <!ENTITY pk "Vous avez au moins une clé privée dans votre trousseau">
 <!ENTITY setdk "Définir une clé par défaut">
 <!ENTITY askforpk "Demander la clé privée">
@@ -10,7 +10,7 @@
 <!ENTITY id "ID">
 <!ENTITY created "Créé(e)">
 <!ENTITY expire "Expiration">
-<!ENTITY nopk "Vous avez aucune clé privée dans votre trousseau.">
+<!ENTITY nopk "Vous n'avez aucune clé privée dans votre trousseau.">
 <!ENTITY genpk "Générer une clé privée et une clé publique">
 <!ENTITY gen "Générer">
 <!ENTITY importpk "Importer une clé privée">

@@ -3,14 +3,14 @@
 <!ENTITY next "Next">
 <!ENTITY title2 "Private key">
 <!ENTITY description "PGP system använder både en privat och en publik nyckel. Du signerar meddelanden med din privata nyckel. Andra användare nyttjar din publika nyckel för att verifiera att din signatur är korrekt. Om de vill skicka ett (krypterat) meddelande till dig använder de din publika nyckel, vilket gör att du och enbart du kan dekryptera det meddelandet.">
-<!ENTITY pk "You have at least a private key in your keyring">
+<!ENTITY pk "You have at least one private key in your keyring">
 <!ENTITY setdk "Set a default key">
 <!ENTITY askforpk "Fråga efter privat nyckel">
 <!ENTITY name "Name">
 <!ENTITY id "Id">
 <!ENTITY created "Skapad">
 <!ENTITY expire "Utgångsdatum">
-<!ENTITY nopk "You don't have any private key in your keyring">
+<!ENTITY nopk "You don't have any private keys in your keyring">
 <!ENTITY genpk "Generera en privat och en publik nyckel">
 <!ENTITY gen "Generera">
 <!ENTITY importpk "Import a private key">

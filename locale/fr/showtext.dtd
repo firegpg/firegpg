@@ -3,8 +3,8 @@
 <!ENTITY sign-button "Signer">
 <!ENTITY verify-button "Vérifier">
 <!ENTITY open-button "Ouvrir">
-<!ENTITY save-button "Sauver">
+<!ENTITY save-button "Enregistrer">
 <!ENTITY cryptandsign-button "Chiffrer et signer">
 <!ENTITY sign-clear-button "Signer en clair">
 <!ENTITY symcrypt-button "Chiffrement symétrique">
-<!ENTITY closeandcopy-button "Copier dans le press-papier et fermer">
+<!ENTITY closeandcopy-button "Copier dans le presse-papier et fermer">

@@ -1,10 +1,10 @@
 <!ENTITY title "FireGPG Assistant - Done !">
-<!ENTITY title2 "Done !">
+<!ENTITY title2 "Done!">
 <!ENTITY description "Assistant is now done. Now you should be able to use FireGPG.">
 <!ENTITY doc "Read the documentation">
-<!ENTITY doc2 "You will find some link on this page">
+<!ENTITY doc2 "You will find some li<x>nks on this page">
 <!ENTITY tr "Translate FireGPG">
-<!ENTITY tr2 "Horrible mistake or FireGPG in your language ? Here is the website !">
+<!ENTITY tr2 "Horrible mistake in your language for FireGPG? Here is the website!">
 <!ENTITY help "Help FireGPG">
 <!ENTITY help2 "How to contribute to FireGPG">
 <!ENTITY bug "Сообщить об ошибке или запросить новую функцию">

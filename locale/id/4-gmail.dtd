@@ -1,0 +1,22 @@
+<!ENTITY title "Asisten FireGPG - Gmail">
+<!ENTITY stop "Stop">
+<!ENTITY next "Lanjut">
+<!ENTITY title2 "Dukungan Gmail">
+<!ENTITY description "FireGPG bisa diintegrasikan dengan gmail: tombol-tombol tambahan untuk mengenkripsi dan atau menandatangani email ditambahkan dan Anda akan mampu mendekripsi dan memverifikasi tanda tangan dari sembarang email.">
+<!ENTITY enable "Aktifkan dukungan gmail">
+<!ENTITY smtpok "FireGPG mampu mengakses server SMTP">
+<!ENTITY noauth "Catatan: Authentikasi tidak diuji!">
+<!ENTITY noauthhelp "FireGPG akan memberi peringatan ketika mencoba mengirimkan email dan menemukan masalah">
+<!ENTITY sign "Tandatangani">
+<!ENTITY encrypt "Enkripsi">
+<!ENTITY atta "Lampiran">
+<!ENTITY inline "Gunakan inline">
+<!ENTITY inlinesuck "Inline tidaklah bagus dan seringkali tidak bekerja.. OpenPGP/Mime, sebagai standar, seharusnya digunakan!">
+<!ENTITY nosmtp "FireGPG tidak mampu mengakses server SMTP ATAU permintaan sedang dilakukan">
+<!ENTITY wait "Tunggu 15 detik atau lebih jika koneksi Anda sangat lambat">
+<!ENTITY setp "Tentukan parameter untuk server smtp (misalnya penyedia Internet Anda atau server tempat Anda bekerja)">
+<!ENTITY host "Host (smtp.gmail.com):">
+<!ENTITY port "Port (465):">
+<!ENTITY username "Nama pengguna (biarkan kosong untuk menggunakan nama pengguna yang sedang login):">
+<!ENTITY ssl "Gunakan SSL">
+<!ENTITY setdo "Tentukan opsi default untuk pengiriman pesan">

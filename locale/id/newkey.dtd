@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - kunci baru">
+<!ENTITY warningaboutgeneeration "Peringatan! Pembuatan kunci bisa memakan waktu cukup lama, dan akan menghentikan Firefox. Lakukan sesuatu yang lain ketika kunci dibuat untuk membuat lebih banyak entropi.">
+<!ENTITY name-message "Nama">
+<!ENTITY email-message "Email">
+<!ENTITY comment-message "Komentar">
+<!ENTITY password1-message "Kata sandi">
+<!ENTITY password2-message "Ulangi kata sandi">
+<!ENTITY keyneverexpire "Kunci tidak pernah kadaluarsa">
+<!ENTITY keyexpire-message "Kunci kadaluarsa pada">
+<!ENTITY expire-year "tahun">
+<!ENTITY expire-month "bulan">
+<!ENTITY expire-days "hari">
+<!ENTITY advancedoptions "Pilihan tingkat lanjut">
+<!ENTITY keylenght-message "Panjang kunci">
+<!ENTITY keytype-message "Jenis kunci">
+<!ENTITY generate-button "Membuat kunci">
+<!ENTITY cancel-button "Batal">

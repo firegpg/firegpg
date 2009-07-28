@@ -1,0 +1,23 @@
+<!ENTITY title "Asisten FireGPG - GnuPG">
+<!ENTITY stop "Stop">
+<!ENTITY next "Lanjut">
+<!ENTITY title2 "GnuPG">
+<!ENTITY description "FireGPG menggunakan GnuPG untuk menangani sembarang operasi pgp, hal ini berarti GnuPG harus terpasang agar FireGPG bisa bekerja.">
+<!ENTITY working "GnuPG tampaknya bisa diakses dan bekerja.">
+<!ENTITY specialhome "Apakah Anda hendak menentukan direktori home kustom untuk GnuPG ?">
+<!ENTITY sethome "Tentukan direktori home">
+<!ENTITY notworking "GnuPG tidak bekerja, terdapat sebuah masalah. Harap perbaiki dan klik lanjut.">
+<!ENTITY isinstalled "Apakah Anda menginstall GnuPG?">
+<!ENTITY download "Anda bisa mendownload GnuPG disini: (tetapi sembarang GnuPG bisa bekerja)">
+<!ENTITY windows "Pengguna Windows: Klik disini untuk mendownload gpg4win">
+<!ENTITY linux "Pengguna Linux: Harap gunakan paket yang disertakan dengan distribusi Anda, atau klik disini untuk kode sumber.">
+<!ENTITY macos "Pengguna Mac OS: Saya tidak tahu, tetapi pasti ada cara. Google adalah  teman Anda.">
+<!ENTITY uncommon "Apakah GnuPG Anda terinstall pada lokasi yang tidak umum?">
+<!ENTITY setpath "Harap tentukan path ke GnuPG disini:">
+<!ENTITY browse "Jelajah">
+<!ENTITY isfireftp "Apakah FireFTP terinstall?">
+<!ENTITY fireftpproblem "FireGPG dan FireFTP konflik karena pustaka IPC lama dari FireFTP.">
+<!ENTITY uninstall "Jika perbaikan FireGPG tidak bekerja, Anda harus menguninstall salah satu agar yang lain bekerja.">
+<!ENTITY strangeplateform "Apakah Anda menggunakan platform yang aneh?">
+<!ENTITY platform "FireGPG hanya bekerja pada platform Windows, Mac OS, dan Linux x86 dan x86_64.">
+<!ENTITY recompile "Anda perlu mengkompilasi ulang pustaka IPC jika itu adalah kasusnya.">

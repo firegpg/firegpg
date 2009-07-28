@@ -1,0 +1,5 @@
+<!ENTITY thitle "Menghitung hash dari berkas">
+<!ENTITY result "Hasil:">
+<!ENTITY browse "Pilih sebuah berkas">
+<!ENTITY hash "Jenis:">
+<!ENTITY copy "Salin hash ke clipboard">

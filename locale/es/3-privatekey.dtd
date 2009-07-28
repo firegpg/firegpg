@@ -2,16 +2,16 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Next">
 <!ENTITY title2 "Private key">
-<!ENTITY description "PGP system work with a private key and a public key. You sign messages with your private key and another users verify your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
-<!ENTITY pk "You have at least a private key in your keyring">
+<!ENTITY description "El sistema PGP funciona con una calve pública y otra privada. Puedes firmar tus mensajes con tu clave privada y otros usuarios la pueden verificar con tu firma o clave pública. Si quieren mandarte un mensaje, pueden usar tu clave pública y sólo tú, podrás desencriptarlo con tu clave privada. ">
+<!ENTITY pk "You have at least one private key in your keyring">
 <!ENTITY setdk "Set a default key">
 <!ENTITY askforpk "Solicitar clave privada.">
 <!ENTITY name "Name">
 <!ENTITY id "Id">
 <!ENTITY created "Creado">
 <!ENTITY expire "Expire">
-<!ENTITY nopk "You don't have any private key in your keyring">
-<!ENTITY genpk "Generate a private and a public key">
+<!ENTITY nopk "You don't have any private keys in your keyring">
+<!ENTITY genpk "Generar una clave privada y una clave pública">
 <!ENTITY gen "Generate">
-<!ENTITY importpk "Import a private key">
-<!ENTITY import "Import">
+<!ENTITY importpk "Importar una clave privada">
+<!ENTITY import "Importar">

@@ -1,0 +1,31 @@
+<!ENTITY key-status "Status">
+<!ENTITY key-trust "Kepercayaan">
+<!ENTITY key-expire "Kadaluarsa">
+<!ENTITY key-create "Dibuat">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Nama">
+<!ENTITY revoke-button "Batalkan kunci">
+<!ENTITY sign-button "Tanda tangan">
+<!ENTITY changetrust-button "merubah kepercayaan">
+<!ENTITY importserver-button "Impor dari server">
+<!ENTITY exportserver-button "Ekspor ke server">
+<!ENTITY importfile-button "Impor dari berkas">
+<!ENTITY exportfile-button "Ekspor ke berkas">
+<!ENTITY new-button "Kunci baru">
+<!ENTITY keymanager "Manajer kunci">
+<!ENTITY refrech "Muat ulang kunci dari server">
+<!ENTITY trustUnded "Hapus informasi tentang kepercayaan">
+<!ENTITY trustDont "Saya tidak percaya dengan kunci ini">
+<!ENTITY trustMargi "Saya percaya marjinal pada kunci ini">
+<!ENTITY trustFull "Saya percaya sepenuhnya pada kunci ini">
+<!ENTITY trustUltimate "Percaya pada kunci ini sepenuhnya (!)">
+<!ENTITY password-button "Ganti kata sandi">
+<!ENTITY del-button "Hapus">
+<!ENTITY revokeNoRaison "Tidak ada alasan khusus">
+<!ENTITY revokeComprimse "Kunci tidak lagi aman">
+<!ENTITY revokeRemplaced "Kunci sudah tergantikan">
+<!ENTITY revokeNotUsed "Kunci tidak lagi digunakan">
+<!ENTITY userid-button "ID pengguna">
+<!ENTITY add "Tambah">
+<!ENTITY delete "Hapus">
+<!ENTITY revoke "Batalkan">

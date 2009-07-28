@@ -1,0 +1,12 @@
+<!ENTITY title "FireGPG asistena - Uzstādījumi">
+<!ENTITY stop "Pārtraukt">
+<!ENTITY next "Tālāk">
+<!ENTITY title2 "Uzstādījumi">
+<!ENTITY description "Šeit jūs varat uzstādīt dažas globālās fireGPG iespējas:">
+<!ENTITY inline "Ieslēgt iekļaušanas noteikšanu">
+<!ENTITY inlinehelp "Ja vietne satur PGP bloku, tad FirePGP nosaka un veic attiecīgās operācijas ar to!">
+<!ENTITY disableagent "Izslēgt GPG-Agent">
+<!ENTITY api "Ieslēgt FireGPG API">
+<!ENTITY apihelp "FireGPG ļaut jebkurai mājas vietnei izmantot gpg iespējas - protams, ar drošības mehānismiem">
+<!ENTITY gpgauth "Ieslēgt gpgAuth">
+<!ENTITY gpgauthhelp "gpgAuth ir mehānisms vai process, kā autorizēties tīmekļa lietotājiem izmantojot GnuPG, FireGPG autori neizstrādā">

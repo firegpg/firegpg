@@ -1,0 +1,86 @@
+<!ENTITY prefwindow.title "FireGPG uzstādījumi">
+<!ENTITY pane1.title "Vispārēji">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Gmail atbalsts">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Noklusēta privātā atslēga:">
+<!ENTITY show-website-checkbox "Attēlot FireGPG tīmekļa vietnes adresi GnuPGP komentāra laukā">
+<!ENTITY change-gpg-path-button "Pārlūkot">
+<!ENTITY change-gpg-path-checkbox "Norādiet ceļu uz gpg izpildāmo:">
+<!ENTITY result-always-in-new-window "Vienmēr rādīt šifrēšanas rezultātus un/vai parakstu jaunā logā">
+<!ENTITY no-gpg-agent-checkbox "Uzspiest izslēgt GPG aģentu (var izlabot dažas problēmas)">
+<!ENTITY ask-for-save-pass "Pēc noklusēta, jautāt atcerēties paroli">
+<!ENTITY gmail-no-no-sign-checkbox "Nerādīt &quot;Nav atrasts paraksts[...]&quot;">
+<!ENTITY gmail-need-a-restart "Pārlūkprogramma jāpārstartē, lai uzstādījumu izmaiņas stātos spēkā.">
+<!ENTITY gmail-buttons-label "Pogas, kuras rādīt:">
+<!ENTITY gmail-buton-sign-checkbox "Parakstīt">
+<!ENTITY gmail-buton-signsend-checkbox "Parakstīt un sūtīt">
+<!ENTITY gmail-buton-crypt-checkbox "Šifrēt">
+<!ENTITY gmail-buton-cryptsend-checkbox "Šifrēt un saglabāt">
+<!ENTITY allvays-to-myself-checkbox "Vienmēr šifrēt pie manis">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Vienmēr atšifrēt ziņas no Autentiska servera">
+<!ENTITY global-allow-keyring-check.label "Vienmēr atšifrēt ziņas no Autentificēta servera">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Pa domēniem uzstādījumi:">
+<!ENTITY turn-off-updates "Izslēgt FireGPG automātiskos atjauninājumus">
+<!ENTITY key-name "Vārds">
+<!ENTITY key-id "ID">
+<!ENTITY key-create "Izveidots">
+<!ENTITY key-expire "Derīguma termiņš">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "Pievienot argumentus gpg komandai: (Esiet uzmanīgs: FireGPG var pārstāt strādāt! Izlasiet dokumentāciju).">
+<!ENTITY gmail-buton-signcrypt-checkbox "Parakstīt un šifrēt">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Parakstīt, šifrēt un sūtīt">
+<!ENTITY firegpg-version-label.text "Patreizējā FireGPG versija:">
+<!ENTITY hide-expired "Slēpt iztecējušās atslēgas">
+<!ENTITY use-api "Ieslēgt FireGPG API tīmekļi vietnēm, tādām kā roundcube. (Nepieciešams pārlūka pārstartēšana)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-domain.label "Domēns">
+<!ENTITY api-liste-keyauth.label "Atslēga">
+<!ENTITY use-gpg-agent-checkbox "Ieslēft GPG-agent (uzmanību, var novest pie problēmām)">
+<!ENTITY search-description "Filtrs">
+<!ENTITY gmail-buton-use-select-checkbox "Attēlot sarakstu nevis pogas">
+<!ENTITY firegpg-ask-for-private-label.text "Vienmēr jautāt pēc privātās atslēgas">
+<!ENTITY inline-activated "Pārbaudīt vai lapā nav PGP bloku (nepieciešama pārstartēšana)">
+<!ENTITY gmail-disable-autosave-checkbox "Izslēgt automātisko saglabāšanas iespēju">
+<!ENTITY gmail-buton-csign-checkbox "Notīrīt parakstu">
+<!ENTITY gmail-buton-csignsend-checkbox "Notīrīt parakstu un sūtīt">
+<!ENTITY hide-fireftp-message "Nerādīt šo ziņu, par veco instalēto IPC bibliotēku">
+<!ENTITY use-fireftp-workaround "Mēģināt piekļūt IPC ar veco API">
+<!ENTITY keyserver-message "Atslēgu serveris">
+<!ENTITY symmetric-algo "Izmantojamais algoritms simetriskai šifrēšanai. Atstājiet tukšu, lai izmantotu noklusēto. Izmantojiet &quot;gpg --version&quot;, lai iegūtu izmantojamo algoritmu sarakstu. Visbiežāk jābūt šādām izvēlēm:">
+<!ENTITY gmail-new-interface "Jaunais Gmail interfeiss">
+<!ENTITY gmail-select-by-default-label "Izvēlēties pēc noklusēta:">
+<!ENTITY gmail-buton-inline-checkbox "Iekļauts">
+<!ENTITY gmail-old-interface "Vecais Gmail interfeiss">
+<!ENTITY gmail-smtp-options-label "SMTP opcijas (openpgp/mime pasti)">
+<!ENTITY gmail-smtp-google-com "Nekad necensties izmantot google.com saglabātās paroles">
+<!ENTITY gmail-smtp-username "Lietotāja vārds (atstāt tukšu, lai izmantot lietotāju, kurš jau pieteicies):">
+<!ENTITY gmail-smtp-host "Resursdators (smtp.gmail.com):">
+<!ENTITY gmail-smtp-port "Ports (465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Izmantot SSL:">
+<!ENTITY gmail-disable-sign-detection "Atslēgt atbildes noteikšanu iekļautajiem parakstiem un šifriem (vienmēr izmantot visu pastu)">
+<!ENTITY gmail-disable-auto-decryption "Vecā šifrēšanas uzvedība">
+<!ENTITY gmail-force-from "Uzspiest no vērtības:">
+<!ENTITY gpg-special-path-values "Izmantot {$FxFolder}, lai izmantotu Firefox mapi un {$SPACE}, lai iekļautu atstarpes argumentā">
+<!ENTITY decrypt-when-reply "Atšifrēt saturu uz atbildēšanu">
+<!ENTITY gmail-buton-attachements-checkbox "Pielikumi">
+<!ENTITY autorwap-liste-action.label "Darbība">
+<!ENTITY autorwap-liste-domain.label "Tīmekļa pasts">
+<!ENTITY autowrap_list.label "Automātiskās atbildes (dubultklikšķi, lai noņemtuj):">
+<!ENTITY paneautowrap.title "Automātiski aplauzt">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Rādīt lietotāju datus labiem parakstiem">
+<!ENTITY gmail-keep-encrypted-mail "Šifrēta atbilde no šifrēta pasta">
+<!ENTITY gmail-smtp-no-auth-checkbox "Izslēgt SMTP autentifikāciju">
+<!ENTITY dont_ask_to_download_key "Nemēģināt lejupielādēt trūkstošās atslēgas">
+<!ENTITY keyserverproxy-message "Starpniekserveris uz HTTP un HKP atslēgu serveriem:">
+<!ENTITY digest-message "Digest (Hašs izmantot parakstot) (SHA256, SHA512, utt.) (Gmail atbalsts izmanto šīs vērtības, lai izveidotu pastu.):">
+<!ENTITY enable-gpgauth-statusbar-check.label "Ieslēgt gpgAuth statusjoslas ikonu">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Automātiski rādīt statusa logu, kad izmanto gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
+<!ENTITY enable-gpgauth-check.label "Ieslēgt gpgAuth">
+<!ENTITY panpan-assistant-is-now-dead "Izpildīt asistentu atkal">
+<!ENTITY api-liste-access2.label "API tiesību saraksts (dubultklikšķi, lai izņemtu)">

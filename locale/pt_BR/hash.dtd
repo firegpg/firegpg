@@ -1,5 +1,5 @@
-<!ENTITY thitle "Compute hashes of fles">
-<!ENTITY result "Result:">
+<!ENTITY thitle "Calcular hashes dos arquivos">
+<!ENTITY result "Resultado:">
 <!ENTITY browse "Selecionar um arquivo">
-<!ENTITY hash "Type:">
-<!ENTITY copy "Copy hash to clipboard">
+<!ENTITY hash "Tipo:">
+<!ENTITY copy "Copiar hash para área de transferência">

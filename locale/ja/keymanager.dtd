@@ -1,6 +1,6 @@
 <!ENTITY key-status "状態">
 <!ENTITY key-trust "信頼度">
-<!ENTITY key-expire "Expire">
+<!ENTITY key-expire "期限">
 <!ENTITY key-create "Created">
 <!ENTITY key-id "ID">
 <!ENTITY key-name "">

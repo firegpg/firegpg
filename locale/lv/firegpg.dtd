@@ -1,0 +1,58 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "Parakstīt">
+<!ENTITY firegpgContext.labelCrypt "Šifrēt">
+<!ENTITY firegpgContext.labelVerif "Verificēt">
+<!ENTITY firegpgContext.labelDecry "Atšifrēt">
+<!ENTITY firegpgContext.labelOptions "Uzstādījumi">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "Parakstīt">
+<!ENTITY firegpgMenu.labelCrypt "Šifrēt">
+<!ENTITY firegpgMenu.labelVerif "Verificēt">
+<!ENTITY firegpgMenu.labelDecry "Atšifrēt">
+<!ENTITY firegpgMenu.labelOptions "Uzstādījumi">
+<!ENTITY firegpgToolbar.labelSign "Parakstīt">
+<!ENTITY firegpgToolbar.labelCrypt "Šifrēt">
+<!ENTITY firegpgToolbar.labelVerif "Verificēt">
+<!ENTITY firegpgToolbar.labelDecry "Atšifrēt">
+<!ENTITY firegpgToolbar.labelOptions "Uzstādījumi">
+<!ENTITY firegpgMenu.labelErase "Notīrīt saglabātos parakstus">
+<!ENTITY firegpgContext.labelErase "Notīrīt saglabāto paroli">
+<!ENTITY firegpgToolbar.labelErase "Notīrīt saglabāto paroli">
+<!ENTITY firegpgMenu.labelImport "Importēt">
+<!ENTITY firegpgContext.labelImport "Importēt">
+<!ENTITY firegpgToolbar.labelImport "Importēt">
+<!ENTITY firegpgMenu.labelExport "Eksportēt">
+<!ENTITY firegpgContext.labelExport "Eksportēt">
+<!ENTITY firegpgToolbar.labelExport "Eksportēt">
+<!ENTITY firegpgPopInfo.labelBonjour "Sveicināto! FireGPG instalācija bija veiksmīga.">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG nevar piekļūt gpg.">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG nevar piekļūt gpg izpildāmajam. Pārliecinieties, ka tas ir instalēts, vai norādiet ceļu uz izpildāmo uzstādījumos.">
+<!ENTITY firegpgPopInfo.labelKeyOk "Privātā atslēga ir atlasīta.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Uzmanību: lūdzu izvēlaties privāto atslēgu uzstādījumos.">
+<!ENTITY firegpgPopInfo.close "Aizvērt">
+<!ENTITY firegpgPopInfo.options "Uzstādījumi">
+<!ENTITY firegpgContext.labelEditeur "Teksta redaktors">
+<!ENTITY firegpgMenu.labelEditeur "Teksta redaktors">
+<!ENTITY firegpgToolbar.labelEditeur "Teksta redaktors">
+<!ENTITY firegpgContext.labelCryptSign "Parakstīt un šifrēt">
+<!ENTITY firegpgMenu.labelCryptSign "Parakstīt un šifrēt">
+<!ENTITY firegpgToolbar.labelCryptSign "Parakstīt un šifrēt">
+<!ENTITY firegpgToolbar.labelSymCrypt "Simetriskā šifrēšana">
+<!ENTITY firegpgContext.labelSymCrypt "Simetriskā šifrēšana">
+<!ENTITY firegpgMenu.labelSymCrypt "Simetriskā šifrēšana">
+<!ENTITY firegpgContext.labelClearSign "Notīrīt parakstu">
+<!ENTITY firegpgToolbar.labelClearSign "Notīrīt parakstu">
+<!ENTITY firegpgMenu.labelClearSign "Notīrīt parakstu">
+<!ENTITY firegpgContext.labelManager "Atslēgu pārvaldnieks">
+<!ENTITY firegpgToolbar.labelManager "Atslēgu pārvaldnieks">
+<!ENTITY firegpgMenu.labelManager "Atslēgu pārvaldnieks">
+<!ENTITY keynotrevokedpassword "Kļūda, atslēga nav atsaukta. Nepareiza parole?">
+<!ENTITY firegpgContext.labelWrapSign "Aplauztais paraksts">
+<!ENTITY firegpgMenu.labelWrapSign "Aplauztais paraksts">
+<!ENTITY firegpgContext.labelHashs "Haši">
+<!ENTITY firegpgContext.labelFiles "Failu operācijas">
+<!ENTITY firegpgMenu.labelFiles "Failu operācijas">
+<!ENTITY firegpgMenu.labelHashs "Haši">

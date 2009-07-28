@@ -1,12 +1,12 @@
 <!ENTITY title "FireGPG Assistant - Welcome">
 <!ENTITY skip "Skip">
-<!ENTITY next "Next">
+<!ENTITY next "次">
 <!ENTITY title2 "FireGPG Assistant">
 <!ENTITY infoabout "Here is some information about icons and color used:">
-<!ENTITY whatnext "This sugest a solution or something you should do">
+<!ENTITY whatnext "This suggest a solution or something you should do">
 <!ENTITY good "This is something good">
 <!ENTITY problem "This is a problem">
-<!ENTITY advanced "This is for advanced users. You don't understand it ? It's not a problem, don't change it.">
-<!ENTITY help "This is something with help, keep your mouse over to see it">
+<!ENTITY advanced "This is for advanced users. If you don't understand it, don't worry and don't change it.">
+<!ENTITY help "This means help is available.  Mouse over the icon for the tooltip.">
 <!ENTITY helppop "Hello, I'm the help">
-<!ENTITY description "Welcome ! <html:br/><html:br/>         This assistant will help you to configure FireGPG, if you're a new user it's recommanded to follow it to get a working configuration.<html:br/><html:br/><html:br/>         What ever you choose to do, you will be able to use the option windows to change any option later.">
+<!ENTITY description "Welcome!  This assistant will help you to configure FireGPG. If you're a new user it's recommended to follow it to get a working configuration. What ever you choose to do, you will be able to use the option windows to change any option later.">

@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - jauna atslēga">
+<!ENTITY warningaboutgeneeration "Uzmanību! Atslēgu ģenerētajās var prasīt daudz laika un var sasaldēt Firefox. Lai radīt spēcīgāku atslēgu dariet paralēli kaut ko citu ar datoru.">
+<!ENTITY name-message "Vārds">
+<!ENTITY email-message "E-pasts">
+<!ENTITY comment-message "Komentārs">
+<!ENTITY password1-message "Parole">
+<!ENTITY password2-message "Atkārtot paroli">
+<!ENTITY keyneverexpire "Šai atslēgai nekad nebeidzas termiņš">
+<!ENTITY keyexpire-message "Atslēgai beidzas termiņš pēc">
+<!ENTITY expire-year "gadi">
+<!ENTITY expire-month "mēneši">
+<!ENTITY expire-days "dienas">
+<!ENTITY advancedoptions "Paplašinātās iespējas">
+<!ENTITY keylenght-message "Atslēgas garums">
+<!ENTITY keytype-message "Atslēgas tips">
+<!ENTITY generate-button "Ģenerēt atslēgu">
+<!ENTITY cancel-button "Atcelt">

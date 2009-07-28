@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Impor kunci dari server">
+<!ENTITY close-button "Tutup">
+<!ENTITY import-button "Impor kunci terpilih">
+<!ENTITY search-button "Cari">
+<!ENTITY search-description "Cari untuk:">
+<!ENTITY key-create "Dibuat">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Nama">

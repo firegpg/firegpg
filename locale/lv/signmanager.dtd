@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Parakstīšanas pārvaldnieks">
+<!ENTITY key-name "Vārds">
+<!ENTITY key-id "Atslēgas ID">
+<!ENTITY key-create "Datums (parakstīšanas vai izveidošanas)">
+<!ENTITY sign-button "Parakstīt šo atslēgu">
+<!ENTITY revoke-button "Atsaukt parakstu">
+<!ENTITY del-button "Dzēst šo parakstu">

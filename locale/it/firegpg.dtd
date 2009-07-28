@@ -53,6 +53,6 @@
 <!ENTITY firegpgContext.labelWrapSign "Firma nascosta">
 <!ENTITY firegpgMenu.labelWrapSign "Firma nascosta">
 <!ENTITY firegpgContext.labelHashs "Hashes">
-<!ENTITY firegpgContext.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgContext.labelFiles "Operazioni con i files">
+<!ENTITY firegpgMenu.labelFiles "Operazioni su files">
 <!ENTITY firegpgMenu.labelHashs "Hashes">

@@ -1,0 +1,11 @@
+<!ENTITY thitle "API FireGPG">
+<!ENTITY intro "Halaman ini hendak menggunakan API FireGPG.">
+<!ENTITY warning1 "! HANYA terima jika Anda PERCAYA website ini !">
+<!ENTITY infos "Jika akses diberikan, website akan mampu mengakses setiap fungsi dari FireGPG (enkripsi, dekripsi, menandatangani, memverifikasi tanda tangan, enkripsi dan menandatangani, impor, dan ekspor kunci publik). Kata sandi Anda tidak akan disimpan pada memori ketika API digunakan. Anda akan diminta memberikan kata sandi setiap kali diperlukan.">
+<!ENTITY warning2 "! Anda akan mengijinkan jalur non-https. Ini berbahaya. !">
+<!ENTITY domain "Domain">
+<!ENTITY website "Website">
+<!ENTITY page "Halaman">
+<!ENTITY can-access "Dapat mengakses">
+<!ENTITY cannot-access "Tidak dapat mengakses">
+<!ENTITY ignore "Abaikan">

@@ -1,5 +1,5 @@
-<!ENTITY thitle "Compute hashes of fles">
-<!ENTITY result "Result:">
-<!ENTITY browse "Select a file">
-<!ENTITY hash "Type:">
-<!ENTITY copy "Copy hash to clipboard">
+<!ENTITY thitle "Calcola l'hashing per i files">
+<!ENTITY result "Risultato:">
+<!ENTITY browse "Selezionate un file">
+<!ENTITY hash "Tipo:">
+<!ENTITY copy "Copia l'hash negli appunti">

@@ -1,0 +1,58 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "Tandatangani">
+<!ENTITY firegpgContext.labelCrypt "Enkripsi">
+<!ENTITY firegpgContext.labelVerif "Verifikasi">
+<!ENTITY firegpgContext.labelDecry "Dekripsi">
+<!ENTITY firegpgContext.labelOptions "Opsi">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "Tandatangani">
+<!ENTITY firegpgMenu.labelCrypt "Enkripsi">
+<!ENTITY firegpgMenu.labelVerif "Verifikasi">
+<!ENTITY firegpgMenu.labelDecry "Dekripsi">
+<!ENTITY firegpgMenu.labelOptions "Opsi">
+<!ENTITY firegpgToolbar.labelSign "Tandatangani">
+<!ENTITY firegpgToolbar.labelCrypt "Enkripsi">
+<!ENTITY firegpgToolbar.labelVerif "Verifikasi">
+<!ENTITY firegpgToolbar.labelDecry "Dekripsi">
+<!ENTITY firegpgToolbar.labelOptions "Opsi">
+<!ENTITY firegpgMenu.labelErase "Hapus kata sandi yang tersimpan">
+<!ENTITY firegpgContext.labelErase "Hapus kata sandi yang tersimpan">
+<!ENTITY firegpgToolbar.labelErase "Hapus kata sandi yang tersimpan">
+<!ENTITY firegpgMenu.labelImport "Impor">
+<!ENTITY firegpgContext.labelImport "Impor">
+<!ENTITY firegpgToolbar.labelImport "Impor">
+<!ENTITY firegpgMenu.labelExport "Ekspor">
+<!ENTITY firegpgContext.labelExport "Ekspor">
+<!ENTITY firegpgToolbar.labelExport "Ekspor">
+<!ENTITY firegpgPopInfo.labelBonjour "Selamat datang! Installasi FireGPG sukses.">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG dapat mengakses gpg.">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG tidak dapat mengakses gpg. Pastikan sudah terinstall, atau tentukan path secara manual pada preferensi.">
+<!ENTITY firegpgPopInfo.labelKeyOk "Kunci privat dipilih.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Peringatan: harap pilih kunci privat pada preferensi.">
+<!ENTITY firegpgPopInfo.close "Tutup">
+<!ENTITY firegpgPopInfo.options "Opsi">
+<!ENTITY firegpgContext.labelEditeur "Editor teks">
+<!ENTITY firegpgMenu.labelEditeur "Editor teks">
+<!ENTITY firegpgToolbar.labelEditeur "Editor teks">
+<!ENTITY firegpgContext.labelCryptSign "Tandatangani dan enkripsi">
+<!ENTITY firegpgMenu.labelCryptSign "Tandatangani dan enkripsi">
+<!ENTITY firegpgToolbar.labelCryptSign "Tandatangani dan enkripsi">
+<!ENTITY firegpgToolbar.labelSymCrypt "Enkripsi simetris">
+<!ENTITY firegpgContext.labelSymCrypt "Enkripsi simetris">
+<!ENTITY firegpgMenu.labelSymCrypt "Enkripsi simetris">
+<!ENTITY firegpgContext.labelClearSign "Hapus tanda tangan">
+<!ENTITY firegpgToolbar.labelClearSign "Hapus tanda tangan">
+<!ENTITY firegpgMenu.labelClearSign "Hapus tanda tangan">
+<!ENTITY firegpgContext.labelManager "Manajer kunci">
+<!ENTITY firegpgToolbar.labelManager "Manajer kunci">
+<!ENTITY firegpgMenu.labelManager "Manajer kunci">
+<!ENTITY keynotrevokedpassword "Kesalahan, kunci tidak dibatalkan. Kata sandi salah?">
+<!ENTITY firegpgContext.labelWrapSign "Tandatangan terbungkus">
+<!ENTITY firegpgMenu.labelWrapSign "Tandatangan terbungkus">
+<!ENTITY firegpgContext.labelHashs "Hash">
+<!ENTITY firegpgContext.labelFiles "Operasi berkas">
+<!ENTITY firegpgMenu.labelFiles "Operasi berkas">
+<!ENTITY firegpgMenu.labelHashs "Hash">
