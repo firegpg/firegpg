@@ -6,7 +6,7 @@
 <!ENTITY whatnext "Questo suggerisce una soluzione o qualcosa che voi dovreste fare">
 <!ENTITY good "Questo è una buona cosa">
 <!ENTITY problem "Questo è un problema">
-<!ENTITY advanced "Per utenti esperti. Se non ne capisci le implicazioni non preoccuparti e non modificare l'impostazione predefinita. ">
+<!ENTITY advanced "Per utenti esperti. Se non ne capisci le implicazioni non modificare l'impostazione predefinita.">
 <!ENTITY help "Questo significa che la guida è disponibile. Muovete il mouse sull'icona per vedere il suggerimento">
 <!ENTITY helppop "Salve, io sono la guida">
 <!ENTITY description "Benvenuti! Questa procedura guidata (assistant) vi aiuterà a configurare FireGPG. Se siete un nuovo utente, vi raccomandiamo di seguirla per ottenere una configurazione funzionante. Qualunque sia la vostra scelta, sarete in grado di modificarla in seguito attraverso la finestra delle opzioni.">

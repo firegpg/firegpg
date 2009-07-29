@@ -83,4 +83,4 @@
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Abilita gpgpAuth">
 <!ENTITY panpan-assistant-is-now-dead "Esegui nuovamente la procedura guidata">
-<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">
+<!ENTITY api-liste-access2.label "Lista dei diritti per l'API (doppio click per rimuovere)">

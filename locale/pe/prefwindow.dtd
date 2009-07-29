@@ -81,6 +81,6 @@
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
 <!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
+<!ENTITY enable-gpgauth-check.label "gpgAuth را فعّال کن">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
 <!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">

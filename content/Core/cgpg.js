@@ -2891,7 +2891,32 @@ var FireGPG = {
             return returnObject;
         }
 
-        var result = this.GPGAccess.computeHash(hash,file);
+         backgroundTask = {
+            run: function() {
+                    this.result == null;
+                     // We get the result
+                    try {
+                    this.result = result = this.GPGAccess.computeHash(this.hash,this.file);
+                    } catch (e) { } //To be sure to close the wait_box
+            }
+          }
+
+        backgroundTask.GPGAccess = this.GPGAccess;
+        backgroundTask.hash = hash;
+        backgroundTask.file = file;
+
+        var thread = Components.classes["@mozilla.org/thread-manager;1"]
+                               .getService(Components.interfaces.nsIThreadManager)
+                               .newThread(0);
+        thread.dispatch(backgroundTask, thread.DISPATCH_NORMAL);
+
+        var thread = Components.classes["@mozilla.org/thread-manager;1"]
+                               .getService(Components.interfaces.nsIThreadManager)
+                               .currentThread;
+        while (backgroundTask.result == null)
+          thread.processNextEvent(true);
+
+        result = backgroundTask.result;
 
         tmpHash = result.sdOut;
         tmpHash = tmpHash.substring(tmpHash.lastIndexOf(':') + 1, tmpHash.length);

@@ -576,7 +576,7 @@ var GPGAccess = {
                         " --output " + fileTo.replace(/\s/g, '{$SPACE}') +
                         this.getGPGCommentArgument() +
                         this.getDiegestAlgo() +
-                        " --detach-sign " + fileFrom
+                        " --detach-sign " + fileFrom.replace(/\s/g, '{$SPACE}')
                     ,  '' );
 
             } else {
@@ -587,7 +587,7 @@ var GPGAccess = {
                         " --passphrase-fd 0 " +
                         this.getGPGCommentArgument() +
                         this.getDiegestAlgo() +
-                        " --detach-sign " + fileFrom
+                        " --detach-sign " + fileFrom.replace(/\s/g, '{$SPACE}')
                     , password + "\n"  );
 
             }

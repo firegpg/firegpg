@@ -9,9 +9,9 @@
 <!ENTITY name "Name">
 <!ENTITY id "Id">
 <!ENTITY created "Creado">
-<!ENTITY expire "Expire">
+<!ENTITY expire "Expirar">
 <!ENTITY nopk "You don't have any private keys in your keyring">
 <!ENTITY genpk "Generar una clave privada y una clave pública">
-<!ENTITY gen "Generate">
+<!ENTITY gen "Generar">
 <!ENTITY importpk "Importar una clave privada">
 <!ENTITY import "Importar">

@@ -6,7 +6,7 @@
 <!ENTITY inline "Abilita il riconoscimento inline">
 <!ENTITY inlinehelp "Se una pagina web contiene un blocco PGP, FireGPG è in grado di riconoscerlo ed eseguirci le operazioni di sua competenza!">
 <!ENTITY disableagent "Disabilita GPG-Agent">
-<!ENTITY api "Abilita l'API di FireGPG ">
+<!ENTITY api "Abilita API FireGPG">
 <!ENTITY apihelp "l'API di FireGPG permette ad ogni sito web di usarne le features - naturalmente utilizzando opportuni meccanismi di sicurezza">
 <!ENTITY gpgauth "Abilita gpgAuth">
 <!ENTITY gpgauthhelp "gpgAuth è un meccanismo o un processo per autenticare utenti web utilizzando GnuPG che non è stato sviluppato dagli autori di FireGPG">

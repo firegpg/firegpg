@@ -2,4 +2,4 @@
 <!ENTITY result "Result:">
 <!ENTITY browse "Выберите файл">
 <!ENTITY hash "Type:">
-<!ENTITY copy "Copy hash to clipboard">
+<!ENTITY copy "Скопировать хэш в буфер обмена">

@@ -3,14 +3,14 @@
 <!ENTITY next "Avanti">
 <!ENTITY title2 "Chiave privata">
 <!ENTITY description "il sistema PGP funziona attraverso una chiave privata ed una pubblica. E' possibile cifrare i messaggi inviati utilizzando la propria chiave privata e fare si che gli altri utenti possano verificare la vostra firma utilizzando la vostra chiave pubblica. Se invece qualcuno vi vuole inviare un messaggio, sarà egli a cifrarlo utilizzando la vostra chiave pubblica mentre voi, e solo voi, potrete decifrarlo utilizzando la vostra chiave privata.">
-<!ENTITY pk "You have at least one private key in your keyring">
+<!ENTITY pk "Avete almeno una chiave privata nel vostro 'mazzo'">
 <!ENTITY setdk "Imposta una chiave di default">
 <!ENTITY askforpk "Richiedi una chiave privata">
 <!ENTITY name "Nome">
 <!ENTITY id "Id">
 <!ENTITY created "Creato">
 <!ENTITY expire "Scadenza">
-<!ENTITY nopk "You don't have any private keys in your keyring">
+<!ENTITY nopk "Non avete definito alcuna chiave privata nel vostro 'mazzo'">
 <!ENTITY genpk "Genera una coppia chiave privata/chiave pubblica">
 <!ENTITY gen "Genera">
 <!ENTITY importpk "Importa una chiave privata">

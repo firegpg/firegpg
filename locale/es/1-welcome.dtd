@@ -2,9 +2,9 @@
 <!ENTITY skip "Skip">
 <!ENTITY next "Next">
 <!ENTITY title2 "FireGPG Assistant">
-<!ENTITY infoabout "Here is some information about icons and color used:">
-<!ENTITY whatnext "This suggest a solution or something you should do">
-<!ENTITY good "This is something good">
+<!ENTITY infoabout "Aquí encontrará información sobre los iconos y colores usados.">
+<!ENTITY whatnext "Esto es una posible solución o algo que usted debería hacer">
+<!ENTITY good "Esto es algo bueno">
 <!ENTITY problem "This is a problem">
 <!ENTITY advanced "Esto es para usuarios avanzados. No lo entiendes? No es problema, no lo modifiques.">
 <!ENTITY help "This means help is available.  Mouse over the icon for the tooltip.">

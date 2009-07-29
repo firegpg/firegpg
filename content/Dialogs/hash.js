@@ -68,61 +68,8 @@ function changeFile() {
 
 function computeHash() {
 
-        var workingThread = function(hash, file,FireGPG) {
-            this.hash = hash;
-            this.file = file;
-            this.result = 'abc';
-            this.FireGPG = FireGPG;
-          };
-
-          workingThread.prototype = {
-            run: function() {
-              try {
-                this.result = this.FireGPG.computeHash(true,this.hash,this.file);
-                main.dispatch(new mainThread(this.hash, this.result ),
-                  background.DISPATCH_NORMAL);
-              } catch(err) {
-                Components.utils.reportError(err);
-              }
-            },
-
-            QueryInterface: function(iid) {
-              if (iid.equals(Components.interfaces.nsIRunnable) ||
-                  iid.equals(Components.interfaces.nsISupports)) {
-                      return this;
-              }
-              throw Components.results.NS_ERROR_NO_INTERFACE;
-            }
-          };
 
 
-        var mainThread = function(threadID, result) {
-            this.threadID = threadID;
-            this.result = result;
-          };
-
-          mainThread.prototype = {
-            run: function() {
-              try {
-                    document.getElementById('result').value = this.result.output;
-                    document.getElementById('copy').disabled = '';
-              } catch(err) {
-                Components.utils.reportError(err);
-              }
-            },
-
-            QueryInterface: function(iid) {
-              if (iid.equals(Components.interfaces.nsIRunnable) ||
-                  iid.equals(Components.interfaces.nsISupports)) {
-                      return this;
-              }
-              throw Components.results.NS_ERROR_NO_INTERFACE;
-            }
-          };
-
-
-
-        var done = false;
 
         document.getElementById('copy').disabled = 'disabled';
         document.getElementById('result').value = document.getElementById('firegpg-strings').getString('waitForHash');
@@ -130,11 +77,10 @@ function computeHash() {
         if (document.getElementById('hash').label != '' && document.getElementById('hash').label != ' ' && document.getElementById('hash').label !='&nbsp;') {
 
 
-            var background = Components.classes["@mozilla.org/thread-manager;1"].getService().newThread(0);
-            var main = Components.classes["@mozilla.org/thread-manager;1"].getService().mainThread;
-            background.dispatch(new workingThread(document.getElementById('hash').label, document.getElementById('path-textbox').value,FireGPG), background.DISPATCH_NORMAL);
+                result = FireGPG.computeHash(true,document.getElementById('hash').label, document.getElementById('path-textbox').value);
 
-
+                document.getElementById('result').value = result.output;
+                document.getElementById('copy').disabled = '';
 
         }
 

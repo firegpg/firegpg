@@ -14,7 +14,7 @@
 <!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
 <!ENTITY uncommon "Is you GnuPG installed in an uncommon location?">
 <!ENTITY setpath "Please set the path to GnuPG here: ">
-<!ENTITY browse "Browse">
+<!ENTITY browse "Просмотр">
 <!ENTITY isfireftp "Is FireFTP installed?">
 <!ENTITY fireftpproblem "FireGPG and FireFTP conflict due to the old IPC library of FireFTP.">
 <!ENTITY uninstall "If FireGPG's fix doesn't work, you have to uninstall one of them to get the other working.">

@@ -6,6 +6,6 @@
 <!ENTITY domain "The domain">
 <!ENTITY website "The website">
 <!ENTITY page "The page">
-<!ENTITY can-access "Can access">
-<!ENTITY cannot-access "Cannot access">
+<!ENTITY can-access "Доступ разрешён">
+<!ENTITY cannot-access "Доступ запрещён">
 <!ENTITY ignore "Ignore">

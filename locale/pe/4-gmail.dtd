@@ -3,13 +3,13 @@
 <!ENTITY next "Next">
 <!ENTITY title2 "Gmail support">
 <!ENTITY description "FireGPG can be integrated with gmail: additional buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signatures of any email that contains them.">
-<!ENTITY enable "Enable gmail support">
+<!ENTITY enable "پشتیبانی از gmail را فعَال کن">
 <!ENTITY smtpok "FireGPG is able to access to the SMTP server">
 <!ENTITY noauth "NB: Authentication is not tested!">
 <!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
 <!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
-<!ENTITY atta "Attachments">
+<!ENTITY encrypt "رمزنگاری">
+<!ENTITY atta "ضمیمه‌ها">
 <!ENTITY inline "Use inline">
 <!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
 <!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">

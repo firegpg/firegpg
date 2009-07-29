@@ -3,13 +3,13 @@
 <!ENTITY next "Next">
 <!ENTITY title2 "GnuPG">
 <!ENTITY description "FireGPG usa GnuPG para manejar las operaciones pgp, eso significa que debes de tener instalado GnuPG para que tu FireGPG funcione!">
-<!ENTITY working "GnuPG seems to be accessible and working.">
+<!ENTITY working "GnuPG parece estar funcionando correctamente.">
 <!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
 <!ENTITY sethome "Set a home dir">
 <!ENTITY notworking "GnuPG doesn't work, there is a problem. Please fix this and click on next.">
 <!ENTITY isinstalled "Did you install GnuPG?">
 <!ENTITY download "Puedes descargar GnuPG desde aquí: (pero cualquier GnuPG funcionará)">
-<!ENTITY windows "Windows users: Click here to download gpg4win">
+<!ENTITY windows "Usuarios de Windows: Click aquí para descargar gpg4win">
 <!ENTITY linux "Linux users: Please use the package shipped with your distribution, or click here for sources.">
 <!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
 <!ENTITY uncommon "Is you GnuPG installed in an uncommon location?">
