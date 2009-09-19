@@ -561,7 +561,7 @@ var FireGPGMisc = {
         catch (e) {
             /* If file doesn't exist */
         }
-    }
+    },
 
     /*
         Function: fileExist
@@ -581,7 +581,7 @@ var FireGPGMisc = {
         catch (e) {
             return false;
         }
-    }
+    },
 
 
     /*
@@ -619,7 +619,7 @@ var FireGPGMisc = {
 
 
         foStream.close();
-    }
+    },
 
     /*
         Function: getFromFile
@@ -669,7 +669,7 @@ var FireGPGMisc = {
         catch (e) { fireGPGDebug(e,'misc.getFromFile',true) }
 
         return '';
-    }
+    },
 
     /*
         Function: putIntoBinFile
