@@ -297,7 +297,7 @@ var FireGPGMisc = {
         var title = i18n.getString('editorTitle');
         var description = i18n.getString('editorDescription');
         FireGPGMisc.showText('',description,title);
-    }
+    },
 
     /*
         Function: getPassword
@@ -351,7 +351,7 @@ var FireGPGMisc = {
         }
 
         return null;
-    }
+    },
 
     /*
         Function: savePassword
@@ -363,7 +363,7 @@ var FireGPGMisc = {
 
     */
     savePassword:function (password) {
-    }
+    },
 
     /*
         Function: getSavedPassword
@@ -371,7 +371,7 @@ var FireGPGMisc = {
         Get the password saved in the password manager of Firefox
     */
     getSavedPassword:function () {
-    }
+    },
 
     /*
         Function: getPrivateKeyPassword
@@ -414,7 +414,7 @@ var FireGPGMisc = {
         else
             var question = message;
 
-        var result = getPassword(question,undefined,domain, nosavecheckbox);
+        var result = FireGPGMisc.getPassword(question,undefined,domain, nosavecheckbox);
 
         if(result == null)
             return null;
@@ -435,7 +435,7 @@ var FireGPGMisc = {
         }
 
         return result.password;
-    }
+    },
 
     /*
         Function: getsavedPassword
@@ -444,9 +444,7 @@ var FireGPGMisc = {
     getsavedPassword:function () {
 
         return savedPassword;
-
-
-    }
+    },
 
     /*
         Function: eraseSavedPassword
