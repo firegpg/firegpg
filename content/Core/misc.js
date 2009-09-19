@@ -696,7 +696,7 @@ var FireGPGMisc = {
         } else {
             stream.close();
         }
-    }
+    },
 
     /*
         Function: getBinContent
@@ -739,7 +739,7 @@ var FireGPGMisc = {
 
 
         return bytes;
-    }
+    },
 
     /*
         Function: getContent
@@ -763,7 +763,7 @@ var FireGPGMisc = {
         input.close();
 
         return str;
-    }
+    },
 
 
     /*
@@ -789,7 +789,7 @@ var FireGPGMisc = {
             contenu = p.responseText;
             return contenu;
         }
-    }
+    },
 
 
     /*
@@ -842,7 +842,7 @@ var FireGPGMisc = {
                 description = i18n.getString('whatIsNewDescription');
             } catch (e) { }
 
-            //FireGPGMisc.showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);*/
+            //FireGPGMisc.showText(FireGPGMisc.getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);*/
 
             //Show the page
             gBrowser.selectedTab = gBrowser.addTab("http://getfiregpg.org/s/justupdated/" + versionAct);
@@ -854,7 +854,7 @@ var FireGPGMisc = {
             else
                 var mode = version;
 
-            var misc = getContent("http://getfiregpg.org/stable/stats.php?version=" + versionAct + "&oldversion=" + mode);
+            var misc = FireGPGMisc.getContent("http://getfiregpg.org/stable/stats.php?version=" + versionAct + "&oldversion=" + mode);
 
 
         } else {
@@ -898,7 +898,7 @@ var FireGPGMisc = {
                         prefs.setCharPref("lastUpdateCheck",nbMs);
 
                         //Get the last version
-                        var updateData = getContent("http://getfiregpg.org/stable/update.rdf");
+                        var updateData = FireGPGMisc.getContent("http://getfiregpg.org/stable/update.rdf");
 
                         var toDetect = "NS1:version=\"" + versionAct + "\"";
 
@@ -908,7 +908,7 @@ var FireGPGMisc = {
                                 document.getElementById('firegpg-statusbar-update').style.display = '';
                                 updateAvailable = true;
                             } else {
-                                showUpdateDialog();
+                                FireGPGMisc.showUpdateDialog();
                             }
 
                         }
@@ -918,7 +918,7 @@ var FireGPGMisc = {
             }
             //*/
         }
-    }
+    },
 
     /*
     Function: showUpdateDialog
@@ -947,7 +947,7 @@ var FireGPGMisc = {
             document.getElementById('firegpg-statusbar-update').style.display = 'none';
 
 
-    }
+    },
     /*
         Function: htmlEncode
         Encode special chars (&, <, > et ") to they html values.
