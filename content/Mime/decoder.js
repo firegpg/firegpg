@@ -54,7 +54,7 @@ FireGPGMimeDecoder.prototype = {
 
     init: function(data) {
 
-		this.data = convertCRLFToStandarts(data);
+		this.data = FireGPGMisc.convertCRLFToStandarts(data);
         this.parse();
 
 	},
@@ -160,14 +160,14 @@ FireGPGMimeDecoder.prototype = {
 
             switch(headers['CONTENT-TRANSFER-ENCODING']) {
                 case "quoted-printable":
-                    return  convertCRLFToStandarts(this.convertFromQP(body));
+                    return  FireGPGMisc.convertCRLFToStandarts(this.convertFromQP(body));
                     break;
 
                 case "8bit":
                     break;
 
                 case "base64":
-                    return convertCRLFToStandarts(this.convertFromB64(body));
+                    return FireGPGMisc.convertCRLFToStandarts(this.convertFromB64(body));
                     break;
 
             }
@@ -641,7 +641,7 @@ FireGPGMimeDecoder.prototype = {
             if (retour.decryptresult.result == RESULT_SUCCESS) {
                 this.saveid = this.extractMimeId();
 
-                this.mainPart = this.mimeParsing(convertCRLFToStandarts(retour.decryptresult.decrypted));
+                this.mainPart = this.mimeParsing(FireGPGMisc.convertCRLFToStandarts(retour.decryptresult.decrypted));
                 this.mainPart.thisisanencryptedpart = true;
 
                 retour.decryptDataToInsert = this.mimeToText(this.mainPart);
@@ -689,7 +689,7 @@ FireGPGMimeDecoder.prototype = {
 
                 if (retour.decryptresult.result == RESULT_SUCCESS) {
 
-                    subparttotest = this.mimeParsing(convertCRLFToStandarts(retour.decryptresult.decrypted));
+                    subparttotest = this.mimeParsing(FireGPGMisc.convertCRLFToStandarts(retour.decryptresult.decrypted));
                     subparttotest.thisisanencryptedpart = true;
 
                     retour.decryptDataToInsert = this.mimeToText(subparttotest);
@@ -944,7 +944,7 @@ FireGPGMimeDecoder.prototype = {
                                     tmpFile.type = "signedfile";
                                     tmpFile.signresult = FireGPG.verify(true,data,'UTF-8');
 
-                                    alert(dumper(tmpFile.signresult));
+                                    alert(FireGPGMisc.dumper(tmpFile.signresult));
 
                                     FireGPGMisc.removeFile("/tmp/a");
                                     FireGPGMisc.putIntoBinFile("/tmp/a",data);

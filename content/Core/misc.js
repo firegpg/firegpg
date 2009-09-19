@@ -1476,7 +1476,7 @@ var FireGPGMisc = {
 
 
 
-    }
+    },
 
     /*
         Function: dumper
@@ -1505,7 +1505,7 @@ var FireGPGMisc = {
 
           if(typeof(value) == 'object') { //If it is an array,
            dumped_text += level_padding + "'" + item + "' ...\n";
-           dumped_text += dumper(value,level+1);
+           dumped_text += FireGPGMisc.dumper(value,level+1);
           } else {
            dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
           }
@@ -1514,7 +1514,7 @@ var FireGPGMisc = {
          dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
         }
         return dumped_text;
-    }
+    },
 
     /*
         Function: dump2
