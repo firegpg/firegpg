@@ -208,7 +208,7 @@ var FireGPGMisc = {
         }
 
         return params.selected_items;
-    }
+    },
 
     /*
         Function: choosePrivateKey
@@ -250,7 +250,7 @@ var FireGPGMisc = {
             return null;
         }
         return params.selected_items[0];
-    }
+    },
 
 
     /*
@@ -285,7 +285,7 @@ var FireGPGMisc = {
         window.openDialog('chrome://firegpg/content/Dialogs/showtext.xul',
                           '', 'chrome, dialog, resizable=yes',
                           params).focus();
-    }
+    },
 
     /*
         Function: showEditor
@@ -296,7 +296,7 @@ var FireGPGMisc = {
         var i18n = document.getElementById("firegpg-strings");
         var title = i18n.getString('editorTitle');
         var description = i18n.getString('editorDescription');
-        showText('',description,title);
+        FireGPGMisc.showText('',description,title);
     }
 
     /*
@@ -487,7 +487,7 @@ var FireGPGMisc = {
 
         /* we must ask for private key ? */
         if(keyID == '')
-            keyID = choosePrivateKey(autoSelectPrivate);
+            keyID = FireGPGMisc.choosePrivateKey(autoSelectPrivate);
 
         /* request password if key id is changed */
         if(keyID.toString() != oldKeyID.toString()) {
@@ -844,7 +844,7 @@ var FireGPGMisc = {
                 description = i18n.getString('whatIsNewDescription');
             } catch (e) { }
 
-            //showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);*/
+            //FireGPGMisc.showText(getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);*/
 
             //Show the page
             gBrowser.selectedTab = gBrowser.addTab("http://getfiregpg.org/s/justupdated/" + versionAct);
