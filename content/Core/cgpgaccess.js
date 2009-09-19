@@ -67,7 +67,7 @@ const FireGPG_idAppli = "firegpg@firegpg.team";
    XPCOM_STATE_DONTWORK   - The xpcom doesn't work.
    XPCOM_STATE_DISABLED   - The xpcom is disabled
    XPCOM_STATE_DONTWORK_IN_0_5   - The xpcom of version 0.5 doesn't work.
-*/
+
 
 const XPCOM_STATE_DONTWORK_IN_0_5 = 2;
 const XPCOM_STATE_DISABLED_IN_0_5 = 3;
@@ -76,10 +76,11 @@ const XPCOM_STATE_NEVERTESTED = 0;
 const XPCOM_STATE_WORKS = 1;
 const XPCOM_STATE_DONTWORK = 2;
 const XPCOM_STATE_DISABLED = 3;
+*/
 
 /* Constant: comment
   The firegpg's comment to add to gnupg texts. */
-const comment = "Use{$SPACE}GnuPG{$SPACE}with{$SPACE}Firefox{$SPACE}:{$SPACE}http://getfiregpg.org{$SPACE}(Version:{$SPACE}" + FIREGPG_VERSION + ")";
+const FireGPG_comment = "Use{$SPACE}GnuPG{$SPACE}with{$SPACE}Firefox{$SPACE}:{$SPACE}http://getfiregpg.org{$SPACE}(Version:{$SPACE}" + FIREGPG_VERSION + ")";
 
 
 /*
@@ -272,7 +273,7 @@ var FireGPGGPGAccess = {
 
        if(prefs.getPrefType(key) == prefs.PREF_BOOL)
            if(prefs.getBoolPref(key))
-               comment_argument = ' --comment ' + comment;
+               comment_argument = ' --comment ' + FireGPG_comment;
 
        return comment_argument;
    },
