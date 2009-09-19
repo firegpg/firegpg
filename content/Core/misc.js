@@ -198,7 +198,7 @@ var FireGPGMisc = {
 
             if (to_my_self == true)
             {
-                var selfKeyId = getSelfKey();
+                var selfKeyId = FireGPGMisc.getSelfKey();
 
                 if (selfKeyId != null)
                 {
@@ -463,7 +463,7 @@ var FireGPGMisc = {
                 document.getElementById('firegpg-menu-memo-tool').style.display = 'none';
         }
         catch (e) {    }
-    }
+    },
 
 
     /*
@@ -489,13 +489,13 @@ var FireGPGMisc = {
 
         /* request password if key id is changed */
         if(keyID.toString() != oldKeyID.toString()) {
-            eraseSavedPassword();
+            FireGPGMisc.seraseSavedPassword();
         }
 
         oldKeyID = keyID;
 
         return keyID;
-    }
+    },
 
     /*
         Function: getTmpDir
@@ -507,7 +507,7 @@ var FireGPGMisc = {
         return Components.classes[NS_DIRECTORYSERVICE_CONTRACTID].
                           getService(Components.interfaces.nsIProperties).
                           get(TMP_DIRECTORY, Components.interfaces.nsIFile);
-    }
+    },
 
 
     /*
@@ -524,7 +524,7 @@ var FireGPGMisc = {
         if(permission == undefined)
             permission = WRITE_PERMISSION;
 
-        var fileobj = getTmpDir();
+        var fileobj = FireGPGMisc.getTmpDir();
 
         if (permission == WRITE_PERMISSION_R)
             var fileName = TMP_RFILES;
@@ -540,7 +540,7 @@ var FireGPGMisc = {
         fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, permission);
         fileobj.permissions = permission;
         return fileobj.path;
-    }
+    },
 
 
     /*
