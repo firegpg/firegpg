@@ -236,12 +236,12 @@ var cGmail2 = {
                                         //td.innerHTML = i18n.getString("GMailMailWasDecrypted") + " ";
 
                                         //if (result.decryptresult.result.signresulttext != null &&  result.decryptresult.result.signresulttext != "")
-                                        //    td.innerHTML +=  i18n.getString("GMailSOK") + " " + htmlEncode(result.decryptresult.result.signresulttext) + " ";
+                                        //    td.innerHTML +=  i18n.getString("GMailSOK") + " " + FireGPGMisc.htmlEncode(result.decryptresult.result.signresulttext) + " ";
 
                                         if (result.decryptresult.result.signresulttext != null &&  result.decryptresult.result.signresulttext != "") {
 
                                             if (cGmail2.showUserInfo)
-                                                bonus = " (" + htmlEncode(result.decryptresult.result.signresulttext) + ")";
+                                                bonus = " (" + FireGPGMisc.htmlEncode(result.decryptresult.result.signresulttext) + ")";
                                             else
                                                 bonus = "";
 
@@ -297,10 +297,10 @@ var cGmail2 = {
                                     else if (result.signResult.signsresulttext != null){
 
                                         td.setAttribute("style","color: green;");
-                                        //td.innerHTML += i18n.getString("GMailSOK") + " " + htmlEncode(result.signResult.signresulttext); //"La première signature de ce mail est de testtest (testtest)
+                                        //td.innerHTML += i18n.getString("GMailSOK") + " " + FireGPGMisc.htmlEncode(result.signResult.signresulttext); //"La première signature de ce mail est de testtest (testtest)
 
                                         if (cGmail2.showUserInfo)
-                                            bonus = " (" + htmlEncode(result.signResult.signsresulttext).replace(/\n/gi, '<br />') + ")";
+                                            bonus = " (" + FireGPGMisc.htmlEncode(result.signResult.signsresulttext).replace(/\n/gi, '<br />') + ")";
                                         else
                                                 bonus = "";
 
@@ -353,7 +353,7 @@ var cGmail2 = {
                                             table.innerHTML = '<tbody><tr><td class="hw"><span id=":ga"><a href="#"><img gpg_action="sattachement2"  class="hu" src="/mail/images/generic.gif"></a></span></td><td><b>%n</b>  <br>%t&nbsp;&nbsp;<span id=":gd"><a href="#" gpg_action="sattachement">%s</a>&nbsp;&nbsp;</span></td></tr></tbody>';
                                             table.innerHTML = table.innerHTML.replace(/%t/, i18n.getString("decryptedfile"));
                                             table.innerHTML = table.innerHTML.replace(/%s/, i18n.getString("SaveAS"));
-                                            table.innerHTML = table.innerHTML.replace(/%n/, htmlEncode(att.filename));
+                                            table.innerHTML = table.innerHTML.replace(/%n/, FireGPGMisc.htmlEncode(att.filename));
                                             table.setAttribute('firegpg-file-content',Base64.encode(att.data,true));
                                             table.setAttribute('firegpg-file-name', att.filename);
                                             table.setAttribute('firegpg-file-type','decrypted');
@@ -388,7 +388,7 @@ var cGmail2 = {
 
                                                 tableBox.innerHTML = '<tbody><tr><td class="hw"><span id=":ga"><a href="#"><img class="hu" src="/mail/images/generic.gif"></a></span></td><td><b>%n</b>  <br>%t&nbsp;&nbsp;<span id=":gd">&nbsp;&nbsp;</span></td></tr></tbody>';
                                                 tableBox.innerHTML = tableBox.innerHTML.replace(/%t/, i18n.getString("firegpgencrypted"));
-                                                tableBox.innerHTML = tableBox.innerHTML.replace(/%n/, htmlEncode(att.filename));
+                                                tableBox.innerHTML = tableBox.innerHTML.replace(/%n/, FireGPGMisc.htmlEncode(att.filename));
                                                 tableBox.setAttribute('class', 'cf hr');
 
                                                 attachementBox.appendChild(tableBox);
@@ -460,7 +460,7 @@ var cGmail2 = {
                                         td.innerHTML = i18n.getString("GMailMailWasDecrypted");
 
                                         if (result.signresulttext != null &&  result.signresulttext != "")
-                                                td.innerHTML += " " + i18n.getString("GMailSOK") + " " + htmlEncode(result.signresulttext)
+                                                td.innerHTML += " " + i18n.getString("GMailSOK") + " " + FireGPGMisc.htmlEncode(result.signresulttext)
                                         else if (data.signData ) {
 
                                             var resultTest = FireGPG.verify(true,data.signData.replace(/\r/gi, ''));
@@ -487,7 +487,7 @@ var cGmail2 = {
                                             else if (resultTest.signresulttext != null){
 
                                                 td.setAttribute("style","color: green;");
-                                                td.innerHTML += " " + i18n.getString("GMailSOK") + " " + htmlEncode(resultTest.signresulttext); //"La première signature de ce mail est de testtest (testtest)
+                                                td.innerHTML += " " + i18n.getString("GMailSOK") + " " + FireGPGMisc.htmlEncode(resultTest.signresulttext); //"La première signature de ce mail est de testtest (testtest)
                                             }
 
                                         }
@@ -536,7 +536,7 @@ var cGmail2 = {
 
 
                                             if (result.signresulttext != null &&  result.signresulttext != "")
-                                                td.innerHTML += " " + i18n.getString("GMailSOK") + " " + htmlEncode(result.signresulttext)
+                                                td.innerHTML += " " + i18n.getString("GMailSOK") + " " + FireGPGMisc.htmlEncode(result.signresulttext)
 
 
                                         } else  {

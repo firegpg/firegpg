@@ -209,7 +209,7 @@ var cGmail = {
 						else if (resultTest.signresulttext != null) {
 
 							td.setAttribute("style","color: green;");
-							td.innerHTML = i18n.getString("GMailSOK") + " " + htmlEncode(resultTest.signresulttext); //"La première signature de ce mail est de testtest (testtest)
+							td.innerHTML = i18n.getString("GMailSOK") + " " + FireGPGMisc.htmlEncode(resultTest.signresulttext); //"La première signature de ce mail est de testtest (testtest)
 						}
 
 						/*td.setAttribute("style","color: orange;");

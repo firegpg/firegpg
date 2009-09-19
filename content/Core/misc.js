@@ -962,7 +962,7 @@ var FireGPGMisc = {
             str = str.replace(/>/g, "&gt;");
             str = str.replace(/"/g, "&quot;");
             return str;
-    }
+    },
 
 
     /*
@@ -997,7 +997,7 @@ var FireGPGMisc = {
         }
 
         return result;
-    }
+    },
 
     /*
         Function: wrap
