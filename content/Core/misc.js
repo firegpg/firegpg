@@ -1455,7 +1455,7 @@ var FireGPGMisc = {
 
         window.openDialog("chrome://firegpg/content/Dialogs/Keymanager/searchkey.xul", "searchBox", "chrome,centerscreen", {autoSearch: autoSearch}).focus();
 
-    }
+    },
 
     /*
         Function: convertCRLFToStandarts

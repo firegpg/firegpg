@@ -174,7 +174,7 @@ function refrech() {
 }
 
 function importserver() {
-    showSearchBox((curentlySelected!= null ? "0x" + curentlySelected.substring(8) : "")	, true);
+    FireGPGMisc.showSearchBox((curentlySelected!= null ? "0x" + curentlySelected.substring(8) : "")	, true);
 	updateKeyList();
 
 }
