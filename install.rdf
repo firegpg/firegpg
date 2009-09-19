@@ -6,7 +6,7 @@
 
                     em:id="toolkit@mozilla.org"
                    em:minVersion="1.5"
-                   em:maxVersion="3.5.*" />
+                   em:maxVersion="3.6" />
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="firegpg@firegpg.team"
                    em:version="0.7.8"

@@ -44,10 +44,10 @@ under the terms of any one of the MPL, the GPL or the LGPL.
    Class to handle selection
 */
 var Selection = {
-	/* 
+	/*
 	Function: getFrame
 	find a select in a frame
-	
+
 	Parameters:
 		frames - The frame
 	*/
