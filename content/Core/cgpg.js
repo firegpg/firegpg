@@ -56,18 +56,20 @@ under the terms of any one of the MPL, the GPL or the LGPL.
    RESULT_ERROR_INIT_FAILLED - There is a problem with GPG, impossible to execute the executable.
 
 */
-const RESULT_SUCCESS = 0;
-const RESULT_CANCEL = 1;
-const RESULT_ERROR_UNKNOW = 2;
-const RESULT_ERROR_PASSWORD = 3;
-const RESULT_ERROR_NO_DATA = 4;
-const RESULT_ERROR_ALREADY_SIGN = 5;
-const RESULT_ERROR_BAD_SIGN = 5;
-const RESULT_ERROR_NO_KEY = 6;
-const RESULT_ERROR_ALREADY_CRYPT = 7;
-const RESULT_ERROR_NO_GPG_DATA = 7;
-const RESULT_ERROR_INIT_FAILLED = 8;
 
+const FireGPGResults = {
+    SUCCESS: 0,
+    CANCEL: 1,
+    ERROR_UNKNOW: 2,
+    ERROR_PASSWORD: 3,
+    ERROR_NO_DATA: 4,
+    ERROR_ALREADY_SIGN: 5,
+    ERROR_BAD_SIGN: 5,
+    ERROR_NO_KEY: 6,
+    ERROR_ALREADY_CRYPT: 7,
+    ERROR_NO_GPG_DATA: 7,
+    ERROR_INIT_FAILLED: 8
+}
 
 /*
     Function: FireGPG_GPGReturn
