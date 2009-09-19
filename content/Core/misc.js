@@ -1140,7 +1140,7 @@ var FireGPGMisc = {
         fireGPGDebug(ex,'misc.EnigConvertToUnicode',true);
         return text;
       }
-    }
+    },
 
     /*
         Function: EnigConvertFromUnicode
@@ -1168,7 +1168,7 @@ var FireGPGMisc = {
         fireGPGDebug(ex,'misc.EnigConvertFromUnicode',true);
         return text;
       }
-    }
+    },
 
 
 

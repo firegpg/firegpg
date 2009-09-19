@@ -1135,7 +1135,7 @@ Zna Vna UIb $RQa $SQa Moa
 
                 var filePath = fp.file.path;
 
-                var data = EnigConvertToUnicode(FireGPGMisc.getBinContent("file://" + filePath), 'UTF-8');
+                var data = FireGPGMisc.EnigConvertToUnicode(FireGPGMisc.getBinContent("file://" + filePath), 'UTF-8');
 
                 var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,target.parentNode.parentNode.parentNode);
 
@@ -2890,7 +2890,7 @@ fireGPGDebug("activated");
       //      fireGPGDebug('finaldata is ' + data, 'getMimeMailContens');
 
 
-			var mailData = EnigConvertToUnicode(data , 'UTF-8');
+			var mailData = FireGPGMisc.EnigConvertToUnicode(data , 'UTF-8');
 
         //    fireGPGDebug('mailData is ' + mailData, 'getMimeMailContens');
             // FireGPGMisc.getContentXHttp(cGmail2.baseUrl + url);
