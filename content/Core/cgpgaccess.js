@@ -206,7 +206,7 @@ var FireGPGGPGAccess = {
         Return true if we are on a unix system, false if we're on windows.
     */
     isUnix: function() {
-       if(FireGPG_OS != OS_WINDOWS)
+       if(FireGPG_OS != FireGPG_OS_WINDOWS)
            return true;
 
        return false;
