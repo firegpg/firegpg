@@ -227,7 +227,7 @@ var cGmail2 = {
                                         else {
 
                                                 data = decoder.washFromPlain(result.specialmimepart).replace(/<br \/>/gi, '\n');
-                                                rid="firegpg" +  genreate_api_key() +  "subpart" +  genreate_api_key() + "display" +  genreate_api_key();
+                                                rid="firegpg" +  FireGPGMisc.genreate_api_key() +  "subpart" +  FireGPGMisc.genreate_api_key() + "display" +  FireGPGMisc.genreate_api_key();
 
                                                 td.setAttribute("style","color: magenta;");
                                                 td.innerHTML += '<span title="' + i18n.getString("OnlyASubPart2") + ' ' + i18n.getString("emailDecrypted") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);  return false;"><img src="' + IMG_MAIL_DECRYPTED_PART + '">&nbsp;' + i18n.getString("partDecrypted") + '</span>&nbsp;<span id="' + rid +'" style="display: none">' + data + '</span>';
@@ -250,7 +250,7 @@ var cGmail2 = {
                                             else {
 
                                                 data = decoder.washFromPlain(result.specialmimepart).replace(/<br \/>/gi, '\n');
-                                                rid="firegpg" +  genreate_api_key() +  "subpart" +  genreate_api_key() + "display" +  genreate_api_key();
+                                                rid="firegpg" +  FireGPGMisc.genreate_api_key() +  "subpart" +  FireGPGMisc.genreate_api_key() + "display" +  FireGPGMisc.genreate_api_key();
 
                                                 td.setAttribute("style","color: magenta;");
                                                 td.innerHTML += '<span title="' + i18n.getString("OnlyASubPart2 ")+ ' ' + i18n.getString("goodSignFrom") + ' ' + result.decryptresult.result.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);  return false;"><img src="' + IMG_MAIL_SIGNED_PART + '">&nbsp;' + i18n.getString("partSigned") + '' + bonus + '</span><span id="' + rid +'" style="display: none">' + data + '</span>';
@@ -310,7 +310,7 @@ var cGmail2 = {
                                         else {
 
                                             data = decoder.washFromPlain(result.specialmimepart).replace(/<br \/>/gi, '\n');
-                                            rid="firegpg" +  genreate_api_key() +  "subpart" +  genreate_api_key() + "display" +  genreate_api_key();
+                                            rid="firegpg" +  FireGPGMisc.genreate_api_key() +  "subpart" +  FireGPGMisc.genreate_api_key() + "display" +  FireGPGMisc.genreate_api_key();
 
                                             td.setAttribute("style","color: magenta;");
                                             td.innerHTML += '<span title="' + i18n.getString("OnlyASubPart2") + ' '  + result.signResult.signsresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);  return false;"><img src="' + IMG_MAIL_SIGNED_PART + '">&nbsp;' + i18n.getString("partSigned") + '' + bonus + '</span><span id="' + rid +'" style="display: none">' + data + '</span>';
@@ -331,7 +331,7 @@ var cGmail2 = {
                                /* if (!result.completeSignOrDecrypt && !nosign) {
 
                                     data = decoder.washFromPlain(result.specialmimepart).replace(/<br \/>/gi, '\n');
-                                    rid="firegpg" +  genreate_api_key() +  "subpart" +  genreate_api_key() + "display" +  genreate_api_key();
+                                    rid="firegpg" +  FireGPGMisc.genreate_api_key() +  "subpart" +  FireGPGMisc.genreate_api_key() + "display" +  FireGPGMisc.genreate_api_key();
                                     td.innerHTML += " <br /><span style=\"color: magenta;\">" + i18n.getString("OnlyASubPart").replace(/%w/, '<a href="#" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);">').replace(/%w2/,
                                                                                                                                                                                          '</a><span id="' + rid +'" style="display: none">' + data + '</span></span>');
                                 } */ //
@@ -727,7 +727,7 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
                             title.setAttribute('class', 'eD');
                             title.innerHTML = 'FireGPG:';
 
-                            randId = genreate_api_key();
+                            randId = FireGPGMisc.genreate_api_key();
                             checkboxes.setAttribute('class', 'eC');
                             checkboxes.setAttribute('style', 'font-size: 12px;');
                             checkboxes.innerHTML =  '<img id="'+randId+'a" src="'+IMG_SIGN_OFF+'" alt="'+IMG_SIGN_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-sign">&nbsp;<span class="el" onclick="document.getElementById(\''+randId+'a\').onclick();">' + i18n.getString("GMailS") + '</span>&nbsp;|&nbsp;' +
