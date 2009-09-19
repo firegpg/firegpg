@@ -109,8 +109,8 @@ var firegpg = {
     */
     onLoad: function() {
 
-        cGmail.initSystem();
-        cGmail2.initSystem();
+        FireGPG_cGmail.initSystem();
+        FireGPG_cGmail2.initSystem();
         FireGPGInline.initSystem();
 		//APIListener.init();
 

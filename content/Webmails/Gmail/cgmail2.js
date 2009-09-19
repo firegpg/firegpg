@@ -78,10 +78,10 @@ const IMG_MAIL_DECRYPTED_PART = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA
 
 
 /*
-   Class: cGmail2
+   Class: FireGPG_cGmail2
    This is the main class to manage gmail's function with the new interface.
 */
-var cGmail2 = {
+var FireGPG_cGmail2 = {
 
     /*
     Variable: doc
@@ -112,7 +112,7 @@ var cGmail2 = {
 
         var i18n = document.getElementById("firegpg-strings");
 
-        var doc = cGmail2.doc[id];
+        var doc = FireGPG_cGmail2.doc[id];
 
         if (doc != undefined && doc.location != undefined) {
 
@@ -125,7 +125,7 @@ var cGmail2 = {
             if (final_location.indexOf(GMAIL_MAIN_DOC_URL) == 0 || final_location .indexOf(GMAIL_MAIN_DOC_URL2) == 0) {
 
                 if (doc.location.href.indexOf("?ui=2") != -1)
-                    cGmail2.baseUrl = doc.location.href.substring(0, doc.location.href.indexOf("?ui=2"));
+                    FireGPG_cGmail2.baseUrl = doc.location.href.substring(0, doc.location.href.indexOf("?ui=2"));
 
                 //test for messages
                 var listeTest = doc.getElementsByClassName('gE iv gt','div');
@@ -163,9 +163,9 @@ var cGmail2 = {
                                 retry = 0;
 
                             if ( retry < 10) {
-                                setTimeout("cGmail2.checkDoc("+id+", "+ (retry+1) + ")", 1000);
+                                setTimeout("FireGPG_cGmail2.checkDoc("+id+", "+ (retry+1) + ")", 1000);
                                 fireGPGDebug('Reask (' + retry + ')', 'Checkdoc');
-                                cGmail2.docOccuped[id] = true;
+                                FireGPG_cGmail2.docOccuped[id] = true;
                                 break;
                             } else {
 
@@ -187,20 +187,20 @@ var cGmail2 = {
 
                                 listeTest[i].setAttribute("firegpg-mail-id", decoder.extractMimeId());
 
-                                result = decoder.detectGpGContent(cGmail2.noAutoDecrypt);
+                                result = decoder.detectGpGContent(FireGPG_cGmail2.noAutoDecrypt);
                                 var i18n = document.getElementById("firegpg-strings");
 
-                                if (result.decryptresult && (cGmail2.noAutoDecrypt || result.decryptresult.result == FireGPGResults.SUCCESS))  {
+                                if (result.decryptresult && (FireGPG_cGmail2.noAutoDecrypt || result.decryptresult.result == FireGPGResults.SUCCESS))  {
 
-                                    if (cGmail2.encryptIfDecrypted)
+                                    if (FireGPG_cGmail2.encryptIfDecrypted)
                                         listeTest[i].setAttribute("firegpg-encrypt-this-mail", "firegpg-encrypt-this-mail");
 
-                                    if (cGmail2.noAutoDecrypt) {
+                                    if (FireGPG_cGmail2.noAutoDecrypt) {
                                         td.innerHTML = i18n.getString("GMailD");
 
                                         var tmpListener = new Object;
                                         tmpListener = null;
-                                        tmpListener = new cGmail2.callBack(doc)
+                                        tmpListener = new FireGPG_cGmail2.callBack(doc)
                                         td.addEventListener('click',tmpListener,true);
                                         td.setAttribute("style","");
                                         td.setAttribute("firegpg-mail-to-decrypt", result.decryptDataToInsert);
@@ -216,7 +216,7 @@ var cGmail2 = {
 
                                        }
 
-                                        if (cGmail2.decryptOnReply)
+                                        if (FireGPG_cGmail2.decryptOnReply)
                                             listeTest[i].setAttribute("firegpg-decrypted-data", result.decryptDataToInsert);
 
 
@@ -240,7 +240,7 @@ var cGmail2 = {
 
                                         if (result.decryptresult.result.signresulttext != null &&  result.decryptresult.result.signresulttext != "") {
 
-                                            if (cGmail2.showUserInfo)
+                                            if (FireGPG_cGmail2.showUserInfo)
                                                 bonus = " (" + FireGPGMisc.htmlEncode(result.decryptresult.result.signresulttext) + ")";
                                             else
                                                 bonus = "";
@@ -263,7 +263,7 @@ var cGmail2 = {
                                 if (result.signResult != null) {
 
                                    if (result.signResult.signresult == FireGPGResults.ERROR_NO_GPG_DATA) {
-                                        if (cGmail2.nonosign != true && !result.decryptresult && !cGmail2.noAutoDecrypt)
+                                        if (FireGPG_cGmail2.nonosign != true && !result.decryptresult && !FireGPG_cGmail2.noAutoDecrypt)
                                         {
                                             //td.setAttribute("style","color: orange;");
                                             //td.innerHTML = i18n.getString("GMailNoS");
@@ -299,7 +299,7 @@ var cGmail2 = {
                                         td.setAttribute("style","color: green;");
                                         //td.innerHTML += i18n.getString("GMailSOK") + " " + FireGPGMisc.htmlEncode(result.signResult.signresulttext); //"La première signature de ce mail est de testtest (testtest)
 
-                                        if (cGmail2.showUserInfo)
+                                        if (FireGPG_cGmail2.showUserInfo)
                                             bonus = " (" + FireGPGMisc.htmlEncode(result.signResult.signsresulttext).replace(/\n/gi, '<br />') + ")";
                                         else
                                                 bonus = "";
@@ -319,7 +319,7 @@ var cGmail2 = {
 
                                 } else {
 
-                                    if (cGmail2.nonosign != true && !result.decryptresult && !cGmail2.noAutoDecrypt)
+                                    if (FireGPG_cGmail2.nonosign != true && !result.decryptresult && !FireGPG_cGmail2.noAutoDecrypt)
                                         {
                                             //td.setAttribute("style","color: orange;");
                                             //td.innerHTML = i18n.getString("GMailNoS");
@@ -361,7 +361,7 @@ var cGmail2 = {
                                             table.setAttribute('gpg_action','attachement');
                                             var tmpListener = new Object;
                                             tmpListener = null;
-                                            tmpListener = new cGmail2.callBack(doc)
+                                            tmpListener = new FireGPG_cGmail2.callBack(doc)
                                             table.addEventListener('click',tmpListener,true);
 
                                             attachementBox.appendChild(table);
@@ -407,7 +407,7 @@ var cGmail2 = {
                                             newA.innerHTML = i18n.getString("decrypt");
                                             var tmpListener = new Object;
                                             tmpListener = null;
-                                            tmpListener = new cGmail2.callBack(doc)
+                                            tmpListener = new FireGPG_cGmail2.callBack(doc)
                                             newA.addEventListener('click',tmpListener,true);
 
                                             interstingSpan.appendChild(newA);
@@ -429,7 +429,7 @@ var cGmail2 = {
                             if (encrypted != null && encrypted != '' && firstPosition != -1 && lastPosition != -1) {
 
 
-                                if (cGmail2.noAutoDecrypt) {
+                                if (FireGPG_cGmail2.noAutoDecrypt) {
 
                                     if (td.innerHTML == i18n.getString("GMailNoS") || td.innerHTML ==  "") {
 
@@ -437,7 +437,7 @@ var cGmail2 = {
 
                                         var tmpListener = new Object;
                                         tmpListener = null;
-                                        tmpListener = new cGmail2.callBack(doc)
+                                        tmpListener = new FireGPG_cGmail2.callBack(doc)
                                         td.addEventListener('click',tmpListener,true);
                                         td.setAttribute("style","");
                                         td.setAttribute("firegpg-mail-to-decrypt", encrypted);
@@ -453,7 +453,7 @@ var cGmail2 = {
 
                                         this.setMailContent(listeTest[i],doc,data.message);
 
-                                        if (cGmail2.decryptOnReply)
+                                        if (FireGPG_cGmail2.decryptOnReply)
                                             listeTest[i].setAttribute("firegpg-decrypted-data", data.message);
 
                                         td.setAttribute("style","color: blue;");
@@ -466,7 +466,7 @@ var cGmail2 = {
                                             var resultTest = FireGPG.verify(true,data.signData.replace(/\r/gi, ''));
 
                                             if (resultTest.result == FireGPGResults.ERROR_NO_GPG_DATA) {
-                                                if (cGmail2.nonosign != true)
+                                                if (FireGPG_cGmail2.nonosign != true)
                                                 {
                                                     td.setAttribute("style","color: orange;");
                                                     td.innerHTML += " " + i18n.getString("GMailNoS");
@@ -507,14 +507,14 @@ var cGmail2 = {
 
                                 if (encrypted != null && encrypted != '' && firstPosition != -1 && lastPosition != -1) {
 
-                                    if (cGmail2.noAutoDecrypt) {
+                                    if (FireGPG_cGmail2.noAutoDecrypt) {
 
                                         if (td.innerHTML == i18n.getString("GMailNoS") || td.innerHTML ==  "") {
                                             td.innerHTML = i18n.getString("GMailD");
 
                                             var tmpListener = new Object;
                                             tmpListener = null;
-                                            tmpListener = new cGmail2.callBack(doc)
+                                            tmpListener = new FireGPG_cGmail2.callBack(doc)
                                             td.addEventListener('click',tmpListener,true);
                                             td.setAttribute("style","");
                                             td.setAttribute("firegpg-mail-to-decrypt", encrypted);
@@ -528,7 +528,7 @@ var cGmail2 = {
 
                                             data = FireGPGMimeDecoder.washDecryptedForInsertion(FireGPGMimeDecoder.demime(result.decrypted).message.replace(/\r/gi, ''));
                                             this.setMailContent(listeTest[i],doc,data);
-                                            if (cGmail2.decryptOnReply)
+                                            if (FireGPG_cGmail2.decryptOnReply)
                                                 listeTest[i].setAttribute("firegpg-decrypted-data", data);
 
                                             td.setAttribute("style","color: blue;");
@@ -563,7 +563,7 @@ var cGmail2 = {
 
                                 var tmpListener = new Object;
                                 tmpListener = null;
-                                tmpListener = new cGmail2.callBack(doc)
+                                tmpListener = new FireGPG_cGmail2.callBack(doc)
                                 td.addEventListener('click',tmpListener,true);
                                 td.setAttribute("style","");
                             }*/
@@ -628,21 +628,21 @@ var cGmail2 = {
                         }
 
 fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
-                        /*if (cGmail2.b_sign == true)
+                        /*if (FireGPG_cGmail2.b_sign == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailCLS"),"sign",spamLimite);
-                        if (cGmail2.b_sign_s == true)
+                        if (FireGPG_cGmail2.b_sign_s == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailCLSS"),"sndsign",spamLimite);
-                        if (cGmail2.b_psign == true)
+                        if (FireGPG_cGmail2.b_psign == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailS"),"psign",spamLimite);
-                        if (cGmail2.b_psign_s == true)
+                        if (FireGPG_cGmail2.b_psign_s == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailSS"),"sndpsign",spamLimite);
-                        if (cGmail2.b_crypt == true)
+                        if (FireGPG_cGmail2.b_crypt == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailC"),"crypt",spamLimite);
-                        if (cGmail2.b_crypt_s == true)
+                        if (FireGPG_cGmail2.b_crypt_s == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailCS"),"sndcrypt",spamLimite);
-                        if (cGmail2.b_signcrypt == true)
+                        if (FireGPG_cGmail2.b_signcrypt == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailSAC"),"signcrypt",spamLimite);
-                        if (cGmail2.b_signcrypt_s == true)
+                        if (FireGPG_cGmail2.b_signcrypt_s == true)
                             this.addBouton(wheretoadd,doc,i18n.getString("GMailSACS"),"sndsigncrypt",spamLimite);*/
 
 
@@ -656,22 +656,22 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
 
                             var tmpListener = new Object;
                             tmpListener = null;
-                            tmpListener = new cGmail2.callBack(doc)
+                            tmpListener = new FireGPG_cGmail2.callBack(doc)
                             listeTest[i].addEventListener('mouseup',tmpListener,true);
 
                             var tmpListener = new Object;
                             tmpListener = null;
-                            tmpListener = new cGmail2.callBack(doc)
+                            tmpListener = new FireGPG_cGmail2.callBack(doc)
                             listeTest[i].addEventListener('keyup',tmpListener,true);
 
                             var tmpListener = new Object;
                             tmpListener = null;
-                            tmpListener = new cGmail2.callBack(doc)
+                            tmpListener = new FireGPG_cGmail2.callBack(doc)
                             listeTest[i].addEventListener('keydown',tmpListener,true);
 
                             var tmpListener = new Object;
                             tmpListener = null;
-                            tmpListener = new cGmail2.callBack(doc)
+                            tmpListener = new FireGPG_cGmail2.callBack(doc)
                             listeTest[i].addEventListener('keypress',tmpListener,true);
 
                         } catch (e) {  fireGPGDebug(e,'cgmail2.checkDoc',true);  }
@@ -714,7 +714,7 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
 
                             var tmpListener = new Object;
                             tmpListener = null;
-                            tmpListener = new cGmail2.callBack(doc)
+                            tmpListener = new FireGPG_cGmail2.callBack(doc)
                             span.addEventListener('click',tmpListener,false);
 
                             //Rajout des trucs à FireGPG
@@ -735,16 +735,16 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
                             '<img id="'+randId+'c" src="'+IMG_INLINE_OFF+'" alt="'+IMG_INLINE_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\'); if (this.title==\'Off\') { document.getElementById(\''+randId+'att\').style.display = \'\'; } else { document.getElementById(\''+randId+'att\').style.display = \'none\'; }" title="Off" class="firegpg-inline" >&nbsp;<span class="el" onclick="document.getElementById(\''+randId+'c\').onclick();">' + i18n.getString("GmailI") + '</span>' +
                             '<span id="'+randId+'att">&nbsp;|&nbsp;<img id="'+randId+'d" src="'+IMG_ATTACHEMENTS_OFF+'" alt="'+IMG_ATTACHEMENTS_ON+'" onclick="a = this.alt; this.alt=this.src; this.src=a; this.title = (this.title==\'On\' ? \'Off\' : \'On\');" title="Off" class="firegpg-attachements" >&nbsp;<span class="el" onclick="document.getElementById(\''+randId+'d\').onclick();">' + i18n.getString("GmailA") + '</span></span>';
 
-                            if (cGmail2.default_sign)
+                            if (FireGPG_cGmail2.default_sign)
                                 checkboxes.innerHTML += '<script>document.getElementById(\''+randId+'a\').onclick();</script>';
 
-                            if (cGmail2.default_encrypt || (elements[0] && elements[0].hasAttribute("firegpg-encrypt-this-mail") && elements[0].getAttribute("firegpg-encrypt-this-mail") == "firegpg-encrypt-this-mail"))
+                            if (FireGPG_cGmail2.default_encrypt || (elements[0] && elements[0].hasAttribute("firegpg-encrypt-this-mail") && elements[0].getAttribute("firegpg-encrypt-this-mail") == "firegpg-encrypt-this-mail"))
                                 checkboxes.innerHTML += '<script>document.getElementById(\''+randId+'b\').onclick();</script>';
 
-                            if (cGmail2.default_inline)
+                            if (FireGPG_cGmail2.default_inline)
                                 checkboxes.innerHTML += '<script>document.getElementById(\''+randId+'c\').onclick();</script>';
 
-                            if (cGmail2.default_attachements)
+                            if (FireGPG_cGmail2.default_attachements)
                                 checkboxes.innerHTML += '<script>document.getElementById(\''+randId+'d\').onclick();</script>';
 
                             firegpgactions.appendChild(title);
@@ -766,15 +766,15 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
                                 tablebox.firstChild.insertBefore(firegpgactions,filesattachbox);
                             } catch (e) {   fireGPGDebug(e,'cgmail2.checkDoc(insert checkboxes)',true); }
 
-                            if (cGmail2.decryptOnReply) {
+                            if (FireGPG_cGmail2.decryptOnReply) {
 
                                 if (elements[0] && elements[0].hasAttribute("firegpg-decrypted-data") ) {
                                     data = elements[0].getAttribute("firegpg-decrypted-data");
 
 
-                                    if (cGmail2.iframeOrTextarea(doc,wheretoadd) == "iframe") {
+                                    if (FireGPG_cGmail2.iframeOrTextarea(doc,wheretoadd) == "iframe") {
 
-                                        var iframe = cGmail2.getTheIframe(doc,wheretoadd);
+                                        var iframe = FireGPG_cGmail2.getTheIframe(doc,wheretoadd);
 
                                         baseData = iframe.contentWindow.document.body.innerHTML;
 
@@ -786,7 +786,7 @@ fireGPGDebug('wheretoadd is ' + wheretoadd, 'ProbWithReplyForward');
 
                                     } else {
 
-                                        var textarea = cGmail2.getTheTextarea(doc,wheretoadd);
+                                        var textarea = FireGPG_cGmail2.getTheTextarea(doc,wheretoadd);
 
                                         baseData = textarea.value;
 
@@ -937,7 +937,7 @@ Zna Vna UIb $RQa $SQa Moa
                 }
                 //END OF THE TEST FOR COMPOSE BUTTONS
 
-                cGmail2.docOccuped[id] = false;
+                FireGPG_cGmail2.docOccuped[id] = false;
 
             }
         }
@@ -1024,7 +1024,7 @@ Zna Vna UIb $RQa $SQa Moa
 			else if (target.getAttribute('gpg_action') == "sndsign" || target.getAttribute('gpg_action') == "sign")
 			{
 
-				var mailContent = cGmail2.getWriteMailContent(this._doc,target.parentNode);
+				var mailContent = FireGPG_cGmail2.getWriteMailContent(this._doc,target.parentNode);
 
 				if (mailContent == "")
 					return;
@@ -1033,17 +1033,17 @@ Zna Vna UIb $RQa $SQa Moa
 
                 if (result.result == FireGPGResults.SUCCESS) {
 
-					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.signed);
+					FireGPG_cGmail2.setWriteMailContent(this._doc,target.parentNode,result.signed);
 
 					if (target.getAttribute('gpg_action') == "sndsign")
-						cGmail2.sendEmail(target.parentNode,this._doc);
+						FireGPG_cGmail2.sendEmail(target.parentNode,this._doc);
 				}
 
 			}
             else if (target.getAttribute('gpg_action') == "sndpsign" || target.getAttribute('gpg_action') == "psign")
 			{
 
-				var mailContent = cGmail2.getWriteMailContent(this._doc,target.parentNode);
+				var mailContent = FireGPG_cGmail2.getWriteMailContent(this._doc,target.parentNode);
 
 				if (mailContent == "")
 					return;
@@ -1052,10 +1052,10 @@ Zna Vna UIb $RQa $SQa Moa
 
                 if (result.result == FireGPGResults.SUCCESS) {
 
-					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.signed);
+					FireGPG_cGmail2.setWriteMailContent(this._doc,target.parentNode,result.signed);
 
 					if (target.getAttribute('gpg_action') == "sndpsign")
-						cGmail2.sendEmail(target.parentNode,this._doc);
+						FireGPG_cGmail2.sendEmail(target.parentNode,this._doc);
 				}
 
 			}
@@ -1063,9 +1063,9 @@ Zna Vna UIb $RQa $SQa Moa
 			{
 
 				//This code has to mix with the previous else/if block
-				var mailContent = cGmail2.getWriteMailContent(this._doc,target.parentNode);
+				var mailContent = FireGPG_cGmail2.getWriteMailContent(this._doc,target.parentNode);
 
-				var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,target.parentNode);
+				var whoWillGotTheMail = FireGPG_cGmail2.getToCcBccMail(this._doc,target.parentNode);
 
 				if (mailContent == "")
 					return;
@@ -1074,11 +1074,11 @@ Zna Vna UIb $RQa $SQa Moa
 
 				if(result.result == FireGPGResults.SUCCESS) {
 
-					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
+					FireGPG_cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
 
 					if (target.getAttribute('gpg_action') == "sndcrypt")
 					{
-						cGmail2.sendEmail(target.parentNode,this._doc);
+						FireGPG_cGmail2.sendEmail(target.parentNode,this._doc);
 					}
 
 				}
@@ -1087,9 +1087,9 @@ Zna Vna UIb $RQa $SQa Moa
 			{
 
 				//This code has to mix with the previous else/if block
-				var mailContent = cGmail2.getWriteMailContent(this._doc,target.parentNode);
+				var mailContent = FireGPG_cGmail2.getWriteMailContent(this._doc,target.parentNode);
 
-				var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,target.parentNode);
+				var whoWillGotTheMail = FireGPG_cGmail2.getToCcBccMail(this._doc,target.parentNode);
 
 
 				if (mailContent == "")
@@ -1108,11 +1108,11 @@ Zna Vna UIb $RQa $SQa Moa
 				}
 				else {
 
-					cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
+					FireGPG_cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
 
 					if (target.getAttribute('gpg_action') == "sndsigncrypt")
 					{
-						cGmail2.sendEmail(target.parentNode,this._doc);
+						FireGPG_cGmail2.sendEmail(target.parentNode,this._doc);
 					}
 
 				}
@@ -1137,7 +1137,7 @@ Zna Vna UIb $RQa $SQa Moa
 
                 var data = FireGPGMisc.EnigConvertToUnicode(FireGPGMisc.getBinContent("file://" + filePath), 'UTF-8');
 
-                var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,target.parentNode.parentNode.parentNode);
+                var whoWillGotTheMail = FireGPG_cGmail2.getToCcBccMail(this._doc,target.parentNode.parentNode.parentNode);
 
 				if (data == "")
 					return;
@@ -1263,11 +1263,11 @@ Zna Vna UIb $RQa $SQa Moa
                     else
                         buttonsboxes = target.parentNode;
 
-                var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,buttonsboxes, false, false, false);
+                var whoWillGotTheMail = FireGPG_cGmail2.getToCcBccMail(this._doc,buttonsboxes, false, false, false);
 
                 if (inline) {
 
-                    var mailContent = cGmail2.getWriteMailContent(this._doc,target.parentNode, true);
+                    var mailContent = FireGPG_cGmail2.getWriteMailContent(this._doc,target.parentNode, true);
 
 
 
@@ -1292,7 +1292,7 @@ Zna Vna UIb $RQa $SQa Moa
                             }
                             else if(result.result == FireGPGResults.SUCCESS)  {
 
-                                cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
+                                FireGPG_cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
 
                             } else {
                                 stopTheEvent = true;
@@ -1305,7 +1305,7 @@ Zna Vna UIb $RQa $SQa Moa
 
                             if (result.result == FireGPGResults.SUCCESS) {
 
-                                cGmail2.setWriteMailContent(this._doc,target.parentNode,result.signed);
+                                FireGPG_cGmail2.setWriteMailContent(this._doc,target.parentNode,result.signed);
 
                             } else {
 
@@ -1317,7 +1317,7 @@ Zna Vna UIb $RQa $SQa Moa
                             var result = FireGPG.crypt(false,mailContent,null, false, false,whoWillGotTheMail);
 
                             if(result.result == FireGPGResults.SUCCESS) {
-                                cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
+                                FireGPG_cGmail2.setWriteMailContent(this._doc,target.parentNode,result.encrypted);
                             }  else {
                                 stopTheEvent = true;
                             }
@@ -1362,7 +1362,7 @@ Zna Vna UIb $RQa $SQa Moa
                     form =  buttonsboxes.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByTagName('form');
                      f = form[0];
 
-                    cGmail2.setProgressMessage(f, i18n.getString("GmailCreatingMail"));
+                    FireGPG_cGmail2.setProgressMessage(f, i18n.getString("GmailCreatingMail"));
 
 
 
@@ -1386,20 +1386,20 @@ Zna Vna UIb $RQa $SQa Moa
                        var topwinjs = f.ownerDocument.defaultView.parent.wrappedJSObject;
                        if (("USER_EMAIL" in topwinjs) && typeof(topwinjs.USER_EMAIL) == "string")
                        {
-                           cGmail2.useremail = topwinjs.USER_EMAIL;
+                           FireGPG_cGmail2.useremail = topwinjs.USER_EMAIL;
                        }
                        else if (("GLOBALS" in topwinjs) && typeof(topwinjs.GLOBALS[10]) == "string" &&
                         (/@(g|google)mail.com$/i).test(topwinjs.GLOBALS[10]))
                        {
                            // gmail_fe_509_p10
-                           cGmail2.useremail = topwinjs.GLOBALS[10];
+                           FireGPG_cGmail2.useremail = topwinjs.GLOBALS[10];
                        }
                        else if (typeof(topwinjs.globals) == "object" && typeof(topwinjs.globals.USER_EMAIL) == "string")
                        {
-                           cGmail2.useremail = topwinjs.globals.USER_EMAIL;
+                           FireGPG_cGmail2.useremail = topwinjs.globals.USER_EMAIL;
                        } else {
 
-                           cGmail2.useremail = f.ownerDocument.evaluate(".//div[@class='a8']//b[contains(text(), '@')]",
+                           FireGPG_cGmail2.useremail = f.ownerDocument.evaluate(".//div[@class='a8']//b[contains(text(), '@')]",
                                                                f.ownerDocument.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE,
                                                                null).singleNodeValue.textContent;
 
@@ -1409,7 +1409,7 @@ Zna Vna UIb $RQa $SQa Moa
 
 
                     if (username == "") {
-                         a.smtpUsername = cGmail2.useremail;
+                         a.smtpUsername = FireGPG_cGmail2.useremail;
                     }
 
                     else
@@ -1460,10 +1460,10 @@ Zna Vna UIb $RQa $SQa Moa
                     fireGPGDebug(use_ssl, 'dbug-use_ssl');
 
 
-                    from = cGmail2.getMailSender(this._doc,buttonsboxes);
+                    from = FireGPG_cGmail2.getMailSender(this._doc,buttonsboxes);
 
                     if (from == "" || from == null)
-                        from = cGmail2.useremail;
+                        from = FireGPG_cGmail2.useremail;
 
 
 
@@ -1486,11 +1486,11 @@ Zna Vna UIb $RQa $SQa Moa
                     }
 
 
-                    to = cGmail2.getToCcBccMail(this._doc,buttonsboxes, true);
-                    cc= cGmail2.getToCcBccMail(this._doc,buttonsboxes, false, true);
-                    bcc = cGmail2.getToCcBccMail(this._doc,buttonsboxes,  false, false, true);
+                    to = FireGPG_cGmail2.getToCcBccMail(this._doc,buttonsboxes, true);
+                    cc= FireGPG_cGmail2.getToCcBccMail(this._doc,buttonsboxes, false, true);
+                    bcc = FireGPG_cGmail2.getToCcBccMail(this._doc,buttonsboxes,  false, false, true);
 
-                    subject = cGmail2.getMailSubject(this._doc,buttonsboxes);
+                    subject = FireGPG_cGmail2.getMailSubject(this._doc,buttonsboxes);
 
 
                     //Attachements
@@ -1521,7 +1521,7 @@ Zna Vna UIb $RQa $SQa Moa
                         }
                     } // end for
 
-                    var mailContent = cGmail2.getWriteMailContentForDirectSend(this._doc, buttonsboxes);
+                    var mailContent = FireGPG_cGmail2.getWriteMailContentForDirectSend(this._doc, buttonsboxes);
 
                     var inreplyTo = f.getAttribute("firegpg-mail-id");
 
@@ -1532,12 +1532,12 @@ Zna Vna UIb $RQa $SQa Moa
                     prefs.encrypt = encrypt;
                     prefs.attachements = attachements;
                     prefs.whoWillGotTheMail = whoWillGotTheMail;
-                    prefs.whoSendTheMail = cGmail2.extractMails(from);
+                    prefs.whoSendTheMail = FireGPG_cGmail2.extractMails(from);
 
                     resulta = false;
 
                    resulta = a.ourSubmit(from, to, cc, bcc, subject,
-                    inreplyTo, "", mailContent, cGmail2.iframeOrTextarea(this._doc, buttonsboxes) == "textarea", attachments, prefs);
+                    inreplyTo, "", mailContent, FireGPG_cGmail2.iframeOrTextarea(this._doc, buttonsboxes) == "textarea", attachments, prefs);
 
 
                     //DBUG
@@ -1548,9 +1548,9 @@ Zna Vna UIb $RQa $SQa Moa
                     fireGPGDebug(subject, 'dbug-subject');
 
                    if (!resulta)
-                    cGmail2.setProgressMessage(f, i18n.getString("GmailErrorMail"));
+                    FireGPG_cGmail2.setProgressMessage(f, i18n.getString("GmailErrorMail"));
                    else
-                    cGmail2.setProgressMessage(f, i18n.getString("GmailSendingMail"));
+                    FireGPG_cGmail2.setProgressMessage(f, i18n.getString("GmailSendingMail"));
 
                     stopTheEvent = true;
 
@@ -1698,7 +1698,7 @@ Zna Vna UIb $RQa $SQa Moa
 
                      var tmpListener = new Object;
                     tmpListener = null;
-                    tmpListener = new cGmail2.callBack(doc)
+                    tmpListener = new FireGPG_cGmail2.callBack(doc)
                     select.addEventListener('onchange',tmpListener,true);
 
                } catch (e) { fireGPGDebug(e,'cgmail2.addBouton2',true);  }
@@ -1746,7 +1746,7 @@ Zna Vna UIb $RQa $SQa Moa
     getWriteMailContent: function(dDocument,boutonxboxnode, betterTextOnly, forMime)
 	{
 
-        if (betterTextOnly && cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe") {
+        if (betterTextOnly && FireGPG_cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe") {
 
             var i18n = document.getElementById("firegpg-strings");
 
@@ -1766,10 +1766,10 @@ Zna Vna UIb $RQa $SQa Moa
 
         }
 
-        if (cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe")
+        if (FireGPG_cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe")
         {
 
-            var iframe = cGmail2.getTheIframe(dDocument,boutonxboxnode);
+            var iframe = FireGPG_cGmail2.getTheIframe(dDocument,boutonxboxnode);
 
 
             //First, we look for a selection
@@ -1785,7 +1785,7 @@ Zna Vna UIb $RQa $SQa Moa
                 if ( select != "")
                 {
 
-                    if (cGmail2.noAutoReplyDetect) {
+                    if (FireGPG_cGmail2.noAutoReplyDetect) {
 
                         contenuMail =     Selection.wash(select);
 
@@ -1830,7 +1830,7 @@ Zna Vna UIb $RQa $SQa Moa
 
         } else {
 
-            var textarea = cGmail2.getTheTextarea(dDocument,boutonxboxnode);
+            var textarea = FireGPG_cGmail2.getTheTextarea(dDocument,boutonxboxnode);
 
             var select2 = "";
             //Mode plain text
@@ -1848,7 +1848,7 @@ Zna Vna UIb $RQa $SQa Moa
 
 
 
-                if (cGmail2.noAutoReplyDetect) {
+                if (FireGPG_cGmail2.noAutoReplyDetect) {
 
                     contentu =  textarea.value;
 
@@ -1912,10 +1912,10 @@ Zna Vna UIb $RQa $SQa Moa
 
 
 
-        if (cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe")
+        if (FireGPG_cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe")
         {
 
-            var iframe = cGmail2.getTheIframe(dDocument,boutonxboxnode);
+            var iframe = FireGPG_cGmail2.getTheIframe(dDocument,boutonxboxnode);
 
             texte = iframe.contentWindow.document.body.innerHTML;
 
@@ -1933,7 +1933,7 @@ Zna Vna UIb $RQa $SQa Moa
 
         } else {
 
-            var textarea = cGmail2.getTheTextarea(dDocument,boutonxboxnode);
+            var textarea = FireGPG_cGmail2.getTheTextarea(dDocument,boutonxboxnode);
 
             return textarea.value.replace(/\r\n/gi, "\n").replace(/\r/gi, "\n").replace(/\n/gi, "\r\n");
 
@@ -1951,8 +1951,8 @@ Zna Vna UIb $RQa $SQa Moa
     */
     iframeOrTextarea: function(dDocument,boutonxboxnode) {
 
-        var iframe = cGmail2.getTheIframe(dDocument,boutonxboxnode);
-        var textarea = cGmail2.getTheTextarea(dDocument,boutonxboxnode);
+        var iframe = FireGPG_cGmail2.getTheIframe(dDocument,boutonxboxnode);
+        var textarea = FireGPG_cGmail2.getTheTextarea(dDocument,boutonxboxnode);
 
         if (iframe == null || iframe.parentNode == undefined)
             return "textarea";
@@ -2230,7 +2230,7 @@ Zna Vna UIb $RQa $SQa Moa
 
 
 
-		return cGmail2.extractMails(forWho);
+		return FireGPG_cGmail2.extractMails(forWho);
 	},
 
     extractMails: function(forWho) {
@@ -2332,10 +2332,10 @@ Zna Vna UIb $RQa $SQa Moa
 
 
 
-        if (cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe")
+        if (FireGPG_cGmail2.iframeOrTextarea(dDocument,boutonxboxnode) == "iframe")
         {
 
-            var iframe = cGmail2.getTheIframe(dDocument,boutonxboxnode);
+            var iframe = FireGPG_cGmail2.getTheIframe(dDocument,boutonxboxnode);
 
 
             //First, we look for a selection
@@ -2354,7 +2354,7 @@ Zna Vna UIb $RQa $SQa Moa
                 var reg=new RegExp("\n", "gi");
                 newText = newText.replace(reg,"<br>");
 
-                if (cGmail2.noAutoReplyDetect)
+                if (FireGPG_cGmail2.noAutoReplyDetect)
                     this.composeIndexOfQuote = select.length;
 
                 iframe.contentWindow.document.body.innerHTML = newText + select.substring(this.composeIndexOfQuote, select.length) + "<br /><br />";
@@ -2380,7 +2380,7 @@ Zna Vna UIb $RQa $SQa Moa
 
         } else {
 
-            var textarea = cGmail2.getTheTextarea(dDocument,boutonxboxnode);
+            var textarea = FireGPG_cGmail2.getTheTextarea(dDocument,boutonxboxnode);
 
             var startPos = textarea.selectionStart;
             var endPos = textarea.selectionEnd;
@@ -2492,10 +2492,10 @@ Zna Vna UIb $RQa $SQa Moa
 		if (usegmail == true) {
 
             if (document.getElementById("appcontent"))
-                document.getElementById("appcontent").addEventListener("DOMContentLoaded", cGmail2.pageLoaded, false);
+                document.getElementById("appcontent").addEventListener("DOMContentLoaded", FireGPG_cGmail2.pageLoaded, false);
             else
-                document.getElementById("browser_content").addEventListener("DOMContentLoaded", cGmail2.pageLoaded, false);
-			//window.addEventListener("unload", function() {cGmail2.listenerUnload()}, false);
+                document.getElementById("browser_content").addEventListener("DOMContentLoaded", FireGPG_cGmail2.pageLoaded, false);
+			//window.addEventListener("unload", function() {FireGPG_cGmail2.listenerUnload()}, false);
 
 	try {	var nonosign = prefs.getBoolPref("gmail_no_sign_off");	}
 			catch (e) { var nonosign = false; }
@@ -2522,17 +2522,17 @@ Zna Vna UIb $RQa $SQa Moa
 			catch (e) { var b_use_select_s = false; }
 
 
-			cGmail2.b_sign = b_sign;
-			cGmail2.b_sign_s = b_sign_s;
-            cGmail2.b_psign = b_psign;
-			cGmail2.b_psign_s = b_psign_s;
-			cGmail2.b_crypt = b_crypt;
-			cGmail2.b_crypt_s = b_crypt_s;
-			cGmail2.b_signcrypt = b_signcrypt;
-			cGmail2.b_signcrypt_s = b_signcrypt_s;
-            cGmail2.b_use_select_s = b_use_select_s; */
+			FireGPG_cGmail2.b_sign = b_sign;
+			FireGPG_cGmail2.b_sign_s = b_sign_s;
+            FireGPG_cGmail2.b_psign = b_psign;
+			FireGPG_cGmail2.b_psign_s = b_psign_s;
+			FireGPG_cGmail2.b_crypt = b_crypt;
+			FireGPG_cGmail2.b_crypt_s = b_crypt_s;
+			FireGPG_cGmail2.b_signcrypt = b_signcrypt;
+			FireGPG_cGmail2.b_signcrypt_s = b_signcrypt_s;
+            FireGPG_cGmail2.b_use_select_s = b_use_select_s; */
 
-            cGmail2.nonosign = nonosign;
+            FireGPG_cGmail2.nonosign = nonosign;
 
             try {	var default_sign = prefs.getBoolPref("gmail_select_by_default_sign");	}
 			catch (e) { var default_sign = false; }
@@ -2546,31 +2546,31 @@ Zna Vna UIb $RQa $SQa Moa
             try {	var default_attachements = prefs.getBoolPref("gmail_select_by_default_attachements");	}
 			catch (e) { var default_attachements = false; }
 
-            cGmail2.default_sign = default_sign;
-			cGmail2.default_encrypt = default_encrypt;
-			cGmail2.default_inline = default_inline;
-            cGmail2.default_attachements = default_attachements;
+            FireGPG_cGmail2.default_sign = default_sign;
+			FireGPG_cGmail2.default_encrypt = default_encrypt;
+			FireGPG_cGmail2.default_inline = default_inline;
+            FireGPG_cGmail2.default_attachements = default_attachements;
 
 
             try {	var noAutoDecrypt = prefs.getBoolPref("gmail_disable_auto_decryption");	}
 			catch (e) { var noAutoDecrypt = false; }
-            cGmail2.noAutoDecrypt = noAutoDecrypt;
+            FireGPG_cGmail2.noAutoDecrypt = noAutoDecrypt;
 
             try {	var noAutoReplyDetect = prefs.getBoolPref("gmail_disable_detection_of_reply_for_signs");	}
 			catch (e) { var noAutoReplyDetect = false; }
-            cGmail2.noAutoReplyDetect = noAutoReplyDetect;
+            FireGPG_cGmail2.noAutoReplyDetect = noAutoReplyDetect;
 
             try {	var decryptOnReply = prefs.getBoolPref("gmail_decrypt_when_reply");	}
 			catch (e) { var decryptOnReply = false; }
-            cGmail2.decryptOnReply = decryptOnReply;
+            FireGPG_cGmail2.decryptOnReply = decryptOnReply;
 
             try {	var showUserInfo = prefs.getBoolPref("gmail_show_user_info_for_signs");	}
 			catch (e) { var showUserInfo = false; }
-            cGmail2.showUserInfo = showUserInfo;
+            FireGPG_cGmail2.showUserInfo = showUserInfo;
 
             try {	var encryptIfDecrypted = prefs.getBoolPref("gmail_keep_encrypted_mail");	}
 			catch (e) { var encryptIfDecrypted = false; }
-            cGmail2.encryptIfDecrypted = encryptIfDecrypted;
+            FireGPG_cGmail2.encryptIfDecrypted = encryptIfDecrypted;
 
 
 
@@ -2606,7 +2606,7 @@ Zna Vna UIb $RQa $SQa Moa
             var tmp_string = final_location.substring(final_location.indexOf("&ik=") + 4, final_location.length);
             var ik = tmp_string.substring(0, tmp_string.indexOf('&'));
 
-            cGmail2.ik = ik;
+            FireGPG_cGmail2.ik = ik;
 
             fireGPGDebug("ik:" + ik);
 
@@ -2615,8 +2615,8 @@ Zna Vna UIb $RQa $SQa Moa
         //Fing base url
         if ((final_location.indexOf("http://mail.google.com/mail/?ui=2") == 0 || final_location.indexOf("https://mail.google.com/mail/?ui=2") == 0)) {
 
-            cGmail2.baseUrl = doc.location.href.substring(0, doc.location.href.indexOf("?ui=2"));
-fireGPGDebug("baseurl:" + cGmail2.baseUrl);
+            FireGPG_cGmail2.baseUrl = doc.location.href.substring(0, doc.location.href.indexOf("?ui=2"));
+fireGPGDebug("baseurl:" + FireGPG_cGmail2.baseUrl);
         }
 
         //Add windowopen rewriter
@@ -2671,23 +2671,23 @@ fireGPGDebug("activated");
 
 
 
-            cGmail2.current = cGmail2.current + 1;
+            FireGPG_cGmail2.current = FireGPG_cGmail2.current + 1;
 
-            cGmail2.doc[cGmail2.current] = doc;
+            FireGPG_cGmail2.doc[FireGPG_cGmail2.current] = doc;
 
             /*var tmpListener = new Object;
             tmpListener = null;
-            tmpListener = new cGmail2.clickOnDock(cGmail2.current)
+            tmpListener = new FireGPG_cGmail2.clickOnDock(FireGPG_cGmail2.current)
             doc.addEventListener('mousedown',tmpListener,true);*/
 
             var tmpListener = new Object;
             tmpListener = null;
-            tmpListener = new cGmail2.whenNodeIsInsered(cGmail2.current)
+            tmpListener = new FireGPG_cGmail2.whenNodeIsInsered(FireGPG_cGmail2.current)
             doc.addEventListener('DOMNodeInserted',tmpListener,true);
 
 
 
-            //setTimeout("cGmail2.checkDoc("+cGmail2.current+")", 5000);
+            //setTimeout("FireGPG_cGmail2.checkDoc("+FireGPG_cGmail2.current+")", 5000);
 
         }
 
@@ -2707,11 +2707,11 @@ fireGPGDebug("activated");
         //
         this.handleEvent = function(event) {
 
-            if (cGmail2.docOccuped[this._docid] == undefined || cGmail2.docOccuped[this._docid] == false)
+            if (FireGPG_cGmail2.docOccuped[this._docid] == undefined || FireGPG_cGmail2.docOccuped[this._docid] == false)
             {
 
-                setTimeout("cGmail2.checkDoc("+this._docid+")", 5000);
-                cGmail2.docOccuped[this._docid] = true;
+                setTimeout("FireGPG_cGmail2.checkDoc("+this._docid+")", 5000);
+                FireGPG_cGmail2.docOccuped[this._docid] = true;
             }
 
 
@@ -2732,12 +2732,12 @@ fireGPGDebug("activated");
             if (event.target && event.target.className &&
                 (event.target.className == "HprMsc" || event.target.className.indexOf("y4Wv6d") != -1 || event.target.className == "XoqCub" ||//load old mail | compose | Mail widnow
                  event.target.className.indexOf("HprMsc") != -1 || event.target.className.indexOf("CoUvaf") != -1 || event.target.className.indexOf("T1HY1") != -1  || event.target.className.indexOf("cf hX") != -1 || event.target.className.indexOf("Bs nH iY") != -1) &&  //load old mail2 | compose2 | Mail widnow2 | bouton d'un mail
-                (cGmail2.docOccuped[this._docid] == undefined || cGmail2.docOccuped[this._docid] == false))
+                (FireGPG_cGmail2.docOccuped[this._docid] == undefined || FireGPG_cGmail2.docOccuped[this._docid] == false))
             {
                 fireGPGDebug("Captured !");
 
-                cGmail2.docOccuped[this._docid] = true;
-                setTimeout("cGmail2.checkDoc("+this._docid+")",1000);
+                FireGPG_cGmail2.docOccuped[this._docid] = true;
+                setTimeout("FireGPG_cGmail2.checkDoc("+this._docid+")",1000);
 
 
             }
@@ -2865,12 +2865,12 @@ fireGPGDebug("activated");
 
         doc.body.setAttribute('firegpg',"");
 
-        fireGPGDebug('baseUrl is ' + cGmail2.baseUrl, 'getMimeMailContens');
+        fireGPGDebug('baseUrl is ' + FireGPG_cGmail2.baseUrl, 'getMimeMailContens');
 
 		if (this.messageCache == null || this.messageCache[url] == null)
 		{
             //FireGPGMisc.getContentXHttp
-            data = FireGPGMisc.getBinContent(cGmail2.baseUrl + url , 5000*1024);
+            data = FireGPGMisc.getBinContent(FireGPG_cGmail2.baseUrl + url , 5000*1024);
 
      //       fireGPGDebug('data1 is ' + data, 'getMimeMailContens');
 
@@ -2879,7 +2879,7 @@ fireGPGDebug("activated");
                 var i18n = document.getElementById("firegpg-strings");
 
 				if (confirm(i18n.getString("GmailBigMail")))
-                    data = FireGPGMisc.getBinContent(cGmail2.baseUrl + url );
+                    data = FireGPGMisc.getBinContent(FireGPG_cGmail2.baseUrl + url );
                 else
                     return '';
 
@@ -2893,7 +2893,7 @@ fireGPGDebug("activated");
 			var mailData = FireGPGMisc.EnigConvertToUnicode(data , 'UTF-8');
 
         //    fireGPGDebug('mailData is ' + mailData, 'getMimeMailContens');
-            // FireGPGMisc.getContentXHttp(cGmail2.baseUrl + url);
+            // FireGPGMisc.getContentXHttp(FireGPG_cGmail2.baseUrl + url);
 
 			if (this.messageCache == null)
 				this.messageCache = { };
@@ -2967,7 +2967,7 @@ fireGPGDebug("activated");
 	}
 	catch (e)
 	{
-		fireGPGDebug(e, "cGmail2.setProgressMessage", true);
+		fireGPGDebug(e, "FireGPG_cGmail2.setProgressMessage", true);
 	}
 } // end setProgressMessage
 
