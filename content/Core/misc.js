@@ -56,6 +56,34 @@ const FIREGPG_STATUS = 'RELASE';
 const FIREGPG_SVN = "$Rev$";
 
 /*
+    Function: fireGPGDebug
+
+    Check if debuggin is enabled and if yes show up messages in console
+
+    Paramters:
+        message - The message
+        debugCode - The position in the code
+        fatal - True if it's a fatal error.
+
+*/
+function fireGPGDebug(message, debugCode, fatal) {
+
+    if (FIREGPG_STATUS == "RELASE" && !fatal)
+
+        return;
+
+    if (fatal)
+        Components.utils.reportError("FireGPG-debug: [" + debugCode + "]"  + message);
+    else {
+
+        var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
+        consoleService.logStringMessage("FireGPG-debug: [" + debugCode + "] "  + message);
+
+    }
+
+}
+
+/*
    Constants: Id for components.
 
    NS_LOCALEFILE_CONTRACTID - Id for the component @mozilla.org/file/local;1
@@ -112,33 +140,7 @@ var oldKeyID = '';
 */
 var updateAvailable = false;
 
-/*
-    Function: fireGPGDebug
 
-    Check if debuggin is enabled and if yes show up messages in console
-
-    Paramters:
-        message - The message
-        debugCode - The position in the code
-        fatal - True if it's a fatal error.
-
-*/
-function fireGPGDebug(message, debugCode, fatal) {
-
-    if (FIREGPG_STATUS == "RELASE" && !fatal)
-
-        return;
-
-    if (fatal)
-        Components.utils.reportError("FireGPG-debug: [" + debugCode + "]"  + message);
-    else {
-
-        var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
-        consoleService.logStringMessage("FireGPG-debug: [" + debugCode + "] "  + message);
-
-    }
-
-}
 
 /*
     Function: choosePublicKey
