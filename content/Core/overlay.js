@@ -135,7 +135,7 @@ var firegpg = {
 
     */
 	onDelayMenuAction: function(action) {
-        
+
 
    		if (action == ACTION_SIGN)
 			FireGPG.sign();
@@ -218,6 +218,8 @@ var firegpg = {
         } else if(action == ACTION_SWITCHINLINEPAGEOFF) {
             FireGPGInline.pageOff(content.document.location);
             content.document.location.reload();
+        } else if (action == ACTION_CHECKAGAIN) {
+            FireGPGInline.HandlePage(content.document);
         }
 
 
