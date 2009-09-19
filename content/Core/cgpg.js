@@ -1959,7 +1959,7 @@ var FireGPG = {
                     this.result == null;
                      // We get the result
                     try {
-                    this.result = this.GPGAccess.searchKeyInServer(this.search,getKeyServer());
+                    this.result = this.GPGAccess.searchKeyInServer(this.search,FireGPGMisc.getKeyServer());
                     } catch (e) { } //To be sure to close the wait_box
             }
           }
@@ -2121,7 +2121,7 @@ var FireGPG = {
                     this.result == null;
                      // We get the result
                     try {
-                    this.result = this.GPGAccess.retriveKeyFromServer(this.keyId,getKeyServer());
+                    this.result = this.GPGAccess.retriveKeyFromServer(this.keyId,FireGPGMisc.getKeyServer());
                     } catch (e) { } //To be sure to close the wait_box
             }
           }
@@ -2197,7 +2197,7 @@ var FireGPG = {
                     this.result == null;
                      // We get the result
                     try {
-                    this.result = this.GPGAccess.sendKeyToServer(this.keyId,getKeyServer());
+                    this.result = this.GPGAccess.sendKeyToServer(this.keyId,FireGPGMisc.getKeyServer());
                     } catch (e) { } //To be sure to close the wait_box
             }
           }
@@ -2269,7 +2269,7 @@ var FireGPG = {
                     this.result == null;
                      // We get the result
                     try {
-                    this.result = this.GPGAccess.refrechFromServer(getKeyServer());
+                    this.result = this.GPGAccess.refrechFromServer(FireGPGMisc.getKeyServer());
                     } catch (e) { } //To be sure to close the wait_box
             }
           }

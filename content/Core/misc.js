@@ -1386,7 +1386,7 @@ var FireGPGMisc = {
         return item;
 
 
-    }
+    },
 
     /*
       Function: setSkinForKey2
@@ -1415,7 +1415,7 @@ var FireGPGMisc = {
 
         return child;
 
-    }
+    },
 
     /*
         Function: getKeyServer
@@ -1441,7 +1441,7 @@ var FireGPGMisc = {
             return keyserver;
 
 
-    }
+    },
 
     /*
         Function: showSearchBox
