@@ -41,23 +41,23 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 /* Constant: nsIExtensionManager_CONRACTID
   The component id to manage extentions */
-const nsIExtensionManager_CONRACTID = "@mozilla.org/extensions/manager;1";
+const FireGPG_nsIExtensionManager_CONRACTID = "@mozilla.org/extensions/manager;1";
 
 /* Constant: NS_APPINFO_CONTRACTID
   The component id to test the current os */
-const NS_APPINFO_CONTRACTID = "@mozilla.org/xre/app-info;1";
+const FireGPG_NS_APPINFO_CONTRACTID = "@mozilla.org/xre/app-info;1";
 
 /* Constant: FireGPG_OS
   The component to test the current os. */
-const FireGPG_OS = Components.classes[NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;
+const FireGPG_OS = Components.classes[FireGPG_NS_APPINFO_CONTRACTID].getService(Components.interfaces.nsIXULRuntime).OS;
 
 /* Constant: OS_WINDOWS
   The value retruned by components if the os is window */
-const OS_WINDOWS = "WINNT";
+const FireGPG_OS_WINDOWS = "WINNT";
 
 /* Constant: idAppli
   The id of firegpg. */
-const idAppli = "firegpg@firegpg.team";
+const FireGPG_idAppli = "firegpg@firegpg.team";
 
 /*
    Constants: States of the xpcom support. Deprecated
