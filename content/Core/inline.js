@@ -501,8 +501,13 @@ FireGPGInline.DecryptMessage = function(content, block) {
 FireGPGInline.onPageLoad = function(aEvent) {
 
     var doc = aEvent.originalTarget;
+
     if(doc.nodeName != "#document")
         return;
+
+    if (document.getElementById('firegpg-statusbar-trusted-content')) {
+        document.getElementById('firegpg-statusbar-trusted-content').style.display = 'none';
+    }
 
 	// Don't handle chrome pages
 	if(doc.location.protocol == "chrome:")
@@ -548,7 +553,7 @@ FireGPGInline.initSystem = function() {
 /*
 	Function: mouseOverTrusted
 	Function called when the mouse is over a trusted block
-	
+
 	Parameters:
 		aEvent - The mouse over event
 */
@@ -574,7 +579,7 @@ FireGPGInline.mouseOverTrusted = function(aEvent) {
 /*
 	Function: mouseOutTrusted
 	Function called when a mouse is outside a trusted block
-	
+
 	Parameters:
 		aEvent - The mouseout event
 */
@@ -594,7 +599,7 @@ FireGPGInline.mouseOutTrusted = function(aEvent) {
 	Function: canIBeExecutedHere
 	Return true if we should handle pgp blocks on a page
 	First, we use preferences for page, then domains, then global.
-	
+
 	Parameters:
 		aUrl - The url of the page
 */
@@ -623,7 +628,7 @@ FireGPGInline.canIBeExecutedHere = function(aUrl) {
 /*
 	Function: siteStatus
 	Return 'OFF' if we shouln't handle block on the domain, 'ON' if we should, '' if user don't case
-	
+
 	Parameters:
 		aUrl - The url of the page
 */
@@ -666,7 +671,7 @@ FireGPGInline.siteStatus = function(aUrl) {
 /*
 	Function: siteOn
 	Activate the handiling of pgp block for a domain
-	
+
 	Parameters:
 		aUrl - The url of the page
 */
@@ -679,7 +684,7 @@ FireGPGInline.siteOn = function(aUrl) {
 /*
 	Function: siteOff
 	Desactivate the handiling of pgp block for a domain
-	
+
 	Parameters:
 		aUrl - The url of the page
 */
@@ -692,7 +697,7 @@ FireGPGInline.siteOff = function(aUrl) {
 /*
 	Function: setSiteTo
 	Activate or desactivate the handiling of pgp block for a domain
-	
+
 	Parameters:
 		aUrl - The url of the page
 		value - ON to activate, OFF to desactive
@@ -737,10 +742,10 @@ FireGPGInline.setSiteTo = function(aUrl, value) {
 /*
 	Function: pageStatus
 	Return 'OFF' if we shouln't handle block on the page, 'ON' if we should, '' if user don't case
-	
+
 	Parameters:
 		aUrl - The url of the page
-*/	
+*/
 FireGPGInline.pageStatus = function(aUrl) {
 
 
@@ -754,7 +759,7 @@ FireGPGInline.pageStatus = function(aUrl) {
 /*
 	Function: pageOn
 	Activate the handiling of pgp block for a page
-	
+
 	Parameters:
 		aUrl - The url of the page
 */
@@ -773,7 +778,7 @@ FireGPGInline.pageOn = function(aUrl) {
 /*
 	Function: pageOff
 	Desactivate the handiling of pgp block for a page
-	
+
 	Parameters:
 		aUrl - The url of the page
 */

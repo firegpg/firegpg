@@ -283,7 +283,7 @@ var FireGPG = {
                } else {
 
                     fileTo = fileFrom + '.sig';
-                    removeFile(fileTo); //If the already exist
+                    FireGPGMisc.removeFile(fileTo); //If the already exist
                }
 
                 if (fileTo == null | fileTo == '') {
@@ -291,7 +291,7 @@ var FireGPG = {
                     return returnObject;
                 }
 
-                removeFile(fileTo);
+                FireGPGMisc.removeFile(fileTo);
 
             }
         }
@@ -339,7 +339,7 @@ var FireGPG = {
 
 		// Needed for a sign
 		if (keyID == undefined || keyID == null) {
-            keyID = getSelfKey(autoSelectPrivate);
+            keyID = FireGPGMisc.getSelfKey(autoSelectPrivate);
         }
 
         if(keyID == null) {
@@ -348,7 +348,7 @@ var FireGPG = {
         }
 
 		if (!isGpgAgentActivated() && (password == undefined || password == null)) {
-            password = getPrivateKeyPassword();
+            password = FireGPGMisc.getPrivateKeyPassword();
         }
 
 		if(!isGpgAgentActivated() && password == null) {
@@ -369,7 +369,7 @@ var FireGPG = {
 
             returnObject.messagetext = i18n.getString("signFailedPassword");
 
-            eraseSavedPassword();
+            FireGPGMisc.eraseSavedPassword();
 
             returnObject.result = RESULT_ERROR_PASSWORD;
             return returnObject;
@@ -381,7 +381,7 @@ var FireGPG = {
                 alert(i18n.getString("signFailed") + "\n" + result.sdOut);
 
             returnObject.messagetext = i18n.getString("signFailed" + "\n" + result.sdOut);
-            eraseSavedPassword();
+            FireGPGMisc.eraseSavedPassword();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
 		}
@@ -394,7 +394,7 @@ var FireGPG = {
 				Selection.set(result.output);
 			}
 			else //Else, we show a windows with the result
-				showText(result.output);
+				FireGPGMisc.showText(result.output);
 		}
 
         if (fileMode) {
@@ -520,9 +520,15 @@ var FireGPG = {
 
                     } else {
                         var keyId = infos[4];
-                        tmpDate = new Date(),
-                        tmpDate.setTime(infos[5] * 1000);
-                        var keyDate = tmpDate.getFullYear() +'-' + (tmpDate.getMonth() +1 )+ '-' +tmpDate.getDate();
+
+                        tmpDate = new Date();
+
+                        if (infos[5].indexOf('-') < 1) {
+                            tmpDate.setTime(infos[5] * 1000);
+                            var keyDate = tmpDate.getFullYear() +'-' + (tmpDate.getMonth() +1 )+ '-' +tmpDate.getDate();
+                        } else {
+                            var keyDate = infos[5];
+                        }
 
                         if (infos[6] != "") {
                             tmpDate.setTime(infos[6] * 1000);
@@ -723,7 +729,7 @@ var FireGPG = {
 
 		// Needed for a crypt
         if (keyID == undefined || keyID == null)
-            keyID = choosePublicKey();
+            keyID = FireGPGMisc.choosePublicKey();
 
 
 		if(keyID == null) {
@@ -747,7 +753,7 @@ var FireGPG = {
             return returnObject;
 		}	else  {
                 if (!silent)
-                    showText(result.sdOut);
+                    FireGPGMisc.showText(result.sdOut);
 
                 returnObject.exported = result.sdOut;
                 returnObject.result = RESULT_SUCCESS;
@@ -843,7 +849,7 @@ var FireGPG = {
                     return returnObject;
                 }
 
-                removeFile(fileTo);
+                FireGPGMisc.removeFile(fileTo);
 
             }
         }
@@ -886,7 +892,7 @@ var FireGPG = {
 
 		// Needed for a sign
 		if ((keyIdList == undefined || keyIdList == null) && !symetrical) {
-            keyIdList = choosePublicKey(autoSelect);
+            keyIdList = FireGPGMisc.choosePublicKey(autoSelect);
         }
 
         if(keyIdList == null && !symetrical) {
@@ -899,7 +905,18 @@ var FireGPG = {
 
 
             if (password == undefined || password == null) {
-                password = getPrivateKeyPassword(false,false,i18n.getString("symetricalPass") + ":", true);
+                password = FireGPGMisc.getPrivateKeyPassword(false,false,i18n.getString("symetricalPass") + ":", true);
+
+                password2 = FireGPGMisc.getPrivateKeyPassword(false,false,i18n.getString("symetricalPass2") + ":", true);
+
+                if (password2 != password) {
+
+                    if (!silent)
+                        alert(i18n.getString("differentPassword"));
+
+                    returnObject.result = RESULT_CANCEL;
+                     return returnObject;
+                }
             }
 
             if(password == null || password == "") {
@@ -938,7 +955,7 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("cryptFailed") + "\n" + result.sdOut);
 
-            eraseSavedPassword();
+            FireGPGMisc.eraseSavedPassword();
             returnObject.messagetext = i18n.getString("cryptFailed") + "\n" + result.sdOut;
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
@@ -952,7 +969,7 @@ var FireGPG = {
 				Selection.set(result.output);
 			}
 			else //Else, we show a windows with the result
-				showText(result.output);
+				FireGPGMisc.showText(result.output);
 		}
 
 
@@ -1057,7 +1074,7 @@ var FireGPG = {
                     return returnObject;
                 }
 
-                removeFile(fileTo);
+                FireGPGMisc.removeFile(fileTo);
 
             }
         }
@@ -1096,7 +1113,7 @@ var FireGPG = {
 
 		// Needed for a sign
 		if (keyIdList == undefined || keyIdList == null) {
-            keyIdList = choosePublicKey(autoSelect);
+            keyIdList = FireGPGMisc.choosePublicKey(autoSelect);
         }
 
         if(keyIdList == null) {
@@ -1106,7 +1123,7 @@ var FireGPG = {
 
         // Needed for a sign
 		if (keyID == undefined || keyID == null) {
-            keyID = getSelfKey(autoSelectPrivate);
+            keyID = FireGPGMisc.getSelfKey(autoSelectPrivate);
         }
 
         if(keyID == null) {
@@ -1115,7 +1132,7 @@ var FireGPG = {
         }
 
 		if (!isGpgAgentActivated() && (password == undefined || password == null)) {
-            password = getPrivateKeyPassword();
+            password = FireGPGMisc.getPrivateKeyPassword();
         }
 
 		if(!isGpgAgentActivated() &&password == null) {
@@ -1136,7 +1153,7 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("cryptAndSignFailedPass"));
 
-            eraseSavedPassword();
+            FireGPGMisc.eraseSavedPassword();
             returnObject.messagetext = i18n.getString("cryptAndSignFailedPass");
             returnObject.result = RESULT_ERROR_PASSWORD;
             return returnObject;
@@ -1147,7 +1164,7 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("cryptAndSignFailed") + "\n" + result.sdOut);
 
-            eraseSavedPassword();
+            FireGPGMisc.eraseSavedPassword();
             returnObject.messagetext = i18n.getString("cryptAndSignFailed") + "\n" + result.sdOut;
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
@@ -1161,7 +1178,7 @@ var FireGPG = {
 				Selection.set(result.output);
 			}
 			else //Else, we show a windows with the result
-				showText(result.output);
+				FireGPGMisc.showText(result.output);
 		}
 
 
@@ -1237,7 +1254,7 @@ var FireGPG = {
 
             if (fileSig == undefined && fileDataForSign == undefined) {
 
-                if (fileExist(fileFrom + '.sig')) {
+                if (FireGPGMisc.fileExist(fileFrom + '.sig')) {
 
                     if (confirm(i18n.getString('sigFoundSelectAFile'))) {
 
@@ -1674,7 +1691,7 @@ var FireGPG = {
                     return returnObject;
                 }
 
-                removeFile(fileTo);
+                FireGPGMisc.removeFile(fileTo);
 
             }
         }
@@ -1732,7 +1749,7 @@ var FireGPG = {
 
 		// Needed for a decrypt
 		if (!isGpgAgentActivated() && (password == undefined || password == null)) {
-                password = getsavedPassword();
+                password = FireGPGMisc.getsavedPassword();
                 if (password == null)
                     password = "wrongPass";
         }
@@ -1750,9 +1767,9 @@ var FireGPG = {
         if(!api && result.sdOut.indexOf("DECRYPTION_OKAY") == -1 && (result.sdOut.indexOf("BAD_PASSPHRASE") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1 || result.sdOut.indexOf("NEED_PASSPHRASE_PIN") != -1)) {
 
             if (result.sdOut.indexOf("NEED_PASSPHRASE_SYM") != -1)
-                password = getPrivateKeyPassword(false, false,i18n.getString("symetricalPass") + ":", true);
+                password = FireGPGMisc.getPrivateKeyPassword(false, false,i18n.getString("symetricalPass") + ":", true);
             else
-                password = getPrivateKeyPassword();
+                password = FireGPGMisc.getPrivateKeyPassword();
 
             if(password == null) {
                 returnObject.result = RESULT_CANCEL;
@@ -1772,7 +1789,7 @@ var FireGPG = {
             if (!silent)
                 alert(i18n.getString("decryptFailedPassword"));
 
-            eraseSavedPassword();
+            FireGPGMisc.eraseSavedPassword();
             returnObject.messagetext = i18n.getString("decryptFailedPassword");
             returnObject.result = RESULT_ERROR_PASSWORD;
             return returnObject;
@@ -1785,7 +1802,7 @@ var FireGPG = {
 
             returnObject.messagetext = i18n.getString("decryptFailed") + "\n" + result.sdOut;
             returnObject.result = RESULT_ERROR_UNKNOW;
-            eraseSavedPassword();
+            FireGPGMisc.eraseSavedPassword();
             return returnObject;
 		}
         if (result.sdOut.indexOf("PLAINTEXT") != -1 && result.sdOut.indexOf("DECRYPTION_OKAY") == -1) { //Filemode produit un output en.. plaintext..
@@ -1844,7 +1861,7 @@ var FireGPG = {
                 Selection.set(result.output,returnObject.signresulttext);
             }  else {
                 //Else, we show a windows with the result
-                showText(result.output,undefined,undefined,undefined,returnObject.signresulttext);
+                FireGPGMisc.showText(result.output,undefined,undefined,undefined,returnObject.signresulttext);
             }
         }
 
@@ -2362,7 +2379,7 @@ var FireGPG = {
 
         if (oldpass == undefined) {
 
-            oldpass = getPrivateKeyPassword(false, false, i18n.getString("oldPassword"), true);
+            oldpass = FireGPGMisc.getPrivateKeyPassword(false, false, i18n.getString("oldPassword"), true);
 
             if(oldpass == null) {
                 var returnObject = new GPGReturn();
@@ -2374,8 +2391,8 @@ var FireGPG = {
 
         if (newpass == undefined) {
 
-            newpass = getPrivateKeyPassword(false, false, i18n.getString("newPassword"), true);
-            newpass2 = getPrivateKeyPassword(false, false, i18n.getString("newPassword2"), false);
+            newpass = FireGPGMisc.getPrivateKeyPassword(false, false, i18n.getString("newPassword"), true);
+            newpass2 = FireGPGMisc.getPrivateKeyPassword(false, false, i18n.getString("newPassword2"), false);
 
             if(newpass == null) {
                 var returnObject = new GPGReturn();
@@ -2405,7 +2422,7 @@ var FireGPG = {
 
             returnObject.messagetext = i18n.getString("changeFailledPassword");
 
-            eraseSavedPassword();
+            FireGPGMisc.eraseSavedPassword();
 
             returnObject.result = RESULT_ERROR_PASSWORD;
             return returnObject;
@@ -2571,7 +2588,7 @@ var FireGPG = {
         this.initGPGACCESS();
 
         if (password == undefined || password == null) {
-            password = getPrivateKeyPassword(false);
+            password = FireGPGMisc.getPrivateKeyPassword(false);
         }
 
 		if(password == null) {
@@ -2597,7 +2614,7 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('keynotrevokedpassword'));
 
-            eraseSavedPassword();
+            FireGPGMisc.eraseSavedPassword();
 
             var returnObject = new GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
@@ -2662,7 +2679,7 @@ var FireGPG = {
          this.initGPGACCESS();
 
         if (password == undefined || password == null) {
-            password = getPrivateKeyPassword(false);
+            password = FireGPGMisc.getPrivateKeyPassword(false);
         }
 
 		if(password == null) {
@@ -2687,7 +2704,7 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('uidnotadded'));
 
-            eraseSavedPassword();
+            FireGPGMisc.eraseSavedPassword();
 
             var returnObject = new GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
@@ -2713,7 +2730,7 @@ var FireGPG = {
         this.initGPGACCESS();
 
         if (password == undefined || password == null) {
-            password = getPrivateKeyPassword(false);
+            password = FireGPGMisc.getPrivateKeyPassword(false);
         }
 
 		if(password == null) {
@@ -2739,7 +2756,7 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('uidnotrevokedpassword'));
 
-            eraseSavedPassword();
+            FireGPGMisc.eraseSavedPassword();
 
             var returnObject = new GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
@@ -2804,7 +2821,7 @@ var FireGPG = {
 
         // Needed for a sign
 		if (keyForSign == undefined || keyForSign == null) {
-            keyForSign = getSelfKey();
+            keyForSign = FireGPGMisc.getSelfKey();
         }
 
         if(keyForSign == null) {
@@ -2813,7 +2830,7 @@ var FireGPG = {
         }
 
 		if (password == undefined || password == null) {
-            password = getPrivateKeyPassword();
+            password = FireGPGMisc.getPrivateKeyPassword();
         }
 
 		if(password == null) {
@@ -2852,7 +2869,7 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('errorkeynosignedpassword'));
 
-            eraseSavedPassword();
+            FireGPGMisc.eraseSavedPassword();
 
             var returnObject = new GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
@@ -2936,6 +2953,7 @@ var FireGPG = {
 
 }
 
+
 var okWait;
 
 // We load the good class for the OS
@@ -2944,4 +2962,4 @@ FireGPG.GPGAccess.parent = FireGPG;
 
 //Test if we have to show the 'what is new ?'
 //We wait 3 sec.
-setTimeout("testIfSomethingsIsNew()",3000);
+setTimeout("FireGPGMisc.testIfSomethingsIsNew()",3000);

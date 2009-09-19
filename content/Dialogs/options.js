@@ -185,7 +185,7 @@ function onLoad(win) {
 
     listbox = document.getElementById('api_domain_list');
 
-    access = gpgApi.getAccessList();
+    access = FireGPGApi.getAccessList();
 
     for(domain in access.domains_allowed) {
         var  item   = document.createElement('listitem');
@@ -335,7 +335,7 @@ function apiRemoveMySelf(item) {
 
     listbox = document.getElementById('api_domain_list');
 
-    access = gpgApi.getAccessList();
+    access = FireGPGApi.getAccessList();
 
     if (item.getAttribute('gpgApi-type') == 'DA')
         delete(access.domains_allowed[item.getAttribute('gpgApi-domain')]);
@@ -350,7 +350,7 @@ function apiRemoveMySelf(item) {
     if (item.getAttribute('gpgApi-type') == 'PD')
         delete(access.pages_denied[item.getAttribute('gpgApi-domain')]);
 
-    gpgApi.setAccessList(access);
+    FireGPGApi.setAccessList(access);
 
     listbox.removeChild(item);
 

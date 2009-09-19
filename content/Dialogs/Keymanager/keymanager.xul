@@ -99,6 +99,8 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
             <button id="password-button" label="&password-button;" oncommand="password();"/>
 
+            <button id="fingerprint-button" label="&fingerprint-button;" oncommand="fingerPrint();"/>
+
             <button id="sign-button" label="&sign-button;" oncommand="sign();"/>
             <button id="userid-button" label="&userid-button;" oncommand="document.getElementById('userIdMenu').openPopup(this);"/>
             <menupopup id="userIdMenu">

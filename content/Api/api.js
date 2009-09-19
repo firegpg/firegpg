@@ -40,10 +40,10 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 */
 
 /*
- Class: gpgApi
+ Class: FireGPGApi
  Class who manage link between FireGPG and the website who use the api
  */
-var gpgApi = {
+var FireGPGApi = {
 	/*
 	 Function: onLoad
 	 Init api features when a new page is loaded
@@ -76,7 +76,7 @@ var gpgApi = {
             window.addEventListener( "firegpg:decrypt", this.decrypt, false, true );
             window.addEventListener( "firegpg:encrypt", this.encrypt, false, true );
             window.addEventListener( "firegpg:signandencrypt", this.signandencrypt, false, true );
-			window.addEventListener( "unload", function() { gpgApi.listenerUnload() }, false );
+			window.addEventListener( "unload", function() { FireGPGApi.listenerUnload() }, false );
 		}
 
 	},
@@ -105,7 +105,7 @@ var gpgApi = {
 	*/
     hello: function ( event ) {
 
-        returnData = gpgApi.getReturnDataNode(event.target);
+        returnData = FireGPGApi.getReturnDataNode(event.target);
 
         returnData.setAttribute('result', 'firegpg-ok');
 
@@ -122,13 +122,13 @@ var gpgApi = {
 	*/
     auth: function ( event ) {
 
-        data = gpgApi.getDataNode(event.target);
+        data = FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
-        returnData = gpgApi.getReturnDataNode(event.target);
+        returnData = FireGPGApi.getReturnDataNode(event.target);
 
-        if (key_auth == '' || key_auth == undefined || gpgApi.isAuth(key_auth, event.target.ownerDocument) == false )
+        if (key_auth == '' || key_auth == undefined || FireGPGApi.isAuth(key_auth, event.target.ownerDocument) == false )
         {
             returnData.setAttribute('result', 'auth-fail');
             return;
@@ -144,7 +144,7 @@ var gpgApi = {
 	*/
     register: function ( event ) {
 
-        if (!gpgApi.canRegister(event.target.ownerDocument.location)) {
+        if (!FireGPGApi.canRegister(event.target.ownerDocument.location)) {
             returnData.setAttribute('result', 'register-fail');
             return;
         }
@@ -161,7 +161,7 @@ var gpgApi = {
             return;
         }
 
-        returnData = gpgApi.getReturnDataNode(event.target);
+        returnData = FireGPGApi.getReturnDataNode(event.target);
 
         returnData.setAttribute('auth_key', params.apiKey);
         returnData.setAttribute('result', 'register-ok');
@@ -192,13 +192,13 @@ var gpgApi = {
     listkey: function ( event ) {
 
 
-        data = gpgApi.getDataNode(event.target);
+        data = FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
-        returnData = gpgApi.getReturnDataNode(event.target);
+        returnData = FireGPGApi.getReturnDataNode(event.target);
 
-        if (key_auth == '' || key_auth == undefined || gpgApi.isAuth(key_auth, event.target.ownerDocument) == false )
+        if (key_auth == '' || key_auth == undefined || FireGPGApi.isAuth(key_auth, event.target.ownerDocument) == false )
         {
             return;
         }
@@ -214,7 +214,7 @@ var gpgApi = {
 
         for (key in keylist) {
 
-            return_list = return_list + gpgApi.removeDoublePoint(keylist[key].keyId) + ":" + gpgApi.removeDoublePoint(keylist[key].keyName) + ",";
+            return_list = return_list + FireGPGApi.removeDoublePoint(keylist[key].keyId) + ":" + FireGPGApi.removeDoublePoint(keylist[key].keyName) + ",";
         }
 
         returnData.setAttribute('list', return_list);
@@ -232,13 +232,13 @@ var gpgApi = {
     listprivkey: function ( event ) {
 
 
-        data = gpgApi.getDataNode(event.target);
+        data = FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
-        returnData = gpgApi.getReturnDataNode(event.target);
+        returnData = FireGPGApi.getReturnDataNode(event.target);
 
-        if (key_auth == '' || key_auth == undefined || gpgApi.isAuth(key_auth, event.target.ownerDocument) == false )
+        if (key_auth == '' || key_auth == undefined || FireGPGApi.isAuth(key_auth, event.target.ownerDocument) == false )
         {
             return;
         }
@@ -254,7 +254,7 @@ var gpgApi = {
 
         for (key in keylist) {
 
-            return_list = return_list + gpgApi.removeDoublePoint(keylist[key].keyId) + ":" + gpgApi.removeDoublePoint(keylist[key].keyName) + ",";
+            return_list = return_list + FireGPGApi.removeDoublePoint(keylist[key].keyId) + ":" + FireGPGApi.removeDoublePoint(keylist[key].keyName) + ",";
         }
 
         returnData.setAttribute('list', return_list);
@@ -276,13 +276,13 @@ var gpgApi = {
     check: function ( event ) {
 
 
-        data = gpgApi.getDataNode(event.target);
+        data = FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
-        returnData = gpgApi.getReturnDataNode(event.target);
+        returnData = FireGPGApi.getReturnDataNode(event.target);
 
-        if (key_auth == '' || key_auth == undefined || gpgApi.isAuth(key_auth, event.target.ownerDocument) == false )
+        if (key_auth == '' || key_auth == undefined || FireGPGApi.isAuth(key_auth, event.target.ownerDocument) == false )
         {
             return;
         }
@@ -349,13 +349,13 @@ var gpgApi = {
 	*/
     sign: function ( event ) {
 
-        data = gpgApi.getDataNode(event.target);
+        data = FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
-        returnData = gpgApi.getReturnDataNode(event.target);
+        returnData = FireGPGApi.getReturnDataNode(event.target);
 
-        if (key_auth == '' || key_auth == undefined || gpgApi.isAuth(key_auth, event.target.ownerDocument) == false )
+        if (key_auth == '' || key_auth == undefined || FireGPGApi.isAuth(key_auth, event.target.ownerDocument) == false )
         {
             return;
         }
@@ -371,7 +371,7 @@ var gpgApi = {
 
         // Needed for a sign
         if(keyID == null)
-            keyID = getSelfKey();
+            keyID = FireGPGMisc.getSelfKey();
 		if(keyID == null)
 			return;
 
@@ -379,7 +379,7 @@ var gpgApi = {
 		var i18n = document.getElementById("firegpg-strings");
 
         if (!isGpgAgentActivated()) {
-            var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
+            var password = FireGPGMisc.getPrivateKeyPassword(false,FireGPGApi.getDomain(event.target.ownerDocument.location));
 
             if(password == null || password == "") {
                 returnData.setAttribute('result', 'sign-err');
@@ -449,13 +449,13 @@ var gpgApi = {
     signandencrypt: function ( event ) {
 
 
-        data = gpgApi.getDataNode(event.target);
+        data = FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
-        returnData = gpgApi.getReturnDataNode(event.target);
+        returnData = FireGPGApi.getReturnDataNode(event.target);
 
-        if (key_auth == '' || key_auth == undefined || gpgApi.isAuth(key_auth, event.target.ownerDocument) == false )
+        if (key_auth == '' || key_auth == undefined || FireGPGApi.isAuth(key_auth, event.target.ownerDocument) == false )
         {
             return;
         }
@@ -473,7 +473,7 @@ var gpgApi = {
 
         // Needed for a sign
         if(keyID == null)
-            keyID = getSelfKey();
+            keyID = FireGPGMisc.getSelfKey();
 		if(keyID == null)
 			return;
 
@@ -483,7 +483,7 @@ var gpgApi = {
 		var i18n = document.getElementById("firegpg-strings");
 
          if (!isGpgAgentActivated()) {
-            var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
+            var password = FireGPGMisc.getPrivateKeyPassword(false,FireGPGApi.getDomain(event.target.ownerDocument.location));
             if(password == null || password == "") {
                 returnData.setAttribute('result', 'sign-err');
                 returnData.setAttribute('error', 'user-canceled');
@@ -549,13 +549,13 @@ var gpgApi = {
     encrypt: function ( event ) {
 
 
-        data = gpgApi.getDataNode(event.target);
+        data = FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
-        returnData = gpgApi.getReturnDataNode(event.target);
+        returnData = FireGPGApi.getReturnDataNode(event.target);
 
-        if (key_auth == '' || key_auth == undefined || gpgApi.isAuth(key_auth, event.target.ownerDocument) == false )
+        if (key_auth == '' || key_auth == undefined || FireGPGApi.isAuth(key_auth, event.target.ownerDocument) == false )
         {
             return;
         }
@@ -607,13 +607,13 @@ var gpgApi = {
     decrypt: function ( event ) {
 
 
-        data = gpgApi.getDataNode(event.target);
+        data = FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
-        returnData = gpgApi.getReturnDataNode(event.target);
+        returnData = FireGPGApi.getReturnDataNode(event.target);
 
-        if (key_auth == '' || key_auth == undefined || gpgApi.isAuth(key_auth, event.target.ownerDocument) == false )
+        if (key_auth == '' || key_auth == undefined || FireGPGApi.isAuth(key_auth, event.target.ownerDocument) == false )
         {
             return;
         }
@@ -631,7 +631,7 @@ var gpgApi = {
 
         // Needed for decrypt
         if (!isGpgAgentActivated()) {
-            var password = getPrivateKeyPassword(false,gpgApi.getDomain(event.target.ownerDocument.location));
+            var password = FireGPGMisc.getPrivateKeyPassword(false,FireGPGApi.getDomain(event.target.ownerDocument.location));
             if(password == null || password == "") {
                 returnData.setAttribute('result', 'sign-err');
                 returnData.setAttribute('error', 'user-canceled');
@@ -730,7 +730,7 @@ var gpgApi = {
     */
     allowRegister: function(theLocation, type) {
 
-        access = gpgApi.getAccessList();
+        access = FireGPGApi.getAccessList();
 
         if (type == 'D') {
             if (access.domains_allowed[theLocation.hostname] != undefined)
@@ -738,7 +738,7 @@ var gpgApi = {
 
             key = genreate_api_key();
             access.domains_allowed[theLocation.hostname] = key;
-            gpgApi.setAccessList(access);
+            FireGPGApi.setAccessList(access);
             return key;
         }
 
@@ -748,7 +748,7 @@ var gpgApi = {
 
             key = genreate_api_key();
             access.sites_allowed[theLocation.protocol + '//' + theLocation.host] = key;
-            gpgApi.setAccessList(access);
+            FireGPGApi.setAccessList(access);
             return key;
         }
 
@@ -758,7 +758,7 @@ var gpgApi = {
 
             key = genreate_api_key();
             access.pages_allowed[theLocation.href] = key;
-            gpgApi.setAccessList(access);
+            FireGPGApi.setAccessList(access);
             return key;
         }
 
@@ -773,21 +773,21 @@ var gpgApi = {
     */
     denyRegister: function(theLocation, type) {
 
-        access = gpgApi.getAccessList();
+        access = FireGPGApi.getAccessList();
 
         if (type == 'D') {
             access.domains_denied[theLocation.hostname] = 'deny';
-            gpgApi.setAccessList(access);
+            FireGPGApi.setAccessList(access);
         }
 
         if (type == 'S') {
             access.sites_denied[theLocation.protocol + '//' + theLocation.host] = 'deny';
-            gpgApi.setAccessList(access);
+            FireGPGApi.setAccessList(access);
         }
 
         if (type == 'P') {
             access.pages_denied[theLocation.href] = 'deny';
-            gpgApi.setAccessList(access);
+            FireGPGApi.setAccessList(access);
         }
 
 
@@ -801,7 +801,7 @@ var gpgApi = {
 
         try {
 
-            access = gpgApi.getAccessList();
+            access = FireGPGApi.getAccessList();
 
             if (theLocation.hostname != '')
                 if (access.domains_denied[theLocation.hostname] == 'deny')
@@ -832,7 +832,7 @@ var gpgApi = {
 
             theLocation = document.location;
 
-            access = gpgApi.getAccessList();
+            access = FireGPGApi.getAccessList();
 
             if (theLocation.hostname != '')
                 if (access.domains_allowed[theLocation.hostname] == key.toString())
@@ -977,4 +977,4 @@ var gpgApi = {
 
 };
 
-window.addEventListener("load", function(e) { gpgApi.onLoad(e); }, false);
+window.addEventListener("load", function(e) { FireGPGApi.onLoad(e); }, false);

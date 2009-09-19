@@ -208,7 +208,7 @@ function import() {
         return;
 
     var filePath = fp.file.path;
-    var data = getFromFile(filePath);
+    var data = FireGPGMisc.getFromFile(filePath);
 
 	FireGPG.kimport(false,data, true);
 

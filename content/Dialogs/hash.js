@@ -115,8 +115,8 @@ function saveToFile() {
 
     var filePath = fp.file.path;
     //Need to remove the file before save
-    removeFile(filePath);
-    putIntoFile(filePath,document.getElementById('result').value.replace(/\n/gi,'').replace(/\r/gi,''));
+    FireGPGMisc.removeFile(filePath);
+    FireGPGMisc.putIntoFile(filePath,document.getElementById('result').value.replace(/\n/gi,'').replace(/\r/gi,''));
 
 }*/
 function copy() {

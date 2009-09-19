@@ -217,7 +217,7 @@ var GPGAccess = {
         Return the content of a script to execute GnuPG. For no-xpcom classes.
     *//*
     getRunningCommand: function () {
-        return getContent("chrome://firegpg/content/run" + (this.isUnix() ? '.sh' : '.bat'));
+        return FireGPGMisc.getContent("chrome://firegpg/content/run" + (this.isUnix() ? '.sh' : '.bat'));
     },*/
 
 
@@ -434,7 +434,7 @@ var GPGAccess = {
 
         try {
 
-            var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
+            var fileobj = Components.classes[FireGPGMisc.NS_LOCALEFILE_CONTRACTID].
                                  createInstance(Components.interfaces.nsILocalFile);
 
             fileobj.initWithPath( this.getGPGCommand());

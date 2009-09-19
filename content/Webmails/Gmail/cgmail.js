@@ -576,7 +576,7 @@ var cGmail = {
 				var result = FireGPG.decrypt(false,contenuMail);
 
                 if (result.result == RESULT_SUCCESS)
-					showText(result.decrypted,undefined,undefined,undefined,result.signresulttext);
+					FireGPGMisc.showText(result.decrypted,undefined,undefined,undefined,result.signresulttext);
 
 			}
 			else if (target.id == "sndsign" || target.id == "sign")
@@ -1025,14 +1025,14 @@ var cGmail = {
 		if (this.messageCache == null || this.messageCache[idOfTheMail] == null)
 		{
 
-			var mailData = getContentXHttp("https://mail.google.com/mail/?ik=" + this.ik + "&view=om&th=" + idOfTheMail + "&zx=");
+			var mailData = FireGPGMisc.getContentXHttp("https://mail.google.com/mail/?ik=" + this.ik + "&view=om&th=" + idOfTheMail + "&zx=");
 
 
 			//temps en temps des probs en https (déconection) alors on utilise le http
 			if (mailData.indexOf("<html>") == 0)
 			{
 				alert("!");
-				mailData = getContentXHttp("http://mail.google.com/mail/?ik=" + this.ik + "&view=om&th=" + idOfTheMail + "&zx=");
+				mailData = FireGPGMisc.getContentXHttp("http://mail.google.com/mail/?ik=" + this.ik + "&view=om&th=" + idOfTheMail + "&zx=");
 			}
 
 			if (this.messageCache == null)

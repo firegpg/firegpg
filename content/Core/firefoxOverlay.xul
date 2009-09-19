@@ -44,7 +44,7 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 <?xml-stylesheet href="chrome://firegpg/skin/gpgauth.css" type="text/css"?>
 <!DOCTYPE overlay SYSTEM "chrome://firegpg/locale/firegpg.dtd">
 <overlay id="firegpg-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <script src="overlay.js"/>
+  <script src="overlay.js"/> <!---->
   <script src="misc.js"/>
   <script src="cgpgaccess.js"/>
   <script src="cgpg.js"/>
@@ -207,12 +207,16 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
              <menupopup id="firegpg-icon-pop-up" onpopupshowing="firegpg.updatePopUp();">
                     <menuitem class="firegpg-menu menuitem-iconic" id="firegpg-status-of-inline" label="" disabled="true"/>
+
+                    <menuitem class="firegpg-menu menuitem-iconic" id="firegpg-parse-again" label="&parseAgain;" oncommand="firegpg.onMenuItemCommand(event,'CHECKAGAIN')"/>
+
+
                     <menuitem class="firegpg-menu menuitem-iconic" id="firegpg-inline-switcher" label="" oncommand="firegpg.onMenuItemCommand(event,this.tag)"/>
                     <menuitem class="firegpg-menu menuitem-iconic" id="firegpg-inline-temp-switcher" label="" oncommand="firegpg.onMenuItemCommand(event,this.tag)"/>
                   </menupopup>
 
             <img src="chrome://firegpg/skin/firegpg.png" class="statusbarpanel-iconic" popup="firegpg-icon-pop-up" />
-            <label value="An update of FireGPG is available"   id="firegpg-statusbar-update"  onclick="firegpg.onMenuItemCommand(null,'UPDATE');" style="display: none;"/>
+            <label value="&update-avaiable;"   id="firegpg-statusbar-update"  onclick="firegpg.onMenuItemCommand(null,'UPDATE');" style="display: none;"/>
             <label value=""   id="firegpg-statusbar-trusted-content"  style="display: none;"/>
         </statusbarpanel>
 

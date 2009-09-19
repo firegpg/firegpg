@@ -248,7 +248,7 @@ var Selection = {
 		if(prefs.getPrefType(key) == prefs.PREF_BOOL) {
 			if(prefs.getBoolPref(key)) {
 				/* text the text */
-				showText(text,undefined,undefined,undefined,infoSignAndCrypt);
+				FireGPGMisc.showText(text,undefined,undefined,undefined,infoSignAndCrypt);
 				return;
 			}
 		}

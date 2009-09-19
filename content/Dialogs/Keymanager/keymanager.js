@@ -154,6 +154,7 @@ function updateButtons() {
     document.getElementById('exportfile-button').disabled = (curentlySelected == null);
     document.getElementById('exportserver-button').disabled = (curentlySelected == null);
     document.getElementById('changetrust-button').disabled = (curentlySelected == null) || (revoked) || subkey;
+    document.getElementById('fingerprint-button').disabled = (curentlySelected == null) || curentlySelectedFingerPrint == '';
     document.getElementById('sign-button').disabled = (curentlySelected == null);
     document.getElementById('revoke-button').disabled = (curentlySelected == null) || (revoked) || (!privateKey) || subkey;
     document.getElementById('del-button').disabled = (curentlySelected == null) || (curentlySelectedFingerPrint == '' ) || subkey; //&& privateKey == false);
@@ -167,8 +168,6 @@ function updateButtons() {
 }
 
 function refrech() {
-
-
 
 	FireGPG.refreshKeysFromServer();
 	updateKeyList();
@@ -210,8 +209,8 @@ function exportfile() {
 		data = result.exported;
 
 		//Need to remove the file before save
-		removeFile(filePath);
-		putIntoFile(filePath,data);
+		FireGPGMisc.removeFile(filePath);
+		FireGPGMisc.putIntoFile(filePath,data);
 
 		alert(document.getElementById('firegpg-strings').
                 getString('keyExported'));
@@ -235,7 +234,7 @@ function importfile() {
         return;
 
     var filePath = fp.file.path;
-    var data = getFromFile(filePath);
+    var data = FireGPGMisc.getFromFile(filePath);
 
 	FireGPG.kimport(false,data, true);
 
@@ -330,4 +329,9 @@ function revokeUid() {
 
 function sign() {
     window.openDialog("chrome://firegpg/content/Dialogs/Keymanager/signmanager.xul", "newkey", "chrome, centerscreen, toolbar, modal", {keyid :  curentlySelected }).focus();
+}
+
+function fingerPrint() {
+ alert(curentlySelectedFingerPrint);
+
 }

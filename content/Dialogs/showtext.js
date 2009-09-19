@@ -92,7 +92,7 @@ function openf() {
         return;
 
     var filePath = fp.file.path;
-    var data = getFromFile(filePath);
+    var data = FireGPGMisc.getFromFile(filePath);
     document.getElementById('text').value = data;
 }
 
@@ -117,8 +117,8 @@ function savef() {
     var filePath = fp.file.path;
     var data = document.getElementById('text').value;
     //Need to remove the file before save
-    removeFile(filePath);
-    putIntoFile(filePath,data);
+    FireGPGMisc.removeFile(filePath);
+    FireGPGMisc.putIntoFile(filePath,data);
 }
 
 /*

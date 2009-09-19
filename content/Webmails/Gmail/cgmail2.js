@@ -77,8 +77,6 @@ const IMG_MAIL_DECRYPTED_PART = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA
 
 
 
-
-
 /*
    Class: cGmail2
    This is the main class to manage gmail's function with the new interface.
@@ -1020,7 +1018,7 @@ Zna Vna UIb $RQa $SQa Moa
                     result.decrypted  = FireGPGMimeDecoder.parseDecrypted(result.decrypted).message.replace(/<br \/>/gi, "\n");
 
                 if (result.result == RESULT_SUCCESS)
-					showText(result.decrypted,undefined,undefined,undefined,result.signresulttext);
+					FireGPGMisc.showText(result.decrypted,undefined,undefined,undefined,result.signresulttext);
 
 			}     /*
 			else if (target.getAttribute('gpg_action') == "sndsign" || target.getAttribute('gpg_action') == "sign")
@@ -1137,7 +1135,7 @@ Zna Vna UIb $RQa $SQa Moa
 
                 var filePath = fp.file.path;
 
-                var data = EnigConvertToUnicode(getBinContent("file://" + filePath), 'UTF-8');
+                var data = EnigConvertToUnicode(FireGPGMisc.getBinContent("file://" + filePath), 'UTF-8');
 
                 var whoWillGotTheMail = cGmail2.getToCcBccMail(this._doc,target.parentNode.parentNode.parentNode);
 
@@ -1167,12 +1165,12 @@ Zna Vna UIb $RQa $SQa Moa
 
 					var newData = result.encrypted;
 
-                    var fileobj = getTmpDir();
+                    var fileobj = FireGPGMisc.getTmpDir();
 
                     fileobj.append( fp.file.leafName + ".asc");
                     fileobj.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0777);
 
-                    putIntoBinFile(fileobj.path,newData);
+                    FireGPGMisc.putIntoBinFile(fileobj.path,newData);
 
 
                     //We simulate the add
@@ -1625,8 +1623,8 @@ Zna Vna UIb $RQa $SQa Moa
 
                         var filePath = fp.file.path;
                         //Need to remove the file before save
-                        removeFile(filePath);
-                        putIntoBinFile(filePath,data);
+                        FireGPGMisc.removeFile(filePath);
+                        FireGPGMisc.putIntoBinFile(filePath,data);
 
                 }
 
@@ -2871,8 +2869,8 @@ fireGPGDebug("activated");
 
 		if (this.messageCache == null || this.messageCache[url] == null)
 		{
-            //getContentXHttp
-            data = getBinContent(cGmail2.baseUrl + url , 5000*1024);
+            //FireGPGMisc.getContentXHttp
+            data = FireGPGMisc.getBinContent(cGmail2.baseUrl + url , 5000*1024);
 
      //       fireGPGDebug('data1 is ' + data, 'getMimeMailContens');
 
@@ -2881,7 +2879,7 @@ fireGPGDebug("activated");
                 var i18n = document.getElementById("firegpg-strings");
 
 				if (confirm(i18n.getString("GmailBigMail")))
-                    data = getBinContent(cGmail2.baseUrl + url );
+                    data = FireGPGMisc.getBinContent(cGmail2.baseUrl + url );
                 else
                     return '';
 
@@ -2895,7 +2893,7 @@ fireGPGDebug("activated");
 			var mailData = EnigConvertToUnicode(data , 'UTF-8');
 
         //    fireGPGDebug('mailData is ' + mailData, 'getMimeMailContens');
-            // getContentXHttp(cGmail2.baseUrl + url);
+            // FireGPGMisc.getContentXHttp(cGmail2.baseUrl + url);
 
 			if (this.messageCache == null)
 				this.messageCache = { };

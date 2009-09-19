@@ -242,7 +242,7 @@ FireGPGMimeDecoder.prototype = {
         if (headers == undefined)
             headers = this.parseHeaders(message);
 
-        if (headers['CONTENT-TYPE'] != undefined || headers['CONTENT-DISPOSITION'] != undefined || headers['CONTENT-TRANSFET-ENCODING'] != undefined)
+        if (headers['CONTENT-TYPE'] != undefined || headers['CONTENT-DISPOSITION'] != undefined || headers['CONTENT-TRANSFER-ENCODING'] != undefined)
             message = message.substring(message.indexOf("\r\n\r\n") + 4, message.length); //EndOfHeaders
 
         return message;
@@ -946,8 +946,8 @@ FireGPGMimeDecoder.prototype = {
 
                                     alert(dumper(tmpFile.signresult));
 
-                                    removeFile("/tmp/a");
-                                    putIntoBinFile("/tmp/a",data);
+                                    FireGPGMisc.removeFile("/tmp/a");
+                                    FireGPGMisc.putIntoBinFile("/tmp/a",data);
 
                                     retour.push(tmpFile);
 

@@ -130,11 +130,11 @@ function ignore() {
 */
 function cannot() {
     if (document.getElementById('domain').selected)
-        gpgApi.denyRegister(this.theLocation, 'D');
+        FireGPGApi.denyRegister(this.theLocation, 'D');
     else if (document.getElementById('website').selected)
-        gpgApi.denyRegister(this.theLocation, 'S');
+        FireGPGApi.denyRegister(this.theLocation, 'S');
     else if (document.getElementById('page').selected)
-        gpgApi.denyRegister(this.theLocation, 'P');
+        FireGPGApi.denyRegister(this.theLocation, 'P');
 
     this.close();
 }
@@ -146,11 +146,11 @@ function cannot() {
 function can() {
 
     if (document.getElementById('domain').selected)
-        key = gpgApi.allowRegister(this.theLocation, 'D');
+        key = FireGPGApi.allowRegister(this.theLocation, 'D');
     else if (document.getElementById('website').selected)
-        key = gpgApi.allowRegister(this.theLocation, 'S');
+        key = FireGPGApi.allowRegister(this.theLocation, 'S');
     else if (document.getElementById('page').selected)
-        key = gpgApi.allowRegister(this.theLocation, 'P');
+        key = FireGPGApi.allowRegister(this.theLocation, 'P');
 
     window.arguments[0].apiKey = key;
 

@@ -51,12 +51,15 @@ under the terms of any one of the MPL, the GPL or the LGPL.
    ACTION_HASH - The the hash window
 */
 
+const FireGPGDownloaderActions = {
+    DECRYPT:  'DECRYPT',
+    OPTS: 'OPTS',
+    ERASE: 'ERASE',
+    VERIFY: 'VERIFY',
+    HASH: 'HASH'
+}
 
-const ACTION_DECRYPT = 'DECRYPT';
-const ACTION_OPTS = 'OPTS';
-const ACTION_ERASE = 'ERASE';
-const ACTION_VERIFY = 'VERIFY';
-const ACTION_HASH = 'HASH';
+
  /*
   * Class: firegpgdownloader
   * This is the class to comunicate with the menus added in firefox downloader
@@ -92,17 +95,17 @@ var firegpgdownloader = {
 
     */
 	onDelayMenuAction: function(action) {
-		if(action == ACTION_DECRYPT)
+		if(action == FireGPGDownloaderActions.DECRYPT)
 			FireGPG.decrypt(false,'', undefined,undefined,true,document.getElementById('downloadView').getSelectedItem(0).getAttribute('path'));
-        else if(action == ACTION_VERIFY)
+        else if(action == FireGPGDownloaderActions.VERIFY)
 			FireGPG.verify(false, '', undefined, undefined, true,document.getElementById('downloadView').getSelectedItem(0).getAttribute('path'));
-		else if(action == ACTION_OPTS)
+		else if(action == FireGPGDownloaderActions.OPTS)
 			window.openDialog("chrome://firegpg/content/Dialogs/options.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
-        else if(action == ACTION_HASH) {
+        else if(action == FireGPGDownloaderActions.HASH) {
 			window.openDialog("chrome://firegpg/content/Dialogs/hash.xul", "hashFireGPG", "chrome, centerscreen, toolbar", {file: document.getElementById('downloadView').getSelectedItem(0).getAttribute('path')}).focus();
         }
-		else if (action == ACTION_ERASE)
-			eraseSavedPassword();
+		else if (action == FireGPGDownloaderActions.ERASE)
+			FireGPGMisc.eraseSavedPassword();
 
 	},
 
