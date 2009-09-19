@@ -48,9 +48,9 @@ under the terms of any one of the MPL, the GPL or the LGPL.
   <script src="misc.js"/> <!---->
   <script src="cgpgaccess.js"/> <!---->
   <script src="cgpg.js"/> <!---->
-  <script src="../Webmails/Gmail/cgmail.js"/>
-  <script src="../Webmails/Gmail/cgmail2.js"/>
-  <script src="../Webmails/autowrap.js"/>
+  <script src="../Webmails/Gmail/cgmail.js"/> <!---->
+  <script src="../Webmails/Gmail/cgmail2.js"/> <!---->
+  <script src="../Webmails/autowrap.js"/> <!---->
   <script src="cselect.js"/>
   <script src="../GpgAuth/gpgauth.js"/>
   <script src="../Api/api.js"/>
