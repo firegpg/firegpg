@@ -111,7 +111,7 @@ var FGPGFireFoxCurrentFolder = Components.classes["@mozilla.org/file/directory_s
 */
 function Witch_FireGPGGPGAccess () {
 
-    if (loadXpcom()) {
+    if (FireGPG_loadXpcom()) {
 
         if (FireGPGGPGAccess.isUnix()) {
 
