@@ -87,17 +87,15 @@ const FireGPG_comment = "Use{$SPACE}GnuPG{$SPACE}with{$SPACE}Firefox{$SPACE}:{$S
     Variable: useGPGTrust
     If we have to disable trusting system of gnupg. Set in cGpg.
  */
-var useGPGTrust = true;
+var FireGPG_useGPGTrust = true;
 
-
-var file = Components.classes["@mozilla.org/file/directory_service;1"].
-              getService(Components.interfaces.nsIProperties).
-              get("CurProcD", Components.interfaces.nsIFile);
 
 /* Variable: FGPGFireFoxCurrentFolder
   The folder of Firefox
 */
-var FGPGFireFoxCurrentFolder = file.path;
+var FGPGFireFoxCurrentFolder = Components.classes["@mozilla.org/file/directory_service;1"].
+              getService(Components.interfaces.nsIProperties).
+              get("CurProcD", Components.interfaces.nsIFile).path;
 
 
 
@@ -145,7 +143,7 @@ function Witch_FireGPGGPGAccess () {
     She return false if an erreor happend, or ture if all works.
 
 */
-function loadXpcom () {
+function FireGPG_loadXpcom () {
 
     try {
      	var ipcService = Components.classes["@mozilla.org/process/ipc-service;1"].getService();
@@ -309,7 +307,7 @@ var FireGPGGPGAccess = {
             if ( gpgAuth.prefs.prefHasUserValue( '.global.trust_model' ) && gpgAuth.prefs.getCharPref( '.global.trust_model' ) != "" )
                 return ' --trust-model ' + gpgAuth.prefs.getCharPref( '.global.trust_model' );
 
-       if (useGPGTrust && !fromDTA)
+       if (FireGPG_useGPGTrust && !fromDTA)
            return ' --trust-model always';
        else
            return '';

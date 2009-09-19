@@ -1890,7 +1890,7 @@ var FireGPG = {
 		this.FireGPGGPGAccess.tryToFoundTheRightCommand();
 
 		useGPGAgent = this.FireGPGGPGAccess.runATest('--no-use-agent');
-		useGPGTrust = this.FireGPGGPGAccess.runATest('--trust-model always');
+		FireGPG_useGPGTrust = this.FireGPGGPGAccess.runATest('--trust-model always');
 
 		this.allreadyinit = true;
 	},
