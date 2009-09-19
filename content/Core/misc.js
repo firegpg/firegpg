@@ -1252,29 +1252,29 @@ var FireGPGMisc = {
 
         var  child1 = document.createElement('treecell');
         child1.setAttribute('label', key.keyName);
-        child1 = setSkinForKey(key, child1, privateKey);
+        child1 = FireGPGMisc.setSkinForKey(key, child1, privateKey);
         row.appendChild(child1);
 
         var  child2 = document.createElement('treecell');
         child2.setAttribute('label', key.keyId);
-        child2 = setSkinForKey(key, child2, privateKey);
+        child2 = FireGPGMisc.setSkinForKey(key, child2, privateKey);
         row.appendChild(child2);
 
         var  child3 = document.createElement('treecell');
         child3.setAttribute('label', key.keyDate);
-        child3 = setSkinForKey(key, child3, privateKey);
+        child3 = FireGPGMisc.setSkinForKey(key, child3, privateKey);
         row.appendChild(child3);
 
         var  child4 = document.createElement('treecell');
         child4.setAttribute('label', key.keyExpi);
-        child4 = setSkinForKey(key, child4, privateKey);
+        child4 = FireGPGMisc.setSkinForKey(key, child4, privateKey);
         row.appendChild(child4);
 
         var  child5 = document.createElement('treecell');
         child5.setAttribute('label', document.getElementById('firegpg-strings').
                     getString(turstList[key.keyTrust]));
 
-        child5 = setSkinForKey(key, child5, privateKey);
+        child5 = FireGPGMisc.setSkinForKey(key, child5, privateKey);
 
         if (key.revoked) {
             child5.setAttribute('label', document.getElementById('firegpg-strings').
@@ -1335,7 +1335,7 @@ var FireGPGMisc = {
 
         return child;
 
-    }
+    },
 
     /*
       Function: CreateTreeItemKey3
@@ -1356,17 +1356,17 @@ var FireGPGMisc = {
 
         var  child1 = document.createElement('treecell');
         child1.setAttribute('label', key.keyName);
-        child1 = setSkinForKey2(key, child1, mainKey, sign, havePrivate);
+        child1 = FireGPGMisc.setSkinForKey2(key, child1, mainKey, sign, havePrivate);
         row.appendChild(child1);
 
         var  child2 = document.createElement('treecell');
         child2.setAttribute('label', key.keyId);
-        child2 = setSkinForKey2(key, child2, mainKey, sign, havePrivate);
+        child2 = FireGPGMisc.setSkinForKey2(key, child2, mainKey, sign, havePrivate);
         row.appendChild(child2);
 
         var  child3 = document.createElement('treecell');
         child3.setAttribute('label', key.keyDate);
-        child3 = setSkinForKey2(key, child3, mainKey, sign, havePrivate);
+        child3 = FireGPGMisc.setSkinForKey2(key, child3, mainKey, sign, havePrivate);
         row.appendChild(child3);
 
 
