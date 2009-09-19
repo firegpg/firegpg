@@ -777,7 +777,7 @@ var GPGAccess = {
         this.getGPGCommentArgument() +
         " --passphrase-fd 0" +
         " --output " + outputFd +
-        (algo != "" ? " --cipher-algo " + trim(algo) : "") +
+        (algo != "" ? " --cipher-algo " + FireGPGMisc.trim(algo) : "") +
         " --symmetric " + inputFd,
         password + "\n" + (!fileMode ? text : ''));
 

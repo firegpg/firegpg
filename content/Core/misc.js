@@ -1058,7 +1058,7 @@ var FireGPGMisc = {
                 random_value += validchars.charAt( Math.floor( Math.random() * validchars.length ) );
             }
             return random_value;
-    }
+    },
 
     /*
         Function: trim
@@ -1079,7 +1079,7 @@ var FireGPGMisc = {
             str - The string
     */
     TrimAndWash:function (str) {
-        return trim(str).replace(/\n/, "");
+        return FireGPGMisc.trim(str).replace(/\n/, "");
     }
 
     /*

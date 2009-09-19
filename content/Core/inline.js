@@ -484,7 +484,7 @@ FireGPGInline.DecryptMessage = function(content, block) {
 
         block.body.className = "failure";
         block.output.style.display = "block";
-        block.output.textContent = trim(result.messagetext);
+        block.output.textContent = FireGPGMisc.trim(result.messagetext);
 
     }
 

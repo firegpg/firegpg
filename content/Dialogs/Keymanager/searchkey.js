@@ -82,7 +82,7 @@ function rebuildList() {
 
 	var search = document.getElementById('search-textbox').value;
 
-	if (trim(search) == "")
+	if (FireGPGMisc.trim(search) == "")
 		return;
 
     document.getElementById('search-button').disabled = 'disabled';

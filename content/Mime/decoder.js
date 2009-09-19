@@ -215,14 +215,14 @@ FireGPGMimeDecoder.prototype = {
         for (i = 0; i < message.length; i++) {
 
             if (message[i][0] == " " || message[i][0] == "\t") {
-                headers[currentHeader] += trim(message[i]);
+                headers[currentHeader] += FireGPGMisc.trim(message[i]);
             } else {
 
                 /*if (message[i].indexOf(":") == -1) //Erreur, on arrêtte
                     return headers;*/
 
                 currentHeader = message[i].substring(0, message[i].indexOf(":")).toUpperCase();
-                headers[currentHeader] = trim(message[i].substring(message[i].indexOf(":") + 1 , message[i].length));
+                headers[currentHeader] = FireGPGMisc.trim(message[i].substring(message[i].indexOf(":") + 1 , message[i].length));
 
             }
 

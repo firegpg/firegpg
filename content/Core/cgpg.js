@@ -2106,7 +2106,7 @@ var FireGPG = {
 
         this.initGPGACCESS();
 
-        keyId = trim(keyId);
+        keyId = FireGPGMisc.trim(keyId);
         keyId = keyId.replace(/\r/gi, "");
         keyId = keyId.replace(/\n/gi, "");
 
