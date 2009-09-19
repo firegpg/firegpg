@@ -101,37 +101,37 @@ var FGPGFireFoxCurrentFolder = file.path;
 
 
 /*
-    Function: Witch_GPGAccess
+    Function: Witch_FireGPGGPGAccess
 
     This function will determing and 'build' the class to access gpg.
 
     She test if the xpcom is usable, update information about the status, and select the rights function to access to gnupg as the current situtation.
 
-    She return the GPGAccess class.
+    She return the FireGPGGPGAccess class.
 
 */
-function Witch_GPGAccess () {
+function Witch_FireGPGGPGAccess () {
 
     if (loadXpcom()) {
 
-        if (GPGAccess.isUnix()) {
+        if (FireGPGGPGAccess.isUnix()) {
 
-            GPGAccess.tryToFoundTheRightCommand = GPGAccessUnixXpcom.tryToFoundTheRightCommand;
+            FireGPGGPGAccess.tryToFoundTheRightCommand = FireGPGGPGAccessUnixXpcom.tryToFoundTheRightCommand;
 
         } else {
 
-            GPGAccess.tryToFoundTheRightCommand = GPGAccessWindowsXpcom.tryToFoundTheRightCommand;
+            FireGPGGPGAccess.tryToFoundTheRightCommand = FireGPGGPGAccessWindowsXpcom.tryToFoundTheRightCommand;
 
         }
 
-        return GPGAccess;
+        return FireGPGGPGAccess;
 
     } else {
 
         var i18n = document.getElementById("firegpg-strings");
         alert(i18n.getString('noipc2'));
 
-        return GPGAccess;
+        return FireGPGGPGAccess;
     }
 
 }
@@ -154,7 +154,7 @@ function loadXpcom () {
 		return false;
     }
 
-    GPGAccess.ipcService = ipcService;
+    FireGPGGPGAccess.ipcService = ipcService;
 
     return true;
 
@@ -189,10 +189,10 @@ function isGpgAgentActivated() {
 }
 
 /*
-   Class: GPGAccess
+   Class: FireGPGGPGAccess
    This is the main class to access to the gnupg executable.
 */
-var GPGAccess = {
+var FireGPGGPGAccess = {
 
 
     /*
@@ -419,7 +419,7 @@ var GPGAccess = {
         var errStrObj = new Object();
         var errLenObj = new Object();
 
-        fireGPGDebug(this.getGPGCommand() + " " + parameters + "[" + sdtIn + "]",'GPGAccessCallerUnixXpcom');
+        fireGPGDebug(this.getGPGCommand() + " " + parameters + "[" + sdtIn + "]",'FireGPGGPGAccessCallerUnixXpcom');
 
         parametersS = parameters.split(/ /gi);
 
@@ -1422,7 +1422,7 @@ var GPGAccess = {
     /*
         Function: tryToFoundTheRightCommand
         Do some test to be able to find a working GnuPG executable.
-        This function is overwrited by the coresponding function of  <GPGAccessWindowsXpcom> or <GPGAccessUnixXpcom>
+        This function is overwrited by the coresponding function of  <FireGPGGPGAccessWindowsXpcom> or <FireGPGGPGAccessUnixXpcom>
 
     */
     tryToFoundTheRightCommand: function () {
@@ -1433,17 +1433,17 @@ var GPGAccess = {
 
 
 /*
-    Class: GPGAccessWindowsXpcom
+    Class: FireGPGGPGAccessWindowsXpcom
 
     This class has function for building command lines for GnuPG actions on windows, when the xpcom is available.
 
-    *Please refer to functions marked as overwrited by this class in <GPGAccess> for the descriptions of this class's functions.*
+    *Please refer to functions marked as overwrited by this class in <FireGPGGPGAccess> for the descriptions of this class's functions.*
 
     See Also:
-        <GPGAccessUnixXpcom>
+        <FireGPGGPGAccessUnixXpcom>
 
 */
-var GPGAccessWindowsXpcom = {
+var FireGPGGPGAccessWindowsXpcom = {
 
 
     tryToFoundTheRightCommand: function () {
@@ -1515,17 +1515,17 @@ var GPGAccessWindowsXpcom = {
 }
 
 /*
-    Class: GPGAccessUnixXpcom
+    Class: FireGPGGPGAccessUnixXpcom
 
     This class has function for building command lines for GnuPG actions on linux, when the xpcom is available.
 
-    *Please refer to functions marked as overwrited by this class in <GPGAccess> for the descriptions of this class's functions.*
+    *Please refer to functions marked as overwrited by this class in <FireGPGGPGAccess> for the descriptions of this class's functions.*
 
     See Also:
-        <GPGAccessWindowsXpcom>
+        <FireGPGGPGAccessWindowsXpcom>
 
 */
-var GPGAccessUnixXpcom = {
+var FireGPGGPGAccessUnixXpcom = {
 
 
 

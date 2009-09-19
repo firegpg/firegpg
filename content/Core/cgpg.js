@@ -357,7 +357,7 @@ var FireGPG = {
         }
 
         // We get the result
-		var result = this.GPGAccess.sign(text, password, keyID, notClear, fileMode, fileFrom, fileTo);
+		var result = this.FireGPGGPGAccess.sign(text, password, keyID, notClear, fileMode, fileFrom, fileTo);
 
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;
@@ -452,9 +452,9 @@ var FireGPG = {
 
 
         if (onlySignOfThisKey == undefined)
-            var result = this.GPGAccess.listkey(onlyPrivate);
+            var result = this.FireGPGGPGAccess.listkey(onlyPrivate);
         else
-            var result = this.GPGAccess.listsigns(onlySignOfThisKey);
+            var result = this.FireGPGGPGAccess.listsigns(onlySignOfThisKey);
 
 		// We get informations from GPG
 		result = FireGPGMisc.EnigConvertGpgToUnicode(result.sdOut);
@@ -676,7 +676,7 @@ var FireGPG = {
             text = text.substring(firstPosition,lastPosition + ("-----END PGP PUBLIC KEY BLOCK-----").length);
 
 		// We get the result
-		var result = this.GPGAccess.kimport(text);
+		var result = this.FireGPGGPGAccess.kimport(text);
 
         returnObject.sdOut = result.sdOut;
 
@@ -739,7 +739,7 @@ var FireGPG = {
 
         keyID = keyID[0];
 
-        var result = this.GPGAccess.kexport(keyID);
+        var result = this.FireGPGGPGAccess.kexport(keyID);
 
         returnObject.sdOut = result.sdOut;
 
@@ -938,9 +938,9 @@ var FireGPG = {
 
 		// We get the result
         if (!symetrical)
-            var result = this.GPGAccess.crypt(text, keyIdList,fromGpgAuth,binFileMode, fileMode, fileFrom, fileTo);
+            var result = this.FireGPGGPGAccess.crypt(text, keyIdList,fromGpgAuth,binFileMode, fileMode, fileFrom, fileTo);
         else
-            var result = this.GPGAccess.symetric(text, password, algo, fileMode, fileFrom, fileTo);
+            var result = this.FireGPGGPGAccess.symetric(text, password, algo, fileMode, fileFrom, fileTo);
 
 
         returnObject.sdOut = result.sdOut;
@@ -1141,7 +1141,7 @@ var FireGPG = {
         }
 
 		// We get the result
-		var result = this.GPGAccess.cryptAndSign(text, keyIdList,fromGpgAuth, password, keyID, binFileMode, fileMode, fileFrom, fileTo);
+		var result = this.FireGPGGPGAccess.cryptAndSign(text, keyIdList,fromGpgAuth, password, keyID, binFileMode, fileMode, fileFrom, fileTo);
 
 
         returnObject.sdOut = result.sdOut;
@@ -1484,7 +1484,7 @@ var FireGPG = {
 
         // We get the result
         if (nextText == undefined) {
-            var result = this.GPGAccess.verify(text, charset, fileMode, fileFrom, fileSig, fileDataForSign, fromDTA);
+            var result = this.FireGPGGPGAccess.verify(text, charset, fileMode, fileFrom, fileSig, fileDataForSign, fromDTA);
 
             if ( charset && charset.toLowerCase() == "iso-8859-1")
                 result.sdOut = EnigConvertToUnicode(result.sdOut, 'UTF-8');
@@ -1760,7 +1760,7 @@ var FireGPG = {
         }
 
 		// We get the result
-		var result = this.GPGAccess.decrypt(text,password,binFileEncoded, fileMode, fileFrom, fileTo);
+		var result = this.FireGPGGPGAccess.decrypt(text,password,binFileEncoded, fileMode, fileFrom, fileTo);
         returnObject.sdOut = result.sdOut;
         returnObject.output = result.output;
 
@@ -1777,7 +1777,7 @@ var FireGPG = {
             }
 
             // We get the result
-            var result = this.GPGAccess.decrypt(text,password,binFileEncoded, fileMode, fileFrom, fileTo);
+            var result = this.FireGPGGPGAccess.decrypt(text,password,binFileEncoded, fileMode, fileFrom, fileTo);
 
             returnObject.sdOut = result.sdOut;
             returnObject.output = result.output;
@@ -1880,17 +1880,17 @@ var FireGPG = {
 
     /*
         Function: initGPGACCESS
-        Init the GPGAccess class (try to found the GnuPG's command, etc.).
+        Init the FireGPGGPGAccess class (try to found the GnuPG's command, etc.).
     */
 	initGPGACCESS: function() {
 		if(this.allreadyinit != undefined && this.allreadyinit == true)
 			return;
 
 		//Find the right command for Gpg
-		this.GPGAccess.tryToFoundTheRightCommand();
+		this.FireGPGGPGAccess.tryToFoundTheRightCommand();
 
-		useGPGAgent = this.GPGAccess.runATest('--no-use-agent');
-		useGPGTrust = this.GPGAccess.runATest('--trust-model always');
+		useGPGAgent = this.FireGPGGPGAccess.runATest('--no-use-agent');
+		useGPGTrust = this.FireGPGGPGAccess.runATest('--trust-model always');
 
 		this.allreadyinit = true;
 	},
@@ -1915,7 +1915,7 @@ var FireGPG = {
 		// For i18n
 		var i18n = document.getElementById("firegpg-strings");
 
-		if (this.GPGAccess.selfTest() == false) {
+		if (this.FireGPGGPGAccess.selfTest() == false) {
 			if (!silent)
                 alert(i18n.getString("selfTestFailled"));
 
@@ -1959,12 +1959,12 @@ var FireGPG = {
                     this.result == null;
                      // We get the result
                     try {
-                    this.result = this.GPGAccess.searchKeyInServer(this.search,FireGPGMisc.getKeyServer());
+                    this.result = this.FireGPGGPGAccess.searchKeyInServer(this.search,FireGPGMisc.getKeyServer());
                     } catch (e) { } //To be sure to close the wait_box
             }
           }
 
-        backgroundTask.GPGAccess = this.GPGAccess;
+        backgroundTask.FireGPGGPGAccess = this.FireGPGGPGAccess;
         backgroundTask.search = search;
 
         var thread = Components.classes["@mozilla.org/thread-manager;1"]
@@ -2121,12 +2121,12 @@ var FireGPG = {
                     this.result == null;
                      // We get the result
                     try {
-                    this.result = this.GPGAccess.retriveKeyFromServer(this.keyId,FireGPGMisc.getKeyServer());
+                    this.result = this.FireGPGGPGAccess.retriveKeyFromServer(this.keyId,FireGPGMisc.getKeyServer());
                     } catch (e) { } //To be sure to close the wait_box
             }
           }
 
-        backgroundTask.GPGAccess = this.GPGAccess;
+        backgroundTask.FireGPGGPGAccess = this.FireGPGGPGAccess;
         backgroundTask.keyId = keyId;
 
         var thread = Components.classes["@mozilla.org/thread-manager;1"]
@@ -2197,12 +2197,12 @@ var FireGPG = {
                     this.result == null;
                      // We get the result
                     try {
-                    this.result = this.GPGAccess.sendKeyToServer(this.keyId,FireGPGMisc.getKeyServer());
+                    this.result = this.FireGPGGPGAccess.sendKeyToServer(this.keyId,FireGPGMisc.getKeyServer());
                     } catch (e) { } //To be sure to close the wait_box
             }
           }
 
-        backgroundTask.GPGAccess = this.GPGAccess;
+        backgroundTask.FireGPGGPGAccess = this.FireGPGGPGAccess;
         backgroundTask.keyId = keyId;
 
         var thread = Components.classes["@mozilla.org/thread-manager;1"]
@@ -2269,12 +2269,12 @@ var FireGPG = {
                     this.result == null;
                      // We get the result
                     try {
-                    this.result = this.GPGAccess.refrechFromServer(FireGPGMisc.getKeyServer());
+                    this.result = this.FireGPGGPGAccess.refrechFromServer(FireGPGMisc.getKeyServer());
                     } catch (e) { } //To be sure to close the wait_box
             }
           }
 
-        backgroundTask.GPGAccess = this.GPGAccess;
+        backgroundTask.FireGPGGPGAccess = this.FireGPGGPGAccess;
 
         var thread = Components.classes["@mozilla.org/thread-manager;1"]
                                .getService(Components.interfaces.nsIThreadManager)
@@ -2329,7 +2329,7 @@ var FireGPG = {
 
 
         // We get the result
-		var result = this.GPGAccess.changeTrust(key, trustLevel);
+		var result = this.FireGPGGPGAccess.changeTrust(key, trustLevel);
 
 
         if (result.sdOut) {
@@ -2413,7 +2413,7 @@ var FireGPG = {
 
 
         // We get the result
-		var result = this.GPGAccess.changePassword(key,  oldpass, newpass);
+		var result = this.FireGPGGPGAccess.changePassword(key,  oldpass, newpass);
 
         if(result.sdOut.indexOf("BAD_PASSPHRASE") != -1) {
 
@@ -2514,7 +2514,7 @@ var FireGPG = {
 
         }
 
-        var result = this.GPGAccess.genereateKey(name, email, comment, password1, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype);
+        var result = this.FireGPGGPGAccess.genereateKey(name, email, comment, password1, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype);
 
         if (result.sdOut.indexOf("KEY_CREATED") != -1) {
 
@@ -2557,7 +2557,7 @@ var FireGPG = {
 
 
         // We get the result
-		var result = this.GPGAccess.deleteKey(key);
+		var result = this.FireGPGGPGAccess.deleteKey(key);
 
         //Assume it's worked (no error message)
         if(!silent)
@@ -2597,7 +2597,7 @@ var FireGPG = {
         }
 
         // We get the result
-		var result = this.GPGAccess.revokeKey(key, password, raison);
+		var result = this.FireGPGGPGAccess.revokeKey(key, password, raison);
 
         if (result.sdOut.indexOf("GOOD_PASSPHRASE") != -1) {
 
@@ -2687,7 +2687,7 @@ var FireGPG = {
             return returnObject;
         }
 
-        var result = this.GPGAccess.addUid(key, name, email, comment, password);
+        var result = this.FireGPGGPGAccess.addUid(key, name, email, comment, password);
 
         if (result.sdOut.indexOf("GOOD_PASSPHRASE") != -1) {
 
@@ -2739,7 +2739,7 @@ var FireGPG = {
         }
 
         // We get the result
-		var result = this.GPGAccess.revokeUid(key, uid, password, 4);
+		var result = this.FireGPGGPGAccess.revokeUid(key, uid, password, 4);
 
         if (result.sdOut.indexOf("GOOD_PASSPHRASE") != -1) {
 
@@ -2785,7 +2785,7 @@ var FireGPG = {
 
 
         // We get the result
-		var result = this.GPGAccess.delUid(key, uid);
+		var result = this.FireGPGGPGAccess.delUid(key, uid);
 
         //Assume it's worked
         if(!silent)
@@ -2840,7 +2840,7 @@ var FireGPG = {
 
 
         // We get the result
-		var result = this.GPGAccess.signKey(key, keyForSign, password);
+		var result = this.FireGPGGPGAccess.signKey(key, keyForSign, password);
 
         ///
         if (result.sdOut.indexOf("ALREADY_SIGNED") != -1) {
@@ -2913,12 +2913,12 @@ var FireGPG = {
                     this.result == null;
                      // We get the result
                     try {
-                    this.result = result = this.GPGAccess.computeHash(this.hash,this.file);
+                    this.result = result = this.FireGPGGPGAccess.computeHash(this.hash,this.file);
                     } catch (e) { } //To be sure to close the wait_box
             }
           }
 
-        backgroundTask.GPGAccess = this.GPGAccess;
+        backgroundTask.FireGPGGPGAccess = this.FireGPGGPGAccess;
         backgroundTask.hash = hash;
         backgroundTask.file = file;
 
@@ -2957,8 +2957,8 @@ var FireGPG = {
 var okWait;
 
 // We load the good class for the OS
-FireGPG.GPGAccess = Witch_GPGAccess();
-FireGPG.GPGAccess.parent = FireGPG;
+FireGPG.FireGPGGPGAccess = Witch_FireGPGGPGAccess();
+FireGPG.FireGPGGPGAccess.parent = FireGPG;
 
 //Test if we have to show the 'what is new ?'
 //We wait 3 sec.
