@@ -66,7 +66,7 @@ const FIREGPG_SVN = "$Rev$";
         fatal - True if it's a fatal error.
 
 */
-function fireGPGDebug(message, debugCode, fatal) {
+fireGPGDebug:function (message, debugCode, fatal) {
 
     if (FIREGPG_STATUS == "RELASE" && !fatal)
 
@@ -154,7 +154,7 @@ var FireGPGMisc = {
             preSelect - _Optional_. And array of keys to preselect.
 
     */
-    function choosePublicKey(preSelect)
+    choosePublicKey: function(preSelect)
     {
 
         if(preSelect == undefined)
@@ -219,7 +219,7 @@ var FireGPGMisc = {
         Parameters:
             preSelect - _Optional_. A list of key to preselect
     */
-    function choosePrivateKey(preSelect)
+    choosePrivateKey:function (preSelect)
     {
         if(preSelect == undefined)
             preSelect = {};
@@ -265,7 +265,7 @@ var FireGPGMisc = {
             doShowButtons - _Optional_. If we have to show buttons to encrypt and so. Default to false.
             validSign - _Optional_. The message for the validSign field.
     */
-    function showText(text, description, title, doShowButtons, validSign) {
+    showText:function (text, description, title, doShowButtons, validSign) {
         /* default description and title values */
         var i18n = document.getElementById("firegpg-strings");
 
@@ -292,7 +292,7 @@ var FireGPGMisc = {
 
         Open the editor (the showtext.xul dialog)
     */
-    function showEditor() {
+    showEditor:function () {
         var i18n = document.getElementById("firegpg-strings");
         var title = i18n.getString('editorTitle');
         var description = i18n.getString('editorDescription');
@@ -315,7 +315,7 @@ var FireGPGMisc = {
             domain - _Optional_. Say the password is asked form this page and disable the savepassword checkbox.
             nosavecheckbox - _Optional_. Disable the save password feature
     */
-    function getPassword(question, save_password, domain, nosavecheckbox) {
+    getPassword:function (question, save_password, domain, nosavecheckbox) {
         if(save_password == undefined) {
             var prefs = Components.classes["@mozilla.org/preferences-service;1"].
                                    getService(Components.interfaces.nsIPrefService);
@@ -362,7 +362,7 @@ var FireGPGMisc = {
             password - The password
 
     */
-    function savePassword(password) {
+    savePassword:function (password) {
     }
 
     /*
@@ -370,13 +370,13 @@ var FireGPGMisc = {
         * TODO !*
         Get the password saved in the password manager of Firefox
     */
-    function getSavedPassword() {
+    getSavedPassword:function () {
     }
 
     /*
         Function: getPrivateKeyPassword
 
-        This function uses getPassword() to get a password for a private key.
+        This uses getPassword:function () to get a password for a private key.
 
         It's the user request for it, it's save the password for later.
 
@@ -392,7 +392,7 @@ var FireGPGMisc = {
             nosavecheckbox - _Optional_. Disable the save password feature
 
     */
-    function getPrivateKeyPassword(useSavedPassword /* default = true */, domain /* default = false*/, message /* default = false*/, nosavecheckbox) {
+    getPrivateKeyPassword:function (useSavedPassword /* default = true */, domain /* default = false*/, message /* default = false*/, nosavecheckbox) {
         /* the default value of the optional variable */
         if(useSavedPassword == undefined)
             useSavedPassword = true;
@@ -441,7 +441,7 @@ var FireGPGMisc = {
         Function: getsavedPassword
         Return the saved password
     */
-    function getsavedPassword() {
+    getsavedPassword:function () {
 
         return savedPassword;
 
@@ -450,9 +450,9 @@ var FireGPGMisc = {
 
     /*
         Function: eraseSavedPassword
-        This function erase the saved password (it's for exemple when a sign failled)
+        This erase the saved password :function (it's for exemple when a sign failled)
     */
-    function eraseSavedPassword() {
+    eraseSavedPassword:function () {
 
         savedPassword = null;
 
@@ -471,14 +471,14 @@ var FireGPGMisc = {
     /*
         Function: getSelfKey
 
-        Function who return a  private key for the user (the default or the one selected in the list)
+        who return a  private key for the user :function (the default or the one selected in the list)
         null is returned if no key is selected.
 
         Parameters:
             autoSelectPrivate - _Optional_. A list of key to autoselect
 
     */
-    function getSelfKey(autoSelectPrivate) {
+    getSelfKey:function (autoSelectPrivate) {
         var keyID;
         var prefs = Components.classes["@mozilla.org/preferences-service;1"].
                                getService(Components.interfaces.nsIPrefService);
@@ -505,7 +505,7 @@ var FireGPGMisc = {
        Get the path of a tmp file.
         The path is returned.
     */
-    function getTmpDir() {
+    getTmpDir:function () {
         return Components.classes[NS_DIRECTORYSERVICE_CONTRACTID].
                           getService(Components.interfaces.nsIProperties).
                           get(TMP_DIRECTORY, Components.interfaces.nsIFile);
@@ -522,7 +522,7 @@ var FireGPGMisc = {
             permission - _Optional_. The permission of the file. See <Write modes for files>
             suffix_file - _Optional_. A suffix to add to the default file name.
     */
-    function getTmpFile(permission /* optional */, suffix_file)  {
+    getTmpFile:function (permission /* optional */, suffix_file)  {
         if(permission == undefined)
             permission = WRITE_PERMISSION;
 
@@ -552,7 +552,7 @@ var FireGPGMisc = {
         Parameters:
             path - The file to delete.
     */
-    function removeFile(path) {
+    removeFile:function (path) {
         var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
                                  createInstance(Components.interfaces.nsILocalFile);
         fileobj.initWithPath(path);
@@ -572,7 +572,7 @@ var FireGPGMisc = {
         Parameters:
             path - The file to delete.
     */
-    function fileExist(path) {
+    fileExist:function (path) {
         var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
                                  createInstance(Components.interfaces.nsILocalFile);
         fileobj.initWithPath(path);
@@ -594,7 +594,7 @@ var FireGPGMisc = {
             filename - The name of the file
             data - The data to save
     */
-    function putIntoFile(filename, data)
+    putIntoFile:function (filename, data)
     {
         var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
                                  createInstance(Components.interfaces.nsILocalFile);
@@ -631,7 +631,7 @@ var FireGPGMisc = {
             filename - The location of the file.
             charset - _Optional_. The charset of the file. Default to UTF-8
     */
-    function getFromFile(filename,charset) {
+    getFromFile:function (filename,charset) {
 
         if (charset == undefined)
             charset = "UTF-8";
@@ -681,7 +681,7 @@ var FireGPGMisc = {
             filename - The name of the file
             data - The data to save
     */
-    function putIntoBinFile(filename, data) {
+    putIntoBinFile:function (filename, data) {
         // pngBinary already exists
         var aFile = Components.classes["@mozilla.org/file/local;1"]
                       .createInstance(Components.interfaces.nsILocalFile);
@@ -708,7 +708,7 @@ var FireGPGMisc = {
             aURL - The location of the file.
             maxData - _Optional_. The max length of data to get. {MAX} is returned if there is too data
     */
-    function getBinContent(aURL, maxData) {
+    getBinContent:function (aURL, maxData) {
         var ioService = Components.classes["@mozilla.org/network/io-service;1"].
                                    getService(Components.interfaces.nsIIOService);
 
@@ -750,7 +750,7 @@ var FireGPGMisc = {
         Parameters:
             aURL - The location of the resource.
     */
-    function getContent(aURL){
+    getContent:function (aURL){
         var ioService = Components.classes["@mozilla.org/network/io-service;1"].
                                    getService(Components.interfaces.nsIIOService);
         var scriptableStream = Components.classes["@mozilla.org/scriptableinputstream;1"].
@@ -775,7 +775,7 @@ var FireGPGMisc = {
         Parameters:
             url - The url of the resource
     */
-    function getContentXHttp(url)
+    getContentXHttp:function (url)
     {
         p = new XMLHttpRequest();
         p.onload = null;
@@ -798,7 +798,7 @@ var FireGPGMisc = {
         Function: testIfSomethingsIsNew
         Test if user update FireGPG or if he have to update, and show the What is new page send a ping or propose to update FireGPG if relevant.
     */
-    function testIfSomethingsIsNew() {
+    testIfSomethingsIsNew:function () {
         var prefs = Components.classes["@mozilla.org/preferences-service;1"].
                                    getService(Components.interfaces.nsIPrefService);
             prefs = prefs.getBranch("extensions.firegpg.");
@@ -926,7 +926,7 @@ var FireGPGMisc = {
     Function: showUpdateDialog
     Show the update dialog to let user update FireGPG
     */
-    function showUpdateDialog() {
+    showUpdateDialog:function () {
 
         var i18n = document.getElementById("firegpg-strings");
 
@@ -957,7 +957,7 @@ var FireGPGMisc = {
         Parameters:
             s - The text.
     */
-    function htmlEncode(s) {
+    htmlEncode:function (s) {
             var str = new String(s);
             str = str.replace(/&/g, "&amp;");
             str = str.replace(/</g, "&lt;");
@@ -978,7 +978,7 @@ var FireGPGMisc = {
             text - The text.
 
     */
-    function gmailWrapping(text)
+    gmailWrapping:function (text)
     {
         var lines = text.split("\n");
         var result = "";
@@ -1013,7 +1013,7 @@ var FireGPGMisc = {
 
 
     */
-    function wrap(text, limit)
+    wrap:function (text, limit)
     {
         var result = "";
 
@@ -1045,7 +1045,7 @@ var FireGPGMisc = {
         Generate and random string between 64 and 128 charactes, probably unique.
         This is usefull for the api.
     */
-    function genreate_api_key() {
+    genreate_api_key:function () {
             var validchars = "";
             var startvalid = "";
 
@@ -1069,7 +1069,7 @@ var FireGPGMisc = {
         Parameters:
             str - The string
     */
-    function trim (str){
+    trim :function (str){
         return str.replace(/^\s+/, "").replace(/\s+$/, "");
     }
 
@@ -1080,7 +1080,7 @@ var FireGPGMisc = {
         Parameters:
             str - The string
     */
-    function TrimAndWash(str) {
+    TrimAndWash:function (str) {
         return trim(str).replace(/\n/, "");
     }
 
@@ -1094,7 +1094,7 @@ var FireGPGMisc = {
         Parameters:
             text - The text to convert
     */
-    function EnigConvertGpgToUnicode(text) {
+    EnigConvertGpgToUnicode:function (text) {
 
         try {
 
@@ -1126,7 +1126,7 @@ var FireGPGMisc = {
             text - The text to convert
             charset - The charset of the text.
     */
-    function EnigConvertToUnicode(text, charset) {
+    EnigConvertToUnicode:function (text, charset) {
       if (!text || !charset || (charset.toLowerCase() == "iso-8859-1"))
         return text;
 
@@ -1154,7 +1154,7 @@ var FireGPGMisc = {
             text - The text to convert
             charset - The charset of the text.
     */
-    function EnigConvertFromUnicode(text, charset) {
+    EnigConvertFromUnicode:function (text, charset) {
       if (!text || !charset || (charset.toLowerCase() == "iso-8859-1"))
         return text;
 
@@ -1184,7 +1184,7 @@ var FireGPGMisc = {
         document - The current document.
         forceId - If we have to force the id of the key
     */
-    function CreateTreeItemKey(key, document, forceId) {
+    CreateTreeItemKey:function (key, document, forceId) {
         var  item  = document.createElement('treeitem');
 
         var row = document.createElement('treerow');
@@ -1234,7 +1234,7 @@ var FireGPGMisc = {
         privateKey - True if it's a private key
         subkey - True if it's a subkey
     */
-    function CreateTreeItemKey2(key, document, forceId, privateKey, subkey) {
+    CreateTreeItemKey2:function (key, document, forceId, privateKey, subkey) {
 
 
         var turstList = new Array();
@@ -1324,7 +1324,7 @@ var FireGPGMisc = {
         child - The element
         privateKEy - True if it's a private key
     */
-    function setSkinForKey(key, child, privateKey) {
+    setSkinForKey:function (key, child, privateKey) {
 
         if (privateKey  == true)
             child.setAttribute('properties', 'privatekey');
@@ -1350,7 +1350,7 @@ var FireGPGMisc = {
         sign - The sign of the key
         havePrivate - If the user have the private key
     */
-    function CreateTreeItemKey3(key, document, mainKey, sign, havePrivate) {
+    CreateTreeItemKey3:function (key, document, mainKey, sign, havePrivate) {
 
         var  item  = document.createElement('treeitem');
 
@@ -1401,7 +1401,7 @@ var FireGPGMisc = {
         sign - The sign of the key
         havePrivate - If the user have the private key
     */
-    function setSkinForKey2(key, child, mainKey, sign, havePrivate) {
+    setSkinForKey2:function (key, child, mainKey, sign, havePrivate) {
 
         if (mainKey  == true)
             child.setAttribute('properties', 'mainkey');
@@ -1423,7 +1423,7 @@ var FireGPGMisc = {
         Function: getKeyServer
         Return the current key server
     */
-    function getKeyServer() {
+    getKeyServer:function () {
 
             var prefs = Components.classes["@mozilla.org/preferences-service;1"].
                                    getService(Components.interfaces.nsIPrefService);
@@ -1452,7 +1452,7 @@ var FireGPGMisc = {
         Paramters:
             autoSearch - Preset the search field
     */
-    function showSearchBox(autoSearch) {
+    showSearchBox:function (autoSearch) {
 
 
         window.openDialog("chrome://firegpg/content/Dialogs/Keymanager/searchkey.xul", "searchBox", "chrome,centerscreen", {autoSearch: autoSearch}).focus();
@@ -1466,7 +1466,7 @@ var FireGPGMisc = {
         Parameters:
             text - The text
     */
-    function convertCRLFToStandarts(text) {
+    convertCRLFToStandarts:function (text) {
         //Standarts say: \r\n, stoo.
 
         text = text.replace(/\r\n/ig, "\n"); //  \r\n -> \n
@@ -1492,7 +1492,7 @@ var FireGPGMisc = {
             level - The current level of the dump
 
     */
-    function dumper(arr,level) {
+    dumper:function (arr,level) {
         var dumped_text = "";
 
         if(!level) level = 0;
@@ -1525,7 +1525,7 @@ var FireGPGMisc = {
         Parameters:
             o - The object
     */
-    function dump2(o) {
+    dump2:function (o) {
 
         for (i in o) {
         if (o[i])
@@ -1595,7 +1595,7 @@ var FireGPGMisc = {
                 input - The text
                 bMode - Convert to utf8
         */
-        encode : function (input,bMode) {
+        encode : :function (input,bMode) {
             var output = "";
             var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
             var i = 0;
@@ -1637,7 +1637,7 @@ var FireGPGMisc = {
                 input - The text
                 bMode - Decode from utf8
         */
-        decode : function (input,bMode) {
+        decode : :function (input,bMode) {
             var output = "";
             var chr1, chr2, chr3;
             var enc1, enc2, enc3, enc4;
@@ -1681,7 +1681,7 @@ var FireGPGMisc = {
             Parameters:
                 string - The string
         */
-        _utf8_encode : function (string) {
+        _utf8_encode : :function (string) {
             string = string.replace(/\r\n/g,"\n");
             var utftext = "";
 
@@ -1714,7 +1714,7 @@ var FireGPGMisc = {
             Parameters:
                 utftext - The text
         */
-        _utf8_decode : function (utftext) {
+        _utf8_decode : :function (utftext) {
             var string = "";
             var i = 0;
             var c = c1 = c2 = 0;
@@ -1763,7 +1763,7 @@ var FireGPGMisc = {
         Parameters:
             filename - The file name
     */
-    function getFileExtention(filename) {
+    getFileExtention:function (filename) {
        return filename.substring(filename.length - 3,filename.length).toLowerCase();
     }
 
