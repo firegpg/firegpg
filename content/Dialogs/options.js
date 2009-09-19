@@ -119,7 +119,7 @@ function onLoad(win) {
 	/* read the default private key */
 	var default_private_key = document.getElementById('default-private-key-pref').value;
 
-    var AskKey = new GPGKey();
+    var AskKey = new FireGPG_GPGKey();
 
     AskKey.keyName = document.getElementById('firegpg-ask-for-private-label').value;
 

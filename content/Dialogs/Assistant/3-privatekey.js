@@ -100,7 +100,7 @@ function textPrivateKey() {
         /* read the default private key */
         var default_private_key = prefs.getCharPref('default_private_key');
 
-        var AskKey = new GPGKey();
+        var AskKey = new FireGPG_GPGKey();
 
         AskKey.keyName = document.getElementById('firegpg-ask-for-private-label').value;
 

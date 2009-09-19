@@ -89,7 +89,7 @@ const RESULT_ERROR_INIT_FAILLED = 8;
         signresulttext - The message for the result of the test on the first sign (or the current sign if we're in the signsresults array)
         signresultuser - The username of the key of the first sign (or the current sign if we're in the signsresults array)
         signresultdate - The date of the first sign (or the current sign if we're in the signsresults array)
-        keylist - An array of <GPGKey> with the key of the specified keyring (private or public)
+        keylist - An array of <FireGPG_GPGKey> with the key of the specified keyring (private or public)
         exported - The exported key with GnuPG
         messagetext - The message who is showed in the lasted alert (usefull when the silent mode is activated)
 
@@ -115,7 +115,7 @@ function FireGPG_GPGReturn() {
 }
 
 /*
-    Function: GPGKey
+    Function: FireGPG_GPGKey
 
     This function return a basic object, who represent a PGP key
 
@@ -127,14 +127,14 @@ function FireGPG_GPGReturn() {
         keyExpi - The key's expire date
         keyDate - The key's creation date (ou de la signature)
         keyId - The key's id
-        subKeys - An array of <GPGKey> with the subkey of the key.
+        subKeys - An array of <FireGPG_GPGKey> with the subkey of the key.
 		expired - True if the key is expired
 		revoked - True if the key is revoked
 		keyTrust - Trust of the key
 		fingerPrint - The fingerprint of the ey
 
 */
-function GPGKey() {
+function FireGPG_GPGKey() {
     this.keyName = null;
     this.keyExpi = null;
     this.keyDate = null;
@@ -149,9 +149,9 @@ function GPGKey() {
 }
 
 /*
-    Function: Sortage
+    Function: FireGPG_Sortage
 
-    This is a function used to sort an array of <GPGKey> by the key name
+    This is a function used to sort an array of <FireGPG_GPGKey> by the key name
     Use it like this : thearray.sort(Sortage)
 
     Parameters:
@@ -159,7 +159,7 @@ function GPGKey() {
         b - Internal
 
 */
-function Sortage(a,b) {
+function FireGPG_Sortage(a,b) {
 
     var x = a.keyName.toLowerCase();
     var y = b.keyName.toLowerCase();
@@ -544,7 +544,7 @@ var FireGPG = {
 
                     var keyName = infos[9].replace(/\\e3A/g, ":");
 
-                    var theKey = new GPGKey();
+                    var theKey = new FireGPG_GPGKey();
 
                     theKey.keyDate = keyDate;
                     theKey.keyExpi  = keyExpi;
@@ -2031,7 +2031,7 @@ var FireGPG = {
 
                     }
 
-                    var theKey = new GPGKey();
+                    var theKey = new FireGPG_GPGKey();
 
                     theKey.keyDate = keyDate;
                     theKey.keyExpi  = keyExpi;
