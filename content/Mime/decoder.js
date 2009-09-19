@@ -906,7 +906,7 @@ FireGPGMimeDecoder.prototype = {
        //.ASC, .PGP
        for (var i = 0; i < this.mainPart.numberofsubparts; i++) {
             if (this.mainPart.subparts[i].attachement) {
-                var ext = getFileExtention(this.mainPart.subparts[i].filename)
+                var ext = FireGPGMisc.getFileExtention(this.mainPart.subparts[i].filename)
 
                 if ((ext == "asc" || ext == "pgp") && this.mainPart.subparts[i].headers['CONTENT-TYPE'].indexOf('application/pgp-signature') == -1) {
 
@@ -927,7 +927,7 @@ FireGPGMimeDecoder.prototype = {
        //.sig
       /* for (var i = 0; i < this.mainPart.numberofsubparts; i++) {
             if (this.mainPart.subparts[i].attachement) {
-                var ext = getFileExtention(this.mainPart.subparts[i].filename)
+                var ext = FireGPGMisc.getFileExtention(this.mainPart.subparts[i].filename)
 
                 if (ext == "sig") {
 

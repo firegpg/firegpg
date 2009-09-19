@@ -354,7 +354,7 @@ var cGmail2 = {
                                             table.innerHTML = table.innerHTML.replace(/%t/, i18n.getString("decryptedfile"));
                                             table.innerHTML = table.innerHTML.replace(/%s/, i18n.getString("SaveAS"));
                                             table.innerHTML = table.innerHTML.replace(/%n/, FireGPGMisc.htmlEncode(att.filename));
-                                            table.setAttribute('firegpg-file-content',Base64.encode(att.data,true));
+                                            table.setAttribute('firegpg-file-content',FireGPGMisc.Base64.encode(att.data,true));
                                             table.setAttribute('firegpg-file-name', att.filename);
                                             table.setAttribute('firegpg-file-type','decrypted');
                                             table.setAttribute('class', 'cf hr');
@@ -399,7 +399,7 @@ var cGmail2 = {
                                             interstingSpan = spans[1];
 
                                             var newA = doc.createElement('a');
-                                            newA.setAttribute('firegpg-file-content',Base64.encode(att.data,true));
+                                            newA.setAttribute('firegpg-file-content',FireGPGMisc.Base64.encode(att.data,true));
                                             newA.setAttribute('firegpg-file-name', att.filename);
                                             newA.setAttribute('firegpg-file-type','encrypted');
                                             newA.setAttribute('gpg_action','attachement');
@@ -1579,12 +1579,12 @@ Zna Vna UIb $RQa $SQa Moa
 
                 switch(type) {
                     case 'decrypted':
-                        data = Base64.decode(node.getAttribute('firegpg-file-content'),true);
+                        data = FireGPGMisc.Base64.decode(node.getAttribute('firegpg-file-content'),true);
 
                         break;
 
                     case 'encrypted':
-                        eData = Base64.decode(node.getAttribute('firegpg-file-content'),true);
+                        eData = FireGPGMisc.Base64.decode(node.getAttribute('firegpg-file-content'),true);
 
                         var result = FireGPG.decrypt(true,eData);
 
