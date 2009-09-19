@@ -97,7 +97,7 @@ function updateKeyList() {
 
             current++;
 
-            item = CreateTreeItemKey2(gpg_keys[key], document, undefined, haveAPrivateKey);
+            item = FireGPGMisc.CreateTreeItemKey2(gpg_keys[key], document, undefined, haveAPrivateKey);
 
             if (gpg_keys[key].subKeys.length > 0) {
 
@@ -108,7 +108,7 @@ function updateKeyList() {
 
                     if (gpg_keys[key].subKeys[skey].keyName) {
 
-                        var subItem = CreateTreeItemKey2( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId,  haveAPrivateKey, true);
+                        var subItem = FireGPGMisc.CreateTreeItemKey2( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId,  haveAPrivateKey, true);
                         subChildren.appendChild(subItem);
                     }
 

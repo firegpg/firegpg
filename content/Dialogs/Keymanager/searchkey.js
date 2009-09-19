@@ -113,7 +113,7 @@ function rebuildList() {
 
             current++;
 
-            item = CreateTreeItemKey(gpg_keys[key], document);
+            item = FireGPGMisc.CreateTreeItemKey(gpg_keys[key], document);
 
             if (gpg_keys[key].subKeys.length > 0) {
 
@@ -124,7 +124,7 @@ function rebuildList() {
 
                     if (gpg_keys[key].subKeys[skey].keyName) {
 
-                        var subItem = CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
+                        var subItem = FireGPGMisc.CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
 
                         subChildren.appendChild(subItem);
                     }

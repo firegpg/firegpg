@@ -104,7 +104,7 @@ function textPrivateKey() {
 
         AskKey.keyName = document.getElementById('firegpg-ask-for-private-label').value;
 
-        var Ditem = CreateTreeItemKey(AskKey, document);
+        var Ditem = FireGPGMisc.CreateTreeItemKey(AskKey, document);
 
         listbox.appendChild(Ditem);
 
@@ -120,7 +120,7 @@ function textPrivateKey() {
 
                 current++;
 
-                item = CreateTreeItemKey(gpg_keys[key], document);
+                item = FireGPGMisc.CreateTreeItemKey(gpg_keys[key], document);
 
                 if(default_private_key == gpg_keys[key].keyId)
                     default_item = current;
@@ -134,7 +134,7 @@ function textPrivateKey() {
 
                         if (gpg_keys[key].subKeys[skey].keyName) {
 
-                            var subItem = CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
+                            var subItem = FireGPGMisc.CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
 
                             subChildren.appendChild(subItem);
                         }

@@ -1217,7 +1217,7 @@ var FireGPGMisc = {
         return item;
 
 
-    }
+    },
 
 
     /*
@@ -1311,7 +1311,7 @@ var FireGPGMisc = {
         return item;
 
 
-    }
+    },
 
     /*
     Function: setSkinForKey
