@@ -1593,13 +1593,13 @@ var FireGPGMisc = {
                 input - The text
                 bMode - Convert to utf8
         */
-        encode : :function (input,bMode) {
+        encode: function (input,bMode) {
             var output = "";
             var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
             var i = 0;
 
             if (bMode != true)
-                input = Base64._utf8_encode(input);
+                input = FireGPGMisc.Base64._utf8_encode(input);
 
             while (i < input.length) {
 
@@ -1666,7 +1666,7 @@ var FireGPGMisc = {
             }
 
             if (bMode != true)
-                output = Base64._utf8_decode(output);
+                output = FireGPGMisc.Base64._utf8_decode(output);
 
             return output;
 

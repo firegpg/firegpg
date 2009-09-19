@@ -328,7 +328,7 @@ FireGPGMimeDecoder.prototype = {
 
     convertFromB64: function(texte,bMode) {
 
-        return Base64.decode(texte,bMode);
+        return FireGPGMisc.Base64.decode(texte,bMode);
 
     },
 
@@ -937,7 +937,7 @@ FireGPGMimeDecoder.prototype = {
                         if (this.mainPart.subparts[i2].attachement) {
                                 if (this.mainPart.subparts[i2].filename == originalName) {
 
-                                    data = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\n" + this.mainPart.subparts[i2].clearBinBody.replace(/\n\-/gi, "\n- -").replace(/\r\-/gi, "\r- -")  + "\n-----BEGIN PGP SIGNATURE-----\n\n"+ Base64.encode(this.mainPart.subparts[i].clearBinBody,true) + "\n-----END PGP SIGNATURE-----";
+                                    data = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\n" + this.mainPart.subparts[i2].clearBinBody.replace(/\n\-/gi, "\n- -").replace(/\r\-/gi, "\r- -")  + "\n-----BEGIN PGP SIGNATURE-----\n\n"+ FireGPGMisc.Base64.encode(this.mainPart.subparts[i].clearBinBody,true) + "\n-----END PGP SIGNATURE-----";
 
                                     var tmpFile = new Object();
                                     tmpFile.filename = this.mainPart.subparts[i2].filename;
