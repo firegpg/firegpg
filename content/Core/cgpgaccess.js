@@ -284,7 +284,7 @@ var FireGPGGPGAccess = {
     */
     getGPGAgentArgument: function() {
 
-       if (!isGpgAgentActivated())
+       if (!FireGPG_isGpgAgentActivated())
            return ' --no-use-agent';
        else {
             info = Components.classes["@mozilla.org/process/environment;1"].getService(Components.interfaces.nsIEnvironment).get('GPG_AGENT_INFO');
@@ -545,7 +545,7 @@ var FireGPGGPGAccess = {
 
         if (!fileMode) {
 
-            if (isGpgAgentActivated()) {
+            if (FireGPG_isGpgAgentActivated()) {
 
                 result = this.runGnupg(this.getBaseArugments() +
                         " --default-key " + keyID +
@@ -569,7 +569,7 @@ var FireGPGGPGAccess = {
             }
 
         } else {
-                if (isGpgAgentActivated()) {
+                if (FireGPG_isGpgAgentActivated()) {
 
                 result = this.runGnupg(this.getBaseArugments() +
                         " --default-key " + keyID +
@@ -832,7 +832,7 @@ var FireGPGGPGAccess = {
             inputFd = '';
         }
 
-        if (isGpgAgentActivated()) {
+        if (FireGPG_isGpgAgentActivated()) {
 
             result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument(fromGpgAuth) +
                     " " + keyIdListArgument +
@@ -895,7 +895,7 @@ var FireGPGGPGAccess = {
         }
 
 
-        if (isGpgAgentActivated()) {
+        if (FireGPG_isGpgAgentActivated()) {
 
             result = this.runGnupg(this.getBaseArugments() +
                     " --output " + outputFd +
