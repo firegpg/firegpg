@@ -806,7 +806,7 @@ FireGPGMimeDecoder.prototype = {
 
         if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
             fireGPGDebug("Try again utf8 decoded", "Nonmime sign verif");
-            var resultTest = FireGPG.verify(true,UTF8.decode(firstSign.replace(/\r/gi, '')), charset);
+            var resultTest = FireGPG.verify(true,FireGPGMisc.UTF8.decode(firstSign.replace(/\r/gi, '')), charset);
 
         }
 

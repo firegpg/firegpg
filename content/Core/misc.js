@@ -1533,14 +1533,14 @@ var FireGPGMisc = {
          fireGPGDebug(o.i, '~' + i, true);
         }
 
-    }
+    },
 
     /*
         Class: UTF8
         Class to handle UTF8 tests.
         http://snippets.dzone.com/posts/show/5294
     */
-    UTF8 = {
+    UTF8: {
         /*
             Function: encode
             Encode a text to utf8
@@ -1570,14 +1570,14 @@ var FireGPGMisc = {
             );
             return s.join("");
         }
-    };
+    },
 
     /*
         Class: Base64
         Class to handle base64 encoding
         http://www.webtoolkit.info/
     */
-    var Base64 = {
+    Base64:{
 
         /*
         Variable: _keyStr
