@@ -736,7 +736,7 @@ var FireGPGApi = {
             if (access.domains_allowed[theLocation.hostname] != undefined)
                 return access.domains_allowed[theLocation.hostname];
 
-            key = genreate_api_key();
+            key = FireGPGMisc.genreate_api_key();
             access.domains_allowed[theLocation.hostname] = key;
             FireGPGApi.setAccessList(access);
             return key;
@@ -746,7 +746,7 @@ var FireGPGApi = {
             if (access.sites_allowed[theLocation.protocol + '//' + theLocation.host] != undefined)
                 return access.sites_allowed[theLocation.protocol + '//' + theLocation.host];
 
-            key = genreate_api_key();
+            key = FireGPGMisc.genreate_api_key();
             access.sites_allowed[theLocation.protocol + '//' + theLocation.host] = key;
             FireGPGApi.setAccessList(access);
             return key;
@@ -756,7 +756,7 @@ var FireGPGApi = {
             if (access.pages_allowed[theLocation.href] != undefined)
                 return access.pages_allowed[theLocation.href];
 
-            key = genreate_api_key();
+            key = FireGPGMisc.genreate_api_key();
             access.pages_allowed[theLocation.href] = key;
             FireGPGApi.setAccessList(access);
             return key;

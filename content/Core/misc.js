@@ -993,7 +993,7 @@ var FireGPGMisc = {
                 // If we're wrapping a line, each of the resulting
                 // lines shouldn't be longer than 70 characters
                 // unless it has to be.
-                result = result + wrap(lines[i], 70) + "\n";
+                result = result + FireGPGMisc.wrap(lines[i], 70) + "\n";
         }
 
         return result;
@@ -1035,7 +1035,7 @@ var FireGPGMisc = {
         }
 
         return result + text;
-    }
+    },
 
     /*
         Function: genreate_api_key
