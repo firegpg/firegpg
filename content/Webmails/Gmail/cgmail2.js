@@ -41,10 +41,10 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 /* Constant: GMAIL_MAIN_DOC_URL
  The url of the mail document for gmail */
-const GMAIL_MAIN_DOC_URL = "http://mail.google.com/mail/?ui=2&view=bsp&ver=";
+const FGPG_GMAIL_MAIN_DOC_URL = "http://mail.google.com/mail/?ui=2&view=bsp&ver=";
 /* Constant: GMAIL_MAIN_DOC_URL2
  The url of the mail document for gmail and https. */
-const GMAIL_MAIN_DOC_URL2 = "https://mail.google.com/mail/?ui=2&view=bsp&ver=";
+const FGPG_GMAIL_MAIN_DOC_URL2 = "https://mail.google.com/mail/?ui=2&view=bsp&ver=";
 
 
 //Pictures
@@ -122,7 +122,7 @@ var FireGPG_cGmail2 = {
 
             final_location = final_location.replace(regrex, "http://mail.google.com/mail");
 
-            if (final_location.indexOf(GMAIL_MAIN_DOC_URL) == 0 || final_location .indexOf(GMAIL_MAIN_DOC_URL2) == 0) {
+            if (final_location.indexOf(FGPG_GMAIL_MAIN_DOC_URL) == 0 || final_location .indexOf(FGPG_GMAIL_MAIN_DOC_URL2) == 0) {
 
                 if (doc.location.href.indexOf("?ui=2") != -1)
                     FireGPG_cGmail2.baseUrl = doc.location.href.substring(0, doc.location.href.indexOf("?ui=2"));
@@ -2640,7 +2640,7 @@ fireGPGDebug("try to add");
 
         //http://mail.google.com/mail/?ui=2&ik=8e7a8837c3&
 
-        if (final_location.indexOf(GMAIL_MAIN_DOC_URL) == 0 || final_location .indexOf(GMAIL_MAIN_DOC_URL2) == 0) {
+        if (final_location.indexOf(FGPG_GMAIL_MAIN_DOC_URL) == 0 || final_location .indexOf(FGPG_GMAIL_MAIN_DOC_URL2) == 0) {
 fireGPGDebug("activated");
 
             doc.getElementsByClassName = function(className, tag) {
