@@ -168,7 +168,7 @@ var FireGPGMisc = {
 
         keylistcall = FireGPG.listKeys();
 
-        if (keylistcall.result == RESULT_SUCCESS)
+        if (keylistcall.result == FireGPGResults.SUCCESS)
             params.list = keylistcall.keylist;
         else
             return;
@@ -233,7 +233,7 @@ var FireGPGMisc = {
 
         keylistcall = FireGPG.listKeys(true);
 
-        if (keylistcall.result == RESULT_SUCCESS)
+        if (keylistcall.result == FireGPGResults.SUCCESS)
             params.list = keylistcall.keylist;
         else
             return;

@@ -93,7 +93,7 @@ function rebuildList() {
     document.getElementById('search-button').disabled = '';
     document.getElementById('import-button').disabled = '';
 
-    if (keylistcall.result == RESULT_SUCCESS)
+    if (keylistcall.result == FireGPGResults.SUCCESS)
         gpg_keys = keylistcall.keylist;
     else
         gpg_keys = new Array();

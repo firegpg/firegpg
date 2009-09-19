@@ -349,7 +349,7 @@ FireGPGMimeSender.prototype =
 
                 var result = FireGPG.sign(false,stringToWork+ crlf, null, null, null, prefs.whoSendTheMail );
 
-                if (result.result == RESULT_SUCCESS) {
+                if (result.result == FireGPGResults.SUCCESS) {
 
                     var digest = "SHA1"; //Unfortunaly by default..
                     try {
@@ -427,7 +427,7 @@ FireGPGMimeSender.prototype =
 
                 var result = FireGPG.cryptAndSign(false,stringToWork, null ,false,null, null, false, whoWillGotTheMail, prefs.whoSendTheMail);
 
-                if (result.result == RESULT_SUCCESS) {
+                if (result.result == FireGPGResults.SUCCESS) {
 
 
                   newmessage = 'X-FireGPG-Version: ' + FIREGPG_VERSION + crlf +
@@ -455,7 +455,7 @@ FireGPGMimeSender.prototype =
 
                 var result = FireGPG.crypt(false,stringToWork,null, false, false,whoWillGotTheMail);
 
-                if (result.result == RESULT_SUCCESS) {
+                if (result.result == FireGPGResults.SUCCESS) {
 
 
                   newmessage = 'X-FireGPG-Version: ' + FIREGPG_VERSION + crlf +

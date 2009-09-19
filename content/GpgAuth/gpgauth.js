@@ -189,7 +189,7 @@ var gpgAuth = {
 		} else {
 			gpgAuth.status_window.update( "... encrypted the token to Key ID: " + server_token.prikey_id  );
 		}
-		if ( server_token.result != RESULT_SUCCESS ) {
+		if ( server_token.result != FireGPGResults.SUCCESS ) {
 			// There was a problem, note that an error has occurred.
 			gpgAuth.gpg_elements[ gpgAuth.domain ][ 'STK_ERROR' ] = true;
 			error = server_token.sdOut;
@@ -411,7 +411,7 @@ var gpgAuth = {
 			gpgAuth.status_window.update( "... decrypting the token" );
 			// Attempt to decrypt the token provided by the Server.
 			var result = FireGPG.decrypt( true, user_token );
-			if ( result.result == RESULT_SUCCESS ) {
+			if ( result.result == FireGPGResults.SUCCESS ) {
 				// Check to see if the token was signed, and verify there is a keyid for the sign.
 				if ( result.signresultkeyid && result.signresultkeyid.length > 8 ) {
 					// The key is long format - get the short version of the key (Last 8 Chars)

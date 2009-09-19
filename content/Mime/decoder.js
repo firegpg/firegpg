@@ -545,7 +545,7 @@ FireGPGMimeDecoder.prototype = {
 
         } else {
 
-            if (minedecrypt.decryptData && minedecrypt.decryptresult.signresult == RESULT_SUCCESS) {
+            if (minedecrypt.decryptData && minedecrypt.decryptresult.signresult == FireGPGResults.SUCCESS) {
                 retour.signResult = new Object();
                 retour.signResult.signresult = minedecrypt.decryptresult.signresult;
                 retour.signResult.signresulttext = minedecrypt.decryptresult.signresulttext;
@@ -592,7 +592,7 @@ FireGPGMimeDecoder.prototype = {
             } else {
 
                 if (inlinedecrypt  != null) {
-                    if (inlinedecrypt.decryptData && inlinedecrypt.decryptresult.signresult == RESULT_SUCCESS) {
+                    if (inlinedecrypt.decryptData && inlinedecrypt.decryptresult.signresult == FireGPGResults.SUCCESS) {
                         retour.signResult = new Object();
                         retour.signResult.signresult = inlinedecrypt.decryptresult.signresult;
                         retour.signResult.signresulttext = inlinedecrypt.decryptresult.signresulttext;
@@ -638,7 +638,7 @@ FireGPGMimeDecoder.prototype = {
 
             retour.decryptresult = FireGPG.decrypt(false,data);
 
-            if (retour.decryptresult.result == RESULT_SUCCESS) {
+            if (retour.decryptresult.result == FireGPGResults.SUCCESS) {
                 this.saveid = this.extractMimeId();
 
                 this.mainPart = this.mimeParsing(FireGPGMisc.convertCRLFToStandarts(retour.decryptresult.decrypted));
@@ -687,7 +687,7 @@ FireGPGMimeDecoder.prototype = {
 
                 retour.decryptresult = FireGPG.decrypt(false,data);
 
-                if (retour.decryptresult.result == RESULT_SUCCESS) {
+                if (retour.decryptresult.result == FireGPGResults.SUCCESS) {
 
                     subparttotest = this.mimeParsing(FireGPGMisc.convertCRLFToStandarts(retour.decryptresult.decrypted));
                     subparttotest.thisisanencryptedpart = true;
@@ -798,13 +798,13 @@ FireGPGMimeDecoder.prototype = {
 
         var resultTest = FireGPG.verify(true,firstSign.replace(/\r/gi, ''), charset);
 
-        if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
+        if (resultTest.signresult == FireGPGResults.ERROR_BAD_SIGN) {
             fireGPGDebug("Try again widhout charset", "Nonmime sign verif");
             var resultTest = FireGPG.verify(true,firstSign.replace(/\r/gi, ''));
 
         }
 
-        if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
+        if (resultTest.signresult == FireGPGResults.ERROR_BAD_SIGN) {
             fireGPGDebug("Try again utf8 decoded", "Nonmime sign verif");
             var resultTest = FireGPG.verify(true,FireGPGMisc.UTF8.decode(firstSign.replace(/\r/gi, '')), charset);
 

@@ -205,7 +205,7 @@ var FireGPGApi = {
 
         keylistcall = FireGPG.listKeys();
 
-        if (keylistcall.result == RESULT_SUCCESS)
+        if (keylistcall.result == FireGPGResults.SUCCESS)
             keylist = keylistcall.keylist;
         else
             return;
@@ -245,7 +245,7 @@ var FireGPGApi = {
 
         keylistcall = FireGPG.listKeys(true);
 
-        if (keylistcall.result == RESULT_SUCCESS)
+        if (keylistcall.result == FireGPGResults.SUCCESS)
             keylist = keylistcall.keylist;
         else
             return;
@@ -300,24 +300,24 @@ var FireGPGApi = {
 		// For I18N
 		var i18n = document.getElementById("firegpg-strings");
     //TODO : multi signs ?
-		if (result.result == RESULT_ERROR_NO_GPG_DATA) {
+		if (result.result == FireGPGResults.ERROR_NO_GPG_DATA) {
             returnData.setAttribute('result', 'check-err');
             returnData.setAttribute('error', 'no-gpg');
 			return;
         }
-        else if (result.result != RESULT_SUCCESS)
+        else if (result.result != FireGPGResults.SUCCESS)
         {
             returnData.setAttribute('result', 'check-err');
             returnData.setAttribute('error', 'unknow');
 			return;
         }
-		else if (result.signresult== RESULT_ERROR_BAD_SIGN)
+		else if (result.signresult== FireGPGResults.ERROR_BAD_SIGN)
         {
             returnData.setAttribute('result', 'check-err');
             returnData.setAttribute('error', 'bad-sign');
 			return;
         }
-        else if (result.signresult == RESULT_ERROR_NO_KEY)
+        else if (result.signresult == FireGPGResults.ERROR_NO_KEY)
         {
             returnData.setAttribute('result', 'check-err');
             returnData.setAttribute('error', 'no-key');
@@ -403,20 +403,20 @@ var FireGPGApi = {
 
 
 
-		if (result.result  == RESULT_SUCCESS)
+		if (result.result  == FireGPGResults.SUCCESS)
         {
             returnData.setAttribute('result', 'sign-ok');
             returnData.setAttribute('text', result.signed);
 
             return;
         }
-		else if (result.result  == RESULT_ERROR_PASSWORD)
+		else if (result.result  == FireGPGResults.ERROR_PASSWORD)
         {
             returnData.setAttribute('result', 'sign-err');
             returnData.setAttribute('error', 'bad-pass');
 			return;
         }
-        else if (result.result  == RESULT_CANCEL)
+        else if (result.result  == FireGPGResults.CANCEL)
         {
             returnData.setAttribute('result', 'sign-err');
             returnData.setAttribute('error', 'user-canceled');
@@ -503,20 +503,20 @@ var FireGPGApi = {
         // We get the result
 		var result = FireGPG.cryptAndSign(true,text,keyIdList,false,password,keyID);
 
-		if (result.result  == RESULT_SUCCESS)
+		if (result.result  == FireGPGResults.SUCCESS)
         {
             returnData.setAttribute('result', 'signandencrypt-ok');
             returnData.setAttribute('text', result.encrypted);
 
             return;
         }
-		else if (result.result  == RESULT_ERROR_PASSWORD)
+		else if (result.result  == FireGPGResults.ERROR_PASSWORD)
         {
             returnData.setAttribute('result', 'signandencrypt-err');
             returnData.setAttribute('error', 'bad-pass');
 			return;
         }
-        else if (result.result  == RESULT_CANCEL)
+        else if (result.result  == FireGPGResults.CANCEL)
         {
             returnData.setAttribute('result', 'signandencrypt-err');
             returnData.setAttribute('error', 'user-canceled');
@@ -574,7 +574,7 @@ var FireGPGApi = {
         // We get the result
 		var result = FireGPG.crypt(true, text, keyIdList);
 
-		if (result.result  == RESULT_SUCCESS)
+		if (result.result  == FireGPGResults.SUCCESS)
         {
             returnData.setAttribute('result', 'encrypt-ok');
             returnData.setAttribute('text', result.encrypted);
@@ -653,10 +653,10 @@ var FireGPGApi = {
 
 
 
-		if (result.result  == RESULT_SUCCESS)
+		if (result.result  == FireGPGResults.SUCCESS)
         {
             //If there was a sign with the crypted text
-			if (result.signresult == RESULT_SUCCESS)
+			if (result.signresult == FireGPGResults.SUCCESS)
 			{
                 returnData.setAttribute('sign-info', result.signresulttext);
 			}
@@ -670,13 +670,13 @@ var FireGPGApi = {
 
             return;
         }
-		else if (result.result  == RESULT_ERROR_PASSWORD)
+		else if (result.result  == FireGPGResults.ERROR_PASSWORD)
         {
             returnData.setAttribute('result', 'decrypt-err');
             returnData.setAttribute('error', 'bad-pass');
 			return;
         }
-        else if (result.result  == RESULT_CANCEL)
+        else if (result.result  == FireGPGResults.CANCEL)
         {
             returnData.setAttribute('result', 'decrypt-err');
             returnData.setAttribute('error', 'user-canceled');

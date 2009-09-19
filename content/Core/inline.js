@@ -393,7 +393,7 @@ FireGPGInline.ImportKey = function(content, block) {
 	block.output.style.display = "block";
     block.output.textContent = result.messagetext;
 
-	if(result.result == RESULT_SUCCESS)
+	if(result.result == FireGPGResults.SUCCESS)
 		block.body.className = "ok";
 	else
 		block.body.className = "failure";
@@ -417,15 +417,15 @@ FireGPGInline.VerifySignature = function(content, block) {
 
 
 
-    if (resultTest.signresult == RESULT_SUCCESS) {
+    if (resultTest.signresult == FireGPGResults.SUCCESS) {
         block.body.className = "ok";
         block.header.textContent = i18n.getString("signed-message") + ", " + resultTest.signsresulttext;
     }
-    else if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
+    else if (resultTest.signresult == FireGPGResults.ERROR_BAD_SIGN) {
         block.body.className = "failure";
         block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifFailedFalse");
     }
-    else if (resultTest.signresult == RESULT_ERROR_NO_KEY) {
+    else if (resultTest.signresult == FireGPGResults.ERROR_NO_KEY) {
         block.body.className = "failure";
         block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifFailedUnknownKey") ;
     }
@@ -451,7 +451,7 @@ FireGPGInline.DecryptMessage = function(content, block) {
 
     var result = FireGPG.decrypt(true,content);
 
-    if (result.result == RESULT_SUCCESS) {
+    if (result.result == FireGPGResults.SUCCESS) {
 
         block.body.className = "ok";
         block.message.textContent = result.decrypted;
@@ -475,7 +475,7 @@ FireGPGInline.DecryptMessage = function(content, block) {
 
 
 
-    } else if (result.result == RESULT_ERROR_PASSWORD) {
+    } else if (result.result == FireGPGResults.ERROR_PASSWORD) {
 
         block.body.className = "failure";
         block.header.textContent = i18n.getString("encrypted-message") + ", " + result.messagetext;

@@ -187,22 +187,22 @@ var cGmail = {
 						// For I18N
 						var i18n = document.getElementById("firegpg-strings");
 
-						if (resultTest.result == RESULT_ERROR_NO_GPG_DATA) {
+						if (resultTest.result == FireGPGResults.ERROR_NO_GPG_DATA) {
 							if (cGmail.nonosign != true)
 							{
 								td.setAttribute("style","color: orange;");
 								td.innerHTML = i18n.getString("GMailNoS");
 							}
 						}
-                        else if (resultTest.signresult ==RESULT_ERROR_UNKNOW) {
+                        else if (resultTest.signresult ==FireGPGResults.ERROR_UNKNOW) {
                             td.setAttribute("style","color: red;");
                             td.innerHTML = i18n.getString("GMailSErr"); //"La première signature de ce mail est incorrect !";
                         }
-                        else if (resultTest.signresult == RESULT_ERROR_BAD_SIGN) {
+                        else if (resultTest.signresult == FireGPGResults.ERROR_BAD_SIGN) {
                             td.setAttribute("style","color: red;");
                             td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("falseSign") + ")"; //"La première signature de ce mail est incorrect !";
                         }
-                        else if (resultTest.signresult == RESULT_ERROR_NO_KEY) {
+                        else if (resultTest.signresult == FireGPGResults.ERROR_NO_KEY) {
                             td.setAttribute("style","color: red;");
                             td.innerHTML = i18n.getString("GMailSErr") + " (" + i18n.getString("keyNotFound") + ")"; //"La première signature de ce mail est incorrect !";
                         }
@@ -575,7 +575,7 @@ var cGmail = {
 
 				var result = FireGPG.decrypt(false,contenuMail);
 
-                if (result.result == RESULT_SUCCESS)
+                if (result.result == FireGPGResults.SUCCESS)
 					FireGPGMisc.showText(result.decrypted,undefined,undefined,undefined,result.signresulttext);
 
 			}
@@ -592,7 +592,7 @@ var cGmail = {
 
                 var result = FireGPG.sign(false,FireGPGMisc.gmailWrapping(mailContent));
 
-                if (result.result == RESULT_SUCCESS) {
+                if (result.result == FireGPGResults.SUCCESS) {
 
 					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.signed);
 
@@ -617,7 +617,7 @@ var cGmail = {
 
                 var result = FireGPG.sign(false,FireGPGMisc.gmailWrapping(mailContent),null,null,true);
 
-                if (result.result == RESULT_SUCCESS) {
+                if (result.result == FireGPGResults.SUCCESS) {
 
 					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.signed);
 
@@ -645,7 +645,7 @@ var cGmail = {
 
 				var result = FireGPG.crypt(false,mailContent,undefined, false, false,whoWillGotTheMail);
 
-				if(result.result == RESULT_SUCCESS) {
+				if(result.result == FireGPGResults.SUCCESS) {
 
 					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.encrypted);
 
@@ -676,7 +676,7 @@ var cGmail = {
 
 				var result = FireGPG.cryptAndSign(false, mailContent, undefined ,false,undefined, undefined,true, whoWillGotTheMail);
 
-				if(result.result == RESULT_SUCCESS) {
+				if(result.result == FireGPGResults.SUCCESS) {
 
 					cGmail.setWriteMailContent(cGmail.lastDomToverify.document,info1,result.encrypted);
 

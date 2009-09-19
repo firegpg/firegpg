@@ -61,12 +61,12 @@ function updateKeyList() {
 
 	keylistcallpriv = FireGPG.listKeys(true,true);
 
-    if (keylistcall.result == RESULT_SUCCESS)
+    if (keylistcall.result == FireGPGResults.SUCCESS)
         gpg_keys = keylistcall.keylist;
     else
         gpg_keys = new Array();
 
-	if (keylistcallpriv.result == RESULT_SUCCESS)
+	if (keylistcallpriv.result == FireGPGResults.SUCCESS)
         gpg_keys_priv = keylistcallpriv.keylist;
     else
         gpg_keys_priv = new Array();
@@ -204,7 +204,7 @@ function exportfile() {
 	var result = FireGPG.kexport(true, [curentlySelected]);
 
 
-	if (result.result == RESULT_SUCCESS) {
+	if (result.result == FireGPGResults.SUCCESS) {
 
 		data = result.exported;
 

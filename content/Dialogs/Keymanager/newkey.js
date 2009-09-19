@@ -63,7 +63,7 @@ function generate() {
 
     var result = FireGPG.generateKey(false, name, email, comment, password1, password2, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype);
 
-    if (result.result == RESULT_SUCCESS)
+    if (result.result == FireGPGResults.SUCCESS)
         close();
 
 }

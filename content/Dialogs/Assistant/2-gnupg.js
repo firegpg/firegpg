@@ -95,7 +95,7 @@ function testGpg() {
 
     var result = FireGPG.selfTest(true);
 
-    if (result.result == RESULT_SUCCESS) {
+    if (result.result == FireGPGResults.SUCCESS) {
         gpgWorking = true;
 
         document.getElementById('gnuPG-working').style.display = '';

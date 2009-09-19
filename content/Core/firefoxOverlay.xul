@@ -47,7 +47,7 @@ under the terms of any one of the MPL, the GPL or the LGPL.
   <script src="overlay.js"/> <!---->
   <script src="misc.js"/> <!---->
   <script src="cgpgaccess.js"/> <!---->
-  <script src="cgpg.js"/>
+  <script src="cgpg.js"/> <!---->
   <script src="../Webmails/Gmail/cgmail.js"/>
   <script src="../Webmails/Gmail/cgmail2.js"/>
   <script src="../Webmails/autowrap.js"/>

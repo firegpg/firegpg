@@ -43,17 +43,17 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 /*
    Constants: FireGPG's actions results
 
-   RESULT_SUCCESS - The operation was successfull or the signature is correct
-   RESULT_CANCEL - The operation was canceled, for exemple the user click on cancel when his password is asked.
-   RESULT_ERROR_UNKNOW - An unkonw error happend
-   RESULT_ERROR_PASSWORD - The specified password was wrong.
-   RESULT_ERROR_NO_DATA - There wasen't any text to do the operation
-   RESULT_ERROR_ALREADY_SIGN - The text is already signed
-   RESULT_ERROR_BAD_SIGN - The signature was bad
-   RESULT_ERROR_NO_KEY - Impossible to verify the signature beacause there wasn't the public key in the keyring
-   RESULT_ERROR_ALREADY_CRYPT - The text is already encrypted
-   RESULT_ERROR_NO_GPG_DATA - The text is not a vlid PGP block
-   RESULT_ERROR_INIT_FAILLED - There is a problem with GPG, impossible to execute the executable.
+   FireGPGResults.SUCCESS - The operation was successfull or the signature is correct
+   FireGPGResults.CANCEL - The operation was canceled, for exemple the user click on cancel when his password is asked.
+   FireGPGResults.ERROR_UNKNOW - An unkonw error happend
+   FireGPGResults.ERROR_PASSWORD - The specified password was wrong.
+   FireGPGResults.ERROR_NO_DATA - There wasen't any text to do the operation
+   FireGPGResults.ERROR_ALREADY_SIGN - The text is already signed
+   FireGPGResults.ERROR_BAD_SIGN - The signature was bad
+   FireGPGResults.ERROR_NO_KEY - Impossible to verify the signature beacause there wasn't the public key in the keyring
+   FireGPGResults.ERROR_ALREADY_CRYPT - The text is already encrypted
+   FireGPGResults.ERROR_NO_GPG_DATA - The text is not a vlid PGP block
+   FireGPGResults.ERROR_INIT_FAILLED - There is a problem with GPG, impossible to execute the executable.
 
 */
 
@@ -246,7 +246,7 @@ var FireGPG = {
                 }
 
                 if (fileFrom == null | fileFrom == '') {
-                    returnObject.result = RESULT_CANCEL;
+                    returnObject.result = FireGPGResults.CANCEL;
                     return returnObject;
                 }
 
@@ -289,7 +289,7 @@ var FireGPG = {
                }
 
                 if (fileTo == null | fileTo == '') {
-                    returnObject.result = RESULT_CANCEL;
+                    returnObject.result = FireGPGResults.CANCEL;
                     return returnObject;
                 }
 
@@ -302,7 +302,7 @@ var FireGPG = {
         // GPG verification
         var gpgTest = FireGPG.selfTest(silent);
 
-		if(gpgTest.result != RESULT_SUCCESS) {
+		if(gpgTest.result != FireGPGResults.SUCCESS) {
             returnObject.result = gpgTest.result;
             return returnObject;
         }
@@ -326,7 +326,7 @@ var FireGPG = {
 
             returnObject.messagetext = i18n.getString("noData");
 
-            returnObject.result = RESULT_ERROR_NO_DATA;
+            returnObject.result = FireGPGResults.ERROR_NO_DATA;
 			return returnObject;
 		}
 
@@ -334,7 +334,7 @@ var FireGPG = {
 
         if (tryPosition != -1 && !fileMode) {
 			if (!silent && !confirm(i18n.getString("alreadySign"))) {
-                returnObject.result = RESULT_ERROR_ALREADY_SIGN;
+                returnObject.result = FireGPGResults.ERROR_ALREADY_SIGN;
                 return returnObject;
             }
 		}
@@ -345,7 +345,7 @@ var FireGPG = {
         }
 
         if(keyID == null) {
-            returnObject.result = RESULT_CANCEL;
+            returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -354,7 +354,7 @@ var FireGPG = {
         }
 
 		if(!FireGPG_isGpgAgentActivated() && password == null) {
-			returnObject.result = RESULT_CANCEL;
+			returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -373,7 +373,7 @@ var FireGPG = {
 
             FireGPGMisc.eraseSavedPassword();
 
-            returnObject.result = RESULT_ERROR_PASSWORD;
+            returnObject.result = FireGPGResults.ERROR_PASSWORD;
             return returnObject;
 		}
 
@@ -384,7 +384,7 @@ var FireGPG = {
 
             returnObject.messagetext = i18n.getString("signFailed" + "\n" + result.sdOut);
             FireGPGMisc.eraseSavedPassword();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
 		}
 
@@ -405,7 +405,7 @@ var FireGPG = {
 
         returnObject.signed = result.output;
 
-        returnObject.result = RESULT_SUCCESS;
+        returnObject.result = FireGPGResults.SUCCESS;
         return returnObject;
 
     },
@@ -445,7 +445,7 @@ var FireGPG = {
         // GPG verification
         var gpgTest = FireGPG.selfTest();
 
-		if(gpgTest.result != RESULT_SUCCESS) {
+		if(gpgTest.result != FireGPGResults.SUCCESS) {
             returnObject.result = gpgTest.result;
             return returnObject;
         }
@@ -611,7 +611,7 @@ var FireGPG = {
         for (var i = 0; i < returnObject.keylist.length; i++)
             returnObject.keylist[i].subKeys = returnObject.keylist[i].subKeys.sort(FireGPG_Sortage);
 
-        returnObject.result = RESULT_SUCCESS;
+        returnObject.result = FireGPGResults.SUCCESS;
 
 		return returnObject;
 	},
@@ -643,7 +643,7 @@ var FireGPG = {
         // GPG verification
         var gpgTest = FireGPG.selfTest(silent);
 
-		if(gpgTest.result != RESULT_SUCCESS) {
+		if(gpgTest.result != FireGPGResults.SUCCESS) {
             returnObject.result = gpgTest.result;
             return returnObject;
         }
@@ -657,7 +657,7 @@ var FireGPG = {
 
             returnObject.messagetext = i18n.getString("noData");
 
-            returnObject.result = RESULT_ERROR_NO_DATA;
+            returnObject.result = FireGPGResults.ERROR_NO_DATA;
 			return returnObject;
 		}
 
@@ -670,7 +670,7 @@ var FireGPG = {
                 alert(i18n.getString("noGPGData"));
 
             returnObject.messagetext = i18n.getString("noGPGData");
-            returnObject.result = RESULT_ERROR_NO_GPG_DATA;
+            returnObject.result = FireGPGResults.ERROR_NO_GPG_DATA;
             return returnObject;
 		}
 
@@ -687,7 +687,7 @@ var FireGPG = {
                 alert(i18n.getString("importFailed") + "\n" + result.sdOut);
 
             returnObject.messagetext = i18n.getString("importFailed")  + "\n" + result.sdOut;
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
 
         } else {
@@ -695,7 +695,7 @@ var FireGPG = {
                 alert(i18n.getString("importOk"));
 
             returnObject.messagetext = i18n.getString("importOk");
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
             return returnObject;
         }
 
@@ -724,7 +724,7 @@ var FireGPG = {
         // GPG verification
         var gpgTest = FireGPG.selfTest(silent);
 
-		if(gpgTest.result != RESULT_SUCCESS) {
+		if(gpgTest.result != FireGPGResults.SUCCESS) {
             returnObject.result = gpgTest.result;
             return returnObject;
         }
@@ -735,7 +735,7 @@ var FireGPG = {
 
 
 		if(keyID == null) {
-            returnObject.result = RESULT_CANCEL;
+            returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -751,14 +751,14 @@ var FireGPG = {
                 alert(i18n.getString("exportFailed"));
 
             returnObject.messagetext = i18n.getString("exportFailed");
-			returnObject.result = RESULT_ERROR_UNKNOW;
+			returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
 		}	else  {
                 if (!silent)
                     FireGPGMisc.showText(result.sdOut);
 
                 returnObject.exported = result.sdOut;
-                returnObject.result = RESULT_SUCCESS;
+                returnObject.result = FireGPGResults.SUCCESS;
                 return returnObject;
 		}
 	},
@@ -813,7 +813,7 @@ var FireGPG = {
                 }
 
                 if (fileFrom == null | fileFrom == '') {
-                    returnObject.result = RESULT_CANCEL;
+                    returnObject.result = FireGPGResults.CANCEL;
                     return returnObject;
                 }
 
@@ -847,7 +847,7 @@ var FireGPG = {
                 }
 
                 if (fileTo == null | fileTo == '') {
-                    returnObject.result = RESULT_CANCEL;
+                    returnObject.result = FireGPGResults.CANCEL;
                     return returnObject;
                 }
 
@@ -859,7 +859,7 @@ var FireGPG = {
         // GPG verification
         var gpgTest = FireGPG.selfTest(silent);
 
-		if(gpgTest.result != RESULT_SUCCESS) {
+		if(gpgTest.result != FireGPGResults.SUCCESS) {
             returnObject.result = gpgTest.result;
             return returnObject;
         }
@@ -878,7 +878,7 @@ var FireGPG = {
                 alert(i18n.getString("noData"));
 
             returnObject.messagetext = i18n.getString("noData");
-            returnObject.result = RESULT_ERROR_NO_DATA;
+            returnObject.result = FireGPGResults.ERROR_NO_DATA;
 			return returnObject;
 		}
 
@@ -887,7 +887,7 @@ var FireGPG = {
         if (tryPosition != -1 && !fileMode) {
 			if (!silent && !confirm(i18n.getString("alreadyCrypt"))) {
 
-                returnObject.result = RESULT_ERROR_ALREADY_CRYPT;
+                returnObject.result = FireGPGResults.ERROR_ALREADY_CRYPT;
                 return returnObject;
             }
 		}
@@ -898,7 +898,7 @@ var FireGPG = {
         }
 
         if(keyIdList == null && !symetrical) {
-            returnObject.result = RESULT_CANCEL;
+            returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -916,13 +916,13 @@ var FireGPG = {
                     if (!silent)
                         alert(i18n.getString("differentPassword"));
 
-                    returnObject.result = RESULT_CANCEL;
+                    returnObject.result = FireGPGResults.CANCEL;
                      return returnObject;
                 }
             }
 
             if(password == null || password == "") {
-                returnObject.result = RESULT_CANCEL;
+                returnObject.result = FireGPGResults.CANCEL;
                 return returnObject;
             }
 
@@ -959,7 +959,7 @@ var FireGPG = {
 
             FireGPGMisc.eraseSavedPassword();
             returnObject.messagetext = i18n.getString("cryptFailed") + "\n" + result.sdOut;
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
 		}
 
@@ -981,7 +981,7 @@ var FireGPG = {
 
         returnObject.encrypted = result.output;
 
-        returnObject.result = RESULT_SUCCESS;
+        returnObject.result = FireGPGResults.SUCCESS;
         return returnObject;
 
 
@@ -1038,7 +1038,7 @@ var FireGPG = {
                 }
 
                 if (fileFrom == null | fileFrom == '') {
-                    returnObject.result = RESULT_CANCEL;
+                    returnObject.result = FireGPGResults.CANCEL;
                     return returnObject;
                 }
 
@@ -1072,7 +1072,7 @@ var FireGPG = {
                 }
 
                 if (fileTo == null | fileTo == '') {
-                    returnObject.result = RESULT_CANCEL;
+                    returnObject.result = FireGPGResults.CANCEL;
                     return returnObject;
                 }
 
@@ -1084,7 +1084,7 @@ var FireGPG = {
         // GPG verification
         var gpgTest = FireGPG.selfTest(silent);
 
-		if(gpgTest.result != RESULT_SUCCESS) {
+		if(gpgTest.result != FireGPGResults.SUCCESS) {
             returnObject.result = gpgTest.result;
             return returnObject;
         }
@@ -1100,7 +1100,7 @@ var FireGPG = {
                 alert(i18n.getString("noData"));
 
             returnObject.messagetext = i18n.getString("noData");
-            returnObject.result = RESULT_ERROR_NO_DATA;
+            returnObject.result = FireGPGResults.ERROR_NO_DATA;
 			return returnObject;
 		}
 
@@ -1108,7 +1108,7 @@ var FireGPG = {
 
         if (tryPosition != -1 && !fileMode) {
 			if (!silent && !confirm(i18n.getString("alreadyCrypt"))) {
-                returnObject.result = RESULT_ERROR_ALREADY_CRYPT;
+                returnObject.result = FireGPGResults.ERROR_ALREADY_CRYPT;
                 return returnObject;
             }
 		}
@@ -1119,7 +1119,7 @@ var FireGPG = {
         }
 
         if(keyIdList == null) {
-            returnObject.result = RESULT_CANCEL;
+            returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -1129,7 +1129,7 @@ var FireGPG = {
         }
 
         if(keyID == null) {
-            returnObject.result = RESULT_CANCEL;
+            returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -1138,7 +1138,7 @@ var FireGPG = {
         }
 
 		if(!FireGPG_isGpgAgentActivated() &&password == null) {
-			returnObject.result = RESULT_CANCEL;
+			returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -1157,7 +1157,7 @@ var FireGPG = {
 
             FireGPGMisc.eraseSavedPassword();
             returnObject.messagetext = i18n.getString("cryptAndSignFailedPass");
-            returnObject.result = RESULT_ERROR_PASSWORD;
+            returnObject.result = FireGPGResults.ERROR_PASSWORD;
             return returnObject;
 		}
 
@@ -1168,7 +1168,7 @@ var FireGPG = {
 
             FireGPGMisc.eraseSavedPassword();
             returnObject.messagetext = i18n.getString("cryptAndSignFailed") + "\n" + result.sdOut;
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
 		}
 
@@ -1190,7 +1190,7 @@ var FireGPG = {
 
         returnObject.encrypted = result.output;
 
-        returnObject.result = RESULT_SUCCESS;
+        returnObject.result = FireGPGResults.SUCCESS;
         return returnObject;
 
 
@@ -1248,7 +1248,7 @@ var FireGPG = {
                 }
 
                 if (fileFrom == null | fileFrom == '') {
-                    returnObject.result = RESULT_CANCEL;
+                    returnObject.result = FireGPGResults.CANCEL;
                     return returnObject;
                 }
 
@@ -1281,7 +1281,7 @@ var FireGPG = {
                         }
 
                         if (fileSig == null | fileSig == '') {
-                            returnObject.result = RESULT_CANCEL;
+                            returnObject.result = FireGPGResults.CANCEL;
                             return returnObject;
                         }
 
@@ -1294,7 +1294,7 @@ var FireGPG = {
         // GPG verification
         var gpgTest = FireGPG.selfTest(silent);
 
-		if(gpgTest.result != RESULT_SUCCESS) {
+		if(gpgTest.result != FireGPGResults.SUCCESS) {
             returnObject.result = gpgTest.result;
             return returnObject;
         }
@@ -1310,7 +1310,7 @@ var FireGPG = {
                 alert(i18n.getString("noData"));
 
             returnObject.messagetext = i18n.getString("noData");
-            returnObject.result = RESULT_ERROR_NO_DATA;
+            returnObject.result = FireGPGResults.ERROR_NO_DATA;
 			return returnObject;
 		}
 
@@ -1331,7 +1331,7 @@ var FireGPG = {
                 alert(i18n.getString("noGPGData"));
 
             returnObject.messagetext = i18n.getString("noGPGData");
-            returnObject.result = RESULT_ERROR_NO_GPG_DATA;
+            returnObject.result = FireGPGResults.ERROR_NO_GPG_DATA;
 			return returnObject;
 		}
         else {
@@ -1345,11 +1345,11 @@ var FireGPG = {
 
                 result = results[rid];
 
-                if (result.result == RESULT_ERROR_UNKNOW)
+                if (result.result == FireGPGResults.ERROR_UNKNOW)
                     resulttxt += i18n.getString("verifFailed") + "\n";
-                else if (result.result == RESULT_ERROR_BAD_SIGN)
+                else if (result.result == FireGPGResults.ERROR_BAD_SIGN)
                         resulttxt += i18n.getString("verifFailed") + " (" + i18n.getString("falseSign") + ")\n";
-                else if (result.result == RESULT_ERROR_NO_KEY)
+                else if (result.result == FireGPGResults.ERROR_NO_KEY)
                         resulttxt +=  i18n.getString("verifFailed") + " (" + i18n.getString("keyNotFound") + ")\n";
                 else {
                     resulttxt +=  i18n.getString("verifSuccess") + " " + result.signresulttext + "\n";
@@ -1373,7 +1373,7 @@ var FireGPG = {
                 returnObject.notTrusted  = results[0].notTrusted;
 
 
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
 
             return returnObject;
 
@@ -1502,14 +1502,14 @@ var FireGPG = {
 		// If check failled
 		if(result.sdOut.indexOf("GOODSIG") == "-1") {
 
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
 
             if(result.sdOut.indexOf("REVKEYSIG") != -1) {
                 returnObject.revoked = true;
             }
 
             if(result.sdOut.indexOf("BADSIG") != -1) {
-                returnObject.result = RESULT_ERROR_BAD_SIGN;
+                returnObject.result = FireGPGResults.ERROR_BAD_SIGN;
 
                 testIfMore = result.sdOut.substring(result.sdOut.indexOf("BADSIG") + "BADSIG".length,result.sdOut.length);
 
@@ -1520,7 +1520,7 @@ var FireGPG = {
             }
 
             if(result.sdOut.indexOf("NO_PUBKEY") != -1) {
-                returnObject.result = RESULT_ERROR_NO_KEY;
+                returnObject.result = FireGPGResults.ERROR_NO_KEY;
 
                 testIfMore = result.sdOut.substring(result.sdOut.indexOf("NO_PUBKEY")  + "NO_PUBKEY".length,result.sdOut.length);
 
@@ -1579,7 +1579,7 @@ var FireGPG = {
 
             var i18n = document.getElementById("firegpg-strings");
 
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
 
             var infos2 = "";
             infos = infos.split(" ");
@@ -1655,7 +1655,7 @@ var FireGPG = {
                 }
 
                 if (fileFrom == null | fileFrom == '') {
-                    returnObject.result = RESULT_CANCEL;
+                    returnObject.result = FireGPGResults.CANCEL;
                     return returnObject;
                 }
 
@@ -1689,7 +1689,7 @@ var FireGPG = {
                 }
 
                 if (fileTo == null | fileTo == '') {
-                    returnObject.result = RESULT_CANCEL;
+                    returnObject.result = FireGPGResults.CANCEL;
                     return returnObject;
                 }
 
@@ -1701,7 +1701,7 @@ var FireGPG = {
         // GPG verification
         var gpgTest = FireGPG.selfTest(silent);
 
-		if(gpgTest.result != RESULT_SUCCESS) {
+		if(gpgTest.result != FireGPGResults.SUCCESS) {
             returnObject.result = gpgTest.result;
             return returnObject;
         }
@@ -1717,7 +1717,7 @@ var FireGPG = {
                 alert(i18n.getString("noData"));
 
             returnObject.messagetext = i18n.getString("noData");
-            returnObject.result = RESULT_ERROR_NO_DATA;
+            returnObject.result = FireGPGResults.ERROR_NO_DATA;
 			return returnObject;
 		}
 
@@ -1742,7 +1742,7 @@ var FireGPG = {
                 alert(i18n.getString("noGPGData"));
 
             returnObject.messagetext = i18n.getString("noGPGData");
-            returnObject.result = RESULT_ERROR_NO_GPG_DATA;
+            returnObject.result = FireGPGResults.ERROR_NO_GPG_DATA;
             return returnObject;
 		}
 
@@ -1757,7 +1757,7 @@ var FireGPG = {
         }
 
 		if(!FireGPG_isGpgAgentActivated() && password == null) {
-			returnObject.result = RESULT_CANCEL;
+			returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -1774,7 +1774,7 @@ var FireGPG = {
                 password = FireGPGMisc.getPrivateKeyPassword();
 
             if(password == null) {
-                returnObject.result = RESULT_CANCEL;
+                returnObject.result = FireGPGResults.CANCEL;
                 return returnObject;
             }
 
@@ -1793,7 +1793,7 @@ var FireGPG = {
 
             FireGPGMisc.eraseSavedPassword();
             returnObject.messagetext = i18n.getString("decryptFailedPassword");
-            returnObject.result = RESULT_ERROR_PASSWORD;
+            returnObject.result = FireGPGResults.ERROR_PASSWORD;
             return returnObject;
 		}
 
@@ -1803,7 +1803,7 @@ var FireGPG = {
                 alert(i18n.getString("decryptFailed") + "\n" + result.sdOut);
 
             returnObject.messagetext = i18n.getString("decryptFailed") + "\n" + result.sdOut;
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             FireGPGMisc.eraseSavedPassword();
             return returnObject;
 		}
@@ -1847,7 +1847,7 @@ var FireGPG = {
             for (var ii = 1; ii < infos.length; ++ii)
                 infos2 = infos2 + infos[ii] + " ";
 
-            returnObject.signresult = RESULT_SUCCESS;
+            returnObject.signresult = FireGPGResults.SUCCESS;
             returnObject.signresulttext = infos2 + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
             returnObject.signresultuser = infos2;
             returnObject.signresultdate = date.toLocaleString();
@@ -1873,7 +1873,7 @@ var FireGPG = {
 
         returnObject.decrypted = result.output;
 
-        returnObject.result = RESULT_SUCCESS;
+        returnObject.result = FireGPGResults.SUCCESS;
         return returnObject;
     } catch (e) { alert(e) }
 	},
@@ -1923,12 +1923,12 @@ var FireGPG = {
 
             var returnObject = new FireGPG_GPGReturn();
             returnObject.messagetext = i18n.getString("selfTestFailled");
-            returnObject.result = RESULT_ERROR_INIT_FAILLED;
+            returnObject.result = FireGPGResults.ERROR_INIT_FAILLED;
             return returnObject;
 		}
 
         var returnObject = new FireGPG_GPGReturn();
-        returnObject.result = RESULT_SUCCESS;
+        returnObject.result = FireGPGResults.SUCCESS;
         return returnObject;
 	},
 
@@ -2064,7 +2064,7 @@ var FireGPG = {
         for (var i = 0; i < returnObject.keylist.length; i++)
             returnObject.keylist[i].subKeys = returnObject.keylist[i].subKeys.sort(FireGPG_Sortage);
 
-        returnObject.result = RESULT_SUCCESS;
+        returnObject.result = FireGPGResults.SUCCESS;
 
 		return returnObject;
 
@@ -2076,7 +2076,7 @@ var FireGPG = {
 
             var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
             return returnObject;
 
         } else {
@@ -2086,7 +2086,7 @@ var FireGPG = {
                 getString('keyFetchError'));
 
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }*/
 
@@ -2155,7 +2155,7 @@ var FireGPG = {
 
             var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
             return returnObject;
 
         } else {
@@ -2165,7 +2165,7 @@ var FireGPG = {
                 getString('keyFetchError') + '\n' + result.sdOut + '\n' + result.sdErr);
 
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
 
@@ -2229,7 +2229,7 @@ var FireGPG = {
 
             var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
             return returnObject;
 
         } else {
@@ -2239,7 +2239,7 @@ var FireGPG = {
 
 
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
 
@@ -2300,12 +2300,12 @@ var FireGPG = {
 
             var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
             return returnObject;
 
         } else {
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
 
@@ -2341,7 +2341,7 @@ var FireGPG = {
 
             var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
             return returnObject;
 
         } else {
@@ -2352,7 +2352,7 @@ var FireGPG = {
 
 
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
 
@@ -2385,7 +2385,7 @@ var FireGPG = {
 
             if(oldpass == null) {
                 var returnObject = new FireGPG_GPGReturn();
-                returnObject.result = RESULT_CANCEL;
+                returnObject.result = FireGPGResults.CANCEL;
                 return returnObject;
             }
 
@@ -2398,7 +2398,7 @@ var FireGPG = {
 
             if(newpass == null) {
                 var returnObject = new FireGPG_GPGReturn();
-                returnObject.result = RESULT_CANCEL;
+                returnObject.result = FireGPGResults.CANCEL;
                 return returnObject;
             }
 
@@ -2408,7 +2408,7 @@ var FireGPG = {
                     alert(i18n.getString("changeFailledPasswordDiff"));
 
                 var returnObject = new FireGPG_GPGReturn();
-                returnObject.result = RESULT_CANCEL;
+                returnObject.result = FireGPGResults.CANCEL;
                 return returnObject;
             }
         }
@@ -2426,7 +2426,7 @@ var FireGPG = {
 
             FireGPGMisc.eraseSavedPassword();
 
-            returnObject.result = RESULT_ERROR_PASSWORD;
+            returnObject.result = FireGPGResults.ERROR_PASSWORD;
             return returnObject;
 		}
 
@@ -2437,7 +2437,7 @@ var FireGPG = {
 
         var returnObject = new FireGPG_GPGReturn();
         returnObject.sdOut = result.sdOut;
-        returnObject.result = RESULT_SUCCESS;
+        returnObject.result = FireGPGResults.SUCCESS;
         return returnObject;
 
 
@@ -2475,7 +2475,7 @@ var FireGPG = {
                 alert(i18n.getString("need-name"));
 
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
 
@@ -2483,7 +2483,7 @@ var FireGPG = {
             if(!silent)
                 alert(i18n.getString("need-email"));
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
 
@@ -2491,7 +2491,7 @@ var FireGPG = {
             if(!silent)
                 alert(i18n.getString("need-password"));
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
 
@@ -2499,7 +2499,7 @@ var FireGPG = {
             if(!silent)
                 alert(i18n.getString("changeFailledPasswordDiff"));
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
 
@@ -2509,7 +2509,7 @@ var FireGPG = {
                 if(!silent)
                     alert(i18n.getString("need-expire-date"));
                 var returnObject = new FireGPG_GPGReturn();
-                returnObject.result = RESULT_ERROR_UNKNOW;
+                returnObject.result = FireGPGResults.ERROR_UNKNOW;
                 return returnObject;
 
             }
@@ -2525,7 +2525,7 @@ var FireGPG = {
 
             var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
             return returnObject;
 
         } else {
@@ -2534,7 +2534,7 @@ var FireGPG = {
                 alert(document.getElementById('firegpg-strings').getString('unknow-error'));
 
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
 
@@ -2567,7 +2567,7 @@ var FireGPG = {
 
         var returnObject = new FireGPG_GPGReturn();
         returnObject.sdOut = result.sdOut;
-        returnObject.result = RESULT_SUCCESS;
+        returnObject.result = FireGPGResults.SUCCESS;
         return returnObject;
 
 	},
@@ -2594,7 +2594,7 @@ var FireGPG = {
         }
 
 		if(password == null) {
-			returnObject.result = RESULT_CANCEL;
+			returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -2608,7 +2608,7 @@ var FireGPG = {
 
             var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
             return returnObject;
 
         } else {
@@ -2619,7 +2619,7 @@ var FireGPG = {
             FireGPGMisc.eraseSavedPassword();
 
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
 
@@ -2654,7 +2654,7 @@ var FireGPG = {
             if (!silent)
                 alert(document.getElementById('firegpg-strings').getString('nameTooShort'));
 
-			returnObject.result = RESULT_CANCEL;
+			returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -2669,7 +2669,7 @@ var FireGPG = {
             if (!silent)
                 alert(document.getElementById('firegpg-strings').getString('wrongEmail'));
 
-			returnObject.result = RESULT_CANCEL;
+			returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -2685,7 +2685,7 @@ var FireGPG = {
         }
 
 		if(password == null) {
-			returnObject.result = RESULT_CANCEL;
+			returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -2698,7 +2698,7 @@ var FireGPG = {
 
             var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
             return returnObject;
 
         } else {
@@ -2709,7 +2709,7 @@ var FireGPG = {
             FireGPGMisc.eraseSavedPassword();
 
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
     },
@@ -2736,7 +2736,7 @@ var FireGPG = {
         }
 
 		if(password == null) {
-			returnObject.result = RESULT_CANCEL;
+			returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -2750,7 +2750,7 @@ var FireGPG = {
 
             var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
             return returnObject;
 
         } else {
@@ -2761,7 +2761,7 @@ var FireGPG = {
             FireGPGMisc.eraseSavedPassword();
 
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
 
@@ -2795,7 +2795,7 @@ var FireGPG = {
 
         var returnObject = new FireGPG_GPGReturn();
         returnObject.sdOut = result.sdOut;
-        returnObject.result = RESULT_SUCCESS;
+        returnObject.result = FireGPGResults.SUCCESS;
         return returnObject;
 
 
@@ -2827,7 +2827,7 @@ var FireGPG = {
         }
 
         if(keyForSign == null) {
-            returnObject.result = RESULT_CANCEL;
+            returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -2836,7 +2836,7 @@ var FireGPG = {
         }
 
 		if(password == null) {
-			returnObject.result = RESULT_CANCEL;
+			returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -2851,7 +2851,7 @@ var FireGPG = {
                 alert(document.getElementById('firegpg-strings').getString('erroralreadysigned'));
 
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
 
 
@@ -2863,7 +2863,7 @@ var FireGPG = {
 
             var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
-            returnObject.result = RESULT_SUCCESS;
+            returnObject.result = FireGPGResults.SUCCESS;
             return returnObject;
 
         } else {
@@ -2874,7 +2874,7 @@ var FireGPG = {
             FireGPGMisc.eraseSavedPassword();
 
             var returnObject = new FireGPG_GPGReturn();
-            returnObject.result = RESULT_ERROR_UNKNOW;
+            returnObject.result = FireGPGResults.ERROR_UNKNOW;
             return returnObject;
         }
 
@@ -2901,12 +2901,12 @@ var FireGPG = {
 
         //This values must be given ...
         if(hash == null || hash == undefined) {
-			returnObject.result = RESULT_CANCEL;
+			returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
         if(file == null || file == undefined) {
-			returnObject.result = RESULT_CANCEL;
+			returnObject.result = FireGPGResults.CANCEL;
             return returnObject;
         }
 
@@ -2945,7 +2945,7 @@ var FireGPG = {
         if (!silent)
             alert(tmpHash);
 
-        returnObject.result = RESULT_SUCCESS;
+        returnObject.result = FireGPGResults.SUCCESS;
         returnObject.sdOut = result.sdOut;
         returnObject.output = tmpHash;
 

@@ -76,7 +76,7 @@ function textPrivateKey() {
 
     keylistcall = FireGPG.listKeys(true);
 
-    if (keylistcall.result == RESULT_SUCCESS)
+    if (keylistcall.result == FireGPGResults.SUCCESS)
         gpg_keys = keylistcall.keylist;
     else
         gpg_keys = new Array();
