@@ -1107,7 +1107,7 @@ var FireGPGMisc = {
                 }
             }
 
-            text = EnigConvertToUnicode(text, "utf-8");
+            text = FireGPGMisc.EnigConvertToUnicode(text, "utf-8");
 
        }  catch (ex) {  fireGPGDebug(ex,'misc.EnigConvertGpgToUnicode',true); }
 

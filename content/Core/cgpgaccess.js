@@ -412,7 +412,7 @@ var GPGAccess = {
             sdtIn = "";
 
 
-		sdtIn = EnigConvertFromUnicode(sdtIn, charset);
+		sdtIn = FireGPGMisc.EnigConvertFromUnicode(sdtIn, charset);
 
         var outStrObj = new Object();
         var outLenObj = new Object();
