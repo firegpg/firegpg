@@ -536,7 +536,7 @@ var FireGPGGPGAccess = {
             fileTo - _Optional_. The file where to put the signature
 
         Return:
-            A <GPGReturn> structure.
+            A <FireGPG_GPGReturn> structure.
 
 
     */
@@ -593,7 +593,7 @@ var FireGPGGPGAccess = {
 
         }
 
-		var result2 = new GPGReturn();
+		var result2 = new FireGPG_GPGReturn();
 		result2.output = result.out;
 		result2.sdOut = result.err;
 
@@ -612,7 +612,7 @@ var FireGPGGPGAccess = {
             fileSig - _Optional_. The file with the signature
 
         Return:
-            A <GPGReturn> structure.
+            A <FireGPG_GPGReturn> structure.
 
     */
     verify: function(text, charset, fileMode, fileFrom, fileSig, fileDataForSign, fromDTA) {
@@ -624,7 +624,7 @@ var FireGPGGPGAccess = {
 
 		result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument(undefined, fromDTA) + " --verify" + (fileMode ? ' ' + fileSig.replace(/\s/g, '{$SPACE}') + ' ' + fileFrom.replace(/\s/g, '{$SPACE}') : ''), text, charset);
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 		// We return result
 		return result2;
@@ -638,7 +638,7 @@ var FireGPGGPGAccess = {
             onlyPrivate - Boolean, set to true if only a private key list is wanted.
 
         Return:
-            A <GPGReturn> structure.
+            A <FireGPG_GPGReturn> structure.
 
     */
     listkey: function(onlyPrivate) {
@@ -649,7 +649,7 @@ var FireGPGGPGAccess = {
 
 		result = this.runGnupg(this.getBaseArugments() + " --fixed-list-mode --fingerprint --with-colons " + mode,"","ISO-8859-1");
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.out;
 
         // We return result
@@ -661,14 +661,14 @@ var FireGPGGPGAccess = {
         List  signs.
 
         Return:
-            A <GPGReturn> structure.
+            A <FireGPG_GPGReturn> structure.
 
     */
     listsigns: function(key) {
 
 		result = this.runGnupg(this.getBaseArugments() + " --with-colons --list-sigs " + key,"","ISO-8859-1");
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.out;
 
         // We return result
@@ -689,7 +689,7 @@ var FireGPGGPGAccess = {
             fileTo - _Optional_. The file where to put the encrypted content
 
         Return:
-            A <GPGReturn> structure.
+            A <FireGPG_GPGReturn> structure.
 
 
     */
@@ -732,7 +732,7 @@ var FireGPGGPGAccess = {
 			prikey_id = null;
 
 		// The crypted text
-		var result2 = new GPGReturn();
+		var result2 = new FireGPG_GPGReturn();
 		result2.output = result.out;
 		result2.sdOut = result.err;
 		result2.keylist = keyIdList;
@@ -756,7 +756,7 @@ var FireGPGGPGAccess = {
             fileTo -  The file where to put the encrypted file
 
         Return:
-            A <GPGReturn> structure.
+            A <FireGPG_GPGReturn> structure.
 
 
     */
@@ -781,7 +781,7 @@ var FireGPGGPGAccess = {
         password + "\n" + (!fileMode ? text : ''));
 
 
-		var result2 = new GPGReturn();
+		var result2 = new FireGPG_GPGReturn();
 		result2.output = result.out;
 		result2.sdOut = result.err;
 
@@ -804,7 +804,7 @@ var FireGPGGPGAccess = {
             fileTo - The file where to put the encrypted & signed file
 
         Return:
-            A <GPGReturn> structure.
+            A <FireGPG_GPGReturn> structure.
 
     */
     cryptAndSign: function(text, keyIdList, fromGpgAuth, password, keyID, binFileMode, fileMode, fileFrom, fileTo) {
@@ -859,7 +859,7 @@ var FireGPGGPGAccess = {
         }
 
 		// The crypted text
-		var result2 = new GPGReturn();
+		var result2 = new FireGPG_GPGReturn();
 		result2.output = result.out;
 		result2.sdOut = result.err;
 
@@ -879,7 +879,7 @@ var FireGPGGPGAccess = {
             fileTo - The file where to put the decrypted file
 
         Return:
-            A <GPGReturn> structure.
+            A <FireGPG_GPGReturn> structure.
 
     */
     decrypt: function(text,password,binFileMode, fileMode, fileFrom, fileTo) {
@@ -913,7 +913,7 @@ var FireGPGGPGAccess = {
 
 
 		// The decrypted text (maybe)
-		var result2 = new GPGReturn();
+		var result2 = new FireGPG_GPGReturn();
 		result2.output = result.out;
 		result2.sdOut = result.err;
 
@@ -948,14 +948,14 @@ var FireGPGGPGAccess = {
             text - A text with the GnuPG data to import.
 
         Return:
-            A <GPGReturn> structure.
+            A <FireGPG_GPGReturn> structure.
 
     */
     kimport: function(text) {
 
 		result = this.runGnupg(this.getBaseArugments()  + " --import " , text);
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 
 		// We return result
@@ -970,13 +970,13 @@ var FireGPGGPGAccess = {
             key - The key id to export.
 
         Return:
-            A <GPGReturn> structure.
+            A <FireGPG_GPGReturn> structure.
 
     */
     kexport: function(key) {
 		result = this.runGnupg(this.getBaseArugments()  + " --export " + key);
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.out;
 
 		// We return result
@@ -991,13 +991,13 @@ var FireGPGGPGAccess = {
         server - The key server to use
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     refrechFromServer: function(server) {
 
         result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server + this.getProxyInformation() + " --refresh-keys");
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 
 		// We return result
@@ -1014,13 +1014,13 @@ var FireGPGGPGAccess = {
         server - The key server to use
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     sendKeyToServer: function(key, server) {
 
         result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server +  this.getProxyInformation() + " --send-keys "+ key);
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 
 		// We return result
@@ -1037,13 +1037,13 @@ var FireGPGGPGAccess = {
         server - The key server to use
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     retriveKeyFromServer: function(key, server) {
 
         result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server +  this.getProxyInformation() + " --recv-keys "+ key);
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
         result2.sdErr = result.out;
 
@@ -1061,13 +1061,13 @@ var FireGPGGPGAccess = {
         server - The key server to use
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
 	searchKeyInServer: function(search, server) {
 
         result = this.runGnupg(this.getBaseArugments()  + " --keyserver " + server +  this.getProxyInformation() + " --with-colons --search-keys "+ search);
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.out;
 
 		// We return result
@@ -1084,13 +1084,13 @@ var FireGPGGPGAccess = {
         trustLevel - The new level of trusting
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     changeTrust: function(key, trustLevel){
 
         result = this.runGnupg(this.getBaseArugments()  + " --command-fd 0 --edit-key " + key + " trust", trustLevel + "\n");
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 
 
@@ -1109,7 +1109,7 @@ var FireGPGGPGAccess = {
         newpass - The new password
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     changePassword: function(key, oldpass, newpass){
 
@@ -1120,7 +1120,7 @@ var FireGPGGPGAccess = {
             result = this.runGnupg(this.getBaseArugments()  + " --no-batch --command-fd 0  --edit-key " + key + " passwd" ,   oldpass + "\n" + newpass + "\nsave\ny\n");
         }
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 
 
@@ -1146,7 +1146,7 @@ var FireGPGGPGAccess = {
         keytype - The type of the key
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     genereateKey: function(name, email, comment, password, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype){
 
@@ -1190,7 +1190,7 @@ var FireGPGGPGAccess = {
 
         result = this.runGnupg(this.getBaseArugments()  + " --gen-key", data + "\n");
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 
 
@@ -1207,13 +1207,13 @@ var FireGPGGPGAccess = {
         key - The key to delete
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     deleteKey: function(key){
 
         result = this.runGnupg(this.getBaseArugments()  + " --delete-secret-and-public-key " + key);
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 
 
@@ -1232,7 +1232,7 @@ var FireGPGGPGAccess = {
         password - The password of the key
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     delUid: function(key, uid) {
 
@@ -1241,7 +1241,7 @@ var FireGPGGPGAccess = {
 
         result = this.runGnupg(this.getBaseArugments()  + " --command-fd 0 --edit-key " + key + "", "uid " + uid + "\ndeluid\ny\nsave\ny");
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 
 
@@ -1262,7 +1262,7 @@ var FireGPGGPGAccess = {
         raison - The raison of the revocation
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     revokeUid: function(key, uid, password, raison ) {
 
@@ -1272,7 +1272,7 @@ var FireGPGGPGAccess = {
 
         result = this.runGnupg(this.getBaseArugments()  + " --no-batch --command-fd 0 --edit-key " + key + "", "uid " + uid + "\nrevuid\ny\n" + raison + "\n\ny\n" + password + "\nsave\ny");
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 
 
@@ -1294,14 +1294,14 @@ var FireGPGGPGAccess = {
         password - The password of the key
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     addUid: function(key, name, email, comment, password) {
 
 
         result = this.runGnupg(this.getBaseArugments()  + " --no-batch --command-fd 0 --edit-key " + key + " adduid", name + "\n" + email + "\n" +  comment + "\n" + password + "\nsave\ny");
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 
 
@@ -1320,13 +1320,13 @@ var FireGPGGPGAccess = {
         password - The password of the key (used to sign)
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     signKey: function(key, keyForSign, password) {
 
         result = this.runGnupg(this.getBaseArugments()  + " --no-batch --default-key " + keyForSign + " --command-fd 0 --sign-key " + key , "y\n" + password + "\n");
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 
 
@@ -1354,13 +1354,13 @@ var FireGPGGPGAccess = {
         password - The password of the key
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     revokeKey: function (key, password, raison) {
 
         result = this.runGnupg(this.getBaseArugments()  + " --no-batch --command-fd 0 --edit-key " + key + " revkey", "y\n" + raison + "\n\ny\n" + password + "\nsave\ny");
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.err;
 
 
@@ -1379,13 +1379,13 @@ var FireGPGGPGAccess = {
         file - The file
 
       Return:
-        A <GPGReturn> structure.
+        A <FireGPG_GPGReturn> structure.
     */
     computeHash: function(hash,file) {
 
          result = this.runGnupg(this.getBaseArugments()  + " --print-md " + hash + " " + file.replace(/\s/g, '{$SPACE}'), '');
 
-        var result2 = new GPGReturn();
+        var result2 = new FireGPG_GPGReturn();
 		result2.sdOut = result.out;
 
 
@@ -1403,7 +1403,7 @@ var FireGPGGPGAccess = {
             option - The option to test.
 
         Return:
-            A <GPGReturn> structure.
+            A <FireGPG_GPGReturn> structure.
 
     */
     runATest: function(option) {

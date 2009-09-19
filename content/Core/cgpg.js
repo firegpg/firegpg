@@ -70,7 +70,7 @@ const RESULT_ERROR_INIT_FAILLED = 8;
 
 
 /*
-    Function: GPGReturn
+    Function: FireGPG_GPGReturn
 
     This function return a basic object, with variable to return informations about a FireGPG's operation
 
@@ -84,7 +84,7 @@ const RESULT_ERROR_INIT_FAILLED = 8;
         encrypted - The encrypted data with GnuPG
         decrypted - The decrypted data with GnuPG
         signed - The signed data with GnuPG
-        signsresults - An array with <GPGReturn> data for each sign's result in the data.
+        signsresults - An array with <FireGPG_GPGReturn> data for each sign's result in the data.
         signresult - The sign result for the first sign (or the current sign if we're in the signsresults array)
         signresulttext - The message for the result of the test on the first sign (or the current sign if we're in the signsresults array)
         signresultuser - The username of the key of the first sign (or the current sign if we're in the signsresults array)
@@ -95,7 +95,7 @@ const RESULT_ERROR_INIT_FAILLED = 8;
 
 */
 
-function GPGReturn() {
+function FireGPG_GPGReturn() {
 
     this.result = null;
     this.ouput = null;
@@ -191,7 +191,7 @@ var FireGPG = {
         Function: sign
         Function to sign a text.
 
-        Return a <GPGReturn> object.
+        Return a <FireGPG_GPGReturn> object.
 
         Parameters:
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
@@ -208,7 +208,7 @@ var FireGPG = {
     */
     sign: function(silent, text, keyID, password, notClear, autoSelectPrivate, wrap, fileMode, fileFrom, fileTo) {
 
-        var returnObject = new GPGReturn();
+        var returnObject = new FireGPG_GPGReturn();
 
         if (silent == undefined)
             silent = false;
@@ -425,7 +425,7 @@ var FireGPG = {
         Function: listKeys
         Who return a list of key in the keyring
 
-        Return a <GPGReturn> object.
+        Return a <FireGPG_GPGReturn> object.
 
         Parameters:
             onlyPrivate - _Optional_, default to false. Set this to true to get only the private keys.
@@ -435,7 +435,7 @@ var FireGPG = {
     */
 	listKeys: function(onlyPrivate, allKeys, onlySignOfThisKey) {
 
-        var returnObject = new GPGReturn();
+        var returnObject = new FireGPG_GPGReturn();
 
         this.initGPGACCESS();
         var i18n = document.getElementById("firegpg-strings");
@@ -618,7 +618,7 @@ var FireGPG = {
         Function: kimport
         Function to import a sign.
 
-        Return a <GPGReturn> object.
+        Return a <FireGPG_GPGReturn> object.
 
         Parameters:
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
@@ -627,7 +627,7 @@ var FireGPG = {
     */
 	kimport: function(silent, text, passSecurity) {
 
-        var returnObject = new GPGReturn();
+        var returnObject = new FireGPG_GPGReturn();
 
         if (silent == undefined)
             silent = false;
@@ -704,14 +704,14 @@ var FireGPG = {
         Function: kexport
         Function to export a key
 
-        Return a <GPGReturn> object.
+        Return a <FireGPG_GPGReturn> object.
 
         Parameters:
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
             keyID - _Optional_, if not set use ask the user. The public keyID to export
     */
 	kexport: function(silent, keyID) {
-		var returnObject = new GPGReturn();
+		var returnObject = new FireGPG_GPGReturn();
 
         if (silent == undefined)
             silent = false;
@@ -765,7 +765,7 @@ var FireGPG = {
         Function: crypt
         Function to encrypt a text.
 
-        Return a <GPGReturn> object.
+        Return a <FireGPG_GPGReturn> object.
 
         Parameters:
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
@@ -782,7 +782,7 @@ var FireGPG = {
     */
 	crypt: function(silent, text, keyIdList, fromGpgAuth, binFileMode, autoSelect, symetrical, password, fileMode, fileFrom, fileTo) {
 
-        var returnObject = new GPGReturn();
+        var returnObject = new FireGPG_GPGReturn();
 
         if (silent == undefined)
             silent = false;
@@ -989,7 +989,7 @@ var FireGPG = {
         Function: cryptAndSign
         Function to encrypt and sign a text.
 
-        Return a <GPGReturn> object.
+        Return a <FireGPG_GPGReturn> object.
 
         Parameters:
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
@@ -1007,7 +1007,7 @@ var FireGPG = {
     */
     cryptAndSign: function(silent, text, keyIdList, fromGpgAuth, password, keyID, binFileMode, autoSelect, autoSelectPrivate, fileMode, fileFrom, fileTo) {
 
-        var returnObject = new GPGReturn();
+        var returnObject = new FireGPG_GPGReturn();
 
         if (silent == undefined)
             silent = false;
@@ -1198,7 +1198,7 @@ var FireGPG = {
         Function: verify
         Function to verify signs in a text.
 
-        Return a <GPGReturn> object.
+        Return a <FireGPG_GPGReturn> object.
 
         Parameters:
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
@@ -1213,7 +1213,7 @@ var FireGPG = {
     */
 	verify: function(silent, text, charset, signData, fileMode, fileFrom, fileSig, fileDataForSign, fromDTA) {
 
-        var returnObject = new GPGReturn();
+        var returnObject = new FireGPG_GPGReturn();
 
         if (silent == undefined)
             silent = false;
@@ -1382,7 +1382,7 @@ var FireGPG = {
         Function: layers
         Find each layer of a test and verify it (resurcise function)
 
-        Return an array of resultss <GPGReturn> object.
+        Return an array of resultss <FireGPG_GPGReturn> object.
 
         Parameters:
             text - The text to verify
@@ -1460,7 +1460,7 @@ var FireGPG = {
         Function: layerverify
         Internal, verify a part of a test.
 
-        Return a <GPGReturn> object.
+        Return a <FireGPG_GPGReturn> object.
 
         Parameters:
             text - The text to verify
@@ -1476,7 +1476,7 @@ var FireGPG = {
             fromDTA - _Optional_. True if called form DTA
     */
     layerverify: function(text,layer,division, charset,dontask, fileMode, fileFrom, fileSig, nextText, fileDataForSign, fromDTA) {
-        var returnObject = new GPGReturn();
+        var returnObject = new FireGPG_GPGReturn();
 
         if (dontask == undefined)
             dontask = false;
@@ -1489,7 +1489,7 @@ var FireGPG = {
             if ( charset && charset.toLowerCase() == "iso-8859-1")
                 result.sdOut = EnigConvertToUnicode(result.sdOut, 'UTF-8');
         }         else {
-            result = new GPGReturn();
+            result = new FireGPG_GPGReturn();
             result.sdOut = nextText;
 
         }
@@ -1605,7 +1605,7 @@ var FireGPG = {
         Function: decrypt
         Function to decrypt a text.
 
-        Return a <GPGReturn> object.
+        Return a <FireGPG_GPGReturn> object.
 
         Parameters:
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
@@ -1618,7 +1618,7 @@ var FireGPG = {
             api - _Optional_ True if it's a call form the api
     */
 	decrypt: function(silent, text, password, binFileEncoded, fileMode, fileFrom, fileTo, api) { try {
-		var returnObject = new GPGReturn();
+		var returnObject = new FireGPG_GPGReturn();
 
         if (silent == undefined)
             silent = false;
@@ -1901,7 +1901,7 @@ var FireGPG = {
         Function: selfTest
         This if are able to access to a GnuPG executable
 
-        Return a <GPGReturn> object.
+        Return a <FireGPG_GPGReturn> object.
 
         Parameters:
             slient - _Optional_, default to false. Set this to true to disable any alert for the user
@@ -1919,13 +1919,13 @@ var FireGPG = {
 			if (!silent)
                 alert(i18n.getString("selfTestFailled"));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.messagetext = i18n.getString("selfTestFailled");
             returnObject.result = RESULT_ERROR_INIT_FAILLED;
             return returnObject;
 		}
 
-        var returnObject = new GPGReturn();
+        var returnObject = new FireGPG_GPGReturn();
         returnObject.result = RESULT_SUCCESS;
         return returnObject;
 	},
@@ -1940,7 +1940,7 @@ var FireGPG = {
     */
     searchKeyInServer: function(search, silent) {
 
-		var returnObject = new GPGReturn();
+		var returnObject = new FireGPG_GPGReturn();
 
         if (silent == undefined)
             silent = false;
@@ -2072,7 +2072,7 @@ var FireGPG = {
                 alert(document.getElementById('firegpg-strings').
                 getString('keyRecived'));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
             returnObject.result = RESULT_SUCCESS;
             return returnObject;
@@ -2083,7 +2083,7 @@ var FireGPG = {
                 alert(document.getElementById('firegpg-strings').
                 getString('keyFetchError'));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }*/
@@ -2151,7 +2151,7 @@ var FireGPG = {
                 alert(document.getElementById('firegpg-strings').
                 getString('keyRecived'));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
             returnObject.result = RESULT_SUCCESS;
             return returnObject;
@@ -2162,7 +2162,7 @@ var FireGPG = {
                 alert(document.getElementById('firegpg-strings').
                 getString('keyFetchError') + '\n' + result.sdOut + '\n' + result.sdErr);
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2225,7 +2225,7 @@ var FireGPG = {
             if (!silent)
                 alert(result.sdOut);
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
             returnObject.result = RESULT_SUCCESS;
             return returnObject;
@@ -2236,7 +2236,7 @@ var FireGPG = {
                 alert(document.getElementById('firegpg-strings').getString('unknow-error'));
 
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2296,13 +2296,13 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('keySync'));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
             returnObject.result = RESULT_SUCCESS;
             return returnObject;
 
         } else {
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2337,7 +2337,7 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('trustChanged'));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
             returnObject.result = RESULT_SUCCESS;
             return returnObject;
@@ -2349,7 +2349,7 @@ var FireGPG = {
 
 
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2382,7 +2382,7 @@ var FireGPG = {
             oldpass = FireGPGMisc.getPrivateKeyPassword(false, false, i18n.getString("oldPassword"), true);
 
             if(oldpass == null) {
-                var returnObject = new GPGReturn();
+                var returnObject = new FireGPG_GPGReturn();
                 returnObject.result = RESULT_CANCEL;
                 return returnObject;
             }
@@ -2395,7 +2395,7 @@ var FireGPG = {
             newpass2 = FireGPGMisc.getPrivateKeyPassword(false, false, i18n.getString("newPassword2"), false);
 
             if(newpass == null) {
-                var returnObject = new GPGReturn();
+                var returnObject = new FireGPG_GPGReturn();
                 returnObject.result = RESULT_CANCEL;
                 return returnObject;
             }
@@ -2405,7 +2405,7 @@ var FireGPG = {
                  if (!silent)
                     alert(i18n.getString("changeFailledPasswordDiff"));
 
-                var returnObject = new GPGReturn();
+                var returnObject = new FireGPG_GPGReturn();
                 returnObject.result = RESULT_CANCEL;
                 return returnObject;
             }
@@ -2433,7 +2433,7 @@ var FireGPG = {
         if(!silent)
             alert(document.getElementById('firegpg-strings').getString('passChanged'));
 
-        var returnObject = new GPGReturn();
+        var returnObject = new FireGPG_GPGReturn();
         returnObject.sdOut = result.sdOut;
         returnObject.result = RESULT_SUCCESS;
         return returnObject;
@@ -2472,7 +2472,7 @@ var FireGPG = {
             if(!silent)
                 alert(i18n.getString("need-name"));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2480,7 +2480,7 @@ var FireGPG = {
         if (email == "") {
             if(!silent)
                 alert(i18n.getString("need-email"));
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2488,7 +2488,7 @@ var FireGPG = {
         if (password1 == "") {
             if(!silent)
                 alert(i18n.getString("need-password"));
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2496,7 +2496,7 @@ var FireGPG = {
         if (password1 != password2) {
             if(!silent)
                 alert(i18n.getString("changeFailledPasswordDiff"));
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2506,7 +2506,7 @@ var FireGPG = {
             if (keyexpirevalue <= 0) {
                 if(!silent)
                     alert(i18n.getString("need-expire-date"));
-                var returnObject = new GPGReturn();
+                var returnObject = new FireGPG_GPGReturn();
                 returnObject.result = RESULT_ERROR_UNKNOW;
                 return returnObject;
 
@@ -2521,7 +2521,7 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('keygenerated'));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
             returnObject.result = RESULT_SUCCESS;
             return returnObject;
@@ -2531,7 +2531,7 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('unknow-error'));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2563,7 +2563,7 @@ var FireGPG = {
         if(!silent)
             alert(document.getElementById('firegpg-strings').getString('key-deleted'));
 
-        var returnObject = new GPGReturn();
+        var returnObject = new FireGPG_GPGReturn();
         returnObject.sdOut = result.sdOut;
         returnObject.result = RESULT_SUCCESS;
         return returnObject;
@@ -2604,7 +2604,7 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('keyrevoked'));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
             returnObject.result = RESULT_SUCCESS;
             return returnObject;
@@ -2616,7 +2616,7 @@ var FireGPG = {
 
             FireGPGMisc.eraseSavedPassword();
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2694,7 +2694,7 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('uidadded'));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
             returnObject.result = RESULT_SUCCESS;
             return returnObject;
@@ -2706,7 +2706,7 @@ var FireGPG = {
 
             FireGPGMisc.eraseSavedPassword();
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2746,7 +2746,7 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('uidrevoked'));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
             returnObject.result = RESULT_SUCCESS;
             return returnObject;
@@ -2758,7 +2758,7 @@ var FireGPG = {
 
             FireGPGMisc.eraseSavedPassword();
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2791,7 +2791,7 @@ var FireGPG = {
         if(!silent)
             alert(document.getElementById('firegpg-strings').getString('uiddeleted'));
 
-        var returnObject = new GPGReturn();
+        var returnObject = new FireGPG_GPGReturn();
         returnObject.sdOut = result.sdOut;
         returnObject.result = RESULT_SUCCESS;
         return returnObject;
@@ -2848,7 +2848,7 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('erroralreadysigned'));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
 
@@ -2859,7 +2859,7 @@ var FireGPG = {
             if(!silent)
                 alert(document.getElementById('firegpg-strings').getString('okkeysigned'));
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.sdOut = result.sdOut;
             returnObject.result = RESULT_SUCCESS;
             return returnObject;
@@ -2871,7 +2871,7 @@ var FireGPG = {
 
             FireGPGMisc.eraseSavedPassword();
 
-            var returnObject = new GPGReturn();
+            var returnObject = new FireGPG_GPGReturn();
             returnObject.result = RESULT_ERROR_UNKNOW;
             return returnObject;
         }
@@ -2895,7 +2895,7 @@ var FireGPG = {
 
         this.initGPGACCESS();
 
-        var returnObject = new GPGReturn();
+        var returnObject = new FireGPG_GPGReturn();
 
         //This values must be given ...
         if(hash == null || hash == undefined) {
