@@ -53,6 +53,8 @@
 <!ENTITY firegpgContext.labelWrapSign "Firma envuelta">
 <!ENTITY firegpgMenu.labelWrapSign "Firma envuelta">
 <!ENTITY firegpgContext.labelHashs "Hashes">
-<!ENTITY firegpgContext.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelFiles "Files operations">
+<!ENTITY firegpgContext.labelFiles "Archivos de las operaciones">
+<!ENTITY firegpgMenu.labelFiles "Operaciones con archivos">
 <!ENTITY firegpgMenu.labelHashs "Hashes">
+<!ENTITY parseAgain "Parse (again) this page.">
+<!ENTITY update-avaiable "An update of FireGPG is available">

@@ -1,22 +1,22 @@
-<!ENTITY title "FireGPG Assistant - Gmail">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Gmail support">
-<!ENTITY description "FireGPG can be integrated with gmail: additional buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signatures of any email that contains them.">
-<!ENTITY enable "Enable gmail support">
-<!ENTITY smtpok "FireGPG is able to access to the SMTP server">
-<!ENTITY noauth "NB: Authentication is not tested!">
-<!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
-<!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
-<!ENTITY atta "Attachments">
-<!ENTITY inline "Use inline">
-<!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
-<!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">
-<!ENTITY wait "Wait 15 seconds or more if your connection is very slow">
-<!ENTITY setp "Set parameters of a working SMTP server (eg. your internet provider or your workplace server)">
-<!ENTITY host "Host (smtp.gmail.com): ">
-<!ENTITY port "Port (465):">
-<!ENTITY username "Username (leave blank to use the username of logged account):">
-<!ENTITY ssl "Use SSL">
-<!ENTITY setdo "Set default options for sending mails">
+<!ENTITY title "FireGPG助手-Gmail">
+<!ENTITY stop "停止">
+<!ENTITY next "下一项">
+<!ENTITY title2 "Gmail支持">
+<!ENTITY description "FireGPG可以与gmail配合使用:添加了新的按钮来加密或者签署邮件,同时,您也可以解密或者验证任何包含加密信息或签名信息的邮件.">
+<!ENTITY enable "启用gmail支持">
+<!ENTITY smtpok "FireGPG可以访问SMTP服务器">
+<!ENTITY noauth "NB:未检测授权!">
+<!ENTITY noauthhelp "如果发送邮件过程中遇到问题,FireGPG会给您警示">
+<!ENTITY sign "签署">
+<!ENTITY encrypt "加密">
+<!ENTITY atta "附件">
+<!ENTITY inline "使用内嵌功能">
+<!ENTITY inlinesuck "内嵌功能状态不佳,而且并不是经常有效.应当使用被视为标准的OpenPGP/Mime.">
+<!ENTITY nosmtp "FireGPG无法访问SMTP服务器或访问仍正在进行中">
+<!ENTITY wait "如果您的网络连接比较缓慢,请等待至少15秒钟">
+<!ENTITY setp "设置一个有效的SMTP服务器参数(比如您的网络服务提供商或者您的工作场所的服务器)">
+<!ENTITY host "主机(smtp.gmail.com)">
+<!ENTITY port "端口(465):">
+<!ENTITY username "用户名(如果要使用已登陆的账户请留空)">
+<!ENTITY ssl "使用SSL">
+<!ENTITY setdo "设定发送邮件的默认选项.">

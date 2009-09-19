@@ -6,6 +6,6 @@
 <!ENTITY domain "The domain">
 <!ENTITY website "The website">
 <!ENTITY page "The page">
-<!ENTITY can-access "Can access">
-<!ENTITY cannot-access "Cannot access">
+<!ENTITY can-access "Hozzáférés engedélyezve">
+<!ENTITY cannot-access "Hozzáférés megtagadva">
 <!ENTITY ignore "Ignore">

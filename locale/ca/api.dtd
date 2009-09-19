@@ -1,7 +1,7 @@
 <!ENTITY thitle "FireGPG Api">
 <!ENTITY intro "La pàgina actual vol utilitzar l'API de FireGPG.">
 <!ENTITY warning1 "!!Només accepta si confies en aquest lloc web!!">
-<!ENTITY infos "Si permets l'accés, el lloc web podrà accedir a totes les funcions de FireGPG (encriptar, desencriptar, signar, verificar signatura, encriptar i signar, importar i exportar claus públiques). La teva paraula de pas no s'enmagatzemarà a memòria quan s'utilitzi l'API. S'et demanarà que introdueixis la teva paraula de pas cada vegada que es requereixi.">
+<!ENTITY infos "Si permets l'accés, el lloc web podrà accedir a totes les funcions de FireGPG (xifrar, desxifrar, signar, verificar signatura, encriptar i signar, importar i exportar claus públiques). La teva paraula de pas no s'emmagatzemarà a memòria quan s'utilitzi l'API. Se't demanarà que introdueixis la teva paraula de pas cada vegada que es requereixi.">
 <!ENTITY warning2 "!!Permetràs tràfic no https. Això és perillós.!!">
 <!ENTITY domain "El domini">
 <!ENTITY website "El lloc web">

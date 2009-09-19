@@ -1,6 +1,13 @@
 2009-09-19 Maximilien Cuony
     * Max version set to 3.6
-    
+    * Asking twice symetrical passwords
+    * Fixing dates on signatures lists
+    * Button to show fingerprints
+    * New item in menu to check again a page for pgp block
+    * Typo in mime decoder
+    * Fixing problem with presistant security label of pgp block
+    * FireGPG is now fully namespaced !
+
 2009-07-29 Maximilien Cuony
     * 0.7.8 released !
     * Fix problem with files signs

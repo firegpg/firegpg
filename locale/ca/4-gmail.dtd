@@ -2,13 +2,13 @@
 <!ENTITY stop "Para">
 <!ENTITY next "Proper">
 <!ENTITY title2 "Suport Gmail">
-<!ENTITY description "FireGPG pot integrar-se amb Gmail: S'afegeixen botons addicionals per a encriptar i/o signar e-mails, i podràs desencriptar i verificar signatures dels e-mails rebuts.">
+<!ENTITY description "FireGPG pot integrar-se amb Gmail: S'afegeixen botons addicionals per a xifrar i/o signar e-mails, i podràs desxifrar i verificar signatures dels correus rebuts.">
 <!ENTITY enable "Habilita suport de Gmail">
 <!ENTITY smtpok "FireGPG pot accedir el servidor SMTP">
 <!ENTITY noauth "NB: L'autenticació no s'ha provat!">
 <!ENTITY noauthhelp "FireGPG t'avisarà si hi ha un problema quan miri d'enviar un e-mail">
 <!ENTITY sign "Signa">
-<!ENTITY encrypt "Encripta">
+<!ENTITY encrypt "Xifra">
 <!ENTITY atta "Adjunts">
 <!ENTITY inline "Utilitza &quot;Inline&quot;">
 <!ENTITY inlinesuck "&quot;Inline&quot; és dolent i no funciona sempre. S'hauria d'utilitzar, com a estàndard, OpenPGP/Mime!">

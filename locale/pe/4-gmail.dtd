@@ -15,7 +15,7 @@
 <!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">
 <!ENTITY wait "Wait 15 seconds or more if your connection is very slow">
 <!ENTITY setp "Set parameters of a working SMTP server (eg. your internet provider or your workplace server)">
-<!ENTITY host "Host (smtp.gmail.com): ">
+<!ENTITY host "میزبان (smtp.gmail.com): ">
 <!ENTITY port "Port (465):">
 <!ENTITY username "Username (leave blank to use the username of logged account):">
 <!ENTITY ssl "Use SSL">

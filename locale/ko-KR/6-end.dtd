@@ -1,11 +1,11 @@
-<!ENTITY title "FireGPG Assistant - Done !">
-<!ENTITY title2 "Done!">
-<!ENTITY description "Assistant is now done. Now you should be able to use FireGPG.">
-<!ENTITY doc "Read the documentation">
-<!ENTITY doc2 "You will find some li<x>nks on this page">
-<!ENTITY tr "Translate FireGPG">
-<!ENTITY tr2 "Horrible mistake in your language for FireGPG? Here is the website!">
-<!ENTITY help "Help FireGPG">
-<!ENTITY help2 "How to contribute to FireGPG">
-<!ENTITY bug "Report a bug or ask for a new feature">
-<!ENTITY close "Close">
+<!ENTITY title "FireGPG 마법사 - 완료 !">
+<!ENTITY title2 "완료!">
+<!ENTITY description "마법사가 완료되었습니다. 이제 FireGPG를 사용할 수 있습니다.">
+<!ENTITY doc "문서 읽기">
+<!ENTITY doc2 "이 페이지에서 몇몇 링크를 발견할 수 있습니다">
+<!ENTITY tr "FireGPG 번역하기">
+<!ENTITY tr2 "FireGPG에 심각한 번역 실수가 있습니까? 이 웹사이트에 신고해주세요!">
+<!ENTITY help "FireGPG 돕기">
+<!ENTITY help2 "FireGPG에 기여하는 방법">
+<!ENTITY bug "버그를 보고하거나 새 기능 요청하기">
+<!ENTITY close "닫기">

@@ -116,7 +116,7 @@ function FireGPG_breakLines(t)
 	return theresult;
 }
 
-var stUtil =
+var FireGPG_stUtil =
 {
 /**
 	 * Make an RFC 2047-compliant string by escaping the extended characters

@@ -2,14 +2,14 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Next">
 <!ENTITY title2 "Gmail support">
-<!ENTITY description "FireGPG can be integrated with gmail: additional buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signatures of any email that contains them.">
-<!ENTITY enable "Enable gmail support">
+<!ENTITY description "FireGPG có thể được tích hợp với gmail: thêm các nút để mã hoá và/hoặc đặc thêm chử ký vào thư tín, bạn sẽ có thể giải mả và xác minh chữ ký của bất kỳ điện thư có chứa chúng.">
+<!ENTITY enable "Dùng hỗ trợ cho gmail">
 <!ENTITY smtpok "FireGPG is able to access to the SMTP server">
 <!ENTITY noauth "NB: Authentication is not tested!">
 <!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
 <!ENTITY sign "Sign">
 <!ENTITY encrypt "Encrypt">
-<!ENTITY atta "Attachments">
+<!ENTITY atta "Tập tin đính kèm">
 <!ENTITY inline "Use inline">
 <!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
 <!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">

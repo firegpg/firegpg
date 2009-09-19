@@ -29,3 +29,4 @@
 <!ENTITY add "Добавить">
 <!ENTITY delete "Удалить">
 <!ENTITY revoke "Отозвать">
+<!ENTITY fingerprint-button "Fingerprint">

@@ -16,12 +16,12 @@
 <!ENTITY gmail-buttons-label "Botons a mostrar:">
 <!ENTITY gmail-buton-sign-checkbox "Signa">
 <!ENTITY gmail-buton-signsend-checkbox "Signa i Envia">
-<!ENTITY gmail-buton-crypt-checkbox "Encripta">
-<!ENTITY gmail-buton-cryptsend-checkbox "Encripta i Envia">
-<!ENTITY allvays-to-myself-checkbox "Encripta sempre a mi mateix.">
+<!ENTITY gmail-buton-crypt-checkbox "Xifra">
+<!ENTITY gmail-buton-cryptsend-checkbox "Xifra i envia">
+<!ENTITY allvays-to-myself-checkbox "Xifra sempre a mi mateix">
 <!ENTITY enable-gpgauth-check.accesskey "E">
-<!ENTITY global-allow-keyring-pref.label "Desencripta sempre els missatges de Servidors Autenticats">
-<!ENTITY global-allow-keyring-check.label "Desencripta sempre missatges de Servidors Autenticats">
+<!ENTITY global-allow-keyring-pref.label "Desxifra sempre missatges de Servidors Autenticats">
+<!ENTITY global-allow-keyring-check.label "Desxifra sempre missatges de Servidors Autenticats.">
 <!ENTITY global-allow-keyring-check.accesskey "A">
 <!ENTITY per-domain-preferences.label "Configuració per domini">
 <!ENTITY turn-off-updates "Denega FireGPG d'actualitzar-se automàticament">
@@ -31,8 +31,8 @@
 <!ENTITY key-expire "Caduca">
 <!ENTITY pane4.title "Gpg">
 <!ENTITY gpg-add-options "Afegir arguments a la linea de comandes de GPG : (Atenció! Pot trencar GPG ! Mira la documentació)">
-<!ENTITY gmail-buton-signcrypt-checkbox "Signar i Encriptar">
-<!ENTITY gmail-buton-signcryptsend-checkbox "Signar, Encriptar i Enviar">
+<!ENTITY gmail-buton-signcrypt-checkbox "Signar i Xifrar">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Singar, xifrar i enviar">
 <!ENTITY firegpg-version-label.text "Versió actual de FireGPG : ">
 <!ENTITY hide-expired "Amagar claus caducades">
 <!ENTITY use-api "Activa el API de FIREGPG per pàgines Web (Requereix reiniciar)">
@@ -50,7 +50,7 @@
 <!ENTITY hide-fireftp-message "No mostrar el missatge que avisa de la presència de l'antiga llibreria IPC">
 <!ENTITY use-fireftp-workaround "Mira d'accedir al IPC amb l'API antic.">
 <!ENTITY keyserver-message "Servidor de claus">
-<!ENTITY symmetric-algo "Algoritme utilitzat per encriptació simètrica. Deixa-ho en blanc per defecte. Utilitza 'gpg --version' per obtenir la llista d'algoritmes utilitzables, en la majoría de cassos tens aquestes opcions:">
+<!ENTITY symmetric-algo "Algoritme utilitzat per xifratge simètric. Deixa-ho en blanc per defecte. Utilitza 'gpg --version' per obtenir la llista d'algoritmes utilitzables, en la majoria de casos tens aquestes opcions:">
 <!ENTITY gmail-new-interface "Nova interfície Gmail">
 <!ENTITY gmail-select-by-default-label "Seleccionat per defecte:">
 <!ENTITY gmail-buton-inline-checkbox "En línia">
@@ -61,18 +61,18 @@
 <!ENTITY gmail-smtp-host "Amfitrió (smtp.gmail.com): ">
 <!ENTITY gmail-smtp-port "Port (465):">
 <!ENTITY gmail-smtp-use-ssl-checkbox "Utilitzar SSL:">
-<!ENTITY gmail-disable-sign-detection "Desactiva la detecció de resposta en signatura en línia(i encriptació)(sempre utilitza tot el correu)">
-<!ENTITY gmail-disable-auto-decryption "Antic comportament per desencriptació">
+<!ENTITY gmail-disable-sign-detection " Desactiva la detecció de resposta en signatura en línia (i xifratge) (sempre utilitza tot el correu)">
+<!ENTITY gmail-disable-auto-decryption "Antic comportament per desxifratge">
 <!ENTITY gmail-force-from "Forçar des del valor:">
 <!ENTITY gpg-special-path-values "Utilitza {$FxFolder} per tenir el directori del Firefox i {$SPACE} per tenir un espai dins un argument.">
-<!ENTITY decrypt-when-reply "Desencriptar contingut al respondre">
+<!ENTITY decrypt-when-reply "Desxifrar contingut al respondre">
 <!ENTITY gmail-buton-attachements-checkbox "Arxius adjunts">
 <!ENTITY autorwap-liste-action.label "Acció">
 <!ENTITY autorwap-liste-domain.label "Correu web">
 <!ENTITY autowrap_list.label "Respostes automàtiques (doble clic per eliminar)">
 <!ENTITY paneautowrap.title "Auto ajustament">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Mostra dades d'usuari per signatures correctes">
-<!ENTITY gmail-keep-encrypted-mail "Encripta la resposta de correus encriptats">
+<!ENTITY gmail-keep-encrypted-mail "Xifra la resposta de correus xifrats">
 <!ENTITY gmail-smtp-no-auth-checkbox "Deshabilitar l'autenticació SMTP">
 <!ENTITY dont_ask_to_download_key "No provis de descarregar claus perdudes">
 <!ENTITY keyserverproxy-message "Proxy a utilitzar pels servidors de claus HTTP i HKP:">

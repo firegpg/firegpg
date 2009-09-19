@@ -29,3 +29,4 @@
 <!ENTITY add "追加">
 <!ENTITY delete "削除">
 <!ENTITY revoke "破棄">
+<!ENTITY fingerprint-button "Fingerprint">

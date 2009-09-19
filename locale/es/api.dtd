@@ -1,11 +1,11 @@
-<!ENTITY thitle "FireGPG Api">
+<!ENTITY thitle "API de FireGPG">
 <!ENTITY intro "La página actual quiere hacer uso de la API de FireGPG">
-<!ENTITY warning1 "! Accept ONLY if you TRUST this website !">
-<!ENTITY infos "If access is granted, the website will be able to access every functions of FireGPG (encrypt, decrypt, sign, verify a signature, encrypt and sign, import and export public keys). Your password will not be stored in memory when the API is used. You\'ll be asked to type your password every time it is required.">
-<!ENTITY warning2 "! You will allow non-https trafic. This is dangerous. !">
+<!ENTITY warning1 "¡Acepta SÓLO SI CONFIAS plenamente en este sitio web! ">
+<!ENTITY infos "Se se garantiza el acceso, el sitio web será capaz de acceder a las funciones de FireGPG (encriptar, desencriptar, firmar, verificar firmas, encriptar y firmar, importar y exportar llaves públicas) Tu contraseña no se guardará en la memoria cuando el API esté en uso. Deberás escribir tu contraseña cada vez que sea necesario">
+<!ENTITY warning2 "No permitas tráfico diferente a https. ¡Esto es peligroso!">
 <!ENTITY domain "Dominio">
 <!ENTITY website "El sitio web">
-<!ENTITY page "The page">
-<!ENTITY can-access "Can access">
+<!ENTITY page "La página">
+<!ENTITY can-access "Puede acceder">
 <!ENTITY cannot-access "No se pudo acceder a ">
 <!ENTITY ignore "Ignorar">

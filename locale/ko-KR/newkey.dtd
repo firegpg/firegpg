@@ -1,17 +1,17 @@
-<!ENTITY newkey "FireGPG - new key">
-<!ENTITY warningaboutgeneeration "Warning! Key generation can take a lot of time, and will freeze Firefox. Do something else while key is generated to create more entropy.">
-<!ENTITY name-message "Name">
-<!ENTITY email-message "Email">
+<!ENTITY newkey "FireGPG - 새로운 키">
+<!ENTITY warningaboutgeneeration "경고! 키 생성은 시간이 오래 걸릴 수 있으며, Firefox가 응답하지 않는 상태로 만들 수 있습니다. 키가 생성되는 동안 더 많은 엔트로피를 생성해내도록 다른 작업을 하시기 바랍니다.">
+<!ENTITY name-message "이름">
+<!ENTITY email-message "이메일">
 <!ENTITY comment-message "주석">
-<!ENTITY password1-message "Password">
-<!ENTITY password2-message "Repeat password">
-<!ENTITY keyneverexpire "The key never expires">
-<!ENTITY keyexpire-message "Key expires in">
-<!ENTITY expire-year "years">
-<!ENTITY expire-month "months">
-<!ENTITY expire-days "days">
+<!ENTITY password1-message "암호">
+<!ENTITY password2-message "암호 다시 입력">
+<!ENTITY keyneverexpire "키는 만료되지 않음">
+<!ENTITY keyexpire-message "키 만료 : ">
+<!ENTITY expire-year "년">
+<!ENTITY expire-month "월">
+<!ENTITY expire-days "일">
 <!ENTITY advancedoptions "고급 옵션">
-<!ENTITY keylenght-message "Key length">
-<!ENTITY keytype-message "Key type">
-<!ENTITY generate-button "Generate key">
+<!ENTITY keylenght-message "키 길이">
+<!ENTITY keytype-message "키 유형">
+<!ENTITY generate-button "키 생성">
 <!ENTITY cancel-button "취소">

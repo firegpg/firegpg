@@ -3,20 +3,20 @@
 <!ENTITY firegpgToolbar.tooltip "FireGPG">
 <!ENTITY firegpgContext.label "FireGPG">
 <!ENTITY firegpgContext.labelSign "Signa">
-<!ENTITY firegpgContext.labelCrypt "Encripta">
+<!ENTITY firegpgContext.labelCrypt "Xifratge">
 <!ENTITY firegpgContext.labelVerif "Verifica">
-<!ENTITY firegpgContext.labelDecry "Desencripta">
+<!ENTITY firegpgContext.labelDecry "Desxifra">
 <!ENTITY firegpgContext.labelOptions "Opcions">
 <!ENTITY firegpgMenu.label "FireGPG">
 <!ENTITY firegpgMenu.labelSign "Signa">
-<!ENTITY firegpgMenu.labelCrypt "Encripta">
+<!ENTITY firegpgMenu.labelCrypt "Xifra">
 <!ENTITY firegpgMenu.labelVerif "Verifica">
-<!ENTITY firegpgMenu.labelDecry "Desencripta">
+<!ENTITY firegpgMenu.labelDecry "Desxifrar">
 <!ENTITY firegpgMenu.labelOptions "Opcions">
 <!ENTITY firegpgToolbar.labelSign "Signa">
-<!ENTITY firegpgToolbar.labelCrypt "Encripta">
+<!ENTITY firegpgToolbar.labelCrypt "Xifra">
 <!ENTITY firegpgToolbar.labelVerif "Verifica">
-<!ENTITY firegpgToolbar.labelDecry "Desencripta">
+<!ENTITY firegpgToolbar.labelDecry "Desxifra">
 <!ENTITY firegpgToolbar.labelOptions "Opcions">
 <!ENTITY firegpgMenu.labelErase "Neteja la contrasenya en memòria">
 <!ENTITY firegpgContext.labelErase "Neteja la contrasenya en memòria">
@@ -37,12 +37,12 @@
 <!ENTITY firegpgContext.labelEditeur "Obre l'editor">
 <!ENTITY firegpgMenu.labelEditeur "Obre l'editor">
 <!ENTITY firegpgToolbar.labelEditeur "Obre l'editor">
-<!ENTITY firegpgContext.labelCryptSign "Signar i Encriptar">
-<!ENTITY firegpgMenu.labelCryptSign "Signar i Encriptar">
-<!ENTITY firegpgToolbar.labelCryptSign "Signar i Encriptar">
-<!ENTITY firegpgToolbar.labelSymCrypt "Encriptació simètrica">
-<!ENTITY firegpgContext.labelSymCrypt "Encriptació simètrica">
-<!ENTITY firegpgMenu.labelSymCrypt "Encriptació simètrica">
+<!ENTITY firegpgContext.labelCryptSign "Signar i Xifrar">
+<!ENTITY firegpgMenu.labelCryptSign "Signar i xifrar">
+<!ENTITY firegpgToolbar.labelCryptSign "Signar i xifrar">
+<!ENTITY firegpgToolbar.labelSymCrypt "Xifratge simètric">
+<!ENTITY firegpgContext.labelSymCrypt "Xifratge simètric">
+<!ENTITY firegpgMenu.labelSymCrypt "Xifratge simètric">
 <!ENTITY firegpgContext.labelClearSign "Neteja la signatura">
 <!ENTITY firegpgToolbar.labelClearSign "Neteja la signatura">
 <!ENTITY firegpgMenu.labelClearSign "Neteja la signatura">
@@ -56,3 +56,5 @@
 <!ENTITY firegpgContext.labelFiles "Operacions amb fitxers">
 <!ENTITY firegpgMenu.labelFiles "Operacions amb fitxers">
 <!ENTITY firegpgMenu.labelHashs "Hashes">
+<!ENTITY parseAgain "Parse (again) this page.">
+<!ENTITY update-avaiable "An update of FireGPG is available">

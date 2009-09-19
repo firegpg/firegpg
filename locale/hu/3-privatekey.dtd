@@ -2,10 +2,10 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Next">
 <!ENTITY title2 "Private key">
-<!ENTITY description "The PGP system works with a private key and a public key. You sign messages with your private key and another user verifies your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
+<!ENTITY description "A PGP rendszer két kulccsal működik, egy saját és egy publikus kulccsal. Az üzeneteidet a saját kulcsoddal írod alá, és a másik felhasználó az ehhez tartozó publikus kulccsal nyitja ki. Ha mások akarnak üzenetet küldeni neked, a te publikus kulcsodat használják, és ezt az üzenetet csak és kizárólag te tudod majd elolvasni a saját kulcsod használatával.">
 <!ENTITY pk "You have at least one private key in your keyring">
 <!ENTITY setdk "Set a default key">
-<!ENTITY askforpk "Ask for private key">
+<!ENTITY askforpk "A saját kulcs kérése">
 <!ENTITY name "Name">
 <!ENTITY id "Id">
 <!ENTITY created "Created">

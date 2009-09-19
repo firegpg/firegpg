@@ -1,17 +1,17 @@
-<!ENTITY title "FireGPG Assistant - Private key">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Private key">
-<!ENTITY description "The PGP system works with a private key and a public key. You sign messages with your private key and another user verifies your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
-<!ENTITY pk "You have at least one private key in your keyring">
-<!ENTITY setdk "Set a default key">
-<!ENTITY askforpk "Ask for private key">
-<!ENTITY name "Name">
-<!ENTITY id "Id">
-<!ENTITY created "Created">
-<!ENTITY expire "Expire">
-<!ENTITY nopk "You don't have any private keys in your keyring">
-<!ENTITY genpk "Generate a private and a public key">
-<!ENTITY gen "Generate">
-<!ENTITY importpk "Import a private key">
-<!ENTITY import "Import">
+<!ENTITY title "FireGPG助手-私钥">
+<!ENTITY stop "停止">
+<!ENTITY next "下一项">
+<!ENTITY title2 "私钥">
+<!ENTITY description "PGP系统通过一个公钥和一个私钥工作.您用私钥对信息进行签名,其他的用户通过您的公钥确认您的签名.如果他们要向您发送信息,他们用您的公钥加密,您,也只有您自己,可以通过您的私钥解密这条信息.">
+<!ENTITY pk "您的密钥环中包含至少一个密钥">
+<!ENTITY setdk "设定一个默认Key">
+<!ENTITY askforpk "请求私钥">
+<!ENTITY name "名字">
+<!ENTITY id "ID">
+<!ENTITY created "已创建">
+<!ENTITY expire "失效">
+<!ENTITY nopk "您的密钥环中没有密钥">
+<!ENTITY genpk "创建私钥和公钥">
+<!ENTITY gen "创建">
+<!ENTITY importpk "导入私钥">
+<!ENTITY import "导入">

@@ -1,23 +1,23 @@
-<!ENTITY title "FireGPG Assistant - GnuPG">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY title "FireGPG助手-GnuPG">
+<!ENTITY stop "停止">
+<!ENTITY next "下一项">
 <!ENTITY title2 "GnuPG">
-<!ENTITY description "FireGPG uses GnuPG to handle any pgp operation. This means GnuPG must be installed for FireGPG to work.">
-<!ENTITY working "GnuPG seems to be accessible and working.">
-<!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
-<!ENTITY sethome "Set a home dir">
-<!ENTITY notworking "GnuPG doesn't work, there is a problem. Please fix this and click on next.">
-<!ENTITY isinstalled "Did you install GnuPG?">
-<!ENTITY download "You can download GnuPG here: (But any GnuPG will work)">
-<!ENTITY windows "Windows users: Click here to download gpg4win">
-<!ENTITY linux "Linux users: Please use the package shipped with your distribution, or click here for sources.">
-<!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
-<!ENTITY uncommon "Is you GnuPG installed in an uncommon location?">
-<!ENTITY setpath "Please set the path to GnuPG here: ">
-<!ENTITY browse "Browse">
-<!ENTITY isfireftp "Is FireFTP installed?">
-<!ENTITY fireftpproblem "FireGPG and FireFTP conflict due to the old IPC library of FireFTP.">
-<!ENTITY uninstall "If FireGPG's fix doesn't work, you have to uninstall one of them to get the other working.">
-<!ENTITY strangeplateform "Are you using a strange platform?">
-<!ENTITY platform "FireGPG works only on Windows, MacOs and Linux x86 and x86_64 plateforms.">
-<!ENTITY recompile "You need to recompile the IPC library if that's the case.">
+<!ENTITY description "FireGPG通过GnuPG处理与pgp相关的操作.这意味着您要让FireGPG工作,您必须安装GnuPG.">
+<!ENTITY working "GnuPG看起来已经访问正常并正在工作">
+<!ENTITY specialhome "您要为GnuPG设定一个自定义目录吗?">
+<!ENTITY sethome "设定主目录">
+<!ENTITY notworking "GnuPG没有工作,存在一个问题.请解决这个问题之后进行一步.">
+<!ENTITY isinstalled "您安装GnuPGP了吗?">
+<!ENTITY download "您可以在这里下载GnuPG:(任何版本GnuPG都可以)">
+<!ENTITY windows "Windows系统的用户:点击这里下载gpg4win">
+<!ENTITY linux "Linux用户:请使用您系统的安装包或者点击这里查找源.">
+<!ENTITY macos "MacOS用户:我不知道怎么做,但是有一个方法.Google是您的好朋友.">
+<!ENTITY uncommon "您的GnuPG安装在一个不常见的位置吗?">
+<!ENTITY setpath "请在这里设定GnuPG路径:">
+<!ENTITY browse "浏览">
+<!ENTITY isfireftp "您安装FireFTP了吗?">
+<!ENTITY fireftpproblem "由于FireFTP旧的IPC库,FireGPG和FireFTP会冲突.">
+<!ENTITY uninstall "如果FireGPG的补丁没有生效,您必须卸载掉他们之中的一个以便让其他的可以工作.">
+<!ENTITY strangeplateform "您正在使用一个陌生的平台吗?">
+<!ENTITY platform "FireGPG只能在X86架构和X86_64平台上的windows系统,MacOS系统和Linux系统上工作.">
+<!ENTITY recompile "如果您遇到的正是此种情形,那么您需要重新编译IPC库.">

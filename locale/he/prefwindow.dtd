@@ -72,7 +72,7 @@
 <!ENTITY autowrap_list.label "תשובות אוטומוטיות (הקלק פעמיים כדי להסיר):">
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
-<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt replies to encrypted emails">
 <!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentication">
 <!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
 <!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">

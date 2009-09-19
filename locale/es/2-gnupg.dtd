@@ -1,23 +1,23 @@
-<!ENTITY title "FireGPG Assistant - GnuPG">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY title "Asistente FireGPG - GnuPG">
+<!ENTITY stop "Detener">
+<!ENTITY next "Siguiente">
 <!ENTITY title2 "GnuPG">
 <!ENTITY description "FireGPG usa GnuPG para manejar las operaciones pgp, eso significa que debes de tener instalado GnuPG para que tu FireGPG funcione!">
 <!ENTITY working "GnuPG parece estar funcionando correctamente.">
-<!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
-<!ENTITY sethome "Set a home dir">
-<!ENTITY notworking "GnuPG doesn't work, there is a problem. Please fix this and click on next.">
-<!ENTITY isinstalled "Did you install GnuPG?">
+<!ENTITY specialhome "¿Deseas establecer un directorio ba<x>se para GnuPG?">
+<!ENTITY sethome "Establecer un directorio ba<x>se">
+<!ENTITY notworking "GnuPG no funciona, hay un problema. Por favor arréglalo y pulsa sobre siguiente.">
+<!ENTITY isinstalled "¿Instalaste GnuPG?">
 <!ENTITY download "Puedes descargar GnuPG desde aquí: (pero cualquier GnuPG funcionará)">
 <!ENTITY windows "Usuarios de Windows: Click aquí para descargar gpg4win">
-<!ENTITY linux "Linux users: Please use the package shipped with your distribution, or click here for sources.">
-<!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
-<!ENTITY uncommon "Is you GnuPG installed in an uncommon location?">
-<!ENTITY setpath "Please set the path to GnuPG here: ">
+<!ENTITY linux "Usuarios de Linux: Por favor usen el paquete predeterminado de su distribución o hagan clic aquí para acceder a las fuentes.">
+<!ENTITY macos "Usuarios de MacOS: No sé cómo, pero hay una manera. Google es su amigo.">
+<!ENTITY uncommon "¿Está GnuPG instalado en un lugar poco común?">
+<!ENTITY setpath "Por favor selecciona la ubicación de GnuPG aquí">
 <!ENTITY browse "Buscar">
-<!ENTITY isfireftp "Is FireFTP installed?">
+<!ENTITY isfireftp "¿Está instalado FireFTP?">
 <!ENTITY fireftpproblem "FireGPG y FireFTP están en conflicto debido a la antigua librería (IPC) de FireFTP">
-<!ENTITY uninstall "If FireGPG's fix doesn't work, you have to uninstall one of them to get the other working.">
-<!ENTITY strangeplateform "Are you using a strange platform?">
-<!ENTITY platform "FireGPG works only on Windows, MacOs and Linux x86 and x86_64 plateforms.">
-<!ENTITY recompile "You need to recompile the IPC library if that's the case.">
+<!ENTITY uninstall "Si este parche para FireGPG no funciona, debes desinstalar uno de ellos para que el otro funcione.">
+<!ENTITY strangeplateform "¿Estás usando una plataforma poco conocida?">
+<!ENTITY platform "FireGPG trabaja sólo en Windows, MacOS y Linux en plataformas x86 y x86_64.">
+<!ENTITY recompile "Necesitas re-compilar la librería de código IPC si es del caso.">

@@ -1,16 +1,16 @@
-<!ENTITY title "FireGPG Assistant - Private key">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Private key">
+<!ENTITY title "Asistente FireGPG - Llave Privada">
+<!ENTITY stop "Detener">
+<!ENTITY next "Siguiente">
+<!ENTITY title2 "Llave privada">
 <!ENTITY description "El sistema PGP funciona con una calve pública y otra privada. Puedes firmar tus mensajes con tu clave privada y otros usuarios la pueden verificar con tu firma o clave pública. Si quieren mandarte un mensaje, pueden usar tu clave pública y sólo tú, podrás desencriptarlo con tu clave privada. ">
-<!ENTITY pk "You have at least one private key in your keyring">
-<!ENTITY setdk "Set a default key">
+<!ENTITY pk "Tienes por lo menos una llave privada en tu llavero">
+<!ENTITY setdk "Establecer una llave predeterminada">
 <!ENTITY askforpk "Solicitar clave privada.">
-<!ENTITY name "Name">
-<!ENTITY id "Id">
+<!ENTITY name "Nombre">
+<!ENTITY id "Identificación">
 <!ENTITY created "Creado">
 <!ENTITY expire "Expirar">
-<!ENTITY nopk "You don't have any private keys in your keyring">
+<!ENTITY nopk "No tienes llaves privadas en tu llavero">
 <!ENTITY genpk "Generar una clave privada y una clave pública">
 <!ENTITY gen "Generar">
 <!ENTITY importpk "Importar una clave privada">

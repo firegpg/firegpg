@@ -29,3 +29,4 @@
 <!ENTITY add "添加">
 <!ENTITY delete "删除">
 <!ENTITY revoke "吊销">
+<!ENTITY fingerprint-button "Fingerprint">

@@ -4,7 +4,7 @@
 <!ENTITY title2 "Options">
 <!ENTITY description "Here you can set global options for some FireGPG features:">
 <!ENTITY inline "Enable Inline detection">
-<!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">
+<!ENTITY inlinehelp "اگر سایتی شامل یک بلوک PGP باشد، FireGPG می‌تواند آن‌را شناخته و عملیّات مناسب را انجام دهد.">
 <!ENTITY disableagent "GPG-Agent را غیرفعّال کن">
 <!ENTITY api "FireGPG API را فعّال کن">
 <!ENTITY apihelp "FireGPG API lets any website use gpg's features - of course with security mechanisms">

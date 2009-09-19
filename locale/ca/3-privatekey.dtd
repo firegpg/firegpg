@@ -2,7 +2,7 @@
 <!ENTITY stop "">
 <!ENTITY next "Proper">
 <!ENTITY title2 "Clau privada">
-<!ENTITY description "El sistema PGP treballa amb una clau privada i una de pública. Firmes missatges amb la teva clau privada i els altres usuaris verifiquen la teva signatura amb la teva clau pública. Si volen enviar-te un missatge, utilitzen la teva clau pública, i tu, i només tu, pots desencriptar-lo amb la teva clau privada.">
+<!ENTITY description "El sistema PGP treballa amb una clau privada i una de pública. Firmes missatges amb la teva clau privada i els altres usuaris verifiquen la teva signatura amb la teva clau pública. Si volen enviar-te un missatge, utilitzen la teva clau pública, i tu, i només tu, pots desxifrar-lo amb la teva clau privada.">
 <!ENTITY pk "Tens com a mínim una clau privada al teu clauer">
 <!ENTITY setdk "Estableix una clau per defecte">
 <!ENTITY askforpk "Pregunta la clau privada">

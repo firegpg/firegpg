@@ -1,23 +1,23 @@
-<!ENTITY title "FireGPG Assistant - GnuPG">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY title "FireGPG 마법사 - GnuPG">
+<!ENTITY stop "정지">
+<!ENTITY next "다음">
 <!ENTITY title2 "GnuPG">
-<!ENTITY description "FireGPG uses GnuPG to handle any pgp operation. This means GnuPG must be installed for FireGPG to work.">
-<!ENTITY working "GnuPG seems to be accessible and working.">
-<!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
-<!ENTITY sethome "Set a home dir">
-<!ENTITY notworking "GnuPG doesn't work, there is a problem. Please fix this and click on next.">
-<!ENTITY isinstalled "Did you install GnuPG?">
-<!ENTITY download "You can download GnuPG here: (But any GnuPG will work)">
-<!ENTITY windows "Windows users: Click here to download gpg4win">
-<!ENTITY linux "Linux users: Please use the package shipped with your distribution, or click here for sources.">
-<!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
-<!ENTITY uncommon "Is you GnuPG installed in an uncommon location?">
-<!ENTITY setpath "Please set the path to GnuPG here: ">
-<!ENTITY browse "Browse">
-<!ENTITY isfireftp "Is FireFTP installed?">
-<!ENTITY fireftpproblem "FireGPG and FireFTP conflict due to the old IPC library of FireFTP.">
-<!ENTITY uninstall "If FireGPG's fix doesn't work, you have to uninstall one of them to get the other working.">
-<!ENTITY strangeplateform "Are you using a strange platform?">
-<!ENTITY platform "FireGPG works only on Windows, MacOs and Linux x86 and x86_64 plateforms.">
-<!ENTITY recompile "You need to recompile the IPC library if that's the case.">
+<!ENTITY description "FireGPG는 pgp 작업을 다루기위해 GnuPG를 사용합니다. 즉, FireGPG가 동작하기 위해서는 GnuPG가 반드시 설치되어 있어야합니다.">
+<!ENTITY working "GnuPG에 접근할 수 있으며 정상 동작하는 것으로 보입니다.">
+<!ENTITY specialhome "GnuPG에 대한 사용자 Homedir를 지정하시겠습니까?">
+<!ENTITY sethome "Home 디렉토리 지정">
+<!ENTITY notworking "GnuPG가 동작하지 않아 문제가 발생했습니다. 이 문제를 해결한 후 다음을 클릭하세요.">
+<!ENTITY isinstalled "GnuPG를 설치했나요?">
+<!ENTITY download "GnuPG를 여기서 다운로드 할 수 있습니다: (하지만 GnuPG라도 괜찮습니다)">
+<!ENTITY windows "Windows 사용자: 여기를 클릭해서 gpg4win을 다운로드 하십시오.">
+<!ENTITY linux "Linux 사용자: 사용하고계신 배포판에 포함되어있는 패키지를 사용하거나 소스를 다운로드 받으려면 여기를 클릭해주세요.">
+<!ENTITY macos "MacOS 사용자: 어떻게 해야할지 모르겠습니다만 방법이 있을 겁니다. Google은 당신의 친구입니다.">
+<!ENTITY uncommon "GnuPG가 기본으로 제시된 경로와는 다른 경로에 설치되어 있습니까?">
+<!ENTITY setpath "GnuPG 경로를 여기에 지정해주세요:">
+<!ENTITY browse "찾아보기">
+<!ENTITY isfireftp "FireFTP가 설치되어 있나요?">
+<!ENTITY fireftpproblem "FireFTP의 오래된 IPC 라이브러리 때문에 FireGPG와 FireFTP는 충돌합니다.">
+<!ENTITY uninstall "FireGPG의 오류 수정이 소용이 없다면, 한쪽을 위해 다른 한쪽은 제거해야 합니다.">
+<!ENTITY strangeplateform "일반적으로 사용되지 않는 플랫폼 환경을 사용하고 있습니까?">
+<!ENTITY platform "FireGPG는 Windows, MacOS, Linux x86/x86_64 플랫폼에서만 동작합니다.">
+<!ENTITY recompile "이런 경우에는 IPC 라이브러리를 다시 컴파일 해야합니다.">

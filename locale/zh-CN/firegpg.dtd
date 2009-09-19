@@ -52,7 +52,9 @@
 <!ENTITY keynotrevokedpassword "错误，密钥未被吊销。密码有错？">
 <!ENTITY firegpgContext.labelWrapSign "环绕签名">
 <!ENTITY firegpgMenu.labelWrapSign "环绕签名">
-<!ENTITY firegpgContext.labelHashs "Hashes">
-<!ENTITY firegpgContext.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelHashs "哈希">
+<!ENTITY firegpgContext.labelFiles "文件操作">
+<!ENTITY firegpgMenu.labelFiles "文件操作">
+<!ENTITY firegpgMenu.labelHashs "哈希">
+<!ENTITY parseAgain "Parse (again) this page.">
+<!ENTITY update-avaiable "An update of FireGPG is available">

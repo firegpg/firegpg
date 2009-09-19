@@ -81,7 +81,7 @@ var ExternalAPI = {
 
         /* Get the GPG ID */
         if(pub_key_id == undefined) {
-            pub_key_id = getSelfKey();
+            pub_key_id = FireGPGMisc.getSelfKey();
 
             if(pub_key_id == null) {
                 ret.error = ExternalAPI.ERROR_BAD_GPG_ID;
@@ -90,7 +90,7 @@ var ExternalAPI = {
         }
 
         /* Get the password */
-        password = getPrivateKeyPassword(); /* TODO it's important to
+        password = FireGPGMisc.getPrivateKeyPassword(); /* TODO it's important to
                                                doesn't save the pw ? */
         if(password == null) {
             /* TODO est-ce nécessaire d'avoir un code d'erreur pour dire

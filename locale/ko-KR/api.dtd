@@ -1,11 +1,11 @@
-<!ENTITY thitle "FireGPG Api">
-<!ENTITY intro "The current page wants to use the FireGPG API.">
-<!ENTITY warning1 "! Accept ONLY if you TRUST this website !">
-<!ENTITY infos "If access is granted, the website will be able to access every functions of FireGPG (encrypt, decrypt, sign, verify a signature, encrypt and sign, import and export public keys). Your password will not be stored in memory when the API is used. You\'ll be asked to type your password every time it is required.">
-<!ENTITY warning2 "! You will allow non-https trafic. This is dangerous. !">
-<!ENTITY domain "The domain">
-<!ENTITY website "The website">
-<!ENTITY page "The page">
-<!ENTITY can-access "Can access">
-<!ENTITY cannot-access "Cannot access">
-<!ENTITY ignore "Ignore">
+<!ENTITY thitle "FireGPG API">
+<!ENTITY intro "현재 페이지가 FireGPG API를 사용하려고 합니다.">
+<!ENTITY warning1 "! 이 웹사이트를 *신뢰*하는 경우에*만* 승인하십시오 !">
+<!ENTITY infos "액세스 권한이 부여되면, FireGPG의 모든 기능 (암호화, 복호화, 서명, 서명 검증, 암호화하고 서명, 공개키 가져오기와 내보내기)에 접근할 수 있습니다. API를 사용할 때는 사용자 암호가 메모리에 저장되지 않게됩니다. 암호가 필요할 때마다 사용자에게 암호를 입력하도록 프롬프트를 출력합니다.">
+<!ENTITY warning2 "! https이외의 암호화되지 않은 프로토콜를 허용하게 됩니다. 이렇게하면 위험합니다. !">
+<!ENTITY domain "도메인">
+<!ENTITY website "웹사이트">
+<!ENTITY page "페이지">
+<!ENTITY can-access "접근 가능">
+<!ENTITY cannot-access "접근 불가">
+<!ENTITY ignore "무시">

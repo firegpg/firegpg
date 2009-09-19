@@ -1,12 +1,12 @@
-<!ENTITY title "FireGPG Assistant - Options">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Options">
+<!ENTITY title "Помощник FireGPG - Параметры">
+<!ENTITY stop "Стоп">
+<!ENTITY next "Далее">
+<!ENTITY title2 "Параметры">
 <!ENTITY description "Здесь можно выставить глобальные настройки для некоторых функций FireGPG:">
-<!ENTITY inline "Enable Inline detection">
-<!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">
-<!ENTITY disableagent "Disable GPG-Agent">
+<!ENTITY inline "Включить определение inline">
+<!ENTITY inlinehelp "Если страница содержит блок PGP, то FireGPG сможет определить его и произвести с ним необходимие действия!">
+<!ENTITY disableagent "Отключить GPG-Агент">
 <!ENTITY api "Разрешить FireGPG API">
 <!ENTITY apihelp "FireGPG API позволяет другим сайтам пользоваться возможностями GPG, конечно же безопасно для вас.">
-<!ENTITY gpgauth "Enable gpgAuth">
-<!ENTITY gpgauthhelp "gpgAuth is mechanism or process to authenticate web-users using GnuPG, not developped by FireGPG authors">
+<!ENTITY gpgauth "Включить gpgAuth">
+<!ENTITY gpgauthhelp "gpgAuth - это механизм или процесс аутентификации пользователя, используя GnuPG, не разработанная авторами FireGPG">

@@ -1,22 +1,22 @@
-<!ENTITY title "FireGPG Assistant - Gmail">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Gmail support">
-<!ENTITY description "FireGPG can be integrated with gmail: additional buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signatures of any email that contains them.">
-<!ENTITY enable "Enable gmail support">
-<!ENTITY smtpok "FireGPG is able to access to the SMTP server">
-<!ENTITY noauth "NB: Authentication is not tested!">
-<!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
-<!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
+<!ENTITY title "Помощник FireGPG - Google Mail (Gmail)">
+<!ENTITY stop "Стоп">
+<!ENTITY next "Далее">
+<!ENTITY title2 "Поддержка Google Mail (Gmail)">
+<!ENTITY description "FireGPG может быть интегрирован с Google Mail (Gmail): дополнительные кнопки для шифрования и/или подписи сообщения будут добавлены; также вы сможете проверять подписи и/или расшифровывать сообщения других людей.">
+<!ENTITY enable "Включить поддержку GMail">
+<!ENTITY smtpok "FireGPG может получить доступ к серверу SMTP">
+<!ENTITY noauth "Внимание: Аутентификация не была проверена!">
+<!ENTITY noauthhelp "FireGPG предупредит вас, если он собирается отослать письмо, но произошла ошибка">
+<!ENTITY sign "Подписать">
+<!ENTITY encrypt "Шифровать">
 <!ENTITY atta "Вложения">
-<!ENTITY inline "Use inline">
-<!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
-<!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">
-<!ENTITY wait "Wait 15 seconds or more if your connection is very slow">
-<!ENTITY setp "Set parameters of a working SMTP server (eg. your internet provider or your workplace server)">
-<!ENTITY host "Host (smtp.gmail.com): ">
-<!ENTITY port "Port (465):">
-<!ENTITY username "Username (leave blank to use the username of logged account):">
-<!ENTITY ssl "Use SSL">
-<!ENTITY setdo "Set default options for sending mails">
+<!ENTITY inline "Использовать inline">
+<!ENTITY inlinesuck "Inline - плохой вариант, т.к. он не всегда работает. Лучше используйте OpenPGP/MIME.">
+<!ENTITY nosmtp "FireGPG не может получить доступ к SMTP-серверу ИЛИ запрос всё ещё обрабатывается">
+<!ENTITY wait "Подождите 15 секунд или более, если у вас медленное соединение">
+<!ENTITY setp "Установите параметры работающего SMTP-сервера (вашего Интернет-провайдера или другого сервера)">
+<!ENTITY host "Хост (smtp.gmail.com):">
+<!ENTITY port "Порт (465):">
+<!ENTITY username "Имя пользователя (оставьте пустым для имени пользователя записанной уч. записи):">
+<!ENTITY ssl "Иcпользовать SSL">
+<!ENTITY setdo "Установите параметры для отправки писем по-умолчанию">

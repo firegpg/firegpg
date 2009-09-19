@@ -4,7 +4,7 @@
 <!ENTITY verify-button "검증">
 <!ENTITY open-button "파일 열기">
 <!ENTITY save-button "저장">
-<!ENTITY cryptandsign-button "서명하고 암호화">
+<!ENTITY cryptandsign-button "서명하고 암호화하기">
 <!ENTITY sign-clear-button "가독형 서명">
 <!ENTITY symcrypt-button "대칭키 암호화">
-<!ENTITY closeandcopy-button "Copy to clipboard and close">
+<!ENTITY closeandcopy-button "클립보드로 복사하고 닫기">

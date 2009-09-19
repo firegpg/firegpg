@@ -8,7 +8,7 @@
 <!ENTITY show-website-checkbox "Display FireGPG's website address in GnuPG comment field">
 <!ENTITY change-gpg-path-button "Răsfoiește">
 <!ENTITY change-gpg-path-checkbox "Specificați calea la care se află programul gpg">
-<!ENTITY result-always-in-new-window "Always display result of encryption and/or signature in a new window">
+<!ENTITY result-always-in-new-window "Always display encryption and signature results in a new window">
 <!ENTITY no-gpg-agent-checkbox "Force turning off GPG agent (can fix some issues)">
 <!ENTITY ask-for-save-pass "În mod implicit cere acordul pentru stocarea parolelor">
 <!ENTITY gmail-no-no-sign-checkbox "Nu afișa mesajul 'Nici o semnătură nu a fost găsită[...]'">
@@ -72,15 +72,15 @@
 <!ENTITY autowrap_list.label "Răspunsuri automate (dublu-clic pentru ștergere):">
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Afișează datele utilizatorului pentru semnăturile corecte">
-<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt replies to encrypted emails">
 <!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentication">
-<!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
+<!ENTITY dont_ask_to_download_key "Nu încercaţi să descărcaţi cheile care lipsesc">
 <!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
 <!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.label "Activaţi iconiţa gpgAuth în bara de status">
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
 <!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
+<!ENTITY enable-gpgauth-check.label "Activaţi gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
-<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">
+<!ENTITY api-liste-access2.label "Lista drepturilor pentru API (dublu click pentru ştergere)">

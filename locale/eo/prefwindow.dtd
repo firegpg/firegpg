@@ -8,7 +8,7 @@
 <!ENTITY show-website-checkbox "Display FireGPG's website address in GnuPG comment field">
 <!ENTITY change-gpg-path-button "Krozi">
 <!ENTITY change-gpg-path-checkbox "Specifi la vojon al la GPG plenumebla dosiero:">
-<!ENTITY result-always-in-new-window "Always display result of encryption and/or signature in a new window">
+<!ENTITY result-always-in-new-window "Always display encryption and signature results in a new window">
 <!ENTITY no-gpg-agent-checkbox "Force turning off GPG agent (can fix some issues)">
 <!ENTITY ask-for-save-pass "Defaŭlte, peti memori pasvorton">
 <!ENTITY gmail-no-no-sign-checkbox "Do not display 'No signature found [...]'">
@@ -72,7 +72,7 @@
 <!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
-<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
+<!ENTITY gmail-keep-encrypted-mail "Encrypt replies to encrypted emails">
 <!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentication">
 <!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
 <!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">

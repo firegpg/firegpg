@@ -1,12 +1,12 @@
-<!ENTITY title "FireGPG Assistant - Options">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Options">
-<!ENTITY description "Here you can set global options for some FireGPG features:">
-<!ENTITY inline "Enable Inline detection">
-<!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">
-<!ENTITY disableagent "Disable GPG-Agent">
-<!ENTITY api "Enable FireGPG API">
-<!ENTITY apihelp "FireGPG API lets any website use gpg's features - of course with security mechanisms">
-<!ENTITY gpgauth "Enable gpgAuth">
-<!ENTITY gpgauthhelp "gpgAuth is mechanism or process to authenticate web-users using GnuPG, not developped by FireGPG authors">
+<!ENTITY title "FireGPG 마법사 - 옵션">
+<!ENTITY stop "정지">
+<!ENTITY next "다음">
+<!ENTITY title2 "옵션">
+<!ENTITY description "여기서 몇가지 FireGPG 기능에 대한 전역 옵션 설정을 할 수 있습니다:">
+<!ENTITY inline "인라인 감지 활성화">
+<!ENTITY inlinehelp "웹페이지가 PGP 블록을 포함하고 있으면, FireGPG가 해당 블록을 감지해서 적절한 작업을 수행할 수 있습니다!">
+<!ENTITY disableagent "GPG-Agent 비활성화">
+<!ENTITY api "FireGPG API 활성화">
+<!ENTITY apihelp "FireGPG API가 어느 웹사이트에서라도 gpg의 기능(물론, 보안기능 포함)을 사용하게 하기">
+<!ENTITY gpgauth "gpgAuth 활성화">
+<!ENTITY gpgauthhelp "gpgAuth는 FireGPG 제작자가 개발하지 않은 GnuPG를 사용하여 웹 사용자를 인증하는 메커니즘이나 과정을 말합니다.">

@@ -1,12 +1,12 @@
-<!ENTITY title "FireGPG Assistant - Welcome">
-<!ENTITY skip "Skip">
-<!ENTITY next "Next">
-<!ENTITY title2 "FireGPG Assistant">
-<!ENTITY infoabout "Here is some information about icons and color used:">
-<!ENTITY whatnext "This suggest a solution or something you should do">
-<!ENTITY good "This is something good">
-<!ENTITY problem "This is a problem">
+<!ENTITY title "Помощник FireGPG - Добро пожаловать">
+<!ENTITY skip "Пропустить">
+<!ENTITY next "Далее">
+<!ENTITY title2 "Помощник FireGPG">
+<!ENTITY infoabout "Ниже находится информация об используемых значках и цветах:">
+<!ENTITY whatnext "Это предлагает решение или то, что вам необходимо сделать">
+<!ENTITY good "Это что-то хорошее">
+<!ENTITY problem "Это проблема">
 <!ENTITY advanced "Эта настройка - для продвинутых пользователей. Вам что-то с ней непонятно? Не страшно, просто ничего не меняйте.">
-<!ENTITY help "This means help is available.  Mouse over the icon for the tooltip.">
-<!ENTITY helppop "Hello, I'm the help">
-<!ENTITY description "Welcome!  This assistant will help you to configure FireGPG. If you're a new user it's recommended to follow it to get a working configuration. What ever you choose to do, you will be able to use the option windows to change any option later.">
+<!ENTITY help "Это означает, что помощь доступна. Наведите курсор мыши на значок для появления всплывающей подсказки.">
+<!ENTITY helppop "Привет, меня зовут Помощь">
+<!ENTITY description "Добро пожаловать! Этот помощник поможет вам настроить FireGPG. Если вы новый пользователь, то вам рекоммендуется пройти этот мастер настройки для получения рабочей конфигурации. Вне зависимости от того, что вы сделаете, вы сможете использовать окно параметров для изменения какой-либо опции.">

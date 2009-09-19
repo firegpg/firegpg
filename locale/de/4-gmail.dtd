@@ -11,7 +11,7 @@
 <!ENTITY encrypt "Verschlüsseln">
 <!ENTITY atta "Anhänge">
 <!ENTITY inline "Inline benutzen">
-<!ENTITY inlinesuck "Inline ist überholt und nicht mehr adequat. OpenPGP/Mime, der Standard, sollte benutzt werden!">
+<!ENTITY inlinesuck "Inline ist überholt und nicht sehr zuverlässig. OpenPGP/MIME, der Standard, sollte benutzt werden!">
 <!ENTITY nosmtp "FireGPG ist nicht in der Lage, den Mailserver zu kontaktieren ODER die Anfrage läuft immer noch">
 <!ENTITY wait "Warten Sie 15 Sekunden oder mehr falls Ihre Internetverbindung sehr langsam ist">
 <!ENTITY setp "Einen funktionierenden Mailserver einstellen (z.B. den Ihres Internet Providers oder den Server von Ihrem Arbeitsplatz)">

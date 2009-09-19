@@ -77,10 +77,10 @@
 <!ENTITY dont_ask_to_download_key "Не пытаться скачать недостающие ключи">
 <!ENTITY keyserverproxy-message "Прокси для соединения с HTTP и HKP серверами ключей:">
 <!ENTITY digest-message "Дайджест (хэш-функция, используемая в подписи) (SHA256, SHA512, и т. п.) (Gmail использует это значение при создании письма):">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
-<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
-<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
-<!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
+<!ENTITY enable-gpgauth-statusbar-check.label "Включить значок gpgAuth в строке состояния">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "Ы">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Автоматически показывать окно состояния при использовании gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "Ц">
+<!ENTITY enable-gpgauth-check.label "Включить gpgAuth">
+<!ENTITY panpan-assistant-is-now-dead "Запустить помощника снова">
 <!ENTITY api-liste-access2.label "Список прав для API (для удаления сделайте двойной клик)">

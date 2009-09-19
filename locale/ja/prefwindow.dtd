@@ -9,7 +9,7 @@
 <!ENTITY change-gpg-path-button "ブラウズ">
 <!ENTITY change-gpg-path-checkbox "gpgのパスを指定:">
 <!ENTITY result-always-in-new-window "常に暗号化や署名の結果を新しいウィンドウに表示する。">
-<!ENTITY no-gpg-agent-checkbox "GPGエージェントを強制的にオフにする (いくつかの問題が解決するかもしれません)">
+<!ENTITY no-gpg-agent-checkbox "GPG-agentを強制的にオフにする (いくつかの問題が解決するかもしれません)">
 <!ENTITY ask-for-save-pass "デフォルトで, パスワードを保存するか尋ねる">
 <!ENTITY gmail-no-no-sign-checkbox "'署名がありません [...]' を表示しない">
 <!ENTITY gmail-need-a-restart "これらの設定を反映させるために、ブラウザの再起動が必要です。">
@@ -68,19 +68,19 @@
 <!ENTITY decrypt-when-reply "返信時に復号化する">
 <!ENTITY gmail-buton-attachements-checkbox "添付">
 <!ENTITY autorwap-liste-action.label "動作">
-<!ENTITY autorwap-liste-domain.label "ウエブメール">
+<!ENTITY autorwap-liste-domain.label "ウェブメール">
 <!ENTITY autowrap_list.label "自動応答 (ダブルクリックで削除)">
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "正しい署名の場合、ユーザ情報を表示する">
-<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentication">
-<!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
+<!ENTITY gmail-keep-encrypted-mail "暗号化されたメールの返信を暗号化する">
+<!ENTITY gmail-smtp-no-auth-checkbox "SMTP認証を無効にする">
+<!ENTITY dont_ask_to_download_key "見つからない鍵のダウンロードを試みない">
 <!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
 <!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.label "gpgAuthのステータスバーアイコンを有効にする">
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.label "gpgAuthを使用中は状態ウィンドウを自動的に表示する">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
-<!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
-<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">
+<!ENTITY enable-gpgauth-check.label "gpgAuthを有効にする">
+<!ENTITY panpan-assistant-is-now-dead "再度アシスタントを実行する">
+<!ENTITY api-liste-access2.label "APIの権限リスト (ダブルクリックで削除)">

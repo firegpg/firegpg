@@ -1,23 +1,23 @@
-<!ENTITY title "FireGPG Assistant - GnuPG">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY title "Помощник FireGPG - GnuPG">
+<!ENTITY stop "Стоп">
+<!ENTITY next "Далее">
 <!ENTITY title2 "GnuPG">
-<!ENTITY description "FireGPG uses GnuPG to handle any pgp operation. This means GnuPG must be installed for FireGPG to work.">
-<!ENTITY working "GnuPG seems to be accessible and working.">
-<!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
-<!ENTITY sethome "Set a home dir">
-<!ENTITY notworking "GnuPG doesn't work, there is a problem. Please fix this and click on next.">
-<!ENTITY isinstalled "Did you install GnuPG?">
-<!ENTITY download "You can download GnuPG here: (But any GnuPG will work)">
-<!ENTITY windows "Windows users: Click here to download gpg4win">
-<!ENTITY linux "Linux users: Please use the package shipped with your distribution, or click here for sources.">
-<!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
-<!ENTITY uncommon "Is you GnuPG installed in an uncommon location?">
-<!ENTITY setpath "Please set the path to GnuPG here: ">
+<!ENTITY description "FireGPG использует GnuPG для выполнения операций PGP. Это значит, что на вашем компьютере должна быть установлена рабочая версия GnuPG.">
+<!ENTITY working "GnuPG доступен и работает.">
+<!ENTITY specialhome "Хотите-ли вы установить пользовательскую папку для GnuPG?">
+<!ENTITY sethome "Установите домашнюю папку">
+<!ENTITY notworking "GnuPG не работает, присутствует проблема. Пожалуйста исправьте её и нажмите &quot;Далее&quot;.">
+<!ENTITY isinstalled "Вы установили GnuPG?">
+<!ENTITY download "Вы можете скачать GnuPG здесь (хотя любой вариант GnuPG подойдёт):">
+<!ENTITY windows "Пользователи Windows: нажмите здесь для загрузки gpg4win (GPG для Windows)">
+<!ENTITY linux "Пользователи Linux: пожалуйста используйте пакет, поставляемый с вашим дистрибутивом, или нажмите здесь для получения исходного кода.">
+<!ENTITY macos "Пользователи MacOS: Я не знаю, но есть один вариант. Google - ваш друг.">
+<!ENTITY uncommon "Установлен-ли ваш GnuPG в нестандартном расположении?">
+<!ENTITY setpath "Пожалуйста установите путь к GnuPG здесь:">
 <!ENTITY browse "Просмотр">
-<!ENTITY isfireftp "Is FireFTP installed?">
-<!ENTITY fireftpproblem "FireGPG and FireFTP conflict due to the old IPC library of FireFTP.">
-<!ENTITY uninstall "If FireGPG's fix doesn't work, you have to uninstall one of them to get the other working.">
-<!ENTITY strangeplateform "Are you using a strange platform?">
-<!ENTITY platform "FireGPG works only on Windows, MacOs and Linux x86 and x86_64 plateforms.">
-<!ENTITY recompile "You need to recompile the IPC library if that's the case.">
+<!ENTITY isfireftp "У вас установлен FireFTP?">
+<!ENTITY fireftpproblem "FireGPG и FireFTP конфликтуют из-аз старой библиотеки IRC из FireFTP.">
+<!ENTITY uninstall "Если поправка FireGPG не работает, вы будете должны удалить один из них для функционирования остальных.">
+<!ENTITY strangeplateform "Вы используете необычную платформу?">
+<!ENTITY platform "FireGPG работает только на Windows, Mac OS и Linux (платформы x86 и x86_64).">
+<!ENTITY recompile "Вам нужно перекомпилировать библиотеку IPC, если это необходимо.">

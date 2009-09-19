@@ -52,7 +52,9 @@
 <!ENTITY keynotrevokedpassword "Ошибка, ключ не отозван. Возможно, неверный пароль?">
 <!ENTITY firegpgContext.labelWrapSign "Подпись с переносом строк">
 <!ENTITY firegpgMenu.labelWrapSign "Подпись с переносом строк">
-<!ENTITY firegpgContext.labelHashs "Hashes">
-<!ENTITY firegpgContext.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelHashs "Контрольные суммы">
+<!ENTITY firegpgContext.labelFiles "Операции с файлами">
+<!ENTITY firegpgMenu.labelFiles "Операции с файлами">
+<!ENTITY firegpgMenu.labelHashs "Контрольные суммы">
+<!ENTITY parseAgain "Parse (again) this page.">
+<!ENTITY update-avaiable "An update of FireGPG is available">

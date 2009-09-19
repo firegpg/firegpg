@@ -74,13 +74,13 @@
 <!ENTITY gmail-show-user-info-for-signs-checkbox "显示正确的签名的用户信息">
 <!ENTITY gmail-keep-encrypted-mail "如果邮件是加密的，那么回复时也加密">
 <!ENTITY gmail-smtp-no-auth-checkbox "禁用SMTP认证">
-<!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
-<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
-<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY dont_ask_to_download_key "禁止尝试下载丢失的key">
+<!ENTITY keyserverproxy-message "HTTP和HKP公钥服务器代理:">
+<!ENTITY digest-message "摘要(用来签名的Hash)(SHA256,SHA512等)(Gmail支持通过这种方式创建邮件):">
+<!ENTITY enable-gpgauth-statusbar-check.label "启用gpgAuth状态栏图标">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "安全">
+<!ENTITY enable-gpgauth-statuswindow-check.label "使用gpgAuth时自动显示状态窗口">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
-<!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
-<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">
+<!ENTITY enable-gpgauth-check.label "启用gpgAuth">
+<!ENTITY panpan-assistant-is-now-dead "在次执行设定助手">
+<!ENTITY api-liste-access2.label "API访问权限列表(双击移除)">

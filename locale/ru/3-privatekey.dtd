@@ -1,17 +1,17 @@
-<!ENTITY title "FireGPG Assistant - Private key">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Private key">
-<!ENTITY description "The PGP system works with a private key and a public key. You sign messages with your private key and another user verifies your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
-<!ENTITY pk "You have at least one private key in your keyring">
-<!ENTITY setdk "Set a default key">
+<!ENTITY title "Помощник FireGPG - Личный ключ">
+<!ENTITY stop "Стоп">
+<!ENTITY next "Далее">
+<!ENTITY title2 "Личный ключ">
+<!ENTITY description "Системв PGP работает с личным ключом и публичным ключом. Вы можете подписывать ваши сообщения личным ключом и использовать чей-либо публичный ключ для проверки его подписи. Если кто-то захочет отослать вам сообщение, то он будет использовать ваш публичный ключ для шифрования сообщения, а вы, ТОЛЬКО ВЫ, сможете расшифровать это сообщение вашим личным ключом.">
+<!ENTITY pk "У вас есть по крайней мере один личный ключ на брелке">
+<!ENTITY setdk "Установите ключ по-умолчанию">
 <!ENTITY askforpk "Запрос закрытого ключа">
-<!ENTITY name "Name">
-<!ENTITY id "Id">
+<!ENTITY name "Имя">
+<!ENTITY id "ID">
 <!ENTITY created "Создан">
-<!ENTITY expire "Expire">
-<!ENTITY nopk "You don't have any private keys in your keyring">
-<!ENTITY genpk "Generate a private and a public key">
-<!ENTITY gen "Generate">
-<!ENTITY importpk "Import a private key">
-<!ENTITY import "Import">
+<!ENTITY expire "Истекает">
+<!ENTITY nopk "У вас нет личных ключей на вашем брелке">
+<!ENTITY genpk "Генерироваль дичный и публичный ключи">
+<!ENTITY gen "Генерировать">
+<!ENTITY importpk "Импортировать личный ключ">
+<!ENTITY import "Импортировать">

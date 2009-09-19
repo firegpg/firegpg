@@ -70,7 +70,7 @@
 <!ENTITY autorwap-liste-action.label "Ação">
 <!ENTITY autorwap-liste-domain.label "Webmail">
 <!ENTITY autowrap_list.label "Respostas automáticas (clique duplo para remover):">
-<!ENTITY paneautowrap.title "Autowrap">
+<!ENTITY paneautowrap.title "Quebra de linhas automático">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Mostrar dados do usuário quando a assinatura for válida">
 <!ENTITY gmail-keep-encrypted-mail "Cifrar respostas de emails cifrados">
 <!ENTITY gmail-smtp-no-auth-checkbox "Desabilitar autenticação SMTP">

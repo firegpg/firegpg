@@ -2,13 +2,13 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Next">
 <!ENTITY title2 "Private key">
-<!ENTITY description "The PGP system works with a private key and a public key. You sign messages with your private key and another user verifies your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
+<!ENTITY description "Sistemul PGP foloseşte o cheie privată şi o cheie publică. Semnaţi un mesaj cu cheia privată, iar alt utilizator verifică semnătura cu cheia publică. Când cineva doreşte să vă trimită un mesaj, foloseşte cheia dvs. publică, iar mesajul astfel criptat poate fi decriptat doar de dvs. pe baza cheii private.">
 <!ENTITY pk "You have at least one private key in your keyring">
 <!ENTITY setdk "Set a default key">
-<!ENTITY askforpk "Ask for private key">
+<!ENTITY askforpk "Cereţi o cheie privată">
 <!ENTITY name "Name">
 <!ENTITY id "Id">
-<!ENTITY created "Created">
+<!ENTITY created "Creat">
 <!ENTITY expire "Expire">
 <!ENTITY nopk "You don't have any private keys in your keyring">
 <!ENTITY genpk "Generate a private and a public key">

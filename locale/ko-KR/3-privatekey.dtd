@@ -1,17 +1,17 @@
-<!ENTITY title "FireGPG Assistant - Private key">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Private key">
-<!ENTITY description "The PGP system works with a private key and a public key. You sign messages with your private key and another user verifies your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
-<!ENTITY pk "You have at least one private key in your keyring">
-<!ENTITY setdk "Set a default key">
-<!ENTITY askforpk "Ask for private key">
-<!ENTITY name "Name">
+<!ENTITY title "FireGPG 마법사 - 개인키">
+<!ENTITY stop "정지">
+<!ENTITY next "다음">
+<!ENTITY title2 "개인키">
+<!ENTITY description "PGP 시스템은 개인키와 공개키를 기반으로 운영됩니다. 당신이 개인키로 메시지를 서명하면 다른 사용자가 공개키로 당신의 서명을 검증합니다. 만약 다른 사용자들이 당신에게 메시지를 보내고 싶은 경우, 다른 사용자들은 당신의 공개키를 이용해서 메시지를 보내고, 그런 경우 당신이, 오직 당신만이, 해당 메시지를 개인키로 열어볼 수 있습니다.">
+<!ENTITY pk "키 꾸러미에 개인키를 적어도 하나 이상은 가지고 있습니다.">
+<!ENTITY setdk "기본 키 지정">
+<!ENTITY askforpk "개인키에 대한 질문">
+<!ENTITY name "이름">
 <!ENTITY id "Id">
-<!ENTITY created "Created">
-<!ENTITY expire "Expire">
-<!ENTITY nopk "You don't have any private keys in your keyring">
-<!ENTITY genpk "Generate a private and a public key">
-<!ENTITY gen "Generate">
-<!ENTITY importpk "Import a private key">
-<!ENTITY import "Import">
+<!ENTITY created "생성됨">
+<!ENTITY expire "폐기">
+<!ENTITY nopk "키 꾸러미에 보유하고 계시는 개인키가 하나도 없습니다.">
+<!ENTITY genpk "개인키와 공개키 쌍 생성">
+<!ENTITY gen "생성">
+<!ENTITY importpk "개인키 가져오기">
+<!ENTITY import "가져오기">

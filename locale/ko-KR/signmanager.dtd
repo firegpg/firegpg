@@ -1,7 +1,7 @@
-<!ENTITY signmanager "Sign manager">
-<!ENTITY key-name "Name">
-<!ENTITY key-id "Key ID">
-<!ENTITY key-create "Date (sign or creation)">
-<!ENTITY sign-button "Sign this key">
-<!ENTITY revoke-button "Revoke this sign">
-<!ENTITY del-button "Delete this sign">
+<!ENTITY signmanager "서명 관리자">
+<!ENTITY key-name "이름">
+<!ENTITY key-id "키 ID">
+<!ENTITY key-create "날짜 (서명 또는 생성)">
+<!ENTITY sign-button "이 키를 서명">
+<!ENTITY revoke-button "이 서명 폐기">
+<!ENTITY del-button "이 서명 삭제">

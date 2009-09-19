@@ -1,5 +1,5 @@
-<!ENTITY thitle "Compute hashes of fles">
-<!ENTITY result "Result:">
+<!ENTITY thitle "Computar Índices de archivos">
+<!ENTITY result "Resultado:">
 <!ENTITY browse "Seleccionar">
-<!ENTITY hash "Type:">
+<!ENTITY hash "Tipo:">
 <!ENTITY copy "copiar">

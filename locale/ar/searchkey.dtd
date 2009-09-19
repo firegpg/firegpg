@@ -1,5 +1,5 @@
 <!ENTITY keyimporter "Import key from server">
-<!ENTITY close-button "Close">
+<!ENTITY close-button "إغلاق">
 <!ENTITY import-button "Import selected keys">
 <!ENTITY search-button "Search">
 <!ENTITY search-description "Search for :">

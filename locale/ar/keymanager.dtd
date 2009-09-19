@@ -26,6 +26,7 @@
 <!ENTITY revokeRemplaced "Key is superseded">
 <!ENTITY revokeNotUsed "Key is no longer used">
 <!ENTITY userid-button "User ID">
-<!ENTITY add "Add">
-<!ENTITY delete "Delete">
+<!ENTITY add "إضافة">
+<!ENTITY delete "حذف">
 <!ENTITY revoke "Revoke">
+<!ENTITY fingerprint-button "Fingerprint">

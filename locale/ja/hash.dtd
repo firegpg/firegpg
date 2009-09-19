@@ -1,5 +1,5 @@
-<!ENTITY thitle "Compute hashes of fles">
+<!ENTITY thitle "ファイルのハッシュを計算する">
 <!ENTITY result "Result:">
-<!ENTITY browse "Select a file">
-<!ENTITY hash "Type:">
-<!ENTITY copy "Copy hash to clipboard">
+<!ENTITY browse "ファイルを選択する">
+<!ENTITY hash "タイプ:">
+<!ENTITY copy "ハッシュをクリップボードにコピーする">

@@ -1,8 +1,8 @@
-<!ENTITY keyimporter "Import key from server">
+<!ENTITY keyimporter "서버에서 키를 가져오기">
 <!ENTITY close-button "닫기">
-<!ENTITY import-button "Import selected keys">
-<!ENTITY search-button "Search">
-<!ENTITY search-description "Search for :">
-<!ENTITY key-create "Created">
+<!ENTITY import-button "선택한 키 가져오기">
+<!ENTITY search-button "검색">
+<!ENTITY search-description "검색 :">
+<!ENTITY key-create "생성됨">
 <!ENTITY key-id "ID">
-<!ENTITY key-name "Name">
+<!ENTITY key-name "이름">

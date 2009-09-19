@@ -1,11 +1,11 @@
 <!ENTITY title "FireGPG Assistant - Done !">
 <!ENTITY title2 "Done!">
 <!ENTITY description "Assistant is now done. Now you should be able to use FireGPG.">
-<!ENTITY doc "Read the documentation">
-<!ENTITY doc2 "You will find some li<x>nks on this page">
+<!ENTITY doc "راهنما را بخوانید">
+<!ENTITY doc2 "شما لینک‌هایی را در این ص فحه خواهید یافت">
 <!ENTITY tr "Translate FireGPG">
 <!ENTITY tr2 "Horrible mistake in your language for FireGPG? Here is the website!">
 <!ENTITY help "به FireGPG کمک کنید">
-<!ENTITY help2 "How to contribute to FireGPG">
+<!ENTITY help2 "روش‌های کمک به FireGPG">
 <!ENTITY bug "Report a bug or ask for a new feature">
 <!ENTITY close "بستن">

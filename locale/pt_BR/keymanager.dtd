@@ -16,16 +16,17 @@
 <!ENTITY refrech "Atualizar chaves a partir do servidor">
 <!ENTITY trustUnded "Remover informação sobre relações de confiança (&quot;trusting&quot;)">
 <!ENTITY trustDont "Não confio nesta chave">
-<!ENTITY trustMargi "I marginally trust this key">
+<!ENTITY trustMargi "Confio marginalmente nesta chave">
 <!ENTITY trustFull "Eu confio plenamente nessa chave">
-<!ENTITY trustUltimate "Trust this key ultimately (!)">
+<!ENTITY trustUltimate "Confiar nesta chave plenamente (!)">
 <!ENTITY password-button "Alterar senha">
 <!ENTITY del-button "Excuir">
 <!ENTITY revokeNoRaison "Sem razão especificada">
 <!ENTITY revokeComprimse "A chave foi comprometida">
-<!ENTITY revokeRemplaced "Key is superseded">
+<!ENTITY revokeRemplaced "A chave foi anulada">
 <!ENTITY revokeNotUsed "A chave não é mais usada">
 <!ENTITY userid-button "ID de usuário">
 <!ENTITY add "Adicionar">
 <!ENTITY delete "Apagar">
 <!ENTITY revoke "Revogar">
+<!ENTITY fingerprint-button "Fingerprint">

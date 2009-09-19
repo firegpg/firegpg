@@ -56,3 +56,5 @@
 <!ENTITY firegpgContext.labelFiles "Operasi berkas">
 <!ENTITY firegpgMenu.labelFiles "Operasi berkas">
 <!ENTITY firegpgMenu.labelHashs "Hash">
+<!ENTITY parseAgain "Parse (again) this page.">
+<!ENTITY update-avaiable "An update of FireGPG is available">

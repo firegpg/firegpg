@@ -6,19 +6,19 @@
 <!ENTITY gmail-enabled-checkbox.accesskey "G">
 <!ENTITY private-keys-label.text "기본 개인키:">
 <!ENTITY show-website-checkbox "FireGPG 웹사이트 주소를 GPG 주석 영역에 보이기">
-<!ENTITY change-gpg-path-button "GPG 경로 지정">
-<!ENTITY change-gpg-path-checkbox "GPG 프로그램 경로를 직접 지정:">
+<!ENTITY change-gpg-path-button "찾아보기">
+<!ENTITY change-gpg-path-checkbox "gpg 실행파일 경로 지정:">
 <!ENTITY result-always-in-new-window "암호화하거나 서명한 결과를 항상 새 창에 표시">
 <!ENTITY no-gpg-agent-checkbox "GPG의 agent를 강제로 끄기 (일부 오류 해결 가능)">
-<!ENTITY ask-for-save-pass "암호를 저장할지 물어봄">
+<!ENTITY ask-for-save-pass "기본값, 암호를 기억해놓을지 물어봄">
 <!ENTITY gmail-no-no-sign-checkbox "서명을 찾지 못했다는 안내문을 표시하지 않기">
-<!ENTITY gmail-need-a-restart "아래 설정들을 바꾸고 적용하려면 브라우저를 다시 실행해야합니다.">
+<!ENTITY gmail-need-a-restart "이 설정들을 적용하려면 브라우저를 다시 시작해야만 합니다.">
 <!ENTITY gmail-buttons-label "표시할 단추들:">
 <!ENTITY gmail-buton-sign-checkbox "서명">
 <!ENTITY gmail-buton-signsend-checkbox "서명하여 전송">
 <!ENTITY gmail-buton-crypt-checkbox "암호화">
 <!ENTITY gmail-buton-cryptsend-checkbox "암호화하여 전송">
-<!ENTITY allvays-to-myself-checkbox "항상 나 자신에게 암호화하여 보내기">
+<!ENTITY allvays-to-myself-checkbox "항상 스스로에게 암호화해서 보내기">
 <!ENTITY enable-gpgauth-check.accesskey "E">
 <!ENTITY global-allow-keyring-pref.label "인증된 서버로부터의 메세지를 항상 복호화">
 <!ENTITY global-allow-keyring-check.label "인증된 서버로부터의 메세지를 항상 복호화">
@@ -30,12 +30,12 @@
 <!ENTITY key-create "생성됨">
 <!ENTITY key-expire "만료">
 <!ENTITY pane4.title "GPG">
-<!ENTITY gpg-add-options "gpg의 명령행에 인수를 넣으십시오: (경고! FireGPG를 고장낼 수 있습니다. 문서를 참조하셔요.)">
+<!ENTITY gpg-add-options "gpg의 명령행에 인수를 추가 : (경고! FireGPG가 작동을 멈출 수 있습니다. 문서를 읽어보십시오.)">
 <!ENTITY gmail-buton-signcrypt-checkbox "서명하고 암호화">
 <!ENTITY gmail-buton-signcryptsend-checkbox "서명하고 암호화해서 전송">
 <!ENTITY firegpg-version-label.text "현재 FireGPG 버전:">
 <!ENTITY hide-expired "만료된 키를 숨김">
-<!ENTITY use-api "(roundcube 같은) 웹페이지들을 위한 FireGPG의 API 활성화">
+<!ENTITY use-api "웹 페이지(RoundCube 등) 용 FireGPG API를 활성화합니다. (브라우저 다시 시작 필요)">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-domain.label "도메인">
 <!ENTITY api-liste-keyauth.label "키">
@@ -46,41 +46,41 @@
 <!ENTITY inline-activated "문서 내의 PGP 블럭에 대한 핸들러 활성화 (재시작 필요)">
 <!ENTITY gmail-disable-autosave-checkbox "자동 저장 비활성화">
 <!ENTITY gmail-buton-csign-checkbox "가독형 서명">
-<!ENTITY gmail-buton-csignsend-checkbox "가독형으로 서명하여 전송">
-<!ENTITY hide-fireftp-message "Don't show message about old IPC library installed">
-<!ENTITY use-fireftp-workaround "Try to access to IPC with the old API">
-<!ENTITY keyserver-message "Keyserver">
-<!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms. In most cases, you should have these choices:">
-<!ENTITY gmail-new-interface "New Gmail interface">
-<!ENTITY gmail-select-by-default-label "Selected by default :">
-<!ENTITY gmail-buton-inline-checkbox "Inline">
-<!ENTITY gmail-old-interface "Old Gmail interface">
-<!ENTITY gmail-smtp-options-label "SMTP options (openpgp/mime mails)">
-<!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
-<!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
-<!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
-<!ENTITY gmail-smtp-port "Port (465) :">
-<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
-<!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign and encryption(always use the whole mail)">
-<!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
-<!ENTITY gmail-force-from "Force from value :">
-<!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
-<!ENTITY decrypt-when-reply "Decrypt content when reply">
-<!ENTITY gmail-buton-attachements-checkbox "Attachments">
-<!ENTITY autorwap-liste-action.label "Action">
-<!ENTITY autorwap-liste-domain.label "Webmail">
-<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
-<!ENTITY paneautowrap.title "Autowrap">
-<!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
-<!ENTITY gmail-keep-encrypted-mail "Encrypt reply of encrypted mails">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentication">
-<!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
-<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY gmail-buton-csignsend-checkbox "가독형 서명하고 보내기">
+<!ENTITY hide-fireftp-message "설치된 기존 IPC 라이브러리에 대한 메시지를 보지 않기">
+<!ENTITY use-fireftp-workaround "이전 API를 통해 IPC에 접근을 시도">
+<!ENTITY keyserver-message "키서버">
+<!ENTITY symmetric-algo "대칭 암호화에 사용할 알고리즘입니다. 기본으로 빈칸으로 두십시오. 'gpg --version'을 입력하면 사용할 수 있는 알고리즘 목록을 얻을 수 있습니다. 대부분의 경우, 다음과 같은 선택 사항을 가지게 됩니다:">
+<!ENTITY gmail-new-interface "새 Gmail 인터페이스">
+<!ENTITY gmail-select-by-default-label "기본으로 선택 :">
+<!ENTITY gmail-buton-inline-checkbox "인라인">
+<!ENTITY gmail-old-interface "지난 Gmail 인터페이스">
+<!ENTITY gmail-smtp-options-label "SMTP 옵션 (OpenPGP/MIME 메일)">
+<!ENTITY gmail-smtp-google-com "google.com에 저장된 암호를 사용하지 않음">
+<!ENTITY gmail-smtp-username "사용자 이름 (로그인한 계정의 사용자 이름을 사용하려는 경우 빈칸으로 두세요) :">
+<!ENTITY gmail-smtp-host "호스트 (smtp.gmail.com) :">
+<!ENTITY gmail-smtp-port "포트 (465) :">
+<!ENTITY gmail-smtp-use-ssl-checkbox "SSL 사용 :">
+<!ENTITY gmail-disable-sign-detection "인라인 서명과 암호화에 대한 답장 감지 비활성화 (항상 온전한 형태의 메일을 사용)">
+<!ENTITY gmail-disable-auto-decryption "예전 방식으로 복호화">
+<!ENTITY gmail-force-from "강제 from 값 :">
+<!ENTITY gpg-special-path-values "인수 안에서 Firefox 폴더는 {$FxFolder}를 사용하고 공백은 {$SPACE}를 사용하세요">
+<!ENTITY decrypt-when-reply "답장할 때 내용 복호화하기">
+<!ENTITY gmail-buton-attachements-checkbox "첨부">
+<!ENTITY autorwap-liste-action.label "동작">
+<!ENTITY autorwap-liste-domain.label "웹메일">
+<!ENTITY autowrap_list.label "자동 답변 (두 번 클릭하면 제거):">
+<!ENTITY paneautowrap.title "자동 줄 바꿈">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "올바른 서명에 대한 사용자 데이터 보여주기">
+<!ENTITY gmail-keep-encrypted-mail "암호화된 메일에 암호화된 답장 쓰기">
+<!ENTITY gmail-smtp-no-auth-checkbox "SMTP 인증 비활성화">
+<!ENTITY dont_ask_to_download_key "잃어버린 키 다운로드 시도하지 않기">
+<!ENTITY keyserverproxy-message "HTTP와 HKP 키서버 프로토콜에 프록시 사용:">
+<!ENTITY digest-message "요약 (서명에 이용되는 해쉬) (SHA256, SHA512 등) (Gmail에서 메일을 생성할 때 이 값을 사용합니다.):">
+<!ENTITY enable-gpgauth-statusbar-check.label "gpgAuth 상태표시줄 아이콘 활성화">
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.label "gpgAuth를 사용하는 경우 상태 창 자동 표시">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
-<!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
-<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">
+<!ENTITY enable-gpgauth-check.label "gpgpAuth 활성화">
+<!ENTITY panpan-assistant-is-now-dead "마법사 다시 실행">
+<!ENTITY api-liste-access2.label "API에 대한 권한 목록 (두 번 클릭하면 제거)">

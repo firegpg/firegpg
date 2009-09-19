@@ -166,7 +166,7 @@ FireGPGMimeSender.prototype =
 		if (bcc.length)
 			msg.Bcc = bcc;
 		if (subject.length)
-			msg.Subject = stUtil.makeRFC2047(subject);
+			msg.Subject = FireGPG_stUtil.makeRFC2047(subject);
 
 		// date. (Note: we can get offset from UTC, but we can't get
 		// the actual time zone) Sample: Tue, 15 May 2007 18:34:56

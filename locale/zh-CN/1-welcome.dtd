@@ -1,12 +1,12 @@
-<!ENTITY title "FireGPG Assistant - Welcome">
-<!ENTITY skip "Skip">
-<!ENTITY next "Next">
-<!ENTITY title2 "FireGPG Assistant">
-<!ENTITY infoabout "Here is some information about icons and color used:">
-<!ENTITY whatnext "This suggest a solution or something you should do">
-<!ENTITY good "This is something good">
-<!ENTITY problem "This is a problem">
-<!ENTITY advanced "This is for advanced users. If you don't understand it, don't worry and don't change it.">
-<!ENTITY help "This means help is available.  Mouse over the icon for the tooltip.">
-<!ENTITY helppop "Hello, I'm the help">
-<!ENTITY description "Welcome!  This assistant will help you to configure FireGPG. If you're a new user it's recommended to follow it to get a working configuration. What ever you choose to do, you will be able to use the option windows to change any option later.">
+<!ENTITY title "FireGPG助手-欢迎">
+<!ENTITY skip "跳过">
+<!ENTITY next "下一项">
+<!ENTITY title2 "FireGPG助手">
+<!ENTITY infoabout "这是一些有关已使用图标和颜色的信息:">
+<!ENTITY whatnext "这提示了您需要遵循的解决方案或者其它">
+<!ENTITY good "这是有积极价值的事物">
+<!ENTITY problem "这是一个难题">
+<!ENTITY advanced "此项设置适合高级用户，如果您不确知此项设置的后果，请不要担心也不要变动此项设置。">
+<!ENTITY help "这意味着帮助可用.移动鼠标到图标以获得提示.">
+<!ENTITY helppop "Hello,我是帮助系统">
+<!ENTITY description "欢迎您!本助手将协助您配置FireGPG.如果您是一位新用户,我们建议您跟着跟随助手以创建有效的配置.无论您作何选择,您将来仍然可以改动这里的任一选项.">

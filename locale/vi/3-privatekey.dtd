@@ -2,13 +2,13 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Next">
 <!ENTITY title2 "Private key">
-<!ENTITY description "The PGP system works with a private key and a public key. You sign messages with your private key and another user verifies your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
+<!ENTITY description "Các PGP hệ thống làm việc với một mã khóa tư và một mã khóa công. Bạn ký thơ tín của bạn với mã khóa tư và một người dùng khác xác minh chữ ký của bạn với mã khóa công của bạn. Nếu họ muốn gửi thơ tín đến cho bạn, họ sử dụng mã khóa công của bạn, và chỉ có bạn mà thôi, có thể giải mả bằng chìa khóa tư của bạn.">
 <!ENTITY pk "You have at least one private key in your keyring">
 <!ENTITY setdk "Set a default key">
-<!ENTITY askforpk "Ask for private key">
+<!ENTITY askforpk "Xin cho khỏa tư nhân">
 <!ENTITY name "Name">
 <!ENTITY id "Id">
-<!ENTITY created "Created">
+<!ENTITY created "Tạo ra">
 <!ENTITY expire "Expire">
 <!ENTITY nopk "You don't have any private keys in your keyring">
 <!ENTITY genpk "Generate a private and a public key">

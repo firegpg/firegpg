@@ -1,23 +1,23 @@
 <!ENTITY title "Assistente do FireGPG - GnuPG">
-<!ENTITY stop "Stop">
+<!ENTITY stop "Parar">
 <!ENTITY next "Próximo">
 <!ENTITY title2 "GnuPG">
 <!ENTITY description "O FireGPG utiliza o GnuPG para qualquer operação pgp, ou seja, o GnuPG deve estar instalado para que o FireGPG funcione.">
 <!ENTITY working "O GnuPG parece estar acessível e funcionando.">
-<!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
-<!ENTITY sethome "Set a home dir">
+<!ENTITY specialhome "Deseja definir um diretório inicial personalizado para o GnuPG?">
+<!ENTITY sethome "Definir pasta inicial">
 <!ENTITY notworking "GnuPG não está funcionando, há um problema. Favor corrigir e então clique no botão &quot;NEXT&quot;.">
-<!ENTITY isinstalled "Tendes o GnuPG instalado?">
+<!ENTITY isinstalled "Você instalou o GnuPG?">
 <!ENTITY download "Vós podereis descarregar GnuPG aqui: (mas qualquer GnuPG servirá)">
 <!ENTITY windows "Usuários Windows: clique aqui para descarregar o &quot;gpg4win&quot;">
 <!ENTITY linux "Usuários Linux: utilize o pacote (&quot;package&quot;) constante de vossa distribuição, ou clique aqui para obter fontes.">
 <!ENTITY macos "Usuários do MacOS: não sei como, mas existe um jeito. Use o Google!">
-<!ENTITY uncommon "Vossa cópia de GnuPG está instalada em um diretório não-padrão?">
+<!ENTITY uncommon "O GnuPG está instalado em um diretório não-padrão?">
 <!ENTITY setpath "Por favor, fornecei o caminho para o GnuPG aqui:">
 <!ENTITY browse "Navegar">
 <!ENTITY isfireftp "O FireFTP está instalado?">
 <!ENTITY fireftpproblem "Conflito entre FireGPG e FireFTP devido a biblioteca IPC antiga do FireFTP.">
 <!ENTITY uninstall "Se o conserto do FireGPG não funcionar, vós tereis que remover um deles para que o outro funcione.">
-<!ENTITY strangeplateform "Are you using a strange platform?">
+<!ENTITY strangeplateform "Você está utilizando uma plataforma estranha?">
 <!ENTITY platform "FireGPG funciona apenas em plataformas Windows, MacOS e Linux x86 e x86_64.">
 <!ENTITY recompile "Neste caso, tereis que recompilar a biblioteca IPC.">

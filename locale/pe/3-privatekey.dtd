@@ -7,11 +7,11 @@
 <!ENTITY setdk "Set a default key">
 <!ENTITY askforpk "کلید خصوصی را بخواه">
 <!ENTITY name "Name">
-<!ENTITY id "Id">
+<!ENTITY id "شناسه">
 <!ENTITY created "ایجاد شد">
 <!ENTITY expire "انقضاء">
 <!ENTITY nopk "You don't have any private keys in your keyring">
 <!ENTITY genpk "ساختن یک جفت کلید عمومی و خصوصی">
 <!ENTITY gen "ساختن">
 <!ENTITY importpk "Import a private key">
-<!ENTITY import "Import">
+<!ENTITY import "وارد کردن">

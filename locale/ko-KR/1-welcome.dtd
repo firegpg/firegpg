@@ -1,12 +1,12 @@
-<!ENTITY title "FireGPG Assistant - Welcome">
-<!ENTITY skip "Skip">
-<!ENTITY next "Next">
-<!ENTITY title2 "FireGPG Assistant">
-<!ENTITY infoabout "Here is some information about icons and color used:">
-<!ENTITY whatnext "This suggest a solution or something you should do">
-<!ENTITY good "This is something good">
-<!ENTITY problem "This is a problem">
-<!ENTITY advanced "This is for advanced users. If you don't understand it, don't worry and don't change it.">
-<!ENTITY help "This means help is available.  Mouse over the icon for the tooltip.">
-<!ENTITY helppop "Hello, I'm the help">
-<!ENTITY description "Welcome!  This assistant will help you to configure FireGPG. If you're a new user it's recommended to follow it to get a working configuration. What ever you choose to do, you will be able to use the option windows to change any option later.">
+<!ENTITY title "FireGPG 마법사 - 환영합니다">
+<!ENTITY skip "건너뜀">
+<!ENTITY next "다음">
+<!ENTITY title2 "FireGPG 마법사">
+<!ENTITY infoabout "사용된 아이콘과 색깔에 대한 몇가지 정보가 여기 있습니다:">
+<!ENTITY whatnext "이 아이콘은 해결책이나 사용자가 해야만 하는 어떤 일을 의미합니다;">
+<!ENTITY good "이 아이콘은 뭔가 좋음을 나타냅니다;">
+<!ENTITY problem "이 아이콘은 문제를 나타냅니다.">
+<!ENTITY advanced "고급 사용자를 위한 것입니다. 이해하지 못했다면, 그냥 그대로 두면 됩니다.">
+<!ENTITY help "이 색으로 표시되면 도움말이 있음을 의미합니다. 말풍선을 보려면 아이콘에 마우스 커서를 올려보세요.">
+<!ENTITY helppop "안녕하세요? 저는 도움말이예요.">
+<!ENTITY description "환영합니다! 이 설정 마법사는 사용자가 FireGPG 설정하는 것을 도와줄 것입니다. 처음 사용자라면 작동 설정을 위해 이 마법사를 따르길 권장합니다. 어떻게 하도록 설정하였던지 간에, 어떤 옵션이라도 나중에 옵션 창을 통해 다시 변경할 수 있습니다.">

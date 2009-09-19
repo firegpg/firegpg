@@ -1,11 +1,11 @@
-<!ENTITY title "FireGPG Assistant - Done !">
+<!ENTITY title "FireGPGアシスタント- 完了!">
 <!ENTITY title2 "Done!">
 <!ENTITY description "Assistant is now done. Now you should be able to use FireGPG.">
-<!ENTITY doc "Read the documentation">
+<!ENTITY doc "文書を読む">
 <!ENTITY doc2 "You will find some li<x>nks on this page">
-<!ENTITY tr "Translate FireGPG">
+<!ENTITY tr "FireGPGを翻訳する">
 <!ENTITY tr2 "Horrible mistake in your language for FireGPG? Here is the website!">
 <!ENTITY help "Help FireGPG">
 <!ENTITY help2 "FireGPGに貢献する方法">
-<!ENTITY bug "Report a bug or ask for a new feature">
-<!ENTITY close "Close">
+<!ENTITY bug "バグを報告するか、新しい機能を求める">
+<!ENTITY close "閉じる">

@@ -5,7 +5,7 @@
 <!ENTITY description "The PGP system works with a private key and a public key. You sign messages with your private key and another user verifies your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
 <!ENTITY pk "You have at least one private key in your keyring">
 <!ENTITY setdk "Set a default key">
-<!ENTITY askforpk "Ask for private key">
+<!ENTITY askforpk "בקש את המפתח הפרטי">
 <!ENTITY name "Name">
 <!ENTITY id "Id">
 <!ENTITY created "Created">

@@ -10,7 +10,7 @@
 <!ENTITY expire-year "năm">
 <!ENTITY expire-month "tháng">
 <!ENTITY expire-days "ngày">
-<!ENTITY advancedoptions "Các lựa chọn nâng cao">
+<!ENTITY advancedoptions "Các lựa chọn cao cấp">
 <!ENTITY keylenght-message "Độ dài khóa">
 <!ENTITY keytype-message "Kiểu khóa">
 <!ENTITY generate-button "Tạo khóa">

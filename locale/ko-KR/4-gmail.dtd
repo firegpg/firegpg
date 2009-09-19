@@ -1,22 +1,22 @@
-<!ENTITY title "FireGPG Assistant - Gmail">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Gmail support">
-<!ENTITY description "FireGPG can be integrated with gmail: additional buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signatures of any email that contains them.">
-<!ENTITY enable "Enable gmail support">
-<!ENTITY smtpok "FireGPG is able to access to the SMTP server">
-<!ENTITY noauth "NB: Authentication is not tested!">
-<!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
-<!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
-<!ENTITY atta "Attachments">
-<!ENTITY inline "Use inline">
-<!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
-<!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">
-<!ENTITY wait "Wait 15 seconds or more if your connection is very slow">
-<!ENTITY setp "Set parameters of a working SMTP server (eg. your internet provider or your workplace server)">
-<!ENTITY host "Host (smtp.gmail.com): ">
-<!ENTITY port "Port (465):">
-<!ENTITY username "Username (leave blank to use the username of logged account):">
-<!ENTITY ssl "Use SSL">
-<!ENTITY setdo "Set default options for sending mails">
+<!ENTITY title "FireGPG 마법사 - Gmail">
+<!ENTITY stop "정지">
+<!ENTITY next "다음">
+<!ENTITY title2 "Gmail 지원">
+<!ENTITY description "FireGPG는 Gmail과 통합될 수 있습니다: 메일을 암호화하고 서명하거나 또는 개별적인 작업을 수행할 수 있는 추가적인 버튼이 Gmail 인터페이스 상에 나타납니다. 암호문이나 서명을 포함한 어떤 메일이라도 복호화하고 서명을 검증 할 수 있습니다.">
+<!ENTITY enable "Gmail 지원 활성화">
+<!ENTITY smtpok "FireGPG는 SMTP 서버에 엑세스할 수 있습니다.">
+<!ENTITY noauth "*주의*: 인증이 테스트되지 않았습니다!">
+<!ENTITY noauthhelp "메일을 보낼 때 문제가 있을 경우 FireGPG가 사용자에게 경고하게 됨">
+<!ENTITY sign "서명">
+<!ENTITY encrypt "암호화">
+<!ENTITY atta "첨부">
+<!ENTITY inline "인라인 사용">
+<!ENTITY inlinesuck "인라인은 불완전해서 항상 동작하지는 않습니다. 기본으로 OpenPGP/MIME를 사용해야합니다!">
+<!ENTITY nosmtp "FireGPG가 SMTP 서버에 접근할 수 없거나 요청이 처리되고 있는 중입니다.">
+<!ENTITY wait "접속 속도가 아주 느린 경우 적어도 15초 이상 기다리십시오">
+<!ENTITY setp "작동하는 SMTP 서버의 매개변수 설정 (예: 인터넷 서비스 제공자나 직장에 설치된 SMTP 서버)">
+<!ENTITY host "호스트 (smtp.gmail.com): ">
+<!ENTITY port "포트 (465):">
+<!ENTITY username "사용자 이름 (로그인한 계정의 사용자 이름을 사용하려면 빈칸으로 두십시오):">
+<!ENTITY ssl "SSL 사용">
+<!ENTITY setdo "메일을 보낼 때 사용할 기본 옵션 지정">

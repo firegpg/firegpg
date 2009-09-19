@@ -1,5 +1,5 @@
-<!ENTITY thitle "Compute hashes of fles">
-<!ENTITY result "Result:">
-<!ENTITY browse "Select a file">
-<!ENTITY hash "Type:">
-<!ENTITY copy "Copy hash to clipboard">
+<!ENTITY thitle "计算文件哈希值">
+<!ENTITY result "结果:">
+<!ENTITY browse "选择文件">
+<!ENTITY hash "类型:">
+<!ENTITY copy "复制Hash到剪贴板">

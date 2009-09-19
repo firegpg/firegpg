@@ -2933,7 +2933,7 @@ fireGPGDebug("activated");
 		}
 
 		wT.parentNode.style.display = "";
-		stUtil.removeClassName(jH, "nq");
+		FireGPG_stUtil.removeClassName(jH, "nq");
 
 		// <div class="IY0d9c"><div class="XoqCub EGSDee" style="width: 66px;"><div class="SsbSQb L4XNt"><span class="hdgibf">Loading...</span></div></div><div class="XoqCub EGSDee" style="width: 0px;"/></div>
 		var hd	= d.evaluate(".//span[@class='v1']", wT, null, F, null).singleNodeValue;

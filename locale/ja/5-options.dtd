@@ -5,8 +5,8 @@
 <!ENTITY description "Here you can set global options for some FireGPG features:">
 <!ENTITY inline "Enable Inline detection">
 <!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">
-<!ENTITY disableagent "Disable GPG-Agent">
+<!ENTITY disableagent "GPG-agentを無効にする">
 <!ENTITY api "FireGPG APIを有効にする">
 <!ENTITY apihelp "FireGPG API lets any website use gpg's features - of course with security mechanisms">
-<!ENTITY gpgauth "Enable gpgAuth">
+<!ENTITY gpgauth "gpgAuthを有効にする">
 <!ENTITY gpgauthhelp "gpgAuth is mechanism or process to authenticate web-users using GnuPG, not developped by FireGPG authors">
