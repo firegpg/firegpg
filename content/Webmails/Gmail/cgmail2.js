@@ -1798,7 +1798,7 @@ Zna Vna UIb $RQa $SQa Moa
                         if (!forMime)
                             contenuMail =     Selection.wash(contenuMail);
 
-                        if (indexOfQuote == -1 || TrimAndWash(contenuMail) == "")
+                        if (indexOfQuote == -1 || FireGPGMisc.TrimAndWash(contenuMail) == "")
                         {
                             indexOfQuote = select.length;
                             contenuMail = select.substring(0,indexOfQuote);
@@ -1866,7 +1866,7 @@ Zna Vna UIb $RQa $SQa Moa
 
                     var contentu = select2.substring(0,indexOfQuote);
 
-                    if (indexOfQuote == -1 || TrimAndWash(contentu) == "")
+                    if (indexOfQuote == -1 || FireGPGMisc.TrimAndWash(contentu) == "")
                     {
                         select2 = textarea.value;
                         indexOfQuote = select2.length;

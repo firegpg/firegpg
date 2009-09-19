@@ -457,7 +457,7 @@ var FireGPG = {
             var result = this.GPGAccess.listsigns(onlySignOfThisKey);
 
 		// We get informations from GPG
-		result = EnigConvertGpgToUnicode(result.sdOut);
+		result = FireGPGMisc.EnigConvertGpgToUnicode(result.sdOut);
 
         returnObject.sdOut = result;
 
@@ -1983,7 +1983,7 @@ var FireGPG = {
         result = backgroundTask.result;
 
 		// We get informations from GPG
-		result = EnigConvertGpgToUnicode(result.sdOut);
+		result = FireGPGMisc.EnigConvertGpgToUnicode(result.sdOut);
 
 
         returnObject.sdOut = result;

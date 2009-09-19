@@ -1069,7 +1069,7 @@ var FireGPGMisc = {
     */
     trim :function (str){
         return str.replace(/^\s+/, "").replace(/\s+$/, "");
-    }
+    },
 
     /*
         Function: TrimAndWash
@@ -1080,7 +1080,7 @@ var FireGPGMisc = {
     */
     TrimAndWash:function (str) {
         return FireGPGMisc.trim(str).replace(/\n/, "");
-    }
+    },
 
     /*
         Function: EnigConvertGpgToUnicode
@@ -1112,7 +1112,7 @@ var FireGPGMisc = {
        }  catch (ex) {  fireGPGDebug(ex,'misc.EnigConvertGpgToUnicode',true); }
 
        return text;
-    }
+    },
 
     /*
         Function: EnigConvertToUnicode
