@@ -571,7 +571,7 @@ var FireGPG_cGmail = {
 				var d = documentFragment;
 				var str = s.serializeToString(d);
 
-				contenuMail = Selection.wash(str);
+				contenuMail = FireGPG_Selection.wash(str);
 
 				var result = FireGPG.decrypt(false,contenuMail);
 
@@ -734,7 +734,7 @@ var FireGPG_cGmail = {
 						var indexOfQuote = select.indexOf('<span class="gmail_quote">');
 						if (indexOfQuote == -1)
 							indexOfQuote = select.length;
-						contenuMail = Selection.wash(select.substring(0,indexOfQuote));
+						contenuMail = FireGPG_Selection.wash(select.substring(0,indexOfQuote));
 
 						this.composeIndexOfQuote  = indexOfQuote;
 					}
@@ -757,7 +757,7 @@ var FireGPG_cGmail = {
 						textarera.selectionStart = 0;
 						textarera.selectionEnd = indexOfQuote;
 
-						contenuMail = Selection.wash(select2.substring(0,indexOfQuote));
+						contenuMail = FireGPG_Selection.wash(select2.substring(0,indexOfQuote));
 
 					}
 					//var i18n = document.getElementById("firegpg-strings");
@@ -768,7 +768,7 @@ var FireGPG_cGmail = {
 				else
 				{
 
-					contenuMail = Selection.wash(select2);
+					contenuMail = FireGPG_Selection.wash(select2);
 				}
 			}
 			else
@@ -782,7 +782,7 @@ var FireGPG_cGmail = {
 				var d = documentFragment;
 				var str = s.serializeToString(d);
 
-				contenuMail = Selection.wash(str);
+				contenuMail = FireGPG_Selection.wash(str);
 
 			}
 			return contenuMail;
@@ -957,7 +957,7 @@ var FireGPG_cGmail = {
 		var s = new XMLSerializer();
 		var d = documentFragment;
 		var str = s.serializeToString(d);
-		contenuMail = Selection.wash(str);
+		contenuMail = FireGPG_Selection.wash(str);
 
 		return contenuMail;
 

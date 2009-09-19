@@ -108,7 +108,7 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
 	var d = range.cloneContents();
 	var str = s.serializeToString(d);
 
-    var content = Selection.wash(str);
+    var content = FireGPG_Selection.wash(str);
 
     var fragment = range.extractContents();
 

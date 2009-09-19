@@ -1787,7 +1787,7 @@ Zna Vna UIb $RQa $SQa Moa
 
                     if (FireGPG_cGmail2.noAutoReplyDetect) {
 
-                        contenuMail =     Selection.wash(select);
+                        contenuMail =     FireGPG_Selection.wash(select);
 
                     } else {
 
@@ -1796,7 +1796,7 @@ Zna Vna UIb $RQa $SQa Moa
                         contenuMail = select.substring(0,indexOfQuote);
 
                         if (!forMime)
-                            contenuMail =     Selection.wash(contenuMail);
+                            contenuMail =     FireGPG_Selection.wash(contenuMail);
 
                         if (indexOfQuote == -1 || FireGPGMisc.TrimAndWash(contenuMail) == "")
                         {
@@ -1804,7 +1804,7 @@ Zna Vna UIb $RQa $SQa Moa
                             contenuMail = select.substring(0,indexOfQuote);
 
                             if (!forMime)
-                                contenuMail =     Selection.wash(contenuMail);
+                                contenuMail =     FireGPG_Selection.wash(contenuMail);
 
                         }
 
@@ -1823,7 +1823,7 @@ Zna Vna UIb $RQa $SQa Moa
                 var d = documentFragment;
                 var str = s.serializeToString(d);
 
-                contenuMail = Selection.wash(str);
+                contenuMail = FireGPG_Selection.wash(str);
 
             }
 
@@ -1879,12 +1879,12 @@ Zna Vna UIb $RQa $SQa Moa
 
                 }
 
-                contenuMail = Selection.wash(contentu);
+                contenuMail = FireGPG_Selection.wash(contentu);
             }
             else
             {
 
-                contenuMail = Selection.wash(select2);
+                contenuMail = FireGPG_Selection.wash(select2);
             }
 
 
@@ -2415,7 +2415,7 @@ Zna Vna UIb $RQa $SQa Moa
 		var s = new XMLSerializer();
 		var d = documentFragment;
 		var str = s.serializeToString(d);
-		contenuMail = Selection.wash(str);
+		contenuMail = FireGPG_Selection.wash(str);
 
 
         //Remove stranges A0

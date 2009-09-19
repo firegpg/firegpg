@@ -310,7 +310,7 @@ var FireGPG = {
 
         if ((text == undefined || text == null) && !fileMode) {
             var autoSetMode = true;
-            text = Selection.get();
+            text = FireGPG_Selection.get();
 
 
             //Vu que c'est peut etre un webmail, on passe dans l'autowrap
@@ -391,9 +391,9 @@ var FireGPG = {
 
         if (autoSetMode) {
 			// We test if the selection is editable :
-			if(Selection.isEditable()) {
+			if(FireGPG_Selection.isEditable()) {
 				// If yes, we edit this selection with the new text
-				Selection.set(result.output);
+				FireGPG_Selection.set(result.output);
 			}
 			else //Else, we show a windows with the result
 				FireGPGMisc.showText(result.output);
@@ -649,7 +649,7 @@ var FireGPG = {
         }
 
         if (text == undefined || text == null)
-            text = Selection.get();
+            text = FireGPG_Selection.get();
 
         if (text == "") {
             if (!silent)
@@ -870,7 +870,7 @@ var FireGPG = {
 
         if ((text == undefined || text == null)  && !fileMode) {
             var autoSetMode = true;
-            text = Selection.get();
+            text = FireGPG_Selection.get();
         }
 
         if (text == "" && !fileMode) {
@@ -966,9 +966,9 @@ var FireGPG = {
 
         if (autoSetMode) {
 			// We test if the selection is editable :
-			if(Selection.isEditable()) {
+			if(FireGPG_Selection.isEditable()) {
 				// If yes, we edit this selection with the new text
-				Selection.set(result.output);
+				FireGPG_Selection.set(result.output);
 			}
 			else //Else, we show a windows with the result
 				FireGPGMisc.showText(result.output);
@@ -1092,7 +1092,7 @@ var FireGPG = {
 
         if ((text == undefined || text == null) && !fileMode) {
             var autoSetMode = true;
-            text = Selection.get();
+            text = FireGPG_Selection.get();
         }
 
         if (text == "" && !fileMode) {
@@ -1175,9 +1175,9 @@ var FireGPG = {
 
         if (autoSetMode) {
 			// We test if the selection is editable :
-			if(Selection.isEditable()) {
+			if(FireGPG_Selection.isEditable()) {
 				// If yes, we edit this selection with the new text
-				Selection.set(result.output);
+				FireGPG_Selection.set(result.output);
 			}
 			else //Else, we show a windows with the result
 				FireGPGMisc.showText(result.output);
@@ -1302,7 +1302,7 @@ var FireGPG = {
 
         if ((text == undefined || text == null) && !fileMode ) {
             var autoSetMode = true;
-            text = Selection.get();
+            text = FireGPG_Selection.get();
         }
 
         if (text == "" && !fileMode) {
@@ -1709,7 +1709,7 @@ var FireGPG = {
 
         if ((text == undefined || text == null) && !fileMode) {
             var autoSetMode = true;
-            text = Selection.get();
+            text = FireGPG_Selection.get();
         }
 
         if (text == "" && !fileMode) {
@@ -1858,9 +1858,9 @@ var FireGPG = {
 
         if (autoSetMode) {
             //We test is the selection in editable :
-            if(Selection.isEditable()) {
+            if(FireGPG_Selection.isEditable()) {
                 //If yes, we edit this selection with the new text
-                Selection.set(result.output,returnObject.signresulttext);
+                FireGPG_Selection.set(result.output,returnObject.signresulttext);
             }  else {
                 //Else, we show a windows with the result
                 FireGPGMisc.showText(result.output,undefined,undefined,undefined,returnObject.signresulttext);
