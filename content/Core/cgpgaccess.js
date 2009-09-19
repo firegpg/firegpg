@@ -161,10 +161,10 @@ function loadXpcom () {
 }
 
 /*
-    Function: isGpgAgentActivated
+    Function: FireGPG_isGpgAgentActivated
     Return true if we should use the agent (option and environement variable set
 */
-function isGpgAgentActivated() {
+function FireGPG_isGpgAgentActivated() {
     useGPGAgent = false;
 
        var key = "extensions.firegpg.use_gpg_agent";

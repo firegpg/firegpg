@@ -378,7 +378,7 @@ var FireGPGApi = {
         // For I18N
 		var i18n = document.getElementById("firegpg-strings");
 
-        if (!isGpgAgentActivated()) {
+        if (!FireGPG_isGpgAgentActivated()) {
             var password = FireGPGMisc.getPrivateKeyPassword(false,FireGPGApi.getDomain(event.target.ownerDocument.location));
 
             if(password == null || password == "") {
@@ -482,7 +482,7 @@ var FireGPGApi = {
         // For I18N
 		var i18n = document.getElementById("firegpg-strings");
 
-         if (!isGpgAgentActivated()) {
+         if (!FireGPG_isGpgAgentActivated()) {
             var password = FireGPGMisc.getPrivateKeyPassword(false,FireGPGApi.getDomain(event.target.ownerDocument.location));
             if(password == null || password == "") {
                 returnData.setAttribute('result', 'sign-err');
@@ -630,7 +630,7 @@ var FireGPGApi = {
 		var i18n = document.getElementById("firegpg-strings");
 
         // Needed for decrypt
-        if (!isGpgAgentActivated()) {
+        if (!FireGPG_isGpgAgentActivated()) {
             var password = FireGPGMisc.getPrivateKeyPassword(false,FireGPGApi.getDomain(event.target.ownerDocument.location));
             if(password == null || password == "") {
                 returnData.setAttribute('result', 'sign-err');
