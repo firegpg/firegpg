@@ -61,7 +61,7 @@ FireGPGMimeSender.prototype =
 	/**
 	 * Abstract callbacks to be called right before a message undergoes the operations indicated by the functions. This is meant
 	 * to inform the user via the UI.
-	 * TODO: Note on implementation: currently signText, encryption, and breakLines take an extraordinarily long time for large data. Thus, they block the UI. Consider addressing this.
+	 * TODO: Note on implementation: currently signText, encryption, and FireGPG_breakLines take an extraordinarily long time for large data. Thus, they block the UI. Consider addressing this.
 	 */
 	ourSigning: function(msg) {},
 	ourEncrypting: function(msg) {},
@@ -126,8 +126,8 @@ FireGPGMimeSender.prototype =
 
 		var msgs = null;	// this will be an Array
 
-        fireGPGDebug("Calling convertAddressLineToArray - parameters : from", 'ourSubmit',  false);
-		var af = convertAddressLineToArray(from);
+        fireGPGDebug("Calling FireGPG_convertAddressLineToArray - parameters : from", 'ourSubmit',  false);
+		var af = FireGPG_convertAddressLineToArray(from);
 		if (af.length != 1) return false;
 		msg.mailFrom = af[0];
 
@@ -135,18 +135,18 @@ FireGPGMimeSender.prototype =
 		// try to send a message to yourself, Gmail SMTP will actually
 		// save the first copy of the message. Not the last one or
 		// whatever.
-        fireGPGDebug("Calling convertAddressLineToArray - parameters : to", 'ourSubmit',  false);
-        a = convertAddressLineToArray(to);
-        fireGPGDebug("Calling convertAddressLineToArray - parameters : cc", 'ourSubmit',  false);
-        a = convertAddressLineToArray(cc);
-        fireGPGDebug("Calling convertAddressLineToArray - parameters : bcc", 'ourSubmit',  false);
-        a = convertAddressLineToArray(bcc);
-        fireGPGDebug("Calling convertAddressLineToArray - parameters : to-cc-bcc", 'ourSubmit',  false);
+        fireGPGDebug("Calling FireGPG_convertAddressLineToArray - parameters : to", 'ourSubmit',  false);
+        a = FireGPG_convertAddressLineToArray(to);
+        fireGPGDebug("Calling FireGPG_convertAddressLineToArray - parameters : cc", 'ourSubmit',  false);
+        a = FireGPG_convertAddressLineToArray(cc);
+        fireGPGDebug("Calling FireGPG_convertAddressLineToArray - parameters : bcc", 'ourSubmit',  false);
+        a = FireGPG_convertAddressLineToArray(bcc);
+        fireGPGDebug("Calling FireGPG_convertAddressLineToArray - parameters : to-cc-bcc", 'ourSubmit',  false);
 
         msg.rcptTo =
-		convertAddressLineToArray(to).concat(
-		 convertAddressLineToArray(cc),
-		 convertAddressLineToArray(bcc));
+		FireGPG_convertAddressLineToArray(to).concat(
+		 FireGPG_convertAddressLineToArray(cc),
+		 FireGPG_convertAddressLineToArray(bcc));
 		if (!msg.rcptTo.length) return false;
 
 		// TODO: support quoted-printable for other headers, not just subject

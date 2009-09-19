@@ -61,7 +61,7 @@ This file was a part of Gmail S/MIME (adapted)
  * TODO: make this function vigorous and robust. Find complex parsing algorithms, or do it yourself
  * piecemeal (as opposed to using a regexp).
  */
-function convertAddressLineToArray(line)
+function FireGPG_convertAddressLineToArray(line)
 {
 	function trim(g)
 	{
@@ -70,7 +70,7 @@ function convertAddressLineToArray(line)
 	}
 
     if (line == undefined) {
-        fireGPGDebug("Undefined line in convertAddressLineToArray, return '' anyways", 'convertAddressLineToArray',  true);
+        fireGPGDebug("Undefined line in FireGPG_convertAddressLineToArray, return '' anyways", 'FireGPG_convertAddressLineToArray',  true);
         return "";
         }
 
@@ -109,7 +109,7 @@ function convertAddressLineToArray(line)
  * This function splits lines into 76-character chunks. This is useful
  * for stuffing base64 into an rfc822 message.
  */
-function breakLines(t)
+function FireGPG_breakLines(t)
 {
 	// this appears to be the fastest--slightly faster than array.join("\r\n") (because it takes a little bit of time to compose the array, too);
 	theresult = t.replace(/[\s\S]{76}/g,"$&\r\n");

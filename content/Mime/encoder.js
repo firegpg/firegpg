@@ -112,7 +112,7 @@ FireGPGMimeEncoder.prototype =
 				createInstance(Components.interfaces.nsIBinaryInputStream);
 				binInpStream.setInputStream(fileStream);
 				var bytes = binInpStream.readBytes(fileStream.available());
-				var base64coded = breakLines(btoa(bytes));
+				var base64coded = FireGPG_breakLines(btoa(bytes));
 				this.addStringToStream(base64coded);
 			}
 			catch (e)
@@ -237,7 +237,7 @@ FireGPGMimeEncoder.prototype =
 				part += "; charset=" +
 					uChars + "\r\nContent-Transfer-Encoding: base64";
 				str = btoa(str);
-				str = breakLines(str);
+				str = FireGPG_breakLines(str);
 			}
 			part += this.CRLF;
 		}
@@ -340,7 +340,7 @@ FireGPGMimeEncoder.prototype =
 					this.makeRFC2047(cD.filename) + "\"" + this.CRLF;
 				str += "Content-Type: " + cT.type + this.CRLF + this.CRLF;
 
-				str += breakLines(btoa(attachment.data));
+				str += FireGPG_breakLines(btoa(attachment.data));
 				this.addStringToStream(str);
 				return true;
 			}
