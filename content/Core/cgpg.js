@@ -605,9 +605,9 @@ var FireGPG = {
 		}
 
         // Sorts keys
-        returnObject.keylist = returnObject.keylist.sort(Sortage);
+        returnObject.keylist = returnObject.keylist.sort(FireGPG_Sortage);
         for (var i = 0; i < returnObject.keylist.length; i++)
-            returnObject.keylist[i].subKeys = returnObject.keylist[i].subKeys.sort(Sortage);
+            returnObject.keylist[i].subKeys = returnObject.keylist[i].subKeys.sort(FireGPG_Sortage);
 
         returnObject.result = RESULT_SUCCESS;
 
@@ -2057,10 +2057,10 @@ var FireGPG = {
 		}
 
         // Sorts keys
-        returnObject.keylist = returnObject.keylist.sort(Sortage);
+        returnObject.keylist = returnObject.keylist.sort(FireGPG_Sortage);
 
         for (var i = 0; i < returnObject.keylist.length; i++)
-            returnObject.keylist[i].subKeys = returnObject.keylist[i].subKeys.sort(Sortage);
+            returnObject.keylist[i].subKeys = returnObject.keylist[i].subKeys.sort(FireGPG_Sortage);
 
         returnObject.result = RESULT_SUCCESS;
 
@@ -2954,7 +2954,8 @@ var FireGPG = {
 }
 
 
-var okWait;
+
+var FireGPG_okWait; // ???
 
 // We load the good class for the OS
 FireGPG.FireGPGGPGAccess = Witch_FireGPGGPGAccess();
