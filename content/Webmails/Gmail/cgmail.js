@@ -590,7 +590,7 @@ var cGmail = {
 				if (mailContent == "")
 					return;
 
-                var result = FireGPG.sign(false,gmailWrapping(mailContent));
+                var result = FireGPG.sign(false,FireGPGMisc.gmailWrapping(mailContent));
 
                 if (result.result == RESULT_SUCCESS) {
 
@@ -615,7 +615,7 @@ var cGmail = {
 				if (mailContent == "")
 					return;
 
-                var result = FireGPG.sign(false,gmailWrapping(mailContent),null,null,true);
+                var result = FireGPG.sign(false,FireGPGMisc.gmailWrapping(mailContent),null,null,true);
 
                 if (result.result == RESULT_SUCCESS) {
 

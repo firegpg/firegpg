@@ -1029,7 +1029,7 @@ Zna Vna UIb $RQa $SQa Moa
 				if (mailContent == "")
 					return;
 
-				var result = FireGPG.sign(false,gmailWrapping(mailContent));
+				var result = FireGPG.sign(false,FireGPGMisc.gmailWrapping(mailContent));
 
                 if (result.result == RESULT_SUCCESS) {
 
@@ -1048,7 +1048,7 @@ Zna Vna UIb $RQa $SQa Moa
 				if (mailContent == "")
 					return;
 
-				var result = FireGPG.sign(false,gmailWrapping(mailContent),null,null,true);
+				var result = FireGPG.sign(false,FireGPGMisc.gmailWrapping(mailContent),null,null,true);
 
                 if (result.result == RESULT_SUCCESS) {
 
@@ -1301,7 +1301,7 @@ Zna Vna UIb $RQa $SQa Moa
 
                         } else if (sign) {
 
-                            var result = FireGPG.sign(false,gmailWrapping(mailContent));
+                            var result = FireGPG.sign(false,FireGPGMisc.gmailWrapping(mailContent));
 
                             if (result.result == RESULT_SUCCESS) {
 
