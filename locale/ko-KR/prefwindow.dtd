@@ -26,9 +26,9 @@
 <!ENTITY per-domain-preferences.label "도메인별 설정:">
 <!ENTITY turn-off-updates "FireGPG의 자동 업데이트를 사용하지 않음">
 <!ENTITY key-name "이름">
-<!ENTITY key-id "아이디">
-<!ENTITY key-create "생성됨">
-<!ENTITY key-expire "만료">
+<!ENTITY key-id "ID　　　　　　　　　">
+<!ENTITY key-create "생성됨　　　">
+<!ENTITY key-expire "만료　　　　">
 <!ENTITY pane4.title "GPG">
 <!ENTITY gpg-add-options "gpg의 명령행에 인수를 추가 : (경고! FireGPG가 작동을 멈출 수 있습니다. 문서를 읽어보십시오.)">
 <!ENTITY gmail-buton-signcrypt-checkbox "서명하고 암호화">

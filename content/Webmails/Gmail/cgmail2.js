@@ -3010,7 +3010,22 @@ fireGPGDebug("activated");
 
     error: function(error, where) {
 
-        alert(where + ' ' + error);
+         var i18n = document.getElementById("firegpg-strings");
+
+        if (!getBrowser().contentWindow.document.getElementById('firegpg-gmail-error')) {
+try {
+            div = getBrowser().contentWindow.document.createElement('div');
+            div.setAttribute('id', 'firegpg-gmail-error');
+            div.setAttribute('title', i18n.getString('gmail_problem_message'));
+            div.setAttribute('style', "z-index: 10000; position: absolute; bottom: 0px; right: 0px; width: auto; height: auto; border: 1px red solid; background-color: #ff9999; font-size: 70%; text-align: center;");
+            div.innerHTML = '<b>FireGPG</b>: ' + i18n.getString('gmail_problem_title') + ' <a href="#" onclick="alert(document.getElementById(\'firegpg-gmail-error\').title);">' + i18n.getString('gmail_problem_detail') + '</a> <a href="http://getfiregpg.org/s/gmailstatut" target="_blank">' + i18n.getString('gmail_problem_status') + '</a> <a href="#" onclick="document.getElementById(\'firegpg-gmail-error\').style.display = \'none\'; ">' + i18n.getString('gmail_problem_close') + '</a>';
+            getBrowser().contentWindow.document.body.appendChild(div);
+} catch (e) { alert(e.lineNumber + e); }
+        }
+
+        getBrowser().contentWindow.document.getElementById('firegpg-gmail-error').title +=  '\n\n' + FireGPGMisc.htmlEncode(where + ' ' + error.fileName + ' ' + error.lineNumber + ' ' + error.message)  ;
+
+
         fireGPGDebug(error, "cGmail2/error/" + where, true);
 
     }

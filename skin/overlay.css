@@ -96,6 +96,12 @@ label.link {
 
 }
 
+#firegpg-statusbar-gmail {
+    background-color: red;
+    color: white;
+
+}
+
 #firegpg-statusbar-trusted-content {
 
     background-color: #006600;

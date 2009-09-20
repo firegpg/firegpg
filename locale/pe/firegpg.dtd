@@ -53,7 +53,7 @@
 <!ENTITY firegpgContext.labelWrapSign "امضای پنهان‌سازی شده">
 <!ENTITY firegpgMenu.labelWrapSign "امضای پنهان‌سازی شده">
 <!ENTITY firegpgContext.labelHashs "هَش‌ها">
-<!ENTITY firegpgContext.labelFiles "Files operations">
+<!ENTITY firegpgContext.labelFiles "عملیات بر روی پرونده‌ها">
 <!ENTITY firegpgMenu.labelFiles "Files operations">
 <!ENTITY firegpgMenu.labelHashs "هَش‌ها">
 <!ENTITY parseAgain "Parse (again) this page.">

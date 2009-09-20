@@ -56,5 +56,5 @@
 <!ENTITY firegpgContext.labelFiles "파일 작업">
 <!ENTITY firegpgMenu.labelFiles "파일 작업">
 <!ENTITY firegpgMenu.labelHashs "해쉬">
-<!ENTITY parseAgain "Parse (again) this page.">
-<!ENTITY update-avaiable "An update of FireGPG is available">
+<!ENTITY parseAgain "이 페이지를 (다시) 구조분석합니다.">
+<!ENTITY update-avaiable "FireGPG 업데이트가 있습니다.">

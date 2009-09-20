@@ -210,7 +210,6 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
                     <menuitem class="firegpg-menu menuitem-iconic" id="firegpg-parse-again" label="&parseAgain;" oncommand="firegpg.onMenuItemCommand(event,'CHECKAGAIN')"/>
 
-
                     <menuitem class="firegpg-menu menuitem-iconic" id="firegpg-inline-switcher" label="" oncommand="firegpg.onMenuItemCommand(event,this.tag)"/>
                     <menuitem class="firegpg-menu menuitem-iconic" id="firegpg-inline-temp-switcher" label="" oncommand="firegpg.onMenuItemCommand(event,this.tag)"/>
                   </menupopup>
@@ -218,6 +217,8 @@ under the terms of any one of the MPL, the GPL or the LGPL.
             <img src="chrome://firegpg/skin/firegpg.png" class="statusbarpanel-iconic" popup="firegpg-icon-pop-up" />
             <label value="&update-avaiable;"   id="firegpg-statusbar-update"  onclick="firegpg.onMenuItemCommand(null,'UPDATE');" style="display: none;"/>
             <label value=""   id="firegpg-statusbar-trusted-content"  style="display: none;"/>
+
+            <label value="Problems with gmail. Click me."   id="firegpg-statusbar-gmail"  onclick="firegpg.onMenuItemCommand(null,'GMAIL');" style="display: none;"/>
         </statusbarpanel>
 
         <!-- gpgAuth statusbar button -->

@@ -72,6 +72,9 @@ function fireGPGDebug (message, debugCode, fatal) {
 
         return;
 
+    if (message && message.lineNumber)
+        message = message.fileName + '@' + message.lineNumber + '  ' + message.message;
+
     if (fatal)
         Components.utils.reportError("FireGPG-debug: [" + debugCode + "]"  + message);
     else {

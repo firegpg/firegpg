@@ -29,4 +29,4 @@
 <!ENTITY add "Toevoegen">
 <!ENTITY delete "Verwijder">
 <!ENTITY revoke "Intrekken">
-<!ENTITY fingerprint-button "Fingerprint">
+<!ENTITY fingerprint-button "Sleutelvingerafdruk">

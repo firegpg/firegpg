@@ -1,8 +1,8 @@
 <!ENTITY key-status "상태">
-<!ENTITY key-trust "신뢰">
-<!ENTITY key-expire "만료">
-<!ENTITY key-create "생성됨">
-<!ENTITY key-id "ID">
+<!ENTITY key-trust "신뢰　　">
+<!ENTITY key-expire "만료　　　　">
+<!ENTITY key-create "생성됨　　　">
+<!ENTITY key-id "ID　　　　　　　　　">
 <!ENTITY key-name "이름">
 <!ENTITY revoke-button "키 폐기">
 <!ENTITY sign-button "서명">
@@ -29,4 +29,4 @@
 <!ENTITY add "추가">
 <!ENTITY delete "삭제">
 <!ENTITY revoke "폐기">
-<!ENTITY fingerprint-button "Fingerprint">
+<!ENTITY fingerprint-button "지문">
