@@ -2829,7 +2829,7 @@ fireGPGDebug("activated");
            //CHILDREN OF gv
            // act="32"
 
-            papa = doc.getElementsByClassName('gv');
+            papa = doc.getElementsByClassName('hx');
             papa = papa[0];
 
             fireGPGDebug('Papa is ' + papa, 'getMimeMailContens');

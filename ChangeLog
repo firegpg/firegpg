@@ -2,6 +2,7 @@
     * Fix problem dues to namespacing
     * Improved error messages
     * Gmail's improvements
+    * Fix gmail issues
 
 2009-09-19 Maximilien Cuony
     * Max version set to 3.6
