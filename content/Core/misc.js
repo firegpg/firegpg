@@ -49,7 +49,7 @@ const FIREGPG_VERSION_A = '078';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
-const FIREGPG_STATUS = 'RELASE';
+const FIREGPG_STATUS = 'DEVEL';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */
@@ -66,7 +66,7 @@ const FIREGPG_SVN = "$Rev$";
         fatal - True if it's a fatal error.
 
 */
-fireGPGDebug:function (message, debugCode, fatal) {
+function fireGPGDebug (message, debugCode, fatal) {
 
     if (FIREGPG_STATUS == "RELASE" && !fatal)
 
@@ -95,12 +95,12 @@ var FireGPGMisc = {
        NS_NETWORKINPUTS_CONTRACTID   - Id for the component @mozilla.org/scriptableinputstream;1
        NS_PROCESSUTIL_CONTRACTID   - Id for the component @mozilla.org/process/util;1
     */
-     NS_LOCALEFILE_CONTRACTID: "@mozilla.org/file/local,1",
-     NS_DIRECTORYSERVICE_CONTRACTID: "@mozilla.org/file/directory_service,1",
-     NS_NETWORKOUTPUT_CONTRACTID: "@mozilla.org/network/file-output-stream,1",
-     NS_NETWORKINPUT_CONTRACTID: "@mozilla.org/network/file-input-stream,1",
-     NS_NETWORKINPUTS_CONTRACTID: "@mozilla.org/scriptableinputstream,1",
-     NS_PROCESSUTIL_CONTRACTID: "@mozilla.org/process/util,1",
+     NS_LOCALEFILE_CONTRACTID: "@mozilla.org/file/local;1",
+     NS_DIRECTORYSERVICE_CONTRACTID: "@mozilla.org/file/directory_service;1",
+     NS_NETWORKOUTPUT_CONTRACTID: "@mozilla.org/network/file-output-stream;1",
+     NS_NETWORKINPUT_CONTRACTID: "@mozilla.org/network/file-input-stream;1",
+     NS_NETWORKINPUTS_CONTRACTID: "@mozilla.org/scriptableinputstream;1",
+     NS_PROCESSUTIL_CONTRACTID: "@mozilla.org/process/util;1",
 
     /*
        Constants: Tempory files
@@ -404,8 +404,8 @@ var FireGPGMisc = {
 
 
         /* return password if it's saved in savePassword */
-        if(useSavedPassword && savedPassword != null)
-            return savedPassword;
+        if(useSavedPassword && FireGPGMisc.savedPassword != null)
+            return FireGPGMisc.savedPassword;
 
         /* show the dialog ! */
         if (message == undefined)
@@ -421,7 +421,7 @@ var FireGPGMisc = {
 
         if(result.save_password && domain == false && nosavecheckbox != true) {
 
-            savedPassword = result.password;
+            FireGPGMisc.savedPassword = result.password;
 
 
 
@@ -443,7 +443,7 @@ var FireGPGMisc = {
     */
     getsavedPassword:function () {
 
-        return savedPassword;
+        return FireGPGMisc.savedPassword;
     },
 
     /*
@@ -452,7 +452,7 @@ var FireGPGMisc = {
     */
     eraseSavedPassword:function () {
 
-        savedPassword = null;
+        FireGPGMisc.savedPassword = null;
 
         try {
             if (document.getElementById('firegpg-menu-memo-pop'))
@@ -488,11 +488,11 @@ var FireGPGMisc = {
             keyID = FireGPGMisc.choosePrivateKey(autoSelectPrivate);
 
         /* request password if key id is changed */
-        if(keyID.toString() != oldKeyID.toString()) {
-            FireGPGMisc.seraseSavedPassword();
+        if(keyID.toString() != FireGPGMisc.oldKeyID.toString()) {
+            FireGPGMisc.eraseSavedPassword();
         }
 
-        oldKeyID = keyID;
+        FireGPGMisc.oldKeyID = keyID;
 
         return keyID;
     },
@@ -874,7 +874,7 @@ var FireGPGMisc = {
             if (!noUpdates)
             {
 
-                if (updateAvailable) {
+                if (FireGPGMisc.updateAvailable) {
                     if (document.getElementById('firegpg-statusbar-update'))
                         document.getElementById('firegpg-statusbar-update').style.display = '';
 
@@ -906,7 +906,7 @@ var FireGPGMisc = {
                         {
                             if (document.getElementById('firegpg-statusbar-update') != null) {
                                 document.getElementById('firegpg-statusbar-update').style.display = '';
-                                updateAvailable = true;
+                                FireGPGMisc.updateAvailable = true;
                             } else {
                                 FireGPGMisc.showUpdateDialog();
                             }
@@ -941,7 +941,7 @@ var FireGPGMisc = {
 
         }
 
-        updateAvailable = false;
+        FireGPGMisc.updateAvailable = false;
 
         if (document.getElementById('firegpg-statusbar-update') != null)
             document.getElementById('firegpg-statusbar-update').style.display = 'none';

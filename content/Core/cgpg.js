@@ -1489,7 +1489,7 @@ var FireGPG = {
             var result = this.FireGPGGPGAccess.verify(text, charset, fileMode, fileFrom, fileSig, fileDataForSign, fromDTA);
 
             if ( charset && charset.toLowerCase() == "iso-8859-1")
-                result.sdOut = EnigConvertToUnicode(result.sdOut, 'UTF-8');
+                result.sdOut = FireGPGMisc.EnigConvertToUnicode(result.sdOut, 'UTF-8');
         }         else {
             result = new FireGPG_GPGReturn();
             result.sdOut = nextText;

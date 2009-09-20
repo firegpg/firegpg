@@ -432,14 +432,13 @@ var FireGPGGPGAccess = {
 
 
         try {
-
             var fileobj = Components.classes[FireGPGMisc.NS_LOCALEFILE_CONTRACTID].
                                  createInstance(Components.interfaces.nsILocalFile);
 
             fileobj.initWithPath( this.getGPGCommand());
 
         } catch  (e) {
-
+            fireGPGDebug(e, 'rungpg/3', true);
         }
 
         try {
@@ -485,6 +484,7 @@ var FireGPGGPGAccess = {
                    /// FireFTP version but it's crash some times firefox
                    this.ipcService.execPipe(this.getGPGCommand() + " " + parameters, false,  "", sdtIn, sdtIn.length,  env, env.length, outStrObj, outLenObj, errStrObj, errLenObj);
                 } catch (e) {
+                    fireGPGDebug(e, 'rungpg/1', true);
                 }
 
                 //If we're here, it's didn't crash
@@ -509,14 +509,13 @@ var FireGPGGPGAccess = {
 
             var retour = new Object();
 
-
-            retour.out = EnigConvertToUnicode(outStrObj.value, charset);
-            retour.err = EnigConvertToUnicode(errStrObj.value, charset);
+            retour.out = FireGPGMisc.EnigConvertToUnicode(outStrObj.value, charset);
+            retour.err = FireGPGMisc.EnigConvertToUnicode(errStrObj.value, charset);
 
             return retour;
 
         } catch  (e) {
-
+            fireGPGDebug(e, 'rungpg/2', true);
         }
 
         return null;

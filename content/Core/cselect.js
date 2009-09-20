@@ -40,10 +40,10 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 */
 
 /*
-   Class: Selection
+   Class: FireGPG_Selection
    Class to handle selection
 */
-var Selection = {
+var FireGPG_Selection = {
 	/*
 	Function: getFrame
 	find a select in a frame
