@@ -507,9 +507,9 @@ var FireGPGMisc = {
         The path is returned.
     */
     getTmpDir:function () {
-        return Components.classes[NS_DIRECTORYSERVICE_CONTRACTID].
+        return Components.classes[FireGPGMisc.NS_DIRECTORYSERVICE_CONTRACTID].
                           getService(Components.interfaces.nsIProperties).
-                          get(TMP_DIRECTORY, Components.interfaces.nsIFile);
+                          get(FireGPGMisc.TMP_DIRECTORY, Components.interfaces.nsIFile);
     },
 
 
@@ -525,14 +525,14 @@ var FireGPGMisc = {
     */
     getTmpFile:function (permission /* optional */, suffix_file)  {
         if(permission == undefined)
-            permission = WRITE_PERMISSION;
+            permission = FireGPGMisc.WRITE_PERMISSION;
 
         var fileobj = FireGPGMisc.getTmpDir();
 
-        if (permission == WRITE_PERMISSION_R)
-            var fileName = TMP_RFILES;
+        if (permission == FireGPGMisc.WRITE_PERMISSION_R)
+            var fileName = FireGPGMisc.TMP_RFILES;
         else
-            var fileName = TMP_FILES;
+            var fileName = FireGPGMisc.TMP_FILES;
 
         if(suffix_file != undefined)
             fileName += '_S_' + suffix_file; //To be sure to be unique.
@@ -554,7 +554,7 @@ var FireGPGMisc = {
             path - The file to delete.
     */
     removeFile:function (path) {
-        var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
+        var fileobj = Components.classes[FireGPGMisc.NS_LOCALEFILE_CONTRACTID].
                                  createInstance(Components.interfaces.nsILocalFile);
         fileobj.initWithPath(path);
 
@@ -574,7 +574,7 @@ var FireGPGMisc = {
             path - The file to delete.
     */
     fileExist:function (path) {
-        var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
+        var fileobj = Components.classes[FireGPGMisc.NS_LOCALEFILE_CONTRACTID].
                                  createInstance(Components.interfaces.nsILocalFile);
         fileobj.initWithPath(path);
 
@@ -597,15 +597,15 @@ var FireGPGMisc = {
     */
     putIntoFile:function (filename, data)
     {
-        var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
+        var fileobj = Components.classes[FireGPGMisc.NS_LOCALEFILE_CONTRACTID].
                                  createInstance(Components.interfaces.nsILocalFile);
 
         fileobj.initWithPath(filename);
 
-        var foStream = Components.classes[NS_NETWORKOUTPUT_CONTRACTID].
+        var foStream = Components.classes[FireGPGMisc.NS_NETWORKOUTPUT_CONTRACTID].
                                   createInstance(Components.interfaces.nsIFileOutputStream);
 
-        foStream.init(fileobj, WRITE_MODE, WRITE_PERMISSION, 0);
+        foStream.init(fileobj, FireGPGMisc.WRITE_MODE, FireGPGMisc.WRITE_PERMISSION, 0);
         //foStream.write(data, data.length);
 
         var charset = "UTF-8"; // Can be any character encoding name that Mozilla supports
@@ -638,14 +638,14 @@ var FireGPGMisc = {
             charset = "UTF-8";
 
         try {
-            var fileobj = Components.classes[NS_LOCALEFILE_CONTRACTID].
+            var fileobj = Components.classes[FireGPGMisc.NS_LOCALEFILE_CONTRACTID].
                                      createInstance(Components.interfaces.nsILocalFile);
 
             fileobj.initWithPath(filename);
 
             var data = "";
-            var fstream = Components.classes[NS_NETWORKINPUT_CONTRACTID].createInstance(Components.interfaces.nsIFileInputStream);
-            //var sstream2 = Components.classes[NS_NETWORKINPUTS_CONTRACTID].
+            var fstream = Components.classes[FireGPGMisc.NS_NETWORKINPUT_CONTRACTID].createInstance(Components.interfaces.nsIFileInputStream);
+            //var sstream2 = Components.classes[FireGPGMisc.NS_NETWORKINPUTS_CONTRACTID].
             //                         createInstance(Components.interfaces.nsIScriptableInputStream);
             const replacementChar = Components.interfaces.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER;
         //	var charset = /* Need to find out what the character encoding is. Using UTF-8 for this example: */ "UTF-8";
@@ -691,7 +691,7 @@ var FireGPGMisc = {
 
         var stream = Components.classes["@mozilla.org/network/safe-file-output-stream;1"]
                        .createInstance(Components.interfaces.nsIFileOutputStream);
-        stream.init(aFile, WRITE_MODE, WRITE_PERMISSION, 0); // write, create, truncate
+        stream.init(aFile, FireGPGMisc.WRITE_MODE, FireGPGMisc.WRITE_PERMISSION, 0); // write, create, truncate
 
         stream.write(data, data.length);
         if (stream instanceof Components.interfaces.nsISafeOutputStream) {
