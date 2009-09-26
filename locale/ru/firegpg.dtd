@@ -56,5 +56,5 @@
 <!ENTITY firegpgContext.labelFiles "Операции с файлами">
 <!ENTITY firegpgMenu.labelFiles "Операции с файлами">
 <!ENTITY firegpgMenu.labelHashs "Контрольные суммы">
-<!ENTITY parseAgain "Parse (again) this page.">
-<!ENTITY update-avaiable "An update of FireGPG is available">
+<!ENTITY parseAgain "Обработать (снова) эту страницу.">
+<!ENTITY update-avaiable "Доступно обновление FireGPG">

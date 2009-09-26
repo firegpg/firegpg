@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Xestor de sinaturas">
+<!ENTITY key-name "Nome">
+<!ENTITY key-id "ID da chave">
+<!ENTITY key-create "Data (sinatura ou creación)">
+<!ENTITY sign-button "Asinar esta chave">
+<!ENTITY revoke-button "Revocar esta sinatura">
+<!ENTITY del-button "Borrar esta sinatura">

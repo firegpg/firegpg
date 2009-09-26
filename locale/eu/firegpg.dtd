@@ -1,0 +1,60 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "Sinatu">
+<!ENTITY firegpgContext.labelCrypt "Enkriptatu">
+<!ENTITY firegpgContext.labelVerif "Baieztatu">
+<!ENTITY firegpgContext.labelDecry "Desenkriptatu">
+<!ENTITY firegpgContext.labelOptions "Opzioak">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "Sinatu">
+<!ENTITY firegpgMenu.labelCrypt "Enkriptatu">
+<!ENTITY firegpgMenu.labelVerif "Baieztatu">
+<!ENTITY firegpgMenu.labelDecry "Desenkriptatu">
+<!ENTITY firegpgMenu.labelOptions "Aukerak">
+<!ENTITY firegpgToolbar.labelSign "Sinatu">
+<!ENTITY firegpgToolbar.labelCrypt "Enkriptatu">
+<!ENTITY firegpgToolbar.labelVerif "Egiaztatu">
+<!ENTITY firegpgToolbar.labelDecry "Desenkriptatu">
+<!ENTITY firegpgToolbar.labelOptions "Aukerak">
+<!ENTITY firegpgMenu.labelErase "Argi gordetako pasahitza">
+<!ENTITY firegpgContext.labelErase "Argi gordetako pasahitza">
+<!ENTITY firegpgToolbar.labelErase "Argi gordetako pasahitza">
+<!ENTITY firegpgMenu.labelImport "Inportatu">
+<!ENTITY firegpgContext.labelImport "Inportatu">
+<!ENTITY firegpgToolbar.labelImport "Inportatu">
+<!ENTITY firegpgMenu.labelExport "Esportatu">
+<!ENTITY firegpgContext.labelExport "Esportatu">
+<!ENTITY firegpgToolbar.labelExport "Esportatu">
+<!ENTITY firegpgPopInfo.labelBonjour "Ongi etorri! FireGPG-ren instalazioa ondo atera da.">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG gpg-ra heldu daiteke.">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG ezin da heldu gpg-ren exekutablera. Zihurta zaitez instalatuta dagoela edo eskuz esaiozu bere helbidea aukeretan.">
+<!ENTITY firegpgPopInfo.labelKeyOk "Gako pribatu bat aukeratuta dago.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Kontuz: Mesedez hobespenetan gako pribatua aukera ezazu.">
+<!ENTITY firegpgPopInfo.close "Itxi">
+<!ENTITY firegpgPopInfo.options "Aukerak">
+<!ENTITY firegpgContext.labelEditeur "Testu editorea">
+<!ENTITY firegpgMenu.labelEditeur "Testu editorea">
+<!ENTITY firegpgToolbar.labelEditeur "Testu Editorea">
+<!ENTITY firegpgContext.labelCryptSign "Sinatu eta enkriptatu">
+<!ENTITY firegpgMenu.labelCryptSign "Sinatu eta enkriptatu">
+<!ENTITY firegpgToolbar.labelCryptSign "Sinatu eta enkriptatu">
+<!ENTITY firegpgToolbar.labelSymCrypt "Enkriptazio simetrikoa">
+<!ENTITY firegpgContext.labelSymCrypt "Enkripzio simetrikoa">
+<!ENTITY firegpgMenu.labelSymCrypt "Ekripzio simetrikoa">
+<!ENTITY firegpgContext.labelClearSign "Argian sinatu">
+<!ENTITY firegpgToolbar.labelClearSign "Argian sinatu">
+<!ENTITY firegpgMenu.labelClearSign "Argian sinatu">
+<!ENTITY firegpgContext.labelManager "Gako kudeatzailea">
+<!ENTITY firegpgToolbar.labelManager "Gako kudeatzailea">
+<!ENTITY firegpgMenu.labelManager "Gako kudeatzailea">
+<!ENTITY keynotrevokedpassword "Errorea, gakoa ez da baliogabetu. Pasahitz okerra?">
+<!ENTITY firegpgContext.labelWrapSign "Estalitako sinadura">
+<!ENTITY firegpgMenu.labelWrapSign "Estalitako sinadura">
+<!ENTITY firegpgContext.labelHashs "Hash-ak">
+<!ENTITY firegpgContext.labelFiles "Artxiboen eragiketak">
+<!ENTITY firegpgMenu.labelFiles "Artxiboen eragiketak">
+<!ENTITY firegpgMenu.labelHashs "Hash-ak">
+<!ENTITY parseAgain "Analizatu (berriz) orrialde hau">
+<!ENTITY update-avaiable "FirePGP eguneraketa bat eskuragarri dago">

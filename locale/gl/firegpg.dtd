@@ -1,0 +1,60 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "Asinar">
+<!ENTITY firegpgContext.labelCrypt "Cifrar">
+<!ENTITY firegpgContext.labelVerif "Verificar">
+<!ENTITY firegpgContext.labelDecry "Descifrar">
+<!ENTITY firegpgContext.labelOptions "Opcións">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "Asinar">
+<!ENTITY firegpgMenu.labelCrypt "Cifrar">
+<!ENTITY firegpgMenu.labelVerif "Verificar">
+<!ENTITY firegpgMenu.labelDecry "Descifrar">
+<!ENTITY firegpgMenu.labelOptions "Opcións">
+<!ENTITY firegpgToolbar.labelSign "Asinar">
+<!ENTITY firegpgToolbar.labelCrypt "Cifrar">
+<!ENTITY firegpgToolbar.labelVerif "Verificar">
+<!ENTITY firegpgToolbar.labelDecry "Descifrar">
+<!ENTITY firegpgToolbar.labelOptions "Opcións">
+<!ENTITY firegpgMenu.labelErase "Eliminar contrasinal gardado">
+<!ENTITY firegpgContext.labelErase "Eliminar contrasinal gardado">
+<!ENTITY firegpgToolbar.labelErase "Limpar contrasinal gardado">
+<!ENTITY firegpgMenu.labelImport "Importar">
+<!ENTITY firegpgContext.labelImport "Importar">
+<!ENTITY firegpgToolbar.labelImport "Importar">
+<!ENTITY firegpgMenu.labelExport "Exportar">
+<!ENTITY firegpgContext.labelExport "Exportar">
+<!ENTITY firegpgToolbar.labelExport "Exportar">
+<!ENTITY firegpgPopInfo.labelBonjour "Benvida! FireGPG instalouse con éxito. ">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG pode acceder a gpg.">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG non pode acceder ao executábel de gpg. Asegúrese que está instalado, ou especifique a ruta manualmente nas preferencias.">
+<!ENTITY firegpgPopInfo.labelKeyOk "Seleccionouse unha chave privada.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Alerta: escolla unha chave privada en preferencias.">
+<!ENTITY firegpgPopInfo.close "Pechar">
+<!ENTITY firegpgPopInfo.options "Opcións">
+<!ENTITY firegpgContext.labelEditeur "Editor de texto">
+<!ENTITY firegpgMenu.labelEditeur "Editor de texto">
+<!ENTITY firegpgToolbar.labelEditeur "Editor de texto">
+<!ENTITY firegpgContext.labelCryptSign "Asinar e cifrar">
+<!ENTITY firegpgMenu.labelCryptSign "Cifrar e asinar">
+<!ENTITY firegpgToolbar.labelCryptSign "Asinar e cifrar">
+<!ENTITY firegpgToolbar.labelSymCrypt "Cifrado simétrico">
+<!ENTITY firegpgContext.labelSymCrypt "Cifrado simétrico">
+<!ENTITY firegpgMenu.labelSymCrypt "Cifrado simétrico">
+<!ENTITY firegpgContext.labelClearSign "Asinar">
+<!ENTITY firegpgToolbar.labelClearSign "Asinar">
+<!ENTITY firegpgMenu.labelClearSign "Asinar">
+<!ENTITY firegpgContext.labelManager "Xestor de contrasinais">
+<!ENTITY firegpgToolbar.labelManager "Xestión de chaves">
+<!ENTITY firegpgMenu.labelManager "Xestor de chaves">
+<!ENTITY keynotrevokedpassword "Erro, non se revocou a chave. Contrasinal incorrecto?">
+<!ENTITY firegpgContext.labelWrapSign "Sinatura con axuste">
+<!ENTITY firegpgMenu.labelWrapSign "Sinatura con axuste">
+<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelFiles "Operacións con ficheiros">
+<!ENTITY firegpgMenu.labelFiles "Operacións con ficheiros">
+<!ENTITY firegpgMenu.labelHashs "Hashes">
+<!ENTITY parseAgain "Parse (again) this page.">
+<!ENTITY update-avaiable "An update of FireGPG is available">

@@ -6,7 +6,7 @@
 <!ENTITY whatnext "This suggest a solution or something you should do">
 <!ENTITY good "This is something good">
 <!ENTITY problem "This is a problem">
-<!ENTITY advanced "This is for advanced users. If you don't understand it, don't worry and don't change it.">
+<!ENTITY advanced "Dette er for avanserte brukere. Dersom du ikke forstår dette, ikke forandre det - det er ganske sikkert best som det står.">
 <!ENTITY help "This means help is available.  Mouse over the icon for the tooltip.">
 <!ENTITY helppop "Hello, I'm the help">
-<!ENTITY description "Welcome!  This assistant will help you to configure FireGPG. If you're a new user it's recommended to follow it to get a working configuration. What ever you choose to do, you will be able to use the option windows to change any option later.">
+<!ENTITY description "Velkommen. Denne assistenten kan hjelpe deg til å konfigurere FireGPG. Dersom du er en ny bruker er det anbefalt å følge denne for å få en operativ konfigurasjon. Hva du enn velger å gjøre, så kan du senere bruke innstillingsvinduet for å endre dine valg.">

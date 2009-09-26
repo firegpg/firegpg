@@ -1,0 +1,11 @@
+<!ENTITY thitle "FireGPG-ren API-a">
+<!ENTITY intro "Web orri honek FirePGP-ren API-a erabili nahi du.">
+<!ENTITY warning1 "Web orri honetan KONFIDANTZA baduzu BAKARRIK adostu!!">
+<!ENTITY infos "Sartzen baimentzen badizute, web-orriak FireGPG-ren funtzio guztiak erabili ahal izango ditu (enkriptatu, desenkripatu, sinatu, sinadura baieztatu, enkriptatu eta sinatu, gako publikoak inportatu eta esportatu. API-a erabiltzen ari den bitartean zure pasahitza ez da memorian gordeta egongo. Horregatik behar den bakoitzean pasahitza sartzeko eskatuko zaizu.">
+<!ENTITY warning2 "https ez den trafikoa baimenduko duzu. Hau arriskutsua da!">
+<!ENTITY domain "Deominua">
+<!ENTITY website "Web orria">
+<!ENTITY page "Orria">
+<!ENTITY can-access "Sar daiteke">
+<!ENTITY cannot-access "Ezin da sartu">
+<!ENTITY ignore "Alde batera utzi">

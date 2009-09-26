@@ -1,0 +1,12 @@
+<!ENTITY title "FireGPG Laguntzailea - Ongi etorri">
+<!ENTITY skip "Iragan">
+<!ENTITY next "Hurrengoa">
+<!ENTITY title2 "FireGPG Laguntzailea">
+<!ENTITY infoabout "Hemen erabilitako ikono eta koloretako informazio pixka bat:">
+<!ENTITY whatnext "Hau konponbide edo zerbait egiteko sujerituko dizu.">
+<!ENTITY good "Haou gauza ona da">
+<!ENTITY problem "Hau arazo bat da">
+<!ENTITY advanced "Hau erabiltzaile aurreratuentzako da. Ulertzen ez baduzu ez aldatu.">
+<!ENTITY help "Honek laguntza eskuratu daitekela erakusten du. Jarri xagua ikonoaren gainean ikusteko.">
+<!ENTITY helppop "Kaixo, laguntzailea naiz">
+<!ENTITY description "Ongi Etorri! Laguntzaile hau FireGPG konfiguratzeko. Erabiltzaile berria bazara martxan jartzeko erabiltzea gomendagarria da. Edozein modutan egiten duzun guztia geroago aldatu ahal izango duzu opzio lehioatik.">

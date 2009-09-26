@@ -1,0 +1,17 @@
+<!ENTITY title "FireGPG Avustaja - Salainen avain">
+<!ENTITY stop "Lopeta">
+<!ENTITY next "Seuraava">
+<!ENTITY title2 "Salattu avain">
+<!ENTITY description "PGP-järjestelmä toimii salaisella ja julkisella avaimella. Allekirjoitat viestisi salaisella avaimellasi ja toinen käyttäjä varmentaa allekirjoituksesi julkisella avaimellasi. Jos he haluavat lähettää sinulle viestin, he käyttävät julkista avaintasi, ja vain ja ainoastaan sinä voit purkaa sen salaisella avaimellasi.">
+<!ENTITY pk "Sinulla on ainakin yksi salattua avain avainrenkaassa">
+<!ENTITY setdk "Aseta oletusavain">
+<!ENTITY askforpk "Kysy salainen avain">
+<!ENTITY name "Nimi">
+<!ENTITY id "Id">
+<!ENTITY created "Luotu">
+<!ENTITY expire "Vanhene">
+<!ENTITY nopk "Sinulla ei ole salattuja avaimia avainrenkaassa">
+<!ENTITY genpk "Generoi salattu ja julkinen avain">
+<!ENTITY gen "Generoi">
+<!ENTITY importpk "Tuo salattu avain">
+<!ENTITY import "Tuo">

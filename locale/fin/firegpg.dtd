@@ -1,0 +1,60 @@
+<!ENTITY firegpg.label "FireGPG">
+<!ENTITY firegpgToolbar.label "FireGPG">
+<!ENTITY firegpgToolbar.tooltip "FireGPG">
+<!ENTITY firegpgContext.label "FireGPG">
+<!ENTITY firegpgContext.labelSign "Allekirjoita">
+<!ENTITY firegpgContext.labelCrypt "Salaa">
+<!ENTITY firegpgContext.labelVerif "Varmenna">
+<!ENTITY firegpgContext.labelDecry "Pura">
+<!ENTITY firegpgContext.labelOptions "Asetukset">
+<!ENTITY firegpgMenu.label "FireGPG">
+<!ENTITY firegpgMenu.labelSign "Allekirjoita">
+<!ENTITY firegpgMenu.labelCrypt "Salaa">
+<!ENTITY firegpgMenu.labelVerif "Varmenna">
+<!ENTITY firegpgMenu.labelDecry "Pura">
+<!ENTITY firegpgMenu.labelOptions "Asetukset">
+<!ENTITY firegpgToolbar.labelSign "Allekirjoita">
+<!ENTITY firegpgToolbar.labelCrypt "Salaa">
+<!ENTITY firegpgToolbar.labelVerif "Varmenna">
+<!ENTITY firegpgToolbar.labelDecry "Pura">
+<!ENTITY firegpgToolbar.labelOptions "Asetukset">
+<!ENTITY firegpgMenu.labelErase "Tyhjennä tallennetut salasanat">
+<!ENTITY firegpgContext.labelErase "Tyhjennä tallennetut salasanat">
+<!ENTITY firegpgToolbar.labelErase "Tyhjennä tallennettu salasana">
+<!ENTITY firegpgMenu.labelImport "Tuo">
+<!ENTITY firegpgContext.labelImport "Tuo">
+<!ENTITY firegpgToolbar.labelImport "Tuo">
+<!ENTITY firegpgMenu.labelExport "Vie">
+<!ENTITY firegpgContext.labelExport "Vie">
+<!ENTITY firegpgToolbar.labelExport "Vie">
+<!ENTITY firegpgPopInfo.labelBonjour "Tervetuloa! FireGPG asennus onnistui.">
+<!ENTITY firegpgPopInfo.labelAccessOk "FireGPG löysi gpg ohjelman.">
+<!ENTITY firegpgPopInfo.labelAccessErr "FireGPG ei löydä gpg ohjelmaa. Varmista että se on asennettu tai aseta ohjelmapolku manuaalisesti asetuksissa. ">
+<!ENTITY firegpgPopInfo.labelKeyOk "Salainen avain on valittu.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Varoitus: Ole hyvä ja valitse salainen avain asetuksissa.">
+<!ENTITY firegpgPopInfo.close "Sulje">
+<!ENTITY firegpgPopInfo.options "Asetukset">
+<!ENTITY firegpgContext.labelEditeur "Tekstieditori">
+<!ENTITY firegpgMenu.labelEditeur "Tekstieditori">
+<!ENTITY firegpgToolbar.labelEditeur "Tekstieditori">
+<!ENTITY firegpgContext.labelCryptSign "Allekirjoita ja salaa">
+<!ENTITY firegpgMenu.labelCryptSign "Allekirjoita ja salaa">
+<!ENTITY firegpgToolbar.labelCryptSign "Allekirjoita ja salaa">
+<!ENTITY firegpgToolbar.labelSymCrypt "Symmetrinen salaus">
+<!ENTITY firegpgContext.labelSymCrypt "Symmetrinen salaus">
+<!ENTITY firegpgMenu.labelSymCrypt "Symmetrinen salaus">
+<!ENTITY firegpgContext.labelClearSign "Clearsign">
+<!ENTITY firegpgToolbar.labelClearSign "Clearsign">
+<!ENTITY firegpgMenu.labelClearSign "Clearsign">
+<!ENTITY firegpgContext.labelManager "Avainten hallinta">
+<!ENTITY firegpgToolbar.labelManager "Avainten hallinta">
+<!ENTITY firegpgMenu.labelManager "Avainten hallinta">
+<!ENTITY keynotrevokedpassword "Virhe, avainta ei peruutettu. Väärä salasana?">
+<!ENTITY firegpgContext.labelWrapSign "Paketoitu allekirjoitus">
+<!ENTITY firegpgMenu.labelWrapSign "Paketoitu allekirjoitus">
+<!ENTITY firegpgContext.labelHashs "Tarkistussummat">
+<!ENTITY firegpgContext.labelFiles "Tiedosto-operaatioita">
+<!ENTITY firegpgMenu.labelFiles "Tiedosto-operaatiot">
+<!ENTITY firegpgMenu.labelHashs "Tarkistussummat">
+<!ENTITY parseAgain "Lue tämä sivu (uudestaan)">
+<!ENTITY update-avaiable "FireGPG:lle on tarjolla päivitys">

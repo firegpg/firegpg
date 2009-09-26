@@ -1,0 +1,32 @@
+<!ENTITY key-status "Egoera">
+<!ENTITY key-trust "Konfidantza">
+<!ENTITY key-expire "Epea amaituta">
+<!ENTITY key-create "Sortuta">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Izena">
+<!ENTITY revoke-button "Gakoa ezeztatu">
+<!ENTITY sign-button "Sinadurak">
+<!ENTITY changetrust-button "Konfidantza aldatu">
+<!ENTITY importserver-button "Zerbitzari batetik inportatu">
+<!ENTITY exportserver-button "Serbitzariari esportatu">
+<!ENTITY importfile-button "Artxibo batetik inportatu">
+<!ENTITY exportfile-button "Artxibo batera esportatu">
+<!ENTITY new-button "Gako berria">
+<!ENTITY keymanager "Gakoen kudeatzailea">
+<!ENTITY refrech "Gakoak zerbitzariatik eguneratu">
+<!ENTITY trustUnded "Konfidantzari buruzko informazia ezabatu">
+<!ENTITY trustDont "Gako honetan konfidantzarik ez daukat  ">
+<!ENTITY trustMargi "Gako honetan konfidantza gutxi daukat">
+<!ENTITY trustFull "Konfidantza osoa daukat gako honetan">
+<!ENTITY trustUltimate "Gako honetan azken opzio bakarrik konfidatu (!)">
+<!ENTITY password-button "Pasahitza aldatu">
+<!ENTITY del-button "Ezabatu">
+<!ENTITY revokeNoRaison "Arrazoirik ez dago">
+<!ENTITY revokeComprimse "Gakoa arriskuan jarri da">
+<!ENTITY revokeRemplaced "Gakoa ordezkatu egin da">
+<!ENTITY revokeNotUsed "Gakoa ez da hurrengotan erabiliko">
+<!ENTITY userid-button "Erabiltzailearen ID">
+<!ENTITY add "Gehitu">
+<!ENTITY delete "Ezabatu">
+<!ENTITY revoke "Ezeztatu">
+<!ENTITY fingerprint-button "Hatz-marka">

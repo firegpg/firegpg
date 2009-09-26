@@ -1,0 +1,22 @@
+<!ENTITY title "FireGPG laguntzailea - Gmail">
+<!ENTITY stop "Gelditu">
+<!ENTITY next "Hurrengoa">
+<!ENTITY title2 "Gmail eranskina">
+<!ENTITY description "FireGPG Gmail-i erantsi daiteke: enkriptatzeko eta sinatzeko botoiak agertuko dira eta emailak desenkriptatzeko eta sinadurak baiezteko aukera izango duzu.">
+<!ENTITY enable "Gmail eranskina aktibatu">
+<!ENTITY smtpok "FireGPG-k SMPT serbitzarian sartu daiteke">
+<!ENTITY noauth "NB: Kautotzea ez da frogatu!">
+<!ENTITY noauthhelp "FireGPG-k abisatuko zaitu e-mail bat bidaltzen saiatu eta arazo bat dagoenean">
+<!ENTITY sign "Sinatu">
+<!ENTITY encrypt "Enkriptatu">
+<!ENTITY atta "Erantsitakoak">
+<!ENTITY inline "Zuzenean erabili">
+<!ENTITY inlinesuck "Zuzenean egitea ez dago ondo eta ez dabil beti. OpenPGP/MIME, estandar bezala, erabili beharko litzateke!">
+<!ENTITY nosmtp "FireGPG ezin da SMTP serbitzarian sartu EDO galdeketa oraindik martxan dago">
+<!ENTITY wait "Itxaron 15 segundu edo gehiago zure conexioa oso mantxoa bada">
+<!ENTITY setp "Baliodun SMTP serbitzari baten paramentroak sartu. (Adibidez zure internet ekoizlearenak edo zure lantokiko zerbitzariarenak)">
+<!ENTITY host "Zerbitzaria (smtp.gmail.com):">
+<!ENTITY port "Portua (465)">
+<!ENTITY username "Erabiltzailea (hutsik utzi irekitako kontuaren erabiltzailea erabiltzeko)">
+<!ENTITY ssl "SSL erabili">
+<!ENTITY setdo "Emailak bidaltzeko lehenetsitako aukerak jarri">

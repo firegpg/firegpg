@@ -1,22 +1,22 @@
-<!ENTITY title "FireGPG Assistant - Gmail">
+<!ENTITY title "FireGPG Asistent - Gmail">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Gmail support">
-<!ENTITY description "FireGPG can be integrated with gmail: additional buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signatures of any email that contains them.">
-<!ENTITY enable "Enable gmail support">
-<!ENTITY smtpok "FireGPG is able to access to the SMTP server">
-<!ENTITY noauth "NB: Authentication is not tested!">
-<!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
-<!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
+<!ENTITY next "Další">
+<!ENTITY title2 "Podpora Gmailu">
+<!ENTITY description "FireGPG může být integrován se službou gmail: další tlačítka pro šifrování (a)nebo podpis emailů jsou přidány a můžete dešifrovat a ověřovat podpis libovolného emailu, který je obsahuje.">
+<!ENTITY enable "Zapnout podporu pro gmail">
+<!ENTITY smtpok "FireGPG se může připojit k SMTP serveru">
+<!ENTITY noauth "Pozor: Autentizace není odzkoušena!">
+<!ENTITY noauthhelp "FireGPG vás upozorní než se pokusí odeslat email, pokud nastane problém">
+<!ENTITY sign "Podepsat">
+<!ENTITY encrypt "Zašifrovat">
 <!ENTITY atta "Příloha">
-<!ENTITY inline "Use inline">
-<!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
-<!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">
-<!ENTITY wait "Wait 15 seconds or more if your connection is very slow">
-<!ENTITY setp "Set parameters of a working SMTP server (eg. your internet provider or your workplace server)">
-<!ENTITY host "Host (smtp.gmail.com): ">
+<!ENTITY inline "Použít inline">
+<!ENTITY inlinesuck "Inline je špatný a ne vždy funguje. OpenPGP/Mime by měl být použitý přednostně!">
+<!ENTITY nosmtp "FireGPG se nemůže připojit k SMTP serveru, NEBO požadavek stále probíhá.">
+<!ENTITY wait "Počkejte 15 sekund, nebo víc, pokud máte pomalé připojení">
+<!ENTITY setp "Nastavit parametry fungujícího SMTP serveru (např. vašeho poskytovatele internetu, nebo server v práci)">
+<!ENTITY host "Server (smtp.gmail.com):">
 <!ENTITY port "Port (465):">
-<!ENTITY username "Username (leave blank to use the username of logged account):">
-<!ENTITY ssl "Use SSL">
-<!ENTITY setdo "Set default options for sending mails">
+<!ENTITY username "Uživatel (nechte prázdné, chcete-li použít jméno přihlášeného účtu):">
+<!ENTITY ssl "Použít SSL">
+<!ENTITY setdo "Vybrat výchozí možnosti pro odesílaní emailů">

@@ -1,0 +1,11 @@
+<!ENTITY thitle "FireGPG Api">
+<!ENTITY intro "Nykyinen sivu haluaa käyttää FireGPG API:a">
+<!ENTITY warning1 "! Hyväksy VAIN jos LUOTAT tähän sivustoon !">
+<!ENTITY infos "Jos pääsy on sallittu, sivusto pystyy käyttämään FireGPG:n jokaista toimintoa (salaus, purku, allekirjoitus, varmentaminen, salaus ja allekirjoitus, julkisten avainten tuonti ja vienti). Salasanaasi ei tallenneta muistiin kun API:a kutsutaan. Sinua pyydetään syöttämään salasanasi joka kerta tarvittaessa.">
+<!ENTITY warning2 "! Sallit ei-https siirtoa. Tämä on vaarallista. !">
+<!ENTITY domain "Domain">
+<!ENTITY website "Sivusto">
+<!ENTITY page "Sivu">
+<!ENTITY can-access "Voi käyttää">
+<!ENTITY cannot-access "Ei voi käyttää">
+<!ENTITY ignore "Sivuuta">

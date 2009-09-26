@@ -1,0 +1,22 @@
+<!ENTITY title "Asistente de FireGPG - Gmail">
+<!ENTITY stop "Parar">
+<!ENTITY next "Seguinte">
+<!ENTITY title2 "Soporte de Gmail">
+<!ENTITY description "FireGPG pode integrarse con gmail: engadíronse botóns adicionais para cifrar e/ou asinar correos e poderá descifrar e verificar sinaturas de calquera correo que as conteña.">
+<!ENTITY enable "Activar soporte a gmail">
+<!ENTITY smtpok "FireGPG pode acceder ao servidor SMTP">
+<!ENTITY noauth "NB: Non se probou a autenticación!">
+<!ENTITY noauthhelp "FireGPG alertaralle cando tente enviar un correo se hai algún problema">
+<!ENTITY sign "Asinar">
+<!ENTITY encrypt "Cifrar">
+<!ENTITY atta "Adxuntos">
+<!ENTITY inline "Usar en liña">
+<!ENTITY inlinesuck "En liña non sempre funciona. Debería usar OpenPGP/Mime, como estándar!">
+<!ENTITY nosmtp "FireGPG non pode acceder ao servidor SMTP ou a petición todavía está en proceso">
+<!ENTITY wait "Agarde 15 segundos ou máis se a súa conexión é moi lenta">
+<!ENTITY setp "Indicar os parámetros para un servidor SMTP (ex. o seu provedor de internet)">
+<!ENTITY host "Host (smtp.gmail.com)">
+<!ENTITY port "Porto(465):">
+<!ENTITY username "Nome de usuaria (deixeo en branco para utilizar o nome de usuaria da conta iniciada):">
+<!ENTITY ssl "Usar SSL">
+<!ENTITY setdo "Indicar as opcións predeterminadas para o envío de correos">

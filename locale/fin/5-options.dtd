@@ -1,0 +1,12 @@
+<!ENTITY title "FireGPG Avustaja - Asetukset">
+<!ENTITY stop "Lopeta">
+<!ENTITY next "Seuraava">
+<!ENTITY title2 "Asetukset">
+<!ENTITY description "Tässä voit asettaa joitain FireGPG:n piirteiden yleisiä asetuksia:">
+<!ENTITY inline "Käytä rivinsisäistä havainnointia">
+<!ENTITY inlinehelp "Jos sivusto sisältää PGP kappaleen, FireGPG voi tunnistaa sen ja suorittaa operaatioita sille!">
+<!ENTITY disableagent "Poista GPG-agentti käytöstä">
+<!ENTITY api "Ota FireGPG API käyttöön">
+<!ENTITY apihelp "FireGPG:n API sallii minkä tahansa web-sivuston käyttää gpg:n piirteitä - luonnollisesti turvamekanismein">
+<!ENTITY gpgauth "Käytä gpgAuth">
+<!ENTITY gpgauthhelp "gpgAuth on mekanismi autentikoida web-käyttäjiä GnuPG:n avulla, ei FireGPG:n kehittäjien tekemä.">

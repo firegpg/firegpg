@@ -1,0 +1,5 @@
+<!ENTITY thitle "Calcular hashes dos ficheiros">
+<!ENTITY result "Resultado:">
+<!ENTITY browse "Escolla un arquivo">
+<!ENTITY hash "Tipo:">
+<!ENTITY copy "Copiar hash ao portapapeis">

@@ -1,0 +1,86 @@
+<!ENTITY prefwindow.title "FireGPG asetukset">
+<!ENTITY pane1.title "Yleinen">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Gmail tuki">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Oletus salattu avain:">
+<!ENTITY show-website-checkbox "Näytä FireGPG:n kotisivun osoite GnuPG:n kommenttirivillä">
+<!ENTITY change-gpg-path-button "Selaa">
+<!ENTITY change-gpg-path-checkbox "Määrittele gpg-ohjelman polku:">
+<!ENTITY result-always-in-new-window "Näytä aina salaus- ja allekirjoitustulokset uudessa ikkunassa">
+<!ENTITY no-gpg-agent-checkbox "Pakota GPG agentti pois päältä (voi korjata ongelmia) ">
+<!ENTITY ask-for-save-pass "Kysy salasanan tallennusta oletuksena">
+<!ENTITY gmail-no-no-sign-checkbox "Älä näytä 'Allekirjoitusta ei löytynyt [...]'">
+<!ENTITY gmail-need-a-restart "Selain täytyy käynnistää uudelleen, jotta asetukset tulisivat voimaan.">
+<!ENTITY gmail-buttons-label "Näkyvät napit :">
+<!ENTITY gmail-buton-sign-checkbox "Allekirjoita">
+<!ENTITY gmail-buton-signsend-checkbox "Allekirjoita ja lähetä">
+<!ENTITY gmail-buton-crypt-checkbox "Salaa">
+<!ENTITY gmail-buton-cryptsend-checkbox "Salaa ja lähetä">
+<!ENTITY allvays-to-myself-checkbox "Salaa aina itselle">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Pura viesti aina Auntentikoiduilta Servereiltä">
+<!ENTITY global-allow-keyring-check.label "Pura viestit aina Varmennetuilta Servereiltä">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Domainkohtaiset asetukset:">
+<!ENTITY turn-off-updates "Älä käytä FireGPG automaattista päivitystä">
+<!ENTITY key-name "Nimi">
+<!ENTITY key-id "ID">
+<!ENTITY key-create "Luotu">
+<!ENTITY key-expire "Vanhenee">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "Lisää argumentteja gpg komentoon : (Varo : FireGPG saattaa lakata toimimasta! Lue dokumentaatio).">
+<!ENTITY gmail-buton-signcrypt-checkbox "Allekirjoita ja salaa">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Allekirjoita, salaa ja lähetä">
+<!ENTITY firegpg-version-label.text "Nykyinen FireGPG versio:">
+<!ENTITY hide-expired "Piilota vanhentuneet avaimet">
+<!ENTITY use-api "Salli FireGPG API sivustoille, kuten RoundCube. (Vaatii uudelleenkäynnistyksen)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-domain.label "Verkkotunnus">
+<!ENTITY api-liste-keyauth.label "Avain">
+<!ENTITY use-gpg-agent-checkbox "Salli GPG-agent (varoitus, voi johtaa ongelmiin)">
+<!ENTITY search-description "Suodata">
+<!ENTITY gmail-buton-use-select-checkbox "Näytä lista nappien tilalla">
+<!ENTITY firegpg-ask-for-private-label.text "Kysy aina salaista avainta">
+<!ENTITY inline-activated "Tarkista PGP kappaleet sivuilla (Uudelleenkäynnistys)">
+<!ENTITY gmail-disable-autosave-checkbox "Poista autosave toiminto">
+<!ENTITY gmail-buton-csign-checkbox "Clearsign">
+<!ENTITY gmail-buton-csignsend-checkbox "Clearsign ja lähetä">
+<!ENTITY hide-fireftp-message "Älä näytä viestiä vanhasta IPC kirjastosta.">
+<!ENTITY use-fireftp-workaround "Yritä käyttää IPC:tä vanhalla API:lla">
+<!ENTITY keyserver-message "Avainserveri">
+<!ENTITY symmetric-algo "Symmetrisen salauksen algoritmi. Jätä oletuksena tyhjäksi. Käytä 'gpg --version' saadaksesi listan algoritmeista. Usein sinulla tulisi olla kyseiset vaihtoehdot:">
+<!ENTITY gmail-new-interface "Uusi Gmail käyttöliittymä">
+<!ENTITY gmail-select-by-default-label "Valittu oletuksena:">
+<!ENTITY gmail-buton-inline-checkbox "Rivinsisäinen">
+<!ENTITY gmail-old-interface "Vanha Gmail käyttöliittymä">
+<!ENTITY gmail-smtp-options-label "SMTP asetukset (opengpg/mime emailit)">
+<!ENTITY gmail-smtp-google-com "Älä yritä käyttää google.com tallennettua salasanaa">
+<!ENTITY gmail-smtp-username "Käyttäjätunnus (jätä tyhjäksi jos käytät sisäänkirjautunutta tiliä):">
+<!ENTITY gmail-smtp-host "Palvelin (smtp.gmail.com):">
+<!ENTITY gmail-smtp-port "Portti (465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Käytä SSL :">
+<!ENTITY gmail-disable-sign-detection "Poista käytöstä vastauksen tunnistus rivisinsisäiselle allekirjoitukselle ja salaukselle (käytä aina koko emailia)">
+<!ENTITY gmail-disable-auto-decryption "Vanha toimintamalli salaukseen">
+<!ENTITY gmail-force-from "Pakota arvosta :">
+<!ENTITY gpg-special-path-values "Käytä {$FxFolder} saadaksesi Firefox:n hakemiston ja {$SPACE} käyttääksesi välilyöntiä argumentin sisällä ">
+<!ENTITY decrypt-when-reply "Pura sisältö vastatessasi">
+<!ENTITY gmail-buton-attachements-checkbox "Liitetiedostot">
+<!ENTITY autorwap-liste-action.label "Toiminto">
+<!ENTITY autorwap-liste-domain.label "Webmail">
+<!ENTITY autowrap_list.label "Automaattiset vastaukset (tuplanapsauta poistaaksesi):">
+<!ENTITY paneautowrap.title "Autorivistys">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Näytä käyttäjän tiedot hyvillä allekirjoituksilla">
+<!ENTITY gmail-keep-encrypted-mail "Salaa vastaukset salattuihin emaileihin">
+<!ENTITY gmail-smtp-no-auth-checkbox "Poista SMTP authentikointi">
+<!ENTITY dont_ask_to_download_key "Älä yritä ladata puuttuvia avaimia">
+<!ENTITY keyserverproxy-message "Proxy käytössä HTTP ja HKP avainservereille:">
+<!ENTITY digest-message "Kooste(tiivisti allekirjoitukseen)(SHA256, SHA512, jne.)(Gmail-tuki käyttää tätä arvoa meilin luomiseen.):">
+<!ENTITY enable-gpgauth-statusbar-check.label "Ota gpgAuthin tilarivi käyttöön">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Näytä tilaikkuna automaattisesti käytettäessä gpgAuthia">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
+<!ENTITY enable-gpgauth-check.label "Ota gpgAuth käyttöön">
+<!ENTITY panpan-assistant-is-now-dead "Aja Avustaja uudestaan">
+<!ENTITY api-liste-access2.label "API:n oikeuslista (tuplanaupsauta poistaaksesi)">

@@ -73,14 +73,14 @@
 <!ENTITY paneautowrap.title "Zarovnání">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Zobrazit uživatelská data pro platné podpisy">
 <!ENTITY gmail-keep-encrypted-mail "Šifrovat odpověď na šifrované emaily">
-<!ENTITY gmail-smtp-no-auth-checkbox "Disable SMTP authentication">
-<!ENTITY dont_ask_to_download_key "Don't try to download missing keys">
-<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
-<!ENTITY digest-message "Digest (Hash used to sign) (SHA256, SHA512, etc.) (Gmail support uses this value to create mail.): ">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY gmail-smtp-no-auth-checkbox "Zrušit ověření SMTP">
+<!ENTITY dont_ask_to_download_key "Nepokoušet se stáhnout chybějící klíče">
+<!ENTITY keyserverproxy-message "Proxy pro HTTP a HKP servery s klíči:">
+<!ENTITY digest-message "Digest (Hash použitá k podpisu) (SHA256, SHA512, atd.) (Gmail podporuje použití těchto hodnot pro vytvoření emailu.):">
+<!ENTITY enable-gpgauth-statusbar-check.label "Zapnout ikonu gpgAuth ve spodní liště">
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Automaticky zobrazit stavové okno při použití gpgAuth">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
-<!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
+<!ENTITY enable-gpgauth-check.label "Zapnout gpgAuth">
+<!ENTITY panpan-assistant-is-now-dead "Spustit asistenta znovu">
 <!ENTITY api-liste-access2.label "Seznam práv rozhraní (dvojklikem odeberete)">

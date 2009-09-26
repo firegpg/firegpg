@@ -1,0 +1,17 @@
+<!ENTITY title "FireGPG Laguntzailea - Gako pribatua">
+<!ENTITY stop "Gelditu">
+<!ENTITY next "Hurrengoa">
+<!ENTITY title2 "Gako pribatua">
+<!ENTITY description "PGP sistema gako publiko eta pribatuekin egiten du lan. Zu mezua zure gako pribatuarekin sinatzen dituzu eta beste erabiltzailea zure sinadura zure gako publikoarekin baieztatzen du. Zuri mezu bat bidali nahi badizute zure gako publikoarekin enkriptatuko dute eta zuk zure gako pribatuarekin desenkriptatuko duzu.">
+<!ENTITY pk "Gutxienez gako pribatu bat daukazu zure giltzarian">
+<!ENTITY setdk "Gako lehenetsita aukeratu">
+<!ENTITY askforpk "Gako pribatua eskatu">
+<!ENTITY name "Izena">
+<!ENTITY id "Id">
+<!ENTITY created "Sortuta">
+<!ENTITY expire "Epea amaituta">
+<!ENTITY nopk "Gako pribaturik ez dituzu zure giltzarian">
+<!ENTITY genpk "Gako publiko eta pribatua sortu">
+<!ENTITY gen "Sortu">
+<!ENTITY importpk "Gako pribatua inportatu">
+<!ENTITY import "Inportatu">

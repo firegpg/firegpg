@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Allekirjoitusten hallinta">
+<!ENTITY key-name "Nimi">
+<!ENTITY key-id "Avain ID">
+<!ENTITY key-create "Päiväys (allekirjoitus tai luonti)">
+<!ENTITY sign-button "Allekirjoita tämä avain">
+<!ENTITY revoke-button "Peruuta tämä allekirjoitus">
+<!ENTITY del-button "Poista tämä allekirjoitus">

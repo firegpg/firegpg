@@ -1,0 +1,11 @@
+<!ENTITY title "FireGPG Avustaja - Valmis !">
+<!ENTITY title2 "Valmis!">
+<!ENTITY description "Asetusvelho on valmis. Not sinun pitäisi voida käyttää FireGPG:tä.">
+<!ENTITY doc "Lue dokumentaatio">
+<!ENTITY doc2 "Löydät tältä sivulta muutamia linkkejä">
+<!ENTITY tr "Käännä FireGPG">
+<!ENTITY tr2 "Kauhea virhe kielelläsi FireGPG:ssä? Tässä on sivusto!">
+<!ENTITY help "Ohje FireGPG">
+<!ENTITY help2 "Kuinka tukea FireGPG:tä">
+<!ENTITY bug "Raportoi virhe tai pyydä uutta piirrettä">
+<!ENTITY close "Sulje">

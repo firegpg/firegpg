@@ -1,12 +1,12 @@
-<!ENTITY title "FireGPG Assistant - Welcome">
-<!ENTITY skip "Skip">
-<!ENTITY next "Next">
-<!ENTITY title2 "FireGPG Assistant">
-<!ENTITY infoabout "Here is some information about icons and color used:">
-<!ENTITY whatnext "This suggest a solution or something you should do">
-<!ENTITY good "This is something good">
-<!ENTITY problem "This is a problem">
-<!ENTITY advanced "Toto je pro pokročilé uživatele. Pokud tomu nerozumíte tak si z toho nic nedělejte a nemněte to">
-<!ENTITY help "This means help is available.  Mouse over the icon for the tooltip.">
-<!ENTITY helppop "Hello, I'm the help">
+<!ENTITY title "FireGPG Asistent - Vítejte">
+<!ENTITY skip "Přeskočit">
+<!ENTITY next "Další">
+<!ENTITY title2 "FireGPG Asistent">
+<!ENTITY infoabout "Zde jsou informace o ikonách a použitých barvách:">
+<!ENTITY whatnext "Navrhuje řešení, nebo něco, co byste měli udělat">
+<!ENTITY good "Tohle je dobré">
+<!ENTITY problem "To je problém">
+<!ENTITY advanced "Pro pokročilé uživatele. Pokud tomu nerozumíte, nebojte se, nemusíte nic měnit.">
+<!ENTITY help "Tohle znamená, že je k dispozici nápověda. Pro zobrazení, najeďte myší na ikonu.">
+<!ENTITY helppop "Ahoj, já jsem nápověda">
 <!ENTITY description "Vítej! Tento asistent ti pomůže nakonfigurovat FireGPG. Pokud jsi nový uživatel tak je ti doporučeno sledovat ho dokud nebudeš mít fungující konfiguraci. Cokoliv co uděláš, můžeš kdykoliv změnit pomocí okna nastavení změnit.">

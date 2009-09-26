@@ -1,0 +1,23 @@
+<!ENTITY title "FireGPG Laguntzailea - GnuPG">
+<!ENTITY stop "Gelditu">
+<!ENTITY next "Hurrengoa">
+<!ENTITY title2 "GnuPG">
+<!ENTITY description "FireGPG GnuPG erabiltzen du PGP eragiketak egiteko. Honek esan nahi du GnuPG instalatuta egon behar dela FireGPG ibil dadin.">
+<!ENTITY working "GnuPG heldu daktekela eta martxan dabilela dirudi.">
+<!ENTITY specialhome "GnuPG-ren jatorrizko helbide pertsonala jarri nahi al duzu?">
+<!ENTITY sethome "Jatorrizko helbidea sartu">
+<!ENTITY notworking "GnuPG ez dabil, arazoren bat dago. Mesedez konpondu eta &quot;hurrengoa&quot;-n klik egin.">
+<!ENTITY isinstalled "GnuPG instalatu al duzu?">
+<!ENTITY download "GnuPG hemen deskargatu dezakezu: (Baina edozein GnuPG ibiliko da)">
+<!ENTITY windows "Windows erabiltzaileak: hemen klik egin gpg4win deskargatzeko">
+<!ENTITY linux "Linux erabiltzaileak: Mesedez zuen Linux banaketarekin bidalitako paketea erabili edo hemen klik egin oinarrizko kodea eskuratzeko.">
+<!ENTITY macos "MacOS erabiltzaileak: Ez dakit nola baino bideren bat dago. Google zuen laguna da.">
+<!ENTITY uncommon "Zure GnuPG-a ezohiko helbide batean instalatuta dago?">
+<!ENTITY setpath "Mesedez GnuPG-ren helbidea hemen sartu:">
+<!ENTITY browse "Nabigatu">
+<!ENTITY isfireftp "FireFTP instalatuta al dago?">
+<!ENTITY fireftpproblem "FireGPG eta FireFTP arteko gatazka dago FireFTP IPC liburutegi zaharrarengatik.">
+<!ENTITY uninstall "FireGPG-ren zuzenketa ez baldin badabil, horietako bat berriro desinstalatu bestea funtzionatu dezan.">
+<!ENTITY strangeplateform "Plataforma arraroren bat erabiltzen al zara?">
+<!ENTITY platform "FireGPG-k Windows, MacOs and Linux x86 and x86_64 plataformetan dabil bakarrik">
+<!ENTITY recompile "IPC liburutegia berriro konpilatu beharra daukazu kasu hori bada.">

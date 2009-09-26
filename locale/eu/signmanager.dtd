@@ -1,0 +1,7 @@
+<!ENTITY signmanager "Sinadura kudeatzailea">
+<!ENTITY key-name "Izena">
+<!ENTITY key-id "Gakoaren ID-a">
+<!ENTITY key-create "Data (sinadura edo sortzapena)">
+<!ENTITY sign-button "Gako hau sinatu">
+<!ENTITY revoke-button "Sinadura hau ezeztatu">
+<!ENTITY del-button "Sinadura hau ezabatu">

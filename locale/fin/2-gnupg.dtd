@@ -1,0 +1,23 @@
+<!ENTITY title "FireGPG Avustaja - GnuPG">
+<!ENTITY stop "Lopeta">
+<!ENTITY next "Seuraava">
+<!ENTITY title2 "GnuPG">
+<!ENTITY description "FireGPG käyttää GnuPG:tä kaikkiin pgp-toimiin. Tämän takia GnuPG:n pitää olla asennettuna, jotta FireGPG toimisi.">
+<!ENTITY working "GnuPG näyttää toimivan oikein.">
+<!ENTITY specialhome "Haluatko asettaa muutetun kotihakemiston GnuPG:lle ?">
+<!ENTITY sethome "Aseta kotihakemisto">
+<!ENTITY notworking "GnuPG ei toimi, siinä on virhe. Korjaa se ja klikkaa seuraava.">
+<!ENTITY isinstalled "Asensitko GnuPG:n?">
+<!ENTITY download "Voit ladata GnuPG:n täältä: (mutta mikä tahansa GnuPG toimii)">
+<!ENTITY windows "Windows käyttäjät: Ladatkaa gpg4win täältä">
+<!ENTITY linux "Linux käyttäjät: Käytä distribuution mukana tulevaa pakettia, tai klikkaa täältä lähdekoodia.">
+<!ENTITY macos "MacOS käyttäjät: En tiedä miten mutta jollain tavalla. Google on ystäväsi.">
+<!ENTITY uncommon "Onko GnuPG asennettu tuntemattomaan paikkaan?">
+<!ENTITY setpath "Aseta polku GnuPG:lle tänne:">
+<!ENTITY browse "Selaa">
+<!ENTITY isfireftp "Onko FireFTP asennettu?">
+<!ENTITY fireftpproblem "FireFTO:n vanhan IPC-kirjaston aiheuttama FireGPG:n ja FireFTP:n ristiriita.">
+<!ENTITY uninstall "Jos FireGPG:n korjaus ei toimi sinun tulee poistaa toinen jotta toinen toimisi.">
+<!ENTITY strangeplateform "Käytätkö epätavallista alustaa?">
+<!ENTITY platform "FireGPG toimii ainoastaan Windows, MacOS ja Linux x86 ja x86_64 alustoilla.">
+<!ENTITY recompile "Sinun tulee uudelleenkääntää IPC kirjasto tässä tapauksessa.">

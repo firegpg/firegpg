@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Salaa">
+<!ENTITY dcrypt-button "Pura">
+<!ENTITY sign-button "Allekirjoita">
+<!ENTITY verify-button "Varmenna">
+<!ENTITY open-button "Avaa">
+<!ENTITY save-button "Tallenna">
+<!ENTITY cryptandsign-button "Allekirjoita ja salaa">
+<!ENTITY sign-clear-button "Clearsign">
+<!ENTITY symcrypt-button "Symmetrinen salaus">
+<!ENTITY closeandcopy-button "Kopioi leikepöydälle ja sulje">

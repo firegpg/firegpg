@@ -56,5 +56,5 @@
 <!ENTITY firegpgContext.labelFiles "Operacions amb fitxers">
 <!ENTITY firegpgMenu.labelFiles "Operacions amb fitxers">
 <!ENTITY firegpgMenu.labelHashs "Hashes">
-<!ENTITY parseAgain "Parse (again) this page.">
-<!ENTITY update-avaiable "An update of FireGPG is available">
+<!ENTITY parseAgain "Analitza (altre cop) aquesta pàgina.">
+<!ENTITY update-avaiable "Hi ha una actualització de FireGPG">

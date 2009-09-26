@@ -1,23 +1,23 @@
-<!ENTITY title "FireGPG Assistant - GnuPG">
+<!ENTITY title "FireGPG Asistent - GnuPG">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY next "Další">
 <!ENTITY title2 "GnuPG">
 <!ENTITY description "FireGPG používá GnuPG pro jakoukoliv pgp operaci. To znamená že GnuPG musí mít nainstalováno aby FireGPG fungovalo.">
-<!ENTITY working "GnuPG seems to be accessible and working.">
-<!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
-<!ENTITY sethome "Set a home dir">
-<!ENTITY notworking "GnuPG doesn't work, there is a problem. Please fix this and click on next.">
-<!ENTITY isinstalled "Did you install GnuPG?">
-<!ENTITY download "You can download GnuPG here: (But any GnuPG will work)">
-<!ENTITY windows "Windows users: Click here to download gpg4win">
-<!ENTITY linux "Linux users: Please use the package shipped with your distribution, or click here for sources.">
-<!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
-<!ENTITY uncommon "Is you GnuPG installed in an uncommon location?">
-<!ENTITY setpath "Please set the path to GnuPG here: ">
+<!ENTITY working "GnuPG je dostupný a funguje.">
+<!ENTITY specialhome "Chcete nastavit vlastní domovský adresář pro GnuPG?">
+<!ENTITY sethome "Nastavit domovský adresář">
+<!ENTITY notworking "GnuPG nefunguje, nastal problém. Prosím opravte ho a pokračujte kliknutím na Další">
+<!ENTITY isinstalled "Instalovali jste GnuPG?">
+<!ENTITY download "Můžete stáhnout GnuPG zde: (Ale kterýkoliv GnuPG bude fungovat)">
+<!ENTITY windows "Uživatelé Windows: Klikněte zde pro stažení gpg4win">
+<!ENTITY linux "Uživatelé Linuxu: Prosím použijte balíček z vaší distribuce, nebo klikněte zde pro zdrojové kódy.">
+<!ENTITY macos "Uživatelé MacOS: Nevím jak, ale jde to. Google je váš přítel.">
+<!ENTITY uncommon "Máte GnuPG nainstalované v nebovyklém adresáři?">
+<!ENTITY setpath "Prosím zde uveďte cestu ke GnuPG:">
 <!ENTITY browse "Prohlížet">
-<!ENTITY isfireftp "Is FireFTP installed?">
-<!ENTITY fireftpproblem "FireGPG and FireFTP conflict due to the old IPC library of FireFTP.">
-<!ENTITY uninstall "If FireGPG's fix doesn't work, you have to uninstall one of them to get the other working.">
-<!ENTITY strangeplateform "Are you using a strange platform?">
-<!ENTITY platform "FireGPG works only on Windows, MacOs and Linux x86 and x86_64 plateforms.">
-<!ENTITY recompile "You need to recompile the IPC library if that's the case.">
+<!ENTITY isfireftp "Máte nainstalovaný FireFTP?">
+<!ENTITY fireftpproblem "FireGPG a FireFTP jsou v konfliktu kvůli staré IPC knihovně z FireFTP.">
+<!ENTITY uninstall "Jestli oprava FireGPG nefunguje, musíte jeden z nich odinstalovat, aby druhý fungoval.">
+<!ENTITY strangeplateform "Používáte divnou platformu?">
+<!ENTITY platform "FireGPG funguje pouze na platformách Windows, MacOS a Linux x86 a x86_64.">
+<!ENTITY recompile "Musíte překompilovat knihovnu IPC, jestli to tak je.">

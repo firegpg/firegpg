@@ -4,8 +4,8 @@
 <!ENTITY title2 "GnuPG">
 <!ENTITY description "FireGPG usa GnuPG para manejar las operaciones pgp, eso significa que debes de tener instalado GnuPG para que tu FireGPG funcione!">
 <!ENTITY working "GnuPG parece estar funcionando correctamente.">
-<!ENTITY specialhome "¿Deseas establecer un directorio ba<x>se para GnuPG?">
-<!ENTITY sethome "Establecer un directorio ba<x>se">
+<!ENTITY specialhome "¿Deseas establecer un directorio base para GnuPG?">
+<!ENTITY sethome "Establecer un directorio base">
 <!ENTITY notworking "GnuPG no funciona, hay un problema. Por favor arréglalo y pulsa sobre siguiente.">
 <!ENTITY isinstalled "¿Instalaste GnuPG?">
 <!ENTITY download "Puedes descargar GnuPG desde aquí: (pero cualquier GnuPG funcionará)">

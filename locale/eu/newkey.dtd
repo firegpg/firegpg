@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - Gako berria">
+<!ENTITY warningaboutgeneeration "Kontuz! Gako sortaraztea denbora asko erabil dezake eta Firefox-a izoztuko du. Egin ezazu beste zerbait gakoa sortzen ari denean entropia gehiago eragiteko.">
+<!ENTITY name-message "Izena">
+<!ENTITY email-message "Email">
+<!ENTITY comment-message "Komentatu">
+<!ENTITY password1-message "Pasahitza">
+<!ENTITY password2-message "Pasahitza errepikatu">
+<!ENTITY keyneverexpire "Gakoaren epea ez da inoiz amaitzen">
+<!ENTITY keyexpire-message "Gakoaren epea amaitzen da">
+<!ENTITY expire-year "urte">
+<!ENTITY expire-month "hilabete">
+<!ENTITY expire-days "egun">
+<!ENTITY advancedoptions "Aukera aurreratuak">
+<!ENTITY keylenght-message "Gakoaren luzeera">
+<!ENTITY keytype-message "Gako mota">
+<!ENTITY generate-button "Gakoa sortu">
+<!ENTITY cancel-button "Utzi">

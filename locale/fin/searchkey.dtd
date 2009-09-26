@@ -1,0 +1,8 @@
+<!ENTITY keyimporter "Tuo avain serveriltä">
+<!ENTITY close-button "Sulje">
+<!ENTITY import-button "Tuo valitut avaimet">
+<!ENTITY search-button "Etsi">
+<!ENTITY search-description "Etsi :">
+<!ENTITY key-create "Luotu">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Nimi">

@@ -1,0 +1,86 @@
+<!ENTITY prefwindow.title "FireGPG-n hobespenak">
+<!ENTITY pane1.title "Nagusia">
+<!ENTITY pane2.title "Gmail">
+<!ENTITY pane3.title "gpgAuth">
+<!ENTITY gmail-enabled-checkbox.label "Gmail eranskina">
+<!ENTITY gmail-enabled-checkbox.accesskey "G">
+<!ENTITY private-keys-label.text "Lehenetsitako gako pribatua:">
+<!ENTITY show-website-checkbox "FireGPG-ren weborriaren helbidea GnuPG-ren hedagarrietarako eremuan erakutsi">
+<!ENTITY change-gpg-path-button "Nabigatu">
+<!ENTITY change-gpg-path-checkbox "Zehaztu gpg exekutagarriaren bidea:">
+<!ENTITY result-always-in-new-window "Enkriptazio eta sinaduraren emaitzak beti lehio berri batean erakutsi">
+<!ENTITY no-gpg-agent-checkbox "GPG agentea itzaltzen behartu (arazo batzuk konpondu ditzake)">
+<!ENTITY ask-for-save-pass "Lehenespenez, eskatu pasahitza gogoraztea">
+<!ENTITY gmail-no-no-sign-checkbox "Ez erakutsi: 'Sinadurarik ez da aurkitu[...]'">
+<!ENTITY gmail-need-a-restart "Nabigatzailea berpiztu behar da aldaketak ibil daitezen.">
+<!ENTITY gmail-buttons-label "Erakutsi beharreko botoiak:">
+<!ENTITY gmail-buton-sign-checkbox "Sinatu">
+<!ENTITY gmail-buton-signsend-checkbox "Sinatu eta bidali">
+<!ENTITY gmail-buton-crypt-checkbox "Enkriptatu">
+<!ENTITY gmail-buton-cryptsend-checkbox "Enkriptatu eta bidali">
+<!ENTITY allvays-to-myself-checkbox "Beti enkriptatu nire burua">
+<!ENTITY enable-gpgauth-check.accesskey "E">
+<!ENTITY global-allow-keyring-pref.label "Zerbitzari Baieztatuetako mezuak beti desenkriptatu">
+<!ENTITY global-allow-keyring-check.label "Zerbitzari Baieztatuetako mezuak beti desenkriptatu">
+<!ENTITY global-allow-keyring-check.accesskey "A">
+<!ENTITY per-domain-preferences.label "Deominuaren araberako ezaugarriak">
+<!ENTITY turn-off-updates "Desaktibatu FireGPG-ren aktualizazio automatikoak">
+<!ENTITY key-name "Izena">
+<!ENTITY key-id "ID">
+<!ENTITY key-create "Sortuta">
+<!ENTITY key-expire "Epea amaitzen zaio">
+<!ENTITY pane4.title "GPG">
+<!ENTITY gpg-add-options "gpg konamdoari parametroak gehitu: (Kontuz: FireGPG funtzionatzeari laga egin diezake! Dokumentazioa irakurri).">
+<!ENTITY gmail-buton-signcrypt-checkbox "Sinatu eta enkriptatu">
+<!ENTITY gmail-buton-signcryptsend-checkbox "Sinatu, enkriptatu eta bidali">
+<!ENTITY firegpg-version-label.text "Oraingo FireGPG bertsioa:">
+<!ENTITY hide-expired "Epez kanpoko gakoak ezkutatu">
+<!ENTITY use-api "FireGPG API-a web orrientzako aktibatu, RoundCube-rako adibidez. (Nabigatzailea berpiztu beharra dauka)">
+<!ENTITY paneapi.title "API">
+<!ENTITY api-liste-domain.label "Deominua">
+<!ENTITY api-liste-keyauth.label "Gakoa">
+<!ENTITY use-gpg-agent-checkbox "GPG-agentea aktibatu (kontuz, arazoak sor ditzake)">
+<!ENTITY search-description "Iragazi">
+<!ENTITY gmail-buton-use-select-checkbox "Botoiak erakutsi beharrean zerrenda bat erakutsi">
+<!ENTITY firegpg-ask-for-private-label.text "Gako pribatua beti eskatu">
+<!ENTITY inline-activated "PGP blokeak orrietan bilatu (berbiarazi behar da)">
+<!ENTITY gmail-disable-autosave-checkbox "Auto-gorde opzioa desaktibatu">
+<!ENTITY gmail-buton-csign-checkbox "Argian sinatu">
+<!ENTITY gmail-buton-csignsend-checkbox "Argian sinatu eta bidali">
+<!ENTITY hide-fireftp-message "Ez erakutsi IPC liburutegi zaharrari buruzko mezua">
+<!ENTITY use-fireftp-workaround "IPC-ra API zaharrarekin sartzen saiatu">
+<!ENTITY keyserver-message "Gakoen serbitzaria">
+<!ENTITY symmetric-algo "Enkriptazio simetrikoarentzako erabiliko den algoritmoa. Hutsik utzi lehenespenekoa erabiltzeko. 'gpg --version' erabili aukeran duzun algoritmoen zerrenda ikusteko. Gehiengotan aukera hauek izan beharko zenituzke:">
+<!ENTITY gmail-new-interface "Gmail interfaze berria">
+<!ENTITY gmail-select-by-default-label "Lehenetsiz aukeratuta :">
+<!ENTITY gmail-buton-inline-checkbox "Zuzenean">
+<!ENTITY gmail-old-interface "Gmail interfaze zaharra">
+<!ENTITY gmail-smtp-options-label "SMTP aukerak (openpgp/mime mails)">
+<!ENTITY gmail-smtp-google-com "Inoiz ez erabili google.com-en gogoratutako pasahitza.">
+<!ENTITY gmail-smtp-username "Erabiltzailea (hutsik utzi irekitako kontuaren erabiltzailea erabiltzeko)">
+<!ENTITY gmail-smtp-host "Zerbitzaria (smtp.gmail.com):">
+<!ENTITY gmail-smtp-port "Portua (465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "SSL erabili:">
+<!ENTITY gmail-disable-sign-detection "Erantzunen detekzioa ezgautu zuzenean egindako sinadura eta enkriptazioentzako (beti email guztia erabili)">
+<!ENTITY gmail-disable-auto-decryption "Jarrera zaharra desenkriptatzeko">
+<!ENTITY gmail-force-from "Balioa derrigortu:">
+<!ENTITY gpg-special-path-values "{$FxFolder} erabili Firefoxaren helbidea lortzeko eta {$SPACE} parametroen barruan espazio bat sartzeko">
+<!ENTITY decrypt-when-reply "Edukia erantzuterakoan desenkriptatu.">
+<!ENTITY gmail-buton-attachements-checkbox "Eranskinak">
+<!ENTITY autorwap-liste-action.label "Ekintza">
+<!ENTITY autorwap-liste-domain.label "Webposta">
+<!ENTITY autowrap_list.label "Erantzun automatikoak (klik-bikoitza kentzeko)">
+<!ENTITY paneautowrap.title "Auto-estali">
+<!ENTITY gmail-show-user-info-for-signs-checkbox "Sinadura onenen erabiltzaile informazioa erakutsi.">
+<!ENTITY gmail-keep-encrypted-mail "Enkriptatu enkriptaturiko emailen erantzunak">
+<!ENTITY gmail-smtp-no-auth-checkbox "SMTP kautotzea desaktibatu">
+<!ENTITY dont_ask_to_download_key "Ez zaitez saiatu falta diren gakoak deskargatzen.">
+<!ENTITY keyserverproxy-message "HKP gako zeribtzariak HTTP-rekin erabiltzeko proxi-a:">
+<!ENTITY digest-message "Laburtu (Sinatzeko erabiliko den algoritmoa)(SHA256, SHA512, etc.)(Gmail eranskinak balio hau erabiltzen du emal-a sortzeko):">
+<!ENTITY enable-gpgauth-statusbar-check.label "gpgAuth egoera barraren ikonoa aktibatu">
+<!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
+<!ENTITY enable-gpgauth-statuswindow-check.label "GpgAuth erabiltzerakoan automatikoki egoera-lehioa atera ">
+<!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
+<!ENTITY enable-gpgauth-check.label "gpgAuth Aktibatu">
+<!ENTITY panpan-assistant-is-now-dead "Laguntzailea berriro exekutatu">
+<!ENTITY api-liste-access2.label "API-arentzako baimen zerrenda (klik bikotza kentzeko)">

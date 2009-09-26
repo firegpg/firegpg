@@ -1,5 +1,5 @@
-<!ENTITY thitle "Compute hashes of fles">
+<!ENTITY thitle "Compute hashes of files">
 <!ENTITY result "Result:">
-<!ENTITY browse "Select a file">
+<!ENTITY browse "Ikke tillaatt å registere her!">
 <!ENTITY hash "Type:">
-<!ENTITY copy "Copy hash to clipboard">
+<!ENTITY copy "Kopier hash til klipptavlen">

@@ -1,0 +1,10 @@
+<!ENTITY crypt-button "Enkriptatu">
+<!ENTITY dcrypt-button "Desenkriptatu">
+<!ENTITY sign-button "Sinatu">
+<!ENTITY verify-button "Egiaztatu">
+<!ENTITY open-button "Ireki">
+<!ENTITY save-button "Gorde">
+<!ENTITY cryptandsign-button "Sinatu eta enkriptatu">
+<!ENTITY sign-clear-button "Argian sinatu">
+<!ENTITY symcrypt-button "Enkriptazio simetrikoa">
+<!ENTITY closeandcopy-button "Arbelera kopiatu eta itxi">

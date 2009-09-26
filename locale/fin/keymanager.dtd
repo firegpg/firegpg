@@ -1,0 +1,32 @@
+<!ENTITY key-status "Tila">
+<!ENTITY key-trust "Luottamus">
+<!ENTITY key-expire "Vanhentuu">
+<!ENTITY key-create "Luotu">
+<!ENTITY key-id "ID">
+<!ENTITY key-name "Nimi">
+<!ENTITY revoke-button "Peruuta avain">
+<!ENTITY sign-button "Allekirjoitukset">
+<!ENTITY changetrust-button "Muuta luottamus">
+<!ENTITY importserver-button "Tuo serveriltä">
+<!ENTITY exportserver-button "Vie palvelimelle">
+<!ENTITY importfile-button "Tuo tiedostosta">
+<!ENTITY exportfile-button "Vie tiedostoon">
+<!ENTITY new-button "Uusi avain">
+<!ENTITY keymanager "Avainten hallinta">
+<!ENTITY refrech "Päivitä avaimet serveriltä">
+<!ENTITY trustUnded "Poista luottamustieto">
+<!ENTITY trustDont "En luota tähän avaimeen">
+<!ENTITY trustMargi "Luotan hieman tähän avaimeen">
+<!ENTITY trustFull "Luotan täysin tähän avaimeen">
+<!ENTITY trustUltimate "Luota tähän avaimeen vankkumattomasti">
+<!ENTITY password-button "Vaihda salasana">
+<!ENTITY del-button "Poista">
+<!ENTITY revokeNoRaison "Ei ilmoitettua syytä">
+<!ENTITY revokeComprimse "Avain on murrettu">
+<!ENTITY revokeRemplaced "Avain on korvattu">
+<!ENTITY revokeNotUsed "Avain ei ole enää käytössä">
+<!ENTITY userid-button "Käyttäjä ID">
+<!ENTITY add "Lisää">
+<!ENTITY delete "Poista">
+<!ENTITY revoke "Peruuta">
+<!ENTITY fingerprint-button "Sormenjälki">

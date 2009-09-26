@@ -1,12 +1,12 @@
-<!ENTITY title "FireGPG Assistant - Options">
+<!ENTITY title "FireGPG Asistent - Možnosti">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Options">
+<!ENTITY next "Další">
+<!ENTITY title2 "Možnosti">
 <!ENTITY description "Zde můžete nastavit globální možnosti pro některé FireGPG vlastnosti:">
-<!ENTITY inline "Enable Inline detection">
-<!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">
-<!ENTITY disableagent "Disable GPG-Agent">
+<!ENTITY inline "Zapnout inline detekci">
+<!ENTITY inlinehelp "Pokud webová stránka obsahuje blok PGP, FireGPG ho může detekovat a udělat s ním patřičnou operaci!">
+<!ENTITY disableagent "Vypnout GPG-Anenta">
 <!ENTITY api "Povolit FireGPG API">
 <!ENTITY apihelp "FireGPG rozhraní umožní jakékoliv stránce užívat GPG - samozřejmě s bezpečnostními mechanismy">
-<!ENTITY gpgauth "Enable gpgAuth">
-<!ENTITY gpgauthhelp "gpgAuth is mechanism or process to authenticate web-users using GnuPG, not developped by FireGPG authors">
+<!ENTITY gpgauth "Zapnout gpgAuth">
+<!ENTITY gpgauthhelp "gpgAuth je mechanismus, nebo proces k ověření webových uźivatelů za použití GnuPG, není od vývojařů FireGPG">

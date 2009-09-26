@@ -8,6 +8,8 @@ locale	    firegpg de  	            locale/de/
 locale	    firegpg el	                locale/el/
 locale	    firegpg	eo	            locale/eo/
 locale	    firegpg es	            locale/es/
+locale	    firegpg eu	            locale/eu/
+locale	    firegpg	fi	                locale/fin/
 locale	    firegpg	fr	                locale/fr/
 locale	    firegpg he	            locale/he/
 locale	    firegpg	hu                locale/hu/
@@ -16,6 +18,7 @@ locale	    firegpg it	                locale/it/
 locale	    firegpg	ja	                locale/ja/
 locale	    firegpg ko-KR	        locale/ko-KR/
 locale	    firegpg	lv	                locale/lv/
+locale	    firegpg	gl	                locale/gl/
 locale	    firegpg nl	                locale/nl/
 locale	    firegpg	no	            locale/no/
 locale	    firegpg	fa	                locale/pe/

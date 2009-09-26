@@ -1,17 +1,17 @@
-<!ENTITY title "FireGPG Assistant - Private key">
+<!ENTITY title "FireGPG Asistent - Soukromý klíč">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Private key">
+<!ENTITY next "Další">
+<!ENTITY title2 "Soukromý klíč">
 <!ENTITY description "PGP systém funguje se soukromým a veřejným klíčem. Podepíšeš zprávu svým soukromým klíčem a příjemce ověří podpis tvým veřejným klíčem. Pokud chtějí napsat zprávu oni tobě tak použijí tvůj veřejný klíč a ty, jenom ty, jí můžeš se svým soukromým klíčem (a heslem k němu) rozšifrovat. ">
-<!ENTITY pk "You have at least one private key in your keyring">
-<!ENTITY setdk "Set a default key">
+<!ENTITY pk "Máte alespoň jeden soukromý klíč v klíčence">
+<!ENTITY setdk "Vybrat výchozí klíč">
 <!ENTITY askforpk "Žádejte o soukromá klíč">
-<!ENTITY name "Name">
+<!ENTITY name "Jméno">
 <!ENTITY id "Id">
 <!ENTITY created "Vytvořeno">
-<!ENTITY expire "Expire">
-<!ENTITY nopk "You don't have any private keys in your keyring">
-<!ENTITY genpk "Generate a private and a public key">
-<!ENTITY gen "Generate">
-<!ENTITY importpk "Import a private key">
-<!ENTITY import "Import">
+<!ENTITY expire "Vyprší">
+<!ENTITY nopk "Nemáte žádný soukromý klíč v klíčence">
+<!ENTITY genpk "Vytvořit soukromý a veřejný klíč">
+<!ENTITY gen "Vytvořit">
+<!ENTITY importpk "Importovat soukromý klíč">
+<!ENTITY import "Importovat">

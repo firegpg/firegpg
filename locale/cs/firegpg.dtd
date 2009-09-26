@@ -52,9 +52,9 @@
 <!ENTITY keynotrevokedpassword "Chyba, klíč neodvolán. Špatné heslo?">
 <!ENTITY firegpgContext.labelWrapSign "Zarovnat a podepsat">
 <!ENTITY firegpgMenu.labelWrapSign "Zarovnat a podepsat">
-<!ENTITY firegpgContext.labelHashs "Hashes">
-<!ENTITY firegpgContext.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelHashs "Hashes">
-<!ENTITY parseAgain "Parse (again) this page.">
-<!ENTITY update-avaiable "An update of FireGPG is available">
+<!ENTITY firegpgContext.labelHashs "Hashe">
+<!ENTITY firegpgContext.labelFiles "Operace se soubory">
+<!ENTITY firegpgMenu.labelFiles "Operace se soubory">
+<!ENTITY firegpgMenu.labelHashs "Hashe">
+<!ENTITY parseAgain "Zpracovat (znovu) tuto stránku.">
+<!ENTITY update-avaiable "Je dostupná aktualizace FireGPG">

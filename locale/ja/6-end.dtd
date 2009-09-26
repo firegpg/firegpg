@@ -2,7 +2,7 @@
 <!ENTITY title2 "Done!">
 <!ENTITY description "Assistant is now done. Now you should be able to use FireGPG.">
 <!ENTITY doc "文書を読む">
-<!ENTITY doc2 "You will find some li<x>nks on this page">
+<!ENTITY doc2 "You will find some links on this page">
 <!ENTITY tr "FireGPGを翻訳する">
 <!ENTITY tr2 "Horrible mistake in your language for FireGPG? Here is the website!">
 <!ENTITY help "Help FireGPG">

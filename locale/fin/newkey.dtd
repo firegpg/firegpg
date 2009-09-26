@@ -1,0 +1,17 @@
+<!ENTITY newkey "FireGPG - uusi avain">
+<!ENTITY warningaboutgeneeration "Varoitus! Avain luonti voi kestää kauan ja tulee lukitsemaan Firefox:in. Tee jotain muuta kun avainta generoidaan luodaksesi entropiaa.">
+<!ENTITY name-message "Nimi">
+<!ENTITY email-message "E-mail">
+<!ENTITY comment-message "Kommentti">
+<!ENTITY password1-message "Salasana">
+<!ENTITY password2-message "Toista salasana">
+<!ENTITY keyneverexpire "Avain ei vanhene koskaan">
+<!ENTITY keyexpire-message "Avain vanhenee">
+<!ENTITY expire-year "vuosia">
+<!ENTITY expire-month "kuukautta">
+<!ENTITY expire-days "päivää">
+<!ENTITY advancedoptions "Lisäasetukset">
+<!ENTITY keylenght-message "Avaimen pituus">
+<!ENTITY keytype-message "Avain tyyppi">
+<!ENTITY generate-button "Generoi avain">
+<!ENTITY cancel-button "Peru">

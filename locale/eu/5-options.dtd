@@ -1,0 +1,12 @@
+<!ENTITY title "FireGPG Laguntzailea . Aukerak">
+<!ENTITY stop "Gelditu">
+<!ENTITY next "Hurrengoa">
+<!ENTITY title2 "Aukerak">
+<!ENTITY description "Hemen FireGPG-ren funtzio batzuentzako aukera globala sartu dezakezu:">
+<!ENTITY inline "Zuzenean egindako detekzioa erabili">
+<!ENTITY inlinehelp "Weborri batek PGP bloke bat badu, FireGPG-K detektatu dezake eta berarekin eragiketak egin ditzake!">
+<!ENTITY disableagent "GPG-Agent-a desaktibatu">
+<!ENTITY api "FireGPG API-a aktibatu.">
+<!ENTITY apihelp "FireGPG-ren API-a GPG-ren funtzioak edozein web orriri erabiltzen uzen dio. Sekurtasun neuriekin, noski">
+<!ENTITY gpgauth "gpgAuth aktibatu">
+<!ENTITY gpgauthhelp "gpgAuth GnuPG web erabiltzaileak kautotzeko erabiltzen den prozesu edo mekanismoa da, FireGPG-ren egileak ez dute egin">

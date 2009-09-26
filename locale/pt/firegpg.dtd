@@ -56,5 +56,5 @@
 <!ENTITY firegpgContext.labelFiles "Operações com ficheiros">
 <!ENTITY firegpgMenu.labelFiles "Operações com ficheiros">
 <!ENTITY firegpgMenu.labelHashs "Hashes">
-<!ENTITY parseAgain "Parse (again) this page.">
-<!ENTITY update-avaiable "An update of FireGPG is available">
+<!ENTITY parseAgain "Interpretar (novamente) esta página.">
+<!ENTITY update-avaiable "Há uma actualização do FireGPG disponível">

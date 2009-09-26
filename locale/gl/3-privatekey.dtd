@@ -1,0 +1,17 @@
+<!ENTITY title "Asistente de FireGPG - Chave privada">
+<!ENTITY stop "Parar">
+<!ENTITY next "Seguinte">
+<!ENTITY title2 "Chave privada">
+<!ENTITY description "O sistema PGP traballa con unha chave privada e unha chave pública. Para asinar as mensaxes utilizará a súa chave privada e outras usuarias verificarán a sinatura coa súa chave pública. Se queren enviarlle unha mensaxe, utilizarán a súa chave pública, e vostede, só vostede, poderá descifrala coa súa chave privada.">
+<!ENTITY pk "Ten que ter polo menos unha chave privada no seu anel de chaves">
+<!ENTITY setdk "Indicar a chave predeterminada">
+<!ENTITY askforpk "Solicitar clave privada">
+<!ENTITY name "Nome">
+<!ENTITY id "Id">
+<!ENTITY created "Creado">
+<!ENTITY expire "Caduca">
+<!ENTITY nopk "Non ten ningunha chave privada no seu anel de chaves">
+<!ENTITY genpk "Xerar unha chave privada e unha chave pública">
+<!ENTITY gen "Xerar">
+<!ENTITY importpk "Importar unha chave privada">
+<!ENTITY import "Importar">

@@ -1,0 +1,22 @@
+<!ENTITY title "FireGPG Avustaja - Gmail">
+<!ENTITY stop "Lopeta">
+<!ENTITY next "Seuraava">
+<!ENTITY title2 "Gmail tuki">
+<!ENTITY description "FireGPG voidaan integroida gmailiin: lisänappulat meilien salaamiseen ja allekirjoittamiseen lisätään ja voit purkaa ja varmentaa allekirjoitukset mistä tahansa meilistä.">
+<!ENTITY enable "Ota Gmail-tuki käyttöön">
+<!ENTITY smtpok "FireGPG sai yhteyden SMTP serverille">
+<!ENTITY noauth "NB: Autentikointi ei testattu!">
+<!ENTITY noauthhelp "FireGPG varoittaa kun yrität lähettää viestiä jos siinä on ongelma">
+<!ENTITY sign "Allekirjoita">
+<!ENTITY encrypt "Salaa">
+<!ENTITY atta "Liitteet">
+<!ENTITY inline "Käytä rivinsisäistä">
+<!ENTITY inlinesuck "Rivinsisäinen on huono ja ei toimi aina. OpenPGP/Mime, standardina, tulisi käyttää!">
+<!ENTITY nosmtp "FireGPG ei saanut yhteyttä SMTP serverille tai kysely on vielä käynnissä">
+<!ENTITY wait "Odota 15 sekuntia tai kauemmin jos yhteytesi on hidas">
+<!ENTITY setp "Aseta parametrit toimivalle SMTP serverille (esim. ISP:n tai työpaikan serveri)">
+<!ENTITY host "Palvelin (smtp.gmail.com):">
+<!ENTITY port "Portti (465):">
+<!ENTITY username "Käyttäjätunnus (jätä tyhjäksi käyttääksesi logattua tunnusta):">
+<!ENTITY ssl "Käytä SSL">
+<!ENTITY setdo "Aseta oletusasetukset viestien lähettämiselle">

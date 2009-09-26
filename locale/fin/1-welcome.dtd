@@ -1,0 +1,12 @@
+<!ENTITY title "FireGPG Avustaja - Tervetuloa">
+<!ENTITY skip "Ohita">
+<!ENTITY next "Seuraava">
+<!ENTITY title2 "FireGPG Avustaja">
+<!ENTITY infoabout "Tässä on lisätietoa ikoneista ja käytetyistä väreistä:">
+<!ENTITY whatnext "Kehoittaa ratkaisuun tai johonkin jota sinun tulisi tehdä">
+<!ENTITY good "Tämä on jotain hienoa">
+<!ENTITY problem "Tämä on ongelma">
+<!ENTITY advanced "Tämä on edistyneille käyttäjille. Jos et ymmärrä sitä, älä huolehdi äläkä muuta sitä.">
+<!ENTITY help "Tämä tarkoittaa, että ohje on olemassa. Liikuta hiirtä ikonin päällä.">
+<!ENTITY helppop "Hei, olen opas">
+<!ENTITY description "Tervetuloa! Tämä asetusvelho auttaa sinua konfiguroimaan FireGPG:n. Jos olet uusi käyttäjä, kannattaa toimia sen mukaisesti saadaksesi toimivan konfiguraation. Miten tahansa päätätkään toimia, voit myöhemmin muuttaa asetukset asetusikkunan kautta.">
