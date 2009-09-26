@@ -41,15 +41,15 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 /* Constant: FIREGPG_VERSION
   The current version of FireGPG */
-const FIREGPG_VERSION = '0.7.8';
+const FIREGPG_VERSION = '0.7.9';
 
 /* Constant: FIREGPG_VERSION_A
   The current verion of FireGPG without dots */
-const FIREGPG_VERSION_A = '078';
+const FIREGPG_VERSION_A = '079';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
-const FIREGPG_STATUS = 'DEVEL';
+const FIREGPG_STATUS = 'RELASE';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */
