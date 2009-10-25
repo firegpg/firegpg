@@ -195,6 +195,9 @@ var FireGPG_Selection = {
 		var reg=new RegExp("<style>[^<]*</style>", "gi"); //Élimination des styles
 		str = str.replace(reg,"\n");
 
+        reg=new RegExp("</div>", "gi"); // Force end of <div>s to a newline
+        str = str.replace(reg, "\n");
+
 		reg=new RegExp("<[^>]+>", "g"); // Élimination des balises HTML
 		str = str.replace(reg, "");
 

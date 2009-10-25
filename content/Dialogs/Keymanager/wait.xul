@@ -43,7 +43,7 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!DOCTYPE prefwindow SYSTEM "chrome://firegpg/locale/keymanager.dtd">
 <window id="wait-dialog" title=" " orient="vertical" autostretch="always"     onload="sizeToContent(); this.opened=true; " buttons=""
-        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onclick="close();">
 
     <image src="chrome://firegpg/skin/wait.png" />
 

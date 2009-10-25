@@ -122,7 +122,7 @@ var FireGPGApi = {
 	*/
     auth: function ( event ) {
 
-        data = FireGPGApi.getDataNode(event.target);
+        var data = FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
@@ -192,7 +192,7 @@ var FireGPGApi = {
     listkey: function ( event ) {
 
 
-        data = FireGPGApi.getDataNode(event.target);
+        var data = FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
@@ -232,7 +232,7 @@ var FireGPGApi = {
     listprivkey: function ( event ) {
 
 
-        data = FireGPGApi.getDataNode(event.target);
+        var data =  FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
@@ -276,7 +276,7 @@ var FireGPGApi = {
     check: function ( event ) {
 
 
-        data = FireGPGApi.getDataNode(event.target);
+        var data =  FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
@@ -349,7 +349,7 @@ var FireGPGApi = {
 	*/
     sign: function ( event ) {
 
-        data = FireGPGApi.getDataNode(event.target);
+        var data =  FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
@@ -449,7 +449,7 @@ var FireGPGApi = {
     signandencrypt: function ( event ) {
 
 
-        data = FireGPGApi.getDataNode(event.target);
+        var data =  FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
@@ -549,7 +549,7 @@ var FireGPGApi = {
     encrypt: function ( event ) {
 
 
-        data = FireGPGApi.getDataNode(event.target);
+        var data =  FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 
@@ -607,7 +607,7 @@ var FireGPGApi = {
     decrypt: function ( event ) {
 
 
-        data = FireGPGApi.getDataNode(event.target);
+        var data =  FireGPGApi.getDataNode(event.target);
 
         key_auth = data.getAttribute('auth_key');
 

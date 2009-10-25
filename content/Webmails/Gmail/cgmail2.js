@@ -118,7 +118,7 @@ var FireGPG_cGmail2 = {
 
             if (doc != undefined && doc.location != undefined) {
 
-                final_location = doc.location.href;
+                var final_location = doc.location.href;
 
                 var regrex = new RegExp('^https?://mail.google.com/a/[a-zA-Z.0-9-]*');
 
@@ -145,7 +145,7 @@ var FireGPG_cGmail2 = {
 
                                 //On cherche la boite avec les boutons
                                 for (var j = 0; j < boutonboxs.length; j++) {
-                                    if (boutonboxs[j] && boutonboxs[j].getAttribute("class").indexOf("cf gz") != -1) { //EWdQcf
+                                    if (boutonboxs[j] && boutonboxs[j].getAttribute("class") && boutonboxs[j].getAttribute("class").indexOf("cf gz") != -1) { //EWdQcf
                                         boutonbox = boutonboxs[j].firstChild.firstChild;
                                         break;
                                     }
@@ -179,7 +179,7 @@ var FireGPG_cGmail2 = {
                                     }
                                 } else {
 
-                                    decoder = new FireGPGMimeDecoder(mimeContentOf);
+                                    var decoder = new FireGPGMimeDecoder(mimeContentOf);
 
                                     var nosign = false;
 
@@ -242,15 +242,16 @@ var FireGPG_cGmail2 = {
                                                 //if (result.decryptresult.result.signresulttext != null &&  result.decryptresult.result.signresulttext != "")
                                                 //    td.innerHTML +=  i18n.getString("GMailSOK") + " " + FireGPGMisc.htmlEncode(result.decryptresult.result.signresulttext) + " ";
 
-                                                if (result.decryptresult.result.signresulttext != null &&  result.decryptresult.result.signresulttext != "") {
+                                                if (result.decryptresult.signresulttext != null &&  result.decryptresult.signresulttext != "") {
+                                                    var bonus;
 
                                                     if (FireGPG_cGmail2.showUserInfo)
-                                                        bonus = " (" + FireGPGMisc.htmlEncode(result.decryptresult.result.signresulttext) + ")";
+                                                        bonus = " (" + FireGPGMisc.htmlEncode(result.decryptresult.signresulttext) + ")";
                                                     else
                                                         bonus = "";
 
                                                     if (result.completeSignOrDecrypt)
-                                                        td.innerHTML += '<span title="' + i18n.getString("goodSignFrom") + ' ' + result.decryptresult.result.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(this.title);  return false;"><img src="' + FGPG_IMG_MAIL_SIGNED_OK + '">&nbsp;' + i18n.getString("signedMail") + '' + bonus + '</span>';
+                                                        td.innerHTML += '<span title="' + i18n.getString("goodSignFrom") + ' ' + result.decryptresult.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(this.title);  return false;"><img src="' + FGPG_IMG_MAIL_SIGNED_OK + '">&nbsp;' + i18n.getString("signedMail") + '' + bonus + '</span>';
                                                     else {
 
                                                         data = decoder.washFromPlain(result.specialmimepart).replace(/<br \/>/gi, '\n');
@@ -300,6 +301,8 @@ var FireGPG_cGmail2 = {
                                             }
                                             else if (result.signResult.signsresulttext != null){
 
+                                                var bonus;
+
                                                 td.setAttribute("style","color: green;");
                                                 //td.innerHTML += i18n.getString("GMailSOK") + " " + FireGPGMisc.htmlEncode(result.signResult.signresulttext); //"La première signature de ce mail est de testtest (testtest)
 
@@ -343,7 +346,7 @@ var FireGPG_cGmail2 = {
                                         var atts = result.attachements;
 
                                         var attachementBoxL = listeTest[i].parentNode.getElementsByClassName('hq gt', 'div');
-                                        attachementBox = attachementBoxL[0];
+                                        var attachementBox = attachementBoxL[0];
 
                                         for (i in atts) {
 
@@ -655,6 +658,9 @@ var FireGPG_cGmail2 = {
 
                                 //Rajouter une propriété sur le button send pour le repérer
                                 var children = listeTest[i].getElementsByClassName('goog-imageless-button-content');
+                                if (!children[0])
+                                    children = listeTest[i].getElementsByClassName('J-K-I-Jz');
+
                                 children[0].firstChild.setAttribute("gpg_action", "send_button");
         //fireGPGDebug('children[0] is ' + children[0], 'ProbWithReplyForward');
 
@@ -783,11 +789,11 @@ var FireGPG_cGmail2 = {
 
                                                 var iframe = FireGPG_cGmail2.getTheIframe(doc,wheretoadd);
 
-                                                baseData = iframe.contentWindow.document.body.innerHTML;
+                                                var baseData = iframe.contentWindow.document.body.innerHTML;
 
-                                                before = baseData.substring(0,baseData.indexOf("-----BEGIN PGP MESSAGE-----"));
+                                                var  before = baseData.substring(0,baseData.indexOf("-----BEGIN PGP MESSAGE-----"));
 
-                                                after = baseData.substring(baseData.indexOf("-----END PGP MESSAGE-----") + "-----END PGP MESSAGE-----".length, baseData.length);
+                                                var after = baseData.substring(baseData.indexOf("-----END PGP MESSAGE-----") + "-----END PGP MESSAGE-----".length, baseData.length);
 
                                                 iframe.contentWindow.document.body.innerHTML = before + data + after;
 
@@ -795,11 +801,11 @@ var FireGPG_cGmail2 = {
 
                                                 var textarea = FireGPG_cGmail2.getTheTextarea(doc,wheretoadd);
 
-                                                baseData = textarea.value;
+                                                var baseData = textarea.value;
 
-                                                before = baseData.substring(0,baseData.indexOf("-----BEGIN PGP MESSAGE-----"));
+                                                var before = baseData.substring(0,baseData.indexOf("-----BEGIN PGP MESSAGE-----"));
 
-                                                after = baseData.substring(baseData.indexOf("-----END PGP MESSAGE-----") + "-----END PGP MESSAGE-----".length, baseData.length);
+                                                var after = baseData.substring(baseData.indexOf("-----END PGP MESSAGE-----") + "-----END PGP MESSAGE-----".length, baseData.length);
 
                                                 textarea.value = before + data.replace(/<br \/>/gi, "\n> ") + after;
 
@@ -1014,7 +1020,7 @@ var FireGPG_cGmail2 = {
 
                     }
 
-                    fireGPGDebug('Action: ' + target.getAttribute('gpg_action') + ' T:' + target, 'callBack');
+                    fireGPGDebug('Action: ' + target.getAttribute('gpg_action') + ' T:' + target + ' Tclass:' + target.getAttribute('class')+ ' Tid:' + target.getAttribute('id')+ ' TPclass:' + target.parentNode.getAttribute('class')+ ' TPid:' + target.parentNode.getAttribute('id'), 'callBack');
 
 
                //If the user want to decrypt the mail (can use normal attibutes)
@@ -1377,7 +1383,7 @@ var FireGPG_cGmail2 = {
 
 
 
-                            var children = buttonsboxes.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByClassName('goog-imageless-button-content');
+                            var children = buttonsboxes.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByClassName('J-K-I-Jz');
                             a = new FireGPGGmailMimeSender(f, children[2], i18n);
 
 
@@ -2002,80 +2008,12 @@ var FireGPG_cGmail2 = {
         try {
 
 
-            var i = dDocument.evaluate(".//td[contains(@class, 'd7')]//iframe", boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+            var i = dDocument.evaluate(".//td[contains(@class, 'Ap')]//iframe", boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
             fireGPGDebug(i, 'iframefound');
 
             return i;
 
-            /*var tmp = boutonxboxnode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.childNodes[1];
-
-            //29 septebmre 2008
-            if (!tmp) {
-
-                 var tmp = boutonxboxnode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.childNodes[1];
-
-            }
-
-            if (!tmp) { //Version du 29 octobre 2008 - BOUTONS DU BAS
-
-                var tmp = boutonxboxnode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-               tmp = tmp.childNodes[1];
-
-            }
-
-            tmp = tmp.firstChild;
-
-            tmp = tmp.childNodes[2];
-
-            if (!tmp) { //Version du 29 octobre 2008
-
-                var tmp = boutonxboxnode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.childNodes[1];
-
-                tmp = tmp.firstChild;
-
-                tmp = tmp.childNodes[2];
-
-            }
-
-            tmp = tmp.childNodes[1];
-
-            tmp = tmp.getElementsByTagName('iframe');
-
-            tmp = tmp[0];
-
-            return tmp;*/
 
         } catch (e) {  FireGPG_cGmail2.error(e, 'getTheIframe') }
 
@@ -2094,80 +2032,12 @@ var FireGPG_cGmail2 = {
 
         try {
 
-            var i = dDocument.evaluate(".//td[contains(@class, 'd7')]//textarea", boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+            var i = dDocument.evaluate(".//td[contains(@class, 'Ap')]//textarea", boutonxboxnode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
             fireGPGDebug(i, 'textareadfound');
 
             return i;
 
-            /*var tmp = boutonxboxnode;
-
-            tmp = tmp.parentNode;
-
-            tmp = tmp.childNodes[1];
-
-             //29 septebmre 2008
-            if (!tmp) {
-
-                var tmp = boutonxboxnode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.childNodes[1];
-
-            }
-
-            if (!tmp) { //Version du 29 octobre 2008 - BOUTONS DU BAS
-
-                var tmp = boutonxboxnode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-               tmp = tmp.childNodes[1];
-
-            }
-
-            tmp = tmp.firstChild;
-
-            tmp = tmp.childNodes[2];
-
-            if (!tmp) { //Version du 29 octobre 2008 - BOUTONS DU HAUT
-
-                var tmp = boutonxboxnode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.parentNode;
-
-                tmp = tmp.childNodes[1];
-
-                tmp = tmp.firstChild;
-
-                tmp = tmp.childNodes[2];
-
-            }
-
-            tmp = tmp.childNodes[1];
-
-            tmp = tmp.getElementsByTagName('textarea');
-
-            tmp = tmp[0];
-
-            return tmp; */
 
         } catch (e) {  FireGPG_cGmail2.error(e, 'getTextarea') }
     },
@@ -2473,21 +2343,21 @@ var FireGPG_cGmail2 = {
             var i = papai.getElementsByClassName("ii gt");
             i = i[0];
 
-            baseData = i.innerHTML;
+            var baseData = i.innerHTML;
 
             fireGPGDebug(baseData);
 
-            before = baseData.substring(0,baseData.indexOf("-----BEGIN PGP MESSAGE-----"));
+            var before = baseData.substring(0,baseData.indexOf("-----BEGIN PGP MESSAGE-----"));
 
-            end = baseData.indexOf("-----END PGP MESSAGE-----") + "-----END PGP MESSAGE-----".length;
+            var end = baseData.indexOf("-----END PGP MESSAGE-----") + "-----END PGP MESSAGE-----".length;
 
             if (end ==( "-----END PGP MESSAGE-----".length -1))
                 end = baseData.indexOf('<a class="vem"');
 
-            after = baseData.substring(end, baseData.length);
+            var after = baseData.substring(end, baseData.length);
 
 
-            img = "<img src=\""+FGPG_IMG_ENCRYPTED+"\" alt=\"" +FGPG_IMG_ENCRYPTED2+"\" onmouseout=\"a = this.alt; this.alt=this.src; this.src=a; this.title = ''; \" onmouseover=\"if (this.title == '') { a = this.alt; this.alt=this.src; this.src=a; this.title = 'FireGPG'; }\">";
+            var img = "<img src=\""+FGPG_IMG_ENCRYPTED+"\" alt=\"" +FGPG_IMG_ENCRYPTED2+"\" onmouseout=\"a = this.alt; this.alt=this.src; this.src=a; this.title = ''; \" onmouseover=\"if (this.title == '') { a = this.alt; this.alt=this.src; this.src=a; this.title = 'FireGPG'; }\">";
 
             data = data.replace(/(.{1,70})(?:\s|$)/g,"$1<br/>")
 
@@ -2627,13 +2497,13 @@ var FireGPG_cGmail2 = {
 
 
 
-        final_location = doc.location.href;
+        var final_location = doc.location.href;
 
         var regrex = new RegExp('^https?://mail.google.com/a/[a-zA-Z-.0-9]*');
 
         final_location = final_location.replace(regrex, "http://mail.google.com/mail");
 
-    fireGPGDebug(final_location);
+        fireGPGDebug(final_location);
 
         //Find IK
         if (final_location.indexOf("http://mail.google.com/mail/?ui=2&ik=") == 0 || final_location.indexOf("https://mail.google.com/mail/?ui=2&ik=") == 0) {
@@ -2657,12 +2527,12 @@ fireGPGDebug("baseurl:" + FireGPG_cGmail2.baseUrl);
         //Add windowopen rewriter
         if (final_location.indexOf("http://mail.google.com/mail/") == 0 || final_location.indexOf("https://mail.google.com/mail/") == 0) {
 
-           sr = doc.createElement('script');
+            var sr = doc.createElement('script');
             sr.innerHTML = "var windowopen_ = window.open; window.open = function (a,b,c) {  if (document.getElementById('canvas_frame') && document.getElementById('canvas_frame').contentDocument && document.getElementById('canvas_frame').contentDocument.body && document.getElementById('canvas_frame').contentDocument.body.getAttribute('firegpg') != null &&document.getElementById('canvas_frame').contentDocument.body.getAttribute('firegpg').indexOf('#FIREGPGCAPTURE') != -1) { document.getElementById('canvas_frame').contentDocument.body.setAttribute('firegpg',a); return new Window();  } else { return windowopen_(a,b,c); }};"
-fireGPGDebug("try to add");
+            fireGPGDebug("try to add");
             if (doc) {
-            doc.body.appendChild(sr);
-            fireGPGDebug("added");
+                doc.body.appendChild(sr);
+                fireGPGDebug("added");
             }
 
 
@@ -2691,7 +2561,7 @@ fireGPGDebug("activated");
 
             for (var j = 0; j < elts.length; ++j) {
 
-                lf = "  " + elts[j].className + " "
+                var lf = "  " + elts[j].className + " "
 
                 if (lf.indexOf(className) > 0) {
 
@@ -2798,7 +2668,7 @@ fireGPGDebug("activated");
 
             var elements = id.parentNode.parentNode.parentNode.parentNode.firstChild.getElementsByTagName("img");
 
-            actionbox = "";
+            var actionbox = "";
 
             //On cherche la boite avec les boutons
             for (var j = 0; j < elements.length; j++) {
@@ -2829,7 +2699,7 @@ fireGPGDebug("activated");
            //CHILDREN OF gv
            // act="32"
 
-            papa = doc.getElementsByClassName('hx');
+            var papa = doc.getElementsByClassName('hx');
             papa = papa[0];
 
             fireGPGDebug('Papa is ' + papa, 'getMimeMailContens');
@@ -2881,7 +2751,7 @@ fireGPGDebug("activated");
              detailsElement.dispatchEvent(evt3);
              doc.documentElement.scrollTop = scollage;
 
-            url = doc.body.getAttribute('firegpg');
+            var url = doc.body.getAttribute('firegpg');
 
             fireGPGDebug('Url get is ' + url, 'getMimeMailContens');
 
@@ -2907,7 +2777,7 @@ fireGPGDebug("activated");
             if (this.messageCache == null || this.messageCache[url] == null)
             {
                 //FireGPGMisc.getContentXHttp
-                data = FireGPGMisc.getBinContent(FireGPG_cGmail2.baseUrl + url , 5000*1024);
+                var data = FireGPGMisc.getBinContent(FireGPG_cGmail2.baseUrl + url , 5000*1024);
 
          //       fireGPGDebug('data1 is ' + data, 'getMimeMailContens');
 

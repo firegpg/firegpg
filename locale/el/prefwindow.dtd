@@ -30,7 +30,7 @@
 <!ENTITY key-create "Δημιουργήθηκε">
 <!ENTITY key-expire "Λήξη">
 <!ENTITY pane4.title "Gpg">
-<!ENTITY gpg-add-options "Προσθέστε ορίσματα στη γραμμή εντολών του GPG : (Προσοχή! Μπορεί να \"κολλήσει\" το FireGPG ! Ρίξτε μία ματιά στο documentation.)">
+<!ENTITY gpg-add-options "Προσθέστε ορίσματα στη γραμμή εντολών του GPG : (Προσοχή! Μπορεί να &#34;κολλήσει&#34; το FireGPG ! Ρίξτε μία ματιά στο documentation.)">
 <!ENTITY gmail-buton-signcrypt-checkbox "Υπογραφή και Κρυπτογράφηση">
 <!ENTITY gmail-buton-signcryptsend-checkbox "Υπογραφή, Κρυπτογράφηση και Αποστολή">
 <!ENTITY firegpg-version-label.text "Τρέχουσα έκδοση FireGPG :">

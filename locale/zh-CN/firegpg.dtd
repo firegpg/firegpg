@@ -56,5 +56,5 @@
 <!ENTITY firegpgContext.labelFiles "文件操作">
 <!ENTITY firegpgMenu.labelFiles "文件操作">
 <!ENTITY firegpgMenu.labelHashs "哈希">
-<!ENTITY parseAgain "Parse (again) this page.">
-<!ENTITY update-avaiable "An update of FireGPG is available">
+<!ENTITY parseAgain "（再次）解析此页面">
+<!ENTITY update-avaiable "一个新的FireGPG版本可用">

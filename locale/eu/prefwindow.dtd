@@ -30,7 +30,7 @@
 <!ENTITY key-create "Sortuta">
 <!ENTITY key-expire "Epea amaitzen zaio">
 <!ENTITY pane4.title "GPG">
-<!ENTITY gpg-add-options "gpg konamdoari parametroak gehitu: (Kontuz: FireGPG funtzionatzeari laga egin diezake! Dokumentazioa irakurri).">
+<!ENTITY gpg-add-options "gpg komandoari parametroak gehitu: (Kontuz: FireGPG funtzionatzeari laga egin diezake! Dokumentazioa irakurri).">
 <!ENTITY gmail-buton-signcrypt-checkbox "Sinatu eta enkriptatu">
 <!ENTITY gmail-buton-signcryptsend-checkbox "Sinatu, enkriptatu eta bidali">
 <!ENTITY firegpg-version-label.text "Oraingo FireGPG bertsioa:">

@@ -49,7 +49,7 @@ const FIREGPG_VERSION_A = '079';
 
 /* Constant: FIREGPG_STATUS
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
-const FIREGPG_STATUS = 'RELASE';
+const FIREGPG_STATUS = 'DEVEL';
 
 /* Constant: FIREGPG_SVN
   The current subversion's revision number, for this file ! */
@@ -1437,8 +1437,8 @@ var FireGPGMisc = {
             }
 
             if (keyserver == "") {
-                keyserver = "subkeys.pgp.net";
-                prefs.setCharPref("keyserver", "subkeys.pgp.net");
+                keyserver = "pgp.mit.edu";
+                prefs.setCharPref("keyserver", "pgp.mit.edu");
                 }
 
             return keyserver;
@@ -1718,7 +1718,9 @@ var FireGPGMisc = {
         _utf8_decode :function (utftext) {
             var string = "";
             var i = 0;
-            var c = c1 = c2 = 0;
+            var c = 0;
+            var c1 = 0;
+            var c2 = 0;
 
             while ( i < utftext.length ) {
 

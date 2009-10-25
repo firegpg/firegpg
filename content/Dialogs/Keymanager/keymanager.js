@@ -206,7 +206,7 @@ function exportfile() {
 
 	if (result.result == FireGPGResults.SUCCESS) {
 
-		data = result.exported;
+		var data = result.exported;
 
 		//Need to remove the file before save
 		FireGPGMisc.removeFile(filePath);

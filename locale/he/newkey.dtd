@@ -1,7 +1,7 @@
 <!ENTITY newkey "FireGPG - מפתח חדש">
 <!ENTITY warningaboutgeneeration "אזהרה ! יצירת מפתח חדש עלולה לקחת זמן רב והדפדפן עלול לקפוא. עשה דברים אחרים בזמן ייצור המפתח על מנת ליצור אנתרופיה רבה יותר">
 <!ENTITY name-message "שם">
-<!ENTITY email-message "דוא\"ל">
+<!ENTITY email-message "דוא&#34;ל">
 <!ENTITY comment-message "הערה">
 <!ENTITY password1-message "סיסמה">
 <!ENTITY password2-message "הכנס סיסמה בשנית">

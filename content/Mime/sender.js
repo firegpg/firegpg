@@ -301,6 +301,8 @@ FireGPGMimeSender.prototype =
 		function postAttach()
 		{
 			var multiStream;
+            var bonus;
+            var prebonus;
 			if (attachments.length>0||!isPlain)  {
 				multiStream=encoder.getMultipartStream("multipart/alternative",false);
             }

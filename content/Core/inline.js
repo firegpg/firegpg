@@ -276,7 +276,7 @@ FireGPGInline.HandlePage = function(document) {
 
                 if (node.parentNode && node.parentNode.nodeName == 'TEXTAREA')
                     break;
-                if (node.parentNode && node.parentNode.nodeName == 'PRE')
+
 
                 if (node.parentNode && node.parentNode.nodeName == 'PRE' && node.parentNode.parentNode && node.parentNode.parentNode.parentNode  && typeof node.parentNode.parentNode.parentNode.getAttribute == 'function' && node.parentNode.parentNode.parentNode.getAttribute('id') == 'storeArea') {
                     //Hum, it's seem we're on a TidyWiki...
@@ -290,17 +290,17 @@ FireGPGInline.HandlePage = function(document) {
 				idx = node.textContent.indexOf(FireGPGInline.Tags.KeyStart, baseIdx);
                 blockType = FireGPGInline.KEY_BLOCK;
 				search = FireGPGInline.Tags.KeyEnd;
-				if(idx == -1) {
+				if(idx == -1   || idx > node.textContent.indexOf(FireGPGInline.Tags.SignedMessageStart, baseIdx)) {
 					idx = node.textContent.indexOf(FireGPGInline.Tags.SignedMessageStart, baseIdx);
 					search = FireGPGInline.Tags.SignatureEnd;
                     blockType = FireGPGInline.SIGN_BLOCK;
 				}
-				if(idx == -1) {
+				if(idx == -1 || idx < node.textContent.indexOf(FireGPGInline.Tags.EncryptedMessageStart, baseIdx)) {
 					idx = node.textContent.indexOf(FireGPGInline.Tags.EncryptedMessageStart, baseIdx);
 					search = FireGPGInline.Tags.EncryptedMessageEnd;
                     blockType = FireGPGInline.MESSAGE_BLOCK;
 				}
-				if(idx == -1) {
+				if(idx == -1 || idx < node.textContent.indexOf(FireGPGInline.Tags.PrivateKeyStart, baseIdx)) {
 					idx = node.textContent.indexOf(FireGPGInline.Tags.PrivateKeyStart, baseIdx);
 					blockType = FireGPGInline.PRIVATE_KEY_BLOCK;
 					search = FireGPGInline.Tags.PrivateKeyEnd;
@@ -355,9 +355,11 @@ FireGPGInline.ignoreInners = function(idx, end,node) {
             return -1;
 
 
-        baseIdx = idx;
+        var baseIdx = idx;
+
         idx = node.indexOf(FireGPGInline.Tags.KeyStart, baseIdx);
         search = FireGPGInline.Tags.KeyEnd;
+
         if(idx == -1) {
             idx = node.indexOf(FireGPGInline.Tags.SignedMessageStart, baseIdx);
             search = FireGPGInline.Tags.SignatureEnd;
@@ -365,6 +367,10 @@ FireGPGInline.ignoreInners = function(idx, end,node) {
         if(idx == -1) {
             idx = node.indexOf(FireGPGInline.Tags.EncryptedMessageStart, baseIdx);
             search = FireGPGInline.Tags.EncryptedMessageEnd;
+        }
+        if(idx == -1) {
+            idx = node.indexOf(FireGPGInline.Tags.PrivateKeyStart, baseIdx);
+            search = FireGPGInline.Tags.PrivateKeyEnd;
         }
 
         if(idx == -1 || idx > end)
@@ -388,7 +394,7 @@ FireGPGInline.ignoreInners = function(idx, end,node) {
 */
 FireGPGInline.ImportKey = function(content, block) {
 
-    result = FireGPG.kimport(true,content);
+    var result = FireGPG.kimport(true,content);
 
 	block.output.style.display = "block";
     block.output.textContent = result.messagetext;
@@ -531,9 +537,9 @@ FireGPGInline.initSystem = function() {
 
     prefs = prefs.getBranch("extensions.firegpg.");
     try {
-        activate = prefs.getBoolPref("activate_inline");
+        var activate = prefs.getBoolPref("activate_inline");
     } catch (e) {
-        activate = true;
+        var activate = true;
     }
 
     FireGPGInline.activate = activate;
@@ -613,7 +619,7 @@ FireGPGInline.canIBeExecutedHere = function(aUrl) {
     if (page == 'OFF')
         return false;
 
-    site = FireGPGInline.siteStatus(aUrl);
+    var site = FireGPGInline.siteStatus(aUrl);
 
     if (site == 'ON')
         return true;
@@ -643,15 +649,18 @@ FireGPGInline.siteStatus = function(aUrl) {
                                    getService(Components.interfaces.nsIPrefService);
 
         prefs = prefs.getBranch("extensions.firegpg.");
+
+        var sites;
+
         try {
             sites = prefs.getCharPref("inline_sites");
         } catch (e) {
             sites = '';
         }
 
-        host = aUrl.href.replace(/,/gi, '~~~&'); //Just in case
+        var host = aUrl.href.replace(/,/gi, '~~~&'); //Just in case
 
-        data = sites.split(',');
+        var data = sites.split(',');
 
         for(var i = 0; i < data.length; i+=2) {
 

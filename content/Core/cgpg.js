@@ -1343,7 +1343,7 @@ var FireGPG = {
 
             for (var rid in results) {
 
-                result = results[rid];
+                var result = results[rid];
 
                 if (result.result == FireGPGResults.ERROR_UNKNOW)
                     resulttxt += i18n.getString("verifFailed") + "\n";
@@ -1483,6 +1483,7 @@ var FireGPG = {
         if (dontask == undefined)
             dontask = false;
 
+        var result;
 
         // We get the result
         if (nextText == undefined) {
@@ -1558,7 +1559,7 @@ var FireGPG = {
 			// If he work, we get informations of the Key
 			var infos = result.sdOut;
 
-            infos2 = infos.substring(0,infos.indexOf("SIG_ID") + 7);
+            var infos2 = infos.substring(0,infos.indexOf("SIG_ID") + 7);
 
 			infos2 = result.sdOut.replace(infos2, "");
 
@@ -1822,7 +1823,7 @@ var FireGPG = {
         //Il y avait une signature dans le truc //TODO: detect bad signs.
 		if(result.sdOut.indexOf("GOODSIG") != -1) {
 
-            infos2 = result.sdOut.substring(0,result.sdOut.indexOf("SIG_ID") + 7);
+            var infos2 = result.sdOut.substring(0,result.sdOut.indexOf("SIG_ID") + 7);
 
 			infos2 = result.sdOut.replace(infos2, "");
 
@@ -1891,8 +1892,10 @@ var FireGPG = {
 		//Find the right command for Gpg
 		this.FireGPGGPGAccess.tryToFoundTheRightCommand();
 
-		useGPGAgent = this.FireGPGGPGAccess.runATest('--no-use-agent');
-		FireGPG_useGPGTrust = this.FireGPGGPGAccess.runATest('--trust-model always');
+		// ???
+        var useGPGAgent = this.FireGPGGPGAccess.runATest('--no-use-agent');
+
+        FireGPG_useGPGTrust = this.FireGPGGPGAccess.runATest('--trust-model always');
 
 		this.allreadyinit = true;
 	},
@@ -1982,7 +1985,7 @@ var FireGPG = {
 
         wait_box.close();
 
-        result = backgroundTask.result;
+        var result = backgroundTask.result;
 
 		// We get informations from GPG
 		result = FireGPGMisc.EnigConvertGpgToUnicode(result.sdOut);
@@ -2144,7 +2147,7 @@ var FireGPG = {
 
         wait_box.close();
 
-        result = backgroundTask.result;
+        var result = backgroundTask.result;
 
 
         if (result.sdOut.indexOf('IMPORT_OK') > 0) {
@@ -2220,7 +2223,7 @@ var FireGPG = {
 
         wait_box.close();
 
-        result = backgroundTask.result;
+        var result = backgroundTask.result;
 
         if (result.sdOut) {
 
@@ -2291,7 +2294,7 @@ var FireGPG = {
 
         wait_box.close();
 
-        result = backgroundTask.result;
+        var result = backgroundTask.result;
 
         if (result.sdOut) {
 
@@ -2935,7 +2938,7 @@ var FireGPG = {
         while (backgroundTask.result == null)
           thread.processNextEvent(true);
 
-        result = backgroundTask.result;
+        var result = backgroundTask.result;
 
         tmpHash = result.sdOut;
         tmpHash = tmpHash.substring(tmpHash.lastIndexOf(':') + 1, tmpHash.length);
@@ -2951,6 +2954,42 @@ var FireGPG = {
 
         return returnObject;
 
+    },
+
+    /*
+    Function: loadFireGPGAccess
+
+    This function will determing and 'build' the class to access gpg.
+
+    She test if the xpcom is usable, update information about the status, and select the rights function to access to gnupg as the current situtation.
+
+    She set  the FireGPGGPGAccess class.
+
+    */
+    loadFireGPGAccess: function() {
+
+        if (FireGPG_loadXpcom()) {
+
+            if (FireGPGGPGAccess.isUnix()) {
+
+                FireGPGGPGAccess.tryToFoundTheRightCommand = FireGPGGPGAccessUnixXpcom.tryToFoundTheRightCommand;
+
+            } else {
+
+                FireGPGGPGAccess.tryToFoundTheRightCommand = FireGPGGPGAccessWindowsXpcom.tryToFoundTheRightCommand;
+
+            }
+
+            this.FireGPGGPGAccess = FireGPGGPGAccess;
+
+        } else {
+
+            var i18n = document.getElementById("firegpg-strings");
+            alert(i18n.getString('noipc2'));
+
+            this.FireGPGGPGAccess = FireGPGGPGAccess;
+        }
+
     }
 
 }
@@ -2960,7 +2999,8 @@ var FireGPG = {
 var FireGPG_okWait; // ???
 
 // We load the good class for the OS
-FireGPG.FireGPGGPGAccess = Witch_FireGPGGPGAccess();
+//FireGPG.FireGPGGPGAccess = Witch_FireGPGGPGAccess();
+FireGPG.loadFireGPGAccess()
 FireGPG.FireGPGGPGAccess.parent = FireGPG;
 
 //Test if we have to show the 'what is new ?'

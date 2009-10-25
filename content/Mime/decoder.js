@@ -116,13 +116,13 @@ FireGPGMimeDecoder.prototype = {
 
     mimeToText: function(mimePart) {
 
-        dataPart = this.findContentPart(mimePart);
+        var dataPart = this.findContentPart(mimePart);
 
         if (dataPart == null)
             return "";
 
 
-        message = dataPart.clearBody;
+        var message = dataPart.clearBody;
 
 
         return this.washForInsertion(message, mimePart.headers["CONTENT-TYPE"] && mimePart.headers["CONTENT-TYPE"].indexOf('text/html') != -1);
@@ -141,7 +141,7 @@ FireGPGMimeDecoder.prototype = {
 
         for(i = 0; i < mimePart.numberofsubparts; i ++) {
 
-            subP = this.findContentPart(mimePart.subparts[i]);
+            var subP = this.findContentPart(mimePart.subparts[i]);
 
             if (subP != null) {
                 return subP;
@@ -204,13 +204,13 @@ FireGPGMimeDecoder.prototype = {
 
     parseHeaders: function(message) {
 
-        headers = new Array();
+        var headers = new Array();
 
         message = message.substring(0, message.indexOf("\r\n\r\n")); //EndOfHeaders
 
         message = message.split(/\r\n/gi);
 
-        currentHeader = "";
+        var currentHeader = "";
 
         for (i = 0; i < message.length; i++) {
 
@@ -337,8 +337,12 @@ FireGPGMimeDecoder.prototype = {
     //OPENPGPMIME
     extractSignedPart: function(mimePart) {
 
+        var text;
+        var signed;
+        var data;
+
         //Hash
-        hash = this.convertHash(mimePart.headers["CONTENT-TYPE"]);
+        var hash = this.convertHash(mimePart.headers["CONTENT-TYPE"]);
 
         if (hash == '') {
             fireGPGDebug('Unknow hash ' + mimePart.headers["CONTENT-TYPE"], 'MimeDecoder-extractSignedPart', true);
@@ -363,7 +367,7 @@ FireGPGMimeDecoder.prototype = {
             return '';
         }
 
-        signature = data .substring(data.indexOf("-----BEGIN PGP SIGNATURE-----\r\n") , data.indexOf("-----END PGP SIGNATURE-----") + ("-----END PGP SIGNATURE-----").length)
+        var signature = data .substring(data.indexOf("-----BEGIN PGP SIGNATURE-----\r\n") , data.indexOf("-----END PGP SIGNATURE-----") + ("-----END PGP SIGNATURE-----").length)
 
         //Final data
         return ("-----BEGIN PGP SIGNED MESSAGE-----\r\nHash: "+hash+"\r\n\r\n"+signed+signature).replace(/\r/gi, '');
@@ -372,6 +376,8 @@ FireGPGMimeDecoder.prototype = {
     },
     //OPENPGPMIME
     extractEncryptedPart: function(mimePart) {
+
+        var data;
 
         //Signature
         if (mimePart.subparts[1])
@@ -404,6 +410,7 @@ FireGPGMimeDecoder.prototype = {
     convertHash: function(hashHeader) {
 
         //IN SENEDER, INVERTED ARRAY
+        var result;
 
         hash = Array();
         hash['pgp-md5'] = 'MD5';
@@ -437,6 +444,8 @@ FireGPGMimeDecoder.prototype = {
 
     extractBoundary: function(header) {
 
+        var result;
+
         header += ";";
 
         var reg1 = /boundary="([^( |;)]*)"( |;)/;
@@ -456,6 +465,8 @@ FireGPGMimeDecoder.prototype = {
 
     extractFilename: function(header) {
 
+        var result;
+
         header += ";";
 
         var reg1 = /filename="([^( |;)]*)"( |;)/;
@@ -474,6 +485,8 @@ FireGPGMimeDecoder.prototype = {
     },
 
     extractCharset: function(header) {
+
+        var result;
 
 
         if (!header || header == "")
@@ -519,7 +532,7 @@ FireGPGMimeDecoder.prototype = {
         retour.decryptresult = null;
         retour.decryptDataToInsert = null;
 
-        minedecrypt = this.MimeDecrypt(stopOnDecrypt);
+        var minedecrypt = this.MimeDecrypt(stopOnDecrypt);
 
         if (minedecrypt.decryptData) {
            if (minedecrypt.completeSignOrDecrypt)
@@ -613,6 +626,8 @@ FireGPGMimeDecoder.prototype = {
 
     MimeDecrypt: function(stopOnDecrypt) {
 
+        var data;
+
         var retour = new Object();
         retour.completeSignOrDecrypt = false;
         retour.decryptresult = null;
@@ -651,7 +666,7 @@ FireGPGMimeDecoder.prototype = {
         } else {
 
             //On essaie de trouver une subpart
-            subparttotest = null;
+            var subparttotest = null;
 
             var i;
             if (this.mainPart.multipart) {
@@ -774,7 +789,7 @@ FireGPGMimeDecoder.prototype = {
         retour.signedData = false;
 
 
-        data = "\r\n" + this.mimeToText(this.mainPart);
+        var data = "\r\n" + this.mimeToText(this.mainPart);
 
         data = data.replace(/<br( |\/)?>\r\n/gi, "\r");
         data = data.replace(/<br( |\/)?>\r/gi, "\r");
@@ -783,14 +798,14 @@ FireGPGMimeDecoder.prototype = {
         data = data.replace(/<br>/gi, "\r\n");
         data = data.replace(/<br \/>/gi, "\r\n");
 
-        firstSignPos = data.indexOf("\r\n-----BEGIN PGP SIGNED MESSAGE-----");
+        var firstSignPos = data.indexOf("\r\n-----BEGIN PGP SIGNED MESSAGE-----");
 
         if (firstSignPos == -1)
             return retour;
 
 
 
-        firstSign = data.substring(firstSignPos, data.indexOf("\r\n-----END PGP SIGNATURE-----") + ("\r\n-----END PGP SIGNATURE-----").length);
+        var firstSign = data.substring(firstSignPos, data.indexOf("\r\n-----END PGP SIGNATURE-----") + ("\r\n-----END PGP SIGNATURE-----").length);
 
          fireGPGDebug("Inline sign detected : " + data + "\n--\n" + firstSign, "MimeDecoder-Sign");
 
@@ -830,7 +845,7 @@ FireGPGMimeDecoder.prototype = {
         retour.decryptData = false;
 
 
-        data = "\r\n" + this.mimeToText(this.mainPart);
+        var data = "\r\n" + this.mimeToText(this.mainPart);
 
         data = data.replace(/<br( |\/)?>\r\n/gi, "\r");
         data = data.replace(/<br( |\/)?>\r/gi, "\r");

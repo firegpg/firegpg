@@ -289,6 +289,7 @@ function onLoad(win) {
         item.appendChild(child1);
 
         var  child2 = document.createElement('listcell');
+        var message;
         if(actions[domain] == "W")
             message = document.getElementById('firegpg-strings').getString('autowrap-warp');
         else

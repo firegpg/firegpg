@@ -1,3 +1,15 @@
+2009-10-25 Maximilien Cuony
+    * Fixing regression with signed and encrypted mail
+    * Fixing problem with pgp blocks inside pgp blocks
+    * Applied patch of AtesComp to improve OWA support.
+    * Default keyserver set to pgp.mit.edu
+    * If you click on the wait box for keyservers, she is closed.
+    * Moving down by one position the FireGPG menu in downloads
+    * Fixing a problem in default options
+    * Gmail support working again..
+    * Adding detection of gpg for x64 windows
+    * Fixing problem with el and he locales
+
 2009-09-26 Maximilien Cuony
     * 0.7.9 released !
     * Basque, Finnish, Galician added
