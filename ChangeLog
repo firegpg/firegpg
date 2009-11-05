@@ -2,6 +2,7 @@
     * Renamed namespaces
     * Putting back FireGPG result on the right
     * New options:download_key_without_asking,hide_the_wait_window,hide_key_server_confirmation,hide_key_operation_confirmation,hide_download_menu
+    * Added a warning about correct signs but with keys who aren't trusted
 
 2009-10-25 Maximilien Cuony
     * Fixing regression with signed and encrypted mail

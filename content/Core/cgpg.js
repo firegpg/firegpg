@@ -1369,6 +1369,7 @@ FireGPG.Core = {
             returnObject.signresultuser = results[0].signresultuser;
             returnObject.signresultdate = results[0].signresultdate;
 
+
             if (results[0].revoked)
                 returnObject.revoked  = results[0].revoked;
 
@@ -1491,7 +1492,6 @@ FireGPG.Core = {
         // We get the result
         if (nextText == undefined) {
             var result = this.FireGPGGPGAccess.verify(text, charset, fileMode, fileFrom, fileSig, fileDataForSign, fromDTA);
-
             if ( charset && charset.toLowerCase() == "iso-8859-1")
                 result.sdOut = FireGPG.Misc.EnigConvertToUnicode(result.sdOut, 'UTF-8');
         }         else {
@@ -1565,6 +1565,7 @@ FireGPG.Core = {
             }
 
 
+
 			// If he work, we get informations of the Key
 			var infos = result.sdOut;
 
@@ -1597,9 +1598,10 @@ FireGPG.Core = {
                 infos2 = infos2 + infos[ii] + " ";
 
 
-            returnObject.signresulttext = infos2 + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
+            returnObject.signresulttext = infos2 + (returnObject.notTrusted ? i18n.getString('key_is_not_trusted') : "") + " (" + i18n.getString("signMadeThe") + " " + date.toLocaleString() + ")";
             returnObject.signresultuser = infos2 ;
             returnObject.signresultdate = date.toLocaleString();
+
 
             testIfMore = result.sdOut.substring(result.sdOut.indexOf("GOODSIG") + "GOODSIG".length,result.sdOut.length);
 

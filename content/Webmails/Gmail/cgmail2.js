@@ -256,14 +256,14 @@ FireGPG.cGmail2 = {
                                                         bonus = "";
 
                                                     if (result.completeSignOrDecrypt)
-                                                        td.innerHTML += '<span title="' + i18n.getString("goodSignFrom") + ' ' + result.decryptresult.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(this.title);  return false;"><img src="' + FireGPG.Const.Gmail2.IMG_MAIL_SIGNED_OK + '">&nbsp;' + i18n.getString("signedMail") + '' + bonus + '</span>';
+                                                        td.innerHTML += '<span title="' + i18n.getString("goodSignFrom") + ' ' + result.decryptresult.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(this.title);  return false;"><img src="' + FireGPG.Const.Gmail2.IMG_MAIL_SIGNED_OK + '">&nbsp;' + i18n.getString("signedMail") + (result.notTrusted ? " " + i18n.getString('key_is_not_trusted') : "") + '' + '' + bonus + '</span>';
                                                     else {
 
                                                         data = decoder.washFromPlain(result.specialmimepart).replace(/<br \/>/gi, '\n');
                                                         rid="firegpg" +  FireGPG.Misc.genreate_api_key() +  "subpart" +  FireGPG.Misc.genreate_api_key() + "display" +  FireGPG.Misc.genreate_api_key();
 
                                                         td.setAttribute("style","color: magenta;");
-                                                        td.innerHTML += '<span title="' + i18n.getString("OnlyASubPart2 ")+ ' ' + i18n.getString("goodSignFrom") + ' ' + result.decryptresult.result.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);  return false;"><img src="' + FireGPG.Const.Gmail2.IMG_MAIL_SIGNED_PART + '">&nbsp;' + i18n.getString("partSigned") + '' + bonus + '</span><span id="' + rid +'" style="display: none">' + data + '</span>';
+                                                        td.innerHTML += '<span title="' + i18n.getString("OnlyASubPart2 ")+ ' ' + i18n.getString("goodSignFrom") + ' ' + result.decryptresult.result.signresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);  return false;"><img src="' + FireGPG.Const.Gmail2.IMG_MAIL_SIGNED_PART + '">&nbsp;' + i18n.getString("partSigned") + (result.notTrusted ? " " + i18n.getString('key_is_not_trusted') : "") + '' + '' + bonus + '</span><span id="' + rid +'" style="display: none">' + data + '</span>';
                                                     }
                                                 }
 
@@ -318,14 +318,14 @@ FireGPG.cGmail2 = {
 
 
                                                 if (result.completeSignOrDecrypt)
-                                                    td.innerHTML += '<span title="' + result.signResult.signsresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(this.title); return false;"><img src="' + FireGPG.Const.Gmail2.IMG_MAIL_SIGNED_OK + '">&nbsp;' + i18n.getString("signedMail") + '' + bonus + '</span>';
+                                                    td.innerHTML += '<span title="' + result.signResult.signsresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(this.title); return false;"><img src="' + FireGPG.Const.Gmail2.IMG_MAIL_SIGNED_OK + '">&nbsp;' + i18n.getString("signedMail") + (result.signResult.notTrusted ? " " + i18n.getString('key_is_not_trusted') : "") + '' + bonus + '</span>';
                                                 else {
 
                                                     data = decoder.washFromPlain(result.specialmimepart).replace(/<br \/>/gi, '\n');
                                                     rid="firegpg" +  FireGPG.Misc.genreate_api_key() +  "subpart" +  FireGPG.Misc.genreate_api_key() + "display" +  FireGPG.Misc.genreate_api_key();
 
                                                     td.setAttribute("style","color: magenta;");
-                                                    td.innerHTML += '<span title="' + i18n.getString("OnlyASubPart2") + ' '  + result.signResult.signsresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);  return false;"><img src="' + FireGPG.Const.Gmail2.IMG_MAIL_SIGNED_PART + '">&nbsp;' + i18n.getString("partSigned") + '' + bonus + '</span><span id="' + rid +'" style="display: none">' + data + '</span>';
+                                                    td.innerHTML += '<span title="' + i18n.getString("OnlyASubPart2") + ' '  + result.signResult.signsresulttext.replace(/\\/gi, "\\\\").replace(/"/gi, "\\\"") + '" onclick="alert(document.getElementById(\'' + rid +'\').innerHTML);  return false;"><img src="' + FireGPG.Const.Gmail2.IMG_MAIL_SIGNED_PART + '">&nbsp;' + i18n.getString("partSigned") + (result.signResult.notTrusted ? " " + i18n.getString('key_is_not_trusted') : "") + ''  + '' + bonus + '</span><span id="' + rid +'" style="display: none">' + data + '</span>';
                                                 }
                                             }
 
@@ -2888,14 +2888,14 @@ FireGPG.debug("activated");
          var i18n = document.getElementById("firegpg-strings");
 
         if (!getBrowser().contentWindow.document.getElementById('firegpg-gmail-error')) {
-try {
-            div = getBrowser().contentWindow.document.createElement('div');
-            div.setAttribute('id', 'firegpg-gmail-error');
-            div.setAttribute('title', i18n.getString('gmail_problem_message'));
-            div.setAttribute('style', "z-index: 10000; position: absolute; bottom: 0px; right: 0px; width: auto; height: auto; border: 1px red solid; background-color: #ff9999; font-size: 70%; text-align: center;");
-            div.innerHTML = '<b>FireGPG</b>: ' + i18n.getString('gmail_problem_title') + ' <a href="#" onclick="alert(document.getElementById(\'firegpg-gmail-error\').title);">' + i18n.getString('gmail_problem_detail') + '</a> <a href="http://getfiregpg.org/s/gmailstatut" target="_blank">' + i18n.getString('gmail_problem_status') + '</a> <a href="#" onclick="document.getElementById(\'firegpg-gmail-error\').style.display = \'none\'; ">' + i18n.getString('gmail_problem_close') + '</a>';
-            getBrowser().contentWindow.document.body.appendChild(div);
-} catch (e) { alert(e.lineNumber + e); }
+            try {
+                        div = getBrowser().contentWindow.document.createElement('div');
+                        div.setAttribute('id', 'firegpg-gmail-error');
+                        div.setAttribute('title', i18n.getString('gmail_problem_message'));
+                        div.setAttribute('style', "z-index: 10000; position: absolute; bottom: 0px; right: 0px; width: auto; height: auto; border: 1px red solid; background-color: #ff9999; font-size: 70%; text-align: center;");
+                        div.innerHTML = '<b>FireGPG</b>: ' + i18n.getString('gmail_problem_title') + ' <a href="#" onclick="alert(document.getElementById(\'firegpg-gmail-error\').title);">' + i18n.getString('gmail_problem_detail') + '</a> <a href="http://getfiregpg.org/s/gmailstatut" target="_blank">' + i18n.getString('gmail_problem_status') + '</a> <a href="#" onclick="document.getElementById(\'firegpg-gmail-error\').style.display = \'none\'; ">' + i18n.getString('gmail_problem_close') + '</a>';
+                        getBrowser().contentWindow.document.body.appendChild(div);
+            } catch (e) { alert(e.lineNumber + e); }
         }
 
         getBrowser().contentWindow.document.getElementById('firegpg-gmail-error').title +=  '\n\n' + FireGPG.Misc.htmlEncode(where + ' ' + error.fileName + ' ' + error.lineNumber + ' ' + error.message)  ;

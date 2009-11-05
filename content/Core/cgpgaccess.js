@@ -592,9 +592,8 @@ FireGPG.GPGAccess = {
             fileSig = '-';
             text = fileDataForSign;
         }
-
-		var result = this.runGnupg(this.getBaseArugments() +  this.getGPGTrustArgument(undefined, fromDTA) + " --verify" + (fileMode ? ' ' + fileSig.replace(/\s/g, '{$SPACE}') + ' ' + fileFrom.replace(/\s/g, '{$SPACE}') : ''), text, charset);
-
+// always check validity  this.getGPGTrustArgument(undefined, fromDTA) 
+		var result = this.runGnupg(this.getBaseArugments() + " --verify" + (fileMode ? ' ' + fileSig.replace(/\s/g, '{$SPACE}') + ' ' + fileFrom.replace(/\s/g, '{$SPACE}') : ''), text, charset);
         var result2 = new FireGPG.GPGReturn();
 		result2.sdOut = result.err;
 		// We return result
