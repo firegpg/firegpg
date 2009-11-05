@@ -42,19 +42,21 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 //Mime functions {DECODING}
 
+if (typeof(FireGPG)=='undefined') { FireGPG = {}; }
+if (typeof(FireGPG.Mime)=='undefined') { FireGPG.Mime = {}; }
 
-FireGPGMimeDecoder = function(data) {
+FireGPG.Mime.Decoder = function(data) {
 	this.init(data);
 };
 
-FireGPGMimeDecoder.prototype = {
+FireGPG.Mime.Decoder.prototype = {
 	data: null,
     mainPart: null,
     attachements: null,
 
     init: function(data) {
 
-		this.data = FireGPGMisc.convertCRLFToStandarts(data);
+		this.data = FireGPG.Misc.convertCRLFToStandarts(data);
         this.parse();
 
 	},
@@ -160,14 +162,14 @@ FireGPGMimeDecoder.prototype = {
 
             switch(headers['CONTENT-TRANSFER-ENCODING']) {
                 case "quoted-printable":
-                    return  FireGPGMisc.convertCRLFToStandarts(this.convertFromQP(body));
+                    return  FireGPG.Misc.convertCRLFToStandarts(this.convertFromQP(body));
                     break;
 
                 case "8bit":
                     break;
 
                 case "base64":
-                    return FireGPGMisc.convertCRLFToStandarts(this.convertFromB64(body));
+                    return FireGPG.Misc.convertCRLFToStandarts(this.convertFromB64(body));
                     break;
 
             }
@@ -215,14 +217,14 @@ FireGPGMimeDecoder.prototype = {
         for (i = 0; i < message.length; i++) {
 
             if (message[i][0] == " " || message[i][0] == "\t") {
-                headers[currentHeader] += FireGPGMisc.trim(message[i]);
+                headers[currentHeader] += FireGPG.Misc.trim(message[i]);
             } else {
 
                 /*if (message[i].indexOf(":") == -1) //Erreur, on arrêtte
                     return headers;*/
 
                 currentHeader = message[i].substring(0, message[i].indexOf(":")).toUpperCase();
-                headers[currentHeader] = FireGPGMisc.trim(message[i].substring(message[i].indexOf(":") + 1 , message[i].length));
+                headers[currentHeader] = FireGPG.Misc.trim(message[i].substring(message[i].indexOf(":") + 1 , message[i].length));
 
             }
 
@@ -328,7 +330,7 @@ FireGPGMimeDecoder.prototype = {
 
     convertFromB64: function(texte,bMode) {
 
-        return FireGPGMisc.Base64.decode(texte,bMode);
+        return FireGPG.Misc.Base64.decode(texte,bMode);
 
     },
 
@@ -345,7 +347,7 @@ FireGPGMimeDecoder.prototype = {
         var hash = this.convertHash(mimePart.headers["CONTENT-TYPE"]);
 
         if (hash == '') {
-            fireGPGDebug('Unknow hash ' + mimePart.headers["CONTENT-TYPE"], 'MimeDecoder-extractSignedPart', true);
+            FireGPG.debug('Unknow hash ' + mimePart.headers["CONTENT-TYPE"], 'MimeDecoder-extractSignedPart', true);
             return '';
         }
 
@@ -353,7 +355,7 @@ FireGPGMimeDecoder.prototype = {
          if (mimePart.subparts[0])
             text = mimePart.subparts[0].texte;
         else {
-            fireGPGDebug ('Signed mail, but no subpart#0 ???', 'MimeDecoder-extractSignedPart', true);
+            FireGPG.debug ('Signed mail, but no subpart#0 ???', 'MimeDecoder-extractSignedPart', true);
             return '';
         }
 
@@ -363,7 +365,7 @@ FireGPGMimeDecoder.prototype = {
         if (mimePart.subparts[1])
             data = mimePart.subparts[1].body;
         else {
-            fireGPGDebug ('Signed mail, but no subpart#1 ???', 'MimeDecoder-extractSignedPart', true);
+            FireGPG.debug ('Signed mail, but no subpart#1 ???', 'MimeDecoder-extractSignedPart', true);
             return '';
         }
 
@@ -383,7 +385,7 @@ FireGPGMimeDecoder.prototype = {
         if (mimePart.subparts[1])
             data = mimePart.subparts[1].body;
         else {
-            fireGPGDebug ('Encrypted mail, but no subpart#1 ???', 'MimeDecoder-extractSignedPart', true);
+            FireGPG.debug ('Encrypted mail, but no subpart#1 ???', 'MimeDecoder-extractSignedPart', true);
             return '';
         }
 
@@ -558,7 +560,7 @@ FireGPGMimeDecoder.prototype = {
 
         } else {
 
-            if (minedecrypt.decryptData && minedecrypt.decryptresult.signresult == FireGPGResults.SUCCESS) {
+            if (minedecrypt.decryptData && minedecrypt.decryptresult.signresult == FireGPG.Const.Results.SUCCESS) {
                 retour.signResult = new Object();
                 retour.signResult.signresult = minedecrypt.decryptresult.signresult;
                 retour.signResult.signresulttext = minedecrypt.decryptresult.signresulttext;
@@ -605,7 +607,7 @@ FireGPGMimeDecoder.prototype = {
             } else {
 
                 if (inlinedecrypt  != null) {
-                    if (inlinedecrypt.decryptData && inlinedecrypt.decryptresult.signresult == FireGPGResults.SUCCESS) {
+                    if (inlinedecrypt.decryptData && inlinedecrypt.decryptresult.signresult == FireGPG.Const.Results.SUCCESS) {
                         retour.signResult = new Object();
                         retour.signResult.signresult = inlinedecrypt.decryptresult.signresult;
                         retour.signResult.signresulttext = inlinedecrypt.decryptresult.signresulttext;
@@ -645,18 +647,18 @@ FireGPGMimeDecoder.prototype = {
             if (stopOnDecrypt) {
                 retour.decryptDataToInsert = data;
                 retour.decryptresult = true;
-                fireGPGDebug("{OldDecrypt} Find mail whole encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
+                FireGPG.debug("{OldDecrypt} Find mail whole encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
                 return retour;
             }
 
-            fireGPGDebug("Find mail whole encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
+            FireGPG.debug("Find mail whole encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
 
-            retour.decryptresult = FireGPG.decrypt(false,data);
+            retour.decryptresult = FireGPG.Core.decrypt(false,data);
 
-            if (retour.decryptresult.result == FireGPGResults.SUCCESS) {
+            if (retour.decryptresult.result == FireGPG.Const.Results.SUCCESS) {
                 this.saveid = this.extractMimeId();
 
-                this.mainPart = this.mimeParsing(FireGPGMisc.convertCRLFToStandarts(retour.decryptresult.decrypted));
+                this.mainPart = this.mimeParsing(FireGPG.Misc.convertCRLFToStandarts(retour.decryptresult.decrypted));
                 this.mainPart.thisisanencryptedpart = true;
 
                 retour.decryptDataToInsert = this.mimeToText(this.mainPart);
@@ -693,18 +695,18 @@ FireGPGMimeDecoder.prototype = {
                 if (stopOnDecrypt) {
                     retour.decryptDataToInsert = data;
                     retour.decryptresult = true;
-                    fireGPGDebug("{OldDecrypt} Find mail part encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
+                    FireGPG.debug("{OldDecrypt} Find mail part encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
                     return retour;
                 }
 
 
-                fireGPGDebug("Find mail part encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
+                FireGPG.debug("Find mail part encrypted, data todecrypt : " + data, "MimeDecoder-MimeDecrypt");
 
-                retour.decryptresult = FireGPG.decrypt(false,data);
+                retour.decryptresult = FireGPG.Core.decrypt(false,data);
 
-                if (retour.decryptresult.result == FireGPGResults.SUCCESS) {
+                if (retour.decryptresult.result == FireGPG.Const.Results.SUCCESS) {
 
-                    subparttotest = this.mimeParsing(FireGPGMisc.convertCRLFToStandarts(retour.decryptresult.decrypted));
+                    subparttotest = this.mimeParsing(FireGPG.Misc.convertCRLFToStandarts(retour.decryptresult.decrypted));
                     subparttotest.thisisanencryptedpart = true;
 
                     retour.decryptDataToInsert = this.mimeToText(subparttotest);
@@ -736,9 +738,9 @@ FireGPGMimeDecoder.prototype = {
 
             data = this.extractSignedPart(this.mainPart);
 
-            fireGPGDebug("Find mail whole signed, data tested : " + data, "MimeDecoder-MimeSign");
+            FireGPG.debug("Find mail whole signed, data tested : " + data, "MimeDecoder-MimeSign");
 
-            retour.signResult = FireGPG.verify(true,data)
+            retour.signResult = FireGPG.Core.verify(true,data)
 
         } else {
 
@@ -765,11 +767,11 @@ FireGPGMimeDecoder.prototype = {
 
                 data = this.extractSignedPart(subparttotest);
 
-                fireGPGDebug("Find mail part signed, data tested : " + data, "MimeDecoder-MimeSign");
+                FireGPG.debug("Find mail part signed, data tested : " + data, "MimeDecoder-MimeSign");
 
                 retour.specialmimepart = subparttotest.texte;
 
-                retour.signResult = FireGPG.verify(true,data)
+                retour.signResult = FireGPG.Core.verify(true,data)
 
             }
         }
@@ -807,21 +809,21 @@ FireGPGMimeDecoder.prototype = {
 
         var firstSign = data.substring(firstSignPos, data.indexOf("\r\n-----END PGP SIGNATURE-----") + ("\r\n-----END PGP SIGNATURE-----").length);
 
-         fireGPGDebug("Inline sign detected : " + data + "\n--\n" + firstSign, "MimeDecoder-Sign");
+         FireGPG.debug("Inline sign detected : " + data + "\n--\n" + firstSign, "MimeDecoder-Sign");
 
         charset = this.extractCharset(this.mainPart.headers['CONTENT-TYPE']);
 
-        var resultTest = FireGPG.verify(true,firstSign.replace(/\r/gi, ''), charset);
+        var resultTest = FireGPG.Core.verify(true,firstSign.replace(/\r/gi, ''), charset);
 
-        if (resultTest.signresult == FireGPGResults.ERROR_BAD_SIGN) {
-            fireGPGDebug("Try again widhout charset", "Nonmime sign verif");
-            var resultTest = FireGPG.verify(true,firstSign.replace(/\r/gi, ''));
+        if (resultTest.signresult == FireGPG.Const.Results.ERROR_BAD_SIGN) {
+            FireGPG.debug("Try again widhout charset", "Nonmime sign verif");
+            var resultTest = FireGPG.Core.verify(true,firstSign.replace(/\r/gi, ''));
 
         }
 
-        if (resultTest.signresult == FireGPGResults.ERROR_BAD_SIGN) {
-            fireGPGDebug("Try again utf8 decoded", "Nonmime sign verif");
-            var resultTest = FireGPG.verify(true,FireGPGMisc.UTF8.decode(firstSign.replace(/\r/gi, '')), charset);
+        if (resultTest.signresult == FireGPG.Const.Results.ERROR_BAD_SIGN) {
+            FireGPG.debug("Try again utf8 decoded", "Nonmime sign verif");
+            var resultTest = FireGPG.Core.verify(true,FireGPG.Misc.UTF8.decode(firstSign.replace(/\r/gi, '')), charset);
 
         }
 
@@ -862,7 +864,7 @@ FireGPGMimeDecoder.prototype = {
 
         firstEcnrypt = data.substring(firstEncryptPos, data.indexOf("\r\n-----END PGP MESSAGE-----") + ("\r\n-----END PGP MESSAGE-----").length);
 
-        fireGPGDebug("Inline decrypt detected : " + data + "\n--\n" + firstEcnrypt, "MimeDecoder-Decrypt");
+        FireGPG.debug("Inline decrypt detected : " + data + "\n--\n" + firstEcnrypt, "MimeDecoder-Decrypt");
 
         charset = this.extractCharset(this.mainPart.headers['CONTENT-TYPE']);
 
@@ -873,7 +875,7 @@ FireGPGMimeDecoder.prototype = {
             return retour;
         }
 
-        var resultTest = FireGPG.decrypt(true,firstEcnrypt.replace(/\r/gi, ''));
+        var resultTest = FireGPG.Core.decrypt(true,firstEcnrypt.replace(/\r/gi, ''));
 
         retour.decryptData = true;
         retour.decryptDataToInsert = this.washForInsertion(resultTest.decrypted, false);
@@ -892,8 +894,8 @@ FireGPGMimeDecoder.prototype = {
         while (  data.indexOf("\r\n-----BEGIN PGP MESSAGE-----") != -1    ) {
 
             firstEcnrypt = data.substring(data.indexOf("\r\n-----BEGIN PGP MESSAGE-----"), data.indexOf("\r\n-----END PGP MESSAGE-----") + ("\r\n-----END PGP MESSAGE-----").length);
-            fireGPGDebug("Inline decrypt detected new encrypted content: " + data + "\n--\n" + firstEcnrypt, "MimeDecoder-Decrypt");
-            tmpResultTest = FireGPG.decrypt(true,firstEcnrypt.replace(/\r/gi, ''));
+            FireGPG.debug("Inline decrypt detected new encrypted content: " + data + "\n--\n" + firstEcnrypt, "MimeDecoder-Decrypt");
+            tmpResultTest = FireGPG.Core.decrypt(true,firstEcnrypt.replace(/\r/gi, ''));
 
             retour.moreDecryptData[i] = this.washForInsertion(tmpResultTest.decrypted, false);
 
@@ -921,7 +923,7 @@ FireGPGMimeDecoder.prototype = {
        //.ASC, .PGP
        for (var i = 0; i < this.mainPart.numberofsubparts; i++) {
             if (this.mainPart.subparts[i].attachement) {
-                var ext = FireGPGMisc.getFileExtention(this.mainPart.subparts[i].filename)
+                var ext = FireGPG.Misc.getFileExtention(this.mainPart.subparts[i].filename)
 
                 if ((ext == "asc" || ext == "pgp") && this.mainPart.subparts[i].headers['CONTENT-TYPE'].indexOf('application/pgp-signature') == -1) {
 
@@ -942,7 +944,7 @@ FireGPGMimeDecoder.prototype = {
        //.sig
       /* for (var i = 0; i < this.mainPart.numberofsubparts; i++) {
             if (this.mainPart.subparts[i].attachement) {
-                var ext = FireGPGMisc.getFileExtention(this.mainPart.subparts[i].filename)
+                var ext = FireGPG.Misc.getFileExtention(this.mainPart.subparts[i].filename)
 
                 if (ext == "sig") {
 
@@ -952,17 +954,17 @@ FireGPGMimeDecoder.prototype = {
                         if (this.mainPart.subparts[i2].attachement) {
                                 if (this.mainPart.subparts[i2].filename == originalName) {
 
-                                    data = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\n" + this.mainPart.subparts[i2].clearBinBody.replace(/\n\-/gi, "\n- -").replace(/\r\-/gi, "\r- -")  + "\n-----BEGIN PGP SIGNATURE-----\n\n"+ FireGPGMisc.Base64.encode(this.mainPart.subparts[i].clearBinBody,true) + "\n-----END PGP SIGNATURE-----";
+                                    data = "-----BEGIN PGP SIGNED MESSAGE-----\nHash: SHA1\n\n" + this.mainPart.subparts[i2].clearBinBody.replace(/\n\-/gi, "\n- -").replace(/\r\-/gi, "\r- -")  + "\n-----BEGIN PGP SIGNATURE-----\n\n"+ FireGPG.Misc.Base64.encode(this.mainPart.subparts[i].clearBinBody,true) + "\n-----END PGP SIGNATURE-----";
 
                                     var tmpFile = new Object();
                                     tmpFile.filename = this.mainPart.subparts[i2].filename;
                                     tmpFile.type = "signedfile";
-                                    tmpFile.signresult = FireGPG.verify(true,data,'UTF-8');
+                                    tmpFile.signresult = FireGPG.Core.verify(true,data,'UTF-8');
 
-                                    alert(FireGPGMisc.dumper(tmpFile.signresult));
+                                    alert(FireGPG.Misc.dumper(tmpFile.signresult));
 
-                                    FireGPGMisc.removeFile("/tmp/a");
-                                    FireGPGMisc.putIntoBinFile("/tmp/a",data);
+                                    FireGPG.Misc.removeFile("/tmp/a");
+                                    FireGPG.Misc.putIntoBinFile("/tmp/a",data);
 
                                     retour.push(tmpFile);
 

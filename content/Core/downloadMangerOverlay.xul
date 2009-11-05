@@ -22,7 +22,7 @@ The Initial Developer of the Original Code is Maximilien Cuony.
 Portions created by the Initial Developer are Copyright (C) 2007
 the Initial Developer. All Rights Reserved.
 
-Contributor(s): 
+Contributor(s):
 
 Alternatively, the contents of this source code may be used under the terms of
 either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -54,12 +54,12 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
     <window id="downloadManager">
         <menupopup id="firegpg-menu-popup" onmouseout="setTimeout('if (document.getElementById(\'firegpg-menu-popup\').tag == \'a\') {document.getElementById(\'firegpg-menu-popup\').hidePopup(); }' , 500);  this.tag = 'a';" onmouseover="this.tag = '';" >
-            <menuitem class="firegpg-menu-hash menuitem-iconic" label="&firegpgMenu.labelHashs;" oncommand="firegpgdownloader.onMenuItemCommand(event,'HASH')"/>
-            <menuitem class="firegpg-menu-verify menuitem-iconic" label="&firegpgMenu.labelVerif;" oncommand="firegpgdownloader.onMenuItemCommand(event,'VERIFY')"/>
-            <menuitem class="firegpg-menu-decrypt menuitem-iconic" label="&firegpgMenu.labelDecry;" oncommand="firegpgdownloader.onMenuItemCommand(event,'DECRYPT')"/>
+            <menuitem class="firegpg-menu-hash menuitem-iconic" label="&firegpgMenu.labelHashs;" oncommand="FireGPG.DownloadOverlay.onMenuItemCommand(event,FireGPG.Const.DownloaderOverlayActions.HASH)"/>
+            <menuitem class="firegpg-menu-verify menuitem-iconic" label="&firegpgMenu.labelVerif;" oncommand="FireGPG.DownloadOverlay.onMenuItemCommand(event,FireGPG.Const.DownloaderOverlayActions.VERIFY)"/>
+            <menuitem class="firegpg-menu-decrypt menuitem-iconic" label="&firegpgMenu.labelDecry;" oncommand="FireGPG.DownloadOverlay.onMenuItemCommand(event,FireGPG.Const.DownloaderOverlayActions.DECRYPT)"/>
             <menuseparator/>
-            <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgMenu.labelOptions;" oncommand="firegpgdownloader.onMenuItemCommand(event,'OPTS')"/>
-            <menuitem style="display: none;" id="firegpg-menu-memo-menu" class="firegpg-menu-rease menuitem-iconic" label="&firegpgMenu.labelErase;" oncommand="firegpgdownloader.onMenuItemCommand(event,'ERASE')"/>
+            <menuitem class="firegpg-menu-options menuitem-iconic" label="&firegpgMenu.labelOptions;" oncommand="FireGPG.DownloadOverlay.onMenuItemCommand(event,FireGPG.Const.DownloaderOverlayActions.OPTS)"/>
+            <menuitem style="display: none;" id="firegpg-menu-memo-menu" class="firegpg-menu-rease menuitem-iconic" label="&firegpgMenu.labelErase;" oncommand="FireGPG.DownloadOverlay.onMenuItemCommand(event,FireGPG.Const.DownloaderOverlayActions.ERASE)"/>
         </menupopup>
     </window>
 
@@ -73,7 +73,7 @@ under the terms of any one of the MPL, the GPL or the LGPL.
       </vbox>
 
 
-  <menupopup id="downloadContextMenu" onpopupshowing="a = buildContextMenu(event); firegpgdownloader.addFireGPGContextMenu(this,event); return a;">
+  <menupopup id="downloadContextMenu" onpopupshowing="a = buildContextMenu(event); FireGPG.DownloadOverlay.addFireGPGContextMenu(this,event); return a;">
 
     </menupopup>
 

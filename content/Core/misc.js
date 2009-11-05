@@ -39,24 +39,27 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 */
 
-/* Constant: FIREGPG_VERSION
+if (typeof(FireGPG)=='undefined') { FireGPG = {}; }
+if (typeof(FireGPG.Const)=='undefined') { FireGPG.Const = {}; }
+
+/* Constant: FireGPG.Const.Version
   The current version of FireGPG */
-const FIREGPG_VERSION = '0.7.9';
+FireGPG.Const.Version = '0.7.9';
 
-/* Constant: FIREGPG_VERSION_A
+/* Constant: FireGPG.Const.VersionA
   The current verion of FireGPG without dots */
-const FIREGPG_VERSION_A = '079';
+FireGPG.Const.VersionA = '079';
 
-/* Constant: FIREGPG_STATUS
+/* Constant: FireGPG.Const.Status
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */
-const FIREGPG_STATUS = 'DEVEL';
+FireGPG.Const.Status = 'DEVEL';
 
-/* Constant: FIREGPG_SVN
+/* Constant: FireGPG.Const.Svn
   The current subversion's revision number, for this file ! */
-const FIREGPG_SVN = "$Rev$";
+FireGPG.Const.Svn = "$Rev$";
 
 /*
-    Function: fireGPGDebug
+    Function: FireGPG.debug
 
     Check if debuggin is enabled and if yes show up messages in console
 
@@ -66,9 +69,9 @@ const FIREGPG_SVN = "$Rev$";
         fatal - True if it's a fatal error.
 
 */
-function fireGPGDebug (message, debugCode, fatal) {
+FireGPG.debug = function(message, debugCode, fatal) {
 
-    if (FIREGPG_STATUS == "RELASE" && !fatal)
+    if (FireGPG.Const.Status == "RELASE" && !fatal)
 
         return;
 
@@ -86,7 +89,7 @@ function fireGPGDebug (message, debugCode, fatal) {
 
 }
 
-var FireGPGMisc = {
+FireGPG.Misc = {
 
     /*
        Constants: Id for components.
@@ -169,9 +172,9 @@ var FireGPGMisc = {
         params.title = i18n.getString('choosePublicKeyTitle');
         params.description = i18n.getString('choosePublicKeyDescription');
 
-        keylistcall = FireGPG.listKeys();
+        keylistcall = FireGPG.Core.listKeys();
 
-        if (keylistcall.result == FireGPGResults.SUCCESS)
+        if (keylistcall.result == FireGPG.Const.Results.SUCCESS)
             params.list = keylistcall.keylist;
         else
             return;
@@ -201,7 +204,7 @@ var FireGPGMisc = {
 
             if (to_my_self == true)
             {
-                var selfKeyId = FireGPGMisc.getSelfKey();
+                var selfKeyId = FireGPG.Misc.getSelfKey();
 
                 if (selfKeyId != null)
                 {
@@ -234,9 +237,9 @@ var FireGPGMisc = {
         params.title = i18n.getString('choosePrivateKeyTitle');
         params.description = i18n.getString('choosePrivateKeyDescription');
 
-        keylistcall = FireGPG.listKeys(true);
+        keylistcall = FireGPG.Core.listKeys(true);
 
-        if (keylistcall.result == FireGPGResults.SUCCESS)
+        if (keylistcall.result == FireGPG.Const.Results.SUCCESS)
             params.list = keylistcall.keylist;
         else
             return;
@@ -299,7 +302,7 @@ var FireGPGMisc = {
         var i18n = document.getElementById("firegpg-strings");
         var title = i18n.getString('editorTitle');
         var description = i18n.getString('editorDescription');
-        FireGPGMisc.showText('',description,title);
+        FireGPG.Misc.showText('',description,title);
     },
 
     /*
@@ -407,8 +410,8 @@ var FireGPGMisc = {
 
 
         /* return password if it's saved in savePassword */
-        if(useSavedPassword && FireGPGMisc.savedPassword != null)
-            return FireGPGMisc.savedPassword;
+        if(useSavedPassword && FireGPG.Misc.savedPassword != null)
+            return FireGPG.Misc.savedPassword;
 
         /* show the dialog ! */
         if (message == undefined)
@@ -417,14 +420,14 @@ var FireGPGMisc = {
         else
             var question = message;
 
-        var result = FireGPGMisc.getPassword(question,undefined,domain, nosavecheckbox);
+        var result = FireGPG.Misc.getPassword(question,undefined,domain, nosavecheckbox);
 
         if(result == null)
             return null;
 
         if(result.save_password && domain == false && nosavecheckbox != true) {
 
-            FireGPGMisc.savedPassword = result.password;
+            FireGPG.Misc.savedPassword = result.password;
 
 
 
@@ -434,7 +437,7 @@ var FireGPGMisc = {
 
                 //document.getElementById('firegpg-menu-memo-tool').style.display = '';
             }
-            catch(e) {   fireGPGDebug(e,'misc.getPrivateKeyPassword',true);  }
+            catch(e) {   FireGPG.debug(e,'misc.getPrivateKeyPassword',true);  }
         }
 
         return result.password;
@@ -446,7 +449,7 @@ var FireGPGMisc = {
     */
     getsavedPassword:function () {
 
-        return FireGPGMisc.savedPassword;
+        return FireGPG.Misc.savedPassword;
     },
 
     /*
@@ -455,7 +458,7 @@ var FireGPGMisc = {
     */
     eraseSavedPassword:function () {
 
-        FireGPGMisc.savedPassword = null;
+        FireGPG.Misc.savedPassword = null;
 
         try {
             if (document.getElementById('firegpg-menu-memo-pop'))
@@ -488,14 +491,14 @@ var FireGPGMisc = {
 
         /* we must ask for private key ? */
         if(keyID == '')
-            keyID = FireGPGMisc.choosePrivateKey(autoSelectPrivate);
+            keyID = FireGPG.Misc.choosePrivateKey(autoSelectPrivate);
 
         /* request password if key id is changed */
-        if(keyID.toString() != FireGPGMisc.oldKeyID.toString()) {
-            FireGPGMisc.eraseSavedPassword();
+        if(keyID.toString() != FireGPG.Misc.oldKeyID.toString()) {
+            FireGPG.Misc.eraseSavedPassword();
         }
 
-        FireGPGMisc.oldKeyID = keyID;
+        FireGPG.Misc.oldKeyID = keyID;
 
         return keyID;
     },
@@ -507,9 +510,9 @@ var FireGPGMisc = {
         The path is returned.
     */
     getTmpDir:function () {
-        return Components.classes[FireGPGMisc.NS_DIRECTORYSERVICE_CONTRACTID].
+        return Components.classes[FireGPG.Misc.NS_DIRECTORYSERVICE_CONTRACTID].
                           getService(Components.interfaces.nsIProperties).
-                          get(FireGPGMisc.TMP_DIRECTORY, Components.interfaces.nsIFile);
+                          get(FireGPG.Misc.TMP_DIRECTORY, Components.interfaces.nsIFile);
     },
 
 
@@ -525,14 +528,14 @@ var FireGPGMisc = {
     */
     getTmpFile:function (permission /* optional */, suffix_file)  {
         if(permission == undefined)
-            permission = FireGPGMisc.WRITE_PERMISSION;
+            permission = FireGPG.Misc.WRITE_PERMISSION;
 
-        var fileobj = FireGPGMisc.getTmpDir();
+        var fileobj = FireGPG.Misc.getTmpDir();
 
-        if (permission == FireGPGMisc.WRITE_PERMISSION_R)
-            var fileName = FireGPGMisc.TMP_RFILES;
+        if (permission == FireGPG.Misc.WRITE_PERMISSION_R)
+            var fileName = FireGPG.Misc.TMP_RFILES;
         else
-            var fileName = FireGPGMisc.TMP_FILES;
+            var fileName = FireGPG.Misc.TMP_FILES;
 
         if(suffix_file != undefined)
             fileName += '_S_' + suffix_file; //To be sure to be unique.
@@ -554,7 +557,7 @@ var FireGPGMisc = {
             path - The file to delete.
     */
     removeFile:function (path) {
-        var fileobj = Components.classes[FireGPGMisc.NS_LOCALEFILE_CONTRACTID].
+        var fileobj = Components.classes[FireGPG.Misc.NS_LOCALEFILE_CONTRACTID].
                                  createInstance(Components.interfaces.nsILocalFile);
         fileobj.initWithPath(path);
 
@@ -574,7 +577,7 @@ var FireGPGMisc = {
             path - The file to delete.
     */
     fileExist:function (path) {
-        var fileobj = Components.classes[FireGPGMisc.NS_LOCALEFILE_CONTRACTID].
+        var fileobj = Components.classes[FireGPG.Misc.NS_LOCALEFILE_CONTRACTID].
                                  createInstance(Components.interfaces.nsILocalFile);
         fileobj.initWithPath(path);
 
@@ -597,15 +600,15 @@ var FireGPGMisc = {
     */
     putIntoFile:function (filename, data)
     {
-        var fileobj = Components.classes[FireGPGMisc.NS_LOCALEFILE_CONTRACTID].
+        var fileobj = Components.classes[FireGPG.Misc.NS_LOCALEFILE_CONTRACTID].
                                  createInstance(Components.interfaces.nsILocalFile);
 
         fileobj.initWithPath(filename);
 
-        var foStream = Components.classes[FireGPGMisc.NS_NETWORKOUTPUT_CONTRACTID].
+        var foStream = Components.classes[FireGPG.Misc.NS_NETWORKOUTPUT_CONTRACTID].
                                   createInstance(Components.interfaces.nsIFileOutputStream);
 
-        foStream.init(fileobj, FireGPGMisc.WRITE_MODE, FireGPGMisc.WRITE_PERMISSION, 0);
+        foStream.init(fileobj, FireGPG.Misc.WRITE_MODE, FireGPG.Misc.WRITE_PERMISSION, 0);
         //foStream.write(data, data.length);
 
         var charset = "UTF-8"; // Can be any character encoding name that Mozilla supports
@@ -638,14 +641,14 @@ var FireGPGMisc = {
             charset = "UTF-8";
 
         try {
-            var fileobj = Components.classes[FireGPGMisc.NS_LOCALEFILE_CONTRACTID].
+            var fileobj = Components.classes[FireGPG.Misc.NS_LOCALEFILE_CONTRACTID].
                                      createInstance(Components.interfaces.nsILocalFile);
 
             fileobj.initWithPath(filename);
 
             var data = "";
-            var fstream = Components.classes[FireGPGMisc.NS_NETWORKINPUT_CONTRACTID].createInstance(Components.interfaces.nsIFileInputStream);
-            //var sstream2 = Components.classes[FireGPGMisc.NS_NETWORKINPUTS_CONTRACTID].
+            var fstream = Components.classes[FireGPG.Misc.NS_NETWORKINPUT_CONTRACTID].createInstance(Components.interfaces.nsIFileInputStream);
+            //var sstream2 = Components.classes[FireGPG.Misc.NS_NETWORKINPUTS_CONTRACTID].
             //                         createInstance(Components.interfaces.nsIScriptableInputStream);
             const replacementChar = Components.interfaces.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER;
         //	var charset = /* Need to find out what the character encoding is. Using UTF-8 for this example: */ "UTF-8";
@@ -669,7 +672,7 @@ var FireGPGMisc = {
 
             return data;
         }
-        catch (e) { fireGPGDebug(e,'misc.getFromFile',true) }
+        catch (e) { FireGPG.debug(e,'misc.getFromFile',true) }
 
         return '';
     },
@@ -691,7 +694,7 @@ var FireGPGMisc = {
 
         var stream = Components.classes["@mozilla.org/network/safe-file-output-stream;1"]
                        .createInstance(Components.interfaces.nsIFileOutputStream);
-        stream.init(aFile, FireGPGMisc.WRITE_MODE, FireGPGMisc.WRITE_PERMISSION, 0); // write, create, truncate
+        stream.init(aFile, FireGPG.Misc.WRITE_MODE, FireGPG.Misc.WRITE_PERMISSION, 0); // write, create, truncate
 
         stream.write(data, data.length);
         if (stream instanceof Components.interfaces.nsISafeOutputStream) {
@@ -829,7 +832,7 @@ var FireGPGMisc = {
         var addon = em.getItemForID("firegpg@firegpg.team");
         var versionAct = addon.version;
 
-        versionAct = FIREGPG_VERSION;
+        versionAct = FireGPG.Const.Version;
 
         var i18n = document.getElementById("firegpg-strings");
 
@@ -845,7 +848,7 @@ var FireGPGMisc = {
                 description = i18n.getString('whatIsNewDescription');
             } catch (e) { }
 
-            //FireGPGMisc.showText(FireGPGMisc.getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);*/
+            //FireGPG.Misc.showText(FireGPG.Misc.getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);*/
 
             //Show the page
             gBrowser.selectedTab = gBrowser.addTab("http://getfiregpg.org/s/justupdated/" + versionAct);
@@ -857,7 +860,7 @@ var FireGPGMisc = {
             else
                 var mode = version;
 
-            var misc = FireGPGMisc.getContent("http://getfiregpg.org/stable/stats.php?version=" + versionAct + "&oldversion=" + mode);
+            var misc = FireGPG.Misc.getContent("http://getfiregpg.org/stable/stats.php?version=" + versionAct + "&oldversion=" + mode);
 
 
         } else {
@@ -877,7 +880,7 @@ var FireGPGMisc = {
             if (!noUpdates)
             {
 
-                if (FireGPGMisc.updateAvailable) {
+                if (FireGPG.Misc.updateAvailable) {
                     if (document.getElementById('firegpg-statusbar-update'))
                         document.getElementById('firegpg-statusbar-update').style.display = '';
 
@@ -901,7 +904,7 @@ var FireGPGMisc = {
                         prefs.setCharPref("lastUpdateCheck",nbMs);
 
                         //Get the last version
-                        var updateData = FireGPGMisc.getContent("http://getfiregpg.org/stable/update.rdf");
+                        var updateData = FireGPG.Misc.getContent("http://getfiregpg.org/stable/update.rdf");
 
                         var toDetect = "NS1:version=\"" + versionAct + "\"";
 
@@ -909,9 +912,9 @@ var FireGPGMisc = {
                         {
                             if (document.getElementById('firegpg-statusbar-update') != null) {
                                 document.getElementById('firegpg-statusbar-update').style.display = '';
-                                FireGPGMisc.updateAvailable = true;
+                                FireGPG.Misc.updateAvailable = true;
                             } else {
-                                FireGPGMisc.showUpdateDialog();
+                                FireGPG.Misc.showUpdateDialog();
                             }
 
                         }
@@ -944,7 +947,7 @@ var FireGPGMisc = {
 
         }
 
-        FireGPGMisc.updateAvailable = false;
+        FireGPG.Misc.updateAvailable = false;
 
         if (document.getElementById('firegpg-statusbar-update') != null)
             document.getElementById('firegpg-statusbar-update').style.display = 'none';
@@ -996,7 +999,7 @@ var FireGPGMisc = {
                 // If we're wrapping a line, each of the resulting
                 // lines shouldn't be longer than 70 characters
                 // unless it has to be.
-                result = result + FireGPGMisc.wrap(lines[i], 70) + "\n";
+                result = result + FireGPG.Misc.wrap(lines[i], 70) + "\n";
         }
 
         return result;
@@ -1082,7 +1085,7 @@ var FireGPGMisc = {
             str - The string
     */
     TrimAndWash:function (str) {
-        return FireGPGMisc.trim(str).replace(/\n/, "");
+        return FireGPG.Misc.trim(str).replace(/\n/, "");
     },
 
     /*
@@ -1090,7 +1093,7 @@ var FireGPGMisc = {
 
         Convert the gpg --with-collums text (who are strangly encoded) into a uniform Unicode string.
 
-        This function is from Enigmail, same license as FireGPG.
+        This function is from Enigmail, same license as FireGPG.Core.
 
         Parameters:
             text - The text to convert
@@ -1110,9 +1113,9 @@ var FireGPGMisc = {
                 }
             }
 
-            text = FireGPGMisc.EnigConvertToUnicode(text, "utf-8");
+            text = FireGPG.Misc.EnigConvertToUnicode(text, "utf-8");
 
-       }  catch (ex) {  fireGPGDebug(ex,'misc.EnigConvertGpgToUnicode',true); }
+       }  catch (ex) {  FireGPG.debug(ex,'misc.EnigConvertGpgToUnicode',true); }
 
        return text;
     },
@@ -1121,7 +1124,7 @@ var FireGPGMisc = {
         Function: EnigConvertToUnicode
 
         Convert the text, in the specified chaset, into an Unicode string.
-        This function is from Enigmail, same license as FireGPG.
+        This function is from Enigmail, same license as FireGPG.Core.
 
         Parameters:
             text - The text to convert
@@ -1140,7 +1143,7 @@ var FireGPGMisc = {
         return unicodeConv.ConvertToUnicode(text);
 
       } catch (ex) {
-        fireGPGDebug(ex,'misc.EnigConvertToUnicode',true);
+        FireGPG.debug(ex,'misc.EnigConvertToUnicode',true);
         return text;
       }
     },
@@ -1149,7 +1152,7 @@ var FireGPGMisc = {
         Function: EnigConvertFromUnicode
 
         Convert the text, in unicode, into an string in the specified chaset.
-        This function is from Enigmail, same license as FireGPG.
+        This function is from Enigmail, same license as FireGPG.Core.
 
         Parameters:
             text - The text to convert
@@ -1168,7 +1171,7 @@ var FireGPGMisc = {
         return unicodeConv.ConvertFromUnicode(text);
 
       } catch (ex) {
-        fireGPGDebug(ex,'misc.EnigConvertFromUnicode',true);
+        FireGPG.debug(ex,'misc.EnigConvertFromUnicode',true);
         return text;
       }
     },
@@ -1255,29 +1258,29 @@ var FireGPGMisc = {
 
         var  child1 = document.createElement('treecell');
         child1.setAttribute('label', key.keyName);
-        child1 = FireGPGMisc.setSkinForKey(key, child1, privateKey);
+        child1 = FireGPG.Misc.setSkinForKey(key, child1, privateKey);
         row.appendChild(child1);
 
         var  child2 = document.createElement('treecell');
         child2.setAttribute('label', key.keyId);
-        child2 = FireGPGMisc.setSkinForKey(key, child2, privateKey);
+        child2 = FireGPG.Misc.setSkinForKey(key, child2, privateKey);
         row.appendChild(child2);
 
         var  child3 = document.createElement('treecell');
         child3.setAttribute('label', key.keyDate);
-        child3 = FireGPGMisc.setSkinForKey(key, child3, privateKey);
+        child3 = FireGPG.Misc.setSkinForKey(key, child3, privateKey);
         row.appendChild(child3);
 
         var  child4 = document.createElement('treecell');
         child4.setAttribute('label', key.keyExpi);
-        child4 = FireGPGMisc.setSkinForKey(key, child4, privateKey);
+        child4 = FireGPG.Misc.setSkinForKey(key, child4, privateKey);
         row.appendChild(child4);
 
         var  child5 = document.createElement('treecell');
         child5.setAttribute('label', document.getElementById('firegpg-strings').
                     getString(turstList[key.keyTrust]));
 
-        child5 = FireGPGMisc.setSkinForKey(key, child5, privateKey);
+        child5 = FireGPG.Misc.setSkinForKey(key, child5, privateKey);
 
         if (key.revoked) {
             child5.setAttribute('label', document.getElementById('firegpg-strings').
@@ -1359,17 +1362,17 @@ var FireGPGMisc = {
 
         var  child1 = document.createElement('treecell');
         child1.setAttribute('label', key.keyName);
-        child1 = FireGPGMisc.setSkinForKey2(key, child1, mainKey, sign, havePrivate);
+        child1 = FireGPG.Misc.setSkinForKey2(key, child1, mainKey, sign, havePrivate);
         row.appendChild(child1);
 
         var  child2 = document.createElement('treecell');
         child2.setAttribute('label', key.keyId);
-        child2 = FireGPGMisc.setSkinForKey2(key, child2, mainKey, sign, havePrivate);
+        child2 = FireGPG.Misc.setSkinForKey2(key, child2, mainKey, sign, havePrivate);
         row.appendChild(child2);
 
         var  child3 = document.createElement('treecell');
         child3.setAttribute('label', key.keyDate);
-        child3 = FireGPGMisc.setSkinForKey2(key, child3, mainKey, sign, havePrivate);
+        child3 = FireGPG.Misc.setSkinForKey2(key, child3, mainKey, sign, havePrivate);
         row.appendChild(child3);
 
 
@@ -1508,7 +1511,7 @@ var FireGPGMisc = {
 
           if(typeof(value) == 'object') { //If it is an array,
            dumped_text += level_padding + "'" + item + "' ...\n";
-           dumped_text += FireGPGMisc.dumper(value,level+1);
+           dumped_text += FireGPG.Misc.dumper(value,level+1);
           } else {
            dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
           }
@@ -1530,10 +1533,10 @@ var FireGPGMisc = {
 
         for (i in o) {
         if (o[i])
-         fireGPGDebug(o[i], i, true);
+         FireGPG.debug(o[i], i, true);
 
         if (o.i)
-         fireGPGDebug(o.i, '~' + i, true);
+         FireGPG.debug(o.i, '~' + i, true);
         }
 
     },
@@ -1602,7 +1605,7 @@ var FireGPGMisc = {
             var i = 0;
 
             if (bMode != true)
-                input = FireGPGMisc.Base64._utf8_encode(input);
+                input = FireGPG.Misc.Base64._utf8_encode(input);
 
             while (i < input.length) {
 
@@ -1669,7 +1672,7 @@ var FireGPGMisc = {
             }
 
             if (bMode != true)
-                output = FireGPGMisc.Base64._utf8_decode(output);
+                output = FireGPG.Misc.Base64._utf8_decode(output);
 
             return output;
 

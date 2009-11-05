@@ -61,9 +61,9 @@ function generate() {
     var keytype = document.getElementById('keytype').value;
 
 
-    var result = FireGPG.generateKey(false, name, email, comment, password1, password2, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype);
+    var result = FireGPG.Core.generateKey(false, name, email, comment, password1, password2, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype);
 
-    if (result.result == FireGPGResults.SUCCESS)
+    if (result.result == FireGPG.Const.Results.SUCCESS)
         close();
 
 }

@@ -49,11 +49,14 @@ This file was a part of Gmail S/MIME (adapted)
 
 */
 
-function FireGPGMimeSender()
+if (typeof(FireGPG)=='undefined') { FireGPG = {}; }
+if (typeof(FireGPG.Mime)=='undefined') { FireGPG.Mime = {}; }
+
+FireGPG.Mime.Sender = function()
 {
 }
 
-FireGPGMimeSender.prototype =
+FireGPG.Mime.Sender.prototype =
 {
 
 	// Abstract methods to be overidden by children
@@ -61,7 +64,7 @@ FireGPGMimeSender.prototype =
 	/**
 	 * Abstract callbacks to be called right before a message undergoes the operations indicated by the functions. This is meant
 	 * to inform the user via the UI.
-	 * TODO: Note on implementation: currently signText, encryption, and FireGPG_breakLines take an extraordinarily long time for large data. Thus, they block the UI. Consider addressing this.
+	 * TODO: Note on implementation: currently signText, encryption, and FireGPG.Mime.breakLines take an extraordinarily long time for large data. Thus, they block the UI. Consider addressing this.
 	 */
 	ourSigning: function(msg) {},
 	ourEncrypting: function(msg) {},
@@ -116,18 +119,18 @@ FireGPGMimeSender.prototype =
 	ourSubmit : function ourSubmit(from, to, cc, bcc, subject,
 	 inreplyto, references, body, isPlain, attachments, prefs)
 	{
-            fireGPGDebug("Parameters recevied : from: " + from +  " to:" +  to +  " cc:" +  cc +  " bcc:" +  bcc +  " subject:" +  subject +  " inreplyto:" +  inreplyto +  " isPlain:" + isPlain + " Sign ?" + prefs.sign + " Encrypt ?" +  prefs.encrypt, 'ourSubmit',  false);
+            FireGPG.debug("Parameters recevied : from: " + from +  " to:" +  to +  " cc:" +  cc +  " bcc:" +  bcc +  " subject:" +  subject +  " inreplyto:" +  inreplyto +  " isPlain:" + isPlain + " Sign ?" + prefs.sign + " Encrypt ?" +  prefs.encrypt, 'ourSubmit',  false);
 		// first do generic From and To. If it fails here, then give
 		// up. (But see advanced options to do, below. This code may
 		// need to be moved back down.)	 now we need mailFrom and
 		// rcptTo.
 
-		var msg = new FireGPGMimeSender.Msg();
+		var msg = new FireGPG.Mime.Sender.Msg();
 
 		var msgs = null;	// this will be an Array
 
-        fireGPGDebug("Calling FireGPG_convertAddressLineToArray - parameters : from", 'ourSubmit',  false);
-		var af = FireGPG_convertAddressLineToArray(from);
+        FireGPG.debug("Calling FireGPG.Mime.convertAddressLineToArray - parameters : from", 'ourSubmit',  false);
+		var af = FireGPG.Mime.convertAddressLineToArray(from);
 		if (af.length != 1) return false;
 		msg.mailFrom = af[0];
 
@@ -135,18 +138,18 @@ FireGPGMimeSender.prototype =
 		// try to send a message to yourself, Gmail SMTP will actually
 		// save the first copy of the message. Not the last one or
 		// whatever.
-        fireGPGDebug("Calling FireGPG_convertAddressLineToArray - parameters : to", 'ourSubmit',  false);
-        a = FireGPG_convertAddressLineToArray(to);
-        fireGPGDebug("Calling FireGPG_convertAddressLineToArray - parameters : cc", 'ourSubmit',  false);
-        a = FireGPG_convertAddressLineToArray(cc);
-        fireGPGDebug("Calling FireGPG_convertAddressLineToArray - parameters : bcc", 'ourSubmit',  false);
-        a = FireGPG_convertAddressLineToArray(bcc);
-        fireGPGDebug("Calling FireGPG_convertAddressLineToArray - parameters : to-cc-bcc", 'ourSubmit',  false);
+        FireGPG.debug("Calling FireGPG.Mime.convertAddressLineToArray - parameters : to", 'ourSubmit',  false);
+        a = FireGPG.Mime.convertAddressLineToArray(to);
+        FireGPG.debug("Calling FireGPG.Mime.convertAddressLineToArray - parameters : cc", 'ourSubmit',  false);
+        a = FireGPG.Mime.convertAddressLineToArray(cc);
+        FireGPG.debug("Calling FireGPG.Mime.convertAddressLineToArray - parameters : bcc", 'ourSubmit',  false);
+        a = FireGPG.Mime.convertAddressLineToArray(bcc);
+        FireGPG.debug("Calling FireGPG.Mime.convertAddressLineToArray - parameters : to-cc-bcc", 'ourSubmit',  false);
 
         msg.rcptTo =
-		FireGPG_convertAddressLineToArray(to).concat(
-		 FireGPG_convertAddressLineToArray(cc),
-		 FireGPG_convertAddressLineToArray(bcc));
+		FireGPG.Mime.convertAddressLineToArray(to).concat(
+		 FireGPG.Mime.convertAddressLineToArray(cc),
+		 FireGPG.Mime.convertAddressLineToArray(bcc));
 		if (!msg.rcptTo.length) return false;
 
 		// TODO: support quoted-printable for other headers, not just subject
@@ -166,7 +169,7 @@ FireGPGMimeSender.prototype =
 		if (bcc.length)
 			msg.Bcc = bcc;
 		if (subject.length)
-			msg.Subject = FireGPG_stUtil.makeRFC2047(subject);
+			msg.Subject = FireGPG.Mime.stUtil.makeRFC2047(subject);
 
 		// date. (Note: we can get offset from UTC, but we can't get
 		// the actual time zone) Sample: Tue, 15 May 2007 18:34:56
@@ -222,12 +225,12 @@ FireGPGMimeSender.prototype =
 
 
 		var encoder;
-		encoder = new FireGPGMimeEncoder((attachments.length>0 || !isPlain),1);
-        //encoder = new FireGPGMimeEncoder(true,1); //Toujours multipart
+		encoder = new FireGPG.Mime.Encoder((attachments.length>0 || !isPlain),1);
+        //encoder = new FireGPG.Mime.Encoder(true,1); //Toujours multipart
 
         if (!isPlain) {
 
-            encoder.addBase64String(FireGPGMimeDecoder.prototype.washFromHtml(body), "text/plain; format=flowed",null);
+            encoder.addBase64String(FireGPG.Mime.Decoder.prototype.washFromHtml(body), "text/plain; format=flowed",null);
             encoder.addStringToStream(encoder.CRLF);
         }
 
@@ -316,7 +319,7 @@ FireGPGMimeSender.prototype =
 
             const crlf = "\r\n";
 
-            boundeur = "-----firegpg" + FIREGPG_VERSION_A + "eq" + (Math.round(Math.random()*99)+(new Date()).getTime()).toString(36) +
+            boundeur = "-----firegpg" + FireGPG.Const.VersionA + "eq" + (Math.round(Math.random()*99)+(new Date()).getTime()).toString(36) +
                 (99+Math.round(46656*46656*46635*36*Math.random())).toString(36);
 
             // msg.BodyPlus += crlf;
@@ -349,9 +352,9 @@ FireGPGMimeSender.prototype =
 
             if (prefs.sign && !prefs.encrypt) {
 
-                var result = FireGPG.sign(false,stringToWork+ crlf, null, null, null, prefs.whoSendTheMail );
+                var result = FireGPG.Core.sign(false,stringToWork+ crlf, null, null, null, prefs.whoSendTheMail );
 
-                if (result.result == FireGPGResults.SUCCESS) {
+                if (result.result == FireGPG.Const.Results.SUCCESS) {
 
                     var digest = "SHA1"; //Unfortunaly by default..
                     try {
@@ -406,7 +409,7 @@ FireGPGMimeSender.prototype =
 
                     signedData = result.signed.substring(result.signed.lastIndexOf("-----BEGIN PGP SIGNATURE-----"), result.signed.length)
 
-                  newmessage = 'X-FireGPG-Version: ' + FIREGPG_VERSION + crlf +
+                  newmessage = 'X-FireGPG-Version: ' + FireGPG.Const.Version + crlf +
                   'Content-Type: multipart/signed; micalg=' + digestformime +'; protocol="application/pgp-signature"; boundary="'+boundeur+'"' +  crlf + crlf +
                    'This is an OpenPGP/MIME signed message (RFC 2440 and 3156)' + crlf +
                    '--' + boundeur + crlf +
@@ -427,12 +430,12 @@ FireGPGMimeSender.prototype =
 
             } else if (prefs.sign) { //Sign + encrypted
 
-                var result = FireGPG.cryptAndSign(false,stringToWork, null ,false,null, null, false, whoWillGotTheMail, prefs.whoSendTheMail);
+                var result = FireGPG.Core.cryptAndSign(false,stringToWork, null ,false,null, null, false, whoWillGotTheMail, prefs.whoSendTheMail);
 
-                if (result.result == FireGPGResults.SUCCESS) {
+                if (result.result == FireGPG.Const.Results.SUCCESS) {
 
 
-                  newmessage = 'X-FireGPG-Version: ' + FIREGPG_VERSION + crlf +
+                  newmessage = 'X-FireGPG-Version: ' + FireGPG.Const.Version + crlf +
                   'Content-Type: multipart/encrypted;  protocol="application/pgp-encrypted"; boundary="'+boundeur+'"' +  crlf + crlf +
                    'This is an OpenPGP/MIME encrypted message (RFC 2440 and 3156)' + crlf +
                    '--' + boundeur + crlf +
@@ -455,12 +458,12 @@ FireGPGMimeSender.prototype =
             } else { //Encrypted
 
 
-                var result = FireGPG.crypt(false,stringToWork,null, false, false,whoWillGotTheMail);
+                var result = FireGPG.Core.crypt(false,stringToWork,null, false, false,whoWillGotTheMail);
 
-                if (result.result == FireGPGResults.SUCCESS) {
+                if (result.result == FireGPG.Const.Results.SUCCESS) {
 
 
-                  newmessage = 'X-FireGPG-Version: ' + FIREGPG_VERSION + crlf +
+                  newmessage = 'X-FireGPG-Version: ' + FireGPG.Const.Version + crlf +
                   'Content-Type: multipart/encrypted;  protocol="application/pgp-encrypted"; boundary="'+boundeur+'"' +  crlf + crlf +
                    'This is an OpenPGP/MIME encrypted message (RFC 2440 and 3156)' + crlf +
                    '--' + boundeur + crlf +
@@ -569,7 +572,7 @@ FireGPGMimeSender.prototype =
 			{
 				var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
 //			  var scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
-				fireGPGDebug(m, 'smtplog');
+				FireGPG.debug(m, 'smtplog');
 			}
 			// dataListener communicates with the server and sends the data
 			// NOTE: var o is output message to send along the pipe
@@ -844,9 +847,9 @@ FireGPGMimeSender.prototype =
 
 
 
-}; // end FireGPGMimeSender
+}; // end FireGPG.Mime.Sender
 
-FireGPGMimeSender.prototype.Msg.prototype =
+FireGPG.Mime.Sender.prototype.Msg.prototype =
 {
 	From: null,
 	To: null,
@@ -916,4 +919,4 @@ FireGPGMimeSender.prototype.Msg.prototype =
 		return nmsg;
 	}
 };
-FireGPGMimeSender.Msg = FireGPGMimeSender.prototype.Msg; // shorthand
+FireGPG.Mime.Sender.Msg = FireGPG.Mime.Sender.prototype.Msg; // shorthand

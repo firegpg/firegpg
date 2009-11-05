@@ -47,7 +47,7 @@ function onLoad(win) {
 
     keyId = window.arguments[0].keyid;
 
-    var privateKeys = FireGPG.listKeys(true);
+    var privateKeys = FireGPG.Core.listKeys(true);
 
     privateKeys = privateKeys.keylist;
 
@@ -65,7 +65,7 @@ function updateKeyList() {
 
     curentlySelected = null;
 
-	keylistcall = FireGPG.listSigns(keyId);
+	keylistcall = FireGPG.Core.listSigns(keyId);
 
     gpg_keys = keylistcall.keylist;
 
@@ -84,7 +84,7 @@ function updateKeyList() {
 
             current++;
 
-            item = FireGPGMisc.CreateTreeItemKey3(gpg_keys[key], document, true, false);
+            item = FireGPG.Misc.CreateTreeItemKey3(gpg_keys[key], document, true, false);
 
             if (gpg_keys[key].signs.length > 0) {
 
@@ -96,7 +96,7 @@ function updateKeyList() {
 
                     if (gpg_keys[key].signs[skey].keyName) {
 
-                        var subItem = FireGPGMisc.CreateTreeItemKey3( gpg_keys[key].signs[skey] ,document,  true, true, myPrivateKeys[gpg_keys[key].signs[skey].keyId]);
+                        var subItem = FireGPG.Misc.CreateTreeItemKey3( gpg_keys[key].signs[skey] ,document,  true, true, myPrivateKeys[gpg_keys[key].signs[skey].keyId]);
                         subChildren.appendChild(subItem);
                     }
 
@@ -114,7 +114,7 @@ function updateKeyList() {
 
                     if (gpg_keys[key].subKeys[skey].keyName) {
 
-                        var item = FireGPGMisc.CreateTreeItemKey3( gpg_keys[key].subKeys[skey] ,document, false, false);
+                        var item = FireGPG.Misc.CreateTreeItemKey3( gpg_keys[key].subKeys[skey] ,document, false, false);
 
                         if (gpg_keys[key].subKeys[skey].signs.length > 0) {
 
@@ -126,7 +126,7 @@ function updateKeyList() {
 
                                 if (gpg_keys[key].subKeys[skey].signs[skey2].keyName) {
 
-                                    var subItem = FireGPGMisc.CreateTreeItemKey3(gpg_keys[key].subKeys[skey].signs[skey2] ,document,  false, true, myPrivateKeys[gpg_keys[key].subKeys[skey].signs[skey2].keyId]);
+                                    var subItem = FireGPG.Misc.CreateTreeItemKey3(gpg_keys[key].subKeys[skey].signs[skey2] ,document,  false, true, myPrivateKeys[gpg_keys[key].subKeys[skey].signs[skey2].keyId]);
                                     subChildren.appendChild(subItem);
                                 }
 
@@ -180,7 +180,7 @@ function updateButtons() {
 
 function sign() {
 
-    var keys = FireGPG.listKeys();
+    var keys = FireGPG.Core.listKeys();
 
     keys = keys.keylist;
 
@@ -196,7 +196,7 @@ function sign() {
     }
 
     if (fingerPrint != null && confirm(document.getElementById('firegpg-strings').getString('confirmsign') + " " + fingerPrint))
-        FireGPG.signKey(false, keyId);
+        FireGPG.Core.signKey(false, keyId);
 
     updateKeyList();
 

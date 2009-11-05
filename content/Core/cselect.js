@@ -40,10 +40,10 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 */
 
 /*
-   Class: FireGPG_Selection
+   Class: FireGPG.Selection
    Class to handle selection
 */
-var FireGPG_Selection = {
+FireGPG.Selection = {
 	/*
 	Function: getFrame
 	find a select in a frame
@@ -251,7 +251,7 @@ var FireGPG_Selection = {
 		if(prefs.getPrefType(key) == prefs.PREF_BOOL) {
 			if(prefs.getBoolPref(key)) {
 				/* text the text */
-				FireGPGMisc.showText(text,undefined,undefined,undefined,infoSignAndCrypt);
+				FireGPG.Misc.showText(text,undefined,undefined,undefined,infoSignAndCrypt);
 				return;
 			}
 		}

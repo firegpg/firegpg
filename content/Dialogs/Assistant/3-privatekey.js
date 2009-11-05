@@ -74,9 +74,9 @@ function next() {
 function textPrivateKey() {
 
 
-    keylistcall = FireGPG.listKeys(true);
+    keylistcall = FireGPG.Core.listKeys(true);
 
-    if (keylistcall.result == FireGPGResults.SUCCESS)
+    if (keylistcall.result == FireGPG.Const.Results.SUCCESS)
         gpg_keys = keylistcall.keylist;
     else
         gpg_keys = new Array();
@@ -100,11 +100,11 @@ function textPrivateKey() {
         /* read the default private key */
         var default_private_key = prefs.getCharPref('default_private_key');
 
-        var AskKey = new FireGPG_GPGKey();
+        var AskKey = new FireGPG.GPGKey();
 
         AskKey.keyName = document.getElementById('firegpg-ask-for-private-label').value;
 
-        var Ditem = FireGPGMisc.CreateTreeItemKey(AskKey, document);
+        var Ditem = FireGPG.Misc.CreateTreeItemKey(AskKey, document);
 
         listbox.appendChild(Ditem);
 
@@ -120,7 +120,7 @@ function textPrivateKey() {
 
                 current++;
 
-                item = FireGPGMisc.CreateTreeItemKey(gpg_keys[key], document);
+                item = FireGPG.Misc.CreateTreeItemKey(gpg_keys[key], document);
 
                 if(default_private_key == gpg_keys[key].keyId)
                     default_item = current;
@@ -134,7 +134,7 @@ function textPrivateKey() {
 
                         if (gpg_keys[key].subKeys[skey].keyName) {
 
-                            var subItem = FireGPGMisc.CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
+                            var subItem = FireGPG.Misc.CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
 
                             subChildren.appendChild(subItem);
                         }
@@ -208,9 +208,9 @@ function import() {
         return;
 
     var filePath = fp.file.path;
-    var data = FireGPGMisc.getFromFile(filePath);
+    var data = FireGPG.Misc.getFromFile(filePath);
 
-	FireGPG.kimport(false,data, true);
+	FireGPG.Core.kimport(false,data, true);
 
      textPrivateKey();
 

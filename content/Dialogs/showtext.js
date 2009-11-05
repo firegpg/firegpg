@@ -92,7 +92,7 @@ function openf() {
         return;
 
     var filePath = fp.file.path;
-    var data = FireGPGMisc.getFromFile(filePath);
+    var data = FireGPG.Misc.getFromFile(filePath);
     document.getElementById('text').value = data;
 }
 
@@ -117,8 +117,8 @@ function savef() {
     var filePath = fp.file.path;
     var data = document.getElementById('text').value;
     //Need to remove the file before save
-    FireGPGMisc.removeFile(filePath);
-    FireGPGMisc.putIntoFile(filePath,data);
+    FireGPG.Misc.removeFile(filePath);
+    FireGPG.Misc.putIntoFile(filePath,data);
 }
 
 /*
@@ -127,9 +127,9 @@ function savef() {
 */
 function crypt() {
 
-    var result = FireGPG.crypt(false,getSelectedText());
+    var result = FireGPG.Core.crypt(false,getSelectedText());
 
-    if (result.result == FireGPGResults.SUCCESS)
+    if (result.result == FireGPG.Const.Results.SUCCESS)
         setSeletedText(result.encrypted);
 
 }
@@ -140,9 +140,9 @@ function crypt() {
 */
 function symcrypt() {
 
-    var result = FireGPG.crypt(false,getSelectedText(), undefined,  undefined, undefined,  undefined, true);
+    var result = FireGPG.Core.crypt(false,getSelectedText(), undefined,  undefined, undefined,  undefined, true);
 
-    if (result.result == FireGPGResults.SUCCESS)
+    if (result.result == FireGPG.Const.Results.SUCCESS)
         setSeletedText(result.encrypted);
 
 }
@@ -154,9 +154,9 @@ function symcrypt() {
     Encrypt and sign the current data of the editor.
 */
 function cryptandsign(){
-    var result = FireGPG.cryptAndSign(false,getSelectedText());
+    var result = FireGPG.Core.cryptAndSign(false,getSelectedText());
 
-    if (result.result == FireGPGResults.SUCCESS)
+    if (result.result == FireGPG.Const.Results.SUCCESS)
         setSeletedText(result.encrypted);
 
 }
@@ -167,13 +167,13 @@ function cryptandsign(){
 */
 function dcrypt() {
 
-    var result = FireGPG.decrypt(false,getSelectedText());
+    var result = FireGPG.Core.decrypt(false,getSelectedText());
 
-    if (result.result == FireGPGResults.SUCCESS)
+    if (result.result == FireGPG.Const.Results.SUCCESS)
         setSeletedText(result.decrypted);
 
 
-    if (result.signresult == FireGPGResults.SUCCESS) {
+    if (result.signresult == FireGPG.Const.Results.SUCCESS) {
         var i18n = document.getElementById("firegpg-strings");
         document.getElementById('dcryptsignresult').style.display = '';
         document.getElementById('dcryptsignresult').value = i18n.getString("validSignInCrypt") + " " + result.signresulttext;
@@ -188,9 +188,9 @@ function dcrypt() {
 */
 function sign() {
 
-    var result = FireGPG.sign(false,getSelectedText());
+    var result = FireGPG.Core.sign(false,getSelectedText());
 
-    if (result.result == FireGPGResults.SUCCESS)
+    if (result.result == FireGPG.Const.Results.SUCCESS)
         setSeletedText(result.signed);
 
 }
@@ -201,9 +201,9 @@ function sign() {
 */
 function signUnClear() {
 
-    var result = FireGPG.sign(false,getSelectedText(),null,null,true);
+    var result = FireGPG.Core.sign(false,getSelectedText(),null,null,true);
 
-    if (result.result == FireGPGResults.SUCCESS)
+    if (result.result == FireGPG.Const.Results.SUCCESS)
         setSeletedText(result.signed);
 
 }
@@ -213,7 +213,7 @@ function signUnClear() {
     Verfiy signs of the current data of the editor.
 */
 function verify() {
-    FireGPG.verify(false, getSelectedText());
+    FireGPG.Core.verify(false, getSelectedText());
 }
 
 /*

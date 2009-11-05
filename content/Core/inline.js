@@ -39,25 +39,25 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 */
 
-var FireGPGInline = { };
+FireGPG.Inline = { };
 
 /*
    Constants: Tags of PGP's blocks
 
-   FireGPGInline.Tags.PgpBlockStart - Start of a PGP block
-   FireGPGInline.Tags.KeyStart - Start of a PGP key
-   FireGPGInline.Tags.KeyEnd - End of a PGP key
-   FireGPGInline.Tags.PrivateKeyStart - Start of a PGP private key
-   FireGPGInline.Tags.PrivateKeyEnd - End of a PGP private key
-   FireGPGInline.Tags.SignedMessageStart - Start of a signed message
-   FireGPGInline.Tags.SignatureStart - Start of a sign
-   FireGPGInline.Tags.SignatureEnd - End of a sign
-   FireGPGInline.Tags.EncryptedMessageStart - Start of an encrypted message
-   FireGPGInline.Tags.EncryptedMessageEnd - End of an encrypted message
+   FireGPG.Inline.Tags.PgpBlockStart - Start of a PGP block
+   FireGPG.Inline.Tags.KeyStart - Start of a PGP key
+   FireGPG.Inline.Tags.KeyEnd - End of a PGP key
+   FireGPG.Inline.Tags.PrivateKeyStart - Start of a PGP private key
+   FireGPG.Inline.Tags.PrivateKeyEnd - End of a PGP private key
+   FireGPG.Inline.Tags.SignedMessageStart - Start of a signed message
+   FireGPG.Inline.Tags.SignatureStart - Start of a sign
+   FireGPG.Inline.Tags.SignatureEnd - End of a sign
+   FireGPG.Inline.Tags.EncryptedMessageStart - Start of an encrypted message
+   FireGPG.Inline.Tags.EncryptedMessageEnd - End of an encrypted message
 
 
 */
-FireGPGInline.Tags = {
+FireGPG.Inline.Tags = {
     PgpBlockStart: "-----BEGIN PGP",
 	KeyStart: "-----BEGIN PGP PUBLIC KEY BLOCK-----",
 	KeyEnd: "-----END PGP PUBLIC KEY BLOCK-----",
@@ -73,19 +73,19 @@ FireGPGInline.Tags = {
 /*
    Constants: Types of blocks
 
-   FireGPGInline.KEY_BLOCK - It's a key block
-   FireGPGInline.PRIVATE_KEY_BLOCK - It's a private key block
-   FireGPGInline.SIGN_BLOCK    - It's a sign block
-   FireGPGInline.MESSAGE_BLOCK   - It's a message block
+   FireGPG.Inline.KEY_BLOCK - It's a key block
+   FireGPG.Inline.PRIVATE_KEY_BLOCK - It's a private key block
+   FireGPG.Inline.SIGN_BLOCK    - It's a sign block
+   FireGPG.Inline.MESSAGE_BLOCK   - It's a message block
 */
-FireGPGInline.KEY_BLOCK = 1;
-FireGPGInline.PRIVATE_KEY_BLOCK = 2;
-FireGPGInline.SIGN_BLOCK = 3;
-FireGPGInline.MESSAGE_BLOCK = 4;
+FireGPG.Inline.KEY_BLOCK = 1;
+FireGPG.Inline.PRIVATE_KEY_BLOCK = 2;
+FireGPG.Inline.SIGN_BLOCK = 3;
+FireGPG.Inline.MESSAGE_BLOCK = 4;
 
 
 /*
-   Class: FireGPGInline
+   Class: FireGPG.Inline
    This class a system to detect and manage PGP block found in pages
 */
 
@@ -98,7 +98,7 @@ FireGPGInline.MESSAGE_BLOCK = 4;
         range - A range with the PGP  block selected
         blockType - The type of block, see <Types of blocs>
 */
-FireGPGInline.HandleBlock = function(document, range, blockType) {
+FireGPG.Inline.HandleBlock = function(document, range, blockType) {
 
     var i18n = document.getElementById("firegpg-strings");
 
@@ -108,7 +108,7 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
 	var d = range.cloneContents();
 	var str = s.serializeToString(d);
 
-    var content = FireGPG_Selection.wash(str);
+    var content = FireGPG.Selection.wash(str);
 
     var fragment = range.extractContents();
 
@@ -131,7 +131,7 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
 			original: frame.contentDocument.getElementById("original")
 		}
 
-        frame.contentDocument.getElementById("toggle-original").textContent = FireGPGInline.i18n.getString("show-original")
+        frame.contentDocument.getElementById("toggle-original").textContent = FireGPG.Inline.i18n.getString("show-original")
 
 		// Universal set up
 		block.original.textContent = content;
@@ -140,18 +140,18 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
 			var style = block.original.style;
 			if(style.display == "block") {
 				style.display = "none";
-                this.textContent = FireGPGInline.i18n.getString("show-original");
+                this.textContent = FireGPG.Inline.i18n.getString("show-original");
             }
 			else {
 				style.display = "block";
-                this.textContent = FireGPGInline.i18n.getString("hide-original");
+                this.textContent = FireGPG.Inline.i18n.getString("hide-original");
             }
             frame.style.width = block.body.scrollWidth + "px";
 			frame.style.height = block.body.scrollHeight + "px";
 		}, false);
 
 
-        frame.contentDocument.getElementById("switch-direction").textContent = FireGPGInline.i18n.getString("switchdirection")
+        frame.contentDocument.getElementById("switch-direction").textContent = FireGPG.Inline.i18n.getString("switchdirection")
         frame.contentDocument.getElementById("switch-direction").addEventListener("click", function() {
 			var style = block.original.style;
 			if(style.direction == "rtl") {
@@ -168,19 +168,19 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
 
 		var actionHandler = function() {
 			switch(blockType) {
-				case FireGPGInline.KEY_BLOCK:
-					FireGPGInline.ImportKey(block.original.textContent, block);
+				case FireGPG.Inline.KEY_BLOCK:
+					FireGPG.Inline.ImportKey(block.original.textContent, block);
 					break;
-				case FireGPGInline.PRIVATE_KEY_BLOCK:
+				case FireGPG.Inline.PRIVATE_KEY_BLOCK:
 					block.body.className = "failure";
                     block.output.style.display = "block";
-                    block.output.textContent = FireGPGInline.i18n.getString("private-key-block-message").replace(/\. /g, ".\n");
+                    block.output.textContent = FireGPG.Inline.i18n.getString("private-key-block-message").replace(/\. /g, ".\n");
 					break;
-				case FireGPGInline.SIGN_BLOCK:
-					FireGPGInline.VerifySignature(block.original.textContent, block);
+				case FireGPG.Inline.SIGN_BLOCK:
+					FireGPG.Inline.VerifySignature(block.original.textContent, block);
 					break;
-				case FireGPGInline.MESSAGE_BLOCK:
-					FireGPGInline.DecryptMessage(block.original.textContent, block);
+				case FireGPG.Inline.MESSAGE_BLOCK:
+					FireGPG.Inline.DecryptMessage(block.original.textContent, block);
 					break;
 			}
             frame.style.width = block.body.scrollWidth + "px";
@@ -190,27 +190,27 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
 		block.action.addEventListener("click", actionHandler, false);
 
 		switch(blockType) {
-			case FireGPGInline.KEY_BLOCK:
+			case FireGPG.Inline.KEY_BLOCK:
 				block.body.className = "information";
-				block.header.textContent = FireGPGInline.i18n.getString("key-block");
-				block.action.textContent = FireGPGInline.i18n.getString("import");
+				block.header.textContent = FireGPG.Inline.i18n.getString("key-block");
+				block.action.textContent = FireGPG.Inline.i18n.getString("import");
 				break;
-			case FireGPGInline.PRIVATE_KEY_BLOCK:
+			case FireGPG.Inline.PRIVATE_KEY_BLOCK:
 				block.body.className = "information";
-				block.header.textContent = FireGPGInline.i18n.getString("private-key-block");
-				block.action.textContent = FireGPGInline.i18n.getString("import");
+				block.header.textContent = FireGPG.Inline.i18n.getString("private-key-block");
+				block.action.textContent = FireGPG.Inline.i18n.getString("import");
 				break;
-			case FireGPGInline.SIGN_BLOCK:
+			case FireGPG.Inline.SIGN_BLOCK:
 				block.body.className = "caution";
-				block.header.textContent = FireGPGInline.i18n.getString("signed-message")  + ", " + FireGPGInline.i18n.getString("unverified");
-				block.action.textContent = FireGPGInline.i18n.getString("verify");
+				block.header.textContent = FireGPG.Inline.i18n.getString("signed-message")  + ", " + FireGPG.Inline.i18n.getString("unverified");
+				block.action.textContent = FireGPG.Inline.i18n.getString("verify");
 				// Extract the message without the header and signature
-				block.message.innerHTML = content.substring(content.indexOf("\n\n") + 2, content.indexOf(FireGPGInline.Tags.SignatureStart)).replace(/</gi,"&lt;").replace(/>/gi,"&gt;").replace(/\n/gi,"<br />");
+				block.message.innerHTML = content.substring(content.indexOf("\n\n") + 2, content.indexOf(FireGPG.Inline.Tags.SignatureStart)).replace(/</gi,"&lt;").replace(/>/gi,"&gt;").replace(/\n/gi,"<br />");
 				break;
-			case FireGPGInline.MESSAGE_BLOCK:
+			case FireGPG.Inline.MESSAGE_BLOCK:
 				block.body.className = "caution";
-				block.header.textContent = FireGPGInline.i18n.getString("encrypted-message") ;
-				block.action.textContent = FireGPGInline.i18n.getString("decrypt");
+				block.header.textContent = FireGPG.Inline.i18n.getString("encrypted-message") ;
+				block.action.textContent = FireGPG.Inline.i18n.getString("decrypt");
 				break;
 		}
 
@@ -241,9 +241,9 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
         frame.try = 0;
 		frame.resize(frame, block);
 
-        frame.contentDocument.addEventListener("mouseover", FireGPGInline.mouseOverTrusted, false);
-        frame.contentDocument.addEventListener("mouseout", FireGPGInline.mouseOutTrusted, false);
-        frame.contentDocument.getElementById('trusted-confirm').title = FireGPGInline.i18n.getString("trusted-block") ;
+        frame.contentDocument.addEventListener("mouseover", FireGPG.Inline.mouseOverTrusted, false);
+        frame.contentDocument.addEventListener("mouseout", FireGPG.Inline.mouseOutTrusted, false);
+        frame.contentDocument.getElementById('trusted-confirm').title = FireGPG.Inline.i18n.getString("trusted-block") ;
 
 	}, false);
 };
@@ -256,7 +256,7 @@ FireGPGInline.HandleBlock = function(document, range, blockType) {
         document - The current document
 
 */
-FireGPGInline.HandlePage = function(document) {
+FireGPG.Inline.HandlePage = function(document) {
 
 	var filter = function(node) {
 		return NodeFilter.FILTER_ACCEPT;
@@ -271,7 +271,7 @@ FireGPGInline.HandlePage = function(document) {
 		while(true) {
 			if(!haveStart) {
 
-                if (node.textContent.indexOf(FireGPGInline.Tags.PgpBlockStart, idx) == -1)
+                if (node.textContent.indexOf(FireGPG.Inline.Tags.PgpBlockStart, idx) == -1)
                     break;
 
                 if (node.parentNode && node.parentNode.nodeName == 'TEXTAREA')
@@ -287,23 +287,23 @@ FireGPGInline.HandlePage = function(document) {
                 }
 
                 baseIdx = idx;
-				idx = node.textContent.indexOf(FireGPGInline.Tags.KeyStart, baseIdx);
-                blockType = FireGPGInline.KEY_BLOCK;
-				search = FireGPGInline.Tags.KeyEnd;
-				if(idx == -1   || idx > node.textContent.indexOf(FireGPGInline.Tags.SignedMessageStart, baseIdx)) {
-					idx = node.textContent.indexOf(FireGPGInline.Tags.SignedMessageStart, baseIdx);
-					search = FireGPGInline.Tags.SignatureEnd;
-                    blockType = FireGPGInline.SIGN_BLOCK;
+				idx = node.textContent.indexOf(FireGPG.Inline.Tags.KeyStart, baseIdx);
+                blockType = FireGPG.Inline.KEY_BLOCK;
+				search = FireGPG.Inline.Tags.KeyEnd;
+				if(idx == -1   || idx > node.textContent.indexOf(FireGPG.Inline.Tags.SignedMessageStart, baseIdx)) {
+					idx = node.textContent.indexOf(FireGPG.Inline.Tags.SignedMessageStart, baseIdx);
+					search = FireGPG.Inline.Tags.SignatureEnd;
+                    blockType = FireGPG.Inline.SIGN_BLOCK;
 				}
-				if(idx == -1 || idx < node.textContent.indexOf(FireGPGInline.Tags.EncryptedMessageStart, baseIdx)) {
-					idx = node.textContent.indexOf(FireGPGInline.Tags.EncryptedMessageStart, baseIdx);
-					search = FireGPGInline.Tags.EncryptedMessageEnd;
-                    blockType = FireGPGInline.MESSAGE_BLOCK;
+				if(idx == -1 || idx < node.textContent.indexOf(FireGPG.Inline.Tags.EncryptedMessageStart, baseIdx)) {
+					idx = node.textContent.indexOf(FireGPG.Inline.Tags.EncryptedMessageStart, baseIdx);
+					search = FireGPG.Inline.Tags.EncryptedMessageEnd;
+                    blockType = FireGPG.Inline.MESSAGE_BLOCK;
 				}
-				if(idx == -1 || idx < node.textContent.indexOf(FireGPGInline.Tags.PrivateKeyStart, baseIdx)) {
-					idx = node.textContent.indexOf(FireGPGInline.Tags.PrivateKeyStart, baseIdx);
-					blockType = FireGPGInline.PRIVATE_KEY_BLOCK;
-					search = FireGPGInline.Tags.PrivateKeyEnd;
+				if(idx == -1 || idx < node.textContent.indexOf(FireGPG.Inline.Tags.PrivateKeyStart, baseIdx)) {
+					idx = node.textContent.indexOf(FireGPG.Inline.Tags.PrivateKeyStart, baseIdx);
+					blockType = FireGPG.Inline.PRIVATE_KEY_BLOCK;
+					search = FireGPG.Inline.Tags.PrivateKeyEnd;
 				}
 
 				if(idx == -1)
@@ -329,7 +329,7 @@ FireGPGInline.HandlePage = function(document) {
 
                 haveStart = false;
 				range.setEnd(node, idx + search.length);
-				FireGPGInline.HandleBlock(document, range, blockType);
+				FireGPG.Inline.HandleBlock(document, range, blockType);
 				range.detach();
 				idx =0; //+= search.length;
 			}
@@ -349,7 +349,7 @@ FireGPGInline.HandlePage = function(document) {
         node - The node where we works
 
 */
-FireGPGInline.ignoreInners = function(idx, end,node) {
+FireGPG.Inline.ignoreInners = function(idx, end,node) {
 
         if  (end == -1)
             return -1;
@@ -357,20 +357,20 @@ FireGPGInline.ignoreInners = function(idx, end,node) {
 
         var baseIdx = idx;
 
-        idx = node.indexOf(FireGPGInline.Tags.KeyStart, baseIdx);
-        search = FireGPGInline.Tags.KeyEnd;
+        idx = node.indexOf(FireGPG.Inline.Tags.KeyStart, baseIdx);
+        search = FireGPG.Inline.Tags.KeyEnd;
 
         if(idx == -1) {
-            idx = node.indexOf(FireGPGInline.Tags.SignedMessageStart, baseIdx);
-            search = FireGPGInline.Tags.SignatureEnd;
+            idx = node.indexOf(FireGPG.Inline.Tags.SignedMessageStart, baseIdx);
+            search = FireGPG.Inline.Tags.SignatureEnd;
         }
         if(idx == -1) {
-            idx = node.indexOf(FireGPGInline.Tags.EncryptedMessageStart, baseIdx);
-            search = FireGPGInline.Tags.EncryptedMessageEnd;
+            idx = node.indexOf(FireGPG.Inline.Tags.EncryptedMessageStart, baseIdx);
+            search = FireGPG.Inline.Tags.EncryptedMessageEnd;
         }
         if(idx == -1) {
-            idx = node.indexOf(FireGPGInline.Tags.PrivateKeyStart, baseIdx);
-            search = FireGPGInline.Tags.PrivateKeyEnd;
+            idx = node.indexOf(FireGPG.Inline.Tags.PrivateKeyStart, baseIdx);
+            search = FireGPG.Inline.Tags.PrivateKeyEnd;
         }
 
         if(idx == -1 || idx > end)
@@ -392,14 +392,14 @@ FireGPGInline.ignoreInners = function(idx, end,node) {
         block - The block who contain the iframe
 
 */
-FireGPGInline.ImportKey = function(content, block) {
+FireGPG.Inline.ImportKey = function(content, block) {
 
-    var result = FireGPG.kimport(true,content);
+    var result = FireGPG.Core.kimport(true,content);
 
 	block.output.style.display = "block";
     block.output.textContent = result.messagetext;
 
-	if(result.result == FireGPGResults.SUCCESS)
+	if(result.result == FireGPG.Const.Results.SUCCESS)
 		block.body.className = "ok";
 	else
 		block.body.className = "failure";
@@ -415,23 +415,23 @@ FireGPGInline.ImportKey = function(content, block) {
         block - The block who contain the iframe
 
 */
-FireGPGInline.VerifySignature = function(content, block) {
+FireGPG.Inline.VerifySignature = function(content, block) {
 
     var i18n = document.getElementById("firegpg-strings");
 
-    resultTest = FireGPG.verify(true,content);
+    resultTest = FireGPG.Core.verify(true,content);
 
 
 
-    if (resultTest.signresult == FireGPGResults.SUCCESS) {
+    if (resultTest.signresult == FireGPG.Const.Results.SUCCESS) {
         block.body.className = "ok";
         block.header.textContent = i18n.getString("signed-message") + ", " + resultTest.signsresulttext;
     }
-    else if (resultTest.signresult == FireGPGResults.ERROR_BAD_SIGN) {
+    else if (resultTest.signresult == FireGPG.Const.Results.ERROR_BAD_SIGN) {
         block.body.className = "failure";
         block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifFailedFalse");
     }
-    else if (resultTest.signresult == FireGPGResults.ERROR_NO_KEY) {
+    else if (resultTest.signresult == FireGPG.Const.Results.ERROR_NO_KEY) {
         block.body.className = "failure";
         block.header.textContent = i18n.getString("signed-message") + ", " + i18n.getString("verifFailedUnknownKey") ;
     }
@@ -451,13 +451,13 @@ FireGPGInline.VerifySignature = function(content, block) {
         block - The block who contain the iframe
 
 */
-FireGPGInline.DecryptMessage = function(content, block) {
+FireGPG.Inline.DecryptMessage = function(content, block) {
 
     var i18n = document.getElementById("firegpg-strings");
 
-    var result = FireGPG.decrypt(true,content);
+    var result = FireGPG.Core.decrypt(true,content);
 
-    if (result.result == FireGPGResults.SUCCESS) {
+    if (result.result == FireGPG.Const.Results.SUCCESS) {
 
         block.body.className = "ok";
         block.message.textContent = result.decrypted;
@@ -481,7 +481,7 @@ FireGPGInline.DecryptMessage = function(content, block) {
 
 
 
-    } else if (result.result == FireGPGResults.ERROR_PASSWORD) {
+    } else if (result.result == FireGPG.Const.Results.ERROR_PASSWORD) {
 
         block.body.className = "failure";
         block.header.textContent = i18n.getString("encrypted-message") + ", " + result.messagetext;
@@ -490,7 +490,7 @@ FireGPGInline.DecryptMessage = function(content, block) {
 
         block.body.className = "failure";
         block.output.style.display = "block";
-        block.output.textContent = FireGPGMisc.trim(result.messagetext);
+        block.output.textContent = FireGPG.Misc.trim(result.messagetext);
 
     }
 
@@ -504,7 +504,7 @@ FireGPGInline.DecryptMessage = function(content, block) {
         aEvent - The event of the loading
 
 */
-FireGPGInline.onPageLoad = function(aEvent) {
+FireGPG.Inline.onPageLoad = function(aEvent) {
 
     var doc = aEvent.originalTarget;
 
@@ -519,10 +519,10 @@ FireGPGInline.onPageLoad = function(aEvent) {
 	if(doc.location.protocol == "chrome:")
 		return;
 
-    if (!FireGPGInline.canIBeExecutedHere(doc.location))
+    if (!FireGPG.Inline.canIBeExecutedHere(doc.location))
         return;
 
-    FireGPGInline.HandlePage(doc);
+    FireGPG.Inline.HandlePage(doc);
 };
 
 /*
@@ -530,7 +530,7 @@ FireGPGInline.onPageLoad = function(aEvent) {
     This function is called by FireGPG when a new Firefox's windows is created.
 
 */
-FireGPGInline.initSystem = function() {
+FireGPG.Inline.initSystem = function() {
 
         var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 	                           getService(Components.interfaces.nsIPrefService);
@@ -542,18 +542,18 @@ FireGPGInline.initSystem = function() {
         var activate = true;
     }
 
-    FireGPGInline.activate = activate;
+    FireGPG.Inline.activate = activate;
 
 
     try {
         if (document.getElementById("appcontent"))
-            document.getElementById("appcontent").addEventListener("DOMContentLoaded", FireGPGInline.onPageLoad, false);
+            document.getElementById("appcontent").addEventListener("DOMContentLoaded", FireGPG.Inline.onPageLoad, false);
         else
-            document.getElementById("browser_content").addEventListener("DOMContentLoaded", FireGPGInline.onPageLoad, false);
+            document.getElementById("browser_content").addEventListener("DOMContentLoaded", FireGPG.Inline.onPageLoad, false);
 
-    } catch (e) {  fireGPGDebug(e,'keyring.initSystem',true);  }
+    } catch (e) {  FireGPG.debug(e,'keyring.initSystem',true);  }
 
-    FireGPGInline.i18n = document.getElementById("firegpg-strings");
+    FireGPG.Inline.i18n = document.getElementById("firegpg-strings");
 };
 
 /*
@@ -563,7 +563,7 @@ FireGPGInline.initSystem = function() {
 	Parameters:
 		aEvent - The mouse over event
 */
-FireGPGInline.mouseOverTrusted = function(aEvent) {
+FireGPG.Inline.mouseOverTrusted = function(aEvent) {
 
     if (!document.getElementById('firegpg-statusbar-trusted-content'))
         return;
@@ -589,7 +589,7 @@ FireGPGInline.mouseOverTrusted = function(aEvent) {
 	Parameters:
 		aEvent - The mouseout event
 */
-FireGPGInline.mouseOutTrusted = function(aEvent) {
+FireGPG.Inline.mouseOutTrusted = function(aEvent) {
 
 
     if (!document.getElementById('firegpg-statusbar-trusted-content'))
@@ -609,9 +609,9 @@ FireGPGInline.mouseOutTrusted = function(aEvent) {
 	Parameters:
 		aUrl - The url of the page
 */
-FireGPGInline.canIBeExecutedHere = function(aUrl) {
+FireGPG.Inline.canIBeExecutedHere = function(aUrl) {
 
-    page = FireGPGInline.pageStatus(aUrl);
+    page = FireGPG.Inline.pageStatus(aUrl);
 
     if (page == 'ON')
         return true;
@@ -619,7 +619,7 @@ FireGPGInline.canIBeExecutedHere = function(aUrl) {
     if (page == 'OFF')
         return false;
 
-    var site = FireGPGInline.siteStatus(aUrl);
+    var site = FireGPG.Inline.siteStatus(aUrl);
 
     if (site == 'ON')
         return true;
@@ -627,7 +627,7 @@ FireGPGInline.canIBeExecutedHere = function(aUrl) {
     if (site == 'OFF')
         return false;
 
-    return FireGPGInline.activate;
+    return FireGPG.Inline.activate;
 
 }
 
@@ -638,7 +638,7 @@ FireGPGInline.canIBeExecutedHere = function(aUrl) {
 	Parameters:
 		aUrl - The url of the page
 */
-FireGPGInline.siteStatus = function(aUrl) {
+FireGPG.Inline.siteStatus = function(aUrl) {
 
     try {
 
@@ -684,9 +684,9 @@ FireGPGInline.siteStatus = function(aUrl) {
 	Parameters:
 		aUrl - The url of the page
 */
-FireGPGInline.siteOn = function(aUrl) {
+FireGPG.Inline.siteOn = function(aUrl) {
 
-    FireGPGInline.setSiteTo(aUrl, 'ON');
+    FireGPG.Inline.setSiteTo(aUrl, 'ON');
 
 }
 
@@ -697,9 +697,9 @@ FireGPGInline.siteOn = function(aUrl) {
 	Parameters:
 		aUrl - The url of the page
 */
-FireGPGInline.siteOff = function(aUrl) {
+FireGPG.Inline.siteOff = function(aUrl) {
 
-    FireGPGInline.setSiteTo(aUrl, 'OFF');
+    FireGPG.Inline.setSiteTo(aUrl, 'OFF');
 
 }
 
@@ -711,7 +711,7 @@ FireGPGInline.siteOff = function(aUrl) {
 		aUrl - The url of the page
 		value - ON to activate, OFF to desactive
 */
-FireGPGInline.setSiteTo = function(aUrl, value) {
+FireGPG.Inline.setSiteTo = function(aUrl, value) {
 
     var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 	                           getService(Components.interfaces.nsIPrefService);
@@ -733,7 +733,7 @@ FireGPGInline.setSiteTo = function(aUrl, value) {
        datas[data[i]] = data[i+1];
     }
 
-    if ( (value == 'ON' && !FireGPGInline.activate) || (value == 'OFF' && FireGPGInline.activate)) //Veut-on autre chose que le default ?
+    if ( (value == 'ON' && !FireGPG.Inline.activate) || (value == 'OFF' && FireGPG.Inline.activate)) //Veut-on autre chose que le default ?
         datas[host] = value;
     else
         delete datas[host];
@@ -755,13 +755,13 @@ FireGPGInline.setSiteTo = function(aUrl, value) {
 	Parameters:
 		aUrl - The url of the page
 */
-FireGPGInline.pageStatus = function(aUrl) {
+FireGPG.Inline.pageStatus = function(aUrl) {
 
 
-   if (FireGPGInline.siteTmpStats == undefined || FireGPGInline.siteTmpStats[aUrl.href] == undefined || FireGPGInline.siteTmpStats[aUrl.href] == '')
+   if (FireGPG.Inline.siteTmpStats == undefined || FireGPG.Inline.siteTmpStats[aUrl.href] == undefined || FireGPG.Inline.siteTmpStats[aUrl.href] == '')
         return ''
 
-    return FireGPGInline.siteTmpStats[aUrl.href] ;
+    return FireGPG.Inline.siteTmpStats[aUrl.href] ;
 
 }
 
@@ -772,15 +772,15 @@ FireGPGInline.pageStatus = function(aUrl) {
 	Parameters:
 		aUrl - The url of the page
 */
-FireGPGInline.pageOn = function(aUrl) {
+FireGPG.Inline.pageOn = function(aUrl) {
 
-    if (FireGPGInline.siteTmpStats == undefined)
-        FireGPGInline.siteTmpStats = new Array();
+    if (FireGPG.Inline.siteTmpStats == undefined)
+        FireGPG.Inline.siteTmpStats = new Array();
 
-    if (!FireGPGInline.canIBeExecutedHere(aUrl))
-        FireGPGInline.siteTmpStats[aUrl.href] = 'ON';
+    if (!FireGPG.Inline.canIBeExecutedHere(aUrl))
+        FireGPG.Inline.siteTmpStats[aUrl.href] = 'ON';
     else
-        delete FireGPGInline.siteTmpStats[aUrl.href];
+        delete FireGPG.Inline.siteTmpStats[aUrl.href];
 
 }
 
@@ -791,13 +791,13 @@ FireGPGInline.pageOn = function(aUrl) {
 	Parameters:
 		aUrl - The url of the page
 */
-FireGPGInline.pageOff = function(aUrl) {
+FireGPG.Inline.pageOff = function(aUrl) {
 
-    if (FireGPGInline.siteTmpStats == undefined)
-        FireGPGInline.siteTmpStats = new Array();
+    if (FireGPG.Inline.siteTmpStats == undefined)
+        FireGPG.Inline.siteTmpStats = new Array();
 
-    if (FireGPGInline.canIBeExecutedHere(aUrl))
-        FireGPGInline.siteTmpStats[aUrl.href] = 'OFF';
+    if (FireGPG.Inline.canIBeExecutedHere(aUrl))
+        FireGPG.Inline.siteTmpStats[aUrl.href] = 'OFF';
     else
-        delete FireGPGInline.siteTmpStats[aUrl.href];
+        delete FireGPG.Inline.siteTmpStats[aUrl.href];
 }

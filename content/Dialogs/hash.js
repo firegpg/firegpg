@@ -77,7 +77,7 @@ function computeHash() {
         if (document.getElementById('hash').label != '' && document.getElementById('hash').label != ' ' && document.getElementById('hash').label !='&nbsp;') {
 
 
-                result = FireGPG.computeHash(true,document.getElementById('hash').label, document.getElementById('path-textbox').value);
+                result = FireGPG.Core.computeHash(true,document.getElementById('hash').label, document.getElementById('path-textbox').value);
 
                 document.getElementById('result').value = result.output;
                 document.getElementById('copy').disabled = '';
@@ -115,8 +115,8 @@ function saveToFile() {
 
     var filePath = fp.file.path;
     //Need to remove the file before save
-    FireGPGMisc.removeFile(filePath);
-    FireGPGMisc.putIntoFile(filePath,document.getElementById('result').value.replace(/\n/gi,'').replace(/\r/gi,''));
+    FireGPG.Misc.removeFile(filePath);
+    FireGPG.Misc.putIntoFile(filePath,document.getElementById('result').value.replace(/\n/gi,'').replace(/\r/gi,''));
 
 }*/
 function copy() {

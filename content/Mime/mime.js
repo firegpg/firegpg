@@ -49,6 +49,8 @@ This file was a part of Gmail S/MIME (adapted)
 
 */
 
+if (typeof(FireGPG)=='undefined') { FireGPG = {}; }
+if (typeof(FireGPG.Mime)=='undefined') { FireGPG.Mime = {}; }
 
 //Generic mime usefull function
 
@@ -61,7 +63,7 @@ This file was a part of Gmail S/MIME (adapted)
  * TODO: make this function vigorous and robust. Find complex parsing algorithms, or do it yourself
  * piecemeal (as opposed to using a regexp).
  */
-function FireGPG_convertAddressLineToArray(line)
+FireGPG.Mime.convertAddressLineToArray = function(line)
 {
 	function trim(g)
 	{
@@ -70,7 +72,7 @@ function FireGPG_convertAddressLineToArray(line)
 	}
 
     if (line == undefined) {
-        fireGPGDebug("Undefined line in FireGPG_convertAddressLineToArray, return '' anyways", 'FireGPG_convertAddressLineToArray',  true);
+        FireGPG.debug("Undefined line in FireGPG.Mime.convertAddressLineToArray, return '' anyways", 'FireGPG.Mime.convertAddressLineToArray',  true);
         return "";
         }
 
@@ -109,14 +111,14 @@ function FireGPG_convertAddressLineToArray(line)
  * This function splits lines into 76-character chunks. This is useful
  * for stuffing base64 into an rfc822 message.
  */
-function FireGPG_breakLines(t)
+FireGPG.Mime.breakLines = function(t)
 {
 	// this appears to be the fastest--slightly faster than array.join("\r\n") (because it takes a little bit of time to compose the array, too);
 	theresult = t.replace(/[\s\S]{76}/g,"$&\r\n");
 	return theresult;
 }
 
-var FireGPG_stUtil =
+FireGPG.Mime.stUtil =
 {
 /**
 	 * Make an RFC 2047-compliant string by escaping the extended characters

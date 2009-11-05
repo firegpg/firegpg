@@ -51,7 +51,11 @@ under the terms of any one of the MPL, the GPL or the LGPL.
    ACTION_HASH - The the hash window
 */
 
-const FireGPGDownloaderActions = {
+if (typeof(FireGPG)=='undefined') { FireGPG = {}; }
+if (typeof(FireGPG.Const)=='undefined') { FireGPG.Const = {}; }
+
+
+FireGPG.Const.DownloaderOverlayActions = {
     DECRYPT:  'DECRYPT',
     OPTS: 'OPTS',
     ERASE: 'ERASE',
@@ -64,7 +68,7 @@ const FireGPGDownloaderActions = {
   * Class: firegpgdownloader
   * This is the class to comunicate with the menus added in firefox downloader
   */
-var firegpgdownloader = {
+FireGPG.DownloadOverlay = {
 
     /*
     Function: onLoad
@@ -83,7 +87,7 @@ var firegpgdownloader = {
     This function is called when a menu item is selected. It's call <onDelayMenuAction> 100 milliseconds laters (we have to wait dues to a bug).
     */
 	onMenuItemCommand: function(e,action) {
-		setTimeout("firegpgdownloader.onDelayMenuAction('"+action+"')", 100);
+		setTimeout("FireGPG.DownloadOverlay.onDelayMenuAction('"+action+"')", 100);
 	},
 
     /*
@@ -95,17 +99,17 @@ var firegpgdownloader = {
 
     */
 	onDelayMenuAction: function(action) {
-		if(action == FireGPGDownloaderActions.DECRYPT)
-			FireGPG.decrypt(false,'', undefined,undefined,true,document.getElementById('downloadView').getSelectedItem(0).getAttribute('path'));
-        else if(action == FireGPGDownloaderActions.VERIFY)
-			FireGPG.verify(false, '', undefined, undefined, true,document.getElementById('downloadView').getSelectedItem(0).getAttribute('path'));
-		else if(action == FireGPGDownloaderActions.OPTS)
+		if(action == FireGPG.Const.DownloaderOverlayActions.DECRYPT)
+			FireGPG.Core.decrypt(false,'', undefined,undefined,true,document.getElementById('downloadView').getSelectedItem(0).getAttribute('path'));
+        else if(action == FireGPG.Const.DownloaderOverlayActions.VERIFY)
+			FireGPG.Core.verify(false, '', undefined, undefined, true,document.getElementById('downloadView').getSelectedItem(0).getAttribute('path'));
+		else if(action == FireGPG.Const.DownloaderOverlayActions.OPTS)
 			window.openDialog("chrome://firegpg/content/Dialogs/options.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
-        else if(action == FireGPGDownloaderActions.HASH) {
+        else if(action == FireGPG.Const.DownloaderOverlayActions.HASH) {
 			window.openDialog("chrome://firegpg/content/Dialogs/hash.xul", "hashFireGPG", "chrome, centerscreen, toolbar", {file: document.getElementById('downloadView').getSelectedItem(0).getAttribute('path')}).focus();
         }
-		else if (action == FireGPGDownloaderActions.ERASE)
-			FireGPGMisc.eraseSavedPassword();
+		else if (action == FireGPG.Const.DownloaderOverlayActions.ERASE)
+			FireGPG.Misc.eraseSavedPassword();
 
 	},
 
@@ -136,4 +140,4 @@ var firegpgdownloader = {
 
 
 
-window.addEventListener("load", function(e) { firegpgdownloader.onLoad(e); }, false);
+window.addEventListener("load", function(e) { FireGPG.DownloadOverlay.onLoad(e); }, false);

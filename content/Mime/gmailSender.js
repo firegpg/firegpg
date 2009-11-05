@@ -49,27 +49,28 @@ This file was a part of Gmail S/MIME (adapted)
 
 */
 
-
+if (typeof(FireGPG)=='undefined') { FireGPG = {}; }
+if (typeof(FireGPG.Mime)=='undefined') { FireGPG.Mime = {}; }
 
 // Constructor.
-function FireGPGGmailMimeSender(form, db, i18n)
+FireGPG.Mime.GmailMimeSender = function (form, db, i18n)
 {
 	this.form = form;
     this.discardButton = db;
     this.i18n = i18n;
 
-} // end FireGPGGmailMimeSender constructor
+} // end FireGPG.Mime.GmailMimeSender constructor
 
-FireGPGGmailMimeSender.prototype = new FireGPGMimeSender();
+FireGPG.Mime.GmailMimeSender.prototype = new FireGPG.Mime.Sender();
 
-FireGPGGmailMimeSender.prototype.ourSending = function(msgs)
+FireGPG.Mime.GmailMimeSender.prototype.ourSending = function(msgs)
 {
 	// TODO: make more robust by saying how many messages are being sent and the total transfer size, etc.
-	FireGPG_cGmail2.setProgressMessage( this.form , this.i18n.getString("GmailSendingMail") + " (" + Math.max(1,Math.round(msgs[0].BodyPlus.length / 1024)) + "K)");
+	FireGPG.cGmail2.setProgressMessage( this.form , this.i18n.getString("GmailSendingMail") + " (" + Math.max(1,Math.round(msgs[0].BodyPlus.length / 1024)) + "K)");
 }
 
 // Implementation of abstract value/method from SmimeSender
-FireGPGGmailMimeSender.prototype.smtpPassword = function()
+FireGPG.Mime.GmailMimeSender.prototype.smtpPassword = function()
 {
 
 
@@ -152,14 +153,14 @@ FireGPGGmailMimeSender.prototype.smtpPassword = function()
 	}
 }; // end smtpPassword
 
-FireGPGGmailMimeSender.prototype.getRealm = function()
+FireGPG.Mime.GmailMimeSender.prototype.getRealm = function()
 {
 	var sslmode = (this.smtpSocketTypes && this.smtpSocketTypes[0] == "ssl");
 	return "smtp" + (sslmode ? "s" : "") + "://" + this.smtpServer +
 	((this.smtpPort == (sslmode ? 465 : 25)) ? "" : (":"+this.smtpPort));
 };
 
-FireGPGGmailMimeSender.prototype.smtpSeparatePassword = function()
+FireGPG.Mime.GmailMimeSender.prototype.smtpSeparatePassword = function()
 {
 	// TODO: also handle case where SMTP server rejects. Consider modifying on the repeat case
 	// when the password is wrong.
@@ -283,7 +284,7 @@ FireGPGGmailMimeSender.prototype.smtpSeparatePassword = function()
 } // end smtpSeparatePassword
 
 // note that there is no return code because this is a mere callback
-FireGPGGmailMimeSender.prototype.ourSent = function(msgs, err, prefs)
+FireGPG.Mime.GmailMimeSender.prototype.ourSent = function(msgs, err, prefs)
 {
 
 	try
@@ -360,11 +361,11 @@ FireGPGGmailMimeSender.prototype.ourSent = function(msgs, err, prefs)
 				}
 				else
 				{
-					fireGPGDebug ("Internal error while sending mail...", "Gmail-mime-send-oursend", true);
+					FireGPG.debug ("Internal error while sending mail...", "Gmail-mime-send-oursend", true);
 				}
 
 
-				FireGPG_cGmail2.setProgressMessage( this.form, null);
+				FireGPG.cGmail2.setProgressMessage( this.form, null);
 				return;
 			}
 		}
@@ -409,7 +410,7 @@ FireGPGGmailMimeSender.prototype.ourSent = function(msgs, err, prefs)
                         this.removeEventListener("DOMAttrModified", changeStatusMessage, false);
                         // set the bottom of the message stack, as appropriate
                         var msgs = this.ownerDocument.evaluate(".//div[contains(@class, 'diLZtc')]//table/tr/td[contains(@class, 'eWTfhb')]//div[contains(@class, 'aWL81')]/div[position()=2]", this.ownerDocument.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-                        if (!msgs || true) messageTd.innerHTML = FireGPG_cGmail2.i18n.getString("MessageSend");
+                        if (!msgs || true) messageTd.innerHTML = FireGPG.cGmail2.i18n.getString("MessageSend");
                         else
                         { /*
 //							jsdump("Doing tha alternative");
@@ -420,11 +421,11 @@ FireGPGGmailMimeSender.prototype.ourSent = function(msgs, err, prefs)
                             newmsgdiv.setAttribute("style", "");
                             msgs.appendChild(newmsgdiv);
                             newmsgdiv.innerHTML = '<div class="b8" style=""><table cellspacing="0" cellpadding="0" class="cf ve"><tbody><tr><td class="EGPikb" style="background-position: 0px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/><td class="Ptde9b"/><td class="EGPikb" style="background-position: -4px 0px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/></tr><tr><td class="Ptde9b"/><td class="m14Grb">' +
-FireGPG_cGmail2.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><tr><td class="EGPikb" style="background-position: 0px -4px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/><td class="Ptde9b"/><td class="EGPikb" style="background-position: -4px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/></tr></tbody></table></div>';
+FireGPG.cGmail2.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><tr><td class="EGPikb" style="background-position: 0px -4px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/><td class="Ptde9b"/><td class="EGPikb" style="background-position: -4px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/></tr></tbody></table></div>';
 
 
 //                            newmsgdiv.innerHTML = '<div class="n38jzf" style=""><table cellspacing="0" cellpadding="0" class="cyVRte"><tbody><tr><td class="EGPikb" style="background-position: 0px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/><td class="Ptde9b"/><td class="EGPikb" style="background-position: -4px 0px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/></tr><tr><td class="Ptde9b"/><td class="m14Grb">' +
-//FireGPG_cGmail2.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><tr><td class="EGPikb" style="background-position: 0px -4px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/><td class="Ptde9b"/><td class="EGPikb" style="background-position: -4px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/></tr></tbody></table></div>';
+//FireGPG.cGmail2.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><tr><td class="EGPikb" style="background-position: 0px -4px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/><td class="Ptde9b"/><td class="EGPikb" style="background-position: -4px; background-repeat: no-repeat; background-image: url(rc?a=af&c=fff1a8&w=4&h=4);"/></tr></tbody></table></div>';
 
                             function removeNote(e)
                             {
@@ -440,7 +441,7 @@ FireGPG_cGmail2.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><
             // 0.3.2: removed: div[@class='fgrX7c']//div[@class='IY0d9c']/div[contains(@class, 'EGSDee')]/
             var sD = d.evaluate(".//div/div[contains(@class,'b8')]", d.body, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 //				printAncestors("statusDiv", sD);
-            FireGPG_cGmail2.i18n = this.i18n;
+            FireGPG.cGmail2.i18n = this.i18n;
             sD.addEventListener("DOMAttrModified", changeStatusMessage, false);
 //				sD.addEventListener("DOMNodeInserted", function (e) {printAncestors("Inserted! ", e.target); }, false);
 //				sD.addEventListener("DOMNodeRemoved", function (e) {printAncestors("Removed! ", e.target); }, false);
@@ -474,8 +475,8 @@ FireGPG_cGmail2.i18n.getString("MessageSend") + '</td><td class="Ptde9b"/></tr><
 	}
 	catch (e)
 	{
-		fireGPGDebug(e, "mime / ourSent", true);
+		FireGPG.debug(e, "mime / ourSent", true);
 		debugger;
 	}
-	FireGPG_cGmail2.setProgressMessage(f, null);
+	FireGPG.cGmail2.setProgressMessage(f, null);
 }; // end ourSent

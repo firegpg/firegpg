@@ -97,19 +97,19 @@ function privateKeySelected(listbox) {
 function onLoad(win) {
 
      //Set version number
-    if (FIREGPG_STATUS != 'DEVEL')
-        document.getElementById('firegpg-version-version').value = FIREGPG_VERSION + ' (' + FIREGPG_SVN + ')';
+    if (FireGPG.Const.Status != 'DEVEL')
+        document.getElementById('firegpg-version-version').value = FireGPG.Const.Version + ' (' + FireGPG.Const.Svn + ')';
     else
-        document.getElementById('firegpg-version-version').value = 'DEVEL - ' + FIREGPG_VERSION + ' - Svn version:  ' + FIREGPG_SVN;
+        document.getElementById('firegpg-version-version').value = 'DEVEL - ' + FireGPG.Const.Version + ' - Svn version:  ' + FireGPG.Const.Svn;
 
 
     if (FireGPGGPGAccess.FireGPGCall != null)
         document.getElementById('firegpg-version-version').value +=  ' -  XpCom';
 
     // Code duplicated in assistant
-    keylistcall = FireGPG.listKeys(true);
+    keylistcall = FireGPG.Core.listKeys(true);
 
-    if (keylistcall.result == FireGPGResults.SUCCESS)
+    if (keylistcall.result == FireGPG.Const.Results.SUCCESS)
         gpg_keys = keylistcall.keylist;
     else
         gpg_keys = new Array();
@@ -119,12 +119,12 @@ function onLoad(win) {
 	/* read the default private key */
 	var default_private_key = document.getElementById('default-private-key-pref').value;
 
-    var AskKey = new FireGPG_GPGKey();
+    var AskKey = new FireGPG.GPGKey();
 
     AskKey.keyName = document.getElementById('firegpg-ask-for-private-label').value;
 
 
-    var Ditem = FireGPGMisc.CreateTreeItemKey(AskKey, document);
+    var Ditem = FireGPG.Misc.CreateTreeItemKey(AskKey, document);
 
     listbox.appendChild(Ditem);
 
@@ -140,7 +140,7 @@ function onLoad(win) {
 
             current++;
 
-            item = FireGPGMisc.CreateTreeItemKey(gpg_keys[key], document);
+            item = FireGPG.Misc.CreateTreeItemKey(gpg_keys[key], document);
 
             if(default_private_key == gpg_keys[key].keyId)
                 default_item = current;
@@ -154,7 +154,7 @@ function onLoad(win) {
 
                     if (gpg_keys[key].subKeys[skey].keyName) {
 
-                        var subItem = FireGPGMisc.CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
+                        var subItem = FireGPG.Misc.CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
 
                         subChildren.appendChild(subItem);
                     }
@@ -185,7 +185,7 @@ function onLoad(win) {
 
     listbox = document.getElementById('api_domain_list');
 
-    access = FireGPGApi.getAccessList();
+    access = FireGPG.Api.getAccessList();
 
     for(domain in access.domains_allowed) {
         var  item   = document.createElement('listitem');
@@ -274,7 +274,7 @@ function onLoad(win) {
     }
 
     //Load autowrap actions
-    actions = FireGPGAutoWrap.getActionList();
+    actions = FireGPG.AutoWrap.getActionList();
 
     listbox = document.getElementById('autowrap_list');
 
@@ -313,11 +313,11 @@ function autoWrapRemoveMySelf(item) {
 
     listbox = document.getElementById('autowrap_list');
 
-    actions = FireGPGAutoWrap.getActionList();
+    actions = FireGPG.AutoWrap.getActionList();
 
     delete(actions[item.getAttribute('autoWrap-domain')]);
 
-    FireGPGAutoWrap.setActionList(actions);
+    FireGPG.AutoWrap.setActionList(actions);
 
     listbox.removeChild(item);
 
@@ -336,7 +336,7 @@ function apiRemoveMySelf(item) {
 
     listbox = document.getElementById('api_domain_list');
 
-    access = FireGPGApi.getAccessList();
+    access = FireGPG.Api.getAccessList();
 
     if (item.getAttribute('gpgApi-type') == 'DA')
         delete(access.domains_allowed[item.getAttribute('gpgApi-domain')]);
@@ -351,7 +351,7 @@ function apiRemoveMySelf(item) {
     if (item.getAttribute('gpgApi-type') == 'PD')
         delete(access.pages_denied[item.getAttribute('gpgApi-domain')]);
 
-    FireGPGApi.setAccessList(access);
+    FireGPG.Api.setAccessList(access);
 
     listbox.removeChild(item);
 

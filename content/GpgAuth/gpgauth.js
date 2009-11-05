@@ -176,12 +176,12 @@ var gpgAuth = {
 		gpgAuth.gpg_elements[ gpgAuth.domain ][ 'SERVER_UNTRUSTED' ] = true;
 		gpgAuth.gpg_elements[ gpgAuth.domain ][ 'SERVER_KEY_FINGERPRINT' ] = 0;
 
-		// Call FireGPG.crypt specifying the domain as the GPG Key to encrypt to.
+		// Call FireGPG.Core.crypt specifying the domain as the GPG Key to encrypt to.
 		gpgAuth.gpg_elements[ gpgAuth.domain ][ 'RANDOM_VALUE' ] = gpgAuth.generate_random_token();
 		gpgAuth.status_window.update( "... generated a random token for the host." );
 		// Create a timestamp to later expire the token.
 		gpgAuth.gpg_elements[ gpgAuth.domain ][ 'TIME_STAMP' ] = new Date().getTime();
-		var server_token = FireGPG.crypt( true, gpgAuth.gpg_elements[ gpgAuth.domain ][ 'RANDOM_VALUE' ], [ gpgAuth.domain ], true );
+		var server_token = FireGPG.Core.crypt( true, gpgAuth.gpg_elements[ gpgAuth.domain ][ 'RANDOM_VALUE' ], [ gpgAuth.domain ], true );
 		gpgAuth.gpg_elements[ gpgAuth.domain ][ 'SERVER_PRIKEY_ID' ] = server_token.prikey_id;
 		gpgAuth.gpg_elements[ gpgAuth.domain ][ 'SERVER_SUBKEY_ID' ] = server_token.subkey_id;
 		if ( server_token.subkey_id && ! server_token.subkey_id == server_token.prikey_id ) {
@@ -189,7 +189,7 @@ var gpgAuth = {
 		} else {
 			gpgAuth.status_window.update( "... encrypted the token to Key ID: " + server_token.prikey_id  );
 		}
-		if ( server_token.result != FireGPGResults.SUCCESS ) {
+		if ( server_token.result != FireGPG.Const.Results.SUCCESS ) {
 			// There was a problem, note that an error has occurred.
 			gpgAuth.gpg_elements[ gpgAuth.domain ][ 'STK_ERROR' ] = true;
 			error = server_token.sdOut;
@@ -410,8 +410,8 @@ var gpgAuth = {
 		if ( user_token && ms < 300000 ) {
 			gpgAuth.status_window.update( "... decrypting the token" );
 			// Attempt to decrypt the token provided by the Server.
-			var result = FireGPG.decrypt( true, user_token );
-			if ( result.result == FireGPGResults.SUCCESS ) {
+			var result = FireGPG.Core.decrypt( true, user_token );
+			if ( result.result == FireGPG.Const.Results.SUCCESS ) {
 				// Check to see if the token was signed, and verify there is a keyid for the sign.
 				if ( result.signresultkeyid && result.signresultkeyid.length > 8 ) {
 					// The key is long format - get the short version of the key (Last 8 Chars)

@@ -72,7 +72,7 @@ function importkeys() {
 		keysToImport += id + " ";
 	}
 
-	FireGPG.retriveKeyFromServer(keysToImport);
+	FireGPG.Core.retriveKeyFromServer(keysToImport);
 
 
 }
@@ -82,18 +82,18 @@ function rebuildList() {
 
 	var search = document.getElementById('search-textbox').value;
 
-	if (FireGPGMisc.trim(search) == "")
+	if (FireGPG.Misc.trim(search) == "")
 		return;
 
     document.getElementById('search-button').disabled = 'disabled';
     document.getElementById('import-button').disabled = 'disabled';
 
-	keylistcall = FireGPG.searchKeyInServer(search);
+	keylistcall = FireGPG.Core.searchKeyInServer(search);
 
     document.getElementById('search-button').disabled = '';
     document.getElementById('import-button').disabled = '';
 
-    if (keylistcall.result == FireGPGResults.SUCCESS)
+    if (keylistcall.result == FireGPG.Const.Results.SUCCESS)
         gpg_keys = keylistcall.keylist;
     else
         gpg_keys = new Array();
@@ -113,7 +113,7 @@ function rebuildList() {
 
             current++;
 
-            item = FireGPGMisc.CreateTreeItemKey(gpg_keys[key], document);
+            item = FireGPG.Misc.CreateTreeItemKey(gpg_keys[key], document);
 
             if (gpg_keys[key].subKeys.length > 0) {
 
@@ -124,7 +124,7 @@ function rebuildList() {
 
                     if (gpg_keys[key].subKeys[skey].keyName) {
 
-                        var subItem = FireGPGMisc.CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
+                        var subItem = FireGPG.Misc.CreateTreeItemKey( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId);
 
                         subChildren.appendChild(subItem);
                     }
@@ -140,6 +140,6 @@ function rebuildList() {
         }
 	}
 
-    } catch (e) { fireGPGDebug(e,'seachkey-rebuildlist', true); }
+    } catch (e) { FireGPG.debug(e,'seachkey-rebuildlist', true); }
 
 }

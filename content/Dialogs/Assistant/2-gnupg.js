@@ -93,9 +93,9 @@ function next() {
 */
 function testGpg() {
 
-    var result = FireGPG.selfTest(true);
+    var result = FireGPG.Core.selfTest(true);
 
-    if (result.result == FireGPGResults.SUCCESS) {
+    if (result.result == FireGPG.Const.Results.SUCCESS) {
         gpgWorking = true;
 
         document.getElementById('gnuPG-working').style.display = '';
@@ -160,7 +160,7 @@ function chooseGPGPath() {
         prefs.setBoolPref("specify_gpg_path",true);
 
     }
-    FireGPG.allreadyinit = false;
+    FireGPG.Core.allreadyinit = false;
     testGpg();
 
 }

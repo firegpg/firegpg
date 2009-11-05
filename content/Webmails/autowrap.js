@@ -41,7 +41,7 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 //Manage autowarp on unsupported webmails
 
-var FireGPGAutoWrap = {
+FireGPG.AutoWrap = {
 
     checkAndWrap: function(text) {
 
@@ -111,7 +111,7 @@ var FireGPGAutoWrap = {
                     return text;
 
             }
-        } catch (e) { fireGPGDebug(e,'Error-AutoWrap / checkdoc'); return text; }
+        } catch (e) { FireGPG.debug(e,'Error-AutoWrap / checkdoc'); return text; }
     },
 
     shouldWeWrap: function(webmail) {

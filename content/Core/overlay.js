@@ -69,7 +69,11 @@ under the terms of any one of the MPL, the GPL or the LGPL.
    ACTION_SWITCHINLINEPAGEOFF - Turn off inline system for the current page
 */
 
-const FireGPGOverlayActions = {
+if (typeof(FireGPG)=='undefined') { FireGPG = {}; }
+if (typeof(FireGPG.Const)=='undefined') { FireGPG.Const = {}; }
+
+
+FireGPG.Const.OverlayActions = {
     SIGN: 'SIGN',
     PSIGN: 'PLAINSIGN',
     WSIGN: 'WRAPSIGN',
@@ -102,10 +106,10 @@ const FireGPGOverlayActions = {
 
 
  /*
-  * Class: firegpg
+  * Class: FireGPG.Core.Overlay
   * This is the class to comunicate with the menus added in firefox. She watch the loading of new windows too.
   */
-var firegpg = {
+FireGPG.Overlay = {
 
     /*
     Function: onLoad
@@ -113,9 +117,9 @@ var firegpg = {
     */
     onLoad: function() {
 
-        FireGPG_cGmail.initSystem();
-        FireGPG_cGmail2.initSystem();
-        FireGPGInline.initSystem();
+        FireGPG.cGmail.initSystem();
+        FireGPG.cGmail2.initSystem();
+        FireGPG.Inline.initSystem();
 		//APIListener.init();
 
 		// initialization code
@@ -128,7 +132,7 @@ var firegpg = {
     This function is called when a menu item is selected. It's call <onDelayMenuAction> 100 milliseconds laters (we have to wait dues to a bug).
     */
 	onMenuItemCommand: function(e,action) {
-		setTimeout("firegpg.onDelayMenuAction('"+action+"')", 100);
+		setTimeout("FireGPG.Overlay.onDelayMenuAction('"+action+"')", 100);
 	},
 
     /*
@@ -142,53 +146,53 @@ var firegpg = {
 	onDelayMenuAction: function(action) {
 
 
-   		if (action == FireGPGOverlayActions.SIGN)
-			FireGPG.sign();
-        else if (action == FireGPGOverlayActions.PSIGN)
-			FireGPG.sign(undefined,undefined,undefined,undefined,true);
-        else if (action == FireGPGOverlayActions.WSIGN)
-			FireGPG.sign(undefined,undefined,undefined,undefined,undefined,undefined,true);
-		else if(action == FireGPGOverlayActions.VERIF)
-			FireGPG.verify();
-		else if(action == FireGPGOverlayActions.CRYPT)
-			FireGPG.crypt();
-        else if(action == FireGPGOverlayActions.SYMCRYPT)
-			FireGPG.crypt(undefined,undefined,undefined,undefined,undefined,undefined,true);
-		else if(action == FireGPGOverlayActions.CRYPTSIGN)
-			FireGPG.cryptAndSign();
-		else if(action == FireGPGOverlayActions.DECRYPT)
-			FireGPG.decrypt();
-		else if(action == FireGPGOverlayActions.IMPORT)
-			FireGPG.kimport();
-		else if(action == FireGPGOverlayActions.EXPORT)
-			FireGPG.kexport();
-		else if(action == FireGPGOverlayActions.EDITEUR)
-			FireGPGMisc.showEditor('');
-		else if(action == FireGPGOverlayActions.MANAGER)
+   		if (action == FireGPG.Const.OverlayActions.SIGN)
+			FireGPG.Core.sign();
+        else if (action == FireGPG.Const.OverlayActions.PSIGN)
+			FireGPG.Core.sign(undefined,undefined,undefined,undefined,true);
+        else if (action == FireGPG.Const.OverlayActions.WSIGN)
+			FireGPG.Core.sign(undefined,undefined,undefined,undefined,undefined,undefined,true);
+		else if(action == FireGPG.Const.OverlayActions.VERIF)
+			FireGPG.Core.verify();
+		else if(action == FireGPG.Const.OverlayActions.CRYPT)
+			FireGPG.Core.crypt();
+        else if(action == FireGPG.Const.OverlayActions.SYMCRYPT)
+			FireGPG.Core.crypt(undefined,undefined,undefined,undefined,undefined,undefined,true);
+		else if(action == FireGPG.Const.OverlayActions.CRYPTSIGN)
+			FireGPG.Core.cryptAndSign();
+		else if(action == FireGPG.Const.OverlayActions.DECRYPT)
+			FireGPG.Core.decrypt();
+		else if(action == FireGPG.Const.OverlayActions.IMPORT)
+			FireGPG.Core.kimport();
+		else if(action == FireGPG.Const.OverlayActions.EXPORT)
+			FireGPG.Core.kexport();
+		else if(action == FireGPG.Const.OverlayActions.EDITEUR)
+			FireGPG.Misc.showEditor('');
+		else if(action == FireGPG.Const.OverlayActions.MANAGER)
 			window.openDialog("chrome://firegpg/content/Dialogs/Keymanager/keymanager.xul", "keyManager", "chrome, centerscreen, toolbar").focus();
-		else if(action == FireGPGOverlayActions.OPTS)
+		else if(action == FireGPG.Const.OverlayActions.OPTS)
 			window.openDialog("chrome://firegpg/content/Dialogs/options.xul", "optionsFiregpg", "chrome, centerscreen, toolbar").focus();
-		else if (action == FireGPGOverlayActions.ERASE)
-			FireGPGMisc.eraseSavedPassword();
-        else if(action == FireGPGOverlayActions.UPDATE)
-			FireGPGMisc.showUpdateDialog();
-        else if(action == FireGPGOverlayActions.FSIGN)
-			FireGPG.sign(false, '', undefined, undefined, undefined, undefined, undefined, true);
-        else if(action == FireGPGOverlayActions.FVERIF)
-			FireGPG.verify(false, '', undefined, undefined, true);
-        else if(action == FireGPGOverlayActions.FCRYPT)
-			FireGPG.crypt(false,'',undefined,undefined,undefined,undefined,undefined,undefined,true);
-        else if(action == FireGPGOverlayActions.FDECRYPT)
-			FireGPG.decrypt(false,'', undefined,undefined,true);
-        else if(action == FireGPGOverlayActions.FHASHES)
+		else if (action == FireGPG.Const.OverlayActions.ERASE)
+			FireGPG.Misc.eraseSavedPassword();
+        else if(action == FireGPG.Const.OverlayActions.UPDATE)
+			FireGPG.Misc.showUpdateDialog();
+        else if(action == FireGPG.Const.OverlayActions.FSIGN)
+			FireGPG.Core.sign(false, '', undefined, undefined, undefined, undefined, undefined, true);
+        else if(action == FireGPG.Const.OverlayActions.FVERIF)
+			FireGPG.Core.verify(false, '', undefined, undefined, true);
+        else if(action == FireGPG.Const.OverlayActions.FCRYPT)
+			FireGPG.Core.crypt(false,'',undefined,undefined,undefined,undefined,undefined,undefined,true);
+        else if(action == FireGPG.Const.OverlayActions.FDECRYPT)
+			FireGPG.Core.decrypt(false,'', undefined,undefined,true);
+        else if(action == FireGPG.Const.OverlayActions.FHASHES)
 			window.openDialog("chrome://firegpg/content/Dialogs/hash.xul", "hashFireGPG", "chrome, centerscreen, toolbar").focus();
-        else if(action == FireGPGOverlayActions.FSYMCRYPT)
-			FireGPG.crypt(false,'',undefined,undefined,undefined,undefined,true,undefined,true);
-        else if(action == FireGPGOverlayActions.FCRYPTSIGN)
-			FireGPG.cryptAndSign(false, '', undefined, undefined, undefined, undefined, undefined, undefined, undefined, true);
-        else if(action == FireGPGOverlayActions.SWITCHINLINESITEON) {
+        else if(action == FireGPG.Const.OverlayActions.FSYMCRYPT)
+			FireGPG.Core.crypt(false,'',undefined,undefined,undefined,undefined,true,undefined,true);
+        else if(action == FireGPG.Const.OverlayActions.FCRYPTSIGN)
+			FireGPG.Core.cryptAndSign(false, '', undefined, undefined, undefined, undefined, undefined, undefined, undefined, true);
+        else if(action == FireGPG.Const.OverlayActions.SWITCHINLINESITEON) {
 
-            FireGPGInline.siteOn(content.document.location);
+            FireGPG.Inline.siteOn(content.document.location);
 
             var num = gBrowser.browsers.length;
             for (var i = 0; i < num; i++) {
@@ -202,9 +206,9 @@ var firegpg = {
               }
             }
 
-        } else if(action == FireGPGOverlayActions.SWITCHINLINESITEOFF) {
+        } else if(action == FireGPG.Const.OverlayActions.SWITCHINLINESITEOFF) {
 
-            FireGPGInline.siteOff(content.document.location);
+            FireGPG.Inline.siteOff(content.document.location);
 
             var num = gBrowser.browsers.length;
             for (var i = 0; i < num; i++) {
@@ -217,14 +221,14 @@ var firegpg = {
               }
             }
 
-        } else if(action == FireGPGOverlayActions.SWITCHINLINEPAGEON) {
-            FireGPGInline.pageOn(content.document.location);
+        } else if(action == FireGPG.Const.OverlayActions.SWITCHINLINEPAGEON) {
+            FireGPG.Inline.pageOn(content.document.location);
             content.document.location.reload();
-        } else if(action == FireGPGOverlayActions.SWITCHINLINEPAGEOFF) {
-            FireGPGInline.pageOff(content.document.location);
+        } else if(action == FireGPG.Const.OverlayActions.SWITCHINLINEPAGEOFF) {
+            FireGPG.Inline.pageOff(content.document.location);
             content.document.location.reload();
-        } else if (action == FireGPGOverlayActions.CHECKAGAIN) {
-            FireGPGInline.HandlePage(content.document);
+        } else if (action == FireGPG.Const.OverlayActions.CHECKAGAIN) {
+            FireGPG.Inline.HandlePage(content.document);
         }
 
 
@@ -236,7 +240,7 @@ var firegpg = {
     */
 	onToolbarButtonCommand: function(e) {
 		// just reuse the function above.  you can change this, obviously!
-		firegpg.onMenuItemCommand(e);
+		FireGPG.Core.Overlay.onMenuItemCommand(e);
 	},
 
 	/*
@@ -247,9 +251,9 @@ var firegpg = {
 
         var i18n = document.getElementById("firegpg-strings");
 
-        if (FireGPGInline.activate) {
+        if (FireGPG.Inline.activate) {
 
-            if (FireGPGInline.canIBeExecutedHere(content.document.location))
+            if (FireGPG.Inline.canIBeExecutedHere(content.document.location))
                 document.getElementById('firegpg-status-of-inline').label = i18n.getString('inline-is-on-general');
             else
                 document.getElementById('firegpg-status-of-inline').label = i18n.getString('inline-is-off-specific');
@@ -257,38 +261,40 @@ var firegpg = {
 
         } else {
 
-            if (FireGPGInline.canIBeExecutedHere(content.document.location))
+            if (FireGPG.Inline.canIBeExecutedHere(content.document.location))
                 document.getElementById('firegpg-status-of-inline').label = i18n.getString('inline-is-off-general');
             else
                 document.getElementById('firegpg-status-of-inline').label = i18n.getString('inline-is-on-specific');
         }
 
-        if (FireGPGInline.canIBeExecutedHere(content.document.location)) {
+        if (FireGPG.Inline.canIBeExecutedHere(content.document.location)) {
             document.getElementById('firegpg-inline-temp-switcher').label = i18n.getString('inline-tmp-desactivate-for-this-page');
-            document.getElementById('firegpg-inline-temp-switcher').tag = FireGPGOverlayActions.SWITCHINLINEPAGEOFF;
+            document.getElementById('firegpg-inline-temp-switcher').tag = FireGPG.Const.OverlayActions.SWITCHINLINEPAGEOFF;
         } else {
             document.getElementById('firegpg-inline-temp-switcher').label = i18n.getString('inline-tmp-activate-for-this-page');
-            document.getElementById('firegpg-inline-temp-switcher').tag = FireGPGOverlayActions.SWITCHINLINEPAGEON;
+            document.getElementById('firegpg-inline-temp-switcher').tag = FireGPG.Const.OverlayActions.SWITCHINLINEPAGEON;
         }
 
-        var site = FireGPGInline.siteStatus(content.document.location);
+        var site = FireGPG.Inline.siteStatus(content.document.location);
 
         if (site == 'ON')
             site = true;
         else if (site == 'OFF')
             site = false;
         else
-            site = FireGPGInline.activate;
+            site = FireGPG.Inline.activate;
 
         if (site) {
             document.getElementById('firegpg-inline-switcher').label = i18n.getString('inline-desactivate-for-this-site');
-            document.getElementById('firegpg-inline-switcher').tag = FireGPGOverlayActions.SWITCHINLINESITEOFF;
+            document.getElementById('firegpg-inline-switcher').tag = FireGPG.Const.OverlayActions.SWITCHINLINESITEOFF;
         } else {
             document.getElementById('firegpg-inline-switcher').label = i18n.getString('inline-activate-for-this-site');
-            document.getElementById('firegpg-inline-switcher').tag = FireGPGOverlayActions.SWITCHINLINESITEON;
+            document.getElementById('firegpg-inline-switcher').tag = FireGPG.Const.OverlayActions.SWITCHINLINESITEON;
         }
 
     }
 };
 
-window.addEventListener("load", function(e) { firegpg.onLoad(e); }, false);
+window.addEventListener("load", function(e) { FireGPG.Overlay.onLoad(e); }, false);
+
+//setTimeout("b = ''; for (a in FireGPG) { b += a + \"\\n\" } alert(b);", 4000);

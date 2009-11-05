@@ -57,16 +57,16 @@ function updateKeyList() {
 
 	curentlySelected = null;
 
-	keylistcall = FireGPG.listKeys(false,true);
+	keylistcall = FireGPG.Core.listKeys(false,true);
 
-	keylistcallpriv = FireGPG.listKeys(true,true);
+	keylistcallpriv = FireGPG.Core.listKeys(true,true);
 
-    if (keylistcall.result == FireGPGResults.SUCCESS)
+    if (keylistcall.result == FireGPG.Const.Results.SUCCESS)
         gpg_keys = keylistcall.keylist;
     else
         gpg_keys = new Array();
 
-	if (keylistcallpriv.result == FireGPGResults.SUCCESS)
+	if (keylistcallpriv.result == FireGPG.Const.Results.SUCCESS)
         gpg_keys_priv = keylistcallpriv.keylist;
     else
         gpg_keys_priv = new Array();
@@ -97,7 +97,7 @@ function updateKeyList() {
 
             current++;
 
-            item = FireGPGMisc.CreateTreeItemKey2(gpg_keys[key], document, undefined, haveAPrivateKey);
+            item = FireGPG.Misc.CreateTreeItemKey2(gpg_keys[key], document, undefined, haveAPrivateKey);
 
             if (gpg_keys[key].subKeys.length > 0) {
 
@@ -108,7 +108,7 @@ function updateKeyList() {
 
                     if (gpg_keys[key].subKeys[skey].keyName) {
 
-                        var subItem = FireGPGMisc.CreateTreeItemKey2( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId,  haveAPrivateKey, true);
+                        var subItem = FireGPG.Misc.CreateTreeItemKey2( gpg_keys[key].subKeys[skey] ,document, gpg_keys[key].keyId,  haveAPrivateKey, true);
                         subChildren.appendChild(subItem);
                     }
 
@@ -169,18 +169,18 @@ function updateButtons() {
 
 function refrech() {
 
-	FireGPG.refreshKeysFromServer();
+	FireGPG.Core.refreshKeysFromServer();
 	updateKeyList();
 }
 
 function importserver() {
-    FireGPGMisc.showSearchBox((curentlySelected!= null ? "0x" + curentlySelected.substring(8) : "")	, true);
+    FireGPG.Misc.showSearchBox((curentlySelected!= null ? "0x" + curentlySelected.substring(8) : "")	, true);
 	updateKeyList();
 
 }
 
 function exportserver() {
-	FireGPG.sendKeyToServer(curentlySelected);
+	FireGPG.Core.sendKeyToServer(curentlySelected);
 	updateKeyList();
 }
 
@@ -201,16 +201,16 @@ function exportfile() {
     var filePath = fp.file.path;
     var data = "";
 
-	var result = FireGPG.kexport(true, [curentlySelected]);
+	var result = FireGPG.Core.kexport(true, [curentlySelected]);
 
 
-	if (result.result == FireGPGResults.SUCCESS) {
+	if (result.result == FireGPG.Const.Results.SUCCESS) {
 
 		var data = result.exported;
 
 		//Need to remove the file before save
-		FireGPGMisc.removeFile(filePath);
-		FireGPGMisc.putIntoFile(filePath,data);
+		FireGPG.Misc.removeFile(filePath);
+		FireGPG.Misc.putIntoFile(filePath,data);
 
 		alert(document.getElementById('firegpg-strings').
                 getString('keyExported'));
@@ -234,9 +234,9 @@ function importfile() {
         return;
 
     var filePath = fp.file.path;
-    var data = FireGPGMisc.getFromFile(filePath);
+    var data = FireGPG.Misc.getFromFile(filePath);
 
-	FireGPG.kimport(false,data, true);
+	FireGPG.Core.kimport(false,data, true);
 
     updateKeyList();
 
@@ -245,7 +245,7 @@ function importfile() {
 function changeTrust(value) {
 
 
-   FireGPG.changeTrust(false,curentlySelected,value);
+   FireGPG.Core.changeTrust(false,curentlySelected,value);
     updateKeyList();
 
 }
@@ -253,7 +253,7 @@ function changeTrust(value) {
 function password() {
 
 
-    FireGPG.changePassword(false,curentlySelected);
+    FireGPG.Core.changePassword(false,curentlySelected);
 
 }
 
@@ -269,7 +269,7 @@ function deleteKey() {
 
         if (confirm(document.getElementById('firegpg-strings').getString('sure-delete-key'))) {
 
-            FireGPG.deleteKey(false,curentlySelectedFingerPrint);
+            FireGPG.Core.deleteKey(false,curentlySelectedFingerPrint);
 
             updateKeyList();
         }
@@ -278,7 +278,7 @@ function deleteKey() {
 
        /* if (confirm(document.getElementById('firegpg-strings').getString('sure-delete-key'))) {
 
-            FireGPG.deleteKey(false,curentlySelectedFingerPrint);
+            FireGPG.Core.deleteKey(false,curentlySelectedFingerPrint);
 
             updateKeyList();
         } */
@@ -292,14 +292,14 @@ function revoke(raison) {
 
     if (confirm(document.getElementById('firegpg-strings').getString('sure-revoke-key'))) {
 
-        FireGPG.revokeKey(false,curentlySelected, raison);
+        FireGPG.Core.revokeKey(false,curentlySelected, raison);
 
         updateKeyList();
     }
 }
 
 function addUid() {
-    FireGPG.addUid(false, curentlySelected);
+    FireGPG.Core.addUid(false, curentlySelected);
     updateKeyList();
 }
 
@@ -307,7 +307,7 @@ function delUid() {
 
     if (confirm(document.getElementById('firegpg-strings').getString('sure-delete-uid'))) {
 
-        FireGPG.delUid(false,curentlySelected, curentlySelectedR);
+        FireGPG.Core.delUid(false,curentlySelected, curentlySelectedR);
 
         updateKeyList();
     }
@@ -319,7 +319,7 @@ function revokeUid() {
 
      if (confirm(document.getElementById('firegpg-strings').getString('sure-revoke-uid'))) {
 
-        FireGPG.revokeUid(false,curentlySelected, curentlySelectedR);
+        FireGPG.Core.revokeUid(false,curentlySelected, curentlySelectedR);
 
         updateKeyList();
     }

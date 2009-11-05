@@ -49,14 +49,15 @@ This file was a part of Gmail S/MIME (adapted)
 
 */
 
+if (typeof(FireGPG)=='undefined') { FireGPG = {}; }
+if (typeof(FireGPG.Mime)=='undefined') { FireGPG.Mime = {}; }
 
-
-const FireGPGMimeEncoder = function(multiPart,partNum)
+FireGPG.Mime.Encoder = function(multiPart,partNum)
 {
 	this.init(multiPart,partNum);
 }
 
-FireGPGMimeEncoder.prototype =
+FireGPG.Mime.Encoder.prototype =
 {
 	multipartStream: null,
 	// TODO: generate mostly random.
@@ -112,7 +113,7 @@ FireGPGMimeEncoder.prototype =
 				createInstance(Components.interfaces.nsIBinaryInputStream);
 				binInpStream.setInputStream(fileStream);
 				var bytes = binInpStream.readBytes(fileStream.available());
-				var base64coded = FireGPG_breakLines(btoa(bytes));
+				var base64coded = FireGPG.Mime.breakLines(btoa(bytes));
 				this.addStringToStream(base64coded);
 			}
 			catch (e)
@@ -237,7 +238,7 @@ FireGPGMimeEncoder.prototype =
 				part += "; charset=" +
 					uChars + "\r\nContent-Transfer-Encoding: base64";
 				str = btoa(str);
-				str = FireGPG_breakLines(str);
+				str = FireGPG.Mime.breakLines(str);
 			}
 			part += this.CRLF;
 		}
@@ -340,7 +341,7 @@ FireGPGMimeEncoder.prototype =
 					this.makeRFC2047(cD.filename) + "\"" + this.CRLF;
 				str += "Content-Type: " + cT.type + this.CRLF + this.CRLF;
 
-				str += FireGPG_breakLines(btoa(attachment.data));
+				str += FireGPG.Mime.breakLines(btoa(attachment.data));
 				this.addStringToStream(str);
 				return true;
 			}
@@ -482,7 +483,7 @@ FireGPGMimeEncoder.prototype =
 		// with Gmail S/MIME. A good approximation is to use a nonce-like value,
 		// but one that is a little bit different from non-encrypted values,
 		// like the Message-ID.
-		this.boundaryString = "firegpg" + FIREGPG_VERSION_A + "eq" + (Math.round(Math.random()*99)+(new Date()).getTime()).toString(36) +
+		this.boundaryString = "firegpg" + FireGPG.Const.VersionA + "eq" + (Math.round(Math.random()*99)+(new Date()).getTime()).toString(36) +
 		(99+Math.round(46656*46656*46635*36*Math.random())).toString(36) +
 		+partNum;
 		this.multiPart = multiPart;
@@ -490,4 +491,4 @@ FireGPGMimeEncoder.prototype =
 		Components.classes["@mozilla.org/io/multiplex-input-stream;1"].
 		createInstance(Components.interfaces.nsIMultiplexInputStream);
 	}
-}; // end FireGPGMimeEncoder class
+}; // end FireGPG.Mime.Encoder class

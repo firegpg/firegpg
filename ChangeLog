@@ -1,3 +1,6 @@
+2009-11-05 Maximilien Cuony
+    * Renamed namespaces
+
 2009-10-25 Maximilien Cuony
     * Fixing regression with signed and encrypted mail
     * Fixing problem with pgp blocks inside pgp blocks
