@@ -58,6 +58,8 @@ Group: Core  {
 
 Group: Dialogs  {
 
+   File: api.js  (content/Dialogs/api.js)
+
    Group: Assistant  {
 
       File: Assistant &lparen;1&rparen; Welcome  (no auto-title, content/Dialogs/Assistant/1-welcome.js)
