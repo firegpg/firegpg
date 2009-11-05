@@ -1,23 +1,23 @@
-<!ENTITY title "FireGPG Assistant - GnuPG">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY title "FireGPG assisten - GnuPG">
+<!ENTITY stop "Stopp">
+<!ENTITY next "Neste">
 <!ENTITY title2 "GnuPG">
 <!ENTITY description "FireGPG bruker GnuPG for å håndtere alle pgp-operasjoner. Dette betyr at GnuPGP må installeres for at FireGPG skal fungere.">
-<!ENTITY working "GnuPG seems to be accessible and working.">
-<!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
-<!ENTITY sethome "Set a home dir">
-<!ENTITY notworking "GnuPG doesn't work, there is a problem. Please fix this and click on next.">
-<!ENTITY isinstalled "Did you install GnuPG?">
-<!ENTITY download "You can download GnuPG here: (But any GnuPG will work)">
-<!ENTITY windows "Windows users: Click here to download gpg4win">
-<!ENTITY linux "Linux users: Please use the package shipped with your distribution, or click here for sources.">
-<!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
-<!ENTITY uncommon "Is you GnuPG installed in an uncommon location?">
-<!ENTITY setpath "Please set the path to GnuPG here: ">
+<!ENTITY working "GnuPG ser ut til å være tilgjengelig og fungerende.">
+<!ENTITY specialhome "Vil du sette en tilpasset hjemmemappe for GnuPG?">
+<!ENTITY sethome "Sett en hjemmemappe">
+<!ENTITY notworking "GnuPG fungerer ikke, det er et problem. Vennligst rett opp dette og klikk på neste.">
+<!ENTITY isinstalled "Installerte du GnuPG?">
+<!ENTITY download "Du kan laste ned GnuPG her: (Men enhver GnuGP vil fungere)">
+<!ENTITY windows "Windows-brukere: Klikk her for å laste ned gpg4win">
+<!ENTITY linux "Linuxbrukere: Vennligst bruk den pakken som tilhører din distrubusjon, eller klikk her for kilder.">
+<!ENTITY macos "MacOS-brukere: Jeg vet ikke hvordan, men det skal gå an. Google er din venn. ">
+<!ENTITY uncommon "Er din GnuPG installert på et uvanlig sted?">
+<!ENTITY setpath "Vennligst sett mappestien til GnuPG here:">
 <!ENTITY browse "FireGPG API tillater at ethvert nettsted bruker gpg's egenskaper - selvfølgelig med sikkerhetsmekanismer">
-<!ENTITY isfireftp "Is FireFTP installed?">
-<!ENTITY fireftpproblem "FireGPG and FireFTP conflict due to the old IPC library of FireFTP.">
-<!ENTITY uninstall "If FireGPG's fix doesn't work, you have to uninstall one of them to get the other working.">
-<!ENTITY strangeplateform "Are you using a strange platform?">
-<!ENTITY platform "FireGPG works only on Windows, MacOs and Linux x86 and x86_64 plateforms.">
-<!ENTITY recompile "You need to recompile the IPC library if that's the case.">
+<!ENTITY isfireftp "Er FireFTP installert?">
+<!ENTITY fireftpproblem "FireGPG og FireFTP krangler på grunn av det gamle IPC-biblioteket til FireFTP.">
+<!ENTITY uninstall "Dersom FireGPGs fiks ikke fungerer så må du avinstallere en av dem for å få den andre til å fungere ">
+<!ENTITY strangeplateform "Bruker du en rar platform?">
+<!ENTITY platform "FireGPG fungerer kun på Windows, MacOS og Linux x86 og x86_64 platformer">
+<!ENTITY recompile "Du trenger å rekompilere IPC-biblioteket dersom det er tilfellet.">

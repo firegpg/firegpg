@@ -39,3 +39,8 @@ pref("extensions.firegpg.dont_ask_to_download_key", false);
 pref("extensions.firegpg.keyserver_proxy", "");
 pref("extensions.firegpg.digest", "");
 pref("extensions.firegpg.assisant_has_already_been_executed", false);
+pref("extensions.firegpg.download_key_widhout_asking", false);
+pref("extensions.firegpg.hide_the_wait_window", false);
+pref("extensions.firegpg.hide_key_server_confirmation", false);
+pref("extensions.firegpg.hide_key_operation_confirmation", false);
+pref("extensions.firegpg.hide_download_menu", false);

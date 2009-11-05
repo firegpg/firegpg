@@ -1,12 +1,12 @@
-<!ENTITY title "FireGPG Assistant - Welcome">
-<!ENTITY skip "Skip">
-<!ENTITY next "Next">
-<!ENTITY title2 "FireGPG Assistant">
-<!ENTITY infoabout "Here is some information about icons and color used:">
-<!ENTITY whatnext "This suggest a solution or something you should do">
-<!ENTITY good "This is something good">
-<!ENTITY problem "This is a problem">
+<!ENTITY title "Firegpg assistent - Velkommen">
+<!ENTITY skip "Hopp over">
+<!ENTITY next "Neste">
+<!ENTITY title2 "FireGPG assistent">
+<!ENTITY infoabout "Her er litt informasjon om ikoner og farger brukt:">
+<!ENTITY whatnext "Dette foreslår en løsning eller noe du burde gjøre">
+<!ENTITY good "Dette er noe bra">
+<!ENTITY problem "Dette er et problem">
 <!ENTITY advanced "Dette er for avanserte brukere. Dersom du ikke forstår dette, ikke forandre det - det er ganske sikkert best som det står.">
-<!ENTITY help "This means help is available.  Mouse over the icon for the tooltip.">
-<!ENTITY helppop "Hello, I'm the help">
+<!ENTITY help "Dette betyr at hjelp er tilgjengelig. Hold musepekeren over ikonet for verktøytips. ">
+<!ENTITY helppop "Hei, jeg er hjelperen">
 <!ENTITY description "Velkommen. Denne assistenten kan hjelpe deg til å konfigurere FireGPG. Dersom du er en ny bruker er det anbefalt å følge denne for å få en operativ konfigurasjon. Hva du enn velger å gjøre, så kan du senere bruke innstillingsvinduet for å endre dine valg.">

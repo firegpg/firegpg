@@ -581,7 +581,7 @@ FireGPG.cGmail2 = {
                                     }*/
 
                                 }
-                                td.innerHTML = '<div class="mD" idlink=""><span class="mG" style="' + td.getAttribute("style") + '">' + td.innerHTML + '</span></div>';
+                                td.innerHTML = '<div class="cKWzSc mD" idlink=""><span class="mG" style="' + td.getAttribute("style") + '">' + td.innerHTML + '</span></div>';
 
 
                                 //La boite peut avoir été reféinie
@@ -597,7 +597,7 @@ FireGPG.cGmail2 = {
                                     }
                                 }
 
-                                boutonbox.insertBefore(td,boutonbox.childNodes[boutonbox.childNodes.length - 1]);
+                                boutonbox.insertBefore(td,boutonbox.childNodes[boutonbox.childNodes.length - 2]);
 
 
                             } catch (e) {  FireGPG.cGmail2.error(e, 'checkDock/message') }

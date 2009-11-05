@@ -63,7 +63,14 @@ Portions created by gpg_auth are Copyright (C) 2007 Kyle L. Huff All Rights Rese
             <preference id="hide-fireftp-message-pref" name="extensions.firegpg.fireftp_already_warning" type="bool"/>
             <preference id="use-fireftp-workaround-pref" name="extensions.firegpg.fireftp_try_to_use_old_system" type="bool"/>
             <preference id="dont_ask_to_download_key-pref" name="extensions.firegpg.dont_ask_to_download_key" type="bool"/>
+
+            <preference id="download_key_widhout_asking-pref" name="extensions.firegpg.download_key_widhout_asking" type="bool"/>
+            <preference id="hide_the_wait_window-pref" name="extensions.firegpg.hide_the_wait_window" type="bool"/>
+            <preference id="hide_key_server_confirmation-pref" name="extensions.firegpg.hide_key_server_confirmation" type="bool"/>
+            <preference id="hide_key_operation_confirmation-pref" name="extensions.firegpg.hide_key_operation_confirmation" type="bool"/>
+            <preference id="hide_download_menu-pref" name="extensions.firegpg.hide_download_menu" type="bool"/>
         </preferences>
+
 
         <hbox>
             <label  id="firegpg-version-label" value="&firegpg-version-label.text;"/>
@@ -96,6 +103,17 @@ Portions created by gpg_auth are Copyright (C) 2007 Kyle L. Huff All Rights Rese
         <checkbox  id="use-fireftp-workaround" preference="use-fireftp-workaround-pref" label="&use-fireftp-workaround;"/>
 
         <checkbox  id="dont_ask_to_download_key" preference="dont_ask_to_download_key-pref" label="&dont_ask_to_download_key;"/>
+
+
+        <checkbox  id="download_key_widhout_asking" preference="download_key_widhout_asking-pref" label="&download_key_widhout_asking;"/>
+
+        <checkbox  id="hide_the_wait_window" preference="hide_the_wait_window-pref" label="&hide_the_wait_window;"/>
+
+        <checkbox  id="hide_key_server_confirmation" preference="hide_key_server_confirmation-pref" label="&hide_key_server_confirmation;"/>
+
+        <checkbox  id="hide_key_operation_confirmation" preference="hide_key_operation_confirmation-pref" label="&hide_key_operation_confirmation;"/>
+
+        <checkbox  id="hide_download_menu" preference="hide_download_menu-pref" label="&hide_download_menu;"/>
 
 
 

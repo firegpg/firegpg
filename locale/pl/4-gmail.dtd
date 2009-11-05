@@ -1,6 +1,6 @@
 <!ENTITY title "FireGPG Assistant - Gmail">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY next "Dalej">
 <!ENTITY title2 "Gmail support">
 <!ENTITY description "FireGPG can be integrated with gmail: additional buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signatures of any email that contains them.">
 <!ENTITY enable "Enable gmail support">
@@ -9,7 +9,7 @@
 <!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
 <!ENTITY sign "Sign">
 <!ENTITY encrypt "Encrypt">
-<!ENTITY atta "Attachments">
+<!ENTITY atta "Załączniki">
 <!ENTITY inline "Use inline">
 <!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
 <!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">
@@ -18,5 +18,5 @@
 <!ENTITY host "Host (smtp.gmail.com): ">
 <!ENTITY port "Port (465):">
 <!ENTITY username "Username (leave blank to use the username of logged account):">
-<!ENTITY ssl "Use SSL">
+<!ENTITY ssl "Użyj SSL">
 <!ENTITY setdo "Set default options for sending mails">

@@ -25,8 +25,8 @@
 <!ENTITY global-allow-keyring-check.accesskey "A">
 <!ENTITY per-domain-preferences.label "Per domain settings:">
 <!ENTITY turn-off-updates "Disable FireGPG automatic updates">
-<!ENTITY key-name "Name">
-<!ENTITY key-id "ID">
+<!ENTITY key-name "Nazwa">
+<!ENTITY key-id "Identyfikator">
 <!ENTITY key-create "Created">
 <!ENTITY key-expire "Expires">
 <!ENTITY pane4.title "Gpg">
@@ -38,7 +38,7 @@
 <!ENTITY use-api "Enable FireGPG API for webpages, such as RoundCube. (Requires browser restart)">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-domain.label "Domain">
-<!ENTITY api-liste-keyauth.label "Key">
+<!ENTITY api-liste-keyauth.label "Klucz">
 <!ENTITY use-gpg-agent-checkbox "Enable GPG-agent (warning, can lead to issues)">
 <!ENTITY search-description "Filter">
 <!ENTITY gmail-buton-use-select-checkbox "Display a list instead of buttons">
@@ -49,7 +49,7 @@
 <!ENTITY gmail-buton-csignsend-checkbox "Clearsign and send">
 <!ENTITY hide-fireftp-message "Don't show message about old IPC library installed">
 <!ENTITY use-fireftp-workaround "Try to access to IPC with the old API">
-<!ENTITY keyserver-message "Keyserver">
+<!ENTITY keyserver-message "Serwer kluczy">
 <!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms. In most cases, you should have these choices:">
 <!ENTITY gmail-new-interface "New Gmail interface">
 <!ENTITY gmail-select-by-default-label "Selected by default :">
@@ -59,8 +59,8 @@
 <!ENTITY gmail-smtp-google-com "Never attempt to use google.com remembered password">
 <!ENTITY gmail-smtp-username "Username (leave blank to use the username of logged account) :">
 <!ENTITY gmail-smtp-host "Host (smtp.gmail.com) : ">
-<!ENTITY gmail-smtp-port "Port (465) :">
-<!ENTITY gmail-smtp-use-ssl-checkbox "Use SSL :">
+<!ENTITY gmail-smtp-port "Port (465):">
+<!ENTITY gmail-smtp-use-ssl-checkbox "Użyj SSL:">
 <!ENTITY gmail-disable-sign-detection "Disable reply detection for inline sign and encryption(always use the whole mail)">
 <!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
 <!ENTITY gmail-force-from "Force from value :">
@@ -84,3 +84,8 @@
 <!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
 <!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">
+<!ENTITY download_key_widhout_asking "Download missing keys without asking">
+<!ENTITY hide_the_wait_window "Hide the wait window">
+<!ENTITY hide_key_server_confirmation "Hide keyserver operations\' confrimations">
+<!ENTITY hide_key_operation_confirmation "Hide keys operations\' confrimations">
+<!ENTITY hide_download_menu "Hide download menu">

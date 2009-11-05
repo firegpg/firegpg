@@ -127,7 +127,18 @@ FireGPG.DownloadOverlay = {
      Add the FireGPG ContactMenu (if should be showed...)
     */
     addFireGPGContextMenu: function(menu,event) {
-        if (menu.childNodes[0] && menu.childNodes[0].id && menu.childNodes[0].id == 'menuitem_open' && menu.childNodes[1] && menu.childNodes[1].id && menu.childNodes[1].id == 'menuitem_show') {
+
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var hideDownload  = false;
+                try {
+                    hideDownload = prefs.getBoolPref('hide_download_menu');
+                } catch (e) { hideDownload = false; }
+
+
+        if (!hideDownload && menu.childNodes[0] && menu.childNodes[0].id && menu.childNodes[0].id == 'menuitem_open' && menu.childNodes[1] && menu.childNodes[1].id && menu.childNodes[1].id == 'menuitem_show') {
             menuCloned = document.getElementById('menu-firegpg-download').cloneNode(true);
             menu.insertBefore(menuCloned, menu.childNodes[2]);
         }

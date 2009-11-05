@@ -1,17 +1,17 @@
 <!ENTITY key-status "Status">
 <!ENTITY key-trust "Trust">
-<!ENTITY key-expire "Expire">
+<!ENTITY key-expire "Wygasły">
 <!ENTITY key-create "Created">
-<!ENTITY key-id "ID">
-<!ENTITY key-name "Name">
-<!ENTITY revoke-button "Revoke key">
-<!ENTITY sign-button "Signatures">
+<!ENTITY key-id "Identyfikator">
+<!ENTITY key-name "Nazwa">
+<!ENTITY revoke-button "Unieważnij klucz">
+<!ENTITY sign-button "Sygnatury">
 <!ENTITY changetrust-button "Change trust">
 <!ENTITY importserver-button "Import from server">
 <!ENTITY exportserver-button "Export to server">
 <!ENTITY importfile-button "Import from file">
 <!ENTITY exportfile-button "Export to file">
-<!ENTITY new-button "New key">
+<!ENTITY new-button "Nowy klucz">
 <!ENTITY keymanager "Key manager">
 <!ENTITY refrech "Refresh keys from server">
 <!ENTITY trustUnded "Remove information about trusting">
@@ -20,7 +20,7 @@
 <!ENTITY trustFull "I fully trust this key">
 <!ENTITY trustUltimate "Trust this key ultimately (!)">
 <!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
+<!ENTITY del-button "Usuń">
 <!ENTITY revokeNoRaison "No reason specified">
 <!ENTITY revokeComprimse "Key has been compromised">
 <!ENTITY revokeRemplaced "Key is superseded">
@@ -28,5 +28,5 @@
 <!ENTITY userid-button "User ID">
 <!ENTITY add "Dodaj">
 <!ENTITY delete "Delete">
-<!ENTITY revoke "Revoke">
-<!ENTITY fingerprint-button "Fingerprint">
+<!ENTITY revoke "Unieważnienie">
+<!ENTITY fingerprint-button "Odcisk palca">

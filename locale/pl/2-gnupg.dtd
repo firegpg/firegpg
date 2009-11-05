@@ -1,6 +1,6 @@
 <!ENTITY title "FireGPG Assistant - GnuPG">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY next "Dalej">
 <!ENTITY title2 "GnuPG">
 <!ENTITY description "FireGPG uses GnuPG to handle any pgp operation. This means GnuPG must be installed for FireGPG to work.">
 <!ENTITY working "GnuPG seems to be accessible and working.">

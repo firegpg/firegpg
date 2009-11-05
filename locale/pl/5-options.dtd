@@ -1,7 +1,7 @@
 <!ENTITY title "FireGPG Assistant - Options">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Options">
+<!ENTITY next "Dalej">
+<!ENTITY title2 "Opcje">
 <!ENTITY description "Here you can set global options for some FireGPG features:">
 <!ENTITY inline "Enable Inline detection">
 <!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">

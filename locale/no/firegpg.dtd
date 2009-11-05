@@ -52,9 +52,9 @@
 <!ENTITY keynotrevokedpassword "Feil, nøkkelen ble ikke tilbakekalt.Feil passord?">
 <!ENTITY firegpgContext.labelWrapSign "Ombrukket tegn">
 <!ENTITY firegpgMenu.labelWrapSign "Ombrukket tegn">
-<!ENTITY firegpgContext.labelHashs "Hashes">
-<!ENTITY firegpgContext.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelHashs "Hashes">
-<!ENTITY parseAgain "Parse (again) this page.">
-<!ENTITY update-avaiable "An update of FireGPG is available">
+<!ENTITY firegpgContext.labelHashs "Hash">
+<!ENTITY firegpgContext.labelFiles "Fileoperasjoner">
+<!ENTITY firegpgMenu.labelFiles "Filoperasjon">
+<!ENTITY firegpgMenu.labelHashs "Hasher">
+<!ENTITY parseAgain "Tolke (igjen) denne siden.">
+<!ENTITY update-avaiable "En oppdatering til FireGPG er tilgjengelig">

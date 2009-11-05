@@ -1540,12 +1540,18 @@ FireGPG.Core = {
                 	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 		                       getService(Components.interfaces.nsIPrefService);
                     prefs = prefs.getBranch("extensions.firegpg.");
-                var disabledown  = false;
-                try {
-                    disabledown = prefs.getBoolPref("dont_ask_to_download_key");
-                } catch (e) { disabledown = false; }
 
-				if (!dontask && !disabledown && confirm(document.getElementById('firegpg-strings').getString('autoFeetch') + ' (' + idOfMissingKey + ')')) {
+                    var disabledown  = false;
+                    try {
+                        disabledown = prefs.getBoolPref("dont_ask_to_download_key");
+                    } catch (e) { disabledown = false; }
+
+                    var dontaskdonw  = false;
+                    try {
+                        dontaskdonw = prefs.getBoolPref("download_key_widhout_asking");
+                    } catch (e) { dontaskdonw = false; }
+
+				if (!dontask && !disabledown && (dontaskdonw || confirm(document.getElementById('firegpg-strings').getString('autoFeetch') + ' (' + idOfMissingKey + ')'))) {
 					FireGPG.Core.retriveKeyFromServer(idOfMissingKey);
 					return this.layerverify(text,layer,division,charset,true, fileMode, fileFrom, fileSig,nextText);
 				}
@@ -2155,9 +2161,22 @@ FireGPG.Core = {
 
         if (result.sdOut.indexOf('IMPORT_OK') > 0) {
 
-            if (!silent)
-                alert(document.getElementById('firegpg-strings').
-                getString('keyRecived'));
+            if (!silent) {
+
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var shutup  = false;
+                try {
+                    shutup = prefs.getBoolPref('hide_key_server_confirmation');
+                } catch (e) { shutup = false; }
+
+                if (!shutup)
+                    alert(document.getElementById('firegpg-strings').
+                    getString('keyRecived'));
+
+            }
 
             var returnObject = new FireGPG.GPGReturn();
             returnObject.sdOut = result.sdOut;
@@ -2230,8 +2249,20 @@ FireGPG.Core = {
 
         if (result.sdOut) {
 
-            if (!silent)
-                alert(result.sdOut);
+            if (!silent) {
+
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var shutup  = false;
+                try {
+                    shutup = prefs.getBoolPref('hide_key_server_confirmation');
+                } catch (e) { shutup = false; }
+
+                if (!shutup)
+                    alert(result.sdOut);
+            }
 
             var returnObject = new FireGPG.GPGReturn();
             returnObject.sdOut = result.sdOut;
@@ -2301,8 +2332,20 @@ FireGPG.Core = {
 
         if (result.sdOut) {
 
-            if(!silent)
-                alert(document.getElementById('firegpg-strings').getString('keySync'));
+            if(!silent) {
+
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var shutup  = false;
+                try {
+                    shutup = prefs.getBoolPref('hide_key_server_confirmation');
+                } catch (e) { shutup = false; }
+
+                if (!shutup)
+                    alert(document.getElementById('firegpg-strings').getString('keySync'));
+            }
 
             var returnObject = new FireGPG.GPGReturn();
             returnObject.sdOut = result.sdOut;
@@ -2342,8 +2385,19 @@ FireGPG.Core = {
 
         if (result.sdOut) {
 
-            if(!silent)
-                alert(document.getElementById('firegpg-strings').getString('trustChanged'));
+            if(!silent) {
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var shutup  = false;
+                try {
+                    shutup = prefs.getBoolPref('hide_key_operation_confirmation');
+                } catch (e) { shutup = false; }
+
+                if (!shutup)
+                    alert(document.getElementById('firegpg-strings').getString('trustChanged'));
+            }
 
             var returnObject = new FireGPG.GPGReturn();
             returnObject.sdOut = result.sdOut;
@@ -2438,8 +2492,19 @@ FireGPG.Core = {
 
         //On assume que c'est ok
 
-        if(!silent)
-            alert(document.getElementById('firegpg-strings').getString('passChanged'));
+        if(!silent)  {
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var shutup  = false;
+                try {
+                    shutup = prefs.getBoolPref('hide_key_operation_confirmation');
+                } catch (e) { shutup = false; }
+
+                if (!shutup)
+                 alert(document.getElementById('firegpg-strings').getString('passChanged'));
+        }
 
         var returnObject = new FireGPG.GPGReturn();
         returnObject.sdOut = result.sdOut;
@@ -2526,8 +2591,19 @@ FireGPG.Core = {
 
         if (result.sdOut.indexOf("KEY_CREATED") != -1) {
 
-            if(!silent)
-                alert(document.getElementById('firegpg-strings').getString('keygenerated'));
+            if(!silent) {
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var shutup  = false;
+                try {
+                    shutup = prefs.getBoolPref('hide_key_operation_confirmation');
+                } catch (e) { shutup = false; }
+
+                if (!shutup)
+                    alert(document.getElementById('firegpg-strings').getString('keygenerated'));
+            }
 
             var returnObject = new FireGPG.GPGReturn();
             returnObject.sdOut = result.sdOut;
@@ -2568,8 +2644,19 @@ FireGPG.Core = {
 		var result = this.FireGPGGPGAccess.deleteKey(key);
 
         //Assume it's worked (no error message)
-        if(!silent)
-            alert(document.getElementById('firegpg-strings').getString('key-deleted'));
+        if(!silent) {
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var shutup  = false;
+                try {
+                    shutup = prefs.getBoolPref('hide_key_operation_confirmation');
+                } catch (e) { shutup = false; }
+
+                if (!shutup)
+                    alert(document.getElementById('firegpg-strings').getString('key-deleted'));
+        }
 
         var returnObject = new FireGPG.GPGReturn();
         returnObject.sdOut = result.sdOut;
@@ -2609,8 +2696,19 @@ FireGPG.Core = {
 
         if (result.sdOut.indexOf("GOOD_PASSPHRASE") != -1) {
 
-            if(!silent)
-                alert(document.getElementById('firegpg-strings').getString('keyrevoked'));
+            if(!silent)  {
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var shutup  = false;
+                try {
+                    shutup = prefs.getBoolPref('hide_key_operation_confirmation');
+                } catch (e) { shutup = false; }
+
+                if (!shutup)
+                    alert(document.getElementById('firegpg-strings').getString('keyrevoked'));
+            }
 
             var returnObject = new FireGPG.GPGReturn();
             returnObject.sdOut = result.sdOut;
@@ -2699,8 +2797,19 @@ FireGPG.Core = {
 
         if (result.sdOut.indexOf("GOOD_PASSPHRASE") != -1) {
 
-            if(!silent)
-                alert(document.getElementById('firegpg-strings').getString('uidadded'));
+            if(!silent)  {
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var shutup  = false;
+                try {
+                    shutup = prefs.getBoolPref('hide_key_operation_confirmation');
+                } catch (e) { shutup = false; }
+
+                if (!shutup)
+                    alert(document.getElementById('firegpg-strings').getString('uidadded'));
+            }
 
             var returnObject = new FireGPG.GPGReturn();
             returnObject.sdOut = result.sdOut;
@@ -2751,8 +2860,19 @@ FireGPG.Core = {
 
         if (result.sdOut.indexOf("GOOD_PASSPHRASE") != -1) {
 
-            if(!silent)
-                alert(document.getElementById('firegpg-strings').getString('uidrevoked'));
+            if(!silent) {
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var shutup  = false;
+                try {
+                    shutup = prefs.getBoolPref('hide_key_operation_confirmation');
+                } catch (e) { shutup = false; }
+
+                if (!shutup)
+                    alert(document.getElementById('firegpg-strings').getString('uidrevoked'));
+            }
 
             var returnObject = new FireGPG.GPGReturn();
             returnObject.sdOut = result.sdOut;
@@ -2796,8 +2916,19 @@ FireGPG.Core = {
 		var result = this.FireGPGGPGAccess.delUid(key, uid);
 
         //Assume it's worked
-        if(!silent)
-            alert(document.getElementById('firegpg-strings').getString('uiddeleted'));
+        if(!silent)  {
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var shutup  = false;
+                try {
+                    shutup = prefs.getBoolPref('hide_key_operation_confirmation');
+                } catch (e) { shutup = false; }
+
+                if (!shutup)
+                    alert(document.getElementById('firegpg-strings').getString('uiddeleted'));
+        }
 
         var returnObject = new FireGPG.GPGReturn();
         returnObject.sdOut = result.sdOut;
@@ -2864,8 +2995,19 @@ FireGPG.Core = {
         }
         else if (result.sdOut.indexOf("GOOD_PASSPHRASE") != -1) {
 
-            if(!silent)
-                alert(document.getElementById('firegpg-strings').getString('okkeysigned'));
+            if(!silent)  {
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].
+		                       getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch('extensions.firegpg.');
+
+                var shutup  = false;
+                try {
+                    shutup = prefs.getBoolPref('hide_key_operation_confirmation');
+                } catch (e) { shutup = false; }
+
+                if (!shutup)
+                    alert(document.getElementById('firegpg-strings').getString('okkeysigned'));
+            }
 
             var returnObject = new FireGPG.GPGReturn();
             returnObject.sdOut = result.sdOut;

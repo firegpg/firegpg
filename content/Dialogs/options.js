@@ -103,7 +103,7 @@ function onLoad(win) {
         document.getElementById('firegpg-version-version').value = 'DEVEL - ' + FireGPG.Const.Version + ' - Svn version:  ' + FireGPG.Const.Svn;
 
 
-    if (FireGPGGPGAccess.FireGPGCall != null)
+    if (FireGPG.GPGAccess.FireGPGCall != null)
         document.getElementById('firegpg-version-version').value +=  ' -  XpCom';
 
     // Code duplicated in assistant

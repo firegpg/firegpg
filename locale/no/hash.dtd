@@ -1,5 +1,5 @@
-<!ENTITY thitle "Compute hashes of files">
-<!ENTITY result "Result:">
+<!ENTITY thitle "Kalkuler filers hash">
+<!ENTITY result "Resultat:">
 <!ENTITY browse "Ikke tillaatt å registere her!">
 <!ENTITY hash "Type:">
 <!ENTITY copy "Kopier hash til klipptavlen">

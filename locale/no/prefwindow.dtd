@@ -77,10 +77,15 @@
 <!ENTITY dont_ask_to_download_key "Ikke prøv å last ned nøkler som mangler">
 <!ENTITY keyserverproxy-message "Proxy som skal brukes for HTTP og HKP nøkelservere:">
 <!ENTITY digest-message "Digest (Hash brukt til underskrift) (SHA256, SHA512, etc.) (Gmail bruker denne verdien til opprettelse av e-poster): ">
-<!ENTITY enable-gpgauth-statusbar-check.label "Enable the gpgAuth statusbar icon">
+<!ENTITY enable-gpgauth-statusbar-check.label "Aktivere gpgAuth statuslinjeikon">
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "S">
-<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-show the status window when using gpgAuth">
+<!ENTITY enable-gpgauth-statuswindow-check.label "Auto-vis statusvinduet når gpgAuth blir brukt">
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
-<!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
-<!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
+<!ENTITY enable-gpgauth-check.label "Aktivere gpgAuth">
+<!ENTITY panpan-assistant-is-now-dead "Kjør assistenten igjen">
 <!ENTITY api-liste-access2.label "Oversikt over rettigheter for API'n (dobbesltklikk for å fjerne)">
+<!ENTITY download_key_widhout_asking "Download missing keys without asking">
+<!ENTITY hide_the_wait_window "Hide the wait window">
+<!ENTITY hide_key_server_confirmation "Hide keyserver operations\' confrimations">
+<!ENTITY hide_key_operation_confirmation "Hide keys operations\' confrimations">
+<!ENTITY hide_download_menu "Hide download menu">

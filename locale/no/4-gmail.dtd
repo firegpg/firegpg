@@ -1,22 +1,22 @@
-<!ENTITY title "FireGPG Assistant - Gmail">
-<!ENTITY stop "Stop">
-<!ENTITY next "Next">
-<!ENTITY title2 "Gmail support">
-<!ENTITY description "FireGPG can be integrated with gmail: additional buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signatures of any email that contains them.">
-<!ENTITY enable "Enable gmail support">
-<!ENTITY smtpok "FireGPG is able to access to the SMTP server">
-<!ENTITY noauth "NB: Authentication is not tested!">
-<!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
-<!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
+<!ENTITY title "FireGPG assistent - Gmail">
+<!ENTITY stop "Stopp">
+<!ENTITY next "Neste">
+<!ENTITY title2 "Gmailstøtte">
+<!ENTITY description "FireGPG kan integreres med gmail: tilleggsknapper for å kryptere og/eller signere e-poster blir lagt til og du vil bli i stand til å dekryptere og bekrefte signaturer til e-poster som inneholder det.">
+<!ENTITY enable "Aktivere gmail-støtte">
+<!ENTITY smtpok "FireGPG er i stand til å få tilgang til SMTP-serveren">
+<!ENTITY noauth "PS: Autentisering er ikke testet!">
+<!ENTITY noauthhelp "FireGPG vil gi deg en advarsen når den forsøker å sende en e-post dersom det er et problem">
+<!ENTITY sign "Signer">
+<!ENTITY encrypt "Krypter">
 <!ENTITY atta "Oversikt over rettigheter for API'n (dobbesltklikk for å fjerne)">
-<!ENTITY inline "Use inline">
-<!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
-<!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">
-<!ENTITY wait "Wait 15 seconds or more if your connection is very slow">
-<!ENTITY setp "Set parameters of a working SMTP server (eg. your internet provider or your workplace server)">
-<!ENTITY host "Host (smtp.gmail.com): ">
+<!ENTITY inline "Bruk inline">
+<!ENTITY inlinesuck "Inline er dårlig og fungerer ikke hver gang. OpenPGP/Mime, burde brukes som standard!">
+<!ENTITY nosmtp "FireGPG er ikke i stand til å få tilgang til SMTP-serveren ELLER forespørselen blir fortsatt behandlet. ">
+<!ENTITY wait "Vent 15 sekunder eller mer om din tilkobling er veldig treg">
+<!ENTITY setp "Sett parameteret til en fungerende SMTP-server (f.eks din internettilbyders eller din arbeidsplass sin server)">
+<!ENTITY host "Tjener (smtp.gmail.com):">
 <!ENTITY port "Port (465):">
-<!ENTITY username "Username (leave blank to use the username of logged account):">
-<!ENTITY ssl "Use SSL">
-<!ENTITY setdo "Set default options for sending mails">
+<!ENTITY username "Brukernavn (la den være blank for å bruke brukernavnet til logget konto):">
+<!ENTITY ssl "Bruk SSL">
+<!ENTITY setdo "Sett standard alternativer for sending av e-post">

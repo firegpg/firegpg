@@ -32,7 +32,7 @@
 <!ENTITY firegpgPopInfo.labelAccessErr "FireGPG can't access the gpg executable. Make sure it is installed, or specify the path manually in the preferences.">
 <!ENTITY firegpgPopInfo.labelKeyOk "A private key is selected.">
 <!ENTITY firegpgPopInfo.labelKeyErr "Warning: please choose a private key in the preferences.">
-<!ENTITY firegpgPopInfo.close "Close">
+<!ENTITY firegpgPopInfo.close "Zamknij">
 <!ENTITY firegpgPopInfo.options "Opcje">
 <!ENTITY firegpgContext.labelEditeur "Otwórz edytor">
 <!ENTITY firegpgMenu.labelEditeur "Otwórz edytor">
@@ -46,8 +46,8 @@
 <!ENTITY firegpgContext.labelClearSign "Clearsign">
 <!ENTITY firegpgToolbar.labelClearSign "Clearsign">
 <!ENTITY firegpgMenu.labelClearSign "Clearsign">
-<!ENTITY firegpgContext.labelManager "Key manager">
-<!ENTITY firegpgToolbar.labelManager "Key manager">
+<!ENTITY firegpgContext.labelManager "Menadżer kluczy">
+<!ENTITY firegpgToolbar.labelManager "Menadżer kluczy">
 <!ENTITY firegpgMenu.labelManager "Key manager">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
 <!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
