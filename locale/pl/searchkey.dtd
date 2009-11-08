@@ -1,8 +1,8 @@
-<!ENTITY keyimporter "Import key from server">
-<!ENTITY close-button "Close">
+<!ENTITY keyimporter "Importuj klucz z serwera">
+<!ENTITY close-button "Zamknij">
 <!ENTITY import-button "Importuj wybrane klucze">
-<!ENTITY search-button "Search">
+<!ENTITY search-button "Szukaj">
 <!ENTITY search-description "Szukaj:">
-<!ENTITY key-create "Created">
+<!ENTITY key-create "Utworzony">
 <!ENTITY key-id "Identyfikator">
 <!ENTITY key-name "Nazwa">

@@ -7,6 +7,6 @@
 <!ENTITY inlinehelp "Se a páxina contén un bloque PGP, FireGPG pode detectalo e facer as operacións pertinentes con el!">
 <!ENTITY disableagent "Desactivar GPG-Agent">
 <!ENTITY api "Activar a API de FireGPG">
-<!ENTITY apihelp "O API FireGPG lle permite a calquera sitio web utilizar as características de GPG - por suposto, con mecanismos de seguridade.">
+<!ENTITY apihelp "A API FireGPG permítelle a calquera sitio web utilizar as características de GPG - por suposto, con mecanismos de seguridade.">
 <!ENTITY gpgauth "Activar gpgAuth">
-<!ENTITY gpgauthhelp "gpgAuth é un mecanismo ou proceso para autenticar usuarios da web utilizando GnuPG, non desenvolvido polas autoras de FireGPS">
+<!ENTITY gpgauthhelp "gpgAuth é un mecanismo ou proceso para autenticar usuarios/as da web utilizando GnuPG, non desenvolvido polos/as autores/as de FireGPG">

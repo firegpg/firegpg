@@ -17,7 +17,7 @@
 <!ENTITY browse "Просмотр">
 <!ENTITY isfireftp "У вас установлен FireFTP?">
 <!ENTITY fireftpproblem "FireGPG и FireFTP конфликтуют из-аз старой библиотеки IRC из FireFTP.">
-<!ENTITY uninstall "Если поправка FireGPG не работает, вы будете должны удалить один из них для функционирования остальных.">
+<!ENTITY uninstall "Если исправление для FireGPG не работает, вам придётся удалить одно из них для функционирования остальных.">
 <!ENTITY strangeplateform "Вы используете необычную платформу?">
 <!ENTITY platform "FireGPG работает только на Windows, Mac OS и Linux (платформы x86 и x86_64).">
 <!ENTITY recompile "Вам нужно перекомпилировать библиотеку IPC, если это необходимо.">

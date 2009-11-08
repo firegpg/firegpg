@@ -37,24 +37,24 @@
 <!ENTITY firegpgContext.labelEditeur "Abrir editor">
 <!ENTITY firegpgMenu.labelEditeur "Abrir editor">
 <!ENTITY firegpgToolbar.labelEditeur "Abrir editor">
-<!ENTITY firegpgContext.labelCryptSign "Assinar e Cifrar">
-<!ENTITY firegpgMenu.labelCryptSign "Assinar e Cifrar">
-<!ENTITY firegpgToolbar.labelCryptSign "Assinar e Cifrar">
+<!ENTITY firegpgContext.labelCryptSign "Assinar e cifrar">
+<!ENTITY firegpgMenu.labelCryptSign "Assinar e cifrar">
+<!ENTITY firegpgToolbar.labelCryptSign "Assinar e cifrar">
 <!ENTITY firegpgToolbar.labelSymCrypt "Cifra simétrica">
-<!ENTITY firegpgContext.labelSymCrypt "Cifra simétrica">
-<!ENTITY firegpgMenu.labelSymCrypt "Cifra simétrica">
-<!ENTITY firegpgContext.labelClearSign "Assinatura limpa">
+<!ENTITY firegpgContext.labelSymCrypt "Cifrar com cifra simétrica">
+<!ENTITY firegpgMenu.labelSymCrypt "Cifrar com cifra simétrica">
+<!ENTITY firegpgContext.labelClearSign "Fazer assinatura limpa">
 <!ENTITY firegpgToolbar.labelClearSign "Ass. limpa">
-<!ENTITY firegpgMenu.labelClearSign "Assinatura limpa">
+<!ENTITY firegpgMenu.labelClearSign "Fazer assinatura limpa">
 <!ENTITY firegpgContext.labelManager "Gestor de chaves">
 <!ENTITY firegpgToolbar.labelManager "Gestor de chaves">
 <!ENTITY firegpgMenu.labelManager "Gestor de chaves">
 <!ENTITY keynotrevokedpassword "Erro: chave não revogada. Senha errada?">
-<!ENTITY firegpgContext.labelWrapSign "Sinalizador de quebra de linha">
-<!ENTITY firegpgMenu.labelWrapSign "Sinalizador de quebra de linha">
-<!ENTITY firegpgContext.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelWrapSign "Assinar com quebras de linha">
+<!ENTITY firegpgMenu.labelWrapSign "Assinar com quebras de linha">
+<!ENTITY firegpgContext.labelHashs "Calcular hashes">
 <!ENTITY firegpgContext.labelFiles "Operações com ficheiros">
 <!ENTITY firegpgMenu.labelFiles "Operações com ficheiros">
-<!ENTITY firegpgMenu.labelHashs "Hashes">
+<!ENTITY firegpgMenu.labelHashs "Calcular hashes">
 <!ENTITY parseAgain "Interpretar (novamente) esta página.">
 <!ENTITY update-avaiable "Há uma actualização do FireGPG disponível">

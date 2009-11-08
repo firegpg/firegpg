@@ -29,4 +29,4 @@
 <!ENTITY add "Lägg till">
 <!ENTITY delete "Radera">
 <!ENTITY revoke "Upphäv">
-<!ENTITY fingerprint-button "Fingerprint">
+<!ENTITY fingerprint-button "GPG-Fingeravtryck">

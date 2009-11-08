@@ -1,21 +1,21 @@
 <!ENTITY title "FireGPG Assistant - GnuPG">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY next "Nästa">
 <!ENTITY title2 "GnuPG">
 <!ENTITY description "FireGPG använder GnuPG för att sköta pgp-operationer, vilket betyder att GnuPG måste vara installerat för att FireGPG ska fungera">
 <!ENTITY working "GnuPG seems to be accessible and working.">
 <!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
 <!ENTITY sethome "Set a home dir">
 <!ENTITY notworking "GnuPG doesn't work, there is a problem. Please fix this and click on next.">
-<!ENTITY isinstalled "Did you install GnuPG?">
+<!ENTITY isinstalled "Har du installerat GnuPG?">
 <!ENTITY download "Du kan ladda ner GnuPG här: (Men godtycklig GnuPG fungerar)">
 <!ENTITY windows "Windows users: Click here to download gpg4win">
-<!ENTITY linux "Linux users: Please use the package shipped with your distribution, or click here for sources.">
-<!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
+<!ENTITY linux "Linux-användare: Vänligen använd den version som tillhör din distribution eller klicka här för andra källor.">
+<!ENTITY macos "MacOS-användare: Jag vet inte, men det finns möjligheter. Google är din vän!">
 <!ENTITY uncommon "Is you GnuPG installed in an uncommon location?">
 <!ENTITY setpath "Please set the path to GnuPG here: ">
 <!ENTITY browse "Bläddra">
-<!ENTITY isfireftp "Is FireFTP installed?">
+<!ENTITY isfireftp "Är FireFTP installerat?">
 <!ENTITY fireftpproblem "FireGPG och FireFTP kan ej vara installerade samtidigt pga en konflikt som härrör från FireTFPs gamla IPC bibliotek">
 <!ENTITY uninstall "If FireGPG's fix doesn't work, you have to uninstall one of them to get the other working.">
 <!ENTITY strangeplateform "Are you using a strange platform?">

@@ -3,5 +3,5 @@
 <!ENTITY key-id "ID da chave">
 <!ENTITY key-create "Data (sinatura ou creación)">
 <!ENTITY sign-button "Asinar esta chave">
-<!ENTITY revoke-button "Revocar esta sinatura">
+<!ENTITY revoke-button "Revogar esta sinatura">
 <!ENTITY del-button "Borrar esta sinatura">

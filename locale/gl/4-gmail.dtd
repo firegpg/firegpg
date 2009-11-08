@@ -9,14 +9,14 @@
 <!ENTITY noauthhelp "FireGPG alertaralle cando tente enviar un correo se hai algún problema">
 <!ENTITY sign "Asinar">
 <!ENTITY encrypt "Cifrar">
-<!ENTITY atta "Adxuntos">
+<!ENTITY atta "Anexos">
 <!ENTITY inline "Usar en liña">
 <!ENTITY inlinesuck "En liña non sempre funciona. Debería usar OpenPGP/Mime, como estándar!">
 <!ENTITY nosmtp "FireGPG non pode acceder ao servidor SMTP ou a petición todavía está en proceso">
 <!ENTITY wait "Agarde 15 segundos ou máis se a súa conexión é moi lenta">
-<!ENTITY setp "Indicar os parámetros para un servidor SMTP (ex. o seu provedor de internet)">
+<!ENTITY setp "Definir os parámetros para un servidor SMTP (ex. o seu provedor de internet)">
 <!ENTITY host "Host (smtp.gmail.com)">
 <!ENTITY port "Porto(465):">
-<!ENTITY username "Nome de usuaria (deixeo en branco para utilizar o nome de usuaria da conta iniciada):">
+<!ENTITY username "Nome de usuario/a (deixeo en branco para utilizar o nome de usuario/a da conta iniciada):">
 <!ENTITY ssl "Usar SSL">
-<!ENTITY setdo "Indicar as opcións predeterminadas para o envío de correos">
+<!ENTITY setdo "Definir as opcións predeterminadas para o envío de correos">

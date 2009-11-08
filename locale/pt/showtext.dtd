@@ -4,7 +4,7 @@
 <!ENTITY verify-button "Verificar">
 <!ENTITY open-button "Abrir">
 <!ENTITY save-button "Guardar">
-<!ENTITY cryptandsign-button "Assinar e Cifrar">
+<!ENTITY cryptandsign-button "Assinar e cifrar">
 <!ENTITY sign-clear-button "Ass. limpa">
-<!ENTITY symcrypt-button "Cifra simétrica">
+<!ENTITY symcrypt-button "Cifrar com cifra simétrica">
 <!ENTITY closeandcopy-button "Copiar para a área de transferência e fechar">

@@ -84,8 +84,8 @@
 <!ENTITY enable-gpgauth-check.label "Aktivere gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Kjør assistenten igjen">
 <!ENTITY api-liste-access2.label "Oversikt over rettigheter for API'n (dobbesltklikk for å fjerne)">
-<!ENTITY download_key_widhout_asking "Download missing keys without asking">
-<!ENTITY hide_the_wait_window "Hide the wait window">
-<!ENTITY hide_key_server_confirmation "Hide keyserver operations\' confrimations">
-<!ENTITY hide_key_operation_confirmation "Hide keys operations\' confrimations">
-<!ENTITY hide_download_menu "Hide download menu">
+<!ENTITY download_key_widhout_asking "Last ned manglende nøkkel uten å spørre først">
+<!ENTITY hide_the_wait_window "Skjule &quot;vent&quot;-vinduet">
+<!ENTITY hide_key_server_confirmation "Skjule nøkkel-operasjoner / -bekreftelser">
+<!ENTITY hide_key_operation_confirmation "Skjule nøkkel-operasjoner / -bekreftelser ">
+<!ENTITY hide_download_menu "Fjern nedlastingsmenyen">

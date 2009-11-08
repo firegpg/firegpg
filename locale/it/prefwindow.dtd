@@ -45,8 +45,8 @@
 <!ENTITY firegpg-ask-for-private-label.text "Chiedi sempre la chiave privata">
 <!ENTITY inline-activated "Attiva il gestore per i blocchi PGP (richiede il riavvio)">
 <!ENTITY gmail-disable-autosave-checkbox "Disabilita il salvataggio automatico">
-<!ENTITY gmail-buton-csign-checkbox "Firma">
-<!ENTITY gmail-buton-csignsend-checkbox "Firma ed invia">
+<!ENTITY gmail-buton-csign-checkbox "Firma (Clearsign)">
+<!ENTITY gmail-buton-csignsend-checkbox "Firma (Clearsign) ed invia">
 <!ENTITY hide-fireftp-message "Non mostrare gli avvisi relativi alle vecchie librerie IPC installate">
 <!ENTITY use-fireftp-workaround "Prova ad usare le vecchie API per accedere alle librerie IPC">
 <!ENTITY keyserver-message "Server delle chiavi">
@@ -84,8 +84,8 @@
 <!ENTITY enable-gpgauth-check.label "Abilita gpgpAuth">
 <!ENTITY panpan-assistant-is-now-dead "Esegui nuovamente la procedura guidata">
 <!ENTITY api-liste-access2.label "Lista dei diritti per l'API (doppio click per rimuovere)">
-<!ENTITY download_key_widhout_asking "Download missing keys without asking">
-<!ENTITY hide_the_wait_window "Hide the wait window">
-<!ENTITY hide_key_server_confirmation "Hide keyserver operations\' confrimations">
-<!ENTITY hide_key_operation_confirmation "Hide keys operations\' confrimations">
-<!ENTITY hide_download_menu "Hide download menu">
+<!ENTITY download_key_widhout_asking "Recupera automaticamente chiavi mancanti">
+<!ENTITY hide_the_wait_window "Nascondi la finestra di attesa">
+<!ENTITY hide_key_server_confirmation "Non mostrare i messaggi di conferma per le operazioni del server delle chiavi">
+<!ENTITY hide_key_operation_confirmation "Non mostrare i messaggi di conferma per le operazioni sulla chiave">
+<!ENTITY hide_download_menu "Nascondi il menù di download">

@@ -1,22 +1,22 @@
-<!ENTITY title "FireGPG Assistant - Gmail">
+<!ENTITY title "Gmail - Asystent FireGPG">
 <!ENTITY stop "Stop">
 <!ENTITY next "Dalej">
-<!ENTITY title2 "Gmail support">
+<!ENTITY title2 "Wtyczka Gmail">
 <!ENTITY description "FireGPG can be integrated with gmail: additional buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signatures of any email that contains them.">
-<!ENTITY enable "Enable gmail support">
+<!ENTITY enable "Wtyczka Gmail">
 <!ENTITY smtpok "FireGPG is able to access to the SMTP server">
 <!ENTITY noauth "NB: Authentication is not tested!">
 <!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
-<!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
+<!ENTITY sign "Podpisz">
+<!ENTITY encrypt "Zaszyfruj">
 <!ENTITY atta "Załączniki">
-<!ENTITY inline "Use inline">
+<!ENTITY inline "Wstawki">
 <!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
 <!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">
 <!ENTITY wait "Wait 15 seconds or more if your connection is very slow">
 <!ENTITY setp "Set parameters of a working SMTP server (eg. your internet provider or your workplace server)">
-<!ENTITY host "Host (smtp.gmail.com): ">
+<!ENTITY host "Serwer SMTP (smtp.gmail.com):">
 <!ENTITY port "Port (465):">
 <!ENTITY username "Username (leave blank to use the username of logged account):">
-<!ENTITY ssl "Użyj SSL">
+<!ENTITY ssl "Bezpieczne logowanie (SSL)">
 <!ENTITY setdo "Set default options for sending mails">

@@ -6,18 +6,18 @@
 <!ENTITY firegpgContext.labelCrypt "Zaszyfruj">
 <!ENTITY firegpgContext.labelVerif "Zweryfikuj">
 <!ENTITY firegpgContext.labelDecry "Odszyfruj">
-<!ENTITY firegpgContext.labelOptions "Opcje">
+<!ENTITY firegpgContext.labelOptions "Preferencje">
 <!ENTITY firegpgMenu.label "FireGPG">
 <!ENTITY firegpgMenu.labelSign "Podpisz">
 <!ENTITY firegpgMenu.labelCrypt "Zaszyfruj">
 <!ENTITY firegpgMenu.labelVerif "Zweryfikuj">
 <!ENTITY firegpgMenu.labelDecry "Odszyfruj">
-<!ENTITY firegpgMenu.labelOptions "Opcje">
+<!ENTITY firegpgMenu.labelOptions "Preferencje">
 <!ENTITY firegpgToolbar.labelSign "Podpisz">
 <!ENTITY firegpgToolbar.labelCrypt "Zaszyfruj">
 <!ENTITY firegpgToolbar.labelVerif "Zweryfikuj">
 <!ENTITY firegpgToolbar.labelDecry "Odszyfruj">
-<!ENTITY firegpgToolbar.labelOptions "Opcje">
+<!ENTITY firegpgToolbar.labelOptions "Preferencje">
 <!ENTITY firegpgMenu.labelErase "Wyczyść zapamiętane hasła">
 <!ENTITY firegpgContext.labelErase "Wyczyść zapamiętane hasła">
 <!ENTITY firegpgToolbar.labelErase "Wyczyść zapamiętane hasła">
@@ -27,34 +27,34 @@
 <!ENTITY firegpgMenu.labelExport "Eksportuj">
 <!ENTITY firegpgContext.labelExport "Eksportuj">
 <!ENTITY firegpgToolbar.labelExport "Eksportuj">
-<!ENTITY firegpgPopInfo.labelBonjour "Welcome! FireGPG installation was successful.">
+<!ENTITY firegpgPopInfo.labelBonjour "Instalacja FireGPG zakończona sukcesem!">
 <!ENTITY firegpgPopInfo.labelAccessOk "FireGPG can access gpg.">
 <!ENTITY firegpgPopInfo.labelAccessErr "FireGPG can't access the gpg executable. Make sure it is installed, or specify the path manually in the preferences.">
-<!ENTITY firegpgPopInfo.labelKeyOk "A private key is selected.">
-<!ENTITY firegpgPopInfo.labelKeyErr "Warning: please choose a private key in the preferences.">
+<!ENTITY firegpgPopInfo.labelKeyOk "Wybrano klucz prywatny.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Ostrzeżenie: proszę wybrać klucz prywatny (Preferencje -&gt; Główne).">
 <!ENTITY firegpgPopInfo.close "Zamknij">
-<!ENTITY firegpgPopInfo.options "Opcje">
-<!ENTITY firegpgContext.labelEditeur "Otwórz edytor">
-<!ENTITY firegpgMenu.labelEditeur "Otwórz edytor">
-<!ENTITY firegpgToolbar.labelEditeur "Otwórz edytor">
-<!ENTITY firegpgContext.labelCryptSign "Sign and encrypt">
-<!ENTITY firegpgMenu.labelCryptSign "Sign and encrypt">
-<!ENTITY firegpgToolbar.labelCryptSign "Sign and encrypt">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgContext.labelSymCrypt "Symmetric encryption">
-<!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
+<!ENTITY firegpgPopInfo.options "Preferencje">
+<!ENTITY firegpgContext.labelEditeur "Edytor tekstu">
+<!ENTITY firegpgMenu.labelEditeur "Edytor tekstu">
+<!ENTITY firegpgToolbar.labelEditeur "Edytor tekstu">
+<!ENTITY firegpgContext.labelCryptSign "Podpisz i zaszyfruj">
+<!ENTITY firegpgMenu.labelCryptSign "Podpisz i zaszyfruj">
+<!ENTITY firegpgToolbar.labelCryptSign "Podpisz i zaszyfruj">
+<!ENTITY firegpgToolbar.labelSymCrypt "Szyfrowanie symetryczne">
+<!ENTITY firegpgContext.labelSymCrypt "Szyfrowanie symetryczne">
+<!ENTITY firegpgMenu.labelSymCrypt "Szyfrowanie symetryczne">
 <!ENTITY firegpgContext.labelClearSign "Clearsign">
 <!ENTITY firegpgToolbar.labelClearSign "Clearsign">
 <!ENTITY firegpgMenu.labelClearSign "Clearsign">
-<!ENTITY firegpgContext.labelManager "Menadżer kluczy">
+<!ENTITY firegpgContext.labelManager "Menedżer kluczy">
 <!ENTITY firegpgToolbar.labelManager "Menadżer kluczy">
-<!ENTITY firegpgMenu.labelManager "Key manager">
+<!ENTITY firegpgMenu.labelManager "Menedżer kluczy">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
-<!ENTITY firegpgContext.labelWrapSign "Wrapped sign">
-<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">
-<!ENTITY firegpgContext.labelHashs "Hashes">
-<!ENTITY firegpgContext.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelHashs "Hashes">
+<!ENTITY firegpgContext.labelWrapSign "Detach">
+<!ENTITY firegpgMenu.labelWrapSign "Detach">
+<!ENTITY firegpgContext.labelHashs "Funkcje skrótu">
+<!ENTITY firegpgContext.labelFiles "Pliki">
+<!ENTITY firegpgMenu.labelFiles "Pliki">
+<!ENTITY firegpgMenu.labelHashs "Funkcje skrótu">
 <!ENTITY parseAgain "Parse (again) this page.">
 <!ENTITY update-avaiable "An update of FireGPG is available">

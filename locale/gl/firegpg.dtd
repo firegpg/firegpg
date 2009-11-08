@@ -18,8 +18,8 @@
 <!ENTITY firegpgToolbar.labelVerif "Verificar">
 <!ENTITY firegpgToolbar.labelDecry "Descifrar">
 <!ENTITY firegpgToolbar.labelOptions "Opcións">
-<!ENTITY firegpgMenu.labelErase "Eliminar contrasinal gardado">
-<!ENTITY firegpgContext.labelErase "Eliminar contrasinal gardado">
+<!ENTITY firegpgMenu.labelErase "Limpar contrasinal gardado">
+<!ENTITY firegpgContext.labelErase "Limpar contrasinal gardado">
 <!ENTITY firegpgToolbar.labelErase "Limpar contrasinal gardado">
 <!ENTITY firegpgMenu.labelImport "Importar">
 <!ENTITY firegpgContext.labelImport "Importar">
@@ -27,11 +27,11 @@
 <!ENTITY firegpgMenu.labelExport "Exportar">
 <!ENTITY firegpgContext.labelExport "Exportar">
 <!ENTITY firegpgToolbar.labelExport "Exportar">
-<!ENTITY firegpgPopInfo.labelBonjour "Benvida! FireGPG instalouse con éxito. ">
+<!ENTITY firegpgPopInfo.labelBonjour "Benvido/a! FirePG instalouse correctamente.">
 <!ENTITY firegpgPopInfo.labelAccessOk "FireGPG pode acceder a gpg.">
 <!ENTITY firegpgPopInfo.labelAccessErr "FireGPG non pode acceder ao executábel de gpg. Asegúrese que está instalado, ou especifique a ruta manualmente nas preferencias.">
 <!ENTITY firegpgPopInfo.labelKeyOk "Seleccionouse unha chave privada.">
-<!ENTITY firegpgPopInfo.labelKeyErr "Alerta: escolla unha chave privada en preferencias.">
+<!ENTITY firegpgPopInfo.labelKeyErr "Aviso: escolla unha chave privada en preferencias.">
 <!ENTITY firegpgPopInfo.close "Pechar">
 <!ENTITY firegpgPopInfo.options "Opcións">
 <!ENTITY firegpgContext.labelEditeur "Editor de texto">
@@ -49,12 +49,12 @@
 <!ENTITY firegpgContext.labelManager "Xestor de contrasinais">
 <!ENTITY firegpgToolbar.labelManager "Xestión de chaves">
 <!ENTITY firegpgMenu.labelManager "Xestor de chaves">
-<!ENTITY keynotrevokedpassword "Erro, non se revocou a chave. Contrasinal incorrecto?">
+<!ENTITY keynotrevokedpassword "Erro, non se revogou a chave. Contrasinal incorrecto?">
 <!ENTITY firegpgContext.labelWrapSign "Sinatura con axuste">
 <!ENTITY firegpgMenu.labelWrapSign "Sinatura con axuste">
 <!ENTITY firegpgContext.labelHashs "Hashes">
 <!ENTITY firegpgContext.labelFiles "Operacións con ficheiros">
 <!ENTITY firegpgMenu.labelFiles "Operacións con ficheiros">
 <!ENTITY firegpgMenu.labelHashs "Hashes">
-<!ENTITY parseAgain "Parsear (de novo) esta páxina.">
+<!ENTITY parseAgain "Analizar (de novo) esta páxina.">
 <!ENTITY update-avaiable "Está dispoñíbel unha nova actualización de FireGPG">

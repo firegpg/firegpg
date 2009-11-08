@@ -43,15 +43,15 @@
 <!ENTITY firegpgToolbar.labelSymCrypt "Criptazione simmetrica">
 <!ENTITY firegpgContext.labelSymCrypt "Criptazione simmetrica">
 <!ENTITY firegpgMenu.labelSymCrypt "Criptazione simmetrica">
-<!ENTITY firegpgContext.labelClearSign "Firma">
-<!ENTITY firegpgToolbar.labelClearSign "Firma">
-<!ENTITY firegpgMenu.labelClearSign "Firma">
+<!ENTITY firegpgContext.labelClearSign "Firma (Clearsign)">
+<!ENTITY firegpgToolbar.labelClearSign "Firma (Clearsign)">
+<!ENTITY firegpgMenu.labelClearSign "Firma (Clearsign)">
 <!ENTITY firegpgContext.labelManager "Gestore delle chiavi">
 <!ENTITY firegpgToolbar.labelManager "Gestore delle chiavi">
 <!ENTITY firegpgMenu.labelManager "Gestore delle chiavi">
 <!ENTITY keynotrevokedpassword "Errore, chiave non revocata. Password sbagliata?">
-<!ENTITY firegpgContext.labelWrapSign "Firma nascosta">
-<!ENTITY firegpgMenu.labelWrapSign "Firma nascosta">
+<!ENTITY firegpgContext.labelWrapSign "Firma (a capo automatico)">
+<!ENTITY firegpgMenu.labelWrapSign "Firma (a capo automatico)">
 <!ENTITY firegpgContext.labelHashs "Hashes">
 <!ENTITY firegpgContext.labelFiles "Operazioni con i files">
 <!ENTITY firegpgMenu.labelFiles "Operazioni su files">

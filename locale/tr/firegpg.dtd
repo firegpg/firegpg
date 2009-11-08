@@ -40,21 +40,21 @@
 <!ENTITY firegpgContext.labelCryptSign "İmza ve Şifre">
 <!ENTITY firegpgMenu.labelCryptSign "İmza ve Şifre">
 <!ENTITY firegpgToolbar.labelCryptSign "İmza ve Şifre">
-<!ENTITY firegpgToolbar.labelSymCrypt "Symmetric encryption">
+<!ENTITY firegpgToolbar.labelSymCrypt "Eş şifreleme">
 <!ENTITY firegpgContext.labelSymCrypt "Simetrik şifreleme">
-<!ENTITY firegpgMenu.labelSymCrypt "Symmetric encryption">
+<!ENTITY firegpgMenu.labelSymCrypt "Eş şifreleme">
 <!ENTITY firegpgContext.labelClearSign "İmzayı temizle">
-<!ENTITY firegpgToolbar.labelClearSign "Clearsign">
-<!ENTITY firegpgMenu.labelClearSign "Clearsign">
+<!ENTITY firegpgToolbar.labelClearSign "İmzayı temizle">
+<!ENTITY firegpgMenu.labelClearSign "İmzayı temizle">
 <!ENTITY firegpgContext.labelManager "Anahtar yöneticisi">
 <!ENTITY firegpgToolbar.labelManager "Anahtar yöneticisi">
 <!ENTITY firegpgMenu.labelManager "Anahtar yöneticisi">
 <!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
 <!ENTITY firegpgContext.labelWrapSign "Sarılmış imza">
-<!ENTITY firegpgMenu.labelWrapSign "Wrapped sign">
-<!ENTITY firegpgContext.labelHashs "Hashes">
-<!ENTITY firegpgContext.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelFiles "Files operations">
-<!ENTITY firegpgMenu.labelHashs "Hashes">
+<!ENTITY firegpgMenu.labelWrapSign "Sarılmış işaret">
+<!ENTITY firegpgContext.labelHashs "Karımlar">
+<!ENTITY firegpgContext.labelFiles "Dosya işlemleri">
+<!ENTITY firegpgMenu.labelFiles "Dosya işlemleri">
+<!ENTITY firegpgMenu.labelHashs "Karımlar">
 <!ENTITY parseAgain "Parse (again) this page.">
 <!ENTITY update-avaiable "An update of FireGPG is available">

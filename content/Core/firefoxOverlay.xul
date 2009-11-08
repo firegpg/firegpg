@@ -70,8 +70,8 @@ under the terms of any one of the MPL, the GPL or the LGPL.
     <menu id="menu-firegpg" label="&firegpgMenu.label;" class="menu-iconic firegpg-menu">
       <menupopup id="firegpg-menu-popup">
         <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgMenu.labelClearSign;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.SIGN)"/>
-        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgMenu.labelWrapSign;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.WRAPSIGN)"/>
-        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgMenu.labelSign;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.PLAINSIGN)"/>
+        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgMenu.labelWrapSign;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.WSIGN)"/>
+        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgMenu.labelSign;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.PSIGN)"/>
         <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgMenu.labelVerif;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.VERIF)"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-crypt menuitem-iconic" label="&firegpgMenu.labelCrypt;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.CRYPT)"/>
@@ -106,8 +106,8 @@ under the terms of any one of the MPL, the GPL or the LGPL.
     <menu id="context-firegpg" class="menu-iconic firegpg-menu" label="&firegpgContext.label;" src="chrome://firegpg/skin/firegpg.png">
       <menupopup  id="firegpg-contex-popup">
         <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgContext.labelClearSign;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.SIGN)"/>
-        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgContext.labelWrapSign;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.WRAPSIGN)"/>
-        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgContext.labelSign;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.PLAINSIGN)"/>
+        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgContext.labelWrapSign;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.WSIGN)"/>
+        <menuitem class="firegpg-menu-sign menuitem-iconic" label="&firegpgContext.labelSign;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.PSIGN)"/>
         <menuitem class="firegpg-menu-verif menuitem-iconic" label="&firegpgContext.labelVerif;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.VERIF)"/>
         <menuseparator/>
         <menuitem class="firegpg-menu-crypt menuitem-iconic" label="&firegpgContext.labelCrypt;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.CRYPT)"/>
@@ -205,7 +205,7 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
         <statusbarpanel id="firegpg-statusbar">
 
-             <menupopup id="firegpg-icon-pop-up" onpopupshowing="firegpg.updatePopUp();">
+             <menupopup id="firegpg-icon-pop-up" onpopupshowing="FireGPG.Overlay.updatePopUp();">
                     <menuitem class="firegpg-menu menuitem-iconic" id="firegpg-status-of-inline" label="" disabled="true"/>
 
                     <menuitem class="firegpg-menu menuitem-iconic" id="firegpg-parse-again" label="&parseAgain;" oncommand="FireGPG.Overlay.onMenuItemCommand(event,FireGPG.Const.OverlayActions.CHECKAGAIN)"/>

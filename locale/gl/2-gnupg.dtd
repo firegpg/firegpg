@@ -2,21 +2,21 @@
 <!ENTITY stop "Parar">
 <!ENTITY next "Seguinte">
 <!ENTITY title2 "GnuPG">
-<!ENTITY description "">
+<!ENTITY description "FireGPG usa GnuPG para manexar cas operacións pgp. Isto significa que GnuPG ten que estar instalado para que funcione FireGPG.">
 <!ENTITY working "GnuPG parece estar acesíbel e funcionando.">
 <!ENTITY specialhome "Quere indicar un directorio de inicio personalizado para GnuPG?">
-<!ENTITY sethome "Indicar un directorio de inicio">
+<!ENTITY sethome "Definir o directorio de inicio">
 <!ENTITY notworking "GnuPG non funciona, hai un problema. Amáñe isto e prema en seguinte.">
 <!ENTITY isinstalled "Instalou GnuPG?">
 <!ENTITY download "Pode descargar GnuPG aquí: (Mais calquera GnuPG funcionará)">
-<!ENTITY windows "Usuarias de windows: Prema aquí para descargar gpg4win">
-<!ENTITY linux "Usuarias de gnu/Linux: Utilice o paquete da súa distribución, ou prema aquí para o código fonte.">
-<!ENTITY macos "Usuarias de MacOs: Non sei como, mais hai unha maneira. Google é o seu amigo.">
+<!ENTITY windows "Usuarios/as de windows: Prema aquí para descargar gpg4win">
+<!ENTITY linux "Usuarios/as de gnu/Linux: Utilicen o paquete da súa distribución, ou preman aquí para o código fonte.">
+<!ENTITY macos "Usuarios/as de MacOs: Non sei como, mais hai unha maneira. Google é o seu amigo.">
 <!ENTITY uncommon "Está o seu GnuPG instalado nunha localización pouco común?">
-<!ENTITY setpath "Indique a ruta do seu GnuPG aquí:">
+<!ENTITY setpath "Defina aquí a ruta do seu GnuPG:">
 <!ENTITY browse "Procurar">
 <!ENTITY isfireftp "Está instalado FireFTP?">
-<!ENTITY fireftpproblem "FireGPG e FireFTP teñen conflictos debido a unha vella librería IPC de FireFTP.">
+<!ENTITY fireftpproblem "FireGPG e FireFTP teñen conflitos debido a unha vella librería IPC de FireFTP. ">
 <!ENTITY uninstall "Se o amaño de FireGPG non funciona, ten que desinstalar un deles para que o outro funcione.">
 <!ENTITY strangeplateform "Está utilizando unha plataforma estraña?">
 <!ENTITY platform "FireGPG funciona só en plataformas Windows, MacOs e GNU/Linux x86 e x86_64.">

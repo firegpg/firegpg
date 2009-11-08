@@ -1,6 +1,6 @@
 <!ENTITY title "FireGPG Assistant - Gmail">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY next "Nästa">
 <!ENTITY title2 "Gmail support">
 <!ENTITY description "FireGPG kan integreras med gmail: extra knappar för att kryptera och/eller signera mail läggs till vilket möjliggör att du kan dekryptera och verifiera mail direkt i gmail.">
 <!ENTITY enable "Starta gmail-stöd">
@@ -10,8 +10,8 @@
 <!ENTITY sign "Sign">
 <!ENTITY encrypt "Kryptera">
 <!ENTITY atta "Bilagor">
-<!ENTITY inline "Use inline">
-<!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
+<!ENTITY inline "Använd automatisk GPG-blocks-detektering">
+<!ENTITY inlinesuck "Automatisk GPG-blocks-detektering är bristfällig och fungerar inte alltid. OpenPGP/Mime bör som standard alltid användas!">
 <!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">
 <!ENTITY wait "Wait 15 seconds or more if your connection is very slow">
 <!ENTITY setp "Set parameters of a working SMTP server (eg. your internet provider or your workplace server)">

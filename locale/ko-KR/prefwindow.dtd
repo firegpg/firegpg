@@ -84,8 +84,8 @@
 <!ENTITY enable-gpgauth-check.label "gpgpAuth 활성화">
 <!ENTITY panpan-assistant-is-now-dead "마법사 다시 실행">
 <!ENTITY api-liste-access2.label "API에 대한 권한 목록 (두 번 클릭하면 제거)">
-<!ENTITY download_key_widhout_asking "Download missing keys without asking">
-<!ENTITY hide_the_wait_window "Hide the wait window">
-<!ENTITY hide_key_server_confirmation "Hide keyserver operations\' confrimations">
-<!ENTITY hide_key_operation_confirmation "Hide keys operations\' confrimations">
-<!ENTITY hide_download_menu "Hide download menu">
+<!ENTITY download_key_widhout_asking "사용자에게 물어보지 않고 빠진 키 다운로드">
+<!ENTITY hide_the_wait_window "대기 창 숨기기">
+<!ENTITY hide_key_server_confirmation "키서버 작업 승인 숨기기">
+<!ENTITY hide_key_operation_confirmation "키 작업 승인 숨기기">
+<!ENTITY hide_download_menu "다운로드 메뉴 숨기기">

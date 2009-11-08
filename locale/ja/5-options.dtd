@@ -2,7 +2,7 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "次">
 <!ENTITY title2 "オプション">
-<!ENTITY description "Here you can set global options for some FireGPG features:">
+<!ENTITY description "ここではいくつかのFireGPG機能のグローバルオプションを設定することができます:">
 <!ENTITY inline "Enable Inline detection">
 <!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">
 <!ENTITY disableagent "GPG-agentを無効にする">

@@ -84,8 +84,8 @@
 <!ENTITY enable-gpgauth-check.label "gpgAuth Aktibatu">
 <!ENTITY panpan-assistant-is-now-dead "Laguntzailea berriro exekutatu">
 <!ENTITY api-liste-access2.label "API-arentzako baimen zerrenda (klik bikotza kentzeko)">
-<!ENTITY download_key_widhout_asking "Download missing keys without asking">
-<!ENTITY hide_the_wait_window "Hide the wait window">
-<!ENTITY hide_key_server_confirmation "Hide keyserver operations\' confrimations">
-<!ENTITY hide_key_operation_confirmation "Hide keys operations\' confrimations">
-<!ENTITY hide_download_menu "Hide download menu">
+<!ENTITY download_key_widhout_asking "Falta diren gakoak galdetu gabe deskargatu">
+<!ENTITY hide_the_wait_window "Itxaron lehioa ezkutatu">
+<!ENTITY hide_key_server_confirmation "Gako serbitzariaren eragiketen konfirmazioak ezkutatu">
+<!ENTITY hide_key_operation_confirmation "Gakoen operazioen konfirmazioak ezkutatu">
+<!ENTITY hide_download_menu "Deskargen menua ezkutatu">

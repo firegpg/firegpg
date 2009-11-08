@@ -84,8 +84,8 @@
 <!ENTITY enable-gpgauth-check.label "Включить gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Запустить помощника снова">
 <!ENTITY api-liste-access2.label "Список прав для API (для удаления сделайте двойной клик)">
-<!ENTITY download_key_widhout_asking "Download missing keys without asking">
-<!ENTITY hide_the_wait_window "Hide the wait window">
-<!ENTITY hide_key_server_confirmation "Hide keyserver operations\' confrimations">
-<!ENTITY hide_key_operation_confirmation "Hide keys operations\' confrimations">
-<!ENTITY hide_download_menu "Hide download menu">
+<!ENTITY download_key_widhout_asking "Скачивать отсутствующие ключи, не спрашивая подтверждения пользователя">
+<!ENTITY hide_the_wait_window "Скрыть окно ожидания">
+<!ENTITY hide_key_server_confirmation "Не спрашивать подтверждение для операций с серверами ключей">
+<!ENTITY hide_key_operation_confirmation "Не показывать подтверждение для операций с ключами">
+<!ENTITY hide_download_menu "Скрыть меню загрузки">

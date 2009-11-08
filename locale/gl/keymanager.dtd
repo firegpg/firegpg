@@ -4,11 +4,11 @@
 <!ENTITY key-create "Creado">
 <!ENTITY key-id "ID">
 <!ENTITY key-name "Nome">
-<!ENTITY revoke-button "Revocar chave">
+<!ENTITY revoke-button "Revogar chave">
 <!ENTITY sign-button "Sinaturas">
 <!ENTITY changetrust-button "Mudar confianza">
 <!ENTITY importserver-button "Importar desde servidor">
-<!ENTITY exportserver-button "Exportar a servidor">
+<!ENTITY exportserver-button "Exportar ao servidor">
 <!ENTITY importfile-button "Importar desde ficheiro">
 <!ENTITY exportfile-button "Exportar a ficheiro">
 <!ENTITY new-button "Nova chave">
@@ -17,7 +17,7 @@
 <!ENTITY trustUnded "Eliminar información sobre confianza">
 <!ENTITY trustDont "Non confío nesta chave">
 <!ENTITY trustMargi "Confío nesta chave de xeito marxinal">
-<!ENTITY trustFull "Confío plenamente nesta chave">
+<!ENTITY trustFull "Confío bastante nesta chave">
 <!ENTITY trustUltimate "Confío absolutamente nesta chave (!)">
 <!ENTITY password-button "Mudar contrasinal">
 <!ENTITY del-button "Borrar">
@@ -25,8 +25,8 @@
 <!ENTITY revokeComprimse "Comprometeuse a chave">
 <!ENTITY revokeRemplaced "A chave foi substituída">
 <!ENTITY revokeNotUsed "A chave xa non se usa">
-<!ENTITY userid-button "ID de usuaria">
+<!ENTITY userid-button "ID de usuario/a">
 <!ENTITY add "Engadir">
 <!ENTITY delete "Borrar">
-<!ENTITY revoke "Revocar">
-<!ENTITY fingerprint-button "Pegada da chave">
+<!ENTITY revoke "Revogar">
+<!ENTITY fingerprint-button "Pegada dixital">

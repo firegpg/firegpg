@@ -31,7 +31,7 @@
 <!ENTITY key-expire "Expira em">
 <!ENTITY pane4.title "Gpg">
 <!ENTITY gpg-add-options "Add arguements to gpg's commande line : (Warning ! Can break FireGPG ! Have a look at doc.)">
-<!ENTITY gmail-buton-signcrypt-checkbox "Assinar e Cifrar">
+<!ENTITY gmail-buton-signcrypt-checkbox "Assinar e cifrar">
 <!ENTITY gmail-buton-signcryptsend-checkbox "Assinar, Cifrar e Enviar">
 <!ENTITY firegpg-version-label.text "Versão actual do FireGPG:">
 <!ENTITY hide-expired "Esconder as chaves expiradas">
@@ -84,8 +84,8 @@
 <!ENTITY enable-gpgauth-check.label "Habilitar gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Executar novamente o assistente">
 <!ENTITY api-liste-access2.label "Lista de direitos para a API">
-<!ENTITY download_key_widhout_asking "Download missing keys without asking">
-<!ENTITY hide_the_wait_window "Hide the wait window">
-<!ENTITY hide_key_server_confirmation "Hide keyserver operations\' confrimations">
-<!ENTITY hide_key_operation_confirmation "Hide keys operations\' confrimations">
-<!ENTITY hide_download_menu "Hide download menu">
+<!ENTITY download_key_widhout_asking "Transferir as chaves em falta sem perguntar">
+<!ENTITY hide_the_wait_window "Esconder janela de espera">
+<!ENTITY hide_key_server_confirmation "Esconder confirmações das operações com o servidor de chaves">
+<!ENTITY hide_key_operation_confirmation "Esconder confirmações das operações com as chaves">
+<!ENTITY hide_download_menu "Esconder menu de transferência">

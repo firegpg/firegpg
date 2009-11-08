@@ -1,5 +1,5 @@
 <!ENTITY newkey "Nova chave - FireGPG">
-<!ENTITY warningaboutgeneeration "Coidado! A xeración de chaves pode levar moito tempo, e pode bloquear o Firefox. Faga algo máis mentres se xera a chave para crear máis entropía.">
+<!ENTITY warningaboutgeneeration "Aviso! A xeración de chaves pode levar moito tempo, e pode bloquear o Firefox. Faga algo máis mentres se xera a chave para crear máis entropía.">
 <!ENTITY name-message "Nome">
 <!ENTITY email-message "Correo electrónico">
 <!ENTITY comment-message "Comentario">
@@ -11,7 +11,7 @@
 <!ENTITY expire-month "meses">
 <!ENTITY expire-days "días">
 <!ENTITY advancedoptions "Opcións avanzadas">
-<!ENTITY keylenght-message "Lonxitude de chave">
+<!ENTITY keylenght-message "Lonxitude da chave">
 <!ENTITY keytype-message "Tipo de chave">
 <!ENTITY generate-button "Xerar chave">
 <!ENTITY cancel-button "Cancelar">
