@@ -222,12 +222,12 @@ under the terms of any one of the MPL, the GPL or the LGPL.
         </statusbarpanel>
 
         <!-- gpgAuth statusbar button -->
-		    <statusbarpanel id="gpgauth-statusbar-button"
-			    class="statusbarpanel-iconic"
-			    onclick="return gpgAuth.status_window.togglePopup()"
-			    tooltiptext="gpgAuth Status Window" style="display:none;">
-          <img src="chrome://firegpg/skin/sb-gpgauth.png" id="gpgauth-StatusIcon" class="statusbarpanel-iconic"/>
-		    </statusbarpanel>
+        <statusbarpanel id="gpgauth-statusbar-button"
+            class="statusbarpanel-iconic"
+            onclick="return gpgAuth.status_window.togglePopup()"
+            tooltiptext="gpgAuth Status Window" style="display:none;">
+            <img src="chrome://firegpg/skin/sb-gpgauth.png" id="gpgauth-StatusIcon" class="statusbarpanel-iconic"/>
+        </statusbarpanel>
         <!-- end gpgAuth statusbar button -->
       </statusbar>
 

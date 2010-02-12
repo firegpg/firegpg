@@ -13,8 +13,8 @@
 }
 
 #gpgauth-Closebox{
-	margin-top: 4px;
-	margin-right: 4px;
+    margin-top: 4px;
+    margin-right: 4px;
 }
 
 #gpgauth-CloseButton:hover { 
@@ -26,41 +26,42 @@
 }
 
 .gpgauth-StatusWindowText {
-	-moz-appearance: none;
-	border:1px solid #000;
-	background-color: transparent;
-	background: none;
-	padding: 0 0 0 2px;
-	width: 336px;
-	height: 130px;
-	font-size: 9px;
+    -moz-appearance: none;
+    border:1px solid #000;
+    background-color: transparent;
+    background: none;
+    padding: 0 0 0 2px;
+    width: 336px;
+    height: 130px;
+    font-size: 9px;
 }
 
 #gpgauth-CopyButton {
-	-moz-appearance:none;
-	margin-left: 14px;
+    -moz-appearance:none;
+    margin-left: 14px;
 }
 
 #gpgauth-ClearButton {
-	-moz-appearance:none;
-	margin-left: 20px;
+    -moz-appearance:none;
+    margin-left: 20px;
 }
 
 #gpgauth-OptionsButton {
-	margin-left:122px;
-	margin-rigth:3px;
+    margin-left:122px;
+    margin-right:3px;
 }
 
 .gpgauth-CustomLink {
-	color: #00a;
-	text-decoration: underline;
+    color: #00a;
+    text-decoration: underline;
 }
 
 .gpgauth-CustomLink:hover {
-	cursor: pointer;
-	color: #17F;
-	text-decoration: bold;
+    cursor: pointer;
+    color: #17F;
+    font-weight:bold;
 }
+
 #gpgauth-statusbar-button {
   padding-left: 3px;
   padding-right: 3px;
@@ -76,8 +77,8 @@
 }
 
 #gpgauth-Closebox{
-	margin-top: 4px;
-	margin-right: 4px;
+    margin-top: 4px;
+    margin-right: 4px;
 }
 
 #gpgauth-CloseButton:hover { 
@@ -89,38 +90,38 @@
 }
 
 .gpgauth-StatusWindowText {
-	-moz-appearance: none;
-	border:1px solid #000;
-	background-color: transparent;
-	background: none;
-	padding: 0 0 0 2px;
-	width: 336px;
-	height: 130px;
-	font-size: 9px;
+    -moz-appearance: none;
+    border:1px solid #000;
+    background-color: transparent;
+    background: none;
+    padding: 0 0 0 2px;
+    width: 336px;
+    height: 130px;
+    font-size: 9px;
 }
 
 #gpgauth-CopyButton {
-	-moz-appearance:none;
-	margin-left: 14px;
+    -moz-appearance:none;
+    margin-left: 14px;
 }
 
 #gpgauth-ClearButton {
-	-moz-appearance:none;
-	margin-left: 20px;
+    -moz-appearance:none;
+    margin-left: 20px;
 }
 
 #gpgauth-OptionsButton {
-	margin-left:122px;
-	margin-rigth:3px;
+    margin-left:122px;
+    margin-right:3px;
 }
 
 .gpgauth-CustomLink {
-	color: #00a;
-	text-decoration: underline;
+    color: #00a;
+    text-decoration: underline;
 }
 
 .gpgauth-CustomLink:hover {
-	cursor: pointer;
-	color: #17F;
-	text-decoration: bold;
+    cursor: pointer;
+    color: #17F;
+    text-decoration: bold;
 }

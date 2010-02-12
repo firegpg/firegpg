@@ -407,8 +407,15 @@ FireGPG.GPGAccess = {
 
             fileobj.initWithPath( this.getGPGCommand());
 
+	    if (!fileobj.exists()) {
+               // command does not exist :p
+               return null;
+            }
+
         } catch  (e) {
             FireGPG.debug(e, 'rungpg/3', true);
+	    // We don't have a working path for GnuPG
+            return null;
         }
 
         try {
