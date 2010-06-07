@@ -2388,6 +2388,8 @@ FireGPG.cGmail2 = {
     */
     initSystem: function() {
 
+        return false; // Gmail turned off.
+
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].
 		                        getService(Components.interfaces.nsIPrefService);
 		prefs = prefs.getBranch("extensions.firegpg.");

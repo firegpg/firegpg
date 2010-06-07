@@ -1,17 +1,17 @@
 <!ENTITY title "FireGPGアシスタント- 秘密鍵">
-<!ENTITY stop "Stop">
+<!ENTITY stop "終了">
 <!ENTITY next "次">
-<!ENTITY title2 "Private key">
+<!ENTITY title2 "秘密鍵">
 <!ENTITY description "The PGP system works with a private key and a public key. You sign messages with your private key and another user verifies your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
-<!ENTITY pk "鍵束には、少なくとも一つの秘密鍵があるはずです。">
-<!ENTITY setdk "Set a default key">
+<!ENTITY pk "少なくとも一つの秘密鍵が鍵束にあります">
+<!ENTITY setdk "規程の鍵を設定する">
 <!ENTITY askforpk "秘密鍵を尋ねる">
-<!ENTITY name "Name">
+<!ENTITY name "名前">
 <!ENTITY id "Id">
 <!ENTITY created "作成しました">
 <!ENTITY expire "期限">
-<!ENTITY nopk "You don't have any private keys in your keyring">
-<!ENTITY genpk "Generate a private and a public key">
-<!ENTITY gen "Generate">
-<!ENTITY importpk "Import a private key">
+<!ENTITY nopk "鍵束に秘密鍵がありません">
+<!ENTITY genpk "秘密鍵と共有鍵を作成します">
+<!ENTITY gen "作成">
+<!ENTITY importpk "秘密鍵を併合する">
 <!ENTITY import "Import">

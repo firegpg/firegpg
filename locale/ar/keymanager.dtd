@@ -6,13 +6,13 @@
 <!ENTITY key-name "Name">
 <!ENTITY revoke-button "Revoke key">
 <!ENTITY sign-button "Signatures">
-<!ENTITY changetrust-button "Change trust">
+<!ENTITY changetrust-button "تغيير الثقة">
 <!ENTITY importserver-button "Import from server">
-<!ENTITY exportserver-button "Export to server">
+<!ENTITY exportserver-button "تصدير إلى ملقم">
 <!ENTITY importfile-button "Import from file">
-<!ENTITY exportfile-button "Export to file">
+<!ENTITY exportfile-button "تصدير الى ملف">
 <!ENTITY new-button "New key">
-<!ENTITY keymanager "Key manager">
+<!ENTITY keymanager "مفاتيح الإدارة">
 <!ENTITY refrech "Refresh keys from server">
 <!ENTITY trustUnded "Remove information about trusting">
 <!ENTITY trustDont "I don't trust this key">
@@ -20,7 +20,7 @@
 <!ENTITY trustFull "I fully trust this key">
 <!ENTITY trustUltimate "Trust this key ultimately (!)">
 <!ENTITY password-button "Change password">
-<!ENTITY del-button "Delete">
+<!ENTITY del-button "حذف">
 <!ENTITY revokeNoRaison "No reason specified">
 <!ENTITY revokeComprimse "Key has been compromised">
 <!ENTITY revokeRemplaced "Key is superseded">
@@ -29,4 +29,4 @@
 <!ENTITY add "إضافة">
 <!ENTITY delete "حذف">
 <!ENTITY revoke "Revoke">
-<!ENTITY fingerprint-button "Fingerprint">
+<!ENTITY fingerprint-button "بصمات الأصابع">

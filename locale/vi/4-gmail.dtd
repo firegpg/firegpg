@@ -8,7 +8,7 @@
 <!ENTITY noauth "NB: Authentication is not tested!">
 <!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
 <!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
+<!ENTITY encrypt "Mã hóa">
 <!ENTITY atta "Tập tin đính kèm">
 <!ENTITY inline "Use inline">
 <!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">

@@ -215,7 +215,8 @@ Portions created by gpg_auth are Copyright (C) 2007 Kyle L. Huff All Rights Rese
     </prefpane>
 
 
-    <prefpane id="paneGmail" label="&pane2.title;" flex="1" image="chrome://firegpg/skin/opt-gmail.png">
+    <!--
+    <prefpane id="paneGmail" label="&pane2.title;" flex="1" image="chrome://firegpg/skin/opt-gmail.png" hidden="true">
         <preferences>
             <preference id="gmail-enabled-pref" name="extensions.firegpg.gmail_enabled" type="bool"/>
             <preference id="gmail-no-no-sign" name="extensions.firegpg.gmail_no_sign_off" type="bool"/>
@@ -256,7 +257,7 @@ Portions created by gpg_auth are Copyright (C) 2007 Kyle L. Huff All Rights Rese
 
         <label  id="gmail-need-a-restart-label" value="&gmail-need-a-restart;"/>
 
-         <!-- gmail enabled ? -->
+         --><!-- gmail enabled ? --><!--
         <checkbox id="gmail-enabled-checkbox" preference="gmail-enabled-pref"
               label="&gmail-enabled-checkbox.label;"
               accesskey="&gmail-enabled-checkbox.accesskey;"/>
@@ -384,7 +385,7 @@ Portions created by gpg_auth are Copyright (C) 2007 Kyle L. Huff All Rights Rese
             </vbox>
 
         </groupbox>
-    </prefpane>
+    </prefpane>-->
 
     <!-- Gpg api -->
 

@@ -1,10 +1,10 @@
 <!ENTITY title "FireGPG Assistant - Options">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY next "Sonraki">
 <!ENTITY title2 "Options">
 <!ENTITY description "Buradan FireGPG özelliklerinden bazıları için genel seçenekleri kurabilirsiniz">
-<!ENTITY inline "Enable Inline detection">
-<!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">
+<!ENTITY inline "Gömülü imza algılamayı etkinleştir.">
+<!ENTITY inlinehelp "Eğer web sayfasında PGP bloğu bulunuyorsa, FireGPG bunu algılar ve buna uygun işlemleri yapabilir.">
 <!ENTITY disableagent "GPG-Temsilcisini etkisiz hale getir">
 <!ENTITY api "FireGPG API'sini etkinleştir">
 <!ENTITY apihelp "FireGPG API herhangi bir sitenin gpg özelliklerini kullanmasına olanak tanır - tabii ki güvenlik kuralları dahilinde">

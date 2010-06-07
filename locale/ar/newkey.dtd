@@ -7,11 +7,11 @@
 <!ENTITY password2-message "Repeat password">
 <!ENTITY keyneverexpire "The key never expires">
 <!ENTITY keyexpire-message "Key expires in">
-<!ENTITY expire-year "years">
-<!ENTITY expire-month "months">
-<!ENTITY expire-days "days">
+<!ENTITY expire-year "سنوات">
+<!ENTITY expire-month "أشهر">
+<!ENTITY expire-days "أيام">
 <!ENTITY advancedoptions "خيارات متقدمة">
 <!ENTITY keylenght-message "Key length">
 <!ENTITY keytype-message "Key type">
 <!ENTITY generate-button "Generate key">
-<!ENTITY cancel-button "Cancel">
+<!ENTITY cancel-button "إلغاء">

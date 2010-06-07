@@ -7,6 +7,6 @@
 <!ENTITY inlinehelp "如果一个网页包含PGP模块,FireGPG会探测到并会作出相应操作!">
 <!ENTITY disableagent "停用GPG-Agent">
 <!ENTITY api "开启FireGPG API">
-<!ENTITY apihelp "FireGPG应用程序接口允许任何网站使用gpg的功能-通过安全的机制。">
+<!ENTITY apihelp "FireGPG应用程序接口允许任何网站使用gpg的功能-当然是通过安全的机制">
 <!ENTITY gpgauth "启用GpgAuth">
 <!ENTITY gpgauthhelp "gpgAuth是一种机制或进程来验证正在使用GnuPG的网络用户,并不是由FireGPG作者们所开发">

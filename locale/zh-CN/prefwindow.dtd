@@ -84,8 +84,8 @@
 <!ENTITY enable-gpgauth-check.label "启用gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "在次执行设定助手">
 <!ENTITY api-liste-access2.label "API访问权限列表(双击移除)">
-<!ENTITY download_key_widhout_asking "Download missing keys without asking">
-<!ENTITY hide_the_wait_window "Hide the wait window">
-<!ENTITY hide_key_server_confirmation "Hide keyserver operations' confirmations">
-<!ENTITY hide_key_operation_confirmation "Hide keys operations' confirmations">
-<!ENTITY hide_download_menu "Hide download menu">
+<!ENTITY download_key_widhout_asking "无需确认直接下载丢失的密钥">
+<!ENTITY hide_the_wait_window "隐藏等待窗口">
+<!ENTITY hide_key_server_confirmation "隐藏对密钥服务器操作的确认">
+<!ENTITY hide_key_operation_confirmation "隐藏对密钥操作的确认">
+<!ENTITY hide_download_menu "隐藏下载菜单">

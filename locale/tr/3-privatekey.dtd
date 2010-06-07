@@ -1,17 +1,17 @@
 <!ENTITY title "FireGPG Assistant - Private key">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY next "Sonraki">
 <!ENTITY title2 "Private key">
 <!ENTITY description "PGP sistemi özel ve genek anahtarlarla çalışır. İletilerinizi özel anahtarınızla imzalar ve başka bir kullanıcı iletinizi genel imzanızla doğrular. Eğer size bir ileti göndermek isterlerse, genel anahtarınızı kullanırlar ve sadece siz kendi özel anahtarınızla iletiyi deşifre edebilirsiniz.">
 <!ENTITY pk "You have at least one private key in your keyring">
 <!ENTITY setdk "Set a default key">
 <!ENTITY askforpk "Özel anahtar isteyiniz">
-<!ENTITY name "Name">
+<!ENTITY name "Ad">
 <!ENTITY id "Id">
 <!ENTITY created "Üretildi">
 <!ENTITY expire "Süresi dolmuş">
-<!ENTITY nopk "You don't have any private keys in your keyring">
+<!ENTITY nopk "Anahtarlığınızda gizli anahtara sahip değilsiniz">
 <!ENTITY genpk "Özel ve genel anajtar üret">
 <!ENTITY gen "Üret">
-<!ENTITY importpk "Import a private key">
-<!ENTITY import "Import">
+<!ENTITY importpk "Gizli anahtar indir">
+<!ENTITY import "indir">

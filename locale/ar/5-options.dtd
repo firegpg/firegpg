@@ -2,11 +2,11 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Next">
 <!ENTITY title2 "Options">
-<!ENTITY description "Here you can set global options for some FireGPG features:">
+<!ENTITY description "هنا يمكنك ان تحدد الخيارات العالمية لبعض الميزات FireGPG :">
 <!ENTITY inline "Enable Inline detection">
 <!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">
-<!ENTITY disableagent "Disable GPG-Agent">
-<!ENTITY api "Enable FireGPG API">
-<!ENTITY apihelp "FireGPG API lets any website use gpg's features - of course with security mechanisms">
-<!ENTITY gpgauth "Enable gpgAuth">
-<!ENTITY gpgauthhelp "gpgAuth is mechanism or process to authenticate web-users using GnuPG, not developped by FireGPG authors">
+<!ENTITY disableagent "تعطيل GnuPG الوكيل">
+<!ENTITY api "تمكين FireGPG API">
+<!ENTITY apihelp "FireGPG API يتيح استخدام أي موقع GnuPGs الميزات -- بطبيعة الحال مع الآليات الأمنية">
+<!ENTITY gpgauth "gpgAuth تمكين">
+<!ENTITY gpgauthhelp "gpgAuth هي آلية أو عملية لمصادقة على شبكة الإنترنت للمستخدمين باستخدام GnuPG. gpgAuth لم يكن الكتاب الذي وضعته لFireGPG.">

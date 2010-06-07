@@ -6,7 +6,7 @@
 <!ENTITY key-name "Name">
 <!ENTITY revoke-button "Revoke key">
 <!ENTITY sign-button "Signatures">
-<!ENTITY changetrust-button "Change trust">
+<!ENTITY changetrust-button "Promeniti nivo poverenja">
 <!ENTITY importserver-button "Import from server">
 <!ENTITY exportserver-button "Export to server">
 <!ENTITY importfile-button "Import from file">
@@ -26,7 +26,7 @@
 <!ENTITY revokeRemplaced "Key is superseded">
 <!ENTITY revokeNotUsed "Key is no longer used">
 <!ENTITY userid-button "User ID">
-<!ENTITY add "Add">
-<!ENTITY delete "Delete">
+<!ENTITY add "Dodaj">
+<!ENTITY delete "Obriši">
 <!ENTITY revoke "Revoke">
 <!ENTITY fingerprint-button "Fingerprint">

@@ -3,7 +3,7 @@
 <!ENTITY key-expire "期限">
 <!ENTITY key-create "Created">
 <!ENTITY key-id "ID">
-<!ENTITY key-name "">
+<!ENTITY key-name "名前">
 <!ENTITY revoke-button "鍵を破棄する">
 <!ENTITY sign-button "署名">
 <!ENTITY changetrust-button "信頼度を変更">
@@ -29,4 +29,4 @@
 <!ENTITY add "追加">
 <!ENTITY delete "削除">
 <!ENTITY revoke "破棄">
-<!ENTITY fingerprint-button "Fingerprint">
+<!ENTITY fingerprint-button "指紋">

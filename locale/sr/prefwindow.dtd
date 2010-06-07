@@ -65,11 +65,11 @@
 <!ENTITY gmail-disable-auto-decryption "Old behavior for decryption">
 <!ENTITY gmail-force-from "Force from value :">
 <!ENTITY gpg-special-path-values "Use {$FxFolder} to have the Firefox's folder and {$SPACE} to have a space inside an argument">
-<!ENTITY decrypt-when-reply "Decrypt content when reply">
+<!ENTITY decrypt-when-reply "Dešifruj sadržaj pri slanju odgovora">
 <!ENTITY gmail-buton-attachements-checkbox "Attachments">
-<!ENTITY autorwap-liste-action.label "Action">
-<!ENTITY autorwap-liste-domain.label "Webmail">
-<!ENTITY autowrap_list.label "Automatic answers (double-click to remove) :">
+<!ENTITY autorwap-liste-action.label "Radnja">
+<!ENTITY autorwap-liste-domain.label "Webmejl">
+<!ENTITY autowrap_list.label "automatski odgovori (dva klika za uklanjanje)">
 <!ENTITY paneautowrap.title "Autowrap">
 <!ENTITY gmail-show-user-info-for-signs-checkbox "Show user data for good signatures">
 <!ENTITY gmail-keep-encrypted-mail "Encrypt replies to encrypted emails">
@@ -83,7 +83,7 @@
 <!ENTITY enable-gpgauth-statuswindow-check.accesskey "W">
 <!ENTITY enable-gpgauth-check.label "Enable gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
-<!ENTITY api-liste-access2.label "List of rights for the API (double click to remove)">
+<!ENTITY api-liste-access2.label "Листа дозвола за API (двоструки клик за уклањање)">
 <!ENTITY download_key_widhout_asking "Download missing keys without asking">
 <!ENTITY hide_the_wait_window "Hide the wait window">
 <!ENTITY hide_key_server_confirmation "Hide keyserver operations' confirmations">

@@ -1,21 +1,21 @@
 <!ENTITY title "FireGPG Assistant - Gmail">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY next "Sonraki">
 <!ENTITY title2 "Gmail support">
 <!ENTITY description "FireGPG gmail ile entegre çalışabilir: iletileri şifreleme ve deşifreleme ve/ya imzalama için ek düğmeler eklenir ve bu öğeleri içeren herhangi bir iletiyi deşifre edebilir ve doğrulayabilirsiniz.">
 <!ENTITY enable "Gmail desteğini etkinleştir">
 <!ENTITY smtpok "FireGPG is able to access to the SMTP server">
 <!ENTITY noauth "NB: Authentication is not tested!">
-<!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
+<!ENTITY noauthhelp "FireGPG eposta gönderiminde bir sorun olursa sizi mesaj vererek uyaracaktır.">
 <!ENTITY sign "Sign">
 <!ENTITY encrypt "Şifrele">
 <!ENTITY atta "Eklentiler">
-<!ENTITY inline "Use inline">
-<!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
-<!ENTITY nosmtp "FireGPG isn't able to access to the SMTP server OR the request is still in progress">
+<!ENTITY inline "Gömülü imza kullan. (İmza eposta içinde yer alır. Epostaya eklenmez.)">
+<!ENTITY inlinesuck "Dosya içine ekli kullanım kötüdür ve her zaman çalışmamaktadır. Standart olarak OpenPGP/Mime kullanılmalıdır.">
+<!ENTITY nosmtp "FireGPG SMTP sunucusuna ulaşamıyor YA DA istek hala devam etmekte">
 <!ENTITY wait "Wait 15 seconds or more if your connection is very slow">
 <!ENTITY setp "Set parameters of a working SMTP server (eg. your internet provider or your workplace server)">
-<!ENTITY host "Host (smtp.gmail.com): ">
+<!ENTITY host "Host (smtp.gmail.com)">
 <!ENTITY port "Port (465):">
 <!ENTITY username "Username (leave blank to use the username of logged account):">
 <!ENTITY ssl "Use SSL">

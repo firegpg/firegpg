@@ -84,8 +84,8 @@
 <!ENTITY enable-gpgauth-check.label "Activar gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Ejecuta el asistente de nuevo">
 <!ENTITY api-liste-access2.label "Lista de permisos para la API (doble clic para eliminar)">
-<!ENTITY download_key_widhout_asking "Download missing keys without asking">
-<!ENTITY hide_the_wait_window "Hide the wait window">
-<!ENTITY hide_key_server_confirmation "Hide keyserver operations' confirmations">
-<!ENTITY hide_key_operation_confirmation "Hide keys operations' confirmations">
-<!ENTITY hide_download_menu "Hide download menu">
+<!ENTITY download_key_widhout_asking "Descargar llaves faltantes sin preguntar">
+<!ENTITY hide_the_wait_window "Ocultar la ventana de espera">
+<!ENTITY hide_key_server_confirmation "Ocultar confirmaciones de las operaciones de servidor de llaves">
+<!ENTITY hide_key_operation_confirmation "Ocultar confirmaciones de las llaves">
+<!ENTITY hide_download_menu "Ocultar menú de descarga">

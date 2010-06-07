@@ -84,7 +84,7 @@
 <!ENTITY enable-gpgauth-check.label "Dùng gpgAuth">
 <!ENTITY panpan-assistant-is-now-dead "Execute the assistant again">
 <!ENTITY api-liste-access2.label "Quyền-hảnh cho API.">
-<!ENTITY download_key_widhout_asking "Download missing keys without asking">
+<!ENTITY download_key_widhout_asking "Tải về những key thiếu mà không cần hỏi">
 <!ENTITY hide_the_wait_window "Hide the wait window">
 <!ENTITY hide_key_server_confirmation "Hide keyserver operations' confirmations">
 <!ENTITY hide_key_operation_confirmation "Hide keys operations' confirmations">

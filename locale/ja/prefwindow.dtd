@@ -9,7 +9,7 @@
 <!ENTITY change-gpg-path-button "ブラウズ">
 <!ENTITY change-gpg-path-checkbox "gpgのパスを指定:">
 <!ENTITY result-always-in-new-window "常に暗号化や署名の結果を新しいウィンドウに表示する。">
-<!ENTITY no-gpg-agent-checkbox "GPG-agentを強制的にオフにする (いくつかの問題が解決するかもしれません)">
+<!ENTITY no-gpg-agent-checkbox "GPG agentを強制的にオフにする (いくつかの問題が解決するかもしれません)">
 <!ENTITY ask-for-save-pass "デフォルトで, パスワードを保存するか尋ねる">
 <!ENTITY gmail-no-no-sign-checkbox "'署名がありません [...]' を表示しない">
 <!ENTITY gmail-need-a-restart "これらの設定を反映させるために、ブラウザの再起動が必要です。">
@@ -35,7 +35,7 @@
 <!ENTITY gmail-buton-signcryptsend-checkbox "署名, 暗号化して送信">
 <!ENTITY firegpg-version-label.text "現在のFireGPGバージョン:">
 <!ENTITY hide-expired "有効期限切れの署名を隠す">
-<!ENTITY use-api "ウェブページのFireGPG APIを有効にする (roundcube等) (再起動が必要)">
+<!ENTITY use-api "RoundCube等のウェブページでFireGPG APIを有効にする (再起動が必要)">
 <!ENTITY paneapi.title "API">
 <!ENTITY api-liste-domain.label "ドメイン">
 <!ENTITY api-liste-keyauth.label "鍵">
@@ -84,8 +84,8 @@
 <!ENTITY enable-gpgauth-check.label "gpgAuthを有効にする">
 <!ENTITY panpan-assistant-is-now-dead "再度アシスタントを実行する">
 <!ENTITY api-liste-access2.label "APIの権限リスト (ダブルクリックで削除)">
-<!ENTITY download_key_widhout_asking "Download missing keys without asking">
+<!ENTITY download_key_widhout_asking "見つからない鍵を、尋ねずにダウンロードする">
 <!ENTITY hide_the_wait_window "Hide the wait window">
 <!ENTITY hide_key_server_confirmation "Hide keyserver operations' confirmations">
 <!ENTITY hide_key_operation_confirmation "Hide keys operations' confirmations">
-<!ENTITY hide_download_menu "Hide download menu">
+<!ENTITY hide_download_menu "ダウンロードメニューを隠す">

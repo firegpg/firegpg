@@ -9,4 +9,4 @@
 <!ENTITY advanced "هذه الخيارات للمستخدمين المتقدمين. إذا كنت لا أفهم، لا تقلق ولا تغييره">
 <!ENTITY help "This means help is available.  Mouse over the icon for the tooltip.">
 <!ENTITY helppop "Hello, I'm the help">
-<!ENTITY description "Welcome!  This assistant will help you to configure FireGPG. If you're a new user it's recommended to follow it to get a working configuration. What ever you choose to do, you will be able to use the option windows to change any option later.">
+<!ENTITY description "مرحبا! مساعد هذا سيساعدك على تكوين FireGPG. إذا كنت مستخدم جديد انها أوصت لاستخدام هذا الدليل من أجل التكوين الأولي. مهما اخترت القيام ، يمكنك استخدام مربعات الخيار لتغيير أي خيار في وقت لاحق.">

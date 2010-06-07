@@ -44,11 +44,11 @@ if (typeof(FireGPG.Const)=='undefined') { FireGPG.Const = {}; }
 
 /* Constant: FireGPG.Const.Version
   The current version of FireGPG */
-FireGPG.Const.Version = '0.7.10';
+FireGPG.Const.Version = '0.8';
 
 /* Constant: FireGPG.Const.VersionA
   The current verion of FireGPG without dots */
-FireGPG.Const.VersionA = '0710';
+FireGPG.Const.VersionA = '08';
 
 /* Constant: FireGPG.Const.Status
   The status of the FireGPG's code. Can be _DEVEL_ or _RELASE_. Use _RELASE_ only for.. relases ;). */

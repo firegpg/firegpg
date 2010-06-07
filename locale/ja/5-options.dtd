@@ -1,10 +1,10 @@
 <!ENTITY title "FireGPGアシスタント- オプション">
-<!ENTITY stop "Stop">
+<!ENTITY stop "終了">
 <!ENTITY next "次">
 <!ENTITY title2 "オプション">
 <!ENTITY description "ここではいくつかのFireGPG機能のグローバルオプションを設定することができます:">
-<!ENTITY inline "Enable Inline detection">
-<!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">
+<!ENTITY inline "インライン検出を有効にする">
+<!ENTITY inlinehelp "ウェブページにPGPブロックが含まれていたら、FireGPGはそれを検出し必要な作業を行います!">
 <!ENTITY disableagent "GPG-agentを無効にする">
 <!ENTITY api "FireGPG APIを有効にする">
 <!ENTITY apihelp "FireGPG API lets any website use gpg's features - of course with security mechanisms">

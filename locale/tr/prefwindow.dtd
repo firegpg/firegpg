@@ -49,7 +49,7 @@
 <!ENTITY gmail-buton-csignsend-checkbox "İmzayı temizle ve gönder">
 <!ENTITY hide-fireftp-message "Yüklenmiş eski IPC kütüphanesiyle ilgili mesaj gösterme">
 <!ENTITY use-fireftp-workaround "Try to access to IPC with the old API">
-<!ENTITY keyserver-message "Keyserver">
+<!ENTITY keyserver-message "Anahtar Sunucusu">
 <!ENTITY symmetric-algo "Algorithm used for symmetric encryption. Leave blank for default. Use 'gpg --version' to have the list of usable algorithms. In most cases, you should have these choices:">
 <!ENTITY gmail-new-interface "Yeni GMail arayüzü">
 <!ENTITY gmail-select-by-default-label "Ön yüklü olarak seçilmiş:">
@@ -75,7 +75,7 @@
 <!ENTITY gmail-keep-encrypted-mail "Şifreli postaların yanıtlarını da şifrele">
 <!ENTITY gmail-smtp-no-auth-checkbox "SMTP yetkilendirmesini etkisiz hale getir">
 <!ENTITY dont_ask_to_download_key "Kayıp anahtarları indirmeye çalışmayınız">
-<!ENTITY keyserverproxy-message "Proxy to use for HTTP and HKP keyservers: ">
+<!ENTITY keyserverproxy-message "HTTP ve HKP anahtar sunucularını kullanmak için vekil sunucu">
 <!ENTITY digest-message "Mesaj özü (imza için kullanılan karım) (SHA256, SHA512 v.s.) (Gmail desteği iletiyi oluştururken bu değerleri kullanır.):">
 <!ENTITY enable-gpgauth-statusbar-check.label "gpgAuth durum ikonunu ektinleştir">
 <!ENTITY enable-gpgauth-statusbar-check.accesskey "D">
@@ -86,6 +86,6 @@
 <!ENTITY api-liste-access2.label "API hakları listesi (kaldırmak için çift tıklayınız)">
 <!ENTITY download_key_widhout_asking "">
 <!ENTITY hide_the_wait_window "Bekle penceresini sakla">
-<!ENTITY hide_key_server_confirmation "Hide keyserver operations' confirmations">
+<!ENTITY hide_key_server_confirmation "Anahtar sunucudan gelen onaylamaları gizle">
 <!ENTITY hide_key_operation_confirmation "Anahtar işlemlerini doğrulamayı sakla">
 <!ENTITY hide_download_menu "İndirme menüsünü sakla">

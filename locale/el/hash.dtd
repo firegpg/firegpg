@@ -1,5 +1,5 @@
 <!ENTITY thitle "Compute hashes of files">
 <!ENTITY result "Result:">
-<!ENTITY browse "Select a file">
+<!ENTITY browse "Επιλογή αρχείου">
 <!ENTITY hash "Type:">
 <!ENTITY copy "Copy hash to clipboard">

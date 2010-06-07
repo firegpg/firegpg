@@ -2,7 +2,7 @@
 <!ENTITY stop "Parar">
 <!ENTITY next "Seguinte">
 <!ENTITY title2 "GnuPG">
-<!ENTITY description "O FireGPG usa o GnuPG para executar as operações pgp, o que quer dizer que o GnuPG tem que estar instalar para que o FireGPG funcione.">
+<!ENTITY description "O FireGPG usa o GnuPG para executar as operações PGP, o que quer dizer que o GnuPG tem que estar instalado para que o FireGPG funcione.">
 <!ENTITY working "O GnuPG parece estar acessível e a funcionar.">
 <!ENTITY specialhome "Quer definir uma directoria inicial personalizada para o GnuPG?">
 <!ENTITY sethome "Definir uma directoria inicial">

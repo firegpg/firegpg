@@ -2,7 +2,7 @@
 <!ENTITY stop "Parar">
 <!ENTITY next "Próximo">
 <!ENTITY title2 "Suporte ao GMail">
-<!ENTITY description "O FireGPG pode ser integrada ao GMail: botões adicionais para cofificar e/ou assinar mensagens são adicionadas e vós podereis decodificar e verificar assinaturas de qualquer mensagem.">
+<!ENTITY description "O FireGPG pode ser integrado ao GMail: botões adicionais para codificar e/ou assinar mensagens serão adicionados e você poderá decodificar e verificar assinaturas de qualquer mensagem.">
 <!ENTITY enable "Abilitar suporte ao GMail">
 <!ENTITY smtpok "FireGPG conseguiu acessar o servidor SMTP">
 <!ENTITY noauth "Nota: A autenticação não foi testada!">

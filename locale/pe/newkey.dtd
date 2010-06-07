@@ -10,7 +10,7 @@
 <!ENTITY expire-year "سال">
 <!ENTITY expire-month "ماه">
 <!ENTITY expire-days "روز">
-<!ENTITY advancedoptions "گزینه‌های پیشرفته">
+<!ENTITY advancedoptions "&lt;p dir=&quot;rtl&quot;&gt;تنظیمات پیشرفته&lt;/p&gt;">
 <!ENTITY keylenght-message "طول کلید">
 <!ENTITY keytype-message "نوع کلید">
 <!ENTITY generate-button "تولید کلید">

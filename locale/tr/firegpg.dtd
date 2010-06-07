@@ -49,12 +49,12 @@
 <!ENTITY firegpgContext.labelManager "Anahtar yöneticisi">
 <!ENTITY firegpgToolbar.labelManager "Anahtar yöneticisi">
 <!ENTITY firegpgMenu.labelManager "Anahtar yöneticisi">
-<!ENTITY keynotrevokedpassword "Error, key not revoked. Wrong password?">
+<!ENTITY keynotrevokedpassword "Hata, anahtar yürürlükten kaldırılmamış. Yanlış parola mı?">
 <!ENTITY firegpgContext.labelWrapSign "Sarılmış imza">
 <!ENTITY firegpgMenu.labelWrapSign "Sarılmış işaret">
 <!ENTITY firegpgContext.labelHashs "Karımlar">
 <!ENTITY firegpgContext.labelFiles "Dosya işlemleri">
 <!ENTITY firegpgMenu.labelFiles "Dosya işlemleri">
 <!ENTITY firegpgMenu.labelHashs "Karımlar">
-<!ENTITY parseAgain "Parse (again) this page.">
+<!ENTITY parseAgain "Sayfayı (tekrar) çözümle.">
 <!ENTITY update-avaiable "An update of FireGPG is available">

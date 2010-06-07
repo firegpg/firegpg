@@ -9,7 +9,7 @@
 <!ENTITY name "Name">
 <!ENTITY id "Id">
 <!ENTITY created "Tạo ra">
-<!ENTITY expire "Expire">
+<!ENTITY expire "Đã quá hạn">
 <!ENTITY nopk "You don't have any private keys in your keyring">
 <!ENTITY genpk "Generate a private and a public key">
 <!ENTITY gen "Generate">

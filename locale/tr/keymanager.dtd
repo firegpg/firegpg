@@ -1,7 +1,7 @@
-<!ENTITY key-status "Status">
-<!ENTITY key-trust "Trust">
+<!ENTITY key-status "Durumu">
+<!ENTITY key-trust "Güvenilir">
 <!ENTITY key-expire "Expire">
-<!ENTITY key-create "Created">
+<!ENTITY key-create "Yaratıldı">
 <!ENTITY key-id "ID">
 <!ENTITY key-name "İsim">
 <!ENTITY revoke-button "Revoke key">
@@ -11,8 +11,8 @@
 <!ENTITY exportserver-button "Sunucuya dışa aktarım">
 <!ENTITY importfile-button "Dosyadan içe aktar">
 <!ENTITY exportfile-button "Dosyaya dışa aktarım">
-<!ENTITY new-button "New key">
-<!ENTITY keymanager "Key manager">
+<!ENTITY new-button "Yeni anahtar">
+<!ENTITY keymanager "Anahtar Yöneticisi">
 <!ENTITY refrech "Refresh keys from server">
 <!ENTITY trustUnded "Remove information about trusting">
 <!ENTITY trustDont "I don't trust this key">

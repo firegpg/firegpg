@@ -1,21 +1,21 @@
 <!ENTITY title "FireGPG Assistant - GnuPG">
 <!ENTITY stop "Stop">
-<!ENTITY next "Next">
+<!ENTITY next "Sonraki">
 <!ENTITY title2 "GnuPG">
 <!ENTITY description "FireGPG gpg işlemlerini yürütebilmek için GnuPG'yi kullanır. Bu yüzden FireGPG'nin çalışabilmesi için GnuPG'nin kurulu olması gerekir.">
 <!ENTITY working "GnuPG seems to be accessible and working.">
 <!ENTITY specialhome "Do you want to set a custom homedir for GnuPG ?">
 <!ENTITY sethome "Set a home dir">
 <!ENTITY notworking "GnuPG doesn't work, there is a problem. Please fix this and click on next.">
-<!ENTITY isinstalled "Did you install GnuPG?">
+<!ENTITY isinstalled "GnuPG kurulumu yaptınız mı?">
 <!ENTITY download "GnuPG'yi buradan indirebilirsiniz: (Hangi GnuPG olursa olsun çalışacaktır)">
 <!ENTITY windows "Windows users: Click here to download gpg4win">
-<!ENTITY linux "Linux users: Please use the package shipped with your distribution, or click here for sources.">
+<!ENTITY linux "Linux kullanıcıları: Lütfen dağıtımınızla beraber gelen paketi kullanınız, ya da kaynaklar için buraya tıklayınız.">
 <!ENTITY macos "MacOs users: I don't know how, but there is a way. Google is your friend.">
 <!ENTITY uncommon "Is you GnuPG installed in an uncommon location?">
 <!ENTITY setpath "Please set the path to GnuPG here: ">
 <!ENTITY browse "Gözat">
-<!ENTITY isfireftp "Is FireFTP installed?">
+<!ENTITY isfireftp "FireFTP sisteminizde kurulu mu?">
 <!ENTITY fireftpproblem "FireGPG ve FireFTP, FireFTP'nin eski IPC kütüphanesinden dolayı birbirleriyle çakışıyor.">
 <!ENTITY uninstall "If FireGPG's fix doesn't work, you have to uninstall one of them to get the other working.">
 <!ENTITY strangeplateform "Are you using a strange platform?">

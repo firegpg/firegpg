@@ -642,8 +642,8 @@ FireGPG.Inline.siteStatus = function(aUrl) {
 
     try {
 
-        if (aUrl.host.indexOf("mail.google.com") != -1) //Forcé parqu'on handle de toutes façons
-            return 'OFF';
+        /*if (aUrl.host.indexOf("mail.google.com") != -1) //Forcé parqu'on handle de toutes façons
+            return 'OFF';*/
 
         var prefs = Components.classes["@mozilla.org/preferences-service;1"].
                                    getService(Components.interfaces.nsIPrefService);

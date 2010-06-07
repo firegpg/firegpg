@@ -13,7 +13,7 @@
 <!ENTITY inline "使用内嵌功能">
 <!ENTITY inlinesuck "内嵌功能状态不佳,而且并不是经常有效.应当使用被视为标准的OpenPGP/Mime.">
 <!ENTITY nosmtp "FireGPG无法访问SMTP服务器或访问仍正在进行中">
-<!ENTITY wait "如果您的网络连接比较缓慢,请等待至少15秒钟">
+<!ENTITY wait "如果您的网络连接比较慢,需等待至少15秒钟">
 <!ENTITY setp "设置一个有效的SMTP服务器参数(比如您的网络服务提供商或者您的工作场所的服务器)">
 <!ENTITY host "主机(smtp.gmail.com)">
 <!ENTITY port "端口(465):">

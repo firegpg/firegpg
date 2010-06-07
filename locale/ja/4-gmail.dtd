@@ -1,16 +1,16 @@
 <!ENTITY title "FireGPGアシスタント- Gmail">
-<!ENTITY stop "Stop">
+<!ENTITY stop "終了">
 <!ENTITY next "次">
 <!ENTITY title2 "Gmailサポート">
 <!ENTITY description "FireGPG can be integrated with gmail: additional buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signatures of any email that contains them.">
 <!ENTITY enable "Gmailサポートを有効にする">
 <!ENTITY smtpok "FireGPGはSMTPサーバにアクセスできます">
-<!ENTITY noauth "NB: Authentication is not tested!">
-<!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
+<!ENTITY noauth "注意: 認証はテストされていません!">
+<!ENTITY noauthhelp "問題があれば、メール送信時にFireGPGが警告します">
 <!ENTITY sign "署名">
-<!ENTITY encrypt "Encrypt">
+<!ENTITY encrypt "暗号化">
 <!ENTITY atta "添付">
-<!ENTITY inline "Use inline">
+<!ENTITY inline "インラインで使用する">
 <!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">
 <!ENTITY nosmtp "FireGPGはSMTPサーバにアクセスできません、または、アクセス中です">
 <!ENTITY wait "Wait 15 seconds or more if your connection is very slow">

@@ -16,7 +16,7 @@
 <!ENTITY setpath "Please set the path to GnuPG here: ">
 <!ENTITY browse "Trình duyệt">
 <!ENTITY isfireftp "Is FireFTP installed?">
-<!ENTITY fireftpproblem "FireGPG and FireFTP conflict due to the old IPC library of FireFTP.">
+<!ENTITY fireftpproblem "FireGPG và FireFTP xung đột do thư viện IPC cũ của FireFTP">
 <!ENTITY uninstall "If FireGPG's fix doesn't work, you have to uninstall one of them to get the other working.">
 <!ENTITY strangeplateform "Are you using a strange platform?">
 <!ENTITY platform "FireGPG works only on Windows, MacOs and Linux x86 and x86_64 plateforms.">

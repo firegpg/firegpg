@@ -2,13 +2,13 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Next">
 <!ENTITY title2 "Gmail support">
-<!ENTITY description "FireGPG can be integrated with gmail: additional buttons to encrypt and/or sign mails are added and you will be able to decrypt and verify signatures of any email that contains them.">
+<!ENTITY description "FireGPG يمكن أن تكون متكاملة مع جوجل : أزرار إضافية لتشفير و / أو رسائل البريد الإلكتروني التوقيع تضاف إلى بريد جوجل ، وسوف تكون قادرة على فك والتحقق من التوقيعات من أي بريد إلكتروني يحتوي على التوقيع.">
 <!ENTITY enable "تمكين دعم جيميل">
 <!ENTITY smtpok "FireGPG is able to access to the SMTP server">
 <!ENTITY noauth "NB: Authentication is not tested!">
 <!ENTITY noauthhelp "FireGPG will warn you when it tries to send a mail if there is a problem ">
 <!ENTITY sign "Sign">
-<!ENTITY encrypt "Encrypt">
+<!ENTITY encrypt "شفر يحول الى شفرة">
 <!ENTITY atta "مرفقات">
 <!ENTITY inline "Use inline">
 <!ENTITY inlinesuck "Inline is bad and not working every time. OpenPGP/Mime, as standard, should be used!">

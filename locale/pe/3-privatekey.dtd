@@ -13,5 +13,5 @@
 <!ENTITY nopk "You don't have any private keys in your keyring">
 <!ENTITY genpk "ساختن یک جفت کلید عمومی و خصوصی">
 <!ENTITY gen "ساختن">
-<!ENTITY importpk "Import a private key">
+<!ENTITY importpk "وارد کردن یک کلید خصوصی">
 <!ENTITY import "وارد کردن">

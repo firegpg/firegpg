@@ -6,7 +6,7 @@
 <!ENTITY whatnext "This suggest a solution or something you should do">
 <!ENTITY good "این چیز خوبی است">
 <!ENTITY problem "This is a problem">
-<!ENTITY advanced "این برای کاربران پیشرفته است. اگر معنایش را نمی‌دانید، نگران نشده و آن‌‌را تغییر ندهید.">
-<!ENTITY help "This means help is available.  Mouse over the icon for the tooltip.">
-<!ENTITY helppop "Hello, I'm the help">
+<!ENTITY advanced "&lt;p dir=&quot;rtl&quot;&gt;این برای کاربران پیشرفته است. اگر معنایش را نمی‌دانید، نگران نشده و آن‌‌را تغییر ندهید.&lt;/p&gt;">
+<!ENTITY help "این به معنای وجود کمک است. با بردن ماوس خود بروی آیکون برای اطلاع بیشتر">
+<!ENTITY helppop "بدرود, من کمک کننده هستم">
 <!ENTITY description "Welcome!  This assistant will help you to configure FireGPG. If you're a new user it's recommended to follow it to get a working configuration. What ever you choose to do, you will be able to use the option windows to change any option later.">

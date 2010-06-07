@@ -6,7 +6,7 @@
 <!ENTITY inline "Enable Inline detection">
 <!ENTITY inlinehelp "If a webpage contains a PGP block, FireGPG can detect it and perform relevant operations with it!">
 <!ENTITY disableagent "Disable GPG-Agent">
-<!ENTITY api "Enable FireGPG API">
+<!ENTITY api "啟用 FireGPG API">
 <!ENTITY apihelp "FireGPG API lets any website use gpg's features - of course with security mechanisms">
 <!ENTITY gpgauth "Enable gpgAuth">
 <!ENTITY gpgauthhelp "gpgAuth is mechanism or process to authenticate web-users using GnuPG, not developped by FireGPG authors">

@@ -6,7 +6,7 @@
 <!ENTITY whatnext "这提示了您需要遵循的解决方案或者其它">
 <!ENTITY good "这是有积极价值的事物">
 <!ENTITY problem "这是一个难题">
-<!ENTITY advanced "此项设置适合高级用户，如果您不确知此项设置的后果，请不要担心也不要变动此项设置。">
+<!ENTITY advanced "此项设置适合高级用户，如果您不理解本选项的意思，不要担心也无需修改此项设置。">
 <!ENTITY help "这意味着帮助可用.移动鼠标到图标以获得提示.">
 <!ENTITY helppop "Hello,我是帮助系统">
 <!ENTITY description "欢迎您!本助手将协助您配置FireGPG.如果您是一位新用户,我们建议您跟着跟随助手以创建有效的配置.无论您作何选择,您将来仍然可以改动这里的任一选项.">

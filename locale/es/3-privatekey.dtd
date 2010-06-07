@@ -2,7 +2,7 @@
 <!ENTITY stop "Detener">
 <!ENTITY next "Siguiente">
 <!ENTITY title2 "Llave privada">
-<!ENTITY description "El sistema PGP funciona con una calve pública y otra privada. Puedes firmar tus mensajes con tu clave privada y otros usuarios la pueden verificar con tu firma o clave pública. Si quieren mandarte un mensaje, pueden usar tu clave pública y sólo tú, podrás desencriptarlo con tu clave privada. ">
+<!ENTITY description "El sistema PGP funciona con una clave pública y otra privada. Los mensajes se firman con tu clave privada, y otros usuarios la verifican con tu clave pública. Si quieren mandarte un mensaje cifrado, utilizan tu clave pública, y tú (y sólo tú) podrás descifrarlo con tu clave privada.">
 <!ENTITY pk "Tienes por lo menos una llave privada en tu llavero">
 <!ENTITY setdk "Establecer una llave predeterminada">
 <!ENTITY askforpk "Solicitar clave privada.">

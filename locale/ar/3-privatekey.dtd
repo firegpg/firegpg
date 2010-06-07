@@ -2,14 +2,14 @@
 <!ENTITY stop "Stop">
 <!ENTITY next "Next">
 <!ENTITY title2 "Private key">
-<!ENTITY description "The PGP system works with a private key and a public key. You sign messages with your private key and another user verifies your signature with your public key. If they want to send to you a message, they use your public key, and you, and only you, can decrypt it with your private key.">
+<!ENTITY description "مرفق المفاتيح العمومية نظم العمل مع مفتاح خاص ومفتاح عمومي. يمكنك إنشاء رسائل موقعة مع المفتاح الخاص ومستخدم آخر يتحقق توقيعك مع المفتاح العمومي الخاص بك. اذا كانت تريد أن ترسل لك رسالة ، وهي استخدام المفتاح العمومي الخاص بك ، وهو الوحيد الذي يمكنك فك تشفير باستخدام المفتاح الخاص.">
 <!ENTITY pk "You have at least one private key in your keyring">
 <!ENTITY setdk "Set a default key">
 <!ENTITY askforpk "سؤال عن المفتاح الخاص">
 <!ENTITY name "Name">
 <!ENTITY id "Id">
-<!ENTITY created "Created">
-<!ENTITY expire "Expire">
+<!ENTITY created "مكون">
+<!ENTITY expire "انقضاء">
 <!ENTITY nopk "You don't have any private keys in your keyring">
 <!ENTITY genpk "Generate a private and a public key">
 <!ENTITY gen "Generate">

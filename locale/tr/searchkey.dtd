@@ -3,6 +3,6 @@
 <!ENTITY import-button "Seçili anahtarları içe aktar">
 <!ENTITY search-button "Search">
 <!ENTITY search-description "Search for :">
-<!ENTITY key-create "Created">
+<!ENTITY key-create "Yaratıldı">
 <!ENTITY key-id "ID">
-<!ENTITY key-name "Name">
+<!ENTITY key-name "Adınız">
