@@ -1,6 +1,6 @@
 Name:    FireGPG
-Website: http://getfiregpg.org
-Authors: FireGPG Team <contact@getfiregpg.org>
+Website: http://firegpg.com
+Authors: FireGPG Team <support@firegpg.com>
 
 This extension is compatible with Firefox 3 and above, on Windows, MacOS and Linux platforms.
 
@@ -21,4 +21,4 @@ For development you should do the following:
 ===============
 Report a bug
 ===============
-Please report your bugs on the bug tracker: http://bugs.getfiregpg.org
+Please report your bugs on the bug tracker: http://firegpg.com/
