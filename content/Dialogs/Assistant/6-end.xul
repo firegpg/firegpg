@@ -66,17 +66,17 @@ under the terms of any one of the MPL, the GPL or the LGPL.
     <label value=" " />
 
     <label class="whatnext" value="&doc;" />
-    <label class="link" onclick="window.open('http://getfiregpg.org/s/doc');" value="&doc2;" />
+    <label class="link" onclick="window.open('http://firegpg.com/s/doc');" value="&doc2;" />
 
     <label value=" " />
 
     <label class="whatnext" value="&tr;" />
-    <label class="link" onclick="window.open('http://translate.getfiregpg.org/');" value="&tr2;" />
+    <label class="link" onclick="window.open('http://translate.firegpg.com/');" value="&tr2;" />
     <label value=" " />
 
     <label class="whatnext" value="&help;" />
-    <label class="link" onclick="window.open('http://getfiregpg.org/s/contrib/');" value="&help2;" />
-    <label class="link" onclick="window.open('http://bugs.getfiregpg.org');" value="&bug;" />
+    <label class="link" onclick="window.open('http://firegpg.com/s/contrib/');" value="&help2;" />
+    <label class="link" onclick="window.open('http://bugs.firegpg.com');" value="&bug;" />
     <label value=" " />
 
 </dialog>

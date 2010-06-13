@@ -84,7 +84,7 @@ const XPCOM_STATE_DISABLED = 3;
 
 /* Constant: comment
   The firegpg's comment to add to gnupg texts. */
-FireGPG.Const.comment = "Use{$SPACE}GnuPG{$SPACE}with{$SPACE}Firefox{$SPACE}:{$SPACE}http://getfiregpg.org{$SPACE}(Version:{$SPACE}" + FireGPG.Const.Version + ")";
+FireGPG.Const.comment = "Use{$SPACE}GnuPG{$SPACE}with{$SPACE}Firefox{$SPACE}:{$SPACE}http://firegpg.com{$SPACE}(Version:{$SPACE}" + FireGPG.Const.Version + ")";
 
 
 /*

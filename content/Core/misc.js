@@ -851,7 +851,7 @@ FireGPG.Misc = {
             //FireGPG.Misc.showText(FireGPG.Misc.getContent("chrome://firegpg/content/whatisnew.txt"),description,title,true);*/
 
             //Show the page
-            gBrowser.selectedTab = gBrowser.addTab("http://getfiregpg.org/s/justupdated/" + versionAct);
+            gBrowser.selectedTab = gBrowser.addTab("http://firegpg.com/s/justupdated/" + versionAct);
 
             //Send the ping
 
@@ -860,7 +860,7 @@ FireGPG.Misc = {
             else
                 var mode = version;
 
-            var misc = FireGPG.Misc.getContent("http://getfiregpg.org/stable/stats.php?version=" + versionAct + "&oldversion=" + mode);
+            var misc = FireGPG.Misc.getContent("http://firegpg.com/stable/stats.php?version=" + versionAct + "&oldversion=" + mode);
 
 
         } else {
@@ -904,7 +904,7 @@ FireGPG.Misc = {
                         prefs.setCharPref("lastUpdateCheck",nbMs);
 
                         //Get the last version
-                        var updateData = FireGPG.Misc.getContent("http://getfiregpg.org/stable/update.rdf");
+                        var updateData = FireGPG.Misc.getContent("http://firegpg.com/stable/update.rdf");
 
                         var toDetect = "NS1:version=\"" + versionAct + "\"";
 
@@ -943,7 +943,7 @@ FireGPG.Misc = {
 
         if (confirm(newVersion))
         {
-            openUILink("http://getfiregpg.org/stable/firegpg.xpi");
+            openUILink("http://firegpg.com/stable/firegpg.xpi");
 
         }
 

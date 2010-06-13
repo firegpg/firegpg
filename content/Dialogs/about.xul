@@ -51,9 +51,9 @@
 
         <hbox>
             <text value="&homepage;" style="font-weight: bold;"/>
-            <text value="http://getfiregpg.org/"
+            <text value="http://firegpg.com/"
                   class="url"
-                  onclick="window.open('http://getfiregpg.org'); window.close();"/>
+                  onclick="window.open('http://firegpg.com'); window.close();"/>
         </hbox>
 
     </vbox>
