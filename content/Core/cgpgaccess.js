@@ -39,6 +39,8 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 
 */
 
+Components.utils.import("resource://firegpg/subprocess.jsm");
+
 if (typeof(FireGPG)=='undefined') { FireGPG = {}; }
 if (typeof(FireGPG.Const)=='undefined') { FireGPG.Const = {}; }
 
@@ -114,16 +116,6 @@ FireGPG.Const.CurrentFolder = Components.classes["@mozilla.org/file/directory_se
 
 */
  FireGPG.loadXpcom = function () {
-
-    try {
-     	var ipcService = Components.classes["@mozilla.org/process/ipc-service;1"].getService();
-        ipcService = ipcService.QueryInterface(Components.interfaces.nsIIPCService);
-	} catch (err) {
-
-		return false;
-    }
-
-    FireGPG.GPGAccess.ipcService = ipcService;
 
     return true;
 
@@ -418,84 +410,31 @@ FireGPG.GPGAccess = {
             return null;
         }
 
-        try {
-            this.ipcService.runPipe(fileobj, gpgArgs, gpgArgs.length, "", sdtIn, sdtIn.length, env, env.length, outStrObj, outLenObj, errStrObj, errLenObj);
-        }
-        catch (e) {
-
-            if (!this.ipcService) //Pas de lib IPC
-                return null;
-
-            //Lib IPC mais ancienne version.
-
-            var prefs = Components.classes["@mozilla.org/preferences-service;1"].
-                getService(Components.interfaces.nsIPrefService);
-
-            prefs = prefs.getBranch("extensions.firegpg.");
-
-            var i18n = document.getElementById("firegpg-strings");
-
-            try {
-                var warning_user = prefs.getBoolPref("fireftp_already_warning",false);
-            } catch (e) {
-                warning_user = false;
-            }
-
-             try {
-                var try_to_use_old_system = prefs.getBoolPref("fireftp_try_to_use_old_system",false);
-            } catch (e) {
-                try_to_use_old_system = false;
-            }
-
-            if (!warning_user) {
-
-                try_to_use_old_system = confirm(i18n.getString('fireftp_warning'));
-
-
-            }
-
-
-            if (try_to_use_old_system) {
-
-                try {
-                   /// FireFTP version but it's crash some times firefox
-                   this.ipcService.execPipe(this.getGPGCommand() + " " + parameters, false,  "", sdtIn, sdtIn.length,  env, env.length, outStrObj, outLenObj, errStrObj, errLenObj);
-                } catch (e) {
-                    FireGPG.debug(e, 'rungpg/1', true);
-                }
-
-                //If we're here, it's didn't crash
-                if (!warning_user)
-                    alert(i18n.getString('fireftp_pass'));
-
-                prefs.setBoolPref("fireftp_already_warning",true);
-                prefs.setBoolPref("fireftp_try_to_use_old_system",true);
-
-            } else {
-
-                prefs.setBoolPref("fireftp_already_warning",true);
-
-
-            }
-
-
-
-        }
-
-        try {
-
-            var retour = new Object();
-
-            retour.out = FireGPG.Misc.EnigConvertToUnicode(outStrObj.value, charset);
-            retour.err = FireGPG.Misc.EnigConvertToUnicode(errStrObj.value, charset);
-
-            return retour;
-
-        } catch  (e) {
-            FireGPG.debug(e, 'rungpg/2', true);
-        }
-
-        return null;
+        var retour = {};
+        retour.out = '';
+        retour.err = '';
+        var p = subprocess.call({
+          command: this.getGPGCommand(),
+          arguments: gpgArgs,
+          onFinished: subprocess.Terminate(function() {
+            retour.out = FireGPG.Misc.EnigConvertToUnicode(retour.out,
+                                                           charset);
+            retour.err = FireGPG.Misc.EnigConvertToUnicode(retour.err,
+                                                           charset);
+          }),
+          stderr: subprocess.ReadablePipe(function(data) {
+              retour.err += data;
+          }),
+          stdout: subprocess.ReadablePipe(function(data) {
+              retour.out += data;
+          }),
+          stdin: subprocess.WritablePipe(function() {
+            this.write(sdtIn);
+            this.close();
+          })
+        });
+        p.wait();
+        return retour;
     },
 
     /*

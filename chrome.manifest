@@ -38,3 +38,14 @@ overlay	chrome://browser/content/browser.xul	                        chrome://fi
 overlay	chrome://webrunner/content/webrunner.xul	                chrome://firegpg/content/Core/prismeOverlay.xul
 overlay    chrome://mozapps/content/downloads/downloads.xul    chrome://firegpg/content/Core/downloadMangerOverlay.xul
 style	    chrome://global/content/customizeToolbar.xul	            chrome://firegpg/skin/overlay.css
+
+resource   firegpg  modules/
+
+interfaces components/firegpg_ipc.xpt
+binary-component components/libfiregpg_ipc.dylib ABI=Darwin_x86-gcc3
+binary-component components/libfiregpg_ipc.dylib ABI=Darwin_x86_64-gcc3
+binary-component components/libfiregpg_ipc.64.so ABI=Linux_x86_64-gcc3
+binary-component components/libfiregpg_ipc.32.so ABI=Linux_x86-gcc3
+binary-component components/firegpg_ipc.dll ABI=WINNT_x86-msvc
+contract @getfiregpg.org/ipc/ipc-buffer;1 {babce0c1-7ab1-11d4-8f02-a06008948af5}
+contract @getfiregpg.org/ipc/pipe-transport;1 {babce001-7ab1-11d4-8f02-a06008948af5}

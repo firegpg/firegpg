@@ -826,12 +826,6 @@ FireGPG.Misc = {
             version = prefs.getCharPref("gpg_version");
         } catch (e) { }
 
-        var em = Components.classes["@mozilla.org/extensions/manager;1"]
-                       .getService(Components.interfaces.nsIExtensionManager);
-
-        var addon = em.getItemForID("firegpg@firegpg.team");
-        var versionAct = addon.version;
-
         versionAct = FireGPG.Const.Version;
 
         var i18n = document.getElementById("firegpg-strings");
