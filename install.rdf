@@ -4,13 +4,14 @@
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><!--em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"-->
   <RDF:Description RDF:about="rdf:#$g5s0x"
 
-                    em:id="toolkit@mozilla.org"
-                   em:minVersion="1.5"
-                   em:maxVersion="3.7" />
+                    em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   em:minVersion="4.0"
+                   em:maxVersion="5.0" />
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="firegpg@firegpg.team"
                    em:version="0.8"
                    em:type="2"
+                   em:unpack="true"
                    em:name="FireGPG"
                    em:description="An extension that acts as an assistant for using GPG."
                    em:creator="FireGPG Team"
