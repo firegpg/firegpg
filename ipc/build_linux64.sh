@@ -16,4 +16,5 @@ make
 COMPONENTS=$IPC/components/
 mkdir -p $COMPONENTS
 cp ../../dist/bin/components/lib${name}_ipc.so $COMPONENTS/lib${name}_ipc.64.so
+strip $COMPONENTS/lib${name}_ipc.64.so
 cp ../../dist/bin/components/${name}_ipc.xpt $COMPONENTS
