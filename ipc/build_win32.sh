@@ -1,6 +1,6 @@
 #!/bin/sh
 name=firegpg
-MOZBUILD=$HOME/src/mozilla-central/ff-opt
+MOZBUILD=$HOME/src/mozilla-beta/ff-opt
 
 cd `dirname $0`
 
