@@ -1,8 +1,17 @@
-Name:    FireGPG
-Website: http://firegpg.com
-Authors: FireGPG Team <support@firegpg.com>
+FireGPG
 
 This extension is compatible with Firefox 3 and above, on Windows, MacOS and Linux platforms.
+
+NOTE:  FireGPG was abandoned by it's creator Maximilian.  We grabbed a copy of the code along
+with the firegpg.com domain and posted it here.  FireGPG is no longer officially supported.
+
+If members of the community want to submit patches, they will be accepted, but we will not
+be performing much (if any) testing on them.
+
+Several people from the FireGPG community have banded together and are working on two
+new projects.  One is a replacement for FireGPG that will apparently initially target
+the Chrome web browser from Google and then be released for Firefox.
+The second is gpgAuth which is available for Chrome. (https://github.com/gpgauth)
 
 ===============
 Build the XPI
@@ -21,4 +30,5 @@ For development you should do the following:
 ===============
 Report a bug
 ===============
-Please report your bugs on the bug tracker: http://firegpg.com/
+Please report your bugs on the bug tracker: http://github.com/firegpg/firegpg/
+
