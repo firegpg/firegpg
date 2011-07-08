@@ -176,7 +176,7 @@ FireGPG.Sortage = function(a,b) {
 
     var i = 0;
 
-    while(infosA[i] == infosB[i] && i < infosA.lenght)
+    while(infosA[i] == infosB[i] && i < infosA.length)
         i++;
 
     if (infosA[i]<infosB[i]) return -1;

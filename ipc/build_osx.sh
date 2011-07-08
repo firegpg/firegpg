@@ -1,6 +1,6 @@
 #!/bin/bash
 name=firegpg
-MOZBUILD=$HOME/src/mozilla-central/obj-x86_64-apple-darwin10.6.0
+MOZBUILD=$HOME/src/mozilla-beta/obj-x86_64-apple-darwin10.6.0
 
 cd `dirname $0`
 IPC=`pwd`
@@ -27,5 +27,5 @@ lipo -create \
  -arch i386 $MOZBUILD/i386/dist/bin/components/lib${name}_ipc.dylib \
  -arch x86_64 $MOZBUILD/x86_64/dist/bin/components/lib${name}_ipc.dylib \
  -output $COMPONENTS/lib${name}_ipc.dylib
-
+strip -S $COMPONENTS/lib${name}_ipc.dylib
 cp ../../dist/bin/components/${name}_ipc.xpt $COMPONENTS
