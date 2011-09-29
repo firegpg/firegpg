@@ -17,7 +17,7 @@ sed -i "s/= ipc/= $var/g" $name-ipc/build/Makefile.in
 sed -i "s/= ipc/= $var/g" $name-ipc/public/Makefile.in
 sed -i "s/$var-pipe/$var/g" $name-ipc/build/Makefile.in
 sed -i "s/$var-pipe/$var/g" $name-ipc/public/Makefile.in
-sed -i  "s/mozilla.org\/ipc/$domain\/ipc/g" $name-ipc/*/*
+find $name-ipc -type f |grep -v '/.hg' |xargs sed -i "s/mozilla.org\/ipc/$domain\/ipc/g"
 
 cat << EOF > chrome.manifest
 resource   $name     modules/
