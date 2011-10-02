@@ -2,14 +2,22 @@ name=firegpg
 var=${name}_ipc
 domain=getfiregpg.org
 uuid=babce0
-hg clone http://hg.mozilla.org/ipccode $name-ipc
+
+if [ -d $name-ipc ]; then
+	cd $name-ipc
+	hg revert --all --no-backup
+	hg pull
+	cd ..
+else
+	hg clone http://hg.mozilla.org/ipccode $name-ipc
+fi
 
 sed -i s/8431e1/$uuid/g $name-ipc/public/*.idl
 sed -i "s/= ipc/= $var/g" $name-ipc/build/Makefile.in
 sed -i "s/= ipc/= $var/g" $name-ipc/public/Makefile.in
 sed -i "s/$var-pipe/$var/g" $name-ipc/build/Makefile.in
 sed -i "s/$var-pipe/$var/g" $name-ipc/public/Makefile.in
-sed -i  "s/mozilla.org\/ipc/$domain\/ipc/g" $name-ipc/*/*
+find $name-ipc -type f |grep -v '/\.hg' |xargs sed -i "s/mozilla.org\/ipc/$domain\/ipc/g"
 
 cat << EOF > chrome.manifest
 resource   $name     modules/
