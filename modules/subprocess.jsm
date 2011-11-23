@@ -1,42 +1,8 @@
-/* ***** BEGIN LICENSE BLOCK *****
- * Version: MPL 1.1/GPL 2.0/LGPL 2.1
- *
- * The contents of this file are subject to the Mozilla Public
- * License Version 1.1 (the "MPL"); you may not use this file
- * except in compliance with the MPL. You may obtain a copy of
- * the MPL at http://www.mozilla.org/MPL/
- *
- * Software distributed under the MPL is distributed on an "AS
- * IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
- * implied. See the MPL for the specific language governing
- * rights and limitations under the MPL.
- *
- * The Original Code is IPC-Pipe.
- *
- * The Initial Developer of this code is Patrick Brunschwig.
- * Portions created by Patrick Brunschwig <patrick@mozilla-enigmail.org>
- * are Copyright (C) 2010 Patrick Brunschwig.
- * All Rights Reserved.
- *
- * Contributor(s):
- *
- * Alternatively, the contents of this file may be used under the terms of
- * either the GNU General Public License Version 2 or later (the "GPL"), or
- * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
- * in which case the provisions of the GPL or the LGPL are applicable instead
- * of those above. If you wish to allow use of your version of this file only
- * under the terms of either the GPL or the LGPL, and not to allow others to
- * use your version of this file under the terms of the MPL, indicate your
- * decision by deleting the provisions above and replace them with the notice
- * and other provisions required by the GPL or the LGPL. If you do not delete
- * the provisions above, a recipient may use your version of this file under
- * the terms of any one of the MPL, the GPL or the LGPL.
- * ***** END LICENSE BLOCK ***** */
-
-
+// -*- coding: utf-8 -*-
+// vim: et:ts=4:sw=4:sts=4:ft=javascript
 /*
  * Import into a JS component using
- * 'Components.utils.import("resource://gre/modules/subprocess.jsm");'
+ * 'Components.utils.import("resource://firefogg/subprocess.jsm");'
  *
  * This object allows to start a process, and read/write data to/from it
  * using stdin/stdout/stderr streams.
@@ -47,19 +13,20 @@
  *    arguments:   ['-v', 'foo'],
  *    environment: [ "XYZ=abc", "MYVAR=def" ],
  *    workdir: '/home/foo',
- *    stdin: subprocess.WritablePipe(function() {
- *      this.write("Writing example data\n");
- *      this.close();
- *    }),
- *    stdout: subprocess.ReadablePipe(function(data) {
- *      dump("got data on stdout:" +data+"\n");
- *    }),
- *    stderr: subprocess.ReadablePipe(function(data) {
- *      dump("got data on stderr:" +data+"\n");
- *    }),
- *    onFinished: subprocess.Terminate(function() {
- *      dump("process terminated with " +this.exitCode + "\n");
- *    }),
+ *    //stdin: "some value to write to stdin\nfoobar",
+ *    stdin: function(stdin) {
+ *      stdin.write("some value to write to stdin\nfoobar");
+ *      stdin.close();
+ *    },
+ *    stdout: function(data) {
+ *      dump("got data on stdout:" + data + "\n");
+ *    },
+ *    stderr: function(data) {
+ *      dump("got data on stderr:" + data + "\n");
+ *    },
+ *    done: function(result) {
+ *      dump("process terminated with " + result.exitCode + "\n");
+ *    },
  *    mergeStderr: false
  *  });
  *  p.wait(); // wait for the subprocess to terminate
@@ -80,35 +47,32 @@
  *              "VAR=data". Please note that if environment is defined, it
  *              replaces any existing environment variables for the subprocess.
  *
- * workdir:     optional; either a |nsIFile| object pointing to a directory or a
- *              String containing the platform-dependent path to a directory to
- *              become the current working directory of the subprocess.
+ * workdir:     optional; String containing the platform-dependent path to a
+ *              directory to become the current working directory of the subprocess.
  *
  * stdin:       optional input data for the process to be passed on standard
- *              input. stdin can either be a string or a function. If stdin is a
- *              string, then the string content is passed to the process. If
- *              stdin is a function defined using subprocess.WritablePipe, input
- *              data can be written synchronously to the process using
- *              this.write(string).
- *              The stream to the subprocess can be closed with this.close().
+ *              input. stdin can either be a string or a function.
+ *              a string gets written to stdin and stdin gets closed,
+ *              a function gets passed an object with write and close function.
  *
  * stdout:      an optional function that can receive output data from the
  *              process. The stdout-function is called asynchronously; it can be
+ *              called mutliple times during the execution of a process.
+ *              At a minimum at each occurance of \n or \r.
+ *              Please note that null-characters might need to be escaped
+ *              with something like 'data.replace(/\0/g, "\\0");'.
+ *
+ * stderr:      an optional function that can receive stderr data from the
+ *              process. The stderr-function is called asynchronously; it can be
  *              called mutliple times during the execution of a process. Please
  *              note that null-characters might need to be escaped with
  *              something like 'data.replace(/\0/g, "\\0");'.
- *              stdout needs to be defined using subprocess.ReadablePipe.
+ *              (on windows it only gets called once right now)
  *
- * stderr:      an optional function that can receive output sent to stderr. The
- *              function is only called synchronously when the process has
- *              terminated. Again, null-characters might need to be escaped.
- *              stderr needs to be defined using subprocess.ReadablePipe.
- *
- * onFinished:  optional function that is called when the process has terminated.
- *              The exit code from the process available via this.exitCode. If
+ * done:        optional function that is called when the process has terminated.
+ *              The exit code from the process available via result.exitCode. If
  *              stdout is not defined, then the output from stdout is available
- *              via this.stdoutData. onFinished needs to be defined using
- *              subprocess.Terminate.
+ *              via result.stdout. stderr data is in result.stderr
  *
  * mergeStderr: optional boolean value. If true, stderr is merged with stdout;
  *              no data will be provided to stderr.
@@ -120,303 +84,960 @@
  * executed:
  *
  * wait():      waits for the subprocess to terminate. It is not required to use
- *              wait; onFinshed and stderr will be called in any case when the
- *              subprocess terminated.
+ *              wait; done will be called in any case when the subprocess terminated.
  *
  * kill():      kill the subprocess. Any open pipes will be closed and
- *              onFinished will be called.
+ *              done will be called.
  *
- *
- * Important notes
- * ---------------
- *
- * Be careful if you create more than one subprocess in parallel. Because
- * p.wait() is blocking the termination of other processes, you cannot wait on
- * the same thread for more than one subprocess to terminate, unless you know
- * the sequence in which the subprocesses finish. Therefore it is safer to
- * create new threads if you need to execute several subprocesses at the same
- * time.
  *
  */
+'use strict';
 
+Components.utils.import("resource://gre/modules/ctypes.jsm");
 
-Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+let EXPORTED_SYMBOLS = [ "subprocess" ];
 
-var EXPORTED_SYMBOLS = [ "subprocess" ];
-
-const NS_PIPETRANSPORT_CONTRACTID = "@getfiregpg.org/ipc/pipe-transport;1";
-const NS_IPCBUFFER_CONTRACTID = "@getfiregpg.org/ipc/ipc-buffer;1";
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 
+//Windows API definitions
+if (ctypes.size_t.size == 8) {
+  var WinABI = ctypes.default_abi;
+} else {
+  var WinABI = ctypes.winapi_abi;
+}
+const WORD = ctypes.uint16_t;
+const DWORD = ctypes.uint32_t;
+const LPDWORD = DWORD.ptr;
+
+const UINT = ctypes.unsigned_int;
+const BOOL = ctypes.bool;
+const HANDLE = ctypes.size_t;
+const HWND = HANDLE;
+const HMODULE = HANDLE;
+const WPARAM = ctypes.size_t;
+const LPARAM = ctypes.size_t;
+const LRESULT = ctypes.size_t;
+const ULONG_PTR = ctypes.uintptr_t;
+const PVOID = ctypes.voidptr_t;
+const LPVOID = PVOID;
+const LPCTSTR = ctypes.jschar.ptr;
+const LPCWSTR = ctypes.jschar.ptr;
+const LPTSTR = ctypes.jschar.ptr;
+const LPSTR = ctypes.char.ptr;
+const LPCSTR = ctypes.char.ptr;
+const LPBYTE = ctypes.char.ptr;
+
+const CREATE_NEW_CONSOLE = 0x00000010;
+const CREATE_NO_WINDOW = 0x08000000;
+const CREATE_UNICODE_ENVIRONMENT = 0x00000400;
+const STARTF_USESHOWWINDOW = 0x00000001;
+const STARTF_USESTDHANDLES = 0x00000100;
+const SW_HIDE = 0;
+const DUPLICATE_SAME_ACCESS = 0x00000002;
+const STILL_ACTIVE = 259;
+const INFINITE = DWORD(0xFFFFFFFF);
+
+/*
+typedef struct _SECURITY_ATTRIBUTES {
+ DWORD  nLength;
+ LPVOID lpSecurityDescriptor;
+ BOOL   bInheritHandle;
+} SECURITY_ATTRIBUTES, *PSECURITY_ATTRIBUTES, *LPSECURITY_ATTRIBUTES;
+*/
+const SECURITY_ATTRIBUTES = new ctypes.StructType("SECURITY_ATTRIBUTES", [
+    {"nLength": DWORD},
+    {"lpSecurityDescriptor": LPVOID},
+    {"bInheritHandle": BOOL},
+]);
+
+/*
+typedef struct _STARTUPINFO {
+  DWORD  cb;
+  LPTSTR lpReserved;
+  LPTSTR lpDesktop;
+  LPTSTR lpTitle;
+  DWORD  dwX;
+  DWORD  dwY;
+  DWORD  dwXSize;
+  DWORD  dwYSize;
+  DWORD  dwXCountChars;
+  DWORD  dwYCountChars;
+  DWORD  dwFillAttribute;
+  DWORD  dwFlags;
+  WORD   wShowWindow;
+  WORD   cbReserved2;
+  LPBYTE lpReserved2;
+  HANDLE hStdInput;
+  HANDLE hStdOutput;
+  HANDLE hStdError;
+} STARTUPINFO, *LPSTARTUPINFO;
+*/
+const STARTUPINFO = new ctypes.StructType("STARTUPINFO", [
+    {"cb": DWORD},
+    {"lpReserved": LPTSTR},
+    {"lpDesktop": LPTSTR},
+    {"lpTitle": LPTSTR},
+    {"dwX": DWORD},
+    {"dwY": DWORD},
+    {"dwXSize": DWORD},
+    {"dwYSize": DWORD},
+    {"dwXCountChars": DWORD},
+    {"dwYCountChars": DWORD},
+    {"dwFillAttribute": DWORD},
+    {"dwFlags": DWORD},
+    {"wShowWindow": WORD},
+    {"cbReserved2": WORD},
+    {"lpReserved2": LPBYTE},
+    {"hStdInput": HANDLE},
+    {"hStdOutput": HANDLE},
+    {"hStdError": HANDLE},
+]);
+
+/*
+typedef struct _PROCESS_INFORMATION {
+  HANDLE hProcess;
+  HANDLE hThread;
+  DWORD  dwProcessId;
+  DWORD  dwThreadId;
+} PROCESS_INFORMATION, *LPPROCESS_INFORMATION;
+*/
+const PROCESS_INFORMATION = new ctypes.StructType("PROCESS_INFORMATION", [
+    {"hProcess": HANDLE},
+    {"hThread": HANDLE},
+    {"dwProcessId": DWORD},
+    {"dwThreadId": DWORD},
+]);
+
+/*
+typedef struct _OVERLAPPED {
+  ULONG_PTR Internal;
+  ULONG_PTR InternalHigh;
+  union {
+    struct {
+      DWORD Offset;
+      DWORD OffsetHigh;
+    };
+    PVOID  Pointer;
+  };
+  HANDLE    hEvent;
+} OVERLAPPED, *LPOVERLAPPED;
+*/
+const OVERLAPPED = new ctypes.StructType("OVERLAPPED");
+
+//UNIX definitions
+const pid_t = ctypes.uint32_t;
+const WNOHANG = 1;
+const F_SETFL = 4;
+const O_NONBLOCK = 2048; // 04000; 
+
+
+function LogError(msg) {
+    //Components.utils.import("resource://firefogg/utils.jsm");
+    //utils.debug(msg);
+    dump('\n' + msg + '\n');
+}
+
+function setTimeout(callback, timeout) {
+    var timer = Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer);
+    timer.initWithCallback(callback, timeout, Ci.nsITimer.TYPE_ONE_SHOT);
+};
+
 var subprocess = {
+    call: function(options) {
+        options.mergeStderr = options.mergeStderr || false;
+        options.workdir = options.workdir ||  null;
+        options.environment = options.environment ||  [];
 
-  /**
-   * Constructor method to create a subprocess.
-   *
-   * @param commandObj  object defining the input parameters. See documentation
-   *                    above for details.
-   */
-  call: function (commandObj) {
-    var pipeObj = new PipeObj();
-    if (! pipeObj) return null;
-    pipeObj.init(commandObj);
-    return pipeObj;
-  },
-  /**
-   * Create a pipe that writes data to the subprocess
-   *
-   * @param func  function definition that implements writing to the pipe
-   *              using "this.write(txt)".
-   */
-  WritablePipe: function(func) {
-    var pipeWriterObj = {
-      _pipeTransport: null,
-      write: function(data) {
-        this._pipeTransport.writeSync(data, data.length);
-      },
-      close: function() {
-        this._pipeTransport.closeStdin();
-      },
-      startWriting: func
-    };
-    return pipeWriterObj;
-  },
-  /**
-   * Create a pipe that read data from the subprocess (stdout or stderr)
-   *
-   * @param func  function definition that implements reading from the pipe.
-   *              The 1st parameter holds the data read from the subprocess.
-   */
-  ReadablePipe: function(func) {
-    var pipeReaderObj = {
-      callbackFunction: func,
-      onDataAvailable: function(data) {
-        this.callbackFunction(data);
-      }
+        var xulRuntime = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime);
+        if (xulRuntime.OS.substring(0, 3) == "WIN") {
+            return subprocess_win32(options);
+        } else {
+            options.libc = xulRuntime.OS == 'Darwin' ? 'libc.dylib' : 'libc.so.6';
+            return subprocess_unix(options);
+        }
     }
-    return pipeReaderObj;
-  },
-  /**
-   * Create a function that listens to the termination of the subprocess.
-   *
-   * @param func   function definition that implements the listener.
-   */
-  Terminate: function(func) {
-    var onFinishedObj = {
-      stdoutData: null,
-      callbackFunction: func,
-      callback: function (exitCode) {
-        this.exitCode = exitCode;
-        this.callbackFunction();
-      }
-    };
-    return onFinishedObj;
-  },
 };
 
+function subprocess_win32(options) {
+    var kernel32dll = ctypes.open("kernel32.dll"),
+        hChildProcess,
+        active = true,
+        child = {},
+        error = '',
+        output = '';
 
-/**
- * Stream Listener object for handling callbacks from the subprocess' stdout
- */
-function StdoutStreamListener(cmdObj)
-{
-  this._cmdObj = cmdObj;
-  this._reqObserver = null;
+    //api declarations
+    /*
+    BOOL WINAPI CloseHandle(
+      __in  HANDLE hObject
+    );
+    */
+    var CloseHandle = kernel32dll.declare("CloseHandle",
+                                            WinABI,
+                                            BOOL,
+                                            HANDLE
+    );
+
+    /*
+    BOOL WINAPI CreateProcess(
+      __in_opt     LPCTSTR lpApplicationName,
+      __inout_opt  LPTSTR lpCommandLine,
+      __in_opt     LPSECURITY_ATTRIBUTES lpProcessAttributes,
+      __in_opt     LPSECURITY_ATTRIBUTES lpThreadAttributes,
+      __in         BOOL bInheritHandles,
+      __in         DWORD dwCreationFlags,
+      __in_opt     LPVOID lpEnvironment,
+      __in_opt     LPCTSTR lpCurrentDirectory,
+      __in         LPSTARTUPINFO lpStartupInfo,
+      __out        LPPROCESS_INFORMATION lpProcessInformation
+    );
+     */
+    var CreateProcessW = kernel32dll.declare("CreateProcessW",
+                                            WinABI,
+                                            BOOL,
+                                            LPCTSTR,
+                                            LPTSTR,
+                                            SECURITY_ATTRIBUTES.ptr,
+                                            SECURITY_ATTRIBUTES.ptr,
+                                            BOOL,
+                                            DWORD,
+                                            LPVOID,
+                                            LPCTSTR,
+                                            STARTUPINFO.ptr,
+                                            PROCESS_INFORMATION.ptr
+                                         );
+
+    /*
+    BOOL WINAPI ReadFile(
+      __in         HANDLE hFile,
+      __out        LPVOID ReadFileBuffer,
+      __in         DWORD nNumberOfBytesToRead,
+      __out_opt    LPDWORD lpNumberOfBytesRead,
+      __inout_opt  LPOVERLAPPED lpOverlapped
+    );
+    */
+    var ReadFileBufferSize = 256,
+        ReadFileBuffer = ctypes.char.array(ReadFileBufferSize),
+        ReadFile = kernel32dll.declare("ReadFile",
+                                        WinABI,
+                                        BOOL,
+                                        HANDLE,
+                                        ReadFileBuffer,
+                                        DWORD,
+                                        LPDWORD,
+                                        OVERLAPPED.ptr
+    );
+    /*
+    BOOL WINAPI PeekNamedPipe(
+      __in       HANDLE hNamedPipe,
+      __out_opt  LPVOID lpBuffer,
+      __in       DWORD nBufferSize,
+      __out_opt  LPDWORD lpBytesRead,
+      __out_opt  LPDWORD lpTotalBytesAvail,
+      __out_opt  LPDWORD lpBytesLeftThisMessage
+    );
+     */
+    var PeekNamedPipe = kernel32dll.declare("PeekNamedPipe",
+                                        WinABI,
+                                        BOOL,
+                                        HANDLE,
+                                        ReadFileBuffer,
+                                        DWORD,
+                                        LPDWORD,
+                                        LPDWORD,
+                                        LPDWORD
+    );
+
+    /*
+    BOOL WINAPI WriteFile(
+      __in         HANDLE hFile,
+      __in         LPCVOID lpBuffer,
+      __in         DWORD nNumberOfBytesToWrite,
+      __out_opt    LPDWORD lpNumberOfBytesWritten,
+      __inout_opt  LPOVERLAPPED lpOverlapped
+    );
+    */
+    var WriteFile = kernel32dll.declare("WriteFile",
+                                        WinABI,
+                                        BOOL,
+                                        HANDLE,
+                                        ctypes.char.ptr,
+                                        DWORD,
+                                        LPDWORD,
+                                        OVERLAPPED.ptr
+    );
+
+    /*
+    BOOL WINAPI CreatePipe(
+      __out     PHANDLE hReadPipe,
+      __out     PHANDLE hWritePipe,
+      __in_opt  LPSECURITY_ATTRIBUTES lpPipeAttributes,
+      __in      DWORD nSize
+    );
+    */
+    var CreatePipe = kernel32dll.declare("CreatePipe",
+                                        WinABI,
+                                        BOOL,
+                                        HANDLE.ptr,
+                                        HANDLE.ptr,
+                                        SECURITY_ATTRIBUTES.ptr,
+                                        DWORD
+    );
+
+   /* 
+    HANDLE WINAPI GetCurrentProcess(void);
+    */
+    var GetCurrentProcess = kernel32dll.declare("GetCurrentProcess",
+                                        WinABI,
+                                        HANDLE
+    );
+
+    /*
+    DWORD WINAPI GetLastError(void);
+    */
+    var GetLastError = kernel32dll.declare("GetLastError",
+                                        WinABI,
+                                        DWORD 
+    );
+
+    /*
+    BOOL WINAPI DuplicateHandle(
+      __in   HANDLE hSourceProcessHandle,
+      __in   HANDLE hSourceHandle,
+      __in   HANDLE hTargetProcessHandle,
+      __out  LPHANDLE lpTargetHandle,
+      __in   DWORD dwDesiredAccess,
+      __in   BOOL bInheritHandle,
+      __in   DWORD dwOptions
+    );
+    */
+    var DuplicateHandle = kernel32dll.declare("DuplicateHandle",
+                                        WinABI,
+                                        BOOL,
+                                        HANDLE,
+                                        HANDLE,
+                                        HANDLE,
+                                        HANDLE.ptr,
+                                        DWORD,
+                                        BOOL,
+                                        DWORD
+    );
+
+
+    /*
+    BOOL WINAPI GetExitCodeProcess(
+      __in   HANDLE hProcess,
+      __out  LPDWORD lpExitCode
+    );
+    */
+    var GetExitCodeProcess = kernel32dll.declare("GetExitCodeProcess",
+                                        WinABI,
+                                        BOOL,
+                                        HANDLE,
+                                        LPDWORD
+    );
+
+    /*
+    DWORD WINAPI WaitForSingleObject(
+      __in  HANDLE hHandle,
+      __in  DWORD dwMilliseconds
+    );
+    */
+    var WaitForSingleObject = kernel32dll.declare("WaitForSingleObject",
+                                        WinABI,
+                                        DWORD,
+                                        HANDLE,
+                                        DWORD
+    );
+
+    /*
+    BOOL WINAPI TerminateProcess(
+      __in  HANDLE hProcess,
+      __in  UINT uExitCode
+    );
+    */
+    var TerminateProcess = kernel32dll.declare("TerminateProcess",
+                                        WinABI,
+                                        BOOL,
+                                        HANDLE,
+                                        UINT
+    );
+
+    //functions
+    function popen(command, args, environment, child) {
+        //escape arguments
+        args.unshift(command);
+        for (var i = 0; i < args.length; i++) {
+          if (typeof args[i] != "string") { args[i] = args[i].toString(); }
+          /* quote arguments with spaces */
+          if (args[i].match(/\s/)) {
+            args[i] = "\"" + args[i] + "\"";
+          }
+          /* If backslash is followed by a quote, double it */
+          args[i] = args[i].replace(/\\\"/g, "\\\\\"");
+        }
+        command = args.join(' ');
+        
+        var environment = environment || [];
+        if(environment.length) {
+            //An environment block consists of
+            //a null-terminated block of null-terminated strings.
+            //Using CREATE_UNICODE_ENVIRONMENT so needs to be jschar
+            environment = ctypes.jschar.array()(environment.join('\0') + '\0');
+        } else {
+            environment = null;
+        }
+
+        var hOutputReadTmp = new HANDLE(),
+            hOutputRead = new HANDLE(),
+            hOutputWrite = new HANDLE();
+
+        var hErrorRead = new HANDLE(),
+            hErrorReadTmp = new HANDLE(),
+            hErrorWrite = new HANDLE();
+
+        var hInputRead = new HANDLE(),
+            hInputWriteTmp = new HANDLE(),
+            hInputWrite = new HANDLE();
+
+        // Set up the security attributes struct.
+        var sa = new SECURITY_ATTRIBUTES();
+        sa.nLength = SECURITY_ATTRIBUTES.size;
+        sa.lpSecurityDescriptor = null;
+        sa.bInheritHandle = true;
+
+        // Create output pipe.
+        if(!CreatePipe(hOutputReadTmp.address(), hOutputWrite.address(), sa.address(), 0))
+            LogError('CreatePipe hOutputReadTmp');
+
+        if(options.mergeStderr) {
+          // Create a duplicate of the output write handle for the std error
+          // write handle. This is necessary in case the child application
+          // closes one of its std output handles.
+          if (!DuplicateHandle(GetCurrentProcess(), hOutputWrite,
+                               GetCurrentProcess(), hErrorWrite.address(), 0,
+                               true, DUPLICATE_SAME_ACCESS))
+             LogError("DuplicateHandle hOutputWrite");
+        } else {
+            // Create error pipe.
+            if(!CreatePipe(hErrorReadTmp.address(), hErrorWrite.address(), sa.address(), 0))
+                LogError('CreatePipe hErrorReadTmp');
+        }
+        // Create input pipe.
+        if (!CreatePipe(hInputRead.address(),hInputWriteTmp.address(),sa.address(),0))
+            LogError("CreatePipe");
+
+        // Create new output/error read handle and the input write handles. Set
+        // the Properties to FALSE. Otherwise, the child inherits the
+        // properties and, as a result, non-closeable handles to the pipes
+        // are created.
+        if (!DuplicateHandle(GetCurrentProcess(), hOutputReadTmp,
+                             GetCurrentProcess(),
+                             hOutputRead.address(), // Address of new handle.
+                             0, false, // Make it uninheritable.
+                             DUPLICATE_SAME_ACCESS))
+             LogError("DupliateHandle hOutputReadTmp");
+
+        if(!options.mergeStderr) {
+            if (!DuplicateHandle(GetCurrentProcess(), hErrorReadTmp,
+                             GetCurrentProcess(),
+                             hErrorRead.address(), // Address of new handle.
+                             0, false, // Make it uninheritable.
+                             DUPLICATE_SAME_ACCESS))
+             LogError("DupliateHandle hErrorReadTmp");
+        }
+        if (!DuplicateHandle(GetCurrentProcess(), hInputWriteTmp,
+                             GetCurrentProcess(),
+                             hInputWrite.address(), // Address of new handle.
+                             0, false, // Make it uninheritable.
+                             DUPLICATE_SAME_ACCESS))
+          LogError("DupliateHandle hInputWriteTmp");
+
+        // Close inheritable copies of the handles.
+        if (!CloseHandle(hOutputReadTmp)) LogError("CloseHandle hOutputReadTmp");
+        if(!options.mergeStderr)
+            if (!CloseHandle(hErrorReadTmp)) LogError("CloseHandle hErrorReadTmp");
+        if (!CloseHandle(hInputWriteTmp)) LogError("CloseHandle");
+
+        var pi = new PROCESS_INFORMATION();
+        var si = new STARTUPINFO();
+      
+        si.cb = STARTUPINFO.size;
+        si.dwFlags = STARTF_USESTDHANDLES;
+        si.hStdInput  = hInputRead;
+        si.hStdOutput = hOutputWrite;
+        si.hStdError  = hErrorWrite;
+
+        // Launch the process
+        if(!CreateProcessW(null,            // executable name
+                           command,         // command buffer
+                           null,            // process security attribute
+                           null,            // thread security attribute
+                           true,            // inherits system handles
+                           CREATE_UNICODE_ENVIRONMENT|CREATE_NO_WINDOW, // process flags
+                           environment,     // envrionment block
+                           options.workdir, // set as current directory
+                           si.address(),    // (in) startup information
+                           pi.address()     // (out) process information
+        ))
+            LogError("CreateProcessW failed");
+
+        // Close any unnecessary handles.
+        if (!CloseHandle(pi.hThread))
+            LogError("CloseHandle pi.hThread");
+        // Close pipe handles (do not continue to modify the parent).
+        // You need to make sure that no handles to the write end of the
+        // output pipe are maintained in this process or else the pipe will
+        // not close when the child process exits and the ReadFile will hang.
+        if (!CloseHandle(hInputRead)) LogError("CloseHandle");
+        if (!CloseHandle(hOutputWrite)) LogError("CloseHandle hOutputWrite");
+        if (!CloseHandle(hErrorWrite)) LogError("CloseHandle hErrorWrite");
+
+        //return values
+        child.stdin = hInputWrite;
+        child.stdout = hOutputRead;
+        child.stderr = options.mergeStderr ? undefined : hErrorRead;
+        child.process = pi.hProcess;
+        return pi.hProcess;
+    }
+
+    function writeStdin(data) {
+        var bytesWritten = DWORD(0);
+        var r = WriteFile(child.stdin, data, data.length,
+                          bytesWritten.address(), null);
+        return bytesWritten;
+    }
+
+    function ReadPipe(pipe, last) {
+        var bytesWritten = DWORD(0);
+        var data = '';
+        while(true) {
+            var line = new ReadFileBuffer();
+            var r = ReadFile(child.stdout, line, ReadFileBufferSize, bytesWritten.address(), null);
+            var c = line.readString();
+            data += c;
+            if(!last || !r)
+                break
+            if (!last && (c[c.length-1] == '\n' || c[c.length-1] == '\r'))
+                break;
+        }
+        return data;
+    }
+
+    function readPipes(last) {
+        if(!active)
+            return;
+        var data = ReadPipe(child.stdout, last);
+        if(data.length) {
+            if(options.stdout) {
+                last ? options.stdout(data)
+                     : setTimeout(function() {
+                        options.stdout(data);
+                     }, 0);
+            } else {
+                output += data;
+            }
+        }
+        //FIXME: find a way to read stderr non blocking or move it to another thread
+        if(last && !options.mergeStderr) {
+            var errorData = '';
+            var errorData = ReadPipe(child.stderr, last);
+            if(errorData.length) {
+                if(options.stderr) {
+                    last ? options.stderr(errorData)
+                         : setTimeout(function() {
+                            options.stderr(errorData);
+                         }, 0);
+                } else {
+                    error += errorData;
+                }
+            }
+        }
+        if(!last) {
+            var exit = new DWORD();
+            GetExitCodeProcess(child.process, exit.address());
+            if(exit.value != STILL_ACTIVE) {
+                return cleanup(exit.value);
+            }
+        }
+        setTimeout(function() { readPipes() }, 0);
+    }
+    function cleanup(exitCode) {
+        exitCode = exitCode || 0;
+        if(active) {
+            readPipes(true);
+            if (!CloseHandle(child.stdin)) LogError("CloseHandle hInputWrite");
+            if (!CloseHandle(child.stdout)) LogError("CloseHandle hOutputRead");
+            if(!options.mergeStderr) {
+                if (!CloseHandle(child.stderr)) LogError("CloseHandle hErrorRead");
+            }
+            active = false;
+            kernel32dll.close();
+            //LogError('exitCode ' + exitCode);
+            options.done && options.done({
+                exitCode: exitCode,
+                stdout: output,
+                stderr: error,
+            });
+        }
+    } 
+
+    //main
+    hChildProcess = popen(options.command, options.arguments, options.environment, child);
+    if (options.stdin) {
+        if(typeof(options.stdin) == 'function') {
+            options.stdin({
+                write: function(data) {
+                    writeStdin(data);
+                },
+                close: function() {
+                    CloseHandle(child.stdin);
+                }
+            });
+        } else {
+            writeStdin(options.stdin);
+            if (!CloseHandle(child.stdin)) LogError("CloseHandle hInputWrite");
+        }
+    }
+    setTimeout(function() {
+        readPipes();
+    }, 0);
+
+    return {
+        kill: function() {
+            var r = !!TerminateProcess(child.process, 255);
+            cleanup(-1);
+            return r;
+        },
+        wait: function() {
+            if(active) {
+                var exit = new DWORD();
+                GetExitCodeProcess(child.process, exit.address());
+                if(exit.value == STILL_ACTIVE) {
+                    WaitForSingleObject(child.process, INFINITE);
+                }
+                GetExitCodeProcess(child.process, exit.address());
+                cleanup(exit.value);
+                return exit.value;
+            }
+        }
+    }
 }
 
-StdoutStreamListener.prototype = {
-  QueryInterface: XPCOMUtils.generateQI(
-    [ Ci.nsIRequestObserver, Ci.nsIStreamListener ]),
+function subprocess_unix(options) {
+    var active = true,
+        child = {},
+        error = '',
+        libc = ctypes.open(options.libc),
+        output = '';
 
-  // nsIObserver
-  observe: function (aReqObserver, aContext) {
-    this._reqObserver = aReqObserver;
-  },
 
-  // nsIRequestObserver
-  onStartRequest: function(aRequest, aContext) {
-    if (this._reqObserver)
-      this._reqObserver.onStartRequest(aRequest, aContext);
-  },
+    //api declarations
 
-  // nsIRequestObserver
-  onStopRequest: function(aRequest, aContext, aStatusCode) {
-    // call to stderr and onFinished from here to avoid mandatory use of
-    // p.wait()
-    if (this._reqObserver)
-      this._reqObserver.onStopRequest(aRequest, aContext, aStatusCode);
+    //pid_t fork(void);
+    var fork = libc.declare("fork",
+                         ctypes.default_abi,
+                         pid_t
+    );
 
-    // unset assigned variables to avoid memory leak
-    this._reqObserver=null;
-    this._cmdObj=null;
-  },
+    //int pipe(int pipefd[2]);
+    var pipefd = ctypes.int.array(2);
+    var pipe = libc.declare("pipe",
+                         ctypes.default_abi,
+                         ctypes.int,
+                         pipefd
+    );
 
-  // nsIStreamListener
-  onDataAvailable: function(aRequest, aContext, aInputStream, offset, count) {
+    //int dup(int oldfd);
+    var dup= libc.declare("dup",
+                          ctypes.default_abi,
+                          ctypes.int,
+                          ctypes.int
+    );
 
-    let sis = Cc["@mozilla.org/scriptableinputstream;1"].createInstance(
-      Ci.nsIScriptableInputStream);
-    sis.init(aInputStream);
-    if ("readBytes" in sis) {
-       // Gecko > 2.0b4, supports NULL characters
-      this._cmdObj.stdout.onDataAvailable(sis.readBytes(count));
+    //int close(int fd);
+    var close = libc.declare("close",
+                          ctypes.default_abi,
+                          ctypes.int,
+                          ctypes.int
+    );
+
+    //NULL terminated array of strings, argv[0] will be command >> + 2
+    var argv = ctypes.char.ptr.array(options.arguments.length + 2);
+    var envp = ctypes.char.ptr.array(options.environment.length + 1);
+    var execve = libc.declare("execve",
+                          ctypes.default_abi,
+                          ctypes.int,
+                          ctypes.char.ptr,
+                          argv,
+                          envp 
+    );
+
+    //void exit(int status);
+    var exit = libc.declare("exit",
+                          ctypes.default_abi,
+                          ctypes.void_t,
+                          ctypes.int
+    );
+
+    //pid_t waitpid(pid_t pid, int *status, int options);
+    var waitpid = libc.declare("waitpid",
+                          ctypes.default_abi,
+                          pid_t,
+                          pid_t,
+                          ctypes.int.ptr,
+                          ctypes.int
+    );
+
+    //int kill(pid_t pid, int sig);
+    var kill = libc.declare("kill",
+                          ctypes.default_abi,
+                          ctypes.int,
+                          pid_t,
+                          ctypes.int
+    );
+
+    //int read(int fd, void *buf, size_t count);
+    var bufferSize = 1024;
+    var buffer = ctypes.char.array(bufferSize);
+    var read = libc.declare("read",
+                          ctypes.default_abi,
+                          ctypes.int,
+                          ctypes.int,
+                          buffer,
+                          ctypes.int
+    );
+
+    //ssize_t write(int fd, const void *buf, size_t count);
+    var write = libc.declare("write",
+                          ctypes.default_abi,
+                          ctypes.int,
+                          ctypes.int,
+                          ctypes.char.ptr,
+                          ctypes.int
+    );
+
+    //int chdir(const char *path);
+    var chdir = libc.declare("chdir",
+                          ctypes.default_abi,
+                          ctypes.int,
+                          ctypes.char.ptr
+    );
+
+    //int fcntl(int fd, int cmd, ... /* arg */ );
+    var fcntl = libc.declare("fcntl",
+                          ctypes.default_abi,
+                          ctypes.int,
+                          ctypes.int,
+                          ctypes.int,
+                          ctypes.int
+    );
+
+    function popen(command, args, environment, child) {
+        var _in,
+            _out,
+            _err,
+            pid,
+            rc;
+        _in = new pipefd();
+        _out = new pipefd();
+        if(!options.mergeStderr)
+            _err = new pipefd();
+
+        var _args = argv();
+        args.unshift(command);
+        for(var i=0;i<args.length;i++) {
+            _args[i] = ctypes.char.array()(args[i]);
+        }
+        var _envp = envp();
+        for(var i=0;i<environment.length;i++) {
+            _envp[i] = ctypes.char.array()(environment[i]);
+            LogError(_envp);
+        }
+        rc = pipe(_in);
+        if (rc < 0) {
+            return -1;
+        }
+        rc = pipe(_out);
+        fcntl(_out[0], F_SETFL, O_NONBLOCK);
+        if (rc < 0) {
+            close(_in[0]);
+            close(_in[1]);
+            return -1
+        }
+        if(!options.mergeStderr) {
+            rc = pipe(_err);
+            fcntl(_err[0], F_SETFL, O_NONBLOCK);
+            if (rc < 0) {
+                close(_in[0]);
+                close(_in[1]);
+                close(_out[0]);
+                close(_out[1]);
+                return -1
+            }
+        }
+
+        pid = fork();
+        if (pid > 0) { // parent
+            close(_in[0]);
+            close(_out[1]);
+            if(!options.mergeStderr)
+                close(_err[1]);
+            child.stdin  = _in[1];
+            child.stdout = _out[0];
+            child.stderr = options.mergeStderr ? undefined : _err[0];
+            child.pid = pid;
+            return pid;
+        } else if (pid == 0) { // child
+	        if (options.workdir) {
+                if (chdir(options.workdir) < 0) {
+                    exit(126);
+                }
+            }
+            close(_in[1]);
+            close(_out[0]);
+            if(!options.mergeStderr)
+                close(_err[0]);
+            close(0);
+            dup(_in[0]);
+            close(1);
+            dup(_out[1]);
+            close(2);
+            dup(options.mergeStderr ? _out[1] : _err[1]);
+            execve(command, _args, _envp);
+            exit(1);
+        } else {
+            if(!options.mergeStderr) {
+                close(_err[0]);
+                close(_err[1]);
+            }
+            close(_out[0]);
+            close(_out[1]);
+            close(_in[0]);
+            close(_in[1]);
+            return -1;
+        }
+        return pid;
     }
-    else
-      // Gecko <= 2.0b4
-      this._cmdObj.stdout.onDataAvailable(sis.read(count));
 
-    // unset variable to avoid memory leak
-    sis = null;
-  }
+    function writeStdin(data) {
+        return write(child.stdin, data, data.length);
+    }
 
-};
+    function readPipes(last) {
+        if(!active && !last)
+            return;
+        var data = '';
+        while(true) {
+            let line = new buffer();
+            if(read(child.stdout, line, bufferSize) <= 0)
+                break
+            let c = line.readString();
+            data += c;
+            //\r is used to work with statu output like from ffmpeg
+            if (!last && (c[c.length-1] == '\n' || c[c.length-1] == '\r'))
+                break;
+        }
+        //dump('\nstdout ' + data.length + '\n');
+        if(data.length) {
+            if(options.stdout) {
+                last ? options.stdout(data)
+                     : setTimeout(function() {
+                        options.stdout(data);
+                     }, 0);
+            } else {
+                output += data;
+            }
+        }
+        if(!options.mergeStderr) {
+            var errorData = '';
+            while(true) {
+                let line = new buffer();
+                if(read(child.stderr, line, bufferSize) <= 0)
+                    break
+                let c = line.readString();
+                errorData += c;
+                //\r is used to work with statu output like from ffmpeg
+                if (!last && (c[c.length-1] == '\n' || c[c.length-1] == '\r'))
+                    break;
+            }
+            if(errorData.length) {
+                if(options.stderr) {
+                    last ? options.stderr(errorData)
+                         : setTimeout(function() {
+                            options.stderr(errorData);
+                         }, 0);
+                } else {
+                    error += errorData;
+                }
+            }
+        }
+        if (!last) {
+            var status = ctypes.int();
+            var result = waitpid(child.pid, status.address(), WNOHANG);
+            if (result == 0) {
+                setTimeout(function() { readPipes(); }, 1);
+            } else if (result == -1) {
+                LogError('Error' + result + ' ' + status);
+            } else {
+                cleanup();
+            }
+        }
+    }
 
-/**
- * Listener for handling subprocess termination
- */
-function OnFinishedListener(pipeObj)
-{
-  this._pipeObj = pipeObj;
+    function cleanup() {
+        if(!active)
+            return;
+        var result, status = ctypes.int();
+        result = waitpid(child.pid, status.address(), 0);
+        if(active) {
+            active = false;
+            readPipes(true);
+            close(child.stdin);
+            close(child.stdout);
+            if(!options.mergeStderr)
+                close(child.stderr);
+            options.done && options.done({
+                exitCode: status.value,
+                stdout: output,
+                stderr: error 
+            });
+            libc.close();
+        }
+        return status.value;
+    }
+
+    //main
+    var child = {};
+    var pid = popen(options.command, options.arguments, options.environment, child);
+    if (options.stdin) {
+        if(typeof(options.stdin) == 'function') {
+            options.stdin({
+                write: function(data) {
+                    writeStdin(data);
+                },
+                close: function() {
+                    close(child.stdin);
+                }
+            });
+        } else {
+            writeStdin(options.stdin);
+            close(child.stdin);
+        }
+    }
+    setTimeout(function() {
+        readPipes();
+    }, 0);
+
+    return {
+        wait: function() {
+            return cleanup();
+        },
+        kill: function() {
+            var rv = kill(pid, 9);
+            cleanup();
+            return rv;
+        }
+    }
 }
-
-OnFinishedListener.prototype = {
-  QueryInterface: XPCOMUtils.generateQI([ Ci.nsIRequestObserver ]),
-
-  // nsIRequestObserver
-  onStartRequest: function(aRequest, aContext) {
-    // do nothing
-  },
-
-  // nsIRequestObserver
-  onStopRequest: function(aRequest, aContext, aStatusCode) {
-
-    // call to stderr and onFinished from here to avoid mandatory use of
-    // p.wait()
-
-    let cmdObj = this._pipeObj._cmdObj;
-
-    if (typeof(cmdObj.stderr) == "object" && (! cmdObj.mergeStderr)) {
-      cmdObj.stderr.onDataAvailable( this._pipeObj.stderrData.getData());
-      this._pipeObj.stderrData.shutdown();
-    }
-
-    if (typeof(cmdObj.onFinished) == "object") {
-      if (cmdObj.stdout == null) {
-        cmdObj.onFinished.stdoutData =
-          this._pipeObj.stdoutListener.getData();
-        this._pipeObj.stdoutListener.shutdown();
-      }
-
-      cmdObj.onFinished.callback(this._pipeObj._pipeTransport.exitValue);
-    }
-
-    // unset assigned variables to avoid memory leak
-    this._pipeObj = null;
-  }
-}
-
-/**
- * Class to represent a running process. This class that is returned
- * from subprocess.call(...)
- */
-function PipeObj()
-{}
-
-PipeObj.prototype = {
-  stderrData: null,
-
-  /**
-   * Initializer method.
-   *
-   * @param cmdObj  Object as defined for subprocess.call()
-   */
-  init: function(cmdObj) {
-    this._cmdObj = cmdObj;
-
-    // create & open pipeListener for stderr, no matter if needed or not
-    this.stderrData = Cc[NS_IPCBUFFER_CONTRACTID].createInstance(
-      Ci.nsIIPCBuffer);
-    this.stderrData.open(-1, true);
-
-
-    if (typeof (cmdObj.command) == "string") {
-      let localfile = Cc["@mozilla.org/file/local;1"].createInstance(
-        Ci.nsILocalFile);
-      localfile.initWithPath(cmdObj.command);
-      cmdObj._commandFile = localfile.QueryInterface(Ci.nsIFile);
-    }
-    else {
-      cmdObj._commandFile = cmdObj.command;
-    }
-    if (typeof (cmdObj.arguments) != "object") cmdObj.arguments = [];
-    if (typeof (cmdObj.environment) != "object") cmdObj.environment = [];
-    if (typeof (cmdObj.workdir) == "string") {
-      let localfile= Cc["@mozilla.org/file/local;1"].createInstance(
-        Ci.nsILocalFile);
-      localfile.initWithPath(cmdObj.workdir);
-      cmdObj._cwd = localfile.QueryInterface(Ci.nsIFile);
-    }
-    else if (typeof (cmdObj.workdir) == "object") {
-      cmdObj._cwd = cmdObj.workdir;
-    }
-    else {
-      cmdObj._cwd = null;
-    }
-
-    this._pipeTransport = Cc[NS_PIPETRANSPORT_CONTRACTID].createInstance(
-      Ci.nsIPipeTransport);
-    this._pipeTransport.initWithWorkDir(cmdObj._commandFile, cmdObj._cwd,
-                            Ci.nsIPipeTransport.INHERIT_PROC_ATTRIBS);
-
-    this.stdoutListener = null;
-    if (typeof(cmdObj.stdout) == "object") {
-      // add listener for asynchronous processing of data
-      this.stdoutListener = new StdoutStreamListener(cmdObj);
-    }
-    else {
-      this.stdoutListener = Cc[NS_IPCBUFFER_CONTRACTID].createInstance(
-        Ci.nsIIPCBuffer);
-      this.stdoutListener.open(-1, true);
-    }
-
-    if (typeof(cmdObj.stderr) == "object" ||
-        typeof(cmdObj.onFinished) == "object")
-      this.stdoutListener.observe(new OnFinishedListener(this), null);
-
-    this._pipeTransport.openPipe(cmdObj.arguments, cmdObj.arguments.length,
-                                 cmdObj.environment, cmdObj.environment.length,
-                                 0, "", true, cmdObj.mergeStderr ? true : false,
-                                 this.stderrData);
-
-    this._pipeTransport.asyncRead(this.stdoutListener, null, 0, -1, 0);
-
-    if (typeof(cmdObj.stdin) == "string") {
-      this._pipeTransport.writeSync(cmdObj.stdin, cmdObj.stdin.length);
-      this._pipeTransport.closeStdin();
-    }
-    else if (typeof(cmdObj.stdin) == "object") {
-      cmdObj.stdin._pipeTransport = this._pipeTransport;
-      cmdObj.stdin.startWriting();
-    }
-  }, // init
-
-  /**
-   * Wait for the subprocess to complete. This method is blocking.
-   */
-  wait: function () {
-    this._pipeTransport.join();
-  },
-
-  /**
-   * Kill the subprocess
-   */
-  kill: function() {
-    try {
-      this._pipeTransport.kill();
-    }
-    catch(ex) {
-      // do nothing
-    }
-  }
-}; // PipeObj
