@@ -12,6 +12,7 @@
  *    command:     '/bin/foo',
  *    arguments:   ['-v', 'foo'],
  *    environment: [ "XYZ=abc", "MYVAR=def" ],
+ *    charset: 'UTF-8',
  *    workdir: '/home/foo',
  *    //stdin: "some value to write to stdin\nfoobar",
  *    stdin: function(stdin) {
@@ -46,6 +47,11 @@
  *              to the command. The array elements must have the form
  *              "VAR=data". Please note that if environment is defined, it
  *              replaces any existing environment variables for the subprocess.
+ *
+ * charset:     Output is decoded with given charset and a string is returned.
+ *              If charset is undefined, "UTF-8" is used as default.
+ *              To get binary data, set this to null and an array of bytes
+ *              is returned.
  *
  * workdir:     optional; String containing the platform-dependent path to a
  *              directory to become the current working directory of the subprocess.
@@ -243,12 +249,45 @@ function setTimeout(callback, timeout) {
     timer.initWithCallback(callback, timeout, Ci.nsITimer.TYPE_ONE_SHOT);
 };
 
+function readString(data, length, charset) {
+    var string = '', bytes = [];
+    for(var i = 0;i < length; i++) {
+        if(data[i] == 0)
+            break
+        bytes.push(data[i]);
+    }
+    if (!bytes || bytes.length == 0)
+        return string;
+    if(charset === null) {
+        return bytes;
+    }
+    charset = charset || 'UTF-8';
+    var unicodeConv = Cc["@mozilla.org/intl/scriptableunicodeconverter"]
+                        .getService(Ci.nsIScriptableUnicodeConverter);
+    try {
+        unicodeConv.charset = charset;
+        string = unicodeConv.convertFromByteArray(bytes, bytes.length);
+    } catch (ex) {
+        string = '';
+    }
+    string += unicodeConv.Finish();
+    return string;
+}
+
 var subprocess = {
     call: function(options) {
         options.mergeStderr = options.mergeStderr || false;
         options.workdir = options.workdir ||  null;
         options.environment = options.environment ||  [];
-
+        if (options.arguments) {
+            var args = options.arguments;
+            options.arguments = [];
+            args.forEach(function(argument) {
+                options.arguments.push(argument);
+            });
+        } else {
+            options.arguments = [];
+        }
         var xulRuntime = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime);
         if (xulRuntime.OS.substring(0, 3) == "WIN") {
             return subprocess_win32(options);
@@ -264,8 +303,8 @@ function subprocess_win32(options) {
         hChildProcess,
         active = true,
         child = {},
-        error = '',
-        output = '';
+        error = options.charset === null ? [] : '',
+        output = options.charset === null ? [] : '';
 
     //api declarations
     /*
@@ -611,12 +650,16 @@ function subprocess_win32(options) {
 
     function ReadPipe(pipe, last) {
         var bytesWritten = DWORD(0);
-        var data = '';
+        var data = options.charset === null ? [] : '';
         while(true) {
             var line = new ReadFileBuffer();
             var r = ReadFile(child.stdout, line, ReadFileBufferSize, bytesWritten.address(), null);
-            var c = line.readString();
-            data += c;
+            var c = readString(line, bytesWritten.value, options.charset);
+            if(options.charset === null) {
+                c.forEach(function(x) { data.push(x) })
+            } else {
+                data += c;
+            }
             if(!last || !r)
                 break
             if (!last && (c[c.length-1] == '\n' || c[c.length-1] == '\r'))
@@ -636,12 +679,15 @@ function subprocess_win32(options) {
                         options.stdout(data);
                      }, 0);
             } else {
-                output += data;
+                if(options.charset === null) {
+                    data.forEach(function(x) { output.push(x) })
+                } else {
+                    output += data;
+                }
             }
         }
         //FIXME: find a way to read stderr non blocking or move it to another thread
         if(last && !options.mergeStderr) {
-            var errorData = '';
             var errorData = ReadPipe(child.stderr, last);
             if(errorData.length) {
                 if(options.stderr) {
@@ -650,7 +696,11 @@ function subprocess_win32(options) {
                             options.stderr(errorData);
                          }, 0);
                 } else {
-                    error += errorData;
+                    if(options.charset === null) {
+                        errorData.forEach(function(x) { error.push(x) })
+                    } else {
+                        error += errorData;
+                    }
                 }
             }
         }
@@ -728,9 +778,9 @@ function subprocess_win32(options) {
 function subprocess_unix(options) {
     var active = true,
         child = {},
-        error = '',
+        error = options.charset === null ? [] : '',
         libc = ctypes.open(options.libc),
-        output = '';
+        output = options.charset === null ? [] : '';
 
 
     //api declarations
@@ -928,13 +978,17 @@ function subprocess_unix(options) {
     function readPipes(last) {
         if(!active && !last)
             return;
-        var data = '';
+        var data = options.charset === null ? [] : '';
         while(true) {
             let line = new buffer();
-            if(read(child.stdout, line, bufferSize) <= 0)
+            let r = read(child.stdout, line, bufferSize);
+            if(r <= 0)
                 break
-            let c = line.readString();
-            data += c;
+            let c = readString(line, r, options.charset);
+            if (options.charset === null)
+                c.forEach(function(x) { data.push(x) });
+            else
+                data += c;
             //\r is used to work with statu output like from ffmpeg
             if (!last && (c[c.length-1] == '\n' || c[c.length-1] == '\r'))
                 break;
@@ -947,17 +1001,24 @@ function subprocess_unix(options) {
                         options.stdout(data);
                      }, 0);
             } else {
-                output += data;
+                if (options.charset === null)
+                    data.forEach(function(x) { output.push(x) });
+                else
+                    output += data;
             }
         }
         if(!options.mergeStderr) {
-            var errorData = '';
+            var errorData = options.charset === null ? [] : '';
             while(true) {
                 let line = new buffer();
-                if(read(child.stderr, line, bufferSize) <= 0)
+                let r = read(child.stderr, line, bufferSize);
+                if(r <= 0)
                     break
-                let c = line.readString();
-                errorData += c;
+                let c = readString(line, r, options.charset);
+                if (options.charset === null)
+                    c.forEach(function(x) { errorData.push(x) });
+                else
+                    errorData += c;
                 //\r is used to work with statu output like from ffmpeg
                 if (!last && (c[c.length-1] == '\n' || c[c.length-1] == '\r'))
                     break;
@@ -969,7 +1030,10 @@ function subprocess_unix(options) {
                             options.stderr(errorData);
                          }, 0);
                 } else {
-                    error += errorData;
+                    if (options.charset === null)
+                        errorData.forEach(function(x) { errror.push(x) });
+                    else
+                        error += errorData;
                 }
             }
         }
@@ -990,6 +1054,7 @@ function subprocess_unix(options) {
         if(!active)
             return;
         var result, status = ctypes.int();
+        readPipes(true);
         result = waitpid(child.pid, status.address(), 0);
         if(active) {
             active = false;

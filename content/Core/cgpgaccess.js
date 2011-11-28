@@ -416,13 +416,10 @@ FireGPG.GPGAccess = {
         var p = subprocess.call({
           command: this.getGPGCommand(),
           arguments: gpgArgs,
+          charset: charset,
           done: function(result) {
             retour.err = result.stderr;
             retour.out = result.stdout;
-            retour.out = FireGPG.Misc.EnigConvertToUnicode(retour.out,
-                                                           charset);
-            retour.err = FireGPG.Misc.EnigConvertToUnicode(retour.err,
-                                                           charset);
           },
           stdin: stdIn 
         });
