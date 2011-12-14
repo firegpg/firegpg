@@ -1,9 +1,8 @@
 #!/bin/sh
 name=firegpg
-MOZBUILD=$HOME/src/mozilla-beta/ff-opt
+MOZBUILD=${MOZBUILD:-$HOME/src/mozilla-beta/obj-ff-release}
 
 cd `dirname $0`
-
 IPC=`pwd`
 
 rm -rf $MOZBUILD/../extensions/$name-ipc
@@ -15,6 +14,7 @@ cd $MOZBUILD
 cd $MOZBUILD/extensions/$name-ipc
 make
 
+#install
 COMPONENTS=$IPC/components/
 mkdir -p $COMPONENTS
 cp ../../dist/bin/components/${name}_ipc.dll $COMPONENTS

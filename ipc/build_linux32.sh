@@ -1,6 +1,6 @@
 #!/bin/bash
 name=firegpg
-MOZBUILD=$HOME/src/mozilla-beta/obj-ff-release
+MOZBUILD=${MOZBUILD:-$HOME/src/mozilla-beta/obj-ff-release}
 
 cd `dirname $0`
 IPC=`pwd`
