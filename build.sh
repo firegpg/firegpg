@@ -15,7 +15,6 @@
 #   skin/       |
 #
 #   defaults/   |
-#   components/ |} these must be listed in $ROOT_DIRS in order to be packaged
 #   ...         |
 #
 # It uses a temporary directory ./build when building; don't use that!
@@ -75,7 +74,7 @@ zip -0 -r $JAR_FILE `cat files` -x '*.svn*'
 # The following statement should be used instead if you don't wish to use the JAR file
 #cp --verbose --parents `cat files` $TMP_DIR/chrome
 
-# prepare components and defaults
+# prepare defaults
 echo "Copying various files to $TMP_DIR folder..."
 for DIR in $ROOT_DIRS; do
   mkdir $TMP_DIR/$DIR

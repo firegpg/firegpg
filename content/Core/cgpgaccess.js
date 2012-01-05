@@ -358,29 +358,29 @@ FireGPG.GPGAccess = {
 
         Parameters:
         parameters - The parameters for gnupg.
-        sdtIn - The data to send to gnupg on the sdIn
-        charset - _Optional_. The charset to read the sdtIn (UTF-8 by default)
+        stdIn - The data to send to gnupg on the sdIn
+        charset - _Optional_. The charset to read the stdIn (UTF-8 by default)
 
         Return:
             The sdOut (.out) and the sdErr (.err) of the execution
     */
-    runGnupg: function(parameters, sdtIn, charset)  {
+    runGnupg: function(parameters, stdIn, charset)  {
 
         if (charset == undefined)
             charset = "utf-8";
 
-        if (sdtIn == undefined)
-            sdtIn = "";
+        if (stdIn == undefined)
+            stdIn = "";
 
 
-		sdtIn = FireGPG.Misc.EnigConvertFromUnicode(sdtIn, charset);
+		stdIn = FireGPG.Misc.EnigConvertFromUnicode(stdIn, charset);
 
         var outStrObj = new Object();
         var outLenObj = new Object();
         var errStrObj = new Object();
         var errLenObj = new Object();
 
-        FireGPG.debug(this.getGPGCommand() + " " + parameters + "[" + sdtIn + "]",'FireGPGGPGAccessCallerUnixXpcom');
+        FireGPG.debug(this.getGPGCommand() + " " + parameters + "[" + stdIn + "]",'FireGPGGPGAccessCallerUnixXpcom');
 
         var parametersS = parameters.split(/ /gi);
 
@@ -416,22 +416,12 @@ FireGPG.GPGAccess = {
         var p = subprocess.call({
           command: this.getGPGCommand(),
           arguments: gpgArgs,
-          onFinished: subprocess.Terminate(function() {
-            retour.out = FireGPG.Misc.EnigConvertToUnicode(retour.out,
-                                                           charset);
-            retour.err = FireGPG.Misc.EnigConvertToUnicode(retour.err,
-                                                           charset);
-          }),
-          stderr: subprocess.ReadablePipe(function(data) {
-              retour.err += data;
-          }),
-          stdout: subprocess.ReadablePipe(function(data) {
-              retour.out += data;
-          }),
-          stdin: subprocess.WritablePipe(function() {
-            this.write(sdtIn);
-            this.close();
-          })
+          charset: charset,
+          done: function(result) {
+            retour.err = result.stderr;
+            retour.out = result.stdout;
+          },
+          stdin: stdIn 
         });
         p.wait();
         return retour;
