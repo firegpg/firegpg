@@ -1057,7 +1057,6 @@ function subprocess_unix(options) {
 
     //api declarations
     //Darwin/BSD uses 0x0004 Linux 04000 or 2048
-    const O_NONBLOCK = xulRuntime.OS == 'Darwin' ? 0x0004 : 2048;
     const O_NONBLOCK = {
         'darwin': 0x0004,
         'freebsd': 0x0004,
