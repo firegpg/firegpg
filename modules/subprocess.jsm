@@ -1,5 +1,41 @@
 // -*- coding: utf-8 -*-
 // vim: et:ts=4:sw=4:sts=4:ft=javascript
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public
+ * License Version 1.1 (the "MPL"); you may not use this file
+ * except in compliance with the MPL. You may obtain a copy of
+ * the MPL at http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the MPL is distributed on an "AS
+ * IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+ * implied. See the MPL for the specific language governing
+ * rights and limitations under the MPL.
+ *
+ * The Original Code is subprocess.jsm.
+ *
+ * The Initial Developer of this code is Jan Gerber.
+ * Portions created by Jan Gerber <j@mailb.org>
+ * are Copyright (C) 2011 Jan Gerber.
+ * All Rights Reserved.
+ *
+ * Contributor(s):
+ * Patrick Brunschwig <patrick@enigmail.net>
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ * ***** END LICENSE BLOCK ***** */
+
 /*
  * Import into a JS component using
  * 'Components.utils.import("resource://firefogg/subprocess.jsm");'
@@ -31,6 +67,8 @@
  *    mergeStderr: false
  *  });
  *  p.wait(); // wait for the subprocess to terminate
+ *            // this will block the main thread,
+ *            // only do if you can wait that long
  *
  *
  * Description of parameters:
@@ -50,16 +88,18 @@
  *
  * charset:     Output is decoded with given charset and a string is returned.
  *              If charset is undefined, "UTF-8" is used as default.
- *              To get binary data, set this to null and an array of bytes
- *              is returned.
+ *              To get binary data, set this to null and the returned string
+ *              is not decoded in any way.
  *
  * workdir:     optional; String containing the platform-dependent path to a
  *              directory to become the current working directory of the subprocess.
  *
  * stdin:       optional input data for the process to be passed on standard
  *              input. stdin can either be a string or a function.
- *              a string gets written to stdin and stdin gets closed,
- *              a function gets passed an object with write and close function.
+ *              A |string| gets written to stdin and stdin gets closed;
+ *              A |function| gets passed an object with write and close function.
+ *              Please note that the write() function will return almost immediately;
+ *              data is always written asynchronously on a separate thread.
  *
  * stdout:      an optional function that can receive output data from the
  *              process. The stdout-function is called asynchronously; it can be
@@ -96,7 +136,18 @@
  *              done will be called.
  *
  *
+ * Other methods in subprocess
+ * ---------------------------
+ *
+ * registerDebugHandler(functionRef):   register a handler that is called to get
+ *                                      debugging information
+ * registerLogHandler(functionRef):     register a handler that is called to get error
+ *                                      messages
+ *
+ * example:
+ *    subprocess.registerLogHandler( function(s) { dump(s); } );
  */
+
 'use strict';
 
 Components.utils.import("resource://gre/modules/ctypes.jsm");
@@ -106,11 +157,14 @@ let EXPORTED_SYMBOLS = [ "subprocess" ];
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 
+const NS_LOCAL_FILE = "@mozilla.org/file/local;1";
+
+
 //Windows API definitions
 if (ctypes.size_t.size == 8) {
-  var WinABI = ctypes.default_abi;
+    var WinABI = ctypes.default_abi;
 } else {
-  var WinABI = ctypes.winapi_abi;
+    var WinABI = ctypes.winapi_abi;
 }
 const WORD = ctypes.uint16_t;
 const DWORD = ctypes.uint32_t;
@@ -143,6 +197,7 @@ const SW_HIDE = 0;
 const DUPLICATE_SAME_ACCESS = 0x00000002;
 const STILL_ACTIVE = 259;
 const INFINITE = DWORD(0xFFFFFFFF);
+const WAIT_TIMEOUT = 0x00000102;
 
 /*
 typedef struct _SECURITY_ATTRIBUTES {
@@ -235,13 +290,21 @@ const OVERLAPPED = new ctypes.StructType("OVERLAPPED");
 const pid_t = ctypes.uint32_t;
 const WNOHANG = 1;
 const F_SETFL = 4;
-const O_NONBLOCK = 2048; // 04000; 
 
 
-function LogError(msg) {
-    //Components.utils.import("resource://firefogg/utils.jsm");
-    //utils.debug(msg);
-    dump('\n' + msg + '\n');
+var gDebugFunc = null,
+    gLogFunc = null;
+
+function LogError(s) {
+    if (gLogFunc)
+        gLogFunc(s);
+    else
+        dump(s);
+}
+
+function debugLog(s) {
+    if (gDebugFunc)
+        gDebugFunc(s);
 }
 
 function setTimeout(callback, timeout) {
@@ -252,8 +315,8 @@ function setTimeout(callback, timeout) {
 function readString(data, length, charset) {
     var string = '', bytes = [];
     for(var i = 0;i < length; i++) {
-        if(data[i] == 0)
-            break
+        if(data[i] == 0 && charset !== null) // stop on NULL character for non-binary data
+           break
         bytes.push(data[i]);
     }
     if (!bytes || bytes.length == 0)
@@ -261,6 +324,11 @@ function readString(data, length, charset) {
     if(charset === null) {
         return bytes;
     }
+    return convertBytes(bytes, charset);
+}
+
+function convertBytes(bytes, charset) {
+    var string = '';
     charset = charset || 'UTF-8';
     var unicodeConv = Cc["@mozilla.org/intl/scriptableunicodeconverter"]
                         .getService(Ci.nsIScriptableUnicodeConverter);
@@ -268,11 +336,48 @@ function readString(data, length, charset) {
         unicodeConv.charset = charset;
         string = unicodeConv.convertFromByteArray(bytes, bytes.length);
     } catch (ex) {
+        LogError("String conversion failed: "+ex.toString()+"\n")
         string = '';
     }
     string += unicodeConv.Finish();
     return string;
 }
+
+function getCommandStr(command) {
+    let commandStr = null;
+    if (typeof(command) == "string") {
+        let file = Cc[NS_LOCAL_FILE].createInstance(Ci.nsILocalFile);
+        file.initWithPath(command);
+        if (! (file.isExecutable() && file.isFile()))
+            throw("File '"+command+"' is not an executable file");
+        commandStr = command;
+    }
+    else {
+        if (! (command.isExecutable() && command.isFile()))
+            throw("File '"+command.path+"' is not an executable file");
+        commandStr = command.path;
+    }
+
+    return commandStr;
+}
+
+function getWorkDir(workdir) {
+    let workdirStr = null;
+    if (typeof(workdir) == "string") {
+        let file = Cc[NS_LOCAL_FILE].createInstance(Ci.nsILocalFile);
+        file.initWithPath(workdir);
+        if (! (file.isDirectory()))
+            throw("Directory '"+workdir+"' does not exist");
+        workdirStr = workdir;
+    }
+    else if (workdir) {
+        if (! workdir.isDirectory())
+            throw("Directory '"+workdir.path+"' does not exist");
+        workdirStr = workdir.path;
+    }
+    return workdirStr;
+}
+
 
 var subprocess = {
     call: function(options) {
@@ -288,23 +393,49 @@ var subprocess = {
         } else {
             options.arguments = [];
         }
+
         var xulRuntime = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime);
         if (xulRuntime.OS.substring(0, 3) == "WIN") {
+            options.libc = "kernel32.dll";
             return subprocess_win32(options);
         } else {
-            options.libc = xulRuntime.OS == 'Darwin' ? 'libc.dylib' : 'libc.so.6';
+            options.libc = {
+                'darwin': 'libc.dylib',
+                'freebsd': 'libc.so.7',
+                'openbsd': 'libc.so.61.0',
+            }[xulRuntime.OS.toLowerCase()] || 'libc.so.6';
             return subprocess_unix(options);
         }
+
+    },
+    registerDebugHandler: function(func) {
+        gDebugFunc = func;
+    },
+    registerLogHandler: function(func) {
+        gLogFunc = func;
     }
 };
 
 function subprocess_win32(options) {
-    var kernel32dll = ctypes.open("kernel32.dll"),
+    var kernel32dll = ctypes.open(options.libc),
         hChildProcess,
         active = true,
+        done = false,
+        exitCode = -1,
         child = {},
-        error = options.charset === null ? [] : '',
-        output = options.charset === null ? [] : '';
+        stdinWorker = null,
+        stdoutWorker = null,
+        stderrWorker = null,
+        pendingWriteCount = 0,
+        readers = options.mergeStderr ? 1 : 2,
+        stdinOpenState = 2,
+        error = '',
+        output = '';
+
+    // stdin pipe states
+    const OPEN = 2;
+    const CLOSEABLE = 1;
+    const CLOSED = 0;
 
     //api declarations
     /*
@@ -347,65 +478,66 @@ function subprocess_win32(options) {
                                             PROCESS_INFORMATION.ptr
                                          );
 
-    /*
-    BOOL WINAPI ReadFile(
-      __in         HANDLE hFile,
-      __out        LPVOID ReadFileBuffer,
-      __in         DWORD nNumberOfBytesToRead,
-      __out_opt    LPDWORD lpNumberOfBytesRead,
-      __inout_opt  LPOVERLAPPED lpOverlapped
-    );
-    */
-    var ReadFileBufferSize = 256,
-        ReadFileBuffer = ctypes.char.array(ReadFileBufferSize),
-        ReadFile = kernel32dll.declare("ReadFile",
-                                        WinABI,
-                                        BOOL,
-                                        HANDLE,
-                                        ReadFileBuffer,
-                                        DWORD,
-                                        LPDWORD,
-                                        OVERLAPPED.ptr
-    );
-    /*
-    BOOL WINAPI PeekNamedPipe(
-      __in       HANDLE hNamedPipe,
-      __out_opt  LPVOID lpBuffer,
-      __in       DWORD nBufferSize,
-      __out_opt  LPDWORD lpBytesRead,
-      __out_opt  LPDWORD lpTotalBytesAvail,
-      __out_opt  LPDWORD lpBytesLeftThisMessage
-    );
-     */
-    var PeekNamedPipe = kernel32dll.declare("PeekNamedPipe",
-                                        WinABI,
-                                        BOOL,
-                                        HANDLE,
-                                        ReadFileBuffer,
-                                        DWORD,
-                                        LPDWORD,
-                                        LPDWORD,
-                                        LPDWORD
-    );
-
-    /*
-    BOOL WINAPI WriteFile(
-      __in         HANDLE hFile,
-      __in         LPCVOID lpBuffer,
-      __in         DWORD nNumberOfBytesToWrite,
-      __out_opt    LPDWORD lpNumberOfBytesWritten,
-      __inout_opt  LPOVERLAPPED lpOverlapped
-    );
-    */
-    var WriteFile = kernel32dll.declare("WriteFile",
-                                        WinABI,
-                                        BOOL,
-                                        HANDLE,
-                                        ctypes.char.ptr,
-                                        DWORD,
-                                        LPDWORD,
-                                        OVERLAPPED.ptr
-    );
+//     /*
+//     BOOL WINAPI ReadFile(
+//       __in         HANDLE hFile,
+//       __out        LPVOID ReadFileBuffer,
+//       __in         DWORD nNumberOfBytesToRead,
+//       __out_opt    LPDWORD lpNumberOfBytesRead,
+//       __inout_opt  LPOVERLAPPED lpOverlapped
+//     );
+//     */
+//     var ReadFileBufferSize = 1024,
+//         ReadFileBuffer = ctypes.char.array(ReadFileBufferSize),
+//         ReadFile = kernel32dll.declare("ReadFile",
+//                                         WinABI,
+//                                         BOOL,
+//                                         HANDLE,
+//                                         ReadFileBuffer,
+//                                         DWORD,
+//                                         LPDWORD,
+//                                         OVERLAPPED.ptr
+//     );
+//
+//     /*
+//     BOOL WINAPI PeekNamedPipe(
+//       __in       HANDLE hNamedPipe,
+//       __out_opt  LPVOID lpBuffer,
+//       __in       DWORD nBufferSize,
+//       __out_opt  LPDWORD lpBytesRead,
+//       __out_opt  LPDWORD lpTotalBytesAvail,
+//       __out_opt  LPDWORD lpBytesLeftThisMessage
+//     );
+//     */
+//     var PeekNamedPipe = kernel32dll.declare("PeekNamedPipe",
+//                                         WinABI,
+//                                         BOOL,
+//                                         HANDLE,
+//                                         ReadFileBuffer,
+//                                         DWORD,
+//                                         LPDWORD,
+//                                         LPDWORD,
+//                                         LPDWORD
+//     );
+//
+//     /*
+//     BOOL WINAPI WriteFile(
+//       __in         HANDLE hFile,
+//       __in         LPCVOID lpBuffer,
+//       __in         DWORD nNumberOfBytesToWrite,
+//       __out_opt    LPDWORD lpNumberOfBytesWritten,
+//       __inout_opt  LPOVERLAPPED lpOverlapped
+//     );
+//     */
+//     var WriteFile = kernel32dll.declare("WriteFile",
+//                                         WinABI,
+//                                         BOOL,
+//                                         HANDLE,
+//                                         ctypes.char.ptr,
+//                                         DWORD,
+//                                         LPDWORD,
+//                                         OVERLAPPED.ptr
+//     );
 
     /*
     BOOL WINAPI CreatePipe(
@@ -424,7 +556,7 @@ function subprocess_win32(options) {
                                         DWORD
     );
 
-   /* 
+    /*
     HANDLE WINAPI GetCurrentProcess(void);
     */
     var GetCurrentProcess = kernel32dll.declare("GetCurrentProcess",
@@ -437,7 +569,7 @@ function subprocess_win32(options) {
     */
     var GetLastError = kernel32dll.declare("GetLastError",
                                         WinABI,
-                                        DWORD 
+                                        DWORD
     );
 
     /*
@@ -504,7 +636,7 @@ function subprocess_win32(options) {
     );
 
     //functions
-    function popen(command, args, environment, child) {
+    function popen(command, workdir, args, environment, child) {
         //escape arguments
         args.unshift(command);
         for (var i = 0; i < args.length; i++) {
@@ -517,7 +649,7 @@ function subprocess_win32(options) {
           args[i] = args[i].replace(/\\\"/g, "\\\\\"");
         }
         command = args.join(' ');
-        
+
         var environment = environment || [];
         if(environment.length) {
             //An environment block consists of
@@ -547,8 +679,9 @@ function subprocess_win32(options) {
         sa.bInheritHandle = true;
 
         // Create output pipe.
+
         if(!CreatePipe(hOutputReadTmp.address(), hOutputWrite.address(), sa.address(), 0))
-            LogError('CreatePipe hOutputReadTmp');
+            LogError('CreatePipe hOutputReadTmp failed');
 
         if(options.mergeStderr) {
           // Create a duplicate of the output write handle for the std error
@@ -557,15 +690,16 @@ function subprocess_win32(options) {
           if (!DuplicateHandle(GetCurrentProcess(), hOutputWrite,
                                GetCurrentProcess(), hErrorWrite.address(), 0,
                                true, DUPLICATE_SAME_ACCESS))
-             LogError("DuplicateHandle hOutputWrite");
+             LogError("DuplicateHandle hOutputWrite failed");
         } else {
             // Create error pipe.
             if(!CreatePipe(hErrorReadTmp.address(), hErrorWrite.address(), sa.address(), 0))
-                LogError('CreatePipe hErrorReadTmp');
+                LogError('CreatePipe hErrorReadTmp failed');
         }
+
         // Create input pipe.
-        if (!CreatePipe(hInputRead.address(),hInputWriteTmp.address(),sa.address(),0))
-            LogError("CreatePipe");
+        if (!CreatePipe(hInputRead.address(),hInputWriteTmp.address(),sa.address(), 0))
+            LogError("CreatePipe hInputRead failed");
 
         // Create new output/error read handle and the input write handles. Set
         // the Properties to FALSE. Otherwise, the child inherits the
@@ -576,7 +710,7 @@ function subprocess_win32(options) {
                              hOutputRead.address(), // Address of new handle.
                              0, false, // Make it uninheritable.
                              DUPLICATE_SAME_ACCESS))
-             LogError("DupliateHandle hOutputReadTmp");
+             LogError("DupliateHandle hOutputReadTmp failed");
 
         if(!options.mergeStderr) {
             if (!DuplicateHandle(GetCurrentProcess(), hErrorReadTmp,
@@ -584,24 +718,24 @@ function subprocess_win32(options) {
                              hErrorRead.address(), // Address of new handle.
                              0, false, // Make it uninheritable.
                              DUPLICATE_SAME_ACCESS))
-             LogError("DupliateHandle hErrorReadTmp");
+             LogError("DupliateHandle hErrorReadTmp failed");
         }
         if (!DuplicateHandle(GetCurrentProcess(), hInputWriteTmp,
                              GetCurrentProcess(),
                              hInputWrite.address(), // Address of new handle.
                              0, false, // Make it uninheritable.
                              DUPLICATE_SAME_ACCESS))
-          LogError("DupliateHandle hInputWriteTmp");
+          LogError("DupliateHandle hInputWriteTmp failed");
 
         // Close inheritable copies of the handles.
-        if (!CloseHandle(hOutputReadTmp)) LogError("CloseHandle hOutputReadTmp");
+        if (!CloseHandle(hOutputReadTmp)) LogError("CloseHandle hOutputReadTmp failed");
         if(!options.mergeStderr)
-            if (!CloseHandle(hErrorReadTmp)) LogError("CloseHandle hErrorReadTmp");
-        if (!CloseHandle(hInputWriteTmp)) LogError("CloseHandle");
+            if (!CloseHandle(hErrorReadTmp)) LogError("CloseHandle hErrorReadTmp failed");
+        if (!CloseHandle(hInputWriteTmp)) LogError("CloseHandle failed");
 
         var pi = new PROCESS_INFORMATION();
         var si = new STARTUPINFO();
-      
+
         si.cb = STARTUPINFO.size;
         si.dwFlags = STARTF_USESTDHANDLES;
         si.hStdInput  = hInputRead;
@@ -616,22 +750,23 @@ function subprocess_win32(options) {
                            true,            // inherits system handles
                            CREATE_UNICODE_ENVIRONMENT|CREATE_NO_WINDOW, // process flags
                            environment,     // envrionment block
-                           options.workdir, // set as current directory
+                           workdir,          // set as current directory
                            si.address(),    // (in) startup information
                            pi.address()     // (out) process information
         ))
-            LogError("CreateProcessW failed");
+            throw("Fatal - Could not launch subprocess '"+command+"'");
 
         // Close any unnecessary handles.
         if (!CloseHandle(pi.hThread))
-            LogError("CloseHandle pi.hThread");
+            LogError("CloseHandle pi.hThread failed");
+
         // Close pipe handles (do not continue to modify the parent).
         // You need to make sure that no handles to the write end of the
         // output pipe are maintained in this process or else the pipe will
         // not close when the child process exits and the ReadFile will hang.
-        if (!CloseHandle(hInputRead)) LogError("CloseHandle");
-        if (!CloseHandle(hOutputWrite)) LogError("CloseHandle hOutputWrite");
-        if (!CloseHandle(hErrorWrite)) LogError("CloseHandle hErrorWrite");
+        if (!CloseHandle(hInputRead)) LogError("CloseHandle hInputRead failed");
+        if (!CloseHandle(hOutputWrite)) LogError("CloseHandle hOutputWrite failed");
+        if (!CloseHandle(hErrorWrite)) LogError("CloseHandle hErrorWrite failed");
 
         //return values
         child.stdin = hInputWrite;
@@ -641,118 +776,245 @@ function subprocess_win32(options) {
         return pi.hProcess;
     }
 
-    function writeStdin(data) {
-        var bytesWritten = DWORD(0);
-        var r = WriteFile(child.stdin, data, data.length,
-                          bytesWritten.address(), null);
-        return bytesWritten;
-    }
-
-    function ReadPipe(pipe, last) {
-        var bytesWritten = DWORD(0);
-        var data = options.charset === null ? [] : '';
-        while(true) {
-            var line = new ReadFileBuffer();
-            var r = ReadFile(child.stdout, line, ReadFileBufferSize, bytesWritten.address(), null);
-            var c = readString(line, bytesWritten.value, options.charset);
-            if(options.charset === null) {
-                c.forEach(function(x) { data.push(x) })
-            } else {
-                data += c;
-            }
-            if(!last || !r)
-                break
-            if (!last && (c[c.length-1] == '\n' || c[c.length-1] == '\r'))
+    /*
+     * createStdinWriter ()
+     *
+     * Create a ChromeWorker object for writing data to the subprocess' stdin
+     * pipe. The ChromeWorker object lives on a separate thread; this avoids
+     * internal deadlocks.
+     */
+    function createStdinWriter() {
+        debugLog("Creating new stdin worker\n");
+        stdinWorker = new ChromeWorker("subprocess_worker_win.js");
+        stdinWorker.onmessage = function(event) {
+            switch(event.data) {
+            case "WriteOK":
+                pendingWriteCount--;
+                debugLog("got OK from stdinWorker - remaining count: "+pendingWriteCount+"\n");
                 break;
+            case "ClosedOK":
+                stdinOpenState = CLOSED;
+                debugLog("Stdin pipe closed\n");
+                break;
+            default:
+                debugLog("got msg from stdinWorker: "+event.data+"\n");
+            }
         }
-        return data;
+        stdinWorker.onerror = function(error) {
+            pendingWriteCount--;
+            LogError("got error from stdinWorker: "+error.message+"\n");
+        }
+
+        stdinWorker.postMessage({msg: "init", libc: options.libc});
     }
 
-    function readPipes(last) {
-        if(!active)
-            return;
-        var data = ReadPipe(child.stdout, last);
-        if(data.length) {
+    /*
+     * writeStdin()
+     * @data: String containing the data to write
+     *
+     * Write data to the subprocess' stdin (equals to sending a request to the
+     * ChromeWorker object to write the data).
+     */
+    function writeStdin(data) {
+        ++pendingWriteCount;
+        debugLog("sending "+data.length+" bytes to stdinWorker\n");
+        var pipePtr = parseInt(ctypes.cast(child.stdin.address(), ctypes.uintptr_t).value);
+
+        stdinWorker.postMessage({
+                msg: 'write',
+                pipe: pipePtr,
+                data: data
+            });
+    }
+
+    /*
+     * closeStdinHandle()
+     *
+     * Close the stdin pipe, either directly or by requesting the ChromeWorker to
+     * close the pipe. The ChromeWorker will only close the pipe after the last write
+     * request process is done.
+     */
+
+    function closeStdinHandle() {
+        debugLog("trying to close stdin\n");
+        if (stdinOpenState != OPEN) return;
+        stdinOpenState = CLOSEABLE;
+
+        if (stdinWorker) {
+            debugLog("sending close stdin to worker\n");
+            var pipePtr = parseInt(ctypes.cast(child.stdin.address(), ctypes.uintptr_t).value);
+            stdinWorker.postMessage({
+                msg: 'close',
+                pipe: pipePtr
+            });
+        }
+        else {
+            stdinOpenState = CLOSED;
+            debugLog("Closing Stdin\n");
+            CloseHandle(child.stdin) || LogError("CloseHandle hInputWrite failed");
+        }
+    }
+
+
+    /*
+     * createReader(pipe, name)
+     *
+     * @pipe: handle to the pipe
+     * @name: String containing the pipe name (stdout or stderr)
+     *
+     * Create a ChromeWorker object for reading data asynchronously from
+     * the pipe (i.e. on a separate thread), and passing the result back to
+     * the caller.
+     */
+    function createReader(pipe, name, callbackFunc) {
+        var worker = new ChromeWorker("subprocess_worker_win.js");
+        worker.onmessage = function(event) {
+            switch(event.data.msg) {
+            case "data":
+                debugLog("got "+event.data.count+" bytes from "+name+"\n");
+                var data = '';
+                if (options.charset === null) {
+                    event.data.data.forEach(function(x) { data += String.fromCharCode(x) })
+                }
+                else
+                    data = convertBytes(event.data.data, options.charset);
+
+                callbackFunc(data);
+                break;
+            case "done":
+                debugLog("Pipe "+name+" closed\n");
+                --readers;
+                if (readers == 0) cleanup();
+                break;
+            default:
+                debugLog("Got msg from "+name+": "+event.data.data+"\n");
+            }
+        }
+
+        worker.onerror = function(errorMsg) {
+            LogError("Got error from "+name+": "+errorMsg.message);
+        }
+
+        var pipePtr = parseInt(ctypes.cast(pipe.address(), ctypes.uintptr_t).value);
+
+        worker.postMessage({
+                msg: 'read',
+                pipe: pipePtr,
+                libc: options.libc,
+                charset: options.charset === null ? "null" : options.charset,
+                name: name
+            });
+
+        return worker;
+    }
+
+    /*
+     * readPipes()
+     *
+     * Open the pipes for reading from stdout and stderr
+     */
+    function readPipes() {
+
+        stdoutWorker = createReader(child.stdout, "stdout", function (data) {
             if(options.stdout) {
-                last ? options.stdout(data)
-                     : setTimeout(function() {
-                        options.stdout(data);
-                     }, 0);
+                setTimeout(function() {
+                    options.stdout(data);
+                }, 0);
             } else {
-                if(options.charset === null) {
-                    data.forEach(function(x) { output.push(x) })
-                } else {
-                    output += data;
-                }
+                output += data;
             }
-        }
-        //FIXME: find a way to read stderr non blocking or move it to another thread
-        if(last && !options.mergeStderr) {
-            var errorData = ReadPipe(child.stderr, last);
-            if(errorData.length) {
-                if(options.stderr) {
-                    last ? options.stderr(errorData)
-                         : setTimeout(function() {
-                            options.stderr(errorData);
-                         }, 0);
-                } else {
-                    if(options.charset === null) {
-                        errorData.forEach(function(x) { error.push(x) })
-                    } else {
-                        error += errorData;
-                    }
-                }
+        });
+
+
+        if (!options.mergeStderr) stderrWorker = createReader(child.stderr, "stderr", function (data) {
+            if(options.stdout) {
+                setTimeout(function() {
+                    options.stderr(data);
+                }, 0);
+            } else {
+                error += data;
             }
-        }
-        if(!last) {
+        });
+    }
+
+    /*
+     * cleanup()
+     *
+     * close stdin if needed, get the exit code from the subprocess and invoke
+     * the caller's done() function.
+     *
+     * Note: because stdout() and stderr() are called using setTimeout, we need to
+     * do the same here in order to guarantee the message sequence.
+     */
+    function cleanup() {
+        debugLog("Cleanup called\n");
+        if(active) {
+            active = false;
+
+            closeStdinHandle(); // should only be required in case of errors
+
             var exit = new DWORD();
             GetExitCodeProcess(child.process, exit.address());
-            if(exit.value != STILL_ACTIVE) {
-                return cleanup(exit.value);
-            }
-        }
-        setTimeout(function() { readPipes() }, 0);
-    }
-    function cleanup(exitCode) {
-        exitCode = exitCode || 0;
-        if(active) {
-            readPipes(true);
-            if (!CloseHandle(child.stdin)) LogError("CloseHandle hInputWrite");
-            if (!CloseHandle(child.stdout)) LogError("CloseHandle hOutputRead");
-            if(!options.mergeStderr) {
-                if (!CloseHandle(child.stderr)) LogError("CloseHandle hErrorRead");
-            }
-            active = false;
+            exitCode = exit.value;
+
+            if (stdinWorker)
+                stdinWorker.postMessage({msg: 'stop'})
+
+            setTimeout(function _done() {
+                if (options.done) {
+                    try {
+                        options.done({
+                            exitCode: exitCode,
+                            stdout: output,
+                            stderr: error,
+                        });
+                    }
+                    catch (ex) {
+                        // prevent from blocking if options.done() throws an error
+                        done = true;
+                        throw ex;
+                    }
+                }
+                done = true;
+            }, 0);
             kernel32dll.close();
-            //LogError('exitCode ' + exitCode);
-            options.done && options.done({
-                exitCode: exitCode,
-                stdout: output,
-                stderr: error,
-            });
         }
-    } 
+    }
+
+    var cmdStr = getCommandStr(options.command);
+    var workDir = getWorkDir(options.workdir);
 
     //main
-    hChildProcess = popen(options.command, options.arguments, options.environment, child);
+    hChildProcess = popen(cmdStr, workDir, options.arguments, options.environment, child);
+
+    readPipes();
+
     if (options.stdin) {
+       createStdinWriter();
+
         if(typeof(options.stdin) == 'function') {
-            options.stdin({
-                write: function(data) {
-                    writeStdin(data);
-                },
-                close: function() {
-                    CloseHandle(child.stdin);
-                }
-            });
+            try {
+                options.stdin({
+                    write: function(data) {
+                        writeStdin(data);
+                    },
+                    close: function() {
+                        closeStdinHandle();
+                    }
+                });
+            }
+            catch (ex) {
+                // prevent from failing if options.stdin() throws an exception
+                closeStdinHandle();
+                throw ex;
+            }
         } else {
             writeStdin(options.stdin);
-            if (!CloseHandle(child.stdin)) LogError("CloseHandle hInputWrite");
+            closeStdinHandle();
         }
     }
-    setTimeout(function() {
-        readPipes();
-    }, 0);
+    else
+        closeStdinHandle();
 
     return {
         kill: function() {
@@ -761,29 +1023,47 @@ function subprocess_win32(options) {
             return r;
         },
         wait: function() {
-            if(active) {
-                var exit = new DWORD();
-                GetExitCodeProcess(child.process, exit.address());
-                if(exit.value == STILL_ACTIVE) {
-                    WaitForSingleObject(child.process, INFINITE);
-                }
-                GetExitCodeProcess(child.process, exit.address());
-                cleanup(exit.value);
-                return exit.value;
-            }
+            // wait for async operations to complete
+            var thread = Cc['@mozilla.org/thread-manager;1'].getService(Ci.nsIThreadManager).currentThread;
+            while (!done) thread.processNextEvent(true);
+
+            return exitCode;
         }
     }
 }
 
-function subprocess_unix(options) {
-    var active = true,
-        child = {},
-        error = options.charset === null ? [] : '',
-        libc = ctypes.open(options.libc),
-        output = options.charset === null ? [] : '';
 
+function subprocess_unix(options) {
+    // stdin pipe states
+    const OPEN = 2;
+    const CLOSEABLE = 1;
+    const CLOSED = 0;
+
+    var libc = ctypes.open(options.libc),
+        active = true,
+        done = false,
+        exitCode = -1,
+        child = {},
+        pid = -1,
+        stdinWorker = null,
+        stdoutWorker = null,
+        stderrWorker = null,
+        pendingWriteCount = 0,
+        readers = options.mergeStderr ? 1 : 2,
+        stdinOpenState = OPEN,
+        error = '',
+        output = '',
+        xulRuntime = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime);
 
     //api declarations
+    //Darwin/BSD uses 0x0004 Linux 04000 or 2048
+    const O_NONBLOCK = xulRuntime.OS == 'Darwin' ? 0x0004 : 2048;
+    const O_NONBLOCK = {
+        'darwin': 0x0004,
+        'freebsd': 0x0004,
+        'openbsd': 0x0004,
+    }[xulRuntime.OS.toLowerCase()] || 2024;
+
 
     //pid_t fork(void);
     var fork = libc.declare("fork",
@@ -821,7 +1101,7 @@ function subprocess_unix(options) {
                           ctypes.int,
                           ctypes.char.ptr,
                           argv,
-                          envp 
+                          envp
     );
 
     //void exit(int status);
@@ -884,7 +1164,7 @@ function subprocess_unix(options) {
                           ctypes.int
     );
 
-    function popen(command, args, environment, child) {
+    function popen(command, workdir, args, environment, child) {
         var _in,
             _out,
             _err,
@@ -903,7 +1183,7 @@ function subprocess_unix(options) {
         var _envp = envp();
         for(var i=0;i<environment.length;i++) {
             _envp[i] = ctypes.char.array()(environment[i]);
-            LogError(_envp);
+            // LogError(_envp);
         }
         rc = pipe(_in);
         if (rc < 0) {
@@ -935,13 +1215,14 @@ function subprocess_unix(options) {
             if(!options.mergeStderr)
                 close(_err[1]);
             child.stdin  = _in[1];
+            child.stdinFd = _in;
             child.stdout = _out[0];
             child.stderr = options.mergeStderr ? undefined : _err[0];
             child.pid = pid;
             return pid;
         } else if (pid == 0) { // child
-	        if (options.workdir) {
-                if (chdir(options.workdir) < 0) {
+            if (workdir) {
+                if (chdir(workdir) < 0) {
                     exit(126);
                 }
             }
@@ -958,6 +1239,7 @@ function subprocess_unix(options) {
             execve(command, _args, _envp);
             exit(1);
         } else {
+            // we should not really end up here
             if(!options.mergeStderr) {
                 close(_err[0]);
                 close(_err[1]);
@@ -966,142 +1248,256 @@ function subprocess_unix(options) {
             close(_out[1]);
             close(_in[0]);
             close(_in[1]);
-            return -1;
+            throw("Fatal - failed to create subprocess '"+command+"'");
         }
         return pid;
     }
 
-    function writeStdin(data) {
-        return write(child.stdin, data, data.length);
+    /*
+     * createStdinWriter ()
+     *
+     * Create a ChromeWorker object for writing data to the subprocess' stdin
+     * pipe. The ChromeWorker object lives on a separate thread; this avoids
+     * internal deadlocks.
+     */
+    function createStdinWriter() {
+        debugLog("Creating new stdin worker\n");
+        stdinWorker = new ChromeWorker("subprocess_worker_unix.js");
+        stdinWorker.onmessage = function(event) {
+            switch(event.data) {
+            case "WriteOK":
+                pendingWriteCount--;
+                debugLog("got OK from stdinWorker - remaining count: "+pendingWriteCount+"\n");
+                break;
+            case "ClosedOK":
+                stdinOpenState = CLOSED;
+                debugLog("Stdin pipe closed\n");
+                break;
+            case "initFailed":
+              throw("Could not start writing to the subprocess");
+              break;
+            default:
+                debugLog("got msg from stdinWorker: "+event.data+"\n");
+            }
+        }
+        stdinWorker.onerror = function(error) {
+            pendingWriteCount--;
+            LogError("got error from stdinWorker: "+error.message+"\n");
+        }
+        stdinWorker.postMessage({msg: "init", libc: options.libc});
     }
 
-    function readPipes(last) {
-        if(!active && !last)
-            return;
-        var data = options.charset === null ? [] : '';
-        while(true) {
-            let line = new buffer();
-            let r = read(child.stdout, line, bufferSize);
-            if(r <= 0)
-                break
-            let c = readString(line, r, options.charset);
-            if (options.charset === null)
-                c.forEach(function(x) { data.push(x) });
-            else
-                data += c;
-            //\r is used to work with statu output like from ffmpeg
-            if (!last && (c[c.length-1] == '\n' || c[c.length-1] == '\r'))
-                break;
+    /*
+     * writeStdin()
+     * @data: String containing the data to write
+     *
+     * Write data to the subprocess' stdin (equals to sending a request to the
+     * ChromeWorker object to write the data).
+     */
+    function writeStdin(data) {
+        ++pendingWriteCount;
+        debugLog("sending "+data.length+" bytes to stdinWorker\n");
+        var pipe = parseInt(child.stdin);
+
+        stdinWorker.postMessage({
+            msg: 'write',
+            pipe: pipe,
+            data: data
+        });
+    }
+
+
+    /*
+     * closeStdinHandle()
+     *
+     * Close the stdin pipe, either directly or by requesting the ChromeWorker to
+     * close the pipe. The ChromeWorker will only close the pipe after the last write
+     * request process is done.
+     */
+
+    function closeStdinHandle() {
+        debugLog("trying to close stdin\n");
+        if (stdinOpenState != OPEN) return;
+        stdinOpenState = CLOSEABLE;
+
+        if (stdinWorker) {
+            debugLog("sending close stdin to worker\n");
+            var pipePtr = parseInt(child.stdin);
+
+            stdinWorker.postMessage({
+                msg: 'close',
+                pipe: pipePtr
+            });
         }
-        //dump('\nstdout ' + data.length + '\n');
-        if(data.length) {
-            if(options.stdout) {
-                last ? options.stdout(data)
-                     : setTimeout(function() {
-                        options.stdout(data);
-                     }, 0);
-            } else {
-                if (options.charset === null)
-                    data.forEach(function(x) { output.push(x) });
-                else
-                    output += data;
-            }
+        else {
+            stdinOpenState = CLOSED;
+            debugLog("Closing Stdin\n");
+            close(child.stdin) && LogError("CloseHandle stdin failed");
         }
-        if(!options.mergeStderr) {
-            var errorData = options.charset === null ? [] : '';
-            while(true) {
-                let line = new buffer();
-                let r = read(child.stderr, line, bufferSize);
-                if(r <= 0)
-                    break
-                let c = readString(line, r, options.charset);
-                if (options.charset === null)
-                    c.forEach(function(x) { errorData.push(x) });
-                else
-                    errorData += c;
-                //\r is used to work with statu output like from ffmpeg
-                if (!last && (c[c.length-1] == '\n' || c[c.length-1] == '\r'))
-                    break;
-            }
-            if(errorData.length) {
-                if(options.stderr) {
-                    last ? options.stderr(errorData)
-                         : setTimeout(function() {
-                            options.stderr(errorData);
-                         }, 0);
-                } else {
-                    if (options.charset === null)
-                        errorData.forEach(function(x) { errror.push(x) });
-                    else
-                        error += errorData;
+    }
+
+
+    /*
+     * createReader(pipe, name)
+     *
+     * @pipe: handle to the pipe
+     * @name: String containing the pipe name (stdout or stderr)
+     * @callbackFunc: function to be called with the read data
+     *
+     * Create a ChromeWorker object for reading data asynchronously from
+     * the pipe (i.e. on a separate thread), and passing the result back to
+     * the caller.
+     *
+     */
+    function createReader(pipe, name, callbackFunc) {
+        var worker = new ChromeWorker("subprocess_worker_unix.js");
+        worker.onmessage = function(event) {
+            switch(event.data.msg) {
+            case "data":
+                debugLog("got "+event.data.count+" bytes from "+name+"\n");
+                var data = '';
+                if (options.charset === null) {
+                    event.data.data.forEach(function(x) { data += String.fromCharCode(x) })
                 }
+                else
+                    data = convertBytes(event.data.data, options.charset);
+
+                callbackFunc(data);
+                break;
+            case "done":
+                debugLog("Pipe "+name+" closed\n");
+                --readers;
+                if (readers == 0) cleanup();
+                break;
+            default:
+                debugLog("Got msg from "+name+": "+event.data.data+"\n");
             }
         }
-        if (!last) {
-            var status = ctypes.int();
-            var result = waitpid(child.pid, status.address(), WNOHANG);
-            if (result == 0) {
-                setTimeout(function() { readPipes(); }, 1);
-            } else if (result == -1) {
-                LogError('Error' + result + ' ' + status);
+        worker.onerror = function(error) {
+            LogError("Got error from "+name+": "+error.message);
+        }
+
+        worker.postMessage({
+                msg: 'read',
+                pipe: pipe,
+                libc: options.libc,
+                charset: options.charset === null ? "null" : options.charset,
+                name: name
+            });
+
+        return worker;
+    }
+
+    /*
+     * readPipes()
+     *
+     * Open the pipes for reading from stdout and stderr
+     */
+    function readPipes() {
+
+        stdoutWorker = createReader(child.stdout, "stdout", function (data) {
+            if(options.stdout) {
+                setTimeout(function() {
+                    options.stdout(data);
+                }, 0);
             } else {
-                cleanup();
+                output += data;
             }
-        }
+        });
+
+        if (!options.mergeStderr) stderrWorker = createReader(child.stderr, "stderr", function (data) {
+            if(options.stderr) {
+                setTimeout(function() {
+                    options.stderr(data);
+                 }, 0);
+            } else {
+                error += data;
+            }
+        });
     }
 
     function cleanup() {
-        if(!active)
-            return;
-        var result, status = ctypes.int();
-        readPipes(true);
-        result = waitpid(child.pid, status.address(), 0);
+        debugLog("Cleanup called\n");
         if(active) {
             active = false;
-            readPipes(true);
-            close(child.stdin);
-            close(child.stdout);
-            if(!options.mergeStderr)
-                close(child.stderr);
-            options.done && options.done({
-                exitCode: status.value,
-                stdout: output,
-                stderr: error 
-            });
+
+            closeStdinHandle(); // should only be required in case of errors
+
+            var result, status = ctypes.int();
+            result = waitpid(child.pid, status.address(), 0);
+            exitCode = status.value;
+            if (stdinWorker)
+                stdinWorker.postMessage({msg: 'stop'})
+
+            setTimeout(function _done() {
+                if (options.done) {
+                    try {
+                        options.done({
+                            exitCode: exitCode,
+                            stdout: output,
+                            stderr: error,
+                        });
+                    }
+                    catch(ex) {
+                        // prevent from blocking if options.done() throws an error
+                        done = true;
+                        throw ex;
+                    }
+
+                }
+                done = true;
+            }, 0);
+
             libc.close();
         }
-        return status.value;
     }
 
     //main
-    var child = {};
-    var pid = popen(options.command, options.arguments, options.environment, child);
+
+    var cmdStr = getCommandStr(options.command);
+    var workDir = getWorkDir(options.workdir);
+
+    child = {};
+    pid = popen(cmdStr, workDir, options.arguments, options.environment, child);
+
+    debugLog("subprocess started; got PID "+pid+"\n");
+
+    readPipes();
+
     if (options.stdin) {
+        createStdinWriter();
         if(typeof(options.stdin) == 'function') {
-            options.stdin({
-                write: function(data) {
-                    writeStdin(data);
-                },
-                close: function() {
-                    close(child.stdin);
-                }
-            });
+            try {
+                options.stdin({
+                    write: function(data) {
+                        writeStdin(data);
+                    },
+                    close: function() {
+                        closeStdinHandle();
+                    }
+                });
+            }
+            catch(ex) {
+                // prevent from failing if options.stdin() throws an exception
+                closeStdinHandle();
+                throw ex;
+            }
         } else {
             writeStdin(options.stdin);
-            close(child.stdin);
+            closeStdinHandle();
         }
     }
-    setTimeout(function() {
-        readPipes();
-    }, 0);
 
     return {
         wait: function() {
-            return cleanup();
+            // wait for async operations to complete
+            var thread = Cc['@mozilla.org/thread-manager;1'].getService(Ci.nsIThreadManager).currentThread;
+            while (! done) thread.processNextEvent(true)
+            return exitCode;
         },
         kill: function() {
             var rv = kill(pid, 9);
-            cleanup();
+            cleanup(-1);
             return rv;
         }
     }
