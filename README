@@ -1,9 +1,16 @@
 FireGPG
 
-This extension is compatible with Firefox 3 and above, on Windows, MacOS and Linux platforms.
+FireGPG is no longer supported.  It's original author abandoned the project.
 
-NOTE:  FireGPG was abandoned by its creator Maximilian.  We grabbed a copy of the code along
-with the firegpg.com domain and posted it here.  FireGPG is no longer officially supported.
+We simply grabbed a copy of the code and made it available on GitHub.
+
+People considering using FireGPG may want to read the following article:
+
+https://tails.boum.org/doc/encryption_and_privacy/FireGPG_susceptible_to_devastating_attacks/
+
+
+
+This extension is compatible with Firefox 3 and above, on Windows, MacOS and Linux platforms.
 
 If members of the community want to submit patches, they will be accepted, but we will not
 be performing much (if any) testing on them.
@@ -26,9 +33,4 @@ For development you should do the following:
      firegpg@firegpg.team and copy that file to
      [your profile folder]\extensions\
   3. Restart Firefox.
-
-===============
-Report a bug
-===============
-Please report your bugs on the bug tracker: http://github.com/firegpg/firegpg/
 
