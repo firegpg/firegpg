@@ -188,6 +188,7 @@ FireGPG.Inline.HandleBlock = function(document, range, blockType) {
 
 		};
 		block.action.addEventListener("click", actionHandler, false);
+actionHandler();
 
 		switch(blockType) {
 			case FireGPG.Inline.KEY_BLOCK:
