@@ -116,7 +116,7 @@ FireGPG.Inline.HandleBlock = function(document, range, blockType) {
 	// private information (contents of encrypted message).
 	var frame = document.createElement("iframe");
 	range.insertNode(frame);
-	frame.contentWindow.location.href = "chrome://firegpg/skin/block.xml";
+	frame.contentWindow.location.href = "chrome://firegpg/skin/block.html";
 	frame.style.border = "0px";
 	frame.style.width = "100%";
 
@@ -181,6 +181,7 @@ FireGPG.Inline.HandleBlock = function(document, range, blockType) {
 					break;
 				case FireGPG.Inline.MESSAGE_BLOCK:
 					FireGPG.Inline.DecryptMessage(block.original.textContent, block);
+					FireGPG.Inline.HandlePage(frame.contentDocument);
 					break;
 			}
             frame.style.width = block.body.scrollWidth + "px";
@@ -188,7 +189,7 @@ FireGPG.Inline.HandleBlock = function(document, range, blockType) {
 
 		};
 		block.action.addEventListener("click", actionHandler, false);
-actionHandler();
+		actionHandler();
 
 		switch(blockType) {
 			case FireGPG.Inline.KEY_BLOCK:
