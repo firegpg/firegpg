@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Ne prikazuj dugmad nego drop-down listu.">
 <!ENTITY firegpg-ask-for-private-label.text "Uvek traži privatni ključ">
 <!ENTITY inline-activated "Aktiviraj upravljač za PGP blokove u stranicama (potreban restart)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Isključi autosave">
 <!ENTITY gmail-buton-csign-checkbox "Obriši potpis">
 <!ENTITY gmail-buton-csignsend-checkbox "Obriši potpis i pošalji">

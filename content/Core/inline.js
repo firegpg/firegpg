@@ -189,7 +189,8 @@ FireGPG.Inline.HandleBlock = function(document, range, blockType) {
 
 		};
 		block.action.addEventListener("click", actionHandler, false);
-		actionHandler();
+		if (FireGPG.Inline.autoactivate)
+			actionHandler();
 
 		switch(blockType) {
 			case FireGPG.Inline.KEY_BLOCK:
@@ -545,6 +546,14 @@ FireGPG.Inline.initSystem = function() {
     }
 
     FireGPG.Inline.activate = activate;
+
+    try {
+        var autoactivate = prefs.getBoolPref("auto_activate_inline");
+    } catch (e) {
+        var autoactivate = true;
+    }
+
+    FireGPG.Inline.autoactivate = autoactivate;
 
 
     try {

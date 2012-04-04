@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Botoiak erakutsi beharrean zerrenda bat erakutsi">
 <!ENTITY firegpg-ask-for-private-label.text "Gako pribatua beti eskatu">
 <!ENTITY inline-activated "PGP blokeak orrietan bilatu (berbiarazi behar da)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Auto-gorde opzioa desaktibatu">
 <!ENTITY gmail-buton-csign-checkbox "Argian sinatu">
 <!ENTITY gmail-buton-csignsend-checkbox "Argian sinatu eta bidali">

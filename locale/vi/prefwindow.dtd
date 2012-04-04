@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Display a list instead of buttons">
 <!ENTITY firegpg-ask-for-private-label.text "Luôn hỏi khóa bí mật">
 <!ENTITY inline-activated "Check for PGP blocks in pages (restart needed)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Tắt tính năng tự động lưu">
 <!ENTITY gmail-buton-csign-checkbox "Clearsign">
 <!ENTITY gmail-buton-csignsend-checkbox "Clearsign and send">

@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Display a list instead of buttons">
 <!ENTITY firegpg-ask-for-private-label.text "نسأل دائما عن المفتاح الخاص">
 <!ENTITY inline-activated "Check for PGP blocks in pages (restart needed)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Disable autosave feature">
 <!ENTITY gmail-buton-csign-checkbox "واضح التوقيع">
 <!ENTITY gmail-buton-csignsend-checkbox "واضح التوقيع">

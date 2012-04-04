@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Показывать список, а не кнопки">
 <!ENTITY firegpg-ask-for-private-label.text "Всегда спрашивать личный ключ">
 <!ENTITY inline-activated "Проверять наличие PGP блоков в страницах (требуется перезапуск)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Запретить автосохранение">
 <!ENTITY gmail-buton-csign-checkbox "Подписать">
 <!ENTITY gmail-buton-csignsend-checkbox "Подписать и отправить">
