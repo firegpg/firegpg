@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Toon geen knoppen maar een lijst.">
 <!ENTITY firegpg-ask-for-private-label.text "Altijd vragen om private sleutel">
 <!ENTITY inline-activated "Activeer de functie voor PGP blokken in paginas (opnieuw opstarten zal nodig zijn)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Automatisch opslaan afzetten">
 <!ENTITY gmail-buton-csign-checkbox "Leesbaar ondertekenen">
 <!ENTITY gmail-buton-csignsend-checkbox "Leesbaar ondertekenen en versturen">

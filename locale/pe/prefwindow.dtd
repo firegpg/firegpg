@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "نمایش یک لیست به جای دکمه‌ها">
 <!ENTITY firegpg-ask-for-private-label.text "همیشه کلید خصوصی را از من بخواه">
 <!ENTITY inline-activated "این صفحه را برای بلوک‌های پی‌جی‌پی چک کن (نیازمند راه اندازی مجدد )ا">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "غیرفعال‌کردن قابلیت ذخیره خودکار">
 <!ENTITY gmail-buton-csign-checkbox "حذف امضا">
 <!ENTITY gmail-buton-csignsend-checkbox "حذف امضا و فرستادن">

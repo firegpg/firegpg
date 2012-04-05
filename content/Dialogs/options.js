@@ -48,7 +48,7 @@ Portions created by gpg_auth are Copyright (C) 2007 Kyle L. Huff All Rights Rese
 
     Parameters:
         checkbox - _Optional_. The checkbox value. If not set, use the current value.
-        focus_textbox - _Optional_. Set it to true to fucus the text field
+        focus_textbox - _Optional_. Set it to true to focus the text field
 */
 function onChangeGPGPathCheckbox(checkbox, focus_textbox) {
 	/* checked ? */
@@ -65,6 +65,30 @@ function onChangeGPGPathCheckbox(checkbox, focus_textbox) {
 	textbox.disabled = disabled;
 	if(focus_textbox != undefined && focus_textbox == true)
 		textbox.focus();
+}
+
+
+/*
+    Function: onChangeActivateInlineCheckbox
+    Called when inline-activated is checked/unchecked to
+    enable/disable some elements in the options interface.
+
+    Parameters:
+        checkbox - _Optional_. The checkbox value. If not set, use the current value.
+        focus_checkbox - _Optional_. Set it to true to focus the check box
+*/
+function onChangeActivateInlineCheckbox(checkbox, focus_checkbox) {
+	/* checked ? */
+	if(checkbox == undefined)
+		checkbox = document.getElementById('inline-activated');
+
+    var disabled = (checkbox.checked) ? false : true;
+
+	/* checkbox */
+	var checkbox = document.getElementById('inline-auto-activated');
+	checkbox.disabled = disabled;
+	if(focus_checkbox != undefined && focus_checkbox == true)
+		checkbox.focus();
 }
 
 
@@ -174,6 +198,7 @@ function onLoad(win) {
 
 	/* call some important events */
 	onChangeGPGPathCheckbox();
+	onChangeActivateInlineCheckbox();
 
 	/* gpgAUth */
 	getIgnored_servers( document.getElementById('domain_list') );

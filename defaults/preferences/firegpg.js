@@ -21,6 +21,7 @@ pref("extensions.firegpg.no_updates", false);
 pref("extensions.firegpg.enable_gpgapi", true);
 pref("extensions.firegpg.gmail_butons_use_select", false);
 pref("extensions.firegpg.activate_inline", true);
+pref("extensions.firegpg.auto_activate_inline", false);
 pref("extensions.firegpg.gmail_disable_autosave", false);
 pref("extensions.firegpg.keyserver", "pgp.mit.edu");
 pref("extensions.firegpg.gmail_never_use_google_com_password", false);

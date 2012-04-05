@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "버튼 대신 드롭다운 리스트 보이기">
 <!ENTITY firegpg-ask-for-private-label.text "항상 개인키를 물어봄">
 <!ENTITY inline-activated "문서 내의 PGP 블럭에 대한 핸들러 활성화 (재시작 필요)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "자동 저장 비활성화">
 <!ENTITY gmail-buton-csign-checkbox "가독형 서명">
 <!ENTITY gmail-buton-csignsend-checkbox "가독형 서명하고 보내기">

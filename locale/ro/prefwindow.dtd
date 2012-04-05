@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Afișează o listă în locul butoanelor">
 <!ENTITY firegpg-ask-for-private-label.text "Întreabă întotdeauna care este cheia privată">
 <!ENTITY inline-activated "Check for PGP blocks in pages (restart needed)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Dezactivează salvarea automată">
 <!ENTITY gmail-buton-csign-checkbox "Semnează în clar">
 <!ENTITY gmail-buton-csignsend-checkbox "Semnează în clar și trimite">

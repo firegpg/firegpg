@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Visa lista istället för knappar">
 <!ENTITY firegpg-ask-for-private-label.text "Fråga alltid efter privat nyckel">
 <!ENTITY inline-activated "Leta efter 'PGP-block' på hemsidor (omstart krävs)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Avaktivera autosparfunktion">
 <!ENTITY gmail-buton-csign-checkbox "Signera i klartext">
 <!ENTITY gmail-buton-csignsend-checkbox "Signera i klartext och skicka">
