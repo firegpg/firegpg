@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Aşağı çekilen listeyse düğmeleri gösterme.">
 <!ENTITY firegpg-ask-for-private-label.text "Özel anahtarı herzaman sor">
 <!ENTITY inline-activated "Sayfalar içindeki PGP blokları için elden geçirmeyi aktif yap (tekrar başlatmak gerekir)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Otomatik kaydeti engelle">
 <!ENTITY gmail-buton-csign-checkbox "İmzayı temizle">
 <!ENTITY gmail-buton-csignsend-checkbox "İmzayı temizle ve gönder">

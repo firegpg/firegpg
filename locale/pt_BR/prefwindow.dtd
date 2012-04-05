@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Não mostrar botões numa lista drop down.">
 <!ENTITY firegpg-ask-for-private-label.text "Sempre perguntar pela chave privada">
 <!ENTITY inline-activated "Ativar a manipulação de blocos PGP em sites. Será necessário reinicializar.">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Desabilitar o salvamento automático">
 <!ENTITY gmail-buton-csign-checkbox "Assinar">
 <!ENTITY gmail-buton-csignsend-checkbox "Assinar e enviar">

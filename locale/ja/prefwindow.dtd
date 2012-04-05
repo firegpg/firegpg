@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "ボタンの代わりにリストを表示する">
 <!ENTITY firegpg-ask-for-private-label.text "常に秘密鍵を尋ねる">
 <!ENTITY inline-activated "ページ中のPGPブロックを確認する (再起動が必要)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "自動保存の機能を無効にする">
 <!ENTITY gmail-buton-csign-checkbox "クリア署名">
 <!ENTITY gmail-buton-csignsend-checkbox "クリア署名して送信">

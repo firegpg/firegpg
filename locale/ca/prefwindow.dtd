@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "No mostris botons sino una llista">
 <!ENTITY firegpg-ask-for-private-label.text "Demanar sempre per la clau privada">
 <!ENTITY inline-activated "Activa el controlador per a blocs GPG en les pàgines (es necessita reiniciar)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Deshabilitar autoguardar">
 <!ENTITY gmail-buton-csign-checkbox "Neteja la signatura">
 <!ENTITY gmail-buton-csignsend-checkbox "Neteja la signatura i envia">

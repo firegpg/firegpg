@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Εμφάνιση λίστας αντί κουμπιών">
 <!ENTITY firegpg-ask-for-private-label.text "Να ζητείται πάντοτε το κρυφό κλειδί">
 <!ENTITY inline-activated "Ενεργοποίηση του χειριστή PGP blocks σε σελίδες (απαιτείται επανεκκίνηση) ">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Απενεργοποίηση αυτόματης αποθήκευσης">
 <!ENTITY gmail-buton-csign-checkbox "Απλή υπογραφή">
 <!ENTITY gmail-buton-csignsend-checkbox "Απλή υπογραφή και αποστολή">

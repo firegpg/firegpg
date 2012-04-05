@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Tampilkan daftar dan bukan tombol">
 <!ENTITY firegpg-ask-for-private-label.text "Selalu minta untuk kunci privat">
 <!ENTITY inline-activated "Periksa untuk blok PGP pada halaman (diperlukan restart)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Nonaktifkan fitur penyimpanan otomatis">
 <!ENTITY gmail-buton-csign-checkbox "Hapus tanda tangan">
 <!ENTITY gmail-buton-csignsend-checkbox "Hapus tanda tangan dan kirim">

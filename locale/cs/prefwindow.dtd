@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Zobrazit seznam místo tlačítek">
 <!ENTITY firegpg-ask-for-private-label.text "Vždy se ptát na tajný klíč">
 <!ENTITY inline-activated "Hledat PGP bloky ve stránkách (vyžaduje restart)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Vypnout automatické ukládání">
 <!ENTITY gmail-buton-csign-checkbox "Podepsat čitelně">
 <!ENTITY gmail-buton-csignsend-checkbox "Podepsat čitelně a odeslat">

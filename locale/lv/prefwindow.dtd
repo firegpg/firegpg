@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Attēlot sarakstu nevis pogas">
 <!ENTITY firegpg-ask-for-private-label.text "Vienmēr jautāt pēc privātās atslēgas">
 <!ENTITY inline-activated "Pārbaudīt vai lapā nav PGP bloku (nepieciešama pārstartēšana)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Izslēgt automātisko saglabāšanas iespēju">
 <!ENTITY gmail-buton-csign-checkbox "Notīrīt parakstu">
 <!ENTITY gmail-buton-csignsend-checkbox "Notīrīt parakstu un sūtīt">

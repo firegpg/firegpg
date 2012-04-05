@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "Vis liste fremfor knapper">
 <!ENTITY firegpg-ask-for-private-label.text "Spørg altid efter privat nøgle">
 <!ENTITY inline-activated "Tjek for PGP-blok på sider (kræver genstart)">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "Slå autogem-funktionen fra">
 <!ENTITY gmail-buton-csign-checkbox "Underskriv klartekst">
 <!ENTITY gmail-buton-csignsend-checkbox "Underskriv klartekst og send">

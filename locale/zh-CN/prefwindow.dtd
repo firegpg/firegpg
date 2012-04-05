@@ -44,6 +44,7 @@
 <!ENTITY gmail-buton-use-select-checkbox "显示下拉菜单而不是一串按钮">
 <!ENTITY firegpg-ask-for-private-label.text "总是询问私钥">
 <!ENTITY inline-activated "激活对页面中的PGP区块的解析（需要重启）">
+<!ENTITY inline-auto-activated "Automatically import/verify/decrypt (restart required) (do you understand the security implications?)">
 <!ENTITY gmail-disable-autosave-checkbox "禁用自动保存功能">
 <!ENTITY gmail-buton-csign-checkbox "明文签署">
 <!ENTITY gmail-buton-csignsend-checkbox "明文签署并发送">
