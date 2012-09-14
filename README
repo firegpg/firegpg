@@ -5,8 +5,11 @@ FireGPG is no longer supported, the original author abandoned the project. See: 
 
 We simply grabbed a copy of the code and made it available on GitHub.
 
-Several people from the FireGPG community have banded together and are working on related projects.
-Check out gpgAuth (https://github.com/gpgauth/gpgauth) and WebPG (https://github.com/kylehuff/webpg-chrome)
+There are newer, better extensions for both Firefox and Chrome.
+
+Please see
+ * https://github.com/kylehuff/webpg-chrome (Also available in the Chrome Web Store)
+ * https://github.com/kylehuff/webpg-firefox
 
 Known Vulnerabilities
 ---------------------
